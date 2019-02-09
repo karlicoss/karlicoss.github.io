@@ -3,17 +3,17 @@
     xmlns:dc="http://purl.org/dc/elements/1.1/">
     <channel>
         <title>Mildly entertaining</title>
-        <link>https://karlicoss.github.io</link>
+        <link>https://beepb00p.xyz</link>
         <description><![CDATA[feed]]></description>
-        <atom:link href="https://karlicoss.github.io/rss.xml" rel="self"
+        <atom:link href="https://beepb00p.xyz/rss.xml" rel="self"
                    type="application/rss+xml" />
         <lastBuildDate>Sat, 09 Feb 2019 00:00:00 UT</lastBuildDate>
         <item>
     <title>Grasp</title>
-    <link>https://karlicoss.github.io/grasp.html</link>
+    <link>https://beepb00p.xyz/grasp.html</link>
     <description><![CDATA[How to capture information from your browser and stay sane]]></description>
     <pubDate>Sat, 09 Feb 2019 00:00:00 UT</pubDate>
-    <guid>https://karlicoss.github.io/grasp.html</guid>
+    <guid>https://beepb00p.xyz/grasp.html</guid>
     <dc:creator>karlicoss</dc:creator>
 </item>
 
