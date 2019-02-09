@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Me | Mildly entertainingᵝ</title>
+        <link rel="stylesheet" href="./css/default.css" />
+        <link rel="stylesheet" href="./css/ipynb-syntax.css" />
+
+        <!-- TODO make it conditional on actually having math on page? -->
+        <script type="text/javascript">
+ window.MathJax = {
+     tex2jax: {
+         // note that hakyll source has got double dollar signs due to special meaning in templates
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+     }
+ };
+</script>
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<!-- TODO change cdn -->
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="./" style="float:left">Home</a>
+                <!-- TODO do site and archive later when they actually have something meaningful -->
+                <!-- <a href="/site.html">Site</a> -->
+                <a href="./me.html" style="float:right">Me</a>
+                <!-- <a href="/archive.html">Archive</a> -->
+            </nav>
+        </header>
+
+        <main role="main">
+            <p>In my free time apart from the maintenance of my <a href="https://twitter.com/mspowahs/status/957995279092875264">physical shell</a> I mostly enjoy building things (sadly, that only involves programming so far) and learning. This blog will hopefully aid the latter!</p>
+<p>You can find me on:</p>
+<ul>
+<li><a href="https://github.com/karlicoss">Github</a></li>
+<li><a href="https://pinboard.in/u:karlicoss">Pinboard</a></li>
+<li><a href="https://twitter.com/karlicoss">Twitter</a></li>
+<li><a href="https://www.goodreads.com/user/show/22191391-dima-gerasimov">Goodreads</a></li>
+<li><a href="https://www.topcoder.com/members/karlicos">Topcoder</a></li>
+<li>Email: <a href="mailto:karlicoss@gmail.com">karlicoss@gmail.com</a></li>
+</ul>
+<p>Physically I’m currently based in London, UK.</p>
+<p><small>That’s it for now. Yep, I’ve always had trouble writing self essays.</small></p>
+        </main>
+
+        <!-- <div id="disqus_thread"></div>
+<script>
+
+ // TODO uh, think carefully about these..
+ // TODO only show on post pages
+ // generally make it look simpler
+
+ var disqus_config = function () {
+     // TODO not sure if it's necessary if we have identifier
+     // https://help.disqus.com/developer/javascript-configuration-variables 
+     // In addition, this URL is always saved when a thread is being created so that Disqus knows what page a thread belongs to.
+     // TODO shit ok, so these links show up in 'also on' blocks for instance? so they should be correct urls?
+     // TODO also what if we host on multiple locations??
+     this.page.url = 'https://test.karlicoss.xyz/disqus_me';
+     this.page.identifier = 'disqus_me';
+     console.log(this.page.url);
+     console.log(this.page.identifier);
+     // TODO how to choose it???
+     // TODO presumably I'm not posting that often, so it's ok to have static map of names?
+     // TODO need to make sure titles map into different identifiers
+ };
+
+ (function() { // DON'T EDIT BELOW THIS LINE
+     var d = document, s = d.createElement('script');
+     s.src = 'https://karlicoss.disqus.com/embed.js';
+     s.setAttribute('data-timestamp', +new Date());
+     (d.head || d.body).appendChild(s);
+ })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+ -->
+        <footer>
+            <a href="./atom.xml">atom</a>
+            <a href="./rss.xml">rss</a>
+            Powered by <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </body>
+</html>

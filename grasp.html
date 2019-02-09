@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Grasp | Mildly entertainingᵝ</title>
+        <link rel="stylesheet" href="./css/default.css" />
+        <link rel="stylesheet" href="./css/ipynb-syntax.css" />
+
+        <!-- TODO make it conditional on actually having math on page? -->
+        <script type="text/javascript">
+ window.MathJax = {
+     tex2jax: {
+         // note that hakyll source has got double dollar signs due to special meaning in templates
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+     }
+ };
+</script>
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
+<!-- TODO change cdn -->
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="./" style="float:left">Home</a>
+                <!-- TODO do site and archive later when they actually have something meaningful -->
+                <!-- <a href="/site.html">Site</a> -->
+                <a href="./me.html" style="float:right">Me</a>
+                <!-- <a href="/archive.html">Archive</a> -->
+            </nav>
+        </header>
+
+        <main role="main">
+            <article>
+    <section class="header">
+    Posted on February 9, 2019
+    
+    </section>
+    <section class="title">
+    <h1>Grasp</h1>
+    </section>
+    <!-- are sections appropriate for that? -->
+    <section>
+    <p>This is not the post I was gonna start writing with. It was supposed to be something a bit more abstract and pure, but oh well.</p>
+<p>Trigger warning: if you are a kind of person that doesn’t care about their browser bookmarks at all and happily loses them after switching to new computer, you might be shocked and perhaps repulsed by the level of elaboration I’m taking up here. Please sit tight, breathe and remember that I don’t judge you!</p>
+<p>So, let’s talk about browser bookmarks.</p>
+<h1 id="history">History</h1>
+<p>I’ve always loved my bookmarks and been keeping, rereading and moving them around since high school. I also tend to be very organized in terms of meta information, so every bookmark would eventually end up in a category/folder. Of course there are obstacles.</p>
+<p>First of all, Chromium bookmark adding menu was a bit shit and <a href="http://www.rawinfopages.com/tips/wp-content/uploads/2017/08/chrome-bookmarks1.png">still</a> is. You get to choose among the five most recently used folders only; if you want anything specific, you have to click all the way through (Tab with my 100+ folders was just not doable). You can’t search when you add bookmark either. Yes, I know, it’s not meant for geeks, it’s for normal people who love mouseclicks. I’m still puzzled by how people who develop that stuff use their own product though.</p>
+<p>These days Chrome has got <code>chrome.bookmarks</code> api, which I’d imagine allows you to implement your own bookmark manager. Back in 2012, it didn’t exist though.</p>
+<p>I was a bit less fussy back then so I was kind of okay with that. Until one day the disaster appended. I realized I couldn’t decide which folder did the bookmark belong to. That was pretty disturbing, so I started looking for alternatives. I realized I needed something like tags and turned out Firefox had that feature for ages. So I switched the browser.</p>
+<p>Firefox was noticeably slower and greedier in terms of RAM (no Rust in Firefox in 2012!). And few months later I got my first Android phone and realized that Firefox didn’t support syncing tags with Android (it still <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=775672">doesn’t</a>).</p>
+<p>Until I found out about <a href="https://pinboard.in">Pinboard</a>! If you wanna borrow one thing from this post, please try and use that, it’s really awesome. It has solved almost all of my issues:</p>
+<ul>
+<li>you can easily add new bookmarks, tag them and it would be synced across all your browsers and devices</li>
+<li>you can mark them private and public, and search in other people’s bookmarks</li>
+<li>what is more, you can add notes for some context about your bookmarks!</li>
+</ul>
+<p>I’ve had few happy years with Pinboard. Until I started getting more serious about information processing and my knowledge management. I’ll tell about that one day, but long story short, I found out that I spend a lot of time moving bookmarks scattered across pinboard into my personal plaintext wiki to give it a bit more structure, fulltext search and easier access. I’ve also started using Org mode and in particular, <a href="https://orgmode.org/manual/Capture-Refile-Archive.html#Capture-Refile-Archive">capture and refile</a>. Once you are used to that, moving information manually by copy-pasting is just plain torture. You know, life is too short for that shit.</p>
+<h1 id="eh-capture-refile">Eh? Capture? Refile?</h1>
+<p>It’s hard to explain, for me it took several iterations to adopt these. In essence, you can ‘capture’, that is, copy/create piece of information like a url, quote, your thought or anything else and store in a text file for further processing which you can do it later. It’s meant to be with as little interruptions as possible, merely to persist the information. Typically, in emacs it’s a matter of pressing a keystroke, making you note and pressing a keystroke to finalize. You can do it as fast as you think/type and then immediately get back to what you were working on.</p>
+<p>You can look up quite a few different setups online: <a href="https://youtu.be/fgizHHd7nOo?t=207">typical demo (till 4:10)</a>. The concept doesn’t really have to be restricted to org mode, though. Funny enough, before I ran into org-capture, I had a keybinding to open Vim in the insert mode against my <code>notes.txt</code> file.</p>
+<h2 id="it-sounds-really-abstract.">It sounds really abstract.</h2>
+<p>Sure. Let me be a bit more specific. My typical scenario is doing some research in the broad sense, e.g. shopping or looking for a property to rent or learning.</p>
+<p>Imagine you’ve got a bit of time during your lunch break at work and want to spend it learning some <a href="https://en.wikipedia.org/wiki/Representation_theory">representation theory</a>. For me (and I’d imagine for many people), it makes little sense doing that just for 20 minutes, your mind is diffused, and you need time to gain back some context before doing productive learning.</p>
+<p>But you could at least skim through some articles and highlight things to think about later when you got more time which you can dedicate solely for learning. So you read through the different articles and blog posts, and you want to highlight things and potentially add todo items for further googling/thinking. You don’t have time to think about them now, you just want to make sure you think about them later, e.g. see <a href="https://user-images.githubusercontent.com/291333/51799721-a984eb80-221c-11e9-9612-8eb7f553dc01.png">screenshot</a>.</p>
+<p>So you go through the article and annotate it/add points to think on. You want to do it as fast as you can read without distracting on copy-pasting the information and trying to organize it. Later, when you got time, you just search everything marked with the tag <code>reprtheory</code> and in your <code>capture.org</code> file you find an entry like that:</p>
+<pre><code>* [2019-02-09 Sat 14:54] Special unitary group - Wikipedia   :reprtheory:physics:
+https://en.wikipedia.org/wiki/Special_unitary_group
+Selection:
+here is a 2:1 homomorphism from SU(2) to SO(3).
+Comment:
+Why do they always mention that? Is that important?</code></pre>
+<p>, which you can further action on. Perhaps you’ve figured it out already, so you can just discard it. Or you want to convert it into a TODO, give it a priority and refile somewhere more appropriate. What’s awesome is that at the time of capture it immediately becomes searchable and indexable as any plaintext would without any extra effort (unlike if you added it to browser bookmarks/pinboard).</p>
+<h1 id="ok-im-sold.-how-do-i-do-it">Ok, I’m sold. How do I do it?</h1>
+<p>So, you want to integrate your browser with your knowledge repository and capture things straight into your <code>capture.org</code> file. Sounds trivial, right?</p>
+<p>For a while I used <a href="https://github.com/sprig/org-capture-extension">org-capture extension</a>, that was relying on setting up a special mime type handler (e.g. <code>emacs://</code>) and an always running emacs daemon. Until one day I got very sad when few days of captured link and selected text were gone because one of these things stopped working for some reason. People seem to have issues setting up all this to work, and of course, you can’t have feedback from OS mime handler, so you can never know whether it has succeeded at all.</p>
+<p>I realized I didn’t want to rely on emacs running all the time, on its templates or anything like that. I just want to reliably append stuff (formatted as org-mode) to the text file, that’s not too much to ask. An obvious solution is to get rid of the mime type handler and just write to the file system from Chrome extension directly. This is, of course something you can’t do in modern browsers. There is an <a href="https://developer.chrome.com/apps/app_storage#write">API</a> in Chrome for that, and you’ve got two options:</p>
+<ul>
+<li>write a file to a sandbox within a browser. Not an option for my purposes.</li>
+<li>select a path via ‘save as’ GUI dialog and write it. Disgusting, <em>definitely</em> not an option.</li>
+</ul>
+<p>So after a while I realized something else has to write to the file. And that something else could be a local http server. The extension sends the request, the local backend writes the entry and responds with success/error, which can be passed onto UI notification, so you will always know if something failed. After a bit of coding, <a href="https://github.com/karlicoss/grasp">Grasp</a> was born.</p>
+<h1 id="what-makes-grasp-better">What makes Grasp better?</h1>
+<p>Quite a few things actually!</p>
+<ul>
+<li><p>it’s reliable and you will get an error notification if you failed to capture</p></li>
+<li><p>it supports capturing selected text, adding comment and tags</p></li>
+<li><p>you can capture anywhere: it doesn’t care whether you have emacs installed at all, and doesn’t have to be org mode file</p></li>
+<li><p>unlike <a href="https://orgmode.org/manual/capture-protocol.html">org-protocol</a> which only supports url, title and ‘everything else’, the capture template syntax can be extended to include anything you want, e.g. <a href="https://github.com/karlicoss/grasp/blob/247dd5856d34d05f4c2239f34a5d2904d0961326/server/org_tools.py#L91">currently</a> it also supports <code>tags</code>, <code>comment</code> and <code>selection</code>.</p></li>
+<li><p>it can run anywhere, e.g. you can run it the server on your VPS and access remotely if you are browsing on a computer you can’t sync your capture file onto.</p>
+<p>I might even try and see if it can be ported as <a href="https://addons.mozilla.org/en-GB/android/">Android Firefox addon</a>.</p></li>
+</ul>
+<h1 id="implementing">Implementing</h1>
+<p>Few random things I learnt while implementing:</p>
+<ul>
+<li><p><a href="https://flow.org">flow</a> and <a href="https://eslint.org/">eslint</a> are good</p>
+<p>Trivial to integrate and they make the dreaded JS programming pretty manageable and akin to Python.</p>
+<p>Turns out Flow even it supports <a href="https://flow.org/en/docs/types/comments/">comment types</a>, kinda like <a href="https://www.python.org/dev/peps/pep-0484/#type-comments">python/mypy</a>. That must be very beneficial for people trying to integrate it. Just imagine that you can slowly convert your whole codebase into type safe code before your coworkers realize what’s happened!</p></li>
+<li><p>Webpack is good</p>
+<p>Used it mainly to strip off Flow annotations and convert code into something chrome would accept. However it’s also helpful for merging the extension manifest so you could build browser-specific versions.</p></li>
+<li><p>fun fact: <code>node_modules</code> takes almost 200Mb of disk space, and I tried my best to use as less dependencies as possible. Almost all are dev dependencies, so the extension itself is still tiny.</p></li>
+<li><p>Firefox and Chrome use more or less same browser APIs these days! The only thing I had to fix while porting to Firefox were notifications.</p></li>
+<li>publishing to Chrome store is more tedious than I imagined, e.g.
+<ul>
+<li>they want screenshots exactly 1280x800 or 640x400. Do people have some sort of scripts to cut their screenshots automatically for them or what?</li>
+<li>there are two interfaces (‘old’ and ‘new’), which are sometimes doing different things</li>
+<li>it’s generally pretty flaky, sometimes when you update the extension, old meta about your extension disappears and you have to copy it manually. I find it pretty mean to developers.</li>
+</ul>
+<p>I guess I should just use the <a href="https://developer.chrome.com/webstore/using_webstore_api">API</a> for publishing.</p></li>
+<li><p>publishing to <a href>addons.mozilla.org</a> is super fast and easy</p></li>
+<li><p><a href="https://github.com/karlicoss/grasp/issues/7">firefox hotkeys are not configurable</a></p>
+<p>I still find it very hard to believe. Has it always been like that? How do people cope with it?</p></li>
+<li><p>CI is a bit tedious</p>
+<a href="https://github.com/karlicoss/grasp/blob/master/.circleci/config.yml">My pretty minimal config</a>, is quite long. I’m quite used to to CIs, but I wonder how often are people discouraged by that, it’s got to be easier. Perhaps <a href="https://docs.gitlab.com/ee/topics/autodevops/">Auto DevOps</a> from gitlab solves it?</li>
+<li><p>communicating with <code>localhost</code> made everything so much simpler. I’ve already converted another <a href="https://github.com/karlicoss/were-you-here">thing</a> I am working on to use that instead of trying to utilize local storage/internal database and it works flawlessly!</p></li>
+</ul>
+<h1 id="feedback">Feedback</h1>
+<p>I actually think it’s the first thing I solely implemented and prepared something and <a href="https://www.reddit.com/r/orgmode/comments/akazos/orggrasp_browser_extension_for_orgcapture/">shared</a> for other people to use. As expected, it actually took more time than sketching a prototype that worked for me. But it feels so great when people DM you on reddit and say that they managed to run it even on Windows without any issues when no other existing methods could do that.</p>
+<h1 id="whats-next">What’s next?</h1>
+<p>I’m gonna look up what are Markdown people using for capturing information, add few templates and spread the good stuff. I’m excited!</p>
+    </section>
+    <section class="comments">
+    <div>🚧🚧🚧🚧🚧</div>
+    Comments are under construction...
+    </section>
+</article>
+
+        </main>
+
+        <!-- <div id="disqus_thread"></div>
+<script>
+
+ // TODO uh, think carefully about these..
+ // TODO only show on post pages
+ // generally make it look simpler
+
+ var disqus_config = function () {
+     // TODO not sure if it's necessary if we have identifier
+     // https://help.disqus.com/developer/javascript-configuration-variables 
+     // In addition, this URL is always saved when a thread is being created so that Disqus knows what page a thread belongs to.
+     // TODO shit ok, so these links show up in 'also on' blocks for instance? so they should be correct urls?
+     // TODO also what if we host on multiple locations??
+     this.page.url = 'https://test.karlicoss.xyz/disqus_org_grasp';
+     this.page.identifier = 'disqus_org_grasp';
+     console.log(this.page.url);
+     console.log(this.page.identifier);
+     // TODO how to choose it???
+     // TODO presumably I'm not posting that often, so it's ok to have static map of names?
+     // TODO need to make sure titles map into different identifiers
+ };
+
+ (function() { // DON'T EDIT BELOW THIS LINE
+     var d = document, s = d.createElement('script');
+     s.src = 'https://karlicoss.disqus.com/embed.js';
+     s.setAttribute('data-timestamp', +new Date());
+     (d.head || d.body).appendChild(s);
+ })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+ -->
+        <footer>
+            <a href="./atom.xml">atom</a>
+            <a href="./rss.xml">rss</a>
+            Powered by <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+        </footer>
+    </body>
+</html>

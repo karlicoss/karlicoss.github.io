@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Mildly entertaining</title>
+    <link href="https://karlicoss.github.io/atom.xml" rel="self" />
+    <link href="https://karlicoss.github.io" />
+    <id>https://karlicoss.github.io/atom.xml</id>
+    <author>
+        <name>karlicoss</name>
+        <email>karlicoss@gmail.com</email>
+    </author>
+    <updated>2019-02-09T00:00:00Z</updated>
+    <entry>
+    <title>Grasp</title>
+    <link href="https://karlicoss.github.io/grasp.html" />
+    <id>https://karlicoss.github.io/grasp.html</id>
+    <published>2019-02-09T00:00:00Z</published>
+    <updated>2019-02-09T00:00:00Z</updated>
+    <summary type="html"><![CDATA[How to capture information from your browser and stay sane]]></summary>
+</entry>
+
+</feed>

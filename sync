@@ -1,0 +1,16 @@
+#!/bin/bash
+set -eu
+DIR="$(dirname "$0")"
+cd "$DIR"
+
+HBLOG="$DIR/../hblog"
+SRC="$HBLOG/_site/"
+
+SELF='sync' # script name
+
+
+"$HBLOG/rebuild"
+rsync -av --delete --exclude "$SELF" --exclude ".git" "$SRC" .
+
+git add --all
+git commit -a
