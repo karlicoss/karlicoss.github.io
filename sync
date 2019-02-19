@@ -13,4 +13,4 @@ SELF='sync' # script name
 rsync -av --delete --exclude "$SELF" --exclude ".git" "$SRC" .
 
 git add --all
-git commit -a
+git commit -v -a
