@@ -5,9 +5,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <title>Home | Mildly entertainingᵝ</title>
+
         <link rel="stylesheet" href="./css/default.css" />
-        <link rel="stylesheet" href="./css/ipynb-syntax.css" />
+        <!-- TODO turn back on on ipynb pages only? -->
+        <!-- <link rel="stylesheet" href="/css/ipynb-syntax.css" /> -->
 
         <!-- TODO make it conditional on actually having math on page? -->
         <script type="text/javascript">
@@ -19,25 +22,32 @@
      }
  };
 </script>
-<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
-<!-- TODO change cdn -->
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     </head>
     <body>
         <header>
             <nav>
-                <a href="./" style="float:left">Home</a>
+                <a class="nav-left fat" href="./">Home</a>
                 <!-- TODO do site and archive later when they actually have something meaningful -->
                 <!-- <a href="/site.html">Site</a> -->
-                <a href="./me.html" style="float:right">Me</a>
+                <a class="nav-right fat" href="./me.html">Me</a>
                 <!-- <a href="/archive.html">Archive</a> -->
             </nav>
         </header>
 
-        <main role="main">
+        <main>
             <!-- <h3>Recent posts</h3> -->
 <ul>
+    
+    <!-- TODO maybe not li, something else? Or just have css -->
+        <li>
+            February 21, 2019 » <a href="./sleep-tracking.html">Sleep tracking</a>
+            
+            <div style="color:gray">How not to do it</div>
+            
+            <!-- TODO make sure dates are aligned, also in some standard format. also picked from the post -->
+        </li>
     
     <!-- TODO maybe not li, something else? Or just have css -->
         <li>
@@ -56,9 +66,8 @@
         </main>
 
         <footer>
-            <a href="./atom.xml">atom</a>
-            <a href="./rss.xml">rss</a>
-            Powered by <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+            <a class="fat" href="./atom.xml" title="Atom feed">atom</a>
+            <a class="fat" href="./rss.xml" title="RSS feed">rss</a>
         </footer>
     </body>
 </html>

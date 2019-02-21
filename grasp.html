@@ -5,9 +5,12 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <title>Grasp | Mildly entertainingᵝ</title>
+
         <link rel="stylesheet" href="./css/default.css" />
-        <link rel="stylesheet" href="./css/ipynb-syntax.css" />
+        <!-- TODO turn back on on ipynb pages only? -->
+        <!-- <link rel="stylesheet" href="/css/ipynb-syntax.css" /> -->
 
         <!-- TODO make it conditional on actually having math on page? -->
         <script type="text/javascript">
@@ -19,23 +22,21 @@
      }
  };
 </script>
-<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script> -->
-<!-- TODO change cdn -->
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     </head>
     <body>
         <header>
             <nav>
-                <a href="./" style="float:left">Home</a>
+                <a class="nav-left fat" href="./">Home</a>
                 <!-- TODO do site and archive later when they actually have something meaningful -->
                 <!-- <a href="/site.html">Site</a> -->
-                <a href="./me.html" style="float:right">Me</a>
+                <a class="nav-right fat" href="./me.html">Me</a>
                 <!-- <a href="/archive.html">Archive</a> -->
             </nav>
         </header>
 
-        <main role="main">
+        <main>
             <article>
     <section class="header">
     Posted on February 9, 2019
@@ -43,6 +44,7 @@
     </section>
     <section class="title">
     <h1>Grasp</h1>
+    <div class="summary">How to capture information from your browser and stay sane</h2>
     </section>
     <!-- are sections appropriate for that? -->
     <section>
@@ -137,9 +139,8 @@ Why do they always mention that? Is that important?</code></pre>
         </main>
 
         <footer>
-            <a href="./atom.xml">atom</a>
-            <a href="./rss.xml">rss</a>
-            Powered by <a href="http://jaspervdj.be/hakyll">Hakyll</a>
+            <a class="fat" href="./atom.xml" title="Atom feed">atom</a>
+            <a class="fat" href="./rss.xml" title="RSS feed">rss</a>
         </footer>
     </body>
 </html>
