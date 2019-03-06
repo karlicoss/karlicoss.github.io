@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Quantifying quantified-mind.com | Mildly entertainingᵝ</title>
+
+        <link rel="stylesheet" href="./css/default.css" />
+        <!-- TODO turn back on on ipynb pages only? -->
+        <!-- <link rel="stylesheet" href="/css/ipynb-syntax.css" /> -->
+
+        <!-- TODO make it conditional on actually having math on page? -->
+        <script type="text/javascript">
+ window.MathJax = {
+     tex2jax: {
+         // note that hakyll source has got double dollar signs due to special meaning in templates
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+     }
+ };
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a class="nav-left fat" href="./">Home</a>
+                <!-- TODO do site and archive later when they actually have something meaningful -->
+                <!-- <a href="/site.html">Site</a> -->
+                <a class="nav-right fat" href="./me.html">Me</a>
+                <!-- <a href="/archive.html">Archive</a> -->
+            </nav>
+        </header>
+
+        <main>
+            <article>
+    <section class="title">
+    <h1>Quantifying quantified-mind.com</h1>
+    <div class="summary">Exploiting javascript to reverse engineer cognitive score</h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+    <section>
+    <p><a href="http://www.quantified-mind.com/about">Quantified Mind</a> is a website which provides a handful of cognitive tests. It lets you choose a bunch of tests and you can run them whenever you wish, adding quantitative variables you are measuring alongside (e.g. hours of sleep, or cups of coffee you drank) or just arbitrary notes. <a href="http://quantifiedself.com/wp-content/uploads/2012/04/QM_collage.jpg">Here</a> is how it looks like.</p>
+<p>Why is it interesting? If you are like me and don’t feel much obvious subjective effects of conventional stimulants, sleep of exercise, it would be great to have some objective measure in case the effects are subtle but present. For you it could be saving half an hour of sleep per night by using melatonin, or realizing coffee doesn’t have effect on your cognitive performance, or something else.</p>
+<p>That sounded pretty interesting to me, and I started doing some tests (simple reaction time, visual matching, sorting and 1-back). However, given that effects are subtle in the first place, I wasn’t expecting to get any insights by gazing at collected data, so I needed to make sure I can export my experiments to run some sort of regression on them later.</p>
+<p>To my disappointment, when I ran thirty or something sessions and downloaded the CSV, it didn’t have error rate/reaction time, but you are only getting some magical ‘score’. It was unclear what it meant from the FAQ so I emailed the authors and got a response:</p>
+<pre><code>As for scores - it's a calculation that involves everything in a test, so for simple reaction time it involves both reaction times
+and accuracy. 
+The actual formulas aren't available, but the instructions are always simple: go for accuracy first, and try to be as fast as you can
+without sacrificing accuracy.</code></pre>
+<p>“Formulas aren’t available” was quite unsatisfactory to me. What are they actually measuring? So before carrying on and doing more tests I tried to reverse engineer the model.</p>
+<h1 id="implementation">Implementation</h1>
+<p>The idea was simple: choose couple of tests that are easy to automate. Luckily, the website is not using flash and not very heavy on javascript or obfuscation, so interacting with elements via javascript was fairly easy. In essence, I’m varying average reaction time (delay) and number of errors (which I make deliberately in the script), and inject the script into chrome via Selenium. Then I record the scores for further analysis.</p>
+<p>If you wanna experiment by yourself, <a href="https://github.com/karlicoss/qm-reverse-engineering">here’s</a> the repository and if you don’t feel like running the scripts for a day to collect data, I uploaded it to <a href="https://github.com/karlicoss/qm-reverse-engineering/releases">releases</a>.</p>
+<h1 id="tests">Tests</h1>
+<p>I’ve chosen “Simple reaction time” and “Visual matching”. From the <a href="http://www.quantified-mind.com/science">“science”</a> section:</p>
+<pre><code>The first is “Simple Reaction Time,” which assesses how quickly a person can respond to a single stimulus (a circle that turns 
+from white to green) by pressing the space bar. 
+
+“Visual Matching” places two highlighted grids next to one another and asks a person to judge, as quickly as possible, whether 
+the two grids are identical.</code></pre>
+<h1 id="results">Results</h1>
+<p>TLDR: I find the models pretty weird.</p>
+<p>Here is what I got after the simulations (clicking highly recommended):</p>
+<p><a href="https://user-images.githubusercontent.com/291333/53916603-6a875880-405a-11e9-9447-90da86bf959a.png"> <img src="https://user-images.githubusercontent.com/291333/53916603-6a875880-405a-11e9-9447-90da86bf959a.png" width="auto" /> </a></p>
+<p><a href="https://user-images.githubusercontent.com/291333/53916604-6a875880-405a-11e9-824a-ab2445cc4184.png"> <img src="https://user-images.githubusercontent.com/291333/53916604-6a875880-405a-11e9-824a-ab2445cc4184.png" width="auto" /> </a></p>
+<h1 id="observations">Observations</h1>
+<ul>
+<li><p>For low reaction time (&lt;300ms for simple reaction time &lt;600ms for visual matching), the plots don’t look continuous, there are some sudden drops. That’s pretty suspicious IMO.</p>
+<p>Perhaps that could explained by the fact that such low times are impossible to get by average humans and they are out of the test domain.</p></li>
+<li><p>If you keep number of error fixed, one would expect that score grows as the reaction time goes does. That is not the case on plots, probably related to the artifact above.</p></li>
+<li><p>If you keep reaction time fixed, you would expect the score to decrease monotonically with the number of errors. You can see that for simple reaction time after 600ms, the score actually monotonically <strong>increases</strong> as you make more errors. Again, one could argue that reaction of 600 ms is too long for average human on this test (e.g. I score about 230), but I can easily imagine drugs (even such as alcohol) resulting in these scores, which could also be interesting to measure.</p></li>
+<li><p>If you think about, 8 (out of 16) errors is what you would get on visual matching if you answer randomly (which you could do with almost arbitrary low reaction time). So if you do that, say, with 400ms delay, according to the plot you would score around 620 points. Which is what I get by doing the test myself with 800ms reaction and making 1 error. So what does the score represent then?</p></li>
+</ul>
+<h1 id="summary">Summary</h1>
+<p>I can’t see how is that score meaningful and I’m glad I didn’t spend more time doing these tests. Perhaps one is better off measuring reaction time directly instead of some mystical ‘score’.</p>
+<h1 id="whats-next">What’s next?</h1>
+<p>Could be interesting to do similar reverse engineering on other cognitive testing platforms.</p>
+    </section>
+    <!-- TODO surely that's not header? -->
+    <section class="header">
+        Posted on March 6, 2019
+    </section>
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_quantified_mind"></section>
+
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+            <a class="fat" href="./atom.xml" title="Atom feed">atom</a>
+            <a class="fat" href="./rss.xml" title="RSS feed">rss</a>
+        </footer>
+    </body>
+</html>
