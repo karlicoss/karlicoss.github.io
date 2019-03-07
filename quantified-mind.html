@@ -71,6 +71,8 @@ the two grids are identical.</code></pre>
 <p><a href="https://user-images.githubusercontent.com/291333/53916604-6a875880-405a-11e9-824a-ab2445cc4184.png"> <img src="https://user-images.githubusercontent.com/291333/53916604-6a875880-405a-11e9-824a-ab2445cc4184.png" width="auto" /> </a></p>
 <h1 id="observations">Observations</h1>
 <ul>
+<li><p>Same score could mean different things; you can see it from the plots if you draw horizontal lines, they would intersect multiple curves corresponding to different delays.</p>
+<p>So, for instance, if you get score 600 on visual matching, that could mean that you did the test with 880ms reaction and 0 errors, or with 840ms reaction and 2 errors or 760ms reaction and 4 errors. These are fairly different results and even though it’s good to have some sort of aggregate score, it’s also useful to distinguish. E.g. maybe caffeine makes you less patient so you press early and make more errors.</p></li>
 <li><p>For low reaction time (&lt;300ms for simple reaction time &lt;600ms for visual matching), the plots don’t look continuous, there are some sudden drops. That’s pretty suspicious IMO.</p>
 <p>Perhaps that could explained by the fact that such low times are impossible to get by average humans and they are out of the test domain.</p></li>
 <li><p>If you keep number of error fixed, one would expect that score grows as the reaction time goes does. That is not the case on plots, probably related to the artifact above.</p></li>
