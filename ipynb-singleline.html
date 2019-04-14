@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Forcing IPython to display multiple equations in single line | Mildly entertainingᵝ</title>
+
+        <link rel="stylesheet" href="./css/default.css" />
+
+      
+        <link rel="stylesheet" href="./css/ipynb.css" />
+        <link rel="stylesheet" href="./css/ipynb-syntax.css" />
+      
+
+        <!-- TODO make it conditional on actually having math on page? -->
+        <script type="text/javascript">
+ window.MathJax = {
+     tex2jax: {
+         // note that hakyll source has got double dollar signs due to special meaning in templates
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+     }
+ };
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a class="nav-left fat" href="./">Home</a>
+                <!-- TODO do site and archive later when they actually have something meaningful -->
+                <!-- <a href="/site.html">Site</a> -->
+                <a class="nav-right fat" href="./me.html">Me</a>
+                <!-- <a href="/archive.html">Archive</a> -->
+            </nav>
+        </header>
+
+        <main>
+            <article>
+    <section class="title">
+    <h1>Forcing IPython to display multiple equations in single line</h1>
+    <div class="summary">How I sacrificed few hours of my life for aethetics</h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+    <section>
+    
+
+
+   
+   <details class="cell-collapsed">
+   <summary>IPython imports <span class="cell-collapsed-expand">(click to expand)</span></summary>
+       
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="k">import</span> <span class="n">symbols</span><span class="p">,</span> <span class="n">Derivative</span> <span class="k">as</span> <span class="n">D</span><span class="p">,</span> <span class="n">Function</span> <span class="k">as</span> <span class="n">F</span><span class="p">,</span> <span class="n">Eq</span><span class="p">,</span> <span class="n">init_printing</span><span class="p">,</span> <span class="n">latex</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">Markdown</span>
+<span class="n">init_printing</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+   </details>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you are working with numerical computations in an IPython notebook, you don't really have much choice but accompany your computations by Latex
+formulas. However, with symbolic computations, you can massively save on repeating the same formulas which are already encoded in your
+symbolic object. Here's a quick example how it typically looks in the notebooks I've seen on the internet:</p>
+<hr>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">'x t'</span><span class="p">)</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s1">'U'</span><span class="p">)(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<span class="n">heat_eq</span> <span class="o">=</span> <span class="n">Eq</span><span class="p">(</span><span class="n">D</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">t</span><span class="p">),</span> <span class="n">D</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Solving heat type PDE:</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">heat_eq</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$$\frac{\partial}{\partial t} U{\left (x,t \right )} = \frac{\partial^{2}}{\partial x^{2}} U{\left (x,t \right )}$$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bc_left</span>  <span class="o">=</span> <span class="n">Eq</span><span class="p">(</span><span class="n">U</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">bc_right</span> <span class="o">=</span> <span class="n">Eq</span><span class="p">(</span><span class="n">U</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Subject to:</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">bc_left</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">bc_right</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$$U{\left (0,t \right )} = 0$$
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$$U{\left (1,t \right )} = 0$$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p>What I don't like about that style of presentation is that it's pretty scattered and reqires interleaving displayed formulas with random python cells.
+That's bad since it either pollutes your notebook and takes up vertical space, or discourages you from producing useful outputs in favor of notebook aethetics. Here are couple of examples <a href="https://www.sympy.org/en/index.html">featured on Sympy</a> website:</p>
+<ul>
+<li><a href="https://digitalcommons.calpoly.edu/cgi/viewcontent.cgi?article=1072&amp;context=physsp/">Quantum Programming in Python</a>, suffers from the first problem</li>
+<li><a href="https://github.com/bjodah/chempy/blob/d5371c7/examples/ammonical_cupric_solution.ipynb">chempy</a> suffers from the second problem</li>
+</ul>
+<p>What we want is to output whole bunch of things at once.
+Sadly, <code>display</code> doesn't support even outputting two formulas on a single line without hacking CSS,
+so this is the easiest way of doing it I came up to so far:</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">&quot;Solving heat type PDE $</span><span class="si">{}</span><span class="s2">$ subject to: $</span><span class="si">{}</span><span class="s2">$ and $</span><span class="si">{}</span><span class="s2">$&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">latex</span><span class="p">(</span><span class="n">heat_eq</span><span class="p">),</span> <span class="n">latex</span><span class="p">(</span><span class="n">bc_left</span><span class="p">),</span> <span class="n">latex</span><span class="p">(</span><span class="n">bc_right</span><span class="p">))))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Solving heat type PDE $\frac{\partial}{\partial t} U{\left (x,t \right )} = \frac{\partial^{2}}{\partial x^{2}} U{\left (x,t \right )}$ subject to: $U{\left (0,t \right )} = 0$ and $U{\left (1,t \right )} = 0$</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It's quite tedious to do that every time, so I extracted it in a little helper method:
+TODO inject function code here... perhaps templating engine??</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">ldisplay_md</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="o">*</span><span class="p">(</span><span class="n">f</span><span class="s1">'${latex(x)}$'</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">args</span><span class="p">),</span>
+        <span class="o">**</span><span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">f</span><span class="s1">'${latex(v)}$'</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()})</span>
+    <span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So far so good, I just define <code>ldisplay = ldisplay_md</code> on top of my notebook and use <code>ldisplay</code> instead of display for singleline outputs.</p>
+<p>However while trying to use it with <a href="https://github.com/millejoh/emacs-ipython-notebook">EIN</a> (emacs frontent for jupiter),
+I ran into an issue: EIN doesn't support Markdown outputs!
+Same thing happens if you run it in terminal: you're just gonna get <code>&lt;IPython.core.display.Markdown object&gt;</code>.
+Nevertheless, it is capable of outputing formulas as ASCII art, kinda like this:</p>
+
+<pre><code>                2
+∂              ∂
+──(U(x, t)) = ───(U(x, t))
+∂t              2
+              ∂x
+
+</code></pre>
+<p>, so we can achieve a similar effect by formatting manually via <code>str.format</code>.</p>
+<p>Without further ado, here's the bit of code which does that:</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">as_text</span><span class="p">(</span><span class="n">thing</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">IPython.core.interactiveshell</span> <span class="k">import</span> <span class="n">InteractiveShell</span> <span class="c1"># type: ignore</span>
+    <span class="n">plain_formatter</span> <span class="o">=</span> <span class="n">InteractiveShell</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">display_formatter</span><span class="o">.</span><span class="n">formatters</span><span class="p">[</span><span class="s1">'text/plain'</span><span class="p">]</span>
+    <span class="n">pp</span> <span class="o">=</span> <span class="n">plain_formatter</span><span class="p">(</span><span class="n">thing</span><span class="p">)</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">lines</span>
+
+<span class="k">def</span> <span class="nf">vcpad</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">missing</span> <span class="o">=</span> <span class="n">height</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+    <span class="n">above</span> <span class="o">=</span> <span class="n">missing</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">below</span> <span class="o">=</span> <span class="n">missing</span> <span class="o">-</span> <span class="n">above</span>
+    <span class="k">return</span> <span class="p">[</span><span class="s1">' '</span> <span class="o">*</span> <span class="n">width</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">above</span><span class="p">)]</span> <span class="o">+</span> <span class="n">lines</span> <span class="o">+</span> <span class="p">[</span><span class="s1">' '</span> <span class="o">*</span> <span class="n">width</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">below</span><span class="p">)]</span>
+
+<span class="c1"># terminal and emacs can't display markdown, so we have to use that as a workaround</span>
+<span class="k">def</span> <span class="nf">mdisplay_plain</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">re</span>
+    <span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">chain</span>
+    <span class="n">fargs</span>   <span class="o">=</span> <span class="p">[</span><span class="n">as_text</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+    <span class="n">fkwargs</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">as_text</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+    <span class="n">height</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">chain</span><span class="p">(</span><span class="n">fargs</span><span class="p">,</span> <span class="n">fkwargs</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+
+    <span class="n">pargs</span>   <span class="o">=</span> <span class="p">[</span><span class="n">vcpad</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">fargs</span><span class="p">]</span>
+    <span class="n">pkwargs</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">vcpad</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">fkwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+    <span class="n">textpos</span> <span class="o">=</span> <span class="n">height</span> <span class="o">//</span> <span class="mi">2</span>
+
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
+        <span class="n">largs</span>   <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="n">h</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">pargs</span><span class="p">]</span>
+        <span class="n">lkwargs</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span><span class="p">[</span><span class="n">h</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">pkwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+        <span class="k">if</span> <span class="n">h</span> <span class="o">==</span> <span class="n">textpos</span><span class="p">:</span>
+            <span class="n">fstr</span> <span class="o">=</span> <span class="n">fmt</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># we want to keep the formatting specifiers (stuff in curly braces and empty everything else)</span>
+            <span class="n">fstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s1">'{.*?}'</span><span class="p">,</span> <span class="n">fmt</span><span class="p">):</span>
+                <span class="n">fstr</span> <span class="o">=</span> <span class="n">fstr</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">start</span><span class="p">()</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">fstr</span><span class="p">))</span>
+                <span class="n">fstr</span> <span class="o">+=</span> <span class="n">e</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fstr</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">largs</span><span class="p">,</span> <span class="o">**</span><span class="n">lkwargs</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">())</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mdisplay_plain</span><span class="p">(</span><span class="s2">&quot;Solving heat type PDE  </span><span class="si">{}</span><span class="s2"> subject to: </span><span class="si">{bl}</span><span class="s2"> and </span><span class="si">{br}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">heat_eq</span><span class="p">,</span> <span class="n">bl</span><span class="o">=</span><span class="n">bc_left</span><span class="p">,</span> <span class="n">br</span><span class="o">=</span><span class="n">bc_right</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>                                       2
+                       ∂              ∂
+Solving heat type PDE  ──(U(x, t)) = ───(U(x, t)) subject to: U(0, t) = 0 and U(1, t) = 0
+                       ∂t              2
+                                     ∂x
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Neat? I think so!</p>
+<p>The sad thing is that figuring out the <code>as_text</code> bit took me about an hour of intense debugging, 
+including setting explicit pdb breakpoints in Ipython source code. I'm not sure how normal people are meant to figure that out, 
+one could argue that desire to work with ipython notebooks in Emacs is not very normal either though.
+Hopefully that saves someone else a bit of time.</p>
+
+</div>
+</div>
+</div>
+
+
+
+ 
+
+
+    </section>
+    <!-- TODO surely that's not header? -->
+    <section class="header">
+        Posted on April 14, 2019
+    </section>
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_ipynb_singleline"></section>
+
+    </section>
+</article>
+
+        </main>
+
+        <footer>
+            <a class="fat" href="./atom.xml" title="Atom feed">atom</a>
+            <a class="fat" href="./rss.xml" title="RSS feed">rss</a>
+        </footer>
+    </body>
+</html>
