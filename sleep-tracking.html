@@ -17,8 +17,6 @@
 
         <link rel="stylesheet" href="./css/default.css" />
 
-      
-
         <!-- TODO make it conditional on actually having math on page? -->
         <script type="text/javascript">
  window.MathJax = {
@@ -35,7 +33,11 @@
     <body>
         <header>
             <nav>
-                <a class="nav-left fat" href="./">Home</a>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    ·<!-- TODO eh, not sure if this symbol is good for that... -->
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                </span>
                 <!-- TODO do site and archive later when they actually have something meaningful -->
                 <!-- <a href="/site.html">Site</a> -->
                 <a class="nav-right fat" href="./me.html">Me</a>
@@ -44,13 +46,19 @@
         </header>
 
         <main>
-            <article>
-    <section class="title">
+            
+
+
+
+
+<article>
+    <section class="post-title">
     <h1>Sleep tracking</h1>
     <div class="summary">How not to do it</h2>
     </section>
     <!-- are sections appropriate for that? -->
-    <section>
+
+    <section class="content">
     <p>I’ve been tracking my sleep passively for a while. Not that I had any issues with sleep, but considering you spend massive chunk of your life sleeping, seems like a good idea to optimize it. After I bought <a href="https://www.emfit.com/sleep-sensing-solutions-with-hrv">Emfit</a> sleep tracker I figured it would be interesting to try correlating its stats with my subjective feelings.</p>
 <p>Every morning, I log few things on the scale from 0 (bad) to 2 (good), one of which is something that I defined as “physical energy” (as opposed to mental energy). Well,</p>
 <pre><code>| date         | physical |
@@ -97,13 +105,14 @@
 <p>Another one is that I’m just very stable and actually have no variation. For instance, I never had problems working out first thing in the morning, without having any food or stimulants. What bothers me a bit is that I don’t seem to experience any ‘high energy’ states either, which apparently people do.</p>
 <p>I guess the lesson here is to reevaluate things I’m measuring after a short while and make sure I can actually track something meaningful or something I am capable of measuring.</p>
     </section>
-    <!-- TODO surely that's not header? -->
+
     <section class="footer">
         
         <div class="tags"># sleep quantified-self</div>
         
         <div class="date">February 21, 2019</div>
     </section>
+
     <section class="comments">
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
 </script>
@@ -111,6 +120,7 @@
 <section id="isso-thread" data-isso-id="isso_sleep_tracking"></section>
 
     </section>
+
 </article>
 
         </main>

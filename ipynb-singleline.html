@@ -17,11 +17,6 @@
 
         <link rel="stylesheet" href="./css/default.css" />
 
-      
-        <link rel="stylesheet" href="./css/ipynb.css" />
-        <link rel="stylesheet" href="./css/ipynb-syntax.css" />
-      
-
         <!-- TODO make it conditional on actually having math on page? -->
         <script type="text/javascript">
  window.MathJax = {
@@ -38,7 +33,11 @@
     <body>
         <header>
             <nav>
-                <a class="nav-left fat" href="./">Home</a>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    ·<!-- TODO eh, not sure if this symbol is good for that... -->
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                </span>
                 <!-- TODO do site and archive later when they actually have something meaningful -->
                 <!-- <a href="/site.html">Site</a> -->
                 <a class="nav-right fat" href="./me.html">Me</a>
@@ -47,13 +46,21 @@
         </header>
 
         <main>
-            <article>
-    <section class="title">
+            
+<link rel="stylesheet" href="./css/ipynb.css" />
+<link rel="stylesheet" href="./css/ipynb-syntax.css" />
+
+
+
+
+<article>
+    <section class="post-title">
     <h1>Forcing IPython to display multiple equations in single line</h1>
     <div class="summary">How I sacrificed few hours of my life for aethetics</h2>
     </section>
     <!-- are sections appropriate for that? -->
-    <section>
+
+    <section class="content">
     
 
 
@@ -517,13 +524,14 @@ Hopefully that saves someone else a bit of time.</p>
 
 
     </section>
-    <!-- TODO surely that's not header? -->
+
     <section class="footer">
         
         <div class="tags"># ipython emacs</div>
         
         <div class="date">April 14, 2019</div>
     </section>
+
     <section class="comments">
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
 </script>
@@ -531,6 +539,7 @@ Hopefully that saves someone else a bit of time.</p>
 <section id="isso-thread" data-isso-id="isso_ipynb_singleline"></section>
 
     </section>
+
 </article>
 
         </main>

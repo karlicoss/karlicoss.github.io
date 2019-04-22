@@ -17,8 +17,6 @@
 
         <link rel="stylesheet" href="./css/default.css" />
 
-      
-
         <!-- TODO make it conditional on actually having math on page? -->
         <script type="text/javascript">
  window.MathJax = {
@@ -35,7 +33,11 @@
     <body>
         <header>
             <nav>
-                <a class="nav-left fat" href="./">Home</a>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    ·<!-- TODO eh, not sure if this symbol is good for that... -->
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                </span>
                 <!-- TODO do site and archive later when they actually have something meaningful -->
                 <!-- <a href="/site.html">Site</a> -->
                 <a class="nav-right fat" href="./me.html">Me</a>
@@ -44,13 +46,19 @@
         </header>
 
         <main>
-            <article>
-    <section class="title">
+            
+
+
+
+
+<article>
+    <section class="post-title">
     <h1>Grasp</h1>
     <div class="summary">How to capture information from your browser and stay sane</h2>
     </section>
     <!-- are sections appropriate for that? -->
-    <section>
+
+    <section class="content">
     <p>This is not the post I was gonna start writing with. It was supposed to be something a bit more abstract and pure, but oh well.</p>
 <p>Trigger warning: if you are a kind of person that doesn’t care about their browser bookmarks at all and happily loses them after switching to new computer, you might be shocked and perhaps repulsed by the level of elaboration I’m taking up here. Please sit tight, breathe and remember that I don’t judge you!</p>
 <p>So, let’s talk about browser bookmarks.</p>
@@ -130,13 +138,14 @@ Why do they always mention that? Is that important?</code></pre>
 <h1 id="whats-next">What’s next?</h1>
 <p>I’m gonna look up what are Markdown people using for capturing information, add few templates and spread the good stuff. I’m excited!</p>
     </section>
-    <!-- TODO surely that's not header? -->
+
     <section class="footer">
         
         <div class="tags"># pkm org-capture annotation</div>
         
         <div class="date">February 9, 2019</div>
     </section>
+
     <section class="comments">
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
 </script>
@@ -144,6 +153,7 @@ Why do they always mention that? Is that important?</code></pre>
 <section id="isso-thread" data-isso-id="isso_org_grasp"></section>
 
     </section>
+
 </article>
 
         </main>

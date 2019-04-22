@@ -17,8 +17,6 @@
 
         <link rel="stylesheet" href="./css/default.css" />
 
-      
-
         <!-- TODO make it conditional on actually having math on page? -->
         <script type="text/javascript">
  window.MathJax = {
@@ -35,7 +33,11 @@
     <body>
         <header>
             <nav>
-                <a class="nav-left fat" href="./">Home</a>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    ·<!-- TODO eh, not sure if this symbol is good for that... -->
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                </span>
                 <!-- TODO do site and archive later when they actually have something meaningful -->
                 <!-- <a href="/site.html">Site</a> -->
                 <a class="nav-right fat" href="./me.html">Me</a>
@@ -44,13 +46,19 @@
         </header>
 
         <main>
-            <article>
-    <section class="title">
+            
+
+
+
+
+<article>
+    <section class="post-title">
     <h1>Quantifying quantified-mind.com</h1>
     <div class="summary">Exploiting javascript to reverse engineer cognitive score</h2>
     </section>
     <!-- are sections appropriate for that? -->
-    <section>
+
+    <section class="content">
     <p><a href="http://www.quantified-mind.com/about">Quantified Mind</a> is a website which provides a handful of cognitive tests. It lets you choose a bunch of tests and you can run them whenever you wish, adding quantitative variables you are measuring alongside (e.g. hours of sleep, or cups of coffee you drank) or just arbitrary notes. <a href="http://quantifiedself.com/wp-content/uploads/2012/04/QM_collage.jpg">Here</a> is how it looks like.</p>
 <p>Why is it interesting? If you are like me and don’t feel much obvious subjective effects of conventional stimulants, sleep or exercise, it would be great to have some objective measure in case the effects are subtle but present. For you it could be saving half an hour of sleep per night by using melatonin, or realizing coffee doesn’t have effect on your cognitive performance, or something else.</p>
 <p>That sounded pretty interesting to me, and I started doing some tests (simple reaction time, visual matching, sorting and 1-back). However, given that effects are subtle in the first place, I wasn’t expecting to get any insights by gazing at collected data, so I needed to make sure I can export my experiments to run some sort of regression on them later.</p>
@@ -91,13 +99,14 @@ the two grids are identical.</code></pre>
 <h1 id="whats-next">What’s next?</h1>
 <p>Could be interesting to do similar reverse engineering on other cognitive testing platforms.</p>
     </section>
-    <!-- TODO surely that's not header? -->
+
     <section class="footer">
         
         <div class="tags"># cognitive quantified-self selenium</div>
         
         <div class="date">March 6, 2019</div>
     </section>
+
     <section class="comments">
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
 </script>
@@ -105,6 +114,7 @@ the two grids are identical.</code></pre>
 <section id="isso-thread" data-isso-id="isso_quantified_mind"></section>
 
     </section>
+
 </article>
 
         </main>
