@@ -64,8 +64,42 @@
     
 <h1 class="title">TODO need to handle this properly</h1>
 
+<ul class="org-ul"><li><a id="sec-1" name="sec-1"></a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-06-05 Tue 17:19]</span></span> distributed cloud sync (Dropbox/Syncthing)   <span class="tag"><span class="cloud">cloud</span> <span class="think">think</span></span><br><div class="outline-text-2" id="text-1">
+<p>
+Basically, continuous (e.g. inotify-backed), open source and always available file sync.
+</p>
 
-<ul class="org-ul"><li><a id="sec-1" name="sec-1"></a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-04-27 Fri 16:15]</span></span> coffee brew simulation   <span class="tag"><span class="coffee">coffee</span> <span class="simulation">simulation</span></span><br><div class="outline-text-2" id="text-1">
+<ul class="org-ul">
+<li>Dropbox is continuous, but proprietary. It's not distributed, but central server tends to be very available.
+</li>
+<li>Syncthing is continuous and open source, but only syncs among your own devices. If all of them are off, you wouldn't be able to access your files.
+</li>
+</ul>
+
+<p>
+Ideally, it would be something based on Bittorrent, and the chunks of data would be distributed among participants with sufficient redundancy. So most of the time you would rely on your own devices like in Syncthing, but in case of device loss or temporary outage you'd be able to assemble the data from redundant chunks in the peer network. Not sure how much redundant it has to be and if that approach works in practice.
+</p>
+
+<ul class="org-ul">
+<li><span class="timestamp-wrapper"><span class="timestamp">[2019-05-03 Fri 08:29]</span></span> apparently <a href="https://en.wikipedia.org/wiki/Resilio_Sync">Resilio Sync</a> exists, but it's proprietary, nothing else I know of or resulting from quick googling
+</li>
+</ul>
+</div>
+</li>
+
+<li><a id="sec-2" name="sec-2"></a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-04-30 Tue 11:44]</span></span> programming language in which correct programs correspond to feasible physical states   <span class="tag"><span class="plt">plt</span> <span class="physics">physics</span> <span class="think">think</span></span><br><div class="outline-text-2" id="text-2">
+<p>
+Where physics is described by some sort of Lagrangian, and the evaluation semantics would would be consistent with its dynamics. 
+Wonder if that's possible without involving explicit computations via dependent types.
+I guess would also correspond to some sort of special logic.
+Also making sure the set of correct programs is <b>exactly</b> the set of feasible states is presumably way harder.
+</p>
+</div>
+<ul class="org-ul"><li><a id="sec-2-1" name="sec-2-1"></a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-05-03 Fri 08:46]</span></span> need larger font, and perhaps semibold for org title..<br></li></ul>
+</li>
+
+
+<li><a id="sec-3" name="sec-3"></a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-04-27 Fri 16:15]</span></span> coffee brew simulation   <span class="tag"><span class="coffee">coffee</span> <span class="simulation">simulation</span></span><br><div class="outline-text-2" id="text-3">
 <p>
 In the simplest approximation take some simple conical/cylindrical filter, water flow/temperature dependency and coarseness.
 As an output we get expected amount of caffeine, oils, some estimate of bitterness and acidity etc.
@@ -101,7 +135,7 @@ A mathematical model would cast away this bro science at least to some extent.
 </p>
 
 <p>
-I also can't really understand how is one capable of estimating coffee on the scale from 0 to 10, but perhaps that's just my unsophisticated taste buds.
+I also can't really understand how is one capable of estimating coffee on the scale from 0 to 10, but perhaps that's just my unsophisticated taste buds, and I accept other people can train themselves to do that.
 </p>
 </div>
 </li></ul>

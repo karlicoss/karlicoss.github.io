@@ -15,7 +15,173 @@
     <id>https://beepb00p.xyz/grasp.html</id>
     <published>2019-02-09T00:00:00Z</published>
     <updated>2019-02-09T00:00:00Z</updated>
-    <summary type="html"><![CDATA[How to capture information from your browser and stay sane]]></summary>
+    <summary type="html"><![CDATA[<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="pkm org-capture annotation">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>Grasp | Mildly entertainingᵝ</title>
+
+        <link rel="stylesheet" href="./css/default.css" />
+
+        <!-- TODO make it conditional on actually having math on page? -->
+        <script type="text/javascript">
+ window.MathJax = {
+     tex2jax: {
+         // note that hakyll source has got double dollar signs due to special meaning in templates
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+     }
+ };
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    ·<!-- TODO eh, not sure if this symbol is good for that... -->
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                </span>
+                <!-- TODO do site and archive later when they actually have something meaningful -->
+                <!-- <a href="/site.html">Site</a> -->
+                <a class="nav-right fat" href="./me.html">Me</a>
+                <!-- <a href="/archive.html">Archive</a> -->
+            </nav>
+        </header>
+
+        <main>
+            
+
+
+
+
+<article>
+    <section class="post-title">
+    <h1>Grasp</h1>
+    <div class="summary">How to capture information from your browser and stay sane</h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <p>This is not the post I was gonna start writing with. It was supposed to be something a bit more abstract and pure, but oh well.</p>
+<p>Trigger warning: if you are a kind of person that doesn’t care about their browser bookmarks at all and happily loses them after switching to new computer, you might be shocked and perhaps repulsed by the level of elaboration I’m taking up here. Please sit tight, breathe and remember that I don’t judge you!</p>
+<p>So, let’s talk about browser bookmarks.</p>
+<h1 id="history">History</h1>
+<p>I’ve always loved my bookmarks and been keeping, rereading and moving them around since high school. I also tend to be very organized in terms of meta information, so every bookmark would eventually end up in a category/folder. Of course there are obstacles.</p>
+<p>First of all, Chromium bookmark adding menu was a bit shit and <a href="http://www.rawinfopages.com/tips/wp-content/uploads/2017/08/chrome-bookmarks1.png">still</a> is. You get to choose among the five most recently used folders only; if you want anything specific, you have to click all the way through (Tab with my 100+ folders was just not doable). You can’t search when you add bookmark either. Yes, I know, it’s not meant for geeks, it’s for normal people who love mouseclicks. I’m still puzzled by how people who develop that stuff use their own product though.</p>
+<p>These days Chrome has got <code>chrome.bookmarks</code> api, which I’d imagine allows you to implement your own bookmark manager. Back in 2012, it didn’t exist though.</p>
+<p>I was a bit less fussy back then so I was kind of okay with that. Until one day the disaster appended. I realized I couldn’t decide which folder did the bookmark belong to. That was pretty disturbing, so I started looking for alternatives. I realized I needed something like tags and turned out Firefox had that feature for ages. So I switched the browser.</p>
+<p>Firefox was noticeably slower and greedier in terms of RAM (no Rust in Firefox in 2012!). And few months later I got my first Android phone and realized that Firefox didn’t support syncing tags with Android (it still <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=775672">doesn’t</a>).</p>
+<p>Until I found out about <a href="https://pinboard.in">Pinboard</a>! If you wanna borrow one thing from this post, please try and use that, it’s really awesome. It has solved almost all of my issues:</p>
+<ul>
+<li>you can easily add new bookmarks, tag them and it would be synced across all your browsers and devices</li>
+<li>you can mark them private and public, and search in other people’s bookmarks</li>
+<li>what is more, you can add notes for some context about your bookmarks!</li>
+</ul>
+<p>I’ve had few happy years with Pinboard. Until I started getting more serious about information processing and my knowledge management. I’ll tell about that one day, but long story short, I found out that I spend a lot of time moving bookmarks scattered across pinboard into my personal plaintext wiki to give it a bit more structure, fulltext search and easier access. I’ve also started using Org mode and in particular, <a href="https://orgmode.org/manual/Capture-Refile-Archive.html#Capture-Refile-Archive">capture and refile</a>. Once you are used to that, moving information manually by copy-pasting is just plain torture. You know, life is too short for that shit.</p>
+<h1 id="eh-capture-refile">Eh? Capture? Refile?</h1>
+<p>It’s hard to explain, for me it took several iterations to adopt these. In essence, you can ‘capture’, that is, copy/create piece of information like a url, quote, your thought or anything else and store in a text file for further processing which you can do it later. It’s meant to be with as little interruptions as possible, merely to persist the information. Typically, in emacs it’s a matter of pressing a keystroke, making you note and pressing a keystroke to finalize. You can do it as fast as you think/type and then immediately get back to what you were working on.</p>
+<p>You can look up quite a few different setups online: <a href="https://youtu.be/fgizHHd7nOo?t=207">typical demo (till 4:10)</a>. The concept doesn’t really have to be restricted to org mode, though. Funny enough, before I ran into org-capture, I had a keybinding to open Vim in the insert mode against my <code>notes.txt</code> file.</p>
+<h2 id="it-sounds-really-abstract.">It sounds really abstract.</h2>
+<p>Sure. Let me be a bit more specific. My typical scenario is doing some research in the broad sense, e.g. shopping or looking for a property to rent or learning.</p>
+<p>Imagine you’ve got a bit of time during your lunch break at work and want to spend it learning some <a href="https://en.wikipedia.org/wiki/Representation_theory">representation theory</a>. For me (and I’d imagine for many people), it makes little sense doing that just for 20 minutes, your mind is diffused, and you need time to gain back some context before doing productive learning.</p>
+<p>But you could at least skim through some articles and highlight things to think about later when you got more time which you can dedicate solely for learning. So you read through the different articles and blog posts, and you want to highlight things and potentially add todo items for further googling/thinking. You don’t have time to think about them now, you just want to make sure you think about them later, e.g. see <a href="https://user-images.githubusercontent.com/291333/51799721-a984eb80-221c-11e9-9612-8eb7f553dc01.png">screenshot</a>.</p>
+<p>So you go through the article and annotate it/add points to think on. You want to do it as fast as you can read without distracting on copy-pasting the information and trying to organize it. Later, when you got time, you just search everything marked with the tag <code>reprtheory</code> and in your <code>capture.org</code> file you find an entry like that:</p>
+<pre><code>* [2019-02-09 Sat 14:54] Special unitary group - Wikipedia   :reprtheory:physics:
+https://en.wikipedia.org/wiki/Special_unitary_group
+Selection:
+here is a 2:1 homomorphism from SU(2) to SO(3).
+Comment:
+Why do they always mention that? Is that important?</code></pre>
+<p>, which you can further action on. Perhaps you’ve figured it out already, so you can just discard it. Or you want to convert it into a TODO, give it a priority and refile somewhere more appropriate. What’s awesome is that at the time of capture it immediately becomes searchable and indexable as any plaintext would without any extra effort (unlike if you added it to browser bookmarks/pinboard).</p>
+<h1 id="ok-im-sold.-how-do-i-do-it">Ok, I’m sold. How do I do it?</h1>
+<p>So, you want to integrate your browser with your knowledge repository and capture things straight into your <code>capture.org</code> file. Sounds trivial, right?</p>
+<p>For a while I used <a href="https://github.com/sprig/org-capture-extension">org-capture extension</a>, that was relying on setting up a special mime type handler (e.g. <code>emacs://</code>) and an always running emacs daemon. Until one day I got very sad when few days of captured link and selected text were gone because one of these things stopped working for some reason. People seem to have issues setting up all this to work, and of course, you can’t have feedback from OS mime handler, so you can never know whether it has succeeded at all.</p>
+<p>I realized I didn’t want to rely on emacs running all the time, on its templates or anything like that. I just want to reliably append stuff (formatted as org-mode) to the text file, that’s not too much to ask. An obvious solution is to get rid of the mime type handler and just write to the file system from Chrome extension directly. This is, of course something you can’t do in modern browsers. There is an <a href="https://developer.chrome.com/apps/app_storage#write">API</a> in Chrome for that, and you’ve got two options:</p>
+<ul>
+<li>write a file to a sandbox within a browser. Not an option for my purposes.</li>
+<li>select a path via ‘save as’ GUI dialog and write it. Disgusting, <em>definitely</em> not an option.</li>
+</ul>
+<p>So after a while I realized something else has to write to the file. And that something else could be a local http server. The extension sends the request, the local backend writes the entry and responds with success/error, which can be passed onto UI notification, so you will always know if something failed. After a bit of coding, <a href="https://github.com/karlicoss/grasp">Grasp</a> was born.</p>
+<h1 id="what-makes-grasp-better">What makes Grasp better?</h1>
+<p>Quite a few things actually!</p>
+<ul>
+<li><p>it’s reliable and you will get an error notification if you failed to capture</p></li>
+<li><p>it supports capturing selected text, adding comment and tags</p></li>
+<li><p>you can capture anywhere: it doesn’t care whether you have emacs installed at all, and doesn’t have to be org mode file</p></li>
+<li><p>unlike <a href="https://orgmode.org/manual/capture-protocol.html">org-protocol</a> which only supports url, title and ‘everything else’, the capture template syntax can be extended to include anything you want, e.g. <a href="https://github.com/karlicoss/grasp/blob/247dd5856d34d05f4c2239f34a5d2904d0961326/server/org_tools.py#L91">currently</a> it also supports <code>tags</code>, <code>comment</code> and <code>selection</code>.</p></li>
+<li><p>it can run anywhere, e.g. you can run it the server on your VPS and access remotely if you are browsing on a computer you can’t sync your capture file onto.</p>
+<p>I might even try and see if it can be ported as <a href="https://addons.mozilla.org/en-GB/android/">Android Firefox addon</a>.</p></li>
+</ul>
+<h1 id="implementing">Implementing</h1>
+<p>Few random things I learnt while implementing:</p>
+<ul>
+<li><p><a href="https://flow.org">flow</a> and <a href="https://eslint.org/">eslint</a> are good</p>
+<p>Trivial to integrate and they make the dreaded JS programming pretty manageable and akin to Python.</p>
+<p>Turns out Flow even it supports <a href="https://flow.org/en/docs/types/comments/">comment types</a>, kinda like <a href="https://www.python.org/dev/peps/pep-0484/#type-comments">python/mypy</a>. That must be very beneficial for people trying to integrate it. Just imagine that you can slowly convert your whole codebase into type safe code before your coworkers realize what’s happened!</p></li>
+<li><p>Webpack is good</p>
+<p>Used it mainly to strip off Flow annotations and convert code into something chrome would accept. However it’s also helpful for merging the extension manifest so you could build browser-specific versions.</p></li>
+<li><p>fun fact: <code>node_modules</code> takes almost 200Mb of disk space, and I tried my best to use as less dependencies as possible. Almost all are dev dependencies, so the extension itself is still tiny.</p></li>
+<li><p>Firefox and Chrome use more or less same browser APIs these days! The only thing I had to fix while porting to Firefox were notifications.</p></li>
+<li>publishing to Chrome store is more tedious than I imagined, e.g.
+<ul>
+<li>they want screenshots exactly 1280x800 or 640x400. Do people have some sort of scripts to cut their screenshots automatically for them or what?</li>
+<li>there are two interfaces (‘old’ and ‘new’), which are sometimes doing different things</li>
+<li>it’s generally pretty flaky, sometimes when you update the extension, old meta about your extension disappears and you have to copy it manually. I find it pretty mean to developers.</li>
+</ul>
+<p>I guess I should just use the <a href="https://developer.chrome.com/webstore/using_webstore_api">API</a> for publishing.</p></li>
+<li><p>publishing to <a href>addons.mozilla.org</a> is super fast and easy</p></li>
+<li><p><a href="https://github.com/karlicoss/grasp/issues/7">firefox hotkeys are not configurable</a></p>
+<p>I still find it very hard to believe. Has it always been like that? How do people cope with it?</p></li>
+<li><p>CI is a bit tedious</p>
+<a href="https://github.com/karlicoss/grasp/blob/master/.circleci/config.yml">My pretty minimal config</a>, is quite long. I’m quite used to to CIs, but I wonder how often are people discouraged by that, it’s got to be easier. Perhaps <a href="https://docs.gitlab.com/ee/topics/autodevops/">Auto DevOps</a> from gitlab solves it?</li>
+<li><p>communicating with <code>localhost</code> made everything so much simpler. I’ve already converted another <a href="https://github.com/karlicoss/were-you-here">thing</a> I am working on to use that instead of trying to utilize local storage/internal database and it works flawlessly!</p></li>
+</ul>
+<h1 id="feedback">Feedback</h1>
+<p>I actually think it’s the first thing I solely implemented and prepared something and <a href="https://www.reddit.com/r/orgmode/comments/akazos/orggrasp_browser_extension_for_orgcapture/">shared</a> for other people to use. As expected, it actually took more time than sketching a prototype that worked for me. But it feels so great when people DM you on reddit and say that they managed to run it even on Windows without any issues when no other existing methods could do that.</p>
+<h1 id="whats-next">What’s next?</h1>
+<p>I’m gonna look up what are Markdown people using for capturing information, add few templates and spread the good stuff. I’m excited!</p>
+    </section>
+
+    <section class="footer">
+        
+        <div class="tags"># pkm org-capture annotation</div>
+        
+        <div class="date">February 9, 2019</div>
+    </section>
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_org_grasp"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <footer>
+            <a class="fat" href="./atom.xml" title="Atom feed">atom</a>
+            <a class="fat" href="./rss.xml" title="RSS feed">rss</a>
+        </footer>
+    </body>
+</html>
+]]></summary>
 </entry>
 <entry>
     <title>Forcing IPython to display multiple equations in single line</title>
@@ -23,7 +189,559 @@
     <id>https://beepb00p.xyz/ipynb-singleline.html</id>
     <published>2019-04-14T00:00:00Z</published>
     <updated>2019-04-14T00:00:00Z</updated>
-    <summary type="html"><![CDATA[How I sacrificed few hours of my life for aethetics]]></summary>
+    <summary type="html"><![CDATA[<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="ipython emacs">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>Forcing IPython to display multiple equations in single line | Mildly entertainingᵝ</title>
+
+        <link rel="stylesheet" href="./css/default.css" />
+
+        <!-- TODO make it conditional on actually having math on page? -->
+        <script type="text/javascript">
+ window.MathJax = {
+     tex2jax: {
+         // note that hakyll source has got double dollar signs due to special meaning in templates
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+     }
+ };
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    ·<!-- TODO eh, not sure if this symbol is good for that... -->
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                </span>
+                <!-- TODO do site and archive later when they actually have something meaningful -->
+                <!-- <a href="/site.html">Site</a> -->
+                <a class="nav-right fat" href="./me.html">Me</a>
+                <!-- <a href="/archive.html">Archive</a> -->
+            </nav>
+        </header>
+
+        <main>
+            
+<link rel="stylesheet" href="./css/ipynb.css" />
+<link rel="stylesheet" href="./css/ipynb-syntax.css" />
+
+
+
+
+<article>
+    <section class="post-title">
+    <h1>Forcing IPython to display multiple equations in single line</h1>
+    <div class="summary">How I sacrificed few hours of my life for aethetics</h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    
+
+
+   
+   <details class="cell-collapsed">
+   <summary>IPython imports <span class="cell-collapsed-expand">(click to expand)</span></summary>
+       
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="k">import</span> <span class="n">symbols</span><span class="p">,</span> <span class="n">Derivative</span> <span class="k">as</span> <span class="n">D</span><span class="p">,</span> <span class="n">Function</span> <span class="k">as</span> <span class="n">F</span><span class="p">,</span> <span class="n">Eq</span><span class="p">,</span> <span class="n">init_printing</span><span class="p">,</span> <span class="n">latex</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">Markdown</span>
+<span class="n">init_printing</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+   </details>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If you are working with numerical computations in an IPython notebook, you don't really have much choice but accompany your computations by Latex
+formulas. However, with symbolic computations, you can massively save on repeating the same formulas which are already encoded in your
+symbolic object. Here's a quick example how it typically looks in the notebooks I've seen on the internet:</p>
+<hr>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">'x t'</span><span class="p">)</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s1">'U'</span><span class="p">)(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<span class="n">heat_eq</span> <span class="o">=</span> <span class="n">Eq</span><span class="p">(</span><span class="n">D</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">t</span><span class="p">),</span> <span class="n">D</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Solving heat type PDE:</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">heat_eq</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$$\frac{\partial}{\partial t} U{\left (x,t \right )} = \frac{\partial^{2}}{\partial x^{2}} U{\left (x,t \right )}$$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bc_left</span>  <span class="o">=</span> <span class="n">Eq</span><span class="p">(</span><span class="n">U</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">bc_right</span> <span class="o">=</span> <span class="n">Eq</span><span class="p">(</span><span class="n">U</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Subject to:</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">bc_left</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">bc_right</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$$U{\left (0,t \right )} = 0$$
+</div>
+
+</div>
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$$U{\left (1,t \right )} = 0$$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
+<p>What I don't like about that style of presentation is that it's pretty scattered and reqires interleaving displayed formulas with random python cells.
+That's bad since it either pollutes your notebook and takes up vertical space, or discourages you from producing useful outputs in favor of notebook aethetics. Here are couple of examples <a href="https://www.sympy.org/en/index.html">featured on Sympy</a> website:</p>
+<ul>
+<li><a href="https://digitalcommons.calpoly.edu/cgi/viewcontent.cgi?article=1072&amp;context=physsp/">Quantum Programming in Python</a>, suffers from the first problem</li>
+<li><a href="https://github.com/bjodah/chempy/blob/d5371c7/examples/ammonical_cupric_solution.ipynb">chempy</a> suffers from the second problem</li>
+</ul>
+<p>What we want is to output whole bunch of things at once.
+Sadly, <code>display</code> doesn't support even outputting two formulas on a single line without hacking CSS,
+so this is the easiest way of doing it I came up with to so far:</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">&quot;Solving heat type PDE $</span><span class="si">{}</span><span class="s2">$ subject to: $</span><span class="si">{}</span><span class="s2">$ and $</span><span class="si">{}</span><span class="s2">$&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">latex</span><span class="p">(</span><span class="n">heat_eq</span><span class="p">),</span> <span class="n">latex</span><span class="p">(</span><span class="n">bc_left</span><span class="p">),</span> <span class="n">latex</span><span class="p">(</span><span class="n">bc_right</span><span class="p">))))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<p>Solving heat type PDE $\frac{\partial}{\partial t} U{\left (x,t \right )} = \frac{\partial^{2}}{\partial x^{2}} U{\left (x,t \right )}$ subject to: $U{\left (0,t \right )} = 0$ and $U{\left (1,t \right )} = 0$</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It's quite tedious to do that every time, so I extracted it in a little helper method:
+TODO inject function code here... perhaps templating engine??</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">ldisplay_md</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="o">*</span><span class="p">(</span><span class="n">f</span><span class="s1">'${latex(x)}$'</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">args</span><span class="p">),</span>
+        <span class="o">**</span><span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">f</span><span class="s1">'${latex(v)}$'</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()})</span>
+    <span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So far so good, I just define <code>ldisplay = ldisplay_md</code> on top of my notebook and use <code>ldisplay</code> instead of display for singleline outputs.</p>
+<p>However while trying to use it with <a href="https://github.com/millejoh/emacs-ipython-notebook">EIN</a> (emacs frontent for jupiter),
+I ran into an issue: EIN doesn't support Markdown outputs!
+Same thing happens if you run it in terminal: you're just gonna get <code>&lt;IPython.core.display.Markdown object&gt;</code>.
+Nevertheless, it is capable of outputing formulas as ASCII art, kinda like this:</p>
+
+<pre><code>                2
+∂              ∂
+──(U(x, t)) = ───(U(x, t))
+∂t              2
+              ∂x
+
+</code></pre>
+<p>, so we can achieve a similar effect by formatting manually via <code>str.format</code>.</p>
+<p>Without further ado, here's the bit of code which does that:</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">as_text</span><span class="p">(</span><span class="n">thing</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">IPython.core.interactiveshell</span> <span class="k">import</span> <span class="n">InteractiveShell</span> <span class="c1"># type: ignore</span>
+    <span class="n">plain_formatter</span> <span class="o">=</span> <span class="n">InteractiveShell</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">display_formatter</span><span class="o">.</span><span class="n">formatters</span><span class="p">[</span><span class="s1">'text/plain'</span><span class="p">]</span>
+    <span class="n">pp</span> <span class="o">=</span> <span class="n">plain_formatter</span><span class="p">(</span><span class="n">thing</span><span class="p">)</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">lines</span>
+
+<span class="k">def</span> <span class="nf">vcpad</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">missing</span> <span class="o">=</span> <span class="n">height</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
+    <span class="n">above</span> <span class="o">=</span> <span class="n">missing</span> <span class="o">//</span> <span class="mi">2</span>
+    <span class="n">below</span> <span class="o">=</span> <span class="n">missing</span> <span class="o">-</span> <span class="n">above</span>
+    <span class="k">return</span> <span class="p">[</span><span class="s1">' '</span> <span class="o">*</span> <span class="n">width</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">above</span><span class="p">)]</span> <span class="o">+</span> <span class="n">lines</span> <span class="o">+</span> <span class="p">[</span><span class="s1">' '</span> <span class="o">*</span> <span class="n">width</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">below</span><span class="p">)]</span>
+
+<span class="c1"># terminal and emacs can't display markdown, so we have to use that as a workaround</span>
+<span class="k">def</span> <span class="nf">mdisplay_plain</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">re</span>
+    <span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">chain</span>
+    <span class="n">fargs</span>   <span class="o">=</span> <span class="p">[</span><span class="n">as_text</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+    <span class="n">fkwargs</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">as_text</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+    <span class="n">height</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">chain</span><span class="p">(</span><span class="n">fargs</span><span class="p">,</span> <span class="n">fkwargs</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+
+    <span class="n">pargs</span>   <span class="o">=</span> <span class="p">[</span><span class="n">vcpad</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">fargs</span><span class="p">]</span>
+    <span class="n">pkwargs</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">vcpad</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">fkwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+    <span class="n">textpos</span> <span class="o">=</span> <span class="n">height</span> <span class="o">//</span> <span class="mi">2</span>
+
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
+        <span class="n">largs</span>   <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="n">h</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">pargs</span><span class="p">]</span>
+        <span class="n">lkwargs</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span><span class="p">[</span><span class="n">h</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">pkwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+        <span class="k">if</span> <span class="n">h</span> <span class="o">==</span> <span class="n">textpos</span><span class="p">:</span>
+            <span class="n">fstr</span> <span class="o">=</span> <span class="n">fmt</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># we want to keep the formatting specifiers (stuff in curly braces and empty everything else)</span>
+            <span class="n">fstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s1">'{.*?}'</span><span class="p">,</span> <span class="n">fmt</span><span class="p">):</span>
+                <span class="n">fstr</span> <span class="o">=</span> <span class="n">fstr</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">start</span><span class="p">()</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">fstr</span><span class="p">))</span>
+                <span class="n">fstr</span> <span class="o">+=</span> <span class="n">e</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fstr</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">largs</span><span class="p">,</span> <span class="o">**</span><span class="n">lkwargs</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">())</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mdisplay_plain</span><span class="p">(</span><span class="s2">&quot;Solving heat type PDE  </span><span class="si">{}</span><span class="s2"> subject to: </span><span class="si">{bl}</span><span class="s2"> and </span><span class="si">{br}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">heat_eq</span><span class="p">,</span> <span class="n">bl</span><span class="o">=</span><span class="n">bc_left</span><span class="p">,</span> <span class="n">br</span><span class="o">=</span><span class="n">bc_right</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+<div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>                                       2
+                       ∂              ∂
+Solving heat type PDE  ──(U(x, t)) = ───(U(x, t)) subject to: U(0, t) = 0 and U(1, t) = 0
+                       ∂t              2
+                                     ∂x
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Neat? I think so!</p>
+<p>The sad thing is that figuring out the <code>as_text</code> bit took me about an hour of intense debugging, 
+including setting explicit pdb breakpoints in IPython source code. I'm not sure how normal people are meant to figure that out. 
+One could argue that desire to work with IPython notebooks in Emacs is not very normal either though.
+Hopefully that saves someone else a bit of time.</p>
+
+</div>
+</div>
+</div>
+
+
+
+ 
+
+
+    </section>
+
+    <section class="footer">
+        
+        <div class="tags"># ipython emacs</div>
+        
+        <div class="date">April 14, 2019</div>
+    </section>
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_ipynb_singleline"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <footer>
+            <a class="fat" href="./atom.xml" title="Atom feed">atom</a>
+            <a class="fat" href="./rss.xml" title="RSS feed">rss</a>
+        </footer>
+    </body>
+</html>
+]]></summary>
 </entry>
 <entry>
     <title>Quantifying quantified-mind.com</title>
@@ -31,7 +749,134 @@
     <id>https://beepb00p.xyz/quantified-mind.html</id>
     <published>2019-03-06T00:00:00Z</published>
     <updated>2019-03-06T00:00:00Z</updated>
-    <summary type="html"><![CDATA[Exploiting javascript to reverse engineer cognitive score]]></summary>
+    <summary type="html"><![CDATA[<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="cognitive quantified-self selenium">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>Quantifying quantified-mind.com | Mildly entertainingᵝ</title>
+
+        <link rel="stylesheet" href="./css/default.css" />
+
+        <!-- TODO make it conditional on actually having math on page? -->
+        <script type="text/javascript">
+ window.MathJax = {
+     tex2jax: {
+         // note that hakyll source has got double dollar signs due to special meaning in templates
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+     }
+ };
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    ·<!-- TODO eh, not sure if this symbol is good for that... -->
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                </span>
+                <!-- TODO do site and archive later when they actually have something meaningful -->
+                <!-- <a href="/site.html">Site</a> -->
+                <a class="nav-right fat" href="./me.html">Me</a>
+                <!-- <a href="/archive.html">Archive</a> -->
+            </nav>
+        </header>
+
+        <main>
+            
+
+
+
+
+<article>
+    <section class="post-title">
+    <h1>Quantifying quantified-mind.com</h1>
+    <div class="summary">Exploiting javascript to reverse engineer cognitive score</h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <p><a href="http://www.quantified-mind.com/about">Quantified Mind</a> is a website which provides a handful of cognitive tests. It lets you choose a bunch of tests and you can run them whenever you wish, adding quantitative variables you are measuring alongside (e.g. hours of sleep, or cups of coffee you drank) or just arbitrary notes. <a href="http://quantifiedself.com/wp-content/uploads/2012/04/QM_collage.jpg">Here</a> is how it looks like.</p>
+<p>Why is it interesting? If you are like me and don’t feel much obvious subjective effects of conventional stimulants, sleep or exercise, it would be great to have some objective measure in case the effects are subtle but present. For you it could be saving half an hour of sleep per night by using melatonin, or realizing coffee doesn’t have effect on your cognitive performance, or something else.</p>
+<p>That sounded pretty interesting to me, and I started doing some tests (simple reaction time, visual matching, sorting and 1-back). However, given that effects are subtle in the first place, I wasn’t expecting to get any insights by gazing at collected data, so I needed to make sure I can export my experiments to run some sort of regression on them later.</p>
+<p>To my disappointment, when I ran thirty or something sessions and downloaded the CSV, it didn’t have error rate/reaction time, but you are only getting some magical ‘score’. It was unclear what it meant from the FAQ so I emailed the authors and got a response:</p>
+<pre><code>As for scores - it's a calculation that involves everything in a test, so for simple reaction time it involves both reaction times
+and accuracy. 
+The actual formulas aren't available, but the instructions are always simple: go for accuracy first, and try to be as fast as you can
+without sacrificing accuracy.</code></pre>
+<p>“Formulas aren’t available” was quite unsatisfactory to me. What are they actually measuring? So before carrying on and doing more tests I tried to reverse engineer the model.</p>
+<h1 id="implementation">Implementation</h1>
+<p>The idea was simple: choose couple of tests that are easy to automate. Luckily, the website is not using flash and not very heavy on javascript or obfuscation, so interacting with elements via javascript was fairly easy. In essence, I’m varying average reaction time (delay) and number of errors (which I make deliberately in the script), and inject the script into chrome via Selenium. Then I record the scores for further analysis.</p>
+<p>If you wanna experiment by yourself, <a href="https://github.com/karlicoss/qm-reverse-engineering">here’s</a> the repository and if you don’t feel like running the scripts for a day to collect data, I uploaded it to <a href="https://github.com/karlicoss/qm-reverse-engineering/releases">releases</a>.</p>
+<h1 id="tests">Tests</h1>
+<p>I’ve chosen “Simple reaction time” and “Visual matching”. From the <a href="http://www.quantified-mind.com/science">“science”</a> section:</p>
+<pre><code>The first is “Simple Reaction Time,” which assesses how quickly a person can respond to a single stimulus (a circle that turns 
+from white to green) by pressing the space bar. 
+
+“Visual Matching” places two highlighted grids next to one another and asks a person to judge, as quickly as possible, whether 
+the two grids are identical.</code></pre>
+<h1 id="results">Results</h1>
+<p>TLDR: I find the models pretty weird.</p>
+<p>Here is the demo of my script that extracted scores from the tests: <iframe width="560" height="315" src="https://www.youtube.com/embed/dolS7X7QrB0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<p>Here is what I got after the simulations (clicking highly recommended):</p>
+<p><a href="https://user-images.githubusercontent.com/291333/53916603-6a875880-405a-11e9-9447-90da86bf959a.png"> <img src="https://user-images.githubusercontent.com/291333/53916603-6a875880-405a-11e9-9447-90da86bf959a.png" width="auto" /> </a></p>
+<p><a href="https://user-images.githubusercontent.com/291333/53916604-6a875880-405a-11e9-824a-ab2445cc4184.png"> <img src="https://user-images.githubusercontent.com/291333/53916604-6a875880-405a-11e9-824a-ab2445cc4184.png" width="auto" /> </a></p>
+<h1 id="observations">Observations</h1>
+<ul>
+<li><p>Same score could mean different things; you can see it from the plots if you draw horizontal lines, they would intersect multiple curves corresponding to different delays.</p>
+<p>So, for instance, if you get score 600 on visual matching, that could mean that you did the test with 880ms reaction and 0 errors, or with 840ms reaction and 2 errors or 760ms reaction and 4 errors. These are fairly different results and even though it’s good to have some sort of aggregate score, it’s also useful to distinguish. E.g. maybe caffeine makes you less patient so you press early and make more errors.</p></li>
+<li><p>For low reaction time (&lt;300ms for simple reaction time &lt;600ms for visual matching), the plots don’t look continuous, there are some sudden drops. That’s pretty suspicious IMO.</p>
+<p>Perhaps that could explained by the fact that such low times are impossible to get by average humans and they are out of the test domain.</p></li>
+<li><p>If you keep number of error fixed, one would expect that score grows as the reaction time goes does. That is not the case on plots, probably related to the artifact above.</p></li>
+<li><p>If you keep reaction time fixed, you would expect the score to decrease monotonically with the number of errors. You can see that for simple reaction time after 600ms, the score actually monotonically <strong>increases</strong> as you make more errors. Again, one could argue that reaction of 600 ms is too long for average human on this test (e.g. I score about 230), but I can easily imagine drugs (even such as alcohol) resulting in these scores, which could also be interesting to measure.</p></li>
+<li><p>If you think about, 8 (out of 16) errors is what you would get on visual matching if you answer randomly (which you could do with almost arbitrary low reaction time). So if you do that, say, with 400ms delay, according to the plot you would score around 620 points. Which is what I get by doing the test myself with 800ms reaction and making 1 error. So what does the score represent then?</p></li>
+</ul>
+<h1 id="summary">Summary</h1>
+<p>I can’t see how is that score meaningful and I’m glad I didn’t spend more time doing these tests. Perhaps one is better off measuring reaction time directly instead of some mystical ‘score’.</p>
+<h1 id="whats-next">What’s next?</h1>
+<p>Could be interesting to do similar reverse engineering on other cognitive testing platforms.</p>
+    </section>
+
+    <section class="footer">
+        
+        <div class="tags"># cognitive quantified-self selenium</div>
+        
+        <div class="date">March 6, 2019</div>
+    </section>
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_quantified_mind"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <footer>
+            <a class="fat" href="./atom.xml" title="Atom feed">atom</a>
+            <a class="fat" href="./rss.xml" title="RSS feed">rss</a>
+        </footer>
+    </body>
+</html>
+]]></summary>
 </entry>
 <entry>
     <title>On cognitive demand of recycling</title>
@@ -39,7 +884,110 @@
     <id>https://beepb00p.xyz/recycling-is-hard.html</id>
     <published>2019-04-18T00:00:00Z</published>
     <updated>2019-04-18T00:00:00Z</updated>
-    <summary type="html"><![CDATA[So many questions, so little answers]]></summary>
+    <summary type="html"><![CDATA[<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="recycling environment">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>On cognitive demand of recycling | Mildly entertainingᵝ</title>
+
+        <link rel="stylesheet" href="./css/default.css" />
+
+        <!-- TODO make it conditional on actually having math on page? -->
+        <script type="text/javascript">
+ window.MathJax = {
+     tex2jax: {
+         // note that hakyll source has got double dollar signs due to special meaning in templates
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+     }
+ };
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    ·<!-- TODO eh, not sure if this symbol is good for that... -->
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                </span>
+                <!-- TODO do site and archive later when they actually have something meaningful -->
+                <!-- <a href="/site.html">Site</a> -->
+                <a class="nav-right fat" href="./me.html">Me</a>
+                <!-- <a href="/archive.html">Archive</a> -->
+            </nav>
+        </header>
+
+        <main>
+            
+
+
+
+
+<article>
+    <section class="post-title">
+    <h1>On cognitive demand of recycling</h1>
+    <div class="summary">So many questions, so few answers</h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <p>Even since I moved to the UK I’ve of course been separating waste. I wasn’t ever questioning the positive value of recycling or suspecting it could be a conspiracy designed to drain my time or anything along that line. In many ways it’s even easier since you can pile up plastic/cardboard/glass and just throw it away in bulk, and have a smaller food waste bin. I was never too crazy about it though, so I never bothered recycling every last bit of material that I possibly could.</p>
+<p>Recently though I started wondering if I should be more efficient at recycling, so I googled for a bit, and … got nowhere.</p>
+<p>For instance, one of my fluorescent light bulbs died. It’s not recycled by the council, so can’t be put in the recycling dumpster. Apparently it also contains mercury and shouldn’t be put in general waste either. The closest recycling facility that accepts energy efficient bulbs is 15 mins from me by tube. The question is — disregarding that I don’t feel like spending half an hour in transport to recycle couple of light bulbs: is it more efficient for the planet if instead of going there I just spend that time on my high paying job and donate the money. I seriously suspect that recycling a bulb is <a href="https://en.wikipedia.org/wiki/Effective_altruism">not the most environmentally efficient thing I can do with my skills</a>. <strong>How much environmental impact in terms of pure dollars of damage does a light bulb have anyway?</strong> Sadly, I didn’t manage to find any specific numbers.</p>
+<p>Another thing that puzzled me: <strong>is it worth washing a soiled plastic container before recycling?</strong> You’re wasting hot water and detergents after all, which also has some environmental impact (also your time if you wash manually). The internet gives confusing answers, starting from people who put their greasy plastic in dishwasher to suggestions to only give a quick rinse. I can’t understand how rinsing without washing helps against attracting bacteria and greasing paper in mixed recycling. Couldn’t google anything meaningful either.</p>
+<p>Interesting enough, while looking that up, I ran into many discussions of using paper plates vs washing ceramic plates — apparently it’s unclear which is more environmental! <a href="https://sustainability.stackexchange.com/a/6020">Here’s</a> an example calculation which gives <code>$0.78</code> vs <code>$0.63</code>, the difference I find pretty marginal. Generally all over the place the answer seems to be “it depends on your detergent, electricity source, etc”. <strong>How is an average person meant to figure that out?</strong></p>
+<p>Lastly, it’s not even clear which <a href="https://www.pureplanetrecycling.co.uk/types-of-plastics/">types of plastic</a> materials you can recycle. For instance, my <a href="https://www.towerhamlets.gov.uk/lgnl/environment_and_waste/recycling_and_waste/a-z_recycling_guide.aspx">council’s website</a> has no mention of specific materials whatsoever, only ‘trays’, ‘yogurt pots’ and ‘bags’.</p>
+<p><a href="https://www.cityoflondon.gov.uk/services/environment-and-planning/waste-and-recycling/household-waste-and-recycling/Pages/recycling-A-to-Z.aspx">City of London website</a> confuses me as well:</p>
+<ul>
+<li>It mentions PS (polystyrene, 6) as non-recyclable and it instructs to recycle yogurt pots. However some of yogurt pots are made of polystyrene!</li>
+<li>“Plastic bags, including those used for salad, bread, rice/pasta should be placed in the household waste”. While most of salad packaging I seen here has no marking, some of it is made of PP (polypropylene, 5), which is same stuff that used to make yogurt pots. <strong>Surely there should be no difference in recycling as long as it’s the same material?</strong></li>
+</ul>
+<p>I find it very hard to remember every specific shape of plastic, surely it’s way easier to base your decision to recycle on a single number they but on plastic? At least there is a little I can do about that and I emailed my council asking to clarify.</p>
+<p>Lastly, I can’t help feeling that I’m nitpicking and the 95% of obviously recyclable stuff I already recycle is enough; and that I should have spent time writing this post doing something more obviously useful. However, I’m already done and hopefully will gain more knowledge about recycling as a result.</p>
+<p><strong>How can we make it easier to decide if something can or can’t be recycled and whether it has net positive cost with respect to time you spend doing it?</strong></p>
+<p>If you know answers to any of the questions here, please let me know!</p>
+    </section>
+
+    <section class="footer">
+        
+        <div class="tags"># recycling environment</div>
+        
+        <div class="date">April 18, 2019</div>
+    </section>
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_recycling_is_hard"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <footer>
+            <a class="fat" href="./atom.xml" title="Atom feed">atom</a>
+            <a class="fat" href="./rss.xml" title="RSS feed">rss</a>
+        </footer>
+    </body>
+</html>
+]]></summary>
 </entry>
 <entry>
     <title>Sleep tracking</title>
@@ -47,7 +995,140 @@
     <id>https://beepb00p.xyz/sleep-tracking.html</id>
     <published>2019-02-21T00:00:00Z</published>
     <updated>2019-02-21T00:00:00Z</updated>
-    <summary type="html"><![CDATA[How not to do it]]></summary>
+    <summary type="html"><![CDATA[<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="sleep quantified-self">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>Sleep tracking | Mildly entertainingᵝ</title>
+
+        <link rel="stylesheet" href="./css/default.css" />
+
+        <!-- TODO make it conditional on actually having math on page? -->
+        <script type="text/javascript">
+ window.MathJax = {
+     tex2jax: {
+         // note that hakyll source has got double dollar signs due to special meaning in templates
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+     }
+ };
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    ·<!-- TODO eh, not sure if this symbol is good for that... -->
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                </span>
+                <!-- TODO do site and archive later when they actually have something meaningful -->
+                <!-- <a href="/site.html">Site</a> -->
+                <a class="nav-right fat" href="./me.html">Me</a>
+                <!-- <a href="/archive.html">Archive</a> -->
+            </nav>
+        </header>
+
+        <main>
+            
+
+
+
+
+<article>
+    <section class="post-title">
+    <h1>Sleep tracking</h1>
+    <div class="summary">How not to do it</h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <p>I’ve been tracking my sleep passively for a while. Not that I had any issues with sleep, but considering you spend massive chunk of your life sleeping, seems like a good idea to optimize it. After I bought <a href="https://www.emfit.com/sleep-sensing-solutions-with-hrv">Emfit</a> sleep tracker I figured it would be interesting to try correlating its stats with my subjective feelings.</p>
+<p>Every morning, I log few things on the scale from 0 (bad) to 2 (good), one of which is something that I defined as “physical energy” (as opposed to mental energy). Well,</p>
+<pre><code>| date         | physical |
+|              | energy   |
+|--------------|----------+
+| [2018-07-10] |        1 |
+| [2018-07-11] |        1 |
+| [2018-07-13] |        0 |
+| [2018-07-15] |        1 |
+| [2018-07-16] |        1 |
+| [2018-07-17] |        1 |
+| [2018-07-18] |        1 |
+| [2018-07-19] |        1 |
+| [2018-07-20] |        1 |
+| [2018-07-21] |        1 |
+| [2018-07-22] |        1 |
+| [2018-07-23] |        1 |
+| [2018-07-24] |        1 |
+| [2018-07-27] |        1 |
+| [2018-07-28] |        1 |
+| [2018-07-31] |        1 |
+| [2018-08-01] |        1 |
+| [2018-08-02] |        1 |
+| [2018-08-05] |        1 |
+| [2018-08-07] |        1 |
+| [2018-08-08] |        1 |
+| [2018-08-09] |        1 |
+| [2018-08-10] |        1 |
+| [2018-08-13] |        1 |
+| [2018-08-14] |        1 |
+... you get the idea ...
+| [2019-02-10] |        1 |
+| [2019-02-11] |        1 |
+| [2019-02-12] |        1 |
+| [2019-02-13] |        1 |
+| [2019-02-14] |        1 |
+| [2019-02-15] |        1 |
+| [2019-02-16] |        1 |
+| [2019-02-17] |        1 |
+| [2019-02-18] |        1 |
+| [2019-01-19] |        1 |
+| [2019-02-20] |        1 |</code></pre>
+<p>As you can see that’s not very fruitful (not sure what happened on 13 July 2018 lol). There are two possibilities here: my self introspection is really bad: many well being/mood tracking apps would let people estimate on the scale from 1 to 10, and I can’t even distinguish between three states.</p>
+<p>Another one is that I’m just very stable and actually have no variation. For instance, I never had problems working out first thing in the morning, without having any food or stimulants. What bothers me a bit is that I don’t seem to experience any ‘high energy’ states either, which apparently people do.</p>
+<p>I guess the lesson here is to reevaluate things I’m measuring after a short while and make sure I can actually track something meaningful or something I am capable of measuring.</p>
+    </section>
+
+    <section class="footer">
+        
+        <div class="tags"># sleep quantified-self</div>
+        
+        <div class="date">February 21, 2019</div>
+    </section>
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_sleep_tracking"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <footer>
+            <a class="fat" href="./atom.xml" title="Atom feed">atom</a>
+            <a class="fat" href="./rss.xml" title="RSS feed">rss</a>
+        </footer>
+    </body>
+</html>
+]]></summary>
 </entry>
 
 </feed>
