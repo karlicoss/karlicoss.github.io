@@ -61,19 +61,16 @@
     <!-- are sections appropriate for that? -->
 
     <section class="content">
-    
-<h1 class="title">TODO need to handle this properly</h1>
-
-<ul class="org-ul"><li><a id="sec-1" name="sec-1"></a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-06-05 Tue 17:19]</span></span> distributed cloud sync (Dropbox/Syncthing)   <span class="tag"><span class="cloud">cloud</span> <span class="think">think</span></span><br><div class="outline-text-2" id="text-1">
+    <div id="outline-container-orga0d48ed" class="outline-2">
+<h2 id="orga0d48ed"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-06-05 Tue 17:19] </span></span> distributed cloud sync (Dropbox/Syncthing)&nbsp;&nbsp;&nbsp;<span class="tag"><span class="cloud">cloud</span></span></h2>
+<div class="outline-text-2" id="text-orga0d48ed">
 <p>
 Basically, continuous (e.g. inotify-backed), open source and always available file sync.
 </p>
 
 <ul class="org-ul">
-<li>Dropbox is continuous, but proprietary. It's not distributed, but central server tends to be very available.
-</li>
-<li>Syncthing is continuous and open source, but only syncs among your own devices. If all of them are off, you wouldn't be able to access your files.
-</li>
+<li>Dropbox is continuous, but proprietary. It's not distributed, but central server tends to be very available.</li>
+<li>Syncthing is continuous and open source, but only syncs among your own devices. If all of them are off, you wouldn't be able to access your files.</li>
 </ul>
 
 <p>
@@ -81,13 +78,25 @@ Ideally, it would be something based on Bittorrent, and the chunks of data would
 </p>
 
 <ul class="org-ul">
-<li><span class="timestamp-wrapper"><span class="timestamp">[2019-05-03 Fri 08:29]</span></span> apparently <a href="https://en.wikipedia.org/wiki/Resilio_Sync">Resilio Sync</a> exists, but it's proprietary, nothing else I know of or resulting from quick googling
-</li>
+<li><span class="timestamp-wrapper"><span class="timestamp">[2019-05-03 Fri 08:29] </span></span> apparently <a href="https://en.wikipedia.org/wiki/Resilio_Sync">Resilio Sync</a> exists, but it's proprietary, nothing else I know of or resulting from quick googling</li>
 </ul>
 </div>
-</li>
+</div>
 
-<li><a id="sec-2" name="sec-2"></a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-04-30 Tue 11:44]</span></span> programming language in which correct programs correspond to feasible physical states   <span class="tag"><span class="plt">plt</span> <span class="physics">physics</span> <span class="think">think</span></span><br><div class="outline-text-2" id="text-2">
+<div id="outline-container-orgdd33c46" class="outline-2">
+<h2 id="orgdd33c46"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-04-02 Mon 16:48] </span></span> structured VCS&nbsp;&nbsp;&nbsp;<span class="tag"><span class="vcs">vcs</span></span></h2>
+<div class="outline-text-2" id="text-orgdd33c46">
+<p>
+Something that understands the syntax of programming language and operates on top of that. So for instance, reordering methods in a class would be trivial operation and not show up in diff.
+There are some caveats though: e.g. in some dynamic languages order of definition might matter, so you still want it to be backed by plaintext, probably.
+Perhaps it has to be a diff filter rather than full scale VCS.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org5b14cc6" class="outline-2">
+<h2 id="org5b14cc6"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-04-30 Tue 11:44] </span></span> programming language in which correct programs correspond to feasible physical states&nbsp;&nbsp;&nbsp;<span class="tag"><span class="plt">plt</span>&nbsp;<span class="physics">physics</span></span></h2>
+<div class="outline-text-2" id="text-org5b14cc6">
 <p>
 Where physics is described by some sort of Lagrangian, and the evaluation semantics would would be consistent with its dynamics. 
 Wonder if that's possible without involving explicit computations via dependent types.
@@ -95,11 +104,12 @@ I guess would also correspond to some sort of special logic.
 Also making sure the set of correct programs is <b>exactly</b> the set of feasible states is presumably way harder.
 </p>
 </div>
-<ul class="org-ul"><li><a id="sec-2-1" name="sec-2-1"></a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-05-03 Fri 08:46]</span></span> need larger font, and perhaps semibold for org title..<br></li></ul>
-</li>
+</div>
 
 
-<li><a id="sec-3" name="sec-3"></a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-04-27 Fri 16:15]</span></span> coffee brew simulation   <span class="tag"><span class="coffee">coffee</span> <span class="simulation">simulation</span></span><br><div class="outline-text-2" id="text-3">
+<div id="outline-container-org8fe6ffa" class="outline-2">
+<h2 id="org8fe6ffa"><span class="todo TODO">TODO</span> <span class="priority">[D]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-04-27 Fri 16:15] </span></span> coffee brew simulation&nbsp;&nbsp;&nbsp;<span class="tag"><span class="coffee">coffee</span>&nbsp;<span class="simulation">simulation</span></span></h2>
+<div class="outline-text-2" id="text-org8fe6ffa">
 <p>
 In the simplest approximation take some simple conical/cylindrical filter, water flow/temperature dependency and coarseness.
 As an output we get expected amount of caffeine, oils, some estimate of bitterness and acidity etc.
@@ -109,14 +119,12 @@ As an output we get expected amount of caffeine, oils, some estimate of bitterne
 Some potentially relevant links:
 </p>
 <ul class="org-ul">
-<li><span class="timestamp-wrapper"><span class="timestamp">[2018-10-30 Tue 21:30]</span></span> <a href="https://phys.org/news/2016-11-mathematics-coffee-ideal-brew.html">https://phys.org/news/2016-11-mathematics-coffee-ideal-brew.html</a>
-</li>
-<li><span class="timestamp-wrapper"><span class="timestamp">[2018-10-30 Tue 21:30]</span></span> <a href="https://www.researchgate.net/publication/299430179_Brewing_of_filter_coffee">https://www.researchgate.net/publication/299430179_Brewing_of_filter_coffee</a>
-</li>
+<li><span class="timestamp-wrapper"><span class="timestamp">[2018-10-30 Tue 21:30] </span></span> <a href="https://phys.org/news/2016-11-mathematics-coffee-ideal-brew.html">https://phys.org/news/2016-11-mathematics-coffee-ideal-brew.html</a></li>
+<li><span class="timestamp-wrapper"><span class="timestamp">[2018-10-30 Tue 21:30] </span></span> <a href="https://www.researchgate.net/publication/299430179_Brewing_of_filter_coffee">https://www.researchgate.net/publication/299430179_Brewing_of_filter_coffee</a></li>
 </ul>
 
 <p>
-<span class="timestamp-wrapper"><span class="timestamp">[2019-04-22 Mon 21:28]</span></span> I ran into <a href="https://prima-coffee.com/learn/article/brewing-guides/comparing-kalita-wave-recipes/33005">this guide</a> and surely coffee brewing doesn't have to be so elaborate!
+<span class="timestamp-wrapper"><span class="timestamp">[2019-04-22 Mon 21:28] </span></span> I ran into <a href="https://prima-coffee.com/learn/article/brewing-guides/comparing-kalita-wave-recipes/33005">this guide</a> and surely coffee brewing doesn't have to be so elaborate!
 </p>
 
 <p>
@@ -138,7 +146,7 @@ A mathematical model would cast away this bro science at least to some extent.
 I also can't really understand how is one capable of estimating coffee on the scale from 0 to 10, but perhaps that's just my unsophisticated taste buds, and I accept other people can train themselves to do that.
 </p>
 </div>
-</li></ul>
+</div>
 
     </section>
 
