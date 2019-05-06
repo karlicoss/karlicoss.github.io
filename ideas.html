@@ -61,9 +61,22 @@
     <!-- are sections appropriate for that? -->
 
     <section class="content">
-    <div id="outline-container-orga0d48ed" class="outline-2">
-<h2 id="orga0d48ed"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-06-05 Tue 17:19] </span></span> distributed cloud sync (Dropbox/Syncthing)&nbsp;&nbsp;&nbsp;<span class="tag"><span class="cloud">cloud</span></span></h2>
-<div class="outline-text-2" id="text-orga0d48ed">
+    <div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#distributed_Dropbox"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-06-05 Tue 17:19] </span></span> distributed cloud sync (Dropbox/Syncthing)&nbsp;&nbsp;&nbsp;<span class="tag"><span class="cloud">cloud</span></span></a></li>
+<li><a href="#we_want_threads"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-08-26 Sun 19:13] </span></span> instant messengers are too linear&nbsp;&nbsp;&nbsp;<span class="tag"><span class="im">im</span>&nbsp;<span class="communication">communication</span></span></a></li>
+<li><a href="#structured_vcs"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-04-02 Mon 16:48] </span></span> structured VCS&nbsp;&nbsp;&nbsp;<span class="tag"><span class="vcs">vcs</span></span></a></li>
+<li><a href="#programming_physical_states"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-04-30 Tue 11:44] </span></span> programming language in which correct programs correspond to feasible physical states&nbsp;&nbsp;&nbsp;<span class="tag"><span class="plt">plt</span>&nbsp;<span class="physics">physics</span></span></a></li>
+<li><a href="#coffee_simulator"><span class="todo TODO">TODO</span> <span class="priority">[D]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-04-27 Fri 16:15] </span></span> coffee brew simulation&nbsp;&nbsp;&nbsp;<span class="tag"><span class="coffee">coffee</span>&nbsp;<span class="simulation">simulation</span></span></a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org9b714fd" class="outline-2">
+<h2 id="distributed_Dropbox"><a id="org9b714fd"></a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-06-05 Tue 17:19] </span></span> distributed cloud sync (Dropbox/Syncthing)&nbsp;&nbsp;&nbsp;<span class="tag"><span class="cloud">cloud</span></span></h2>
+<div class="outline-text-2" id="text-distributed_Dropbox">
 <p>
 Basically, continuous (e.g. inotify-backed), open source and always available file sync.
 </p>
@@ -74,7 +87,9 @@ Basically, continuous (e.g. inotify-backed), open source and always available fi
 </ul>
 
 <p>
-Ideally, it would be something based on Bittorrent, and the chunks of data would be distributed among participants with sufficient redundancy. So most of the time you would rely on your own devices like in Syncthing, but in case of device loss or temporary outage you'd be able to assemble the data from redundant chunks in the peer network. Not sure how much redundant it has to be and if that approach works in practice.
+Ideally, it would be something based on Bittorrent, and the chunks of data would be distributed among participants with sufficient redundancy.
+So most of the time you would rely on your own devices like in Syncthing, but in case of device loss or temporary outage you'd be able to assemble the data from redundant chunks in the peer network.
+Not sure how much redundant it has to be and if that approach works in practice.
 </p>
 
 <ul class="org-ul">
@@ -83,9 +98,56 @@ Ideally, it would be something based on Bittorrent, and the chunks of data would
 </div>
 </div>
 
-<div id="outline-container-orgdd33c46" class="outline-2">
-<h2 id="orgdd33c46"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-04-02 Mon 16:48] </span></span> structured VCS&nbsp;&nbsp;&nbsp;<span class="tag"><span class="vcs">vcs</span></span></h2>
-<div class="outline-text-2" id="text-orgdd33c46">
+<div id="outline-container-org086b811" class="outline-2">
+<h2 id="we_want_threads"><a id="org086b811"></a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-08-26 Sun 19:13] </span></span> instant messengers are too linear&nbsp;&nbsp;&nbsp;<span class="tag"><span class="im">im</span>&nbsp;<span class="communication">communication</span></span></h2>
+<div class="outline-text-2" id="text-we_want_threads">
+<p>
+You chat with someone and discuss something. Because conventional IM software imposes timestamp ordering, it often ends up interleaved with some ongoing things (e.g. "by the way remember about that thing tomorrow"),
+and you distract or switch. The discussion gets forgotten and/or the context is lost.
+</p>
+
+<p>
+It's way worse in bigger Slack or Telegram channels (e.g. 15+ people). Sometimes you (well, at least I do) wait to post a message because you don't feel like interrupting some ongoing discussion and you don't want your message to be buried either. 
+So you have to keep it somewhere and make a reminder or something, which is cognitive overhead. Because of the overall volume of messages people tend to mute group conversations, and then miss actually useful stuff.
+</p>
+
+<p>
+Ideally, in a certain group chat/channel you should be able to:
+</p>
+
+<ul class="org-ul">
+<li>fork conversation off an arbitrary message, so you'd have a tree.</li>
+<li>view all the ongoing conversations/threads. Mute, mark as high priority, etc.</li>
+<li>perhaps archive the ones that are not relevant anymore.</li>
+</ul>
+
+<p>
+Currently existing things I know of:
+</p>
+
+<ul class="org-ul">
+<li>Google wave?</li>
+<li>Telegram got replies which work in very few specific cases and not very sustainable for a proper conversation.</li>
+<li><p>
+Slack got threads, which sort of solve this issue.
+</p>
+
+<p>
+You can't turn old conversations into threads, but if you notice an opportunity early, or make a habit of spinning off early, you can work with it. It's not really used for personal conversations thought.
+</p></li>
+
+<li>XMPP is dead I guess, so not sure how easy it would be to prototype that.</li>
+</ul>
+
+<p>
+Interesting enough, meatspace conversations also have this curse of linear order let alone other aspects that make them hard! But that's a whole different problem.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org6110dc8" class="outline-2">
+<h2 id="structured_vcs"><a id="org6110dc8"></a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-04-02 Mon 16:48] </span></span> structured VCS&nbsp;&nbsp;&nbsp;<span class="tag"><span class="vcs">vcs</span></span></h2>
+<div class="outline-text-2" id="text-structured_vcs">
 <p>
 Something that understands the syntax of programming language and operates on top of that. So for instance, reordering methods in a class would be trivial operation and not show up in diff.
 There are some caveats though: e.g. in some dynamic languages order of definition might matter, so you still want it to be backed by plaintext, probably.
@@ -94,9 +156,9 @@ Perhaps it has to be a diff filter rather than full scale VCS.
 </div>
 </div>
 
-<div id="outline-container-org5b14cc6" class="outline-2">
-<h2 id="org5b14cc6"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-04-30 Tue 11:44] </span></span> programming language in which correct programs correspond to feasible physical states&nbsp;&nbsp;&nbsp;<span class="tag"><span class="plt">plt</span>&nbsp;<span class="physics">physics</span></span></h2>
-<div class="outline-text-2" id="text-org5b14cc6">
+<div id="outline-container-orgf76b3d8" class="outline-2">
+<h2 id="programming_physical_states"><a id="orgf76b3d8"></a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-04-30 Tue 11:44] </span></span> programming language in which correct programs correspond to feasible physical states&nbsp;&nbsp;&nbsp;<span class="tag"><span class="plt">plt</span>&nbsp;<span class="physics">physics</span></span></h2>
+<div class="outline-text-2" id="text-programming_physical_states">
 <p>
 Where physics is described by some sort of Lagrangian, and the evaluation semantics would would be consistent with its dynamics. 
 Wonder if that's possible without involving explicit computations via dependent types.
@@ -105,11 +167,9 @@ Also making sure the set of correct programs is <b>exactly</b> the set of feasib
 </p>
 </div>
 </div>
-
-
-<div id="outline-container-org8fe6ffa" class="outline-2">
-<h2 id="org8fe6ffa"><span class="todo TODO">TODO</span> <span class="priority">[D]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-04-27 Fri 16:15] </span></span> coffee brew simulation&nbsp;&nbsp;&nbsp;<span class="tag"><span class="coffee">coffee</span>&nbsp;<span class="simulation">simulation</span></span></h2>
-<div class="outline-text-2" id="text-org8fe6ffa">
+<div id="outline-container-orgf2dc84c" class="outline-2">
+<h2 id="coffee_simulator"><a id="orgf2dc84c"></a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-04-27 Fri 16:15] </span></span> coffee brew simulation&nbsp;&nbsp;&nbsp;<span class="tag"><span class="coffee">coffee</span>&nbsp;<span class="simulation">simulation</span></span></h2>
+<div class="outline-text-2" id="text-coffee_simulator">
 <p>
 In the simplest approximation take some simple conical/cylindrical filter, water flow/temperature dependency and coarseness.
 As an output we get expected amount of caffeine, oils, some estimate of bitterness and acidity etc.
