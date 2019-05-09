@@ -1129,6 +1129,114 @@ the two grids are identical.</code></pre>
     <guid>https://beepb00p.xyz/sleep-tracking.html</guid>
     <dc:creator>karlicoss</dc:creator>
 </item>
+<item>
+    <title>sufs</title>
+    <link>https://beepb00p.xyz/sufs.html</link>
+    <description><![CDATA[<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="tools setup">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>sufs | Mildly entertainingᵝ</title>
+
+        <link rel="stylesheet" href="./css/default.css" />
+
+        <!-- TODO make it conditional on actually having math on page? -->
+        <script type="text/javascript">
+ window.MathJax = {
+     tex2jax: {
+         // note that hakyll source has got double dollar signs due to special meaning in templates
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+     }
+ };
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    ·<!-- TODO eh, not sure if this symbol is good for that... -->
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                </span>
+                <!-- TODO do site and archive later when they actually have something meaningful -->
+                <!-- <a href="/site.html">Site</a> -->
+                <a class="nav-right fat" href="./me.html">Me</a>
+                <!-- <a href="/archive.html">Archive</a> -->
+            </nav>
+        </header>
+
+        <main>
+            
+
+
+
+
+<article>
+    <section class="post-title">
+    <h1>sufs</h1>
+    <div class="summary">Tool to merge directories via symlinks</h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <p><a href="https://github.com/karlicoss/sufs">sufs</a> is a tool for ‘merging’ multiple directories into one via symlinks.</p>
+<p>I’m syncing most of my stuff via syncthing, but some of it has to be locally (mainly for stupid reasons like massive <code>node_modules</code> directory etc.). But it’s nice to have a unified view of them so you don’t have to memorize what did you put where.</p>
+<p>Usage example:</p>
+<pre><code>   # initialize merged dir`
+   mkdir /home/user/datas 
+
+   # you might want to keep the following in cron
+   sufs.py --to /home/user/datas /home/user/syncthing/data /home/user/dropbox/data /home/user/syncthing/data</code></pre>
+<p>Before I wrote this script I tried FUSE based filesystems: <a href="https://en.wikipedia.org/wiki/UnionFS">Unionfs</a> and <a href="https://github.com/trapexit/mergerfs">Mergerfs</a>, but wasn’t really satisfied. Weirdly, couldn’t also find anythig existing on github, so had to write my own.</p>
+<p>First, you don’t know where actually fuse mounted dirst reside. Second, for instance, mergerfs had some weird new file handling logic, so the directories would end up scattered across multiple sources. Overall I found it a bit confusing.</p>
+<p>This script uses symlinks, so you always know the actual location; and also maintains the top level directory as read only, so you can’t end up with dangling directories.</p>
+<p>The only disadvantage at the moment is that symlink updating can only happen once a minute if you run via cron, but should be easy to use inotify if that’s an issue.</p>
+    </section>
+
+    <section class="footer">
+        
+        <div class="tags"># tools setup</div>
+        
+        <div class="date">May 9, 2019</div>
+    </section>
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_sufs"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <footer>
+            <a class="fat" href="./atom.xml" title="Atom feed">atom</a>
+            <a class="fat" href="./rss.xml" title="RSS feed">rss</a>
+        </footer>
+    </body>
+</html>
+]]></description>
+    <pubDate>Thu, 09 May 2019 00:00:00 UT</pubDate>
+    <guid>https://beepb00p.xyz/sufs.html</guid>
+    <dc:creator>karlicoss</dc:creator>
+</item>
 
     </channel>
 </rss>

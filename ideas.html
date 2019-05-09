@@ -69,14 +69,14 @@
 <li><a href="#we_want_threads"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-08-26 Sun 19:13] </span></span> instant messengers are too linear&nbsp;&nbsp;&nbsp;<span class="tag"><span class="im">im</span>&nbsp;<span class="communication">communication</span></span></a></li>
 <li><a href="#structured_vcs"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-04-02 Mon 16:48] </span></span> structured VCS&nbsp;&nbsp;&nbsp;<span class="tag"><span class="vcs">vcs</span></span></a></li>
 <li><a href="#programming_physical_states"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-04-30 Tue 11:44] </span></span> programming language in which correct programs correspond to feasible physical states&nbsp;&nbsp;&nbsp;<span class="tag"><span class="plt">plt</span>&nbsp;<span class="physics">physics</span></span></a></li>
-<li><a href="#orgf0bb4e1"><span class="todo START">START</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-04-01 Mon 13:50] </span></span> share highlights from Kobo to Goodreads&nbsp;&nbsp;&nbsp;<span class="tag"><span class="kobo">kobo</span>&nbsp;<span class="pkm">pkm</span>&nbsp;<span class="reading">reading</span></span></a></li>
+<li><a href="#org1fa99fe"><span class="todo START">START</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-04-01 Mon 13:50] </span></span> share highlights from Kobo to Goodreads&nbsp;&nbsp;&nbsp;<span class="tag"><span class="kobo">kobo</span>&nbsp;<span class="pkm">pkm</span>&nbsp;<span class="reading">reading</span></span></a></li>
 <li><a href="#coffee_simulator"><span class="todo TODO">TODO</span> <span class="priority">[D]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-04-27 Fri 16:15] </span></span> coffee brew simulation&nbsp;&nbsp;&nbsp;<span class="tag"><span class="coffee">coffee</span>&nbsp;<span class="simulation">simulation</span></span></a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-orgf016447" class="outline-2">
-<h2 id="distributed_Dropbox"><a id="orgf016447"></a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-06-05 Tue 17:19] </span></span> distributed cloud sync (Dropbox/Syncthing)&nbsp;&nbsp;&nbsp;<span class="tag"><span class="cloud">cloud</span></span></h2>
+<div id="outline-container-orgda4a8d2" class="outline-2">
+<h2 id="distributed_Dropbox"><a id="orgda4a8d2"></a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-06-05 Tue 17:19] </span></span> distributed cloud sync (Dropbox/Syncthing)&nbsp;&nbsp;&nbsp;<span class="tag"><span class="cloud">cloud</span></span></h2>
 <div class="outline-text-2" id="text-distributed_Dropbox">
 <p>
 Basically, continuous (e.g. inotify-backed), open source and always available file sync.
@@ -84,7 +84,13 @@ Basically, continuous (e.g. inotify-backed), open source and always available fi
 
 <ul class="org-ul">
 <li>Dropbox is continuous, but proprietary. It's not distributed, but central server tends to be very available.</li>
-<li>Syncthing is continuous and open source, but only syncs among your own devices. If all of them are off, you wouldn't be able to access your files.</li>
+<li><p>
+Syncthing is continuous and open source, but only syncs among your own devices. If all of them are off, you wouldn't be able to access your files.
+</p>
+
+<p>
+It's also not necessarily very friendly towards average user: it works best when you have a device that is always on like a VPS. 
+</p></li>
 </ul>
 
 <p>
@@ -99,8 +105,8 @@ Not sure how much redundant it has to be and if that approach works in practice.
 </div>
 </div>
 
-<div id="outline-container-org413b3d2" class="outline-2">
-<h2 id="we_want_threads"><a id="org413b3d2"></a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-08-26 Sun 19:13] </span></span> instant messengers are too linear&nbsp;&nbsp;&nbsp;<span class="tag"><span class="im">im</span>&nbsp;<span class="communication">communication</span></span></h2>
+<div id="outline-container-orged0b285" class="outline-2">
+<h2 id="we_want_threads"><a id="orged0b285"></a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-08-26 Sun 19:13] </span></span> instant messengers are too linear&nbsp;&nbsp;&nbsp;<span class="tag"><span class="im">im</span>&nbsp;<span class="communication">communication</span></span></h2>
 <div class="outline-text-2" id="text-we_want_threads">
 <p>
 You chat with someone and discuss something. Because conventional IM software imposes timestamp ordering, it often ends up interleaved with some ongoing things (e.g. "by the way remember about that thing tomorrow"),
@@ -146,8 +152,8 @@ Interesting enough, meatspace conversations also have this curse of linear order
 </div>
 </div>
 
-<div id="outline-container-org7ffab3a" class="outline-2">
-<h2 id="structured_vcs"><a id="org7ffab3a"></a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-04-02 Mon 16:48] </span></span> structured VCS&nbsp;&nbsp;&nbsp;<span class="tag"><span class="vcs">vcs</span></span></h2>
+<div id="outline-container-org5d16569" class="outline-2">
+<h2 id="structured_vcs"><a id="org5d16569"></a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-04-02 Mon 16:48] </span></span> structured VCS&nbsp;&nbsp;&nbsp;<span class="tag"><span class="vcs">vcs</span></span></h2>
 <div class="outline-text-2" id="text-structured_vcs">
 <p>
 Something that understands the syntax of programming language and operates on top of that. So for instance, reordering methods in a class would be trivial operation and not show up in diff.
@@ -157,8 +163,8 @@ Perhaps it has to be a diff filter rather than full scale VCS.
 </div>
 </div>
 
-<div id="outline-container-orgdba9430" class="outline-2">
-<h2 id="programming_physical_states"><a id="orgdba9430"></a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-04-30 Tue 11:44] </span></span> programming language in which correct programs correspond to feasible physical states&nbsp;&nbsp;&nbsp;<span class="tag"><span class="plt">plt</span>&nbsp;<span class="physics">physics</span></span></h2>
+<div id="outline-container-org72db3e2" class="outline-2">
+<h2 id="programming_physical_states"><a id="org72db3e2"></a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-04-30 Tue 11:44] </span></span> programming language in which correct programs correspond to feasible physical states&nbsp;&nbsp;&nbsp;<span class="tag"><span class="plt">plt</span>&nbsp;<span class="physics">physics</span></span></h2>
 <div class="outline-text-2" id="text-programming_physical_states">
 <p>
 Where physics is described by some sort of Lagrangian, and the evaluation semantics would would be consistent with its dynamics. 
@@ -168,9 +174,9 @@ Also making sure the set of correct programs is <b>exactly</b> the set of feasib
 </p>
 </div>
 </div>
-<div id="outline-container-orgf0bb4e1" class="outline-2">
-<h2 id="orgf0bb4e1"><span class="todo START">START</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-04-01 Mon 13:50] </span></span> share highlights from Kobo to Goodreads&nbsp;&nbsp;&nbsp;<span class="tag"><span class="kobo">kobo</span>&nbsp;<span class="pkm">pkm</span>&nbsp;<span class="reading">reading</span></span></h2>
-<div class="outline-text-2" id="text-orgf0bb4e1">
+<div id="outline-container-org1fa99fe" class="outline-2">
+<h2 id="org1fa99fe"><span class="todo START">START</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-04-01 Mon 13:50] </span></span> share highlights from Kobo to Goodreads&nbsp;&nbsp;&nbsp;<span class="tag"><span class="kobo">kobo</span>&nbsp;<span class="pkm">pkm</span>&nbsp;<span class="reading">reading</span></span></h2>
+<div class="outline-text-2" id="text-org1fa99fe">
 <p>
 Kobo doesn't have Goodreads integration like Kindle does. However sharing hightlights is a great way to engage other people in the book you really like and want them to read. This can relatively easily be achieved via a script:
 </p>
@@ -212,8 +218,8 @@ Actually, this could even be useful for Kindle if you have pirated a book for wh
 </div>
 </div>
 
-<div id="outline-container-org39ba06e" class="outline-2">
-<h2 id="coffee_simulator"><a id="org39ba06e"></a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-04-27 Fri 16:15] </span></span> coffee brew simulation&nbsp;&nbsp;&nbsp;<span class="tag"><span class="coffee">coffee</span>&nbsp;<span class="simulation">simulation</span></span></h2>
+<div id="outline-container-org5eeef2a" class="outline-2">
+<h2 id="coffee_simulator"><a id="org5eeef2a"></a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-04-27 Fri 16:15] </span></span> coffee brew simulation&nbsp;&nbsp;&nbsp;<span class="tag"><span class="coffee">coffee</span>&nbsp;<span class="simulation">simulation</span></span></h2>
 <div class="outline-text-2" id="text-coffee_simulator">
 <p>
 In the simplest approximation take some simple conical/cylindrical filter, water flow/temperature dependency and coarseness.
