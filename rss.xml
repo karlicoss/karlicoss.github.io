@@ -7,8 +7,141 @@
         <description><![CDATA[feed]]></description>
         <atom:link href="https://beepb00p.xyz/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Sat, 09 Feb 2019 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Sun, 12 May 2019 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Don't shoot the artist</title>
+    <link>https://beepb00p.xyz/contemp-art.html</link>
+    <description><![CDATA[<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="art">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>Don't shoot the artist | Mildly entertainingᵝ</title>
+
+        <link rel="stylesheet" href="./css/default.css" />
+
+        <!-- TODO make it conditional on actually having math on page? -->
+        <script type="text/javascript">
+ window.MathJax = {
+     tex2jax: {
+         // note that hakyll source has got double dollar signs due to special meaning in templates
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+     }
+ };
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    ·<!-- TODO eh, not sure if this symbol is good for that... -->
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                </span>
+                <!-- TODO do site and archive later when they actually have something meaningful -->
+                <!-- <a href="/site.html">Site</a> -->
+                <a class="nav-right fat" href="./me.html">Me</a>
+                <!-- <a href="/archive.html">Archive</a> -->
+            </nav>
+        </header>
+
+        <main>
+            
+
+<!-- <link rel="stylesheet" href="/css/org.css" /> -->
+<link rel="stylesheet" href="./css/org-default.css" />
+
+<link rel="stylesheet" href="./css/org-extra.css" />
+
+
+
+<article>
+    <section class="post-title">
+    <h1>Don't shoot the artist</h1>
+    <div class="summary">How I visited a contemporary art museum and didn't get it</h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <p>
+Today I visited <a href="https://www.ludwigmuseum.hu/en">Ludwig Museum</a> in Budapest, which hosts a contemporary art gallery.
+</p>
+
+<p>
+I don't think I generally 'get' contemporary art. However I don't get conventional either! I'm quite an unsophisticated person, some of art I like and appretiate, some don't. So I'm usually trying to expose myself to it just to keep up.
+</p>
+
+<p>
+Anyway, by the time I got to the third floor of the exhibition I started to get irritated. Usually, I can appreciate at least some of art objects, but none of the ones I had seen so far made any sense. 
+</p>
+
+<p>
+Some irritation was directed internally: "Ugh why am I doing this to myself, I should have gotten a coffee, sat on grass and enjoyed reading Penrose instead". But also a bit at the artists: "Ok, it's 2019, hasn't humanity seen enough white squares and various kinds of gradients?".
+</p>
+
+<p>
+So as I walked among popart on the last floor my mind wandered and I remembered a post I read on <a href="https://slatestarcodex.com/2019/02/26/rule-genius-in-not-out/">SSC</a>. The idea that I had absorbed from it is that I shouldn't really judge people who are trying to come up with new ideas and things; they are already a minority and it's not worth wasting my mental resources as long as they are not harming anyone.
+</p>
+
+<p>
+Perhaps it's similar with art? They are exploring new territory, new mediums, so they are quite likely to make mistakes, as in things not everyone gets or even actively dislikes.
+But the 1% that does manage to push the boundary would result in something beautiful that no one else would otherwise make (I'm sure you fancy at least some contemporary <a href="https://www.huffpost.com/entry/2014-archdaily-building-of-the-year-awards_n_4645591">buildings</a> or <a href="https://www.tate.org.uk/visit/tate-modern">art works</a> unless you were born in 1830). 
+</p>
+
+<p>
+Not sure what happens to the remaining 99%. Maybe they give up on trying to invent new art and just become decent designers/architects? Would be interesting to check if that's actually the case.
+</p>
+
+<p>
+This realization made the irritation go and made the rest of exploration a bit more pleasurable.
+</p>
+
+    </section>
+
+    <section class="footer">
+        
+        <div class="tags"># art</div>
+        
+        <div class="date">May 12, 2019</div>
+    </section>
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_contemp_art"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <footer>
+            <a class="fat" href="./atom.xml" title="Atom feed">atom</a>
+            <a class="fat" href="./rss.xml" title="RSS feed">rss</a>
+        </footer>
+    </body>
+</html>
+]]></description>
+    <pubDate>Sun, 12 May 2019 00:00:00 UT</pubDate>
+    <guid>https://beepb00p.xyz/contemp-art.html</guid>
+    <dc:creator>karlicoss</dc:creator>
+</item>
+<item>
     <title>Grasp</title>
     <link>https://beepb00p.xyz/grasp.html</link>
     <description><![CDATA[<!doctype html>
@@ -265,7 +398,7 @@ Why do they always mention that? Is that important?</code></pre>
 <span class="n">init_printing</span><span class="p">()</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -278,8 +411,7 @@ Why do they always mention that? Is that important?</code></pre>
 
     
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>If you are working with numerical computations in an IPython notebook, you don't really have much choice but accompany your computations by Latex
 formulas. However, with symbolic computations, you can massively save on repeating the same formulas which are already encoded in your
@@ -305,7 +437,7 @@ symbolic object. Here's a quick example how it typically looks in the notebooks 
 <span class="n">heat_eq</span> <span class="o">=</span> <span class="n">Eq</span><span class="p">(</span><span class="n">D</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">t</span><span class="p">),</span> <span class="n">D</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -317,8 +449,7 @@ symbolic object. Here's a quick example how it typically looks in the notebooks 
 
     
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Solving heat type PDE:</p>
 
@@ -339,7 +470,7 @@ symbolic object. Here's a quick example how it typically looks in the notebooks 
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">heat_eq</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -349,13 +480,13 @@ symbolic object. Here's a quick example how it typically looks in the notebooks 
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 
 
 <div class="output_latex output_subarea ">
-$$\frac{\partial}{\partial t} U{\left (x,t \right )} = \frac{\partial^{2}}{\partial x^{2}} U{\left (x,t \right )}$$
+$\displaystyle \frac{\partial}{\partial t} U{\left(x,t \right)} = \frac{\partial^{2}}{\partial x^{2}} U{\left(x,t \right)}$
 </div>
 
 </div>
@@ -379,7 +510,7 @@ $$\frac{\partial}{\partial t} U{\left (x,t \right )} = \frac{\partial^{2}}{\part
 <span class="n">bc_right</span> <span class="o">=</span> <span class="n">Eq</span><span class="p">(</span><span class="n">U</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -391,8 +522,7 @@ $$\frac{\partial}{\partial t} U{\left (x,t \right )} = \frac{\partial^{2}}{\part
 
     
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Subject to:</p>
 
@@ -414,7 +544,7 @@ $$\frac{\partial}{\partial t} U{\left (x,t \right )} = \frac{\partial^{2}}{\part
 <span class="n">display</span><span class="p">(</span><span class="n">bc_right</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -424,26 +554,26 @@ $$\frac{\partial}{\partial t} U{\left (x,t \right )} = \frac{\partial^{2}}{\part
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 
 
 <div class="output_latex output_subarea ">
-$$U{\left (0,t \right )} = 0$$
+$\displaystyle U{\left(0,t \right)} = 0$
 </div>
 
 </div>
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 
 
 <div class="output_latex output_subarea ">
-$$U{\left (1,t \right )} = 0$$
+$\displaystyle U{\left(1,t \right)} = 0$
 </div>
 
 </div>
@@ -459,8 +589,7 @@ $$U{\left (1,t \right )} = 0$$
 
     
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
 <p>What I don't like about that style of presentation is that it's pretty scattered and reqires interleaving displayed formulas with random python cells.
@@ -490,7 +619,7 @@ so this is the easiest way of doing it I came up with to so far:</p>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">&quot;Solving heat type PDE $</span><span class="si">{}</span><span class="s2">$ subject to: $</span><span class="si">{}</span><span class="s2">$ and $</span><span class="si">{}</span><span class="s2">$&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">latex</span><span class="p">(</span><span class="n">heat_eq</span><span class="p">),</span> <span class="n">latex</span><span class="p">(</span><span class="n">bc_left</span><span class="p">),</span> <span class="n">latex</span><span class="p">(</span><span class="n">bc_right</span><span class="p">))))</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -500,12 +629,12 @@ so this is the easiest way of doing it I came up with to so far:</p>
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<p>Solving heat type PDE $\frac{\partial}{\partial t} U{\left (x,t \right )} = \frac{\partial^{2}}{\partial x^{2}} U{\left (x,t \right )}$ subject to: $U{\left (0,t \right )} = 0$ and $U{\left (1,t \right )} = 0$</p>
+<p>Solving heat type PDE $\frac{\partial}{\partial t} U{\left(x,t \right)} = \frac{\partial^{2}}{\partial x^{2}} U{\left(x,t \right)}$ subject to: $U{\left(0,t \right)} = 0$ and $U{\left(1,t \right)} = 0$</p>
 
 </div>
 
@@ -522,8 +651,7 @@ so this is the easiest way of doing it I came up with to so far:</p>
 
     
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>It's quite tedious to do that every time, so I extracted it in a little helper method:
 TODO inject function code here... perhaps templating engine??</p>
@@ -549,7 +677,7 @@ TODO inject function code here... perhaps templating engine??</p>
     <span class="p">))</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -561,8 +689,7 @@ TODO inject function code here... perhaps templating engine??</p>
 
     
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>So far so good, I just define <code>ldisplay = ldisplay_md</code> on top of my notebook and use <code>ldisplay</code> instead of display for singleline outputs.</p>
 <p>However while trying to use it with <a href="https://github.com/millejoh/emacs-ipython-notebook">EIN</a> (emacs frontent for jupiter),
@@ -639,7 +766,7 @@ Nevertheless, it is capable of outputing formulas as ASCII art, kinda like this:
         <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">())</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -658,7 +785,7 @@ Nevertheless, it is capable of outputing formulas as ASCII art, kinda like this:
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">mdisplay_plain</span><span class="p">(</span><span class="s2">&quot;Solving heat type PDE  </span><span class="si">{}</span><span class="s2"> subject to: </span><span class="si">{bl}</span><span class="s2"> and </span><span class="si">{br}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">heat_eq</span><span class="p">,</span> <span class="n">bl</span><span class="o">=</span><span class="n">bc_left</span><span class="p">,</span> <span class="n">br</span><span class="o">=</span><span class="n">bc_right</span><span class="p">)</span>
 </pre></div>
 
-</div>
+    </div>
 </div>
 </div>
 
@@ -668,7 +795,7 @@ Nevertheless, it is capable of outputing formulas as ASCII art, kinda like this:
 
 <div class="output_area">
 
-<div class="prompt"></div>
+    <div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -692,8 +819,7 @@ Solving heat type PDE  ──(U(x, t)) = ───(U(x, t)) subject to: U(0, t) 
 
     
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Neat? I think so!</p>
 <p>The sad thing is that figuring out the <code>as_text</code> bit took me about an hour of intense debugging, 
