@@ -870,6 +870,218 @@ Hopefully that saves someone else a bit of time.</p>
 ]]></summary>
 </entry>
 <entry>
+    <title>My personal knowledge setup: part 0</title>
+    <link href="https://beepb00p.xyz/pkm-setup.html" />
+    <id>https://beepb00p.xyz/pkm-setup.html</id>
+    <published>2019-05-13T00:00:00Z</published>
+    <updated>2019-05-13T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="pkm org-mode learning">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>My personal knowledge setup: part 0 | Mildly entertainingᵝ</title>
+
+        <link rel="stylesheet" href="./css/default.css" />
+
+        <!-- TODO make it conditional on actually having math on page? -->
+        <script type="text/javascript">
+ window.MathJax = {
+     tex2jax: {
+         // note that hakyll source has got double dollar signs due to special meaning in templates
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+     }
+ };
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    ·<!-- TODO eh, not sure if this symbol is good for that... -->
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                </span>
+                <!-- TODO do site and archive later when they actually have something meaningful -->
+                <!-- <a href="/site.html">Site</a> -->
+                <a class="nav-right fat" href="./me.html">Me</a>
+                <!-- <a href="/archive.html">Archive</a> -->
+            </nav>
+        </header>
+
+        <main>
+            
+
+<!-- <link rel="stylesheet" href="/css/org.css" /> -->
+<link rel="stylesheet" href="./css/org-default.css" />
+
+<link rel="stylesheet" href="./css/org-extra.css" />
+
+
+
+<article>
+    <section class="post-title">
+    <h1>My personal knowledge setup: part 0</h1>
+    <div class="summary">How am I attempting to extend my mind</h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <p>
+First, forgive me for a somewhat cheesy use of zero in the title, however at this point I'm genuinely not sure how many posts I am gonna end up with or what final structure it would have. So far a sequence of separate posts seems appropriate, hence this one is zeroth.
+</p>
+
+<p>
+Anyway, what is <a href="https://en.wikipedia.org/wiki/Personal_knowledge_management">personal knowledge management</a>? TLDR, it's a name for the process of organizing your tasks, thoughts, information you know, so a fairly useful concept.
+</p>
+
+<p>
+I guess almost everyone at least at some point of their life tried to bring more organization: used a calendar, checklists, notebook etc.
+Perhaps you also were learning something and were wondering of more efficient ways of memorizing, organizing and acting on that information.
+</p>
+
+<p>
+This is what I'm loosely going to refer as PKM further on.
+</p>
+
+<p>
+Some of the reasons what I'm going to write about might be useful to you:
+</p>
+
+<ul class="org-ul">
+<li>you generally want to be more organized in your life but not sure how</li>
+<li>you are reading lots of stuff, but then you feel like you quickly forget it (especially on the Internet, where information is denser than in books)</li>
+<li>you think that flesh is weak and want to offload remembering things to external persistent medium</li>
+</ul>
+
+<p>
+I'm writing that because my 'system' has more or less settled and stabilized, and I feel that I could be useful by helping out other people and sharing the ideas.
+</p>
+
+<p>
+At this point, it also starts getting hard to keep up with all the things and hacks I implemented and maintaining let alone improving them, so I need to spread my ideas to the community.
+</p>
+
+<p>
+A bit of disclaimer: some of the things I am doing may seem excessive and tedious &ndash; but you don't have to use exactly the same setup, I'm merely sharing for you something to kick off!
+My own setup has been molded throughout the years with many influences from different people (who I will try to credit as long as I recall). Often some things I'm trying seem like too much effort even for me, but if you never overshoot, you might never hit that sweet spot between efficiency and convenience.
+</p>
+
+<p>
+I'm very happy to discuss if you have any questions/suggestions/etc.
+</p>
+
+<style>
+/* TODO err... what if it's got less than 2 digits?... so far only matters for pkm-plan post */
+.section-number-2 {
+    display: inline-block;
+    text-align: right;
+    width: 2ch;
+}
+
+/* TODO remove it later */
+.todo {
+  width: 4ch;
+}
+
+.outline-2 h2 {
+/* TODO make a bit more spacious */
+   margin-top: 0.1em;
+   margin-bottom: 0.1em;
+}
+</style>
+
+So, this is the plan, which I will fill with links as I write.
+
+<div id="outline-container-org1facccf" class="outline-2">
+<h2 id="org1facccf"><span class="section-number-2">1</span> <span class="todo TODO">TODO</span> task/todo management</h2>
+</div>
+<div id="outline-container-org14b1df7" class="outline-2">
+<h2 id="org14b1df7"><span class="section-number-2">2</span> <span class="todo TODO">TODO</span> personal wiki</h2>
+</div>
+
+<div id="outline-container-org8b95dd6" class="outline-2">
+<h2 id="org8b95dd6"><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> searching</h2>
+</div>
+<div id="outline-container-orgf313db1" class="outline-2">
+<h2 id="orgf313db1"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> logging and capturing</h2>
+</div>
+
+<div id="outline-container-org3268ec0" class="outline-2">
+<h2 id="org3268ec0"><span class="section-number-2">5</span> <span class="todo TODO">TODO</span> processing captured content</h2>
+</div>
+
+<div id="outline-container-org19d99cf" class="outline-2">
+<h2 id="org19d99cf"><span class="section-number-2">6</span> <span class="todo TODO">TODO</span> highlighting and annotating</h2>
+</div>
+<div id="outline-container-orgb3778fc" class="outline-2">
+<h2 id="orgb3778fc"><span class="section-number-2">7</span> <span class="todo TODO">TODO</span> discovering new information</h2>
+</div>
+
+<div id="outline-container-orgfff2c68" class="outline-2">
+<h2 id="orgfff2c68"><span class="section-number-2">8</span> <span class="todo TODO">TODO</span> spaced repetition and habits</h2>
+</div>
+<div id="outline-container-org7a4f65d" class="outline-2">
+<h2 id="org7a4f65d"><span class="section-number-2">9</span> <span class="todo TODO">TODO</span> syncing</h2>
+</div>
+
+<div id="outline-container-orga45582f" class="outline-2">
+<h2 id="orga45582f"><span class="section-number-2">10</span> <span class="todo TODO">TODO</span> regular backups</h2>
+</div>
+<div id="outline-container-org46eac2a" class="outline-2">
+<h2 id="org46eac2a"><span class="section-number-2">11</span> <span class="todo TODO">TODO</span> timeline</h2>
+</div>
+<div id="outline-container-org5afdee4" class="outline-2">
+<h2 id="org5afdee4"><span class="section-number-2">12</span> <span class="todo TODO">TODO</span> future</h2>
+</div>
+
+<div id="outline-container-org36f1a72" class="outline-2">
+<h2 id="org36f1a72"><span class="section-number-2">13</span> <span class="todo TODO">TODO</span> developing tools</h2>
+</div>
+
+    </section>
+
+    <section class="footer">
+        
+        <div class="tags"># pkm org-mode learning</div>
+        
+        <div class="date">May 13, 2019</div>
+    </section>
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_pkm_setup"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <footer>
+            <a class="fat" href="./atom.xml" title="Atom feed">atom</a>
+            <a class="fat" href="./rss.xml" title="RSS feed">rss</a>
+        </footer>
+    </body>
+</html>
+]]></summary>
+</entry>
+<entry>
     <title>Quantifying quantified-mind.com</title>
     <link href="https://beepb00p.xyz/quantified-mind.html" />
     <id>https://beepb00p.xyz/quantified-mind.html</id>
