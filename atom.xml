@@ -935,7 +935,7 @@ Hopefully that saves someone else a bit of time.</p>
 <article>
     <section class="post-title">
     <h1>My personal knowledge setup: part 0</h1>
-    <div class="summary">How am I attempting to extend my mind</h2>
+    <div class="summary">How I am attempting to extend my mind</h2>
     </section>
     <!-- are sections appropriate for that? -->
 
@@ -1006,50 +1006,50 @@ I'm very happy to discuss if you have any questions/suggestions/etc.
 
 So, this is the plan, which I will fill with links as I write.
 
-<div id="outline-container-org1facccf" class="outline-2">
-<h2 id="org1facccf"><span class="section-number-2">1</span> <span class="todo TODO">TODO</span> task/todo management</h2>
+<div id="outline-container-org0000000" class="outline-2">
+<h2 id="org0000000"><span class="section-number-2">1</span> <span class="todo TODO">TODO</span> task/todo management</h2>
 </div>
-<div id="outline-container-org14b1df7" class="outline-2">
-<h2 id="org14b1df7"><span class="section-number-2">2</span> <span class="todo TODO">TODO</span> personal wiki</h2>
-</div>
-
-<div id="outline-container-org8b95dd6" class="outline-2">
-<h2 id="org8b95dd6"><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> searching</h2>
-</div>
-<div id="outline-container-orgf313db1" class="outline-2">
-<h2 id="orgf313db1"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> logging and capturing</h2>
+<div id="outline-container-org0000001" class="outline-2">
+<h2 id="org0000001"><span class="section-number-2">2</span> <span class="todo TODO">TODO</span> personal wiki</h2>
 </div>
 
-<div id="outline-container-org3268ec0" class="outline-2">
-<h2 id="org3268ec0"><span class="section-number-2">5</span> <span class="todo TODO">TODO</span> processing captured content</h2>
+<div id="outline-container-org0000002" class="outline-2">
+<h2 id="org0000002"><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> searching</h2>
+</div>
+<div id="outline-container-org0000003" class="outline-2">
+<h2 id="org0000003"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> logging and capturing</h2>
 </div>
 
-<div id="outline-container-org19d99cf" class="outline-2">
-<h2 id="org19d99cf"><span class="section-number-2">6</span> <span class="todo TODO">TODO</span> highlighting and annotating</h2>
-</div>
-<div id="outline-container-orgb3778fc" class="outline-2">
-<h2 id="orgb3778fc"><span class="section-number-2">7</span> <span class="todo TODO">TODO</span> discovering new information</h2>
+<div id="outline-container-org0000004" class="outline-2">
+<h2 id="org0000004"><span class="section-number-2">5</span> <span class="todo TODO">TODO</span> processing captured content</h2>
 </div>
 
-<div id="outline-container-orgfff2c68" class="outline-2">
-<h2 id="orgfff2c68"><span class="section-number-2">8</span> <span class="todo TODO">TODO</span> spaced repetition and habits</h2>
+<div id="outline-container-org0000005" class="outline-2">
+<h2 id="org0000005"><span class="section-number-2">6</span> <span class="todo TODO">TODO</span> highlighting and annotating</h2>
 </div>
-<div id="outline-container-org7a4f65d" class="outline-2">
-<h2 id="org7a4f65d"><span class="section-number-2">9</span> <span class="todo TODO">TODO</span> syncing</h2>
-</div>
-
-<div id="outline-container-orga45582f" class="outline-2">
-<h2 id="orga45582f"><span class="section-number-2">10</span> <span class="todo TODO">TODO</span> regular backups</h2>
-</div>
-<div id="outline-container-org46eac2a" class="outline-2">
-<h2 id="org46eac2a"><span class="section-number-2">11</span> <span class="todo TODO">TODO</span> timeline</h2>
-</div>
-<div id="outline-container-org5afdee4" class="outline-2">
-<h2 id="org5afdee4"><span class="section-number-2">12</span> <span class="todo TODO">TODO</span> future</h2>
+<div id="outline-container-org0000006" class="outline-2">
+<h2 id="org0000006"><span class="section-number-2">7</span> <span class="todo TODO">TODO</span> discovering new information</h2>
 </div>
 
-<div id="outline-container-org36f1a72" class="outline-2">
-<h2 id="org36f1a72"><span class="section-number-2">13</span> <span class="todo TODO">TODO</span> developing tools</h2>
+<div id="outline-container-org0000007" class="outline-2">
+<h2 id="org0000007"><span class="section-number-2">8</span> <span class="todo TODO">TODO</span> spaced repetition and habits</h2>
+</div>
+<div id="outline-container-org0000008" class="outline-2">
+<h2 id="org0000008"><span class="section-number-2">9</span> <span class="todo TODO">TODO</span> syncing</h2>
+</div>
+
+<div id="outline-container-org0000009" class="outline-2">
+<h2 id="org0000009"><span class="section-number-2">10</span> <span class="todo TODO">TODO</span> regular backups</h2>
+</div>
+<div id="outline-container-org000000a" class="outline-2">
+<h2 id="org000000a"><span class="section-number-2">11</span> <span class="todo TODO">TODO</span> timeline</h2>
+</div>
+<div id="outline-container-org000000b" class="outline-2">
+<h2 id="org000000b"><span class="section-number-2">12</span> <span class="todo TODO">TODO</span> future</h2>
+</div>
+
+<div id="outline-container-org000000c" class="outline-2">
+<h2 id="org000000c"><span class="section-number-2">13</span> <span class="todo TODO">TODO</span> developing tools</h2>
 </div>
 
     </section>
