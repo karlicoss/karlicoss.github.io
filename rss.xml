@@ -53,6 +53,8 @@
                     <a class="fat" href="./ideas.html">Ideas</a>
                     ·
                     <a class="fat" href="./notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
                 </span>
                 <!-- TODO do site and archive later when they actually have something meaningful -->
                 <!-- <a href="/site.html">Site</a> -->
@@ -114,10 +116,13 @@ This realization made the irritation go and made the rest of exploration a bit m
 
     </section>
 
+    
     <section class="footer">
-        <div class="tags">#art</div>
+        <div class="post-tags"><span class="post-tag">#art</span></div>
+        <!-- TODO post-date? -->
         <div class="date">May 12, 2019</div>
     </section>
+    
 
     <section class="comments">
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
@@ -187,6 +192,8 @@ This realization made the irritation go and made the rest of exploration a bit m
                     <a class="fat" href="./ideas.html">Ideas</a>
                     ·
                     <a class="fat" href="./notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
                 </span>
                 <!-- TODO do site and archive later when they actually have something meaningful -->
                 <!-- <a href="/site.html">Site</a> -->
@@ -289,10 +296,13 @@ Why do they always mention that? Is that important?</code></pre>
 <p>I’m gonna look up what are Markdown people using for capturing information, add few templates and spread the good stuff. I’m excited!</p>
     </section>
 
+    
     <section class="footer">
-        <div class="tags">#pkm #org-capture #annotation</div>
+        <div class="post-tags"><span class="post-tag">#pkm</span> <span class="post-tag">#org-capture</span> <span class="post-tag">#annotation</span></div>
+        <!-- TODO post-date? -->
         <div class="date">February 9, 2019</div>
     </section>
+    
 
     <section class="comments">
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
@@ -362,6 +372,8 @@ Why do they always mention that? Is that important?</code></pre>
                     <a class="fat" href="./ideas.html">Ideas</a>
                     ·
                     <a class="fat" href="./notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
                 </span>
                 <!-- TODO do site and archive later when they actually have something meaningful -->
                 <!-- <a href="/site.html">Site</a> -->
@@ -403,7 +415,7 @@ Why do they always mention that? Is that important?</code></pre>
 <span class="n">init_printing</span><span class="p">()</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -416,7 +428,8 @@ Why do they always mention that? Is that important?</code></pre>
 
     
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>If you are working with numerical computations in an IPython notebook, you don't really have much choice but accompany your computations by Latex
 formulas. However, with symbolic computations, you can massively save on repeating the same formulas which are already encoded in your
@@ -442,7 +455,7 @@ symbolic object. Here's a quick example how it typically looks in the notebooks 
 <span class="n">heat_eq</span> <span class="o">=</span> <span class="n">Eq</span><span class="p">(</span><span class="n">D</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">t</span><span class="p">),</span> <span class="n">D</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -454,7 +467,8 @@ symbolic object. Here's a quick example how it typically looks in the notebooks 
 
     
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Solving heat type PDE:</p>
 
@@ -475,7 +489,7 @@ symbolic object. Here's a quick example how it typically looks in the notebooks 
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">heat_eq</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -485,13 +499,13 @@ symbolic object. Here's a quick example how it typically looks in the notebooks 
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+<div class="prompt"></div>
 
 
 
 
 <div class="output_latex output_subarea ">
-$\displaystyle \frac{\partial}{\partial t} U{\left(x,t \right)} = \frac{\partial^{2}}{\partial x^{2}} U{\left(x,t \right)}$
+$$\frac{\partial}{\partial t} U{\left (x,t \right )} = \frac{\partial^{2}}{\partial x^{2}} U{\left (x,t \right )}$$
 </div>
 
 </div>
@@ -515,7 +529,7 @@ $\displaystyle \frac{\partial}{\partial t} U{\left(x,t \right)} = \frac{\partial
 <span class="n">bc_right</span> <span class="o">=</span> <span class="n">Eq</span><span class="p">(</span><span class="n">U</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -527,7 +541,8 @@ $\displaystyle \frac{\partial}{\partial t} U{\left(x,t \right)} = \frac{\partial
 
     
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Subject to:</p>
 
@@ -549,7 +564,7 @@ $\displaystyle \frac{\partial}{\partial t} U{\left(x,t \right)} = \frac{\partial
 <span class="n">display</span><span class="p">(</span><span class="n">bc_right</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -559,26 +574,26 @@ $\displaystyle \frac{\partial}{\partial t} U{\left(x,t \right)} = \frac{\partial
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+<div class="prompt"></div>
 
 
 
 
 <div class="output_latex output_subarea ">
-$\displaystyle U{\left(0,t \right)} = 0$
+$$U{\left (0,t \right )} = 0$$
 </div>
 
 </div>
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+<div class="prompt"></div>
 
 
 
 
 <div class="output_latex output_subarea ">
-$\displaystyle U{\left(1,t \right)} = 0$
+$$U{\left (1,t \right )} = 0$$
 </div>
 
 </div>
@@ -594,7 +609,8 @@ $\displaystyle U{\left(1,t \right)} = 0$
 
     
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
 <p>What I don't like about that style of presentation is that it's pretty scattered and reqires interleaving displayed formulas with random python cells.
@@ -624,7 +640,7 @@ so this is the easiest way of doing it I came up with to so far:</p>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">&quot;Solving heat type PDE $</span><span class="si">{}</span><span class="s2">$ subject to: $</span><span class="si">{}</span><span class="s2">$ and $</span><span class="si">{}</span><span class="s2">$&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">latex</span><span class="p">(</span><span class="n">heat_eq</span><span class="p">),</span> <span class="n">latex</span><span class="p">(</span><span class="n">bc_left</span><span class="p">),</span> <span class="n">latex</span><span class="p">(</span><span class="n">bc_right</span><span class="p">))))</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -634,12 +650,12 @@ so this is the easiest way of doing it I came up with to so far:</p>
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+<div class="prompt"></div>
 
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<p>Solving heat type PDE $\frac{\partial}{\partial t} U{\left(x,t \right)} = \frac{\partial^{2}}{\partial x^{2}} U{\left(x,t \right)}$ subject to: $U{\left(0,t \right)} = 0$ and $U{\left(1,t \right)} = 0$</p>
+<p>Solving heat type PDE $\frac{\partial}{\partial t} U{\left (x,t \right )} = \frac{\partial^{2}}{\partial x^{2}} U{\left (x,t \right )}$ subject to: $U{\left (0,t \right )} = 0$ and $U{\left (1,t \right )} = 0$</p>
 
 </div>
 
@@ -656,7 +672,8 @@ so this is the easiest way of doing it I came up with to so far:</p>
 
     
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>It's quite tedious to do that every time, so I extracted it in a little helper method:
 TODO inject function code here... perhaps templating engine??</p>
@@ -682,7 +699,7 @@ TODO inject function code here... perhaps templating engine??</p>
     <span class="p">))</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -694,7 +711,8 @@ TODO inject function code here... perhaps templating engine??</p>
 
     
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>So far so good, I just define <code>ldisplay = ldisplay_md</code> on top of my notebook and use <code>ldisplay</code> instead of display for singleline outputs.</p>
 <p>However while trying to use it with <a href="https://github.com/millejoh/emacs-ipython-notebook">EIN</a> (emacs frontent for jupiter),
@@ -771,7 +789,7 @@ Nevertheless, it is capable of outputing formulas as ASCII art, kinda like this:
         <span class="nb">print</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">rstrip</span><span class="p">())</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -790,7 +808,7 @@ Nevertheless, it is capable of outputing formulas as ASCII art, kinda like this:
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">mdisplay_plain</span><span class="p">(</span><span class="s2">&quot;Solving heat type PDE  </span><span class="si">{}</span><span class="s2"> subject to: </span><span class="si">{bl}</span><span class="s2"> and </span><span class="si">{br}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">heat_eq</span><span class="p">,</span> <span class="n">bl</span><span class="o">=</span><span class="n">bc_left</span><span class="p">,</span> <span class="n">br</span><span class="o">=</span><span class="n">bc_right</span><span class="p">)</span>
 </pre></div>
 
-    </div>
+</div>
 </div>
 </div>
 
@@ -800,7 +818,7 @@ Nevertheless, it is capable of outputing formulas as ASCII art, kinda like this:
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+<div class="prompt"></div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -824,7 +842,8 @@ Solving heat type PDE  ──(U(x, t)) = ───(U(x, t)) subject to: U(0, t) 
 
     
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Neat? I think so!</p>
 <p>The sad thing is that figuring out the <code>as_text</code> bit took me about an hour of intense debugging, 
@@ -843,10 +862,13 @@ Hopefully that saves someone else a bit of time.</p>
 
     </section>
 
+    
     <section class="footer">
-        <div class="tags">#ipython #emacs</div>
+        <div class="post-tags"><span class="post-tag">#ipython</span> <span class="post-tag">#emacs</span></div>
+        <!-- TODO post-date? -->
         <div class="date">April 14, 2019</div>
     </section>
+    
 
     <section class="comments">
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
@@ -916,6 +938,8 @@ Hopefully that saves someone else a bit of time.</p>
                     <a class="fat" href="./ideas.html">Ideas</a>
                     ·
                     <a class="fat" href="./notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
                 </span>
                 <!-- TODO do site and archive later when they actually have something meaningful -->
                 <!-- <a href="/site.html">Site</a> -->
@@ -1056,10 +1080,13 @@ So, this is the plan, which I will fill with links as I write.
 
     </section>
 
+    
     <section class="footer">
-        <div class="tags">#pkm #org-mode #learning</div>
+        <div class="post-tags"><span class="post-tag">#pkm</span> <span class="post-tag">#org-mode</span> <span class="post-tag">#learning</span></div>
+        <!-- TODO post-date? -->
         <div class="date">May 13, 2019</div>
     </section>
+    
 
     <section class="comments">
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
@@ -1129,6 +1156,8 @@ So, this is the plan, which I will fill with links as I write.
                     <a class="fat" href="./ideas.html">Ideas</a>
                     ·
                     <a class="fat" href="./notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
                 </span>
                 <!-- TODO do site and archive later when they actually have something meaningful -->
                 <!-- <a href="/site.html">Site</a> -->
@@ -1192,10 +1221,13 @@ the two grids are identical.</code></pre>
 <p>Could be interesting to do similar reverse engineering on other cognitive testing platforms.</p>
     </section>
 
+    
     <section class="footer">
-        <div class="tags">#cognitive #quantified-self #selenium</div>
+        <div class="post-tags"><span class="post-tag">#cognitive</span> <span class="post-tag">#quantified-self</span> <span class="post-tag">#selenium</span></div>
+        <!-- TODO post-date? -->
         <div class="date">March 6, 2019</div>
     </section>
+    
 
     <section class="comments">
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
@@ -1265,6 +1297,8 @@ the two grids are identical.</code></pre>
                     <a class="fat" href="./ideas.html">Ideas</a>
                     ·
                     <a class="fat" href="./notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
                 </span>
                 <!-- TODO do site and archive later when they actually have something meaningful -->
                 <!-- <a href="/site.html">Site</a> -->
@@ -1304,10 +1338,13 @@ the two grids are identical.</code></pre>
 <p>If you know answers to any of the questions here, please let me know!</p>
     </section>
 
+    
     <section class="footer">
-        <div class="tags">#recycling #environment</div>
+        <div class="post-tags"><span class="post-tag">#recycling</span> <span class="post-tag">#environment</span></div>
+        <!-- TODO post-date? -->
         <div class="date">April 18, 2019</div>
     </section>
+    
 
     <section class="comments">
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
@@ -1377,6 +1414,8 @@ the two grids are identical.</code></pre>
                     <a class="fat" href="./ideas.html">Ideas</a>
                     ·
                     <a class="fat" href="./notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
                 </span>
                 <!-- TODO do site and archive later when they actually have something meaningful -->
                 <!-- <a href="/site.html">Site</a> -->
@@ -1446,10 +1485,13 @@ the two grids are identical.</code></pre>
 <p>I guess the lesson here is to reevaluate things I’m measuring after a short while and make sure I can actually track something meaningful or something I am capable of measuring.</p>
     </section>
 
+    
     <section class="footer">
-        <div class="tags">#sleep #quantified-self</div>
+        <div class="post-tags"><span class="post-tag">#sleep</span> <span class="post-tag">#quantified-self</span></div>
+        <!-- TODO post-date? -->
         <div class="date">February 21, 2019</div>
     </section>
+    
 
     <section class="comments">
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
@@ -1519,6 +1561,8 @@ the two grids are identical.</code></pre>
                     <a class="fat" href="./ideas.html">Ideas</a>
                     ·
                     <a class="fat" href="./notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
                 </span>
                 <!-- TODO do site and archive later when they actually have something meaningful -->
                 <!-- <a href="/site.html">Site</a> -->
@@ -1555,10 +1599,13 @@ the two grids are identical.</code></pre>
 <p>The only disadvantage at the moment is that symlink updating can only happen once a minute if you run via cron, but should be easy to use inotify if that’s an issue.</p>
     </section>
 
+    
     <section class="footer">
-        <div class="tags">#tools #setup</div>
+        <div class="post-tags"><span class="post-tag">#tools</span> <span class="post-tag">#setup</span></div>
+        <!-- TODO post-date? -->
         <div class="date">May 9, 2019</div>
     </section>
+    
 
     <section class="comments">
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
