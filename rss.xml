@@ -58,7 +58,12 @@
                 </span>
                 <!-- TODO do site and archive later when they actually have something meaningful -->
                 <!-- <a href="/site.html">Site</a> -->
-                <a class="nav-right fat" href="./me.html">Me</a>
+                <span class="nav-right">
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+
                 <!-- <a href="/archive.html">Archive</a> -->
             </nav>
         </header>
@@ -197,7 +202,12 @@ This realization made the irritation go and made the rest of exploration a bit m
                 </span>
                 <!-- TODO do site and archive later when they actually have something meaningful -->
                 <!-- <a href="/site.html">Site</a> -->
-                <a class="nav-right fat" href="./me.html">Me</a>
+                <span class="nav-right">
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+
                 <!-- <a href="/archive.html">Archive</a> -->
             </nav>
         </header>
@@ -377,7 +387,12 @@ Why do they always mention that? Is that important?</code></pre>
                 </span>
                 <!-- TODO do site and archive later when they actually have something meaningful -->
                 <!-- <a href="/site.html">Site</a> -->
-                <a class="nav-right fat" href="./me.html">Me</a>
+                <span class="nav-right">
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+
                 <!-- <a href="/archive.html">Archive</a> -->
             </nav>
         </header>
@@ -936,7 +951,12 @@ Hopefully that saves someone else a bit of time.</p>
                 </span>
                 <!-- TODO do site and archive later when they actually have something meaningful -->
                 <!-- <a href="/site.html">Site</a> -->
-                <a class="nav-right fat" href="./me.html">Me</a>
+                <span class="nav-right">
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+
                 <!-- <a href="/archive.html">Archive</a> -->
             </nav>
         </header>
@@ -1154,7 +1174,12 @@ So, this is the plan, which I will fill with links as I write.
                 </span>
                 <!-- TODO do site and archive later when they actually have something meaningful -->
                 <!-- <a href="/site.html">Site</a> -->
-                <a class="nav-right fat" href="./me.html">Me</a>
+                <span class="nav-right">
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+
                 <!-- <a href="/archive.html">Archive</a> -->
             </nav>
         </header>
@@ -1295,7 +1320,12 @@ the two grids are identical.</code></pre>
                 </span>
                 <!-- TODO do site and archive later when they actually have something meaningful -->
                 <!-- <a href="/site.html">Site</a> -->
-                <a class="nav-right fat" href="./me.html">Me</a>
+                <span class="nav-right">
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+
                 <!-- <a href="/archive.html">Archive</a> -->
             </nav>
         </header>
@@ -1412,7 +1442,12 @@ the two grids are identical.</code></pre>
                 </span>
                 <!-- TODO do site and archive later when they actually have something meaningful -->
                 <!-- <a href="/site.html">Site</a> -->
-                <a class="nav-right fat" href="./me.html">Me</a>
+                <span class="nav-right">
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+
                 <!-- <a href="/archive.html">Archive</a> -->
             </nav>
         </header>
@@ -1559,7 +1594,12 @@ the two grids are identical.</code></pre>
                 </span>
                 <!-- TODO do site and archive later when they actually have something meaningful -->
                 <!-- <a href="/site.html">Site</a> -->
-                <a class="nav-right fat" href="./me.html">Me</a>
+                <span class="nav-right">
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+
                 <!-- <a href="/archive.html">Archive</a> -->
             </nav>
         </header>
