@@ -56,15 +56,13 @@
                     ·
                     <a class="fat" href="./tags.html">Tags</a>
                 </span>
-                <!-- TODO do site and archive later when they actually have something meaningful -->
-                <!-- <a href="/site.html">Site</a> -->
                 <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
                     <a class="fat" href="./site.html">Site</a>
                     ·
                     <a class="fat" href="./me.html">Me</a>
                 </span>
-
-                <!-- <a href="/archive.html">Archive</a> -->
             </nav>
         </header>
 
@@ -141,9 +139,8 @@ This realization made the irritation go and made the rest of exploration a bit m
 
         </main>
 
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         <footer>
-            <a class="fat" href="./atom.xml" title="Atom feed">atom</a>
-            <a class="fat" href="./rss.xml" title="RSS feed">rss</a>
         </footer>
     </body>
 </html>
@@ -200,15 +197,13 @@ This realization made the irritation go and made the rest of exploration a bit m
                     ·
                     <a class="fat" href="./tags.html">Tags</a>
                 </span>
-                <!-- TODO do site and archive later when they actually have something meaningful -->
-                <!-- <a href="/site.html">Site</a> -->
                 <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
                     <a class="fat" href="./site.html">Site</a>
                     ·
                     <a class="fat" href="./me.html">Me</a>
                 </span>
-
-                <!-- <a href="/archive.html">Archive</a> -->
             </nav>
         </header>
 
@@ -326,9 +321,8 @@ Why do they always mention that? Is that important?</code></pre>
 
         </main>
 
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         <footer>
-            <a class="fat" href="./atom.xml" title="Atom feed">atom</a>
-            <a class="fat" href="./rss.xml" title="RSS feed">rss</a>
         </footer>
     </body>
 </html>
@@ -385,15 +379,13 @@ Why do they always mention that? Is that important?</code></pre>
                     ·
                     <a class="fat" href="./tags.html">Tags</a>
                 </span>
-                <!-- TODO do site and archive later when they actually have something meaningful -->
-                <!-- <a href="/site.html">Site</a> -->
                 <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
                     <a class="fat" href="./site.html">Site</a>
                     ·
                     <a class="fat" href="./me.html">Me</a>
                 </span>
-
-                <!-- <a href="/archive.html">Archive</a> -->
             </nav>
         </header>
 
@@ -890,9 +882,8 @@ Hopefully that saves someone else a bit of time.</p>
 
         </main>
 
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         <footer>
-            <a class="fat" href="./atom.xml" title="Atom feed">atom</a>
-            <a class="fat" href="./rss.xml" title="RSS feed">rss</a>
         </footer>
     </body>
 </html>
@@ -949,15 +940,13 @@ Hopefully that saves someone else a bit of time.</p>
                     ·
                     <a class="fat" href="./tags.html">Tags</a>
                 </span>
-                <!-- TODO do site and archive later when they actually have something meaningful -->
-                <!-- <a href="/site.html">Site</a> -->
                 <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
                     <a class="fat" href="./site.html">Site</a>
                     ·
                     <a class="fat" href="./me.html">Me</a>
                 </span>
-
-                <!-- <a href="/archive.html">Archive</a> -->
             </nav>
         </header>
 
@@ -1113,9 +1102,8 @@ So, this is the plan, which I will fill with links as I write.
 
         </main>
 
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         <footer>
-            <a class="fat" href="./atom.xml" title="Atom feed">atom</a>
-            <a class="fat" href="./rss.xml" title="RSS feed">rss</a>
         </footer>
     </body>
 </html>
@@ -1172,15 +1160,13 @@ So, this is the plan, which I will fill with links as I write.
                     ·
                     <a class="fat" href="./tags.html">Tags</a>
                 </span>
-                <!-- TODO do site and archive later when they actually have something meaningful -->
-                <!-- <a href="/site.html">Site</a> -->
                 <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
                     <a class="fat" href="./site.html">Site</a>
                     ·
                     <a class="fat" href="./me.html">Me</a>
                 </span>
-
-                <!-- <a href="/archive.html">Archive</a> -->
             </nav>
         </header>
 
@@ -1259,9 +1245,8 @@ the two grids are identical.</code></pre>
 
         </main>
 
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         <footer>
-            <a class="fat" href="./atom.xml" title="Atom feed">atom</a>
-            <a class="fat" href="./rss.xml" title="RSS feed">rss</a>
         </footer>
     </body>
 </html>
@@ -1318,15 +1303,13 @@ the two grids are identical.</code></pre>
                     ·
                     <a class="fat" href="./tags.html">Tags</a>
                 </span>
-                <!-- TODO do site and archive later when they actually have something meaningful -->
-                <!-- <a href="/site.html">Site</a> -->
                 <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
                     <a class="fat" href="./site.html">Site</a>
                     ·
                     <a class="fat" href="./me.html">Me</a>
                 </span>
-
-                <!-- <a href="/archive.html">Archive</a> -->
             </nav>
         </header>
 
@@ -1381,9 +1364,8 @@ the two grids are identical.</code></pre>
 
         </main>
 
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         <footer>
-            <a class="fat" href="./atom.xml" title="Atom feed">atom</a>
-            <a class="fat" href="./rss.xml" title="RSS feed">rss</a>
         </footer>
     </body>
 </html>
@@ -1440,15 +1422,13 @@ the two grids are identical.</code></pre>
                     ·
                     <a class="fat" href="./tags.html">Tags</a>
                 </span>
-                <!-- TODO do site and archive later when they actually have something meaningful -->
-                <!-- <a href="/site.html">Site</a> -->
                 <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
                     <a class="fat" href="./site.html">Site</a>
                     ·
                     <a class="fat" href="./me.html">Me</a>
                 </span>
-
-                <!-- <a href="/archive.html">Archive</a> -->
             </nav>
         </header>
 
@@ -1533,9 +1513,8 @@ the two grids are identical.</code></pre>
 
         </main>
 
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         <footer>
-            <a class="fat" href="./atom.xml" title="Atom feed">atom</a>
-            <a class="fat" href="./rss.xml" title="RSS feed">rss</a>
         </footer>
     </body>
 </html>
@@ -1592,15 +1571,13 @@ the two grids are identical.</code></pre>
                     ·
                     <a class="fat" href="./tags.html">Tags</a>
                 </span>
-                <!-- TODO do site and archive later when they actually have something meaningful -->
-                <!-- <a href="/site.html">Site</a> -->
                 <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
                     <a class="fat" href="./site.html">Site</a>
                     ·
                     <a class="fat" href="./me.html">Me</a>
                 </span>
-
-                <!-- <a href="/archive.html">Archive</a> -->
             </nav>
         </header>
 
@@ -1652,9 +1629,8 @@ the two grids are identical.</code></pre>
 
         </main>
 
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         <footer>
-            <a class="fat" href="./atom.xml" title="Atom feed">atom</a>
-            <a class="fat" href="./rss.xml" title="RSS feed">rss</a>
         </footer>
     </body>
 </html>
