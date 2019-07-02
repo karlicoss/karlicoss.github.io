@@ -125,7 +125,7 @@ This realization made the irritation go and made the rest of exploration a bit m
 
     
     <section class="footer">
-        <div class="post-tags"><span class="post-tag">#art</span></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#art">#art</a></div>
         <!-- TODO post-date? -->
         <div class="date">12 May 2019</div>
     </section>
@@ -307,7 +307,7 @@ Why do they always mention that? Is that important?</code></pre>
 
     
     <section class="footer">
-        <div class="post-tags"><span class="post-tag">#pkm</span> <span class="post-tag">#org-capture</span> <span class="post-tag">#annotation</span></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#org-capture">#org-capture</a> <a class="post-tag" href="./tags.html#annotation">#annotation</a></div>
         <!-- TODO post-date? -->
         <div class="date">09 February 2019</div>
     </section>
@@ -868,7 +868,7 @@ Hopefully that saves someone else a bit of time.</p>
 
     
     <section class="footer">
-        <div class="post-tags"><span class="post-tag">#ipython</span> <span class="post-tag">#emacs</span></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#ipython">#ipython</a> <a class="post-tag" href="./tags.html#emacs">#emacs</a></div>
         <!-- TODO post-date? -->
         <div class="date">14 April 2019</div>
     </section>
@@ -1088,7 +1088,7 @@ So, this is the plan, which I will fill with links as I write.
 
     
     <section class="footer">
-        <div class="post-tags"><span class="post-tag">#pkm</span> <span class="post-tag">#org-mode</span> <span class="post-tag">#learning</span></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#org-mode">#org-mode</a> <a class="post-tag" href="./tags.html#learning">#learning</a></div>
         <!-- TODO post-date? -->
         <div class="date">13 May 2019</div>
     </section>
@@ -1231,7 +1231,7 @@ the two grids are identical.</code></pre>
 
     
     <section class="footer">
-        <div class="post-tags"><span class="post-tag">#cognitive</span> <span class="post-tag">#quantified-self</span> <span class="post-tag">#selenium</span></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#cognitive">#cognitive</a> <a class="post-tag" href="./tags.html#quantified-self">#quantified-self</a> <a class="post-tag" href="./tags.html#selenium">#selenium</a></div>
         <!-- TODO post-date? -->
         <div class="date">06 March 2019</div>
     </section>
@@ -1350,7 +1350,7 @@ the two grids are identical.</code></pre>
 
     
     <section class="footer">
-        <div class="post-tags"><span class="post-tag">#recycling</span> <span class="post-tag">#environment</span></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#recycling">#recycling</a> <a class="post-tag" href="./tags.html#environment">#environment</a></div>
         <!-- TODO post-date? -->
         <div class="date">18 April 2019</div>
     </section>
@@ -1499,7 +1499,7 @@ the two grids are identical.</code></pre>
 
     
     <section class="footer">
-        <div class="post-tags"><span class="post-tag">#sleep</span> <span class="post-tag">#quantified-self</span></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#sleep">#sleep</a> <a class="post-tag" href="./tags.html#quantified-self">#quantified-self</a></div>
         <!-- TODO post-date? -->
         <div class="date">21 February 2019</div>
     </section>
@@ -1615,7 +1615,7 @@ the two grids are identical.</code></pre>
 
     
     <section class="footer">
-        <div class="post-tags"><span class="post-tag">#tools</span> <span class="post-tag">#setup</span></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#tools">#tools</a> <a class="post-tag" href="./tags.html#setup">#setup</a></div>
         <!-- TODO post-date? -->
         <div class="date">09 May 2019</div>
     </section>

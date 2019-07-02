@@ -1,1 +1,209 @@
-html{font-size:100%;font-family:sans-serif}@media (min-width:80rem){body{width:60rem;margin:0 auto;padding:0}}a:link{text-decoration:none;font-weight:bold}a:visited{text-decoration:none;font-weight:bold}a:hover{text-decoration:underline;font-weight:bold}a:active{text-decoration:underline;font-weight:bold}header{border-bottom:0.1rem solid;padding:1rem 0}a.fat{font-weight:bold;color:black;text-transform:uppercase}nav{overflow:auto;display:flex;justify-content:space-between;align-items:baseline}nav{font-size:1.8rem}nav .nav-left{float:left}nav .nav-right{float:right}footer{margin-top:1.5rem;padding:1rem 0;border-top:0.1rem solid #000;font-size:0.75rem;text-align:right}.posts-list{margin-top :1em;margin-bottom:1em;table-layout:fixed;width:100%}.posts-list tr td{border:10px solid transparent}.posts-list{border-collapse:collapse}.posts-list tr:nth-child(4n+1){background:#EEE}.posts-list tr:nth-child(4n+2){background:#EEE}.posts-list tr:nth-child(4n+3){background:#FFF}.posts-list tr:nth-child(4n){background:#FFF}.posts-list .post{vertical-align:top}.posts-list .post a:link{text-decoration:none;font-weight:initial}.posts-list .summary{padding-left:0.5em;font-size:0.9em}.posts-list .date{font-size:0.8em;float:right;white-space:pre;font-family:"Lucida Console",Monaco,monospace}.posts-list .post-tags{float:right;word-break:break-word;text-align:right;font-family:"Lucida Console",Monaco,monospace}.post-tag{font-size:0.95em;color:#a51}section.post-title{margin-bottom:1rem}section.post-title h1{-webkit-margin-after:0em}section.post-title .summary{-webkit-margin-before:0em;-webkit-margin-after:0em;color:#a9a9a9;font-size:1.5em}h1{font-size:1.7rem}h2{font-size:1.4rem}article .footer .date{font-style:italic;color:#555}img{max-width:100%;max-height:100%}
+/* TODO testing css changes via screenshot?? */
+html {
+  font-size: 100%;
+  font-family: sans-serif;
+}
+
+@media (min-width: 80rem) {
+    body {
+        width: 60rem; /* TODO how to choose good width?? */
+        margin: 0 auto;
+        padding: 0;
+    }
+}
+
+
+a:link {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:visited {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+a:active {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+
+/* not sure about this one.. */
+header {
+   border-bottom: 0.1rem solid;
+   padding: 1rem 0;
+}
+
+a.fat {
+    font-weight: bold;
+    color: black;
+    text-transform: uppercase;
+}
+
+/* START nav bar stuff */
+nav {
+    /* TODO what's that for?? seems to work without it...*/
+    overflow: auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+nav {
+  font-size: 1.8rem;
+}
+
+nav .nav-left {
+  float: left;
+}
+
+nav .nav-right {
+  float: right;
+}
+
+/* END nav bar stuff */
+
+footer {
+  margin-top: 1.5rem;
+  padding: 1rem 0;
+  border-top: 0.1rem solid #000;
+  font-size: 0.75rem;
+  text-align: right;
+}
+
+
+/* BEGIN posts list configuring */
+.posts-list {
+  margin-top   : 1em;
+  margin-bottom: 1em;
+
+  table-layout: fixed; width: 100%;
+}
+
+
+/* .posts-list tr.sep td { */
+/*     border-top  : 0.5px dotted gray; */
+/* } */
+/* .posts-list .sep { */
+/*     padding-left: 2em; */
+/*     padding-right: 2em; */
+/* } */
+/* .posts-list tr:last-child td { */
+/*   border-bottom: 0.5px dotted gray; */
+/* } */
+
+
+.posts-list tr td {
+    border: 10px solid transparent
+}
+
+.posts-list {
+    border-collapse: collapse;
+}
+
+.posts-list tr:nth-child(4n+1) {
+    background: #EEE;
+}
+.posts-list tr:nth-child(4n+2) {
+    background: #EEE;
+}
+.posts-list tr:nth-child(4n+3) {
+    background: #FFF;
+}
+.posts-list tr:nth-child(4n) {
+    background: #FFF;
+}
+
+.posts-list .post {
+    vertical-align: top;
+}
+
+.posts-list .post a:link {
+    text-decoration: none;
+    font-weight: initial;
+}
+
+.posts-list .summary {
+  padding-left: 0.5em;
+  font-size: 0.9em;
+}
+
+.date {
+    font-family: "Lucida Console", Monaco, monospace;
+}
+
+.posts-list .date {
+  font-size: 0.8em;
+
+  float: right;
+
+  white-space: nowrap;
+}
+
+.posts-list .post-tags {
+  float: right;
+  text-align: right;
+}
+
+/* END posts list configuring */
+
+
+.post-tag {
+  font-size: 0.95em;
+  color: #a51;
+  font-family: "Lucida Console", Monaco, monospace;
+
+
+  /* https://stackoverflow.com/a/12362315/706389
+     somewhat hacky way to prevent breaking tags on hyphens...
+   */
+  white-space: nowrap;
+}
+
+
+section.post-title {
+  margin-bottom: 1rem;
+}
+
+section.post-title h1 {
+  -webkit-margin-after:0em;
+}
+
+section.post-title .summary {
+  -webkit-margin-before:0em;
+  -webkit-margin-after:0em;
+
+  color: #a9a9a9;
+  font-size: 1.5em;
+}
+
+/*
+  TODO move these styles to post.css?
+  they kind of make sense for meta stuff too though...
+*/
+
+h1 {
+  font-size: 1.7rem;
+}
+
+h2 {
+  font-size: 1.4rem;
+}
+
+article .footer .date {
+  /* font-size: 1.4rem; */
+  color: #555;
+}
+
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}

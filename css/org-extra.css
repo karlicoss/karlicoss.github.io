@@ -1,1 +1,84 @@
-blockquote{margin:1em 2em;padding-left:1em;border-left:3px solid #ccc}.outline-3{padding-left:0.5em;border-left-width:3px;border-left-style:dotted;border-left-color:transparent}.outline-3:hover{border-left-color:#ccc}.outline-4{padding-left:0.5em;border-left-width:3px;border-left-style:dotted;border-left-color:transparent}.outline-4:hover{border-left-color:#ccc}.content .title{display:none}.content .tag{float:right}.timestamp{font-family:monospace;font-size:small}#table-of-contents h2{display:none}.todo{display:inline-block;width:5ch}
+/* xxx nice stuff from org.css */
+blockquote {
+    /* TODO not sure what margin is for here */
+    margin: 1em 2em;
+    padding-left: 1em;
+    border-left: 3px solid #ccc;
+}
+
+/*
+TODO hmm. not sure how to fit tags in TOC nicely..
+.tag {
+    all: unset;
+}
+
+$monospace: Lucida Console, monospace;
+.tag {
+    font-family: $monospace;
+    font-size: 0.7em;
+    font-weight: normal;
+}
+
+.tag span {
+    padding: 0.3em 0.3em;
+    float: right;
+    margin-right: .5em;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    background-clip: padding-box;
+    color: #333;
+    background-color: #eee;
+    line-height: 1;
+}
+*/
+
+/* xxx */
+
+/* mm. a bit ugly that 3 and 4 are hardcoded. just to tabulate subtasts */
+.outline-3 {
+    padding-left: 0.5em;
+    border-left-width: 3px;
+    border-left-style: dotted;
+
+    border-left-color: transparent;
+}
+.outline-3:hover {
+    border-left-color: #ccc;
+}
+/* TODO ugh. copy pasting */
+.outline-4 {
+    padding-left: 0.5em;
+    border-left-width: 3px;
+    border-left-style: dotted;
+
+    border-left-color: transparent;
+}
+.outline-4:hover {
+    border-left-color: #ccc;
+}
+
+
+/* hack to get around emacs always adding title to org mode export.. */
+.content .title {
+    display: none;
+}
+
+.content .tag {
+    float: right;
+}
+
+.timestamp {
+    font-family: monospace;
+    font-size: small;
+}
+
+
+/* hide 'Table of Contents', couldn't control it via org... */
+#table-of-contents h2 {
+    display: none;
+}
+
+.todo {
+    display: inline-block;
+    width: 5ch; /* to fit in START. perhaps need 6 for CANCEL as well? */
+}
