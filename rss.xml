@@ -29,6 +29,7 @@
         <title>Don't shoot the artist | Mildly entertainingᵝ</title>
 
         <link rel="stylesheet" href="./css/default.css" />
+        <link rel="stylesheet" href="./css/links.css" />
 
         <!-- TODO make it conditional on actually having math on page? -->
         <script type="text/javascript">
@@ -170,6 +171,7 @@ This realization made the irritation go and made the rest of exploration a bit m
         <title>Grasp | Mildly entertainingᵝ</title>
 
         <link rel="stylesheet" href="./css/default.css" />
+        <link rel="stylesheet" href="./css/links.css" />
 
         <!-- TODO make it conditional on actually having math on page? -->
         <script type="text/javascript">
@@ -352,6 +354,7 @@ Why do they always mention that? Is that important?</code></pre>
         <title>Forcing IPython to display multiple equations in single line | Mildly entertainingᵝ</title>
 
         <link rel="stylesheet" href="./css/default.css" />
+        <link rel="stylesheet" href="./css/links.css" />
 
         <!-- TODO make it conditional on actually having math on page? -->
         <script type="text/javascript">
@@ -913,6 +916,7 @@ Hopefully that saves someone else a bit of time.</p>
         <title>My personal knowledge setup: part 0 | Mildly entertainingᵝ</title>
 
         <link rel="stylesheet" href="./css/default.css" />
+        <link rel="stylesheet" href="./css/links.css" />
 
         <!-- TODO make it conditional on actually having math on page? -->
         <script type="text/javascript">
@@ -1133,6 +1137,7 @@ So, this is the plan, which I will fill with links as I write.
         <title>Quantifying quantified-mind.com | Mildly entertainingᵝ</title>
 
         <link rel="stylesheet" href="./css/default.css" />
+        <link rel="stylesheet" href="./css/links.css" />
 
         <!-- TODO make it conditional on actually having math on page? -->
         <script type="text/javascript">
@@ -1276,6 +1281,7 @@ the two grids are identical.</code></pre>
         <title>On cognitive demand of recycling | Mildly entertainingᵝ</title>
 
         <link rel="stylesheet" href="./css/default.css" />
+        <link rel="stylesheet" href="./css/links.css" />
 
         <!-- TODO make it conditional on actually having math on page? -->
         <script type="text/javascript">
@@ -1395,6 +1401,7 @@ the two grids are identical.</code></pre>
         <title>Sleep tracking | Mildly entertainingᵝ</title>
 
         <link rel="stylesheet" href="./css/default.css" />
+        <link rel="stylesheet" href="./css/links.css" />
 
         <!-- TODO make it conditional on actually having math on page? -->
         <script type="text/javascript">
@@ -1544,6 +1551,7 @@ the two grids are identical.</code></pre>
         <title>sufs | Mildly entertainingᵝ</title>
 
         <link rel="stylesheet" href="./css/default.css" />
+        <link rel="stylesheet" href="./css/links.css" />
 
         <!-- TODO make it conditional on actually having math on page? -->
         <script type="text/javascript">
