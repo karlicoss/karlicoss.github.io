@@ -28,8 +28,8 @@
 
         <title>How to annotate literally everything | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css" />
-        <link rel="stylesheet" href="./css/links.css" />
+        <link rel="stylesheet" href="./css/default.css?v=2" />
+        <link rel="stylesheet" href="./css/links.css?v=2" />
 
         <!-- TODO make it conditional on actually having math on page? -->
         <script type="text/javascript">
@@ -73,7 +73,7 @@
 <!-- <link rel="stylesheet" href="/css/org.css" /> -->
 <link rel="stylesheet" href="./css/org-default.css" />
 
-<link rel="stylesheet" href="./css/org-extra.css" />
+<link rel="stylesheet" href="./css/org-extra.css?v=2" />
 
 
 
@@ -1257,8 +1257,8 @@ I'd be interested to know what do you think, and how are you managing your annot
 
         <title>Don't shoot the artist | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css" />
-        <link rel="stylesheet" href="./css/links.css" />
+        <link rel="stylesheet" href="./css/default.css?v=2" />
+        <link rel="stylesheet" href="./css/links.css?v=2" />
 
         <!-- TODO make it conditional on actually having math on page? -->
         <script type="text/javascript">
@@ -1302,7 +1302,7 @@ I'd be interested to know what do you think, and how are you managing your annot
 <!-- <link rel="stylesheet" href="/css/org.css" /> -->
 <link rel="stylesheet" href="./css/org-default.css" />
 
-<link rel="stylesheet" href="./css/org-extra.css" />
+<link rel="stylesheet" href="./css/org-extra.css?v=2" />
 
 
 
@@ -1399,8 +1399,8 @@ This realization made the irritation go and made the rest of exploration a bit m
 
         <title>Grasp | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css" />
-        <link rel="stylesheet" href="./css/links.css" />
+        <link rel="stylesheet" href="./css/default.css?v=2" />
+        <link rel="stylesheet" href="./css/links.css?v=2" />
 
         <!-- TODO make it conditional on actually having math on page? -->
         <script type="text/javascript">
@@ -1582,8 +1582,8 @@ Why do they always mention that? Is that important?</code></pre>
 
         <title>Forcing IPython to display multiple equations in single line | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css" />
-        <link rel="stylesheet" href="./css/links.css" />
+        <link rel="stylesheet" href="./css/default.css?v=2" />
+        <link rel="stylesheet" href="./css/links.css?v=2" />
 
         <!-- TODO make it conditional on actually having math on page? -->
         <script type="text/javascript">
@@ -2144,8 +2144,8 @@ Hopefully that saves someone else a bit of time.</p>
 
         <title>How I extend my mind and cope with having fleshy human brain | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css" />
-        <link rel="stylesheet" href="./css/links.css" />
+        <link rel="stylesheet" href="./css/default.css?v=2" />
+        <link rel="stylesheet" href="./css/links.css?v=2" />
 
         <!-- TODO make it conditional on actually having math on page? -->
         <script type="text/javascript">
@@ -2189,7 +2189,7 @@ Hopefully that saves someone else a bit of time.</p>
 <!-- <link rel="stylesheet" href="/css/org.css" /> -->
 <link rel="stylesheet" href="./css/org-default.css" />
 
-<link rel="stylesheet" href="./css/org-extra.css" />
+<link rel="stylesheet" href="./css/org-extra.css?v=2" />
 
 
 
@@ -2363,8 +2363,8 @@ So, this is the plan, which I will fill with links as I write.
 
         <title>Quantifying quantified-mind.com | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css" />
-        <link rel="stylesheet" href="./css/links.css" />
+        <link rel="stylesheet" href="./css/default.css?v=2" />
+        <link rel="stylesheet" href="./css/links.css?v=2" />
 
         <!-- TODO make it conditional on actually having math on page? -->
         <script type="text/javascript">
@@ -2507,8 +2507,8 @@ the two grids are identical.</code></pre>
 
         <title>On cognitive demand of recycling | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css" />
-        <link rel="stylesheet" href="./css/links.css" />
+        <link rel="stylesheet" href="./css/default.css?v=2" />
+        <link rel="stylesheet" href="./css/links.css?v=2" />
 
         <!-- TODO make it conditional on actually having math on page? -->
         <script type="text/javascript">
@@ -2627,8 +2627,8 @@ the two grids are identical.</code></pre>
 
         <title>Sleep tracking | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css" />
-        <link rel="stylesheet" href="./css/links.css" />
+        <link rel="stylesheet" href="./css/default.css?v=2" />
+        <link rel="stylesheet" href="./css/links.css?v=2" />
 
         <!-- TODO make it conditional on actually having math on page? -->
         <script type="text/javascript">
@@ -2777,8 +2777,8 @@ the two grids are identical.</code></pre>
 
         <title>sufs | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css" />
-        <link rel="stylesheet" href="./css/links.css" />
+        <link rel="stylesheet" href="./css/default.css?v=2" />
+        <link rel="stylesheet" href="./css/links.css?v=2" />
 
         <!-- TODO make it conditional on actually having math on page? -->
         <script type="text/javascript">
