@@ -9,11 +9,11 @@
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
         
-        <meta name="keywords" content="pkm annotation sr">
+        <meta name="keywords" content="pkm annotation sr tools">
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
-        <title>Annotating and highlighting | Mildly entertainingᵝ</title>
+        <title>How to annotate literally everything | Mildly entertainingᵝ</title>
 
         <link rel="stylesheet" href="./css/default.css" />
         <link rel="stylesheet" href="./css/links.css" />
@@ -66,8 +66,8 @@
 
 <article>
     <section class="post-title">
-    <h1>Annotating and highlighting</h1>
-    <div class="summary">How to read</h2>
+    <h1>How to annotate literally everything</h1>
+    <div class="summary">Comprehensive overview of existing tools, thoughts on future and interacting with your data</h2>
     </section>
     <!-- are sections appropriate for that? -->
 
@@ -120,13 +120,21 @@
 <li><a href="#comparison">Comparison</a></li>
 </ul>
 </li>
-<li><a href="#infra">7. My infrastructure</a></li>
-<li><a href="#org000002b">8. --</a></li>
+<li><a href="#infra">7. Using annotation data</a>
+<ul>
+<li><a href="#org000002a">Extracting reading stats</a></li>
+<li><a href="#org000002b">Searching in annotations</a></li>
+<li><a href="#org000002c">Providing TODO items</a></li>
+<li><a href="#org000002d">Spaced repetition</a></li>
+<li><a href="#org000002e">Life log</a></li>
+</ul>
+</li>
+<li><a href="#org0000030">8. --</a></li>
 </ul>
 </div>
 </div>
 <p>
-TLDR: when I read I try to use various tools to annotate content: highlight and leave notes as I read. I've programmed data providers that parse them and provide nice interface to interact with this data from other tools. My automated scripts use them to render these annotations in human readable and searchable plaintext and generate TODOs/spaced repetition items.
+TLDR: when I read I try to read <a href="https://help.open.ac.uk/active-reading">actively</a>, which for me mainly involves using various tools to annotate content: highlight and leave notes as I read. I've programmed data providers that parse them and provide nice interface to interact with this data from other tools. My automated scripts use them to render these annotations in human readable and searchable plaintext and generate TODOs/spaced repetition items.
 </p>
 
 <p>
@@ -262,7 +270,7 @@ They use something cool called <a href="https://web.hypothes.is/blog/fuzzy-ancho
 </p>
 
 <p>
-Another cool feature is that you can choose to make your annotations public and see other people's annotations or make a group if you want to share annotations among specific people.
+Another cool feature is that you can choose to make your annotations public and see other people's annotations or create a private group if you want to share them among specific people only.
 </p>
 
 <p>
@@ -685,16 +693,16 @@ This one I'm particularly proud of coming up to as I haven't found anyone else d
 </p>
 
 <p>
+This is how it looks in action: <a href="./annotating/paper-strips.jpg">photo</a>.
+</p>
+
+<p>
 Basically, before reading, I prepare a bunch of paper strips slightly longer than the page height, kinda like bookmarks.
 You will use it as a 'sidebar overlay' for writing notes and highlighting, so the width depends on your handwriting and how much you're expected to do that, I usually use something like 1/4 of the page.
 </p>
 
 <p>
-If you want to annotate the page, you'll align its bottom to the bottom of the page and mark lines you found interesting on this strip and write comments on it as well. You can also use the other side of the strip to annotate the other page.
-</p>
-
-<p>
-TODO FIXME take a picture
+If you want to annotate the page, you'll align strip's bottom to the bottom of the page and mark lines you found interesting on this strip and write comments on it as well. You can also use the other side of the strip to annotate the other page.
 </p>
 
 <p>
@@ -787,7 +795,7 @@ Highlighting a piece of content and leaving a comment are fairly straightforward
 </p>
 
 <p>
-This requires the tools being cross platform and cross format.
+This requires the tools being <b><b>cross platform</b></b> and <b><b>cross format</b></b>.
 </p>
 
 <p>
@@ -795,8 +803,8 @@ This requires the tools being cross platform and cross format.
 </p>
 
 <p>
-While current sad state of different tools/products for different forms of content is understandable, ideally it should be be format agnostic with some proper way of
-fingerprinting content. If humans can tell whether a novel published online as HTML and a paper novel are the same thing, so can software.
+While current sad state of different tools/products for different forms of content is understandable, ideally it should be be <b><b>format agnostic</b></b> with some proper way of
+<b><b>fingerprinting</b></b> content. If humans can tell whether a novel published online as HTML and a paper novel are the same thing, so can software.
 </p>
 
 <p>
@@ -815,7 +823,7 @@ Perhaps in the near future we could exploit existing (fairly robust) OCR technol
 </p>
 
 <p>
-Annotating is meant to augment your limited memory capabilities and using them should be as easy as retrieving information from your brain.
+Annotating is meant to augment your limited memory capabilities and using them should be <b><b>as easy as retrieving information from your brain</b></b>.
 </p>
 
 <p>
@@ -848,7 +856,7 @@ Good examples of this approach are <a href="#polar">Polar</a> and <a href="#hypo
 </p>
 
 <p>
-If annotations make essential part of your knowledge, you want to be capable of accessing them anytime.
+If annotations make essential part of your knowledge, you want to be capable of accessing them <b><b>anytime</b></b>.
 </p>
 
 <p>
@@ -868,7 +876,7 @@ Annotations are a valuable tool for collaborative learning and research, and imp
 </p>
 
 <p>
-Perhaps in some near future we could get rid of all the zillion ways of internet commenting and rely on annotation layer instead.
+Perhaps in some near future we could <b><b>ditch all the zillion internet commenting platforms</b></b> and rely on annotation layer instead.
 <a href="#hypothesis">Hypothesis</a> basically lets you do that already, perhaps with a little work on design (sidebar is not necessarily convenient for social commenting), it could serve that purpose.
 </p>
 
@@ -1060,11 +1068,12 @@ I'm only listing tools that support proper highlighting and commenting.
 </div>
 </div>
 
-<div id="outline-container-org000002a" class="outline-2">
-<h2 id="infra"><span class="section-number-2">7</span> My infrastructure</h2>
+<div id="outline-container-org000002f" class="outline-2">
+<h2 id="infra"><span class="section-number-2">7</span> Using annotation data</h2>
 <div class="outline-text-2" id="text-infra">
 <p>
 Considering there are multiple tools I have to use none of which is fully capable of doing everything I would ideally want from annotation system, I've developed my ways of getting closer to my <a href="#vision">ideal</a>.
+For that I've got some infrastructure set up.
 </p>
 
 <p>
@@ -1078,11 +1087,14 @@ That serves not just as data backup, but also as <b><b>data providers</b></b> fo
 <p>
 I'm using a <b><b>special Python package to access the data</b></b>, which I called <code>my</code>. It's always in my <code>PYTHONPATH</code> so I can use it from any script/tool or REPL. It's got bunch of different submodules, e.g. <code>my.reading.instapaper</code>, <code>my.reading.kobo</code>, <code>my.reading.polar</code> (there are other modules than <code>my.reading</code>, but that material for a whole separate post). The package itself is not public since it happens to have some personal data in it, at some point I'll try to strip it off and release it (not sure if it would be really relevant for other people anyway).
 </p>
+</div>
 
 
-<ul class="org-ul">
-<li><p>
-As a concrete example how I use it: recently my friend asked me if I could recommend them posts I found interesting on <a href="https://slatestarcodex.com/">Slate Star Codex</a>. With a tiny python script I was quickly able to give them some stats on posts I read, so they could choose among them.
+<div id="outline-container-org000002a" class="outline-3">
+<h3 id="org000002a">Extracting reading stats</h3>
+<div class="outline-text-3" id="text-org000002a">
+<p>
+As a specific example how I do it: recently my friend asked me if I could recommend them posts I found interesting on <a href="https://slatestarcodex.com/">Slate Star Codex</a>. With a tiny python script I was quickly able to give them some stats on posts I read, so they could choose among them.
 </p>
 
 <div class="org-src-container">
@@ -1091,33 +1103,35 @@ for p in my.reading.hypothesis.get_pages():
     if 'slatestarcodex' in p.link: 
 	print(f'{p.link} {len(p.highlights)}')
 </pre>
-</div></li>
+</div>
+</div>
+</div>
 
-<li><p>
-Searching in annotations
-</p>
-
+<div id="outline-container-org000002b" class="outline-3">
+<h3 id="org000002b">Searching in annotations</h3>
+<div class="outline-text-3" id="text-org000002b">
 <p>
 <a id="org0000027"></a>I've got bunch of scripts and a rendering tool which I named <a href="https://github.com/karlicoss/orger">orger</a> (yep, haven't invested that much thought into naming).
 Basically, these scripts take specific data source as input and produce org-mode output, e.g. renders <code>json</code> backed up from Instapaper into <code>instapaper.org</code> file. That runs every few hours and keeps the contents relatively up to date.
 </p>
 
 <p>
-I chose org-mode as I was already used to its features, keybindings and metadata. Also the hierarchy (e.g. book &rarr; highlight &rarr; comment(s)) fits naturally into outline format. But not that it's a real necessity, I feel that as long as it's searchable plaintext, it's good enough.
+I chose org-mode as I was already used to its features, keybindings and metadata. Also the hierarchy (e.g. book &rarr; highlight &rarr; comments) fits naturally into outline format. But not that it's a real necessity, I feel that as long as it's searchable plaintext, it's good enough.
 </p>
 
 <p>
-To search them, I've got a <b><b>global keybinding</b></b>, which invokes Emacs with search prompt against the directory with rendered <code>org</code> files, which lets me interact with them in a blink on my computer. On Android I'm using <a href="https://play.google.com/store/apps/details?id=com.docsearch">DocSearch</a> indexer (sadly it's not incremental, and app is not open source, so I'm looking for alternative&hellip;).
+To search them, I've got a <b><b>global keybinding</b></b>, which invokes Emacs with incremental search prompt against the directory with rendered <code>org</code> files, which lets me interact with them in a blink on my computer. On Android I'm using <a href="https://play.google.com/store/apps/details?id=com.docsearch">DocSearch</a> indexer (sadly it's not incremental, and app is not open source, so I'm looking for alternative).
 </p>
 
 <p>
-Finally, I've got a <a href="https://www.lesbonscomptes.com/recoll">Recoll</a> indexer instance + web interface running on my VPS; so if necessary I can access my annotations via the internet.
-</p></li>
-
-<li><p>
-<a id="org0000000"></a>Providing TODO items
+Finally, I've got a <a href="https://www.lesbonscomptes.com/recoll">Recoll</a> indexer instance + web interface running on my VPS; so if necessary I can access and search annotations via the internet.
 </p>
+</div>
+</div>
 
+<div id="outline-container-org000002c" class="outline-3">
+<h3 id="org000002c"><a id="org0000000"></a>Providing TODO items</h3>
+<div class="outline-text-3" id="text-org000002c">
 <p>
 While reading, I often encounter something I want to google or check or read about later; or just come up to something actionable inspired by what I'm reading.
 But I also don't want to interrupt from reading and losing context: that especially matters while reading on a E-ink device: distracting from the book, fetching your phone etc is really annoying.
@@ -1129,12 +1143,13 @@ So, as a workaround, I have programmed rules that pick out notes that start with
 
 <p>
 <a href="https://github.com/karlicoss/orger/blob/350e76000e34db49cf6b574041b98bd813040851/ip2org.py#L16">Here's</a> an example of me using using <code>my.instapaper</code> module for that.
-</p></li>
-
-<li><p>
-<a id="org0000001"></a>Spaced repetition
 </p>
+</div>
+</div>
 
+<div id="outline-container-org000002d" class="outline-3">
+<h3 id="org000002d"><a id="org0000001"></a>Spaced repetition</h3>
+<div class="outline-text-3" id="text-org000002d">
 <p>
 It's kind of an extension of the previous use case: again, often you want to send something straight into your <a href="https://en.wikipedia.org/wiki/Spaced_repetition">spaced repetition</a> queue without having to remember to add that.
 </p>
@@ -1149,29 +1164,30 @@ I've got two rules for that:
 </ul>
 
 <p>
-<a href="https://github.com/karlicoss/orger/blob/350e76000e34db49cf6b574041b98bd813040851/krill.py#L13">Here's</a> me using it for Kobo highlights.
-</p></li>
-
-<li><p>
-Life log
+<a href="https://github.com/karlicoss/orger/blob/350e76000e34db49cf6b574041b98bd813040851/krill.py#L13">Here's</a> how I'm using it for Kobo highlights.
 </p>
+</div>
+</div>
 
+<div id="outline-container-org000002e" class="outline-3">
+<h3 id="org000002e">Life log</h3>
+<div class="outline-text-3" id="text-org000002e">
 <p>
-I'm quite a big fan of <a class="post-tag" href="./tags.html#lifelogging">#lifelogging</a> and all the timestamped highlights, comments and <a href="#org000001d">reading progress</a> from Kobo are an effortless (no manual logging!) contribution to my personal timeline, which I render and sync on my devices every few hours.
+I'm a big fan of <a class="post-tag" href="./tags.html#lifelogging">#lifelogging</a> and all the timestamped highlights, comments and <a href="#org000001d">reading progress</a> from Kobo are an effortless (no manual logging!) contribution to my personal timeline, which I render and sync on my devices every few hours.
 </p>
 
 <p>
 I sometimes use it when conversation with other people comes to awkward silence, so I can recall something I was reading recently and spark off an interesting (well at least for me) topic.
-</p></li>
-</ul>
+</p>
+</div>
 </div>
 </div>
 
-<div id="outline-container-org000002b" class="outline-2">
-<h2 id="org000002b"><span class="section-number-2">8</span> --</h2>
+<div id="outline-container-org0000030" class="outline-2">
+<h2 id="org0000030"><span class="section-number-2">8</span> --</h2>
 <div class="outline-text-2" id="text-8">
 <p>
-I'd be interested to know what do you think, and how are you managing your annotations. Please let me know if I missed some tools or features!
+I'd be interested to know what do you think, and how are you managing your annotations or if you need some help with your existing workflow. Please also let me know if I missed any tools or features!
 </p>
 </div>
 </div>
@@ -1180,9 +1196,9 @@ I'd be interested to know what do you think, and how are you managing your annot
 
     
     <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#annotation">#annotation</a> <a class="post-tag" href="./tags.html#sr">#sr</a></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#annotation">#annotation</a> <a class="post-tag" href="./tags.html#sr">#sr</a> <a class="post-tag" href="./tags.html#tools">#tools</a></div>
         <!-- TODO post-date? -->
-        <div class="date">22 June 2019</div>
+        <div class="date">05 July 2019</div>
     </section>
     
 
