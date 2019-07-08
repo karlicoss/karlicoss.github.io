@@ -93,43 +93,44 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org0000002">1. Motivation</a></li>
-<li><a href="#org000000b">2. Annotating web</a>
+<li><a href="#org0000003">1. Motivation</a></li>
+<li><a href="#org000000c">2. Annotating web</a>
 <ul>
-<li><a href="#org0000003">Pocket</a></li>
+<li><a href="#org0000004">Pocket</a></li>
 <li><a href="#instapaper">Instapaper</a></li>
 <li><a href="#wallabag">Wallabag</a></li>
 <li><a href="#hypothesis">Hypothes.is</a></li>
 <li><a href="#grasp">Grasp</a></li>
-<li><a href="#org000000a">Summary</a></li>
+<li><a href="#org000000b">Summary</a></li>
 </ul>
 </li>
-<li><a href="#org0000018">3. Annotating PDFs</a>
+<li><a href="#org0000019">3. Annotating PDFs</a>
 <ul>
-<li><a href="#org000000f">Okular, Evince, Atril</a></li>
+<li><a href="#org0000010">Okular, Evince, Atril</a></li>
 <li><a href="#pdftools">Emacs: pdf-tools</a></li>
-<li><a href="#org0000011">Other Linux readers</a></li>
+<li><a href="#org0000012">Other Linux readers</a></li>
 <li><a href="#orgnoter">Emacs: org-noter</a></li>
 <li><a href="#xournal">Xournal</a></li>
-<li><a href="#hypothesis_pdf">Hypothes.is</a></li>
+<li><a href="#hypothesis_pdf">Hypothes.is (again)</a></li>
 <li><a href="#polar">Polar</a></li>
 <li><a href="#android_ann">Annotating on Android</a></li>
-<li><a href="#org0000017">Summary</a></li>
+<li><a href="#org0000018">Summary</a></li>
 </ul>
 </li>
-<li><a href="#org0000021">4. Annotating E-ink</a>
+<li><a href="#org0000022">4. Annotating E-ink</a>
 <ul>
 <li><a href="#kindle">Kindle</a></li>
 <li><a href="#kobo">Kobo</a></li>
-<li><a href="#org0000020">Koreader</a></li>
+<li><a href="#koreader">Koreader</a></li>
 </ul>
 </li>
-<li><a href="#org0000026">5. Miscellaneous</a>
+<li><a href="#org0000028">5. Miscellaneous</a>
 <ul>
-<li><a href="#org0000022">Annotating paper books</a></li>
-<li><a href="#org0000023">Annotating plaintext</a></li>
-<li><a href="#org0000024">Other notable mentions</a></li>
-<li><a href="#org0000025">Hall of shame!</a></li>
+<li><a href="#org0000023">Annotating paper books</a></li>
+<li><a href="#org0000024">Annotating plaintext</a></li>
+<li><a href="#org0000025">Annotating videos</a></li>
+<li><a href="#org0000026">Other notable mentions</a></li>
+<li><a href="#org0000027">Hall of shame!</a></li>
 </ul>
 </li>
 <li><a href="#vision">6. What makes a good annotation system?</a>
@@ -139,36 +140,36 @@
 </li>
 <li><a href="#infra">7. Using annotation data</a>
 <ul>
-<li><a href="#org000002a">Extracting reading stats</a></li>
-<li><a href="#org000002b">Searching in annotations</a></li>
-<li><a href="#org000002c">Providing TODO items</a></li>
-<li><a href="#org000002d">Spaced repetition</a></li>
-<li><a href="#org000002e">Life log</a></li>
+<li><a href="#org000002b">Extracting reading stats</a></li>
+<li><a href="#org000002c">Searching in annotations</a></li>
+<li><a href="#org000002d">Providing TODO items</a></li>
+<li><a href="#org000002e">Spaced repetition</a></li>
+<li><a href="#org000002f">Life log</a></li>
 </ul>
 </li>
-<li><a href="#org0000030">8. --</a></li>
+<li><a href="#org0000031">8. --</a></li>
 </ul>
 </div>
 </div>
 <p>
-TLDR: when I read I try to read <a href="https://help.open.ac.uk/active-reading">actively</a>, which for me mainly involves using various tools to annotate content: highlight and leave notes as I read. I've programmed data providers that parse them and provide nice interface to interact with this data from other tools. My automated scripts use them to render these annotations in human readable and searchable plaintext and generate TODOs/spaced repetition items.
+TLDR: when I read I try to read <a href="https://help.open.ac.uk/active-reading">actively</a>, which for me mainly involves using various tools to annotate content: highlight and leave notes as I read. I've programmed <a href="#infra">data providers</a> that parse them and provide nice interface to interact with this data from other tools. My <a href="#org0000000">automated scripts</a> use them to render these annotations in human readable and searchable plaintext and generate <a href="#org0000001">TODOs</a>/<a href="#org0000002">spaced repetition</a> items.
 </p>
 
 <p>
-In this post I'm gonna elaborate on all of that and give some motivation, review of these tools and my vision on how they could work in an ideal world.
+In this post I'm gonna elaborate on all of that and give some motivation, review of these tools (mainly with the focus on open source thus extendable software) and my vision on how they could work in an ideal world.
 I won't try to convince you that my method of reading and interacting with information is superior for you: it doesn't have to be, and there are people out there more eloquent than me who do that. I assume you want this too and wondering about the practical details.
 </p>
 
-<div id="outline-container-org0000002" class="outline-2">
-<h2 id="org0000002"><span class="section-number-2">1</span> Motivation</h2>
+<div id="outline-container-org0000003" class="outline-2">
+<h2 id="org0000003"><span class="section-number-2">1</span> Motivation</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-At some point in my life I realized I didn't remember most of the books/papers/posts (I'll just refer to all of it as 'content' further on for brevity) I had read few years before.
+At some point in my life I realized I didn't remember most of the books/papers/posts/videos (I'll just refer to all of it as 'content' further on for brevity) I had consumed few years before.
 That bothered me increasingly until I bought a Kindle which had 'highlight' functionality and virtual keyboard; and I had discovered it to help a lot with recalling.
 </p>
 
 <p>
-I've became increasingly obsessed with this and these days ability to highlight when I read serves multiple purposes for me:
+I've become increasingly obsessed with this and these days ability to highlight when I read serves multiple purposes for me:
 </p>
 
 <ul class="org-ul">
@@ -184,7 +185,7 @@ In particular, often I'd run on something on the internet that I remember readin
 <li>it's got social value if highlights are visible to other people (e.g. <a href="#hypothesis">Hypothesis</a>, Medium, Goodreads)</li>
 <li>it helps with <a href="./notes.html#book_scoring">book scoring</a>. If I don't have any highlights, it probably means that the content was not interesting at all for me. Fiction books are not an exception: I tend to highlight use of language I liked, inspirational things, etc.</li>
 <li>it serves as activity log if you are into <a class="post-tag" href="./tags.html#lifelogging">#lifelogging</a>.</li>
-<li>you can <a href="#org0000000">populate your TODO list</a> and <a href="#org0000001">step up your spaced repetition game</a>.</li>
+<li>you can <a href="#org0000001">populate your TODO list</a> and <a href="#org0000002">step up your spaced repetition game</a>.</li>
 </ul>
 
 <p>
@@ -193,13 +194,13 @@ I'm going to review some of the tools I tried using and still using and highligh
 </div>
 </div>
 
-<div id="outline-container-org000000b" class="outline-2">
-<h2 id="org000000b"><span class="section-number-2">2</span> Annotating web</h2>
+<div id="outline-container-org000000c" class="outline-2">
+<h2 id="org000000c"><span class="section-number-2">2</span> Annotating web</h2>
 <div class="outline-text-2" id="text-2">
 </div>
-<div id="outline-container-org0000003" class="outline-3">
-<h3 id="org0000003"><a href="https://getpocket.com">Pocket</a></h3>
-<div class="outline-text-3" id="text-org0000003">
+<div id="outline-container-org0000004" class="outline-3">
+<h3 id="org0000004"><a href="https://getpocket.com">Pocket</a></h3>
+<div class="outline-text-3" id="text-org0000004">
 <p>
 I won't really write much about it for one reason which is a big deal: while you can highlight text, you can't leave notes. Nearest functionality is 'recommending' a highlight while reading a comment, but that's only displayed on your 'timeline'.
 </p>
@@ -213,8 +214,7 @@ Pocket was acquired by Mozilla in 2017, which might be a good thing, but so far 
 </p>
 </div>
 </div>
-
-<div id="outline-container-org0000005" class="outline-3">
+<div id="outline-container-org0000006" class="outline-3">
 <h3 id="instapaper"><a href="https://www.instapaper.com">Instapaper</a></h3>
 <div class="outline-text-3" id="text-instapaper">
 <p>
@@ -245,7 +245,7 @@ Instapaper got <a href="https://www.instapaper.com/api">Json API</a>, through wh
 </p>
 
 <p>
-<a id="org0000004"></a>Search function works for full text search in saved articles, but doesn't let you restrict search for highlights, and you can't search in notes at all.
+<a id="org0000005"></a>Search function works for full text search in saved articles, but doesn't let you restrict search for highlights, and you can't search in notes at all.
 </p>
 
 <p>
@@ -254,7 +254,7 @@ One red flag was in 2018 when Instapaper wasn't available in Europe for few mont
 </div>
 </div>
 
-<div id="outline-container-org0000007" class="outline-3">
+<div id="outline-container-org0000008" class="outline-3">
 <h3 id="wallabag"><a href="https://github.com/wallabag/wallabag">Wallabag</a></h3>
 <div class="outline-text-3" id="text-wallabag">
 <p>
@@ -270,7 +270,7 @@ If you don't want to selfhost it, you can use <a href="https://www.wallabag.it/e
 </p>
 
 <p>
-<a id="org0000006"></a>There is also an <a href="https://github.com/wallabag/android-app">Android app</a>, but sadly it <a href="https://github.com/wallabag/android-app/issues/115">lacks</a> support for highlighting.
+<a id="org0000007"></a>There is also an <a href="https://github.com/wallabag/android-app">Android app</a>, but sadly it <a href="https://github.com/wallabag/android-app/issues/115">lacks</a> support for highlighting.
 </p>
 
 <p>
@@ -278,12 +278,13 @@ I wish it had more attention from the community, and might try to work on Androi
 </p>
 </div>
 </div>
-<div id="outline-container-org0000008" class="outline-3">
+<div id="outline-container-org0000009" class="outline-3">
 <h3 id="hypothesis"><a href="https://web.hypothes.is/#see-how-it-works">Hypothes.is</a></h3>
 <div class="outline-text-3" id="text-hypothesis">
 <p>
 Hypothesis is simply awesome and my favorite web annotation tool. Their killer feature is that it embeds a bit of JS in the page to provide an <b><b>in-browser overlay</b></b>, so you don't have to leave the page you were reading and can highlight and add comments natively.
 They use something cool called <a href="https://web.hypothes.is/blog/fuzzy-anchoring">fuzzy anchoring</a> to achieve this.
+That also makes annotations <b><b>resilient to document markup changes</b></b>, and if they can't locate your annotations it would be still shown in metadata as <a href="https://web.hypothes.is/blog/showing-orphaned-annotations">'orphaned'</a>, so you never lose your notes.
 </p>
 
 <p>
@@ -310,9 +311,10 @@ It's somewhat not obvious in terms of browser UI how to actually use them though
 <li>for mobile Chrome, it's a bit more tedious but also <a href="https://android.stackexchange.com/questions/159308/how-can-a-bookmarklet-be-added-on-mobile-chrome">possible</a>.</li>
 </ul>
 
+
 <p>
 One downside of this service is that you won't be able to annotate while offline.
-I feel it's actually more of mobile browser's problems rather than hypothesis though.
+I feel it's actually more of mobile browser's problem in general rather than Hypothesis though.
 While you potentially can annotate offline without querying API and preserving data in <code>localStorage</code>, if you can't load the page in the first place, it doesn't matter. Perhaps that can be given better support in browsers.
 </p>
 
@@ -323,7 +325,7 @@ I'm using <a href="https://github.com/judell/Hypothesis">judell/Hypothesis</a> p
 </div>
 </div>
 
-<div id="outline-container-org0000009" class="outline-3">
+<div id="outline-container-org000000a" class="outline-3">
 <h3 id="grasp"><a href="./grasp.html">Grasp</a></h3>
 <div class="outline-text-3" id="text-grasp">
 <p>
@@ -331,7 +333,7 @@ Shameless plug! If you just want to send annotations directly into a plaintext (
 </p>
 
 <p>
-I usually use it for highlights that would be good candidates for TODO items, e.g. something actionable like piece of advice or further reading.
+I typically use it for highlights that would be good candidates for TODO items, e.g. something actionable like piece of advice or further reading.
 </p>
 
 <p>
@@ -340,9 +342,9 @@ Not available for <a href="https://github.com/karlicoss/grasp/issues/15">mobile 
 </div>
 </div>
 
-<div id="outline-container-org000000a" class="outline-3">
-<h3 id="org000000a">Summary</h3>
-<div class="outline-text-3" id="text-org000000a">
+<div id="outline-container-org000000b" class="outline-3">
+<h3 id="org000000b">Summary</h3>
+<div class="outline-text-3" id="text-org000000b">
 <p>
 <a href="#hypothesis">Hypothses.is</a> is a clear winner for me on desktop and I'm using <a href="#instapaper">Instapaper</a> for offline reading on Android.
 </p>
@@ -350,8 +352,8 @@ Not available for <a href="https://github.com/karlicoss/grasp/issues/15">mobile 
 </div>
 </div>
 
-<div id="outline-container-org0000018" class="outline-2">
-<h2 id="org0000018"><span class="section-number-2">3</span> Annotating PDFs</h2>
+<div id="outline-container-org0000019" class="outline-2">
+<h2 id="org0000019"><span class="section-number-2">3</span> Annotating PDFs</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 PDF format is a complicated beast, and its native annotations are a whole different story to annotating web.
@@ -378,9 +380,9 @@ I get around it by making a copy of the file I'm about to annotate first, and gi
 </p>
 </div>
 
-<div id="outline-container-org000000f" class="outline-3">
-<h3 id="org000000f">Okular, Evince, Atril</h3>
-<div class="outline-text-3" id="text-org000000f">
+<div id="outline-container-org0000010" class="outline-3">
+<h3 id="org0000010">Okular, Evince, Atril</h3>
+<div class="outline-text-3" id="text-org0000010">
 <p>
 Probably most widely used PDF readers, all of these use <a href="https://poppler.freedesktop.org">Poppler</a> library for working with PDF, which in particular does the messy business of annotation handling.
 </p>
@@ -400,7 +402,7 @@ However it's got a nasty few years old bug (<a href="https://bugs.launchpad.net/
 </p></li>
 
 <li><p>
-<a id="org000000c"></a><a href="https://okular.kde.org">Okular</a> (as of 1.6.3) allows <b><b>editing and adding pretty much every type of annotation</b></b> that you would expect: highlights, popup and inline notes, freehand and <a href="https://docs.kde.org/stable5/en/kdegraphics/okular/annotations.html">more</a>.
+<a id="org000000d"></a><a href="https://okular.kde.org">Okular</a> (as of 1.6.3) allows <b><b>editing and adding pretty much every type of annotation</b></b> that you would expect: highlights, popup and inline notes, freehand and <a href="https://docs.kde.org/stable5/en/kdegraphics/okular/annotations.html">more</a>.
 </p>
 
 <p>
@@ -408,17 +410,21 @@ Annotation process (<a href="./annotating/okular.jpg">screenshot</a>) is pretty 
 </p>
 
 <p>
-<a id="org000000d"></a>Okular also got support for something called <a href="https://docs.kde.org/stable5/en/kdegraphics/okular/annotations.html">'document archive'</a>, which saves the original document in a zip file along with <code>metadata.xml</code>, which allows you to <b><b>annotate non-PDF files</b></b> (e.g. DJVU), which is a very neat feature. It's obviously Okular specific, in theory though it's possible to process <code>metadata.xml</code> with other tools.
+<a id="org000000e"></a>Okular also got support for something called <a href="https://docs.kde.org/stable5/en/kdegraphics/okular/annotations.html">'document archive'</a>, which saves the original document in a zip file along with <code>metadata.xml</code>, which allows you to <b><b>annotate non-PDF files</b></b> (e.g. DJVU), which is a very neat feature. It's obviously Okular specific, in theory though it's possible to process <code>metadata.xml</code> with other tools.
 </p>
 
 <p>
-<a id="org000000e"></a>Search in okular can't be restricted to annotations only and while you can use normal PDF search for inline notes and highlights (along with the other text that happened to match), it doesn't work at all for popups.
+<a id="org000000f"></a>Search in okular can't be restricted to annotations only and while you can use normal PDF search for inline notes and highlights (along with the other text that happened to match), it doesn't work at all for popups.
+</p>
+
+<p>
+Even though Okular is part of KDE, there is no reason not to use it in other desktops environments, it's not that complicated in terms of UI; looks quite native in GTK, and few extra dependencies are barely a problem these days.
 </p></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org0000010" class="outline-3">
+<div id="outline-container-org0000011" class="outline-3">
 <h3 id="pdftools"><a href="https://github.com/politza/pdf-tools#pdf-tools-readme">Emacs: pdf-tools</a></h3>
 <div class="outline-text-3" id="text-pdftools">
 <p>
@@ -436,9 +442,9 @@ Also it's got some minor issue displaying inline annotations text in the 'Conten
 </div>
 </div>
 
-<div id="outline-container-org0000011" class="outline-3">
-<h3 id="org0000011">Other Linux readers</h3>
-<div class="outline-text-3" id="text-org0000011">
+<div id="outline-container-org0000012" class="outline-3">
+<h3 id="org0000012">Other Linux readers</h3>
+<div class="outline-text-3" id="text-org0000012">
 <p>
 There are few other apps I tried using so figured it's worth mentioning.   
 </p>
@@ -457,7 +463,7 @@ It mentions annotation editing in <a href="https://mupdf.com/release_history.htm
 </div>
 </div>
 
-<div id="outline-container-org0000012" class="outline-3">
+<div id="outline-container-org0000013" class="outline-3">
 <h3 id="orgnoter"><a href="https://github.com/weirdNox/org-noter">Emacs: org-noter</a></h3>
 <div class="outline-text-3" id="text-orgnoter">
 <p>
@@ -475,7 +481,7 @@ Existing annotations in PDF can be imported via <a href="https://github.com/weir
 </div>
 </div>
 
-<div id="outline-container-org0000013" class="outline-3">
+<div id="outline-container-org0000014" class="outline-3">
 <h3 id="xournal"><a href="https://github.com/xournalpp/xournalpp#xournal">Xournal</a></h3>
 <div class="outline-text-3" id="text-xournal">
 <p>
@@ -483,13 +489,13 @@ Xournal is different from the above PDF viewers, since it isn't using types of a
 </p>
 
 <p>
-It doesn't modify the original files and instead keeps <code>.xoj</code> file containing the metadata and pointing at the original PDF, so in that sense it's pretty similar to <a href="#org000000d">okular</a>. Similarly, it's xournal-specific and can't be viewed anywhere else unless you export it in PDF before sharing (at which point your annotations wold basically become background images).
+It doesn't modify the original files and instead keeps <code>.xoj</code> file containing the metadata and pointing at the original PDF, so in that sense it's pretty similar to <a href="#org000000e">okular</a>. Similarly, it's xournal-specific and can't be viewed anywhere else unless you export it in PDF before sharing (at which point your annotations wold basically become background images).
 </p>
 </div>
 </div>
 
-<div id="outline-container-org0000014" class="outline-3">
-<h3 id="hypothesis_pdf"><a href="https://web.hypothes.is/#see-how-it-works">Hypothes.is</a></h3>
+<div id="outline-container-org0000015" class="outline-3">
+<h3 id="hypothesis_pdf"><a href="https://web.hypothes.is/#see-how-it-works">Hypothes.is</a> (again)</h3>
 <div class="outline-text-3" id="text-hypothesis_pdf">
 <p>
 Already mentioned in the previous section, it's also capable of annotating PDFs via <a href="https://github.com/mozilla/pdf.js">pdf.js</a>. 
@@ -506,7 +512,7 @@ It seems to work fast enough for big PDF books as well, however generally readin
 </div>
 </div>
 
-<div id="outline-container-org0000015" class="outline-3">
+<div id="outline-container-org0000016" class="outline-3">
 <h3 id="polar"><a href="https://github.com/burtonator/polar-bookshelf#polar-bookshelf">Polar</a></h3>
 <div class="outline-text-3" id="text-polar">
 <p>
@@ -534,7 +540,7 @@ The only downside is that annotation format is <b><b>Polar specific</b></b>, so 
 </div>
 </div>
 
-<div id="outline-container-org0000016" class="outline-3">
+<div id="outline-container-org0000017" class="outline-3">
 <h3 id="android_ann">Annotating on Android</h3>
 <div class="outline-text-3" id="text-android_ann">
 <ul class="org-ul">
@@ -579,9 +585,9 @@ Perhaps PDF 1.7 is too outdated? Something weird has been going on with the 'ful
 </div>
 </div>
 
-<div id="outline-container-org0000017" class="outline-3">
-<h3 id="org0000017">Summary</h3>
-<div class="outline-text-3" id="text-org0000017">
+<div id="outline-container-org0000018" class="outline-3">
+<h3 id="org0000018">Summary</h3>
+<div class="outline-text-3" id="text-org0000018">
 <p>
 If you want the convenience of editing and viewing on phone and working with other people, <b><b>Okular</b></b> wins on desktop and <b><b>Adobe Reader/Xodo</b></b> could be used on your phone.
 </p>
@@ -593,8 +599,8 @@ If you care about preserving the original PDF files and want convenience in acce
 </div>
 </div>
 
-<div id="outline-container-org0000021" class="outline-2">
-<h2 id="org0000021"><span class="section-number-2">4</span> Annotating E-ink</h2>
+<div id="outline-container-org0000022" class="outline-2">
+<h2 id="org0000022"><span class="section-number-2">4</span> Annotating E-ink</h2>
 <div class="outline-text-2" id="text-4">
 <p>
 Two e-ink readers that support highlights and notes I know of are Kindle (I had Paperwhite 2) and Kobo (I own Kobo Aura One).
@@ -603,14 +609,14 @@ Perhaps the only differences are how you can search and access the annotations.
 </p>
 </div>
 
-<div id="outline-container-org000001c" class="outline-3">
+<div id="outline-container-org000001d" class="outline-3">
 <h3 id="kindle">Kindle</h3>
 <div class="outline-text-3" id="text-kindle">
 <p>
 Kindle stores bookmarks, notes and highlights in <code>My Clippings.txt</code> on the device.
 The good thing about the format is that it's already plaintext and fairly human readable, so you might be happy with that alone.
 The format is a bit nasty for parsing (as you would expect from something with <code>.txt</code> extension). Dates are locale dependent, document locators may or may not have roman numerals, separators are inconsistent at times, etc. 
-When I was using Kindle I was just copying the file from time to time, and you can set up some sort of automatic copying when your device is connected similarly to  what I'm doing with <a href="#org0000019">Kobo</a>.
+When I was using Kindle I was just copying the file from time to time, and you can set up some sort of automatic copying when your device is connected similarly to  what I'm doing with <a href="#org000001a">Kobo</a>.
 </p>
 
 <p>
@@ -620,18 +626,18 @@ Kindle uploads your notes and highlights to <a href="https://read.amazon.com">Ki
 </p>
 
 <p>
-<a id="org000001a"></a>Kindle also <a href="https://www.makeuseof.com/tag/share-kindle-notes-highlights-friends">integrates with Goodreads</a>, which synchronizes reading progress and lets you selectively share annotations to Goodreads.
+<a id="org000001b"></a>Kindle also <a href="https://www.makeuseof.com/tag/share-kindle-notes-highlights-friends">integrates with Goodreads</a>, which synchronizes reading progress and lets you selectively share annotations to Goodreads.
 But that's also restricted to books bought from Amazon.
 </p>
 
 <p>
-<a id="org000001b"></a>Search function is somewhat limited: you can search in the book and it displays your highlights alongside content it found in the book, but you can't restrict search to highlights. You can't search in notes either.
+<a id="org000001c"></a>Search function is somewhat limited: you can search in the book and it displays your highlights alongside content it found in the book, but you can't restrict search to highlights. You can't search in notes either.
 Funny enough though, the <code>My Clipping.txt</code> file can be opened on Kindle itself (as any other <code>txt</code> file), and then you can search in it. It's not super convenient, but better than nothing. (I wasn't brave enough to try and see what happens if you try to highlight in this file.)
 </p>
 </div>
 </div>
 
-<div id="outline-container-org000001f" class="outline-3">
+<div id="outline-container-org0000020" class="outline-3">
 <h3 id="kobo">Kobo</h3>
 <div class="outline-text-3" id="text-kobo">
 <p>
@@ -639,16 +645,16 @@ Stores all of it's stuff in <code>.kobo/KoboReader.sqlite</code> on the device.
 </p>
 
 <p>
-<a id="org000001d"></a>The database has got lots of cool stuff: in addition to highlights and notes you can also access reading progress, time spend reading and possibly some other interesting data I didn't manage to reverse engineer yet.
+<a id="org000001e"></a>The database has got lots of cool stuff: in addition to highlights and notes you can also access reading progress, time spend reading and possibly some other interesting data I didn't manage to reverse engineer yet.
 You can check out <a href="https://github.com/karlicoss/kobuddy">kobuddy</a>, which is my attempt to extract useful data from the database and provide nicer high level Python interface. It's also fairly straightforward to open it in <code>sqlitebrowser</code> and play with your own queries.
 </p>
 
 <p>
-<a id="org0000019"></a>Kobo <b><b>doesn't seem to support cloud sync for annotations</b></b>. I was considering syncing the database wirelessly, as <a href="https://github.com/dropmeaword/kobo-aura-remote">there are</a> some SSH modules for its firmware, but people report it <a href="https://github.com/dropmeaword/kobo-aura-remote/issues/1">may break wifi</a> on it. So I figured it's not worth the trouble and using <a href="https://github.com/karlicoss/kobuddy/blob/master/scripts/backup.py">this script</a> which runs in cron every minute and tries to backup the database from device. I might add it to udev rules at some point, but it's worked well enough so far.
+<a id="org000001a"></a>Kobo <b><b>doesn't seem to support cloud sync for annotations</b></b>. I was considering syncing the database wirelessly, as <a href="https://github.com/dropmeaword/kobo-aura-remote">there are</a> some SSH modules for its firmware, but people report it <a href="https://github.com/dropmeaword/kobo-aura-remote/issues/1">may break wifi</a> on it. So I figured it's not worth the trouble and using <a href="https://github.com/karlicoss/kobuddy/blob/master/scripts/backup.py">this script</a> which runs in cron every minute and tries to backup the database from device. I might add it to udev rules at some point, but it's worked well enough so far.
 </p>
 
 <p>
-<a id="org000001e"></a>There is an official <a href="https://play.google.com/store/apps/details?id=com.kobobooks.android">Android app</a> which lets you manage and annotate books from Kobo store and seems to be syncing progress between eink and phone.
+<a id="org000001f"></a>There is an official <a href="https://play.google.com/store/apps/details?id=com.kobobooks.android">Android app</a> which lets you manage and annotate books from Kobo store and seems to be syncing progress between eink and phone.
 However annotations <b><b>don't sync between Kobo and phone</b></b> for me, and other people also report same experience: <a href="https://www.mobileread.com/forums/showthread.php?t=314687">1</a>, <a href="https://www.mobileread.com/forums/showthread.php?t=256685">2</a>, <a href="https://www.mobileread.com/forums/showthread.php?t=271762">3</a>. 
 <a href="https://www.mobileread.com/forums/showthread.php?p=3056862#post3056862">Some</a> claim it works on iphones though.
 </p>
@@ -659,9 +665,9 @@ Kobo lets you conveniently search over all of your highlights and notes.
 </div>
 </div>
 
-<div id="outline-container-org0000020" class="outline-3">
-<h3 id="org0000020"><a href="https://github.com/koreader/koreader#main-features-for-users">Koreader</a></h3>
-<div class="outline-text-3" id="text-org0000020">
+<div id="outline-container-org0000021" class="outline-3">
+<h3 id="koreader"><a href="https://github.com/koreader/koreader#main-features-for-users">Koreader</a></h3>
+<div class="outline-text-3" id="text-koreader">
 <p>
 Koreader is an alternative <b><b>open source</b></b> software for Kindle, Kobo and other E-ink devices.
 </p>
@@ -678,13 +684,13 @@ It also supports highlighting, but (as of v2019.06), note taking is unsupported 
 </div>
 
 
-<div id="outline-container-org0000026" class="outline-2">
-<h2 id="org0000026"><span class="section-number-2">5</span> Miscellaneous</h2>
+<div id="outline-container-org0000028" class="outline-2">
+<h2 id="org0000028"><span class="section-number-2">5</span> Miscellaneous</h2>
 <div class="outline-text-2" id="text-5">
 </div>
-<div id="outline-container-org0000022" class="outline-3">
-<h3 id="org0000022">Annotating paper books</h3>
-<div class="outline-text-3" id="text-org0000022">
+<div id="outline-container-org0000023" class="outline-3">
+<h3 id="org0000023">Annotating paper books</h3>
+<div class="outline-text-3" id="text-org0000023">
 <p>
 So far, for me the only downside of using nice tools for annotating digital content is that it ruined the experience of reading paper books for me. 
 </p>
@@ -734,9 +740,9 @@ When I'm done with a book, I'd spend a bit of time digitizing annotations and ma
 </div>
 </div>
 
-<div id="outline-container-org0000023" class="outline-3">
-<h3 id="org0000023">Annotating plaintext</h3>
-<div class="outline-text-3" id="text-org0000023">
+<div id="outline-container-org0000024" class="outline-3">
+<h3 id="org0000024">Annotating plaintext</h3>
+<div class="outline-text-3" id="text-org0000024">
 <p>
 Often, I want to leave a quick comment to an org-mode item.
 I've got a handy Emacs <a href="https://gitlab.com/karlicoss/dotspacemacs/blob/3f14fd054cef1ff95f6a376523cfae9bd1afe22b/init.el#L1019-1027">binding</a> which appends a child note with a timestamp and enters edit mode, so the whole process is smooth.
@@ -751,9 +757,36 @@ On the other hand, plain list items, which you can insert in arbitrary place, ar
 </div>
 </div>
 
-<div id="outline-container-org0000024" class="outline-3">
-<h3 id="org0000024">Other notable mentions</h3>
-<div class="outline-text-3" id="text-org0000024">
+<div id="outline-container-org0000025" class="outline-3">
+<h3 id="org0000025">Annotating videos</h3>
+<div class="outline-text-3" id="text-org0000025">
+<p>
+Often when I watch lectures or some talks on Youtube or in VLC, I want to leave a bookmark or write a note with a reference to a specific timestamp. 
+This is pretty much not possible apart from opening your text editor and manually recording the position in video. All the video annotation software I know of is more oriented towards video editing/effects etc.
+</p>
+
+<p>
+So, if I'm watching something in browser, I normally end up using <a href="#grasp">grasp</a> and manually type the timestamp.
+</p>
+
+<p>
+This is distracting, but even worse is that whatever you use have no means of quickly jumping to the timestamp you recorded; you'd have to move the slider to it manually. 
+</p>
+
+<p>
+There is no common standard that I know of for jumping at a certain timestamp neither in web nor in desktop applications (e.g. via mime handler).
+</p>
+
+<p>
+I'd say this is somewhat unsolved problem, which is surprising since presumably it could be helpful for lots of students.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org0000026" class="outline-3">
+<h3 id="org0000026">Other notable mentions</h3>
+<div class="outline-text-3" id="text-org0000026">
 <p>
 Due to the lack of common standard for annotated content, some services try to implement their own:
 </p>
@@ -770,9 +803,9 @@ They don't tamper with browser selection, so you can still use external annotati
 </div>
 </div>
 
-<div id="outline-container-org0000025" class="outline-3">
-<h3 id="org0000025">Hall of shame!</h3>
-<div class="outline-text-3" id="text-org0000025">
+<div id="outline-container-org0000027" class="outline-3">
+<h3 id="org0000027">Hall of shame!</h3>
+<div class="outline-text-3" id="text-org0000027">
 <p>
 These are services that wouldn't let you select text. Not sure why that happens: could be some sort of copyright restriction, being assholes, or just accidental pointless restriction.
 </p>
@@ -795,7 +828,7 @@ In addition you can't even export your highlights, best you can do seems to be <
 </div>
 </div>
 
-<div id="outline-container-org0000029" class="outline-2">
+<div id="outline-container-org000002a" class="outline-2">
 <h2 id="vision"><span class="section-number-2">6</span> What makes a good annotation system?</h2>
 <div class="outline-text-2" id="text-vision">
 <p>
@@ -809,10 +842,11 @@ In my quest for the perfect annotation engine I've figured certain aspects that 
 
 <p>
 Highlighting a piece of content and leaving a comment are fairly straightforward operations, and you shouldn't have to think much about how exactly you do it and which program you use.
+Most current annotation engines are also somewhat tedious to interact with, add more content in existing annotaions, link, etc.
 </p>
 
 <p>
-This requires the tools being <b><b>cross platform</b></b> and <b><b>cross format</b></b>.
+Solving this requires the tools being <b><b>cross platform</b></b> and <b><b>cross format</b></b>.
 </p>
 
 <p>
@@ -849,7 +883,7 @@ plaintext representations, indexing and incremental search.
 </p>
 
 <p>
-Personally, I'm solving this problem via <a href="#org0000027">orger</a>.
+Personally, I'm solving this problem via <a href="#org0000000">orger</a>.
 </p></li>
 
 <li><p>
@@ -893,7 +927,13 @@ Annotations are a valuable tool for collaborative learning and research, and imp
 </p>
 
 <p>
-Perhaps in some near future we could <b><b>ditch all the zillion internet commenting platforms</b></b> and rely on annotation layer instead.
+Blog comments seem to be somewhat in decline which is understandable since it's too annoying to register here and there.
+On the other hand, platforms like Facebook comments or Disqus are not very privacy friendly, don't give access to data stored (e.g. if Disqus disappears tomorrow so do comments in your blog),
+and are not very friendly towards people who do want to comment anonymously.
+</p>
+
+<p>
+Perhaps in some near future we could <b><b>ditch all the internet commenting platforms</b></b> and rely on annotation layer instead.
 <a href="#hypothesis">Hypothesis</a> basically lets you do that already, perhaps with a little work on design (sidebar is not necessarily convenient for social commenting), it could serve that purpose.
 </p>
 
@@ -905,11 +945,18 @@ I also consider comments people write as projections of their minds and it would
 It's hardly worth mentioning that one should be in control whether highlights they are making are private or everyone else can see them.
 </p></li>
 
-<li><b><b>Open source</b></b>: not sure if that even needs justifying :)</li>
+<li><p>
+<b><b>Open source</b></b>: not sure if that even needs justifying :)
+</p>
+
+<p>
+People have somewhat different requirements for their cognitive tools and it should be possible to can hack them and fix annoying bugs.
+That also gives way more potential for integrating them with other services.
+</p></li>
 </ul>
 </div>
 
-<div id="outline-container-org0000028" class="outline-3">
+<div id="outline-container-org0000029" class="outline-3">
 <h3 id="comparison">Comparison</h3>
 <div class="outline-text-3" id="text-comparison">
 <p>
@@ -952,7 +999,7 @@ I'm only listing tools that support proper highlighting and commenting.
 <td class="org-left"><a href="#instapaper">Instapaper</a></td>
 <td class="org-left"><span style="color:green">Y</span>, offline</td>
 <td class="org-left">n/a</td>
-<td class="org-left"><span style="color:red">N</span><a href="#org0000004">&uarr;</a></td>
+<td class="org-left"><span style="color:red">N</span><a href="#org0000005">&uarr;</a></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:red">N</span></td>
@@ -960,7 +1007,7 @@ I'm only listing tools that support proper highlighting and commenting.
 
 <tr>
 <td class="org-left"><a href="#wallabag">Wallabag</a></td>
-<td class="org-left"><span style="color:red">N</span><a href="#org0000006">&uarr;</a></td>
+<td class="org-left"><span style="color:red">N</span><a href="#org0000007">&uarr;</a></td>
 <td class="org-left">n/a</td>
 <td class="org-left"><a href="https://github.com/wallabag/wallabag/issues/3635"><span style="color:red">N</span></a></td>
 <td class="org-left"><span style="color:red">N</span></td>
@@ -990,11 +1037,11 @@ I'm only listing tools that support proper highlighting and commenting.
 </tbody>
 <tbody>
 <tr>
-<td class="org-left"><a href="#org000000c">Okular</a></td>
+<td class="org-left"><a href="#org000000d">Okular</a></td>
 <td class="org-left">n/a</td>
 <td class="org-left"><span style="color:red">N</span></td>
+<td class="org-left"><span style="color:#ff9933">limited</span><a href="#org000000f">&uarr;</a></td>
 <td class="org-left"><span style="color:#ff9933">limited</span><a href="#org000000e">&uarr;</a></td>
-<td class="org-left"><span style="color:#ff9933">limited</span><a href="#org000000d">&uarr;</a></td>
 <td class="org-left"><span style="color:green">Y</span>, file sync</td>
 <td class="org-left"><span style="color:green">Y</span></td>
 </tr>
@@ -1064,20 +1111,20 @@ I'm only listing tools that support proper highlighting and commenting.
 <td class="org-left"><a href="#kindle">Kindle</a></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><span style="color:#ff9933">limited</span><a href="#org000001b">&uarr;</a></td>
+<td class="org-left"><span style="color:#ff9933">limited</span><a href="#org000001c">&uarr;</a></td>
 <td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><span style="color:#ff9933">limited</span><a href="#org000001a">&uarr;</a></td>
-<td class="org-left"><span style="color:red">N</span></td>
+<td class="org-left"><span style="color:#ff9933">limited</span><a href="#org000001b">&uarr;</a></td>
+<td class="org-left"><span style="color:red">N</span>, <a href="#koreader">but koreader &uarr;</a></td>
 </tr>
 
 <tr>
 <td class="org-left"><a href="#kobo"><b><b>Kobo</b></b></a></td>
-<td class="org-left"><span style="color:red">N</span>, <a href="#org000001e">broken&uarr;</a></td>
+<td class="org-left"><span style="color:red">N</span>, <a href="#org000001f">broken&uarr;</a></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:green">Y</span></td>
 <td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><span style="color:red">N</span>, <a href="#org0000019">but possible&uarr;</a></td>
-<td class="org-left"><span style="color:red">N</span></td>
+<td class="org-left"><span style="color:red">N</span>, <a href="#org000001a">but possible&uarr;</a></td>
+<td class="org-left"><span style="color:red">N</span>, <a href="#koreader">but koreader&uarr;</a></td>
 </tr>
 </tbody>
 </table>
@@ -1085,7 +1132,7 @@ I'm only listing tools that support proper highlighting and commenting.
 </div>
 </div>
 
-<div id="outline-container-org000002f" class="outline-2">
+<div id="outline-container-org0000030" class="outline-2">
 <h2 id="infra"><span class="section-number-2">7</span> Using annotation data</h2>
 <div class="outline-text-2" id="text-infra">
 <p>
@@ -1107,9 +1154,9 @@ I'm using a <b><b>special Python package to access the data</b></b>, which I cal
 </div>
 
 
-<div id="outline-container-org000002a" class="outline-3">
-<h3 id="org000002a">Extracting reading stats</h3>
-<div class="outline-text-3" id="text-org000002a">
+<div id="outline-container-org000002b" class="outline-3">
+<h3 id="org000002b">Extracting reading stats</h3>
+<div class="outline-text-3" id="text-org000002b">
 <p>
 As a specific example how I do it: recently my friend asked me if I could recommend them posts I found interesting on <a href="https://slatestarcodex.com/">Slate Star Codex</a>. With a tiny python script I was quickly able to give them some stats on posts I read, so they could choose among them.
 </p>
@@ -1124,11 +1171,11 @@ for p in my.reading.hypothesis.get_pages():
 </div>
 </div>
 
-<div id="outline-container-org000002b" class="outline-3">
-<h3 id="org000002b">Searching in annotations</h3>
-<div class="outline-text-3" id="text-org000002b">
+<div id="outline-container-org000002c" class="outline-3">
+<h3 id="org000002c">Searching in annotations</h3>
+<div class="outline-text-3" id="text-org000002c">
 <p>
-<a id="org0000027"></a>I've got bunch of scripts and a rendering tool which I named <a href="https://github.com/karlicoss/orger">orger</a> (yep, haven't invested that much thought into naming).
+<a id="org0000000"></a>I've got bunch of scripts and a rendering tool which I named <a href="https://github.com/karlicoss/orger">orger</a> (yep, haven't invested that much thought into naming).
 Basically, these scripts take specific data source as input and produce org-mode output, e.g. renders <code>json</code> backed up from Instapaper into <code>instapaper.org</code> file. That runs every few hours and keeps the contents relatively up to date.
 </p>
 
@@ -1146,9 +1193,9 @@ Finally, I've got a <a href="https://www.lesbonscomptes.com/recoll">Recoll</a> i
 </div>
 </div>
 
-<div id="outline-container-org000002c" class="outline-3">
-<h3 id="org000002c"><a id="org0000000"></a>Providing TODO items</h3>
-<div class="outline-text-3" id="text-org000002c">
+<div id="outline-container-org000002d" class="outline-3">
+<h3 id="org000002d"><a id="org0000001"></a>Providing TODO items</h3>
+<div class="outline-text-3" id="text-org000002d">
 <p>
 While reading, I often encounter something I want to google or check or read about later; or just come up to something actionable inspired by what I'm reading.
 But I also don't want to interrupt from reading and losing context: that especially matters while reading on a E-ink device: distracting from the book, fetching your phone etc is really annoying.
@@ -1164,9 +1211,9 @@ So, as a workaround, I have programmed rules that pick out notes that start with
 </div>
 </div>
 
-<div id="outline-container-org000002d" class="outline-3">
-<h3 id="org000002d"><a id="org0000001"></a>Spaced repetition</h3>
-<div class="outline-text-3" id="text-org000002d">
+<div id="outline-container-org000002e" class="outline-3">
+<h3 id="org000002e"><a id="org0000002"></a>Spaced repetition</h3>
+<div class="outline-text-3" id="text-org000002e">
 <p>
 It's kind of an extension of the previous use case: again, often you want to send something straight into your <a href="https://en.wikipedia.org/wiki/Spaced_repetition">spaced repetition</a> queue without having to remember to add that.
 </p>
@@ -1186,11 +1233,11 @@ I've got two rules for that:
 </div>
 </div>
 
-<div id="outline-container-org000002e" class="outline-3">
-<h3 id="org000002e">Life log</h3>
-<div class="outline-text-3" id="text-org000002e">
+<div id="outline-container-org000002f" class="outline-3">
+<h3 id="org000002f">Life log</h3>
+<div class="outline-text-3" id="text-org000002f">
 <p>
-I'm a big fan of <a class="post-tag" href="./tags.html#lifelogging">#lifelogging</a> and all the timestamped highlights, comments and <a href="#org000001d">reading progress</a> from Kobo are an effortless (no manual logging!) contribution to my personal timeline, which I render and sync on my devices every few hours.
+I'm a big fan of <a class="post-tag" href="./tags.html#lifelogging">#lifelogging</a> and all the timestamped highlights, comments and <a href="#org000001e">reading progress</a> from Kobo are an effortless (no manual logging!) contribution to my personal timeline, which I render and sync on my devices every few hours.
 </p>
 
 <p>
@@ -1200,8 +1247,8 @@ I sometimes use it when conversation with other people comes to awkward silence,
 </div>
 </div>
 
-<div id="outline-container-org0000030" class="outline-2">
-<h2 id="org0000030"><span class="section-number-2">8</span> --</h2>
+<div id="outline-container-org0000031" class="outline-2">
+<h2 id="org0000031"><span class="section-number-2">8</span> --</h2>
 <div class="outline-text-2" id="text-8">
 <p>
 I'd be interested to know what do you think, and how are you managing your annotations or if you need some help with your existing workflow. Please also let me know if I missed any tools or features!
