@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="backup">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>I've found Google Takeouts to silently remove old data | Mildly entertainingᵝ</title>
+
+        <link rel="stylesheet" href="./css/default.css?v=2" />
+        <link rel="stylesheet" href="./css/links.css?v=2" />
+
+        <!-- TODO make it conditional on actually having math on page? -->
+        <script type="text/javascript">
+ window.MathJax = {
+     tex2jax: {
+         // note that hakyll source has got double dollar signs due to special meaning in templates
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+     }
+ };
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    <!-- TODO eh, not sure if this symbol is good for that... -->
+                    ·
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                    ·
+                    <a class="fat" href="./notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
+                </span>
+                <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+            </nav>
+        </header>
+
+        <main>
+            
+
+
+
+
+<article>
+    <section class="post-title">
+    <h1>I've found Google Takeouts to silently remove old data</h1>
+    <div class="summary">Crosspost from /r/DataHoarder</h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <p>This is a <a href="https://www.reddit.com/r/DataHoarder/comments/ayt5cu/ive_found_out_google_takeout_archives_are_not/">crosspost</a> from Reddit.</p>
+<p><strong>TLDR</strong>: keep/backup your old Google Takeout archives, turns out the data is not persisted across them.</p>
+<p>So I am working on a personal project for which I am collecting all the URLs I even visited. I update them via cron from multiple sources, in particular my latest Google Takeout archive which I’m always storing on my desktop. I’ve been improving the resilience of the project in terms of making sure I don’t break URL extracion so I wrote a script to diff the extracted urls and check if any of them disappear. What I found out was that urls from takeout were in fact mysteriously disappearing.</p>
+<p>After a bit of WTF and investigation, turned out that takeout data is not cumulative (at least for some of sources), and seems to have some sort of retention period.</p>
+<p>Here are some of my findings:</p>
+<ul>
+<li><p>archive from 20181227</p>
+<pre><code>  grep time_usec BrowserHistory.json | sort | head -n 3
+            &quot;time_usec&quot;: 1513604826000563
+            &quot;time_usec&quot;: 1513606272469876
+            &quot;time_usec&quot;: 1513606362996796
+  oldest entry is 18 Dec 2017
+
+  tidy -q -i Chrome/MyActivity.html | grep -e 'PM' -e 'AM' | tail -n 3
+            Dec 18, 2017, 2:12:42 PM UTC
+            Dec 18, 2017, 2:11:12 PM UTC
+            Dec 18, 2017, 1:47:06 PM UTC
+
+  tidy -q -i Search/MyActivity.html | grep -e 'PM' -e 'AM' | tail -n 3
+            Jan 23, 2015, 7:56:09 PM UTC
+            Jan 23, 2015, 7:42:42 PM UTC
+            Jan 23, 2015, 7:42:41 PM UTC</code></pre></li>
+<li><p>archive from 20180623</p>
+<pre><code>  grep time_usec BrowserHistory.json | sort | head -n 3
+            &quot;time_usec&quot;: 1496659157550587
+            &quot;time_usec&quot;: 1496660371451340
+            &quot;time_usec&quot;: 1496661577902967
+  oldest entry is 05 Jun 2017
+
+  tidy -q -i Chrome/MyActivity.html | grep -e 'PM' -e 'AM' | tail -n 3 
+            Jun 5, 2017, 2:43:58 PM
+            Jun 5, 2017, 2:43:55 PM
+            Jun 5, 2017, 2:40:28 PM
+
+  tidy -q -i Search/MyActivity.html | grep -e 'PM' -e 'AM' | tail -n 3
+            Aug 5, 2014, 6:19:32 PM
+            Aug 5, 2014, 5:25:34 PM
+            Aug 5, 2014, 5:25:32 PM</code></pre></li>
+<li><p>archive from 20170410</p>
+<pre><code>  grep time_usec BrowserHistory.json | sort | head -n 3
+            &quot;time_usec&quot;: 1465298229733388
+            &quot;time_usec&quot;: 1465298231949965
+            &quot;time_usec&quot;: 1465298248753114
+  oldest entry is 07 Jun 2016</code></pre>
+<p>that takeout doesn’t have any of MyActivity.html (Google added it later in 2017) there is <code>Searches</code> directory which contains some jsons back to October 2010</p></li>
+</ul>
+<p>In summary: looks like <code>BrowserHistory.json</code> has got a retention of about 1 year, same for <code>Chrome/MyActivity.html</code>. <code>Search/MyActivity.html</code> has got a retention of about 3 years. It’s a mess.</p>
+<p>Not sure if there is a similar issue with other takeout stuff (e.g. youtube watch history, shopping, location etc), so be careful if you rely on it!</p>
+<p>I guess it was sort of a gut feeling that I was paranoid about that and was keeping some of the older archives.</p>
+<p>Also I haven’t really found anything about this retention anywhere in google takeout FAQ. Does anyone know about it? Is it some sort of legal requirement, a bug or something else?</p>
+    </section>
+
+    
+    <section class="footer">
+        <div class="post-tags"><a class="post-tag" href="./tags.html#backup">#backup</a></div>
+        <!-- TODO post-date? -->
+        <div class="date">08 March 2019</div>
+    </section>
+    
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_takeout_data_gone"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
+        <footer>
+        </footer>
+    </body>
+</html>
