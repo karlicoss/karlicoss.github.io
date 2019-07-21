@@ -818,19 +818,19 @@ I'm only listing tools that support proper highlighting and commenting.
 </p>
 <table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
 <colgroup>
-<col class="org-left">
+<col class="org-left" />
 </colgroup>
 <colgroup>
-<col class="org-left">
-<col class="org-left">
-<col class="org-left">
-<col class="org-left">
-<col class="org-left">
-<col class="org-left">
+<col class="org-left" />
+<col class="org-left" />
+<col class="org-left" />
+<col class="org-left" />
+<col class="org-left" />
+<col class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th class="org-left" scope="col">&Acirc;&nbsp;</th>
+<th class="org-left" scope="col"> </th>
 <th class="org-left" scope="col">mobile annotations</th>
 <th class="org-left" scope="col">fingerprinting</th>
 <th class="org-left" scope="col">search in annotations</th>
@@ -844,14 +844,14 @@ I'm only listing tools that support proper highlighting and commenting.
 <td class="org-left"><a href="#instapaper">Instapaper</a></td>
 <td class="org-left"><span style="color:green">Y</span>, offline</td>
 <td class="org-left">n/a</td>
-<td class="org-left"><span style="color:red">N</span><a href="#org0000005">&acirc;</a></td>
+<td class="org-left"><span style="color:red">N</span><a href="#org0000005">↑</a></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:red">N</span></td>
 </tr>
 <tr>
 <td class="org-left"><a href="#wallabag">Wallabag</a></td>
-<td class="org-left"><span style="color:red">N</span><a href="#org0000007">&acirc;</a></td>
+<td class="org-left"><span style="color:red">N</span><a href="#org0000007">↑</a></td>
 <td class="org-left">n/a</td>
 <td class="org-left"><a href="https://github.com/wallabag/wallabag/issues/3635"><span style="color:red">N</span></a></td>
 <td class="org-left"><span style="color:red">N</span></td>
@@ -882,8 +882,8 @@ I'm only listing tools that support proper highlighting and commenting.
 <td class="org-left"><a href="#org000000d">Okular</a></td>
 <td class="org-left">n/a</td>
 <td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><span style="color:#ff9933">limited</span><a href="#org000000f">&acirc;</a></td>
-<td class="org-left"><span style="color:#ff9933">limited</span><a href="#org000000e">&acirc;</a></td>
+<td class="org-left"><span style="color:#ff9933">limited</span><a href="#org000000f">↑</a></td>
+<td class="org-left"><span style="color:#ff9933">limited</span><a href="#org000000e">↑</a></td>
 <td class="org-left"><span style="color:green">Y</span>, file sync</td>
 <td class="org-left"><span style="color:green">Y</span></td>
 </tr>
@@ -947,19 +947,19 @@ I'm only listing tools that support proper highlighting and commenting.
 <td class="org-left"><a href="#kindle">Kindle</a></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><span style="color:#ff9933">limited</span><a href="#org000001c">&acirc;</a></td>
+<td class="org-left"><span style="color:#ff9933">limited</span><a href="#org000001c">↑</a></td>
 <td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><span style="color:#ff9933">limited</span><a href="#org000001b">&acirc;</a></td>
-<td class="org-left"><span style="color:red">N</span>, <a href="#koreader">but koreader &acirc;</a></td>
+<td class="org-left"><span style="color:#ff9933">limited</span><a href="#org000001b">↑</a></td>
+<td class="org-left"><span style="color:red">N</span>, <a href="#koreader">but koreader ↑</a></td>
 </tr>
 <tr>
 <td class="org-left"><a href="#kobo"><b><b>Kobo</b></b></a></td>
-<td class="org-left"><span style="color:red">N</span>, <a href="#org000001f">broken&acirc;</a></td>
+<td class="org-left"><span style="color:red">N</span>, <a href="#org000001f">broken↑</a></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:green">Y</span></td>
 <td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><span style="color:red">N</span>, <a href="#org000001a">but possible&acirc;</a></td>
-<td class="org-left"><span style="color:red">N</span>, <a href="#koreader">but koreader&acirc;</a></td>
+<td class="org-left"><span style="color:red">N</span>, <a href="#org000001a">but possible↑</a></td>
+<td class="org-left"><span style="color:red">N</span>, <a href="#koreader">but koreader↑</a></td>
 </tr>
 </tbody>
 </table>
@@ -1006,7 +1006,7 @@ for p in my.reading.hypothesis.get_pages():
 Basically, these scripts take specific data source as input and produce org-mode output, e.g. renders <code>json</code> backed up from Instapaper into <code>instapaper.org</code> file. That runs every few hours and keeps the contents relatively up to date.
 </p>
 <p>
-I chose org-mode as I was already used to its features, keybindings and metadata. Also the hierarchy (e.g. book &acirc; highlight &acirc; comments) fits naturally into outline format. But not that it's a real necessity, I feel that as long as it's searchable plaintext, it's good enough.
+I chose org-mode as I was already used to its features, keybindings and metadata. Also the hierarchy (e.g. book → highlight → comments) fits naturally into outline format. But not that it's a real necessity, I feel that as long as it's searchable plaintext, it's good enough.
 </p>
 <p>
 To search them, I've got a <b><b>global keybinding</b></b>, which invokes Emacs with incremental search prompt against the directory with rendered <code>org</code> files, which lets me interact with them in a blink on my computer. On Android I'm using <a href="https://play.google.com/store/apps/details?id=com.docsearch">DocSearch</a> indexer (sadly it's not incremental, and app is not open source, so I'm looking for alternative).
@@ -2239,7 +2239,7 @@ I'm writing that because my 'system' has more or less settled and stabilized, an
 At this point, it also starts getting hard to keep up with all the things and hacks I implemented and maintaining let alone improving them, so I need to spread my ideas to the community.
 </p>
 <p>
-A bit of disclaimer: some of the things I am doing may seem excessive and tedious &acirc; but you don't have to use exactly the same setup, I'm merely sharing for you something to kick off!
+A bit of disclaimer: some of the things I am doing may seem excessive and tedious – but you don't have to use exactly the same setup, I'm merely sharing for you something to kick off!
 My own setup has been molded throughout the years with many influences from different people (who I will try to credit as long as I recall). Often some things I'm trying seem like too much effort even for me, but if you never overshoot, you might never hit that sweet spot between efficiency and convenience.
 </p>
 <p>
