@@ -9,6 +9,10 @@ html {
         width: 70rem; /* TODO how to choose good width?? */
         margin: 0 auto;
         padding: 0;
+
+
+        /* debugging */
+        /* color: red; */
     }
 }
 
@@ -218,18 +222,44 @@ article .content {
     position: relative;
 }
 
+
+@media (min-width: 80rem) {
+    article .content {
+        --sn-position   : absolute;
+        --sn-right      : 0;
+        --sn-width      : var(--aside-width);
+        --sn-display    : inline;
+    }
+
+    .before-aside {
+        /* hacky way of forcing aside to display on the same line.... */
+        display: inline-block;
+    }
+    li .before-aside {
+        /* for li, that breaks the list marker alignment...  I guess that's a relatively small price to pay for now... */
+        display: initial;
+    }
+}
+
+@media (max-width: 80rem) {
+    article .content {
+        --sn-display    : block;
+    }
+}
+
 article .content > * {
-    padding-right: calc(var(--aside-width));
+    padding-right: var(--sn-width);
 }
 
 /* TODO highlight sidenotes maybe? */
 article .content aside {
     /* makes it work in conjucion with position: relative in article */
-    position: absolute;
-    right: 0;
+    position: var(--sn-position);
+    right   : var(--sn-right);
 
-    width: var(--aside-width);
+    width   : var(--sn-width);
 
+    /* TODO maybe decorate somehow on mobile devices... */
     /* for horizontal padding between text and note */
     padding-left: 2em;
     box-sizing: border-box;
@@ -238,5 +268,8 @@ article .content aside {
     text-align: left;
     font-size: 0.8em;
     color: gray;
+
+    /* to match with corresponding <p> */
+    display: var(--sn-display);
 }
 
