@@ -75,6 +75,10 @@
     <p>
 TLDR: I'm running my spacemacs as a web service on my VPS, <a href="https://github.com/karlicoss/cloudmacs">check it out too</a>.
 </p>
+<img src="https://user-images.githubusercontent.com/291333/64793081-26ce5800-d583-11e9-9e77-cc2e3c64a4b0.png" width="auto" />
+<p>
+(sorry for a lousy color scheme; I still have to debug what's happening there)
+</p>
 <p>
 Since I've became hooked on emacs, I've been looking for ways to have same experience in my browser.
 Sometimes you have to use non-personal computers where it's not possible/undesirable to install desktop Emacs and Dropbox/Syncthing to access your personal data. 
@@ -88,7 +92,7 @@ However, it wasn't anywhere as convenient as emacs. Also after an update it some
 Dropbox is not capable of previewing arbitrary text files let alone edit; and even if it could you obviously wouldn't get anything close to your usual emacs workflow.
 </p>
 <p>
-And you could imagine that while elisp/vim style editing is fairly application [agnostic](<a href="https://github.com/brookhong/Surfingkeys#vim-editor-and-emacs-editor">https://github.com/brookhong/Surfingkeys#vim-editor-and-emacs-editor</a>), it's a thankless job to rewrire/port all the amazing emacs packages and features I'm used to like neotree, helm, refile, swoop, agenda, projectile, org-drill etc.
+And you could imagine that while elisp/vim style editing is fairly application <a href="https://github.com/brookhong/Surfingkeys#vim-editor-and-emacs-editor">agnostic</a>, it's a thankless job to rewrire/port all the amazing emacs packages and features I'm used to like neotree, helm, refile, swoop, agenda, projectile, org-drill etc.
 </p>
 <p>
 So I figured the only thing that would keep me happy is to run emacs itself over the web! Thankfully, due to its TUI interface that works surprisingly well.
@@ -97,7 +101,7 @@ So I figured the only thing that would keep me happy is to run emacs itself over
 It works <b><b>really</b></b> well with spacemacs/evil style <code>SPC</code> and comma bindings because they for the most part don't overlap with OS/browser hotkeys.
 </p>
 <p>
-ALso it's the first time I properly used Docker apart from running other people's containers so here are few non-obvious things I learnt which you might find useful:
+Also it's the first time I properly used Docker apart from running other people's containers so here are few non-obvious things I learnt which you might find useful:
 </p>
 <ul class="org-ul">
 <li><a href="https://docs.docker.com/develop/develop-images/multistage-build">Multistage build</a> is a painless way to extend someone else's containers or combine several containers in one</li>
