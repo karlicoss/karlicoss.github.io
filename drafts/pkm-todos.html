@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="pkm org-mode todos gtd">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>TODO fixme | Mildly entertainingᵝ</title>
+
+        <link rel="stylesheet" href="../css/default.css?v=2" />
+        <link rel="stylesheet" href="../css/links.css?v=2" />
+
+        <!-- TODO make it conditional on actually having math on page? -->
+        <script type="text/javascript">
+ window.MathJax = {
+     tex2jax: {
+         // note that hakyll source has got double dollar signs due to special meaning in templates
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+     }
+ };
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="../">Home</a>
+                    <!-- TODO eh, not sure if this symbol is good for that... -->
+                    ·
+                    <a class="fat" href="../ideas.html">Ideas</a>
+                    ·
+                    <a class="fat" href="../notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="../tags.html">Tags</a>
+                </span>
+                <span class="nav-right">
+                    <a class="fat" href="../feed.html">Feed</a>
+                    ·
+                    <a class="fat" href="../site.html">Site</a>
+                    ·
+                    <a class="fat" href="../me.html">Me</a>
+                </span>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<!-- <link rel="stylesheet" href="/css/org.css" /> -->
+<link rel="stylesheet" href="../css/org-default.css" />
+
+<link rel="stylesheet" href="../css/org-extra.css?v=2" />
+
+
+
+<article>
+    <section class="post-title">
+    <h1>TODO fixme</h1>
+    <div class="summary">How I am managing my tasks</h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org0000005">1. Tools</a>
+<ul>
+<li><a href="#org0000000">Gmail</a></li>
+<li><a href="#org0000001">Google Calendar</a></li>
+<li><a href="#org0000002">Wunderlist</a></li>
+<li><a href="#org0000003">Remember The Milk (RTM)</a></li>
+<li><a href="#org0000004">Org mode</a></li>
+</ul>
+</li>
+<li><a href="#org0000006">2. <span class="todo TODO">TODO</span> Workflow etc? or something about features I want</a></li>
+<li><a href="#org0000007">3. misc</a></li>
+<li><a href="#org0000008">4. <span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-05-13 20:44]</span></span> write about todolists for travel and org mode workflow?</a></li>
+<li><a href="#org0000009">5. <span class="todo TODO">TODO</span> write how I'm using todos with :noexport: right inside this file as I'm coming up with ways to simplify and imporve blog rendering</a></li>
+<li><a href="#org000000a">6. <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-05-29 19:05]</span></span> write about gmail and zero inbox?</a></li>
+<li><a href="#org000000b">7. <span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-05-29 19:35]</span></span> youtube as watchlist?</a></li>
+<li><a href="#org000000d">8. <span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-05-29 19:35]</span></span> nocommit and TODOs in code</a>
+<ul>
+<li><a href="#org000000c"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-02 22:39]</span></span> hmm maybe write about how I've set up search over everything first? it's kind of a dependency</a></li>
+</ul>
+</li>
+<li><a href="#org000000e">9. <span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-05-29 19:38]</span></span> scripts for adding TODOs from hypothesis, instapaper and kobo</a></li>
+<li><a href="#org000000f">10. <span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-02 22:38]</span></span> capture</a></li>
+<li><a href="#org0000010">11. <span class="todo TODO">TODO</span> <span class="priority">[B]</span> I don't use time estimates.   <span class="tag"><span class="blog">blog</span> <span class="todos">todos</span></span></a></li>
+<li><a href="#org0000013">12. <span class="todo TODO">TODO</span> <span class="priority">[C]</span> workflow with todos   <span class="tag"><span class="blog">blog</span> <span class="pkm">pkm</span></span></a>
+<ul>
+<li><a href="#org0000012"><span class="timestamp-wrapper"><span class="timestamp">[2019-05-15 08:09]</span></span> TODO shit if I keep scheduled in text, it gets detected by agenda. Write that down as one of org mode downsides</a></li>
+</ul>
+</li>
+<li><a href="#org0000014">13. <span class="todo TODO">TODO</span> <span class="priority">[B]</span> post about org mode sort by property - tags   <span class="tag"><span class="blog">blog</span> <span class="reddit">reddit</span></span></a></li>
+</ul>
+</div>
+</div>
+<p>
+Disclaimer: this post is going to be more of a story rather than a bunch of recipes for you since I find it hard to justify speicific task management features without the context.
+If you want some specific tips, jumpt straight to the org mode section.
+</p>
+<p>
+My quest for task keeping started few years ago, during the uni, when I found myself forgetting things increasingly more often.
+Perhaps that was just basically having a proper grown-up life: moving for a different city to study, having to care about physical well being,
+looking for internships, so the various responsibilities accumulated and started tipping over my brain.
+</p>
+<p>
+That wasn't just with day to day life through, I thought I was bad at memorizing structured information as well like math definitions or language grammar. It didn't have much impact on my studing though: thankfully, most of our classes did not require cramming and as long as one understood the subject they were fine.
+</p>
+<p>
+Forgetting felt really irritating, so I started seeking ways of compensating for that. In hindsight, I'm not really sure whether
+I actually was that worse than other people at remembering and memorizing.
+I just sort of assumed everyone else was good. But anyway, here I am.
+</p>
+<p>
+One approach some people choose is just letting it flow and accepting that things that you didn't manage to memorize were actually not that important.
+I find that quite terrifying on many levels so instantly rejected that.
+</p>
+<div><span class="before-aside">
+Pretty much the only and the obvious choice was moving to digital way of managing tasks. 
+</span><aside>if you are very keen on using paper notebook you might still find some of my tips useful!</aside></div>
+<div class="outline-2" id="outline-container-org0000005">
+<h2 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><span class="section-number-2">1</span> Tools</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+I think I've tried pretty much everything that existed, so I won't list them all. The ones I actually heavily used were:
+</p>
+<ul class="org-ul">
+<li>gmail (???-now)</li>
+<li>google calendar (2010-now)</li>
+<li>wunderlist (2013-2016)</li>
+<li>remember the milk (2016-2018)</li>
+<li>emacs + org mode (2017-now)</li>
+</ul>
+<p>
+I'll talk in more details about them now.
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000000">
+<h3 id="org0000000"><a class="headerlink" href="#org0000000">¶</a>Gmail</h3>
+<div class="outline-text-3" id="text-org0000000">
+<p>
+Email is basically a todo-list if you keep it organised enough.
+</p>
+<p>
+I'm using <a href="https://support.google.com/mail/answer/3094499">categories</a> in Gmail, which is the only thing apart from spam filtering I've delegated to Google's algorithms, and it works surprisingly well.
+</p>
+<p>
+I'm keeping inbox empty. If an email has to be acted upon at some point, I just share it directly in my todo list (via <a href="https://github.com/karlicoss/grasp">grasp</a> on my desktop).
+</p>
+<p>
+For emails with specific deadline or that need to be actioned upon sooner than later, I just manually create a task in my actual todo-list, schedule it and archive the email.
+</p>
+<p>
+Most messages are used as a means of notifying and don't require replying. If it does, but I can't do it immediately or waiting for something I'll just star it so it ends up in my 'Primary' which
+makes it noticeable.
+</p>
+<p>
+Every once in a while when I don't have better things to do I go though 'Updates', 'Promotions' and 'Forums' and act upon items there, cleaning them up a bit.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000001">
+<h3 id="org0000001"><a class="headerlink" href="#org0000001">¶</a>Google Calendar</h3>
+<div class="outline-text-3" id="text-org0000001">
+<p>
+I suppose most people use it anyway, so perhaps not worth a long explanation. 
+</p>
+<p>
+Killer feature (and also the only reason I'm using it) of <i>Google</i> calendar is Gmail integration: extracting calendar events from things like reservations, booking and appointment confirmations.
+Even though there is a 'standard' way of suggesting a calendar entry for a recipient by attaching an '.ics' file, it's not widely used.
+Apart from that feature, for personal use any calendar software works as long as it's capable of syncing.
+</p>
+<p>
+I'm only using calendar for tasks that have <b><b>specific date/time and timespan</b></b>: holidays, regular meetings, appointments, programming competitions, social occasions with friends etc.
+Everything else goes into my todolist which I'll write about later.
+</p>
+<p>
+Here's how I organise it:
+</p>
+<ul class="org-ul">
+<li><p>
+Main
+</p>
+<p>
+This is the default calendar and I just dump everything in it. 
+</p></li>
+<li><p>
+Work
+</p>
+<p>
+I can't import my work calendar into my personal calendar due to security policy. So instead, I just reserve slots for regular meetings without any metadata.
+Normally I remember what this slot corresponds for, so this is just so I don't schedule something over work event.
+</p></li>
+<li><p>
+Imported:
+</p>
+<p>
+One feature people often overlook in modern calendar software is that you can import other calendar feeds. Some examples of mine:
+</p>
+<ul class="org-ul">
+<li>public holidays (default in Google Calendar)</li>
+<li><a href="https://help.meetup.com/hc/en-us/articles/360002879851-Exporting-your-Meetup-calendar-to-RSS">meetup.com</a> events</li>
+<li><a href="https://www.facebook.com/help/152652248136178/">Facebook events</a>: displays events you are attending as long as the ones you marked as 'Maybe'</li>
+<li><a href="https://www.hackerrank.com/calendar">Hackerrank</a> events (programming competitiotns like Google Code Jam/Topcoder).</li>
+</ul>
+<p>
+The latter one is actually very spammy since it's not personalised and just lists all programming contents. If I keep it on, it just dominates my calendar. To get around this,
+I normally keep it disabled, but check it once a week and duplicate the events I want to participate in to the Main calendar.
+</p></li>
+</ul>
+<p>
+I'm also importing google calendar in my org-mode agenda via <a href="https://github.com/myuhe/org-gcal.el">org-gcal</a> module (in read-only mode).
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000002">
+<h3 id="org0000002"><a class="headerlink" href="#org0000002">¶</a>Wunderlist</h3>
+<div class="outline-text-3" id="text-org0000002">
+<p>
+Can't really say much, about it. It was a nice simple todo task manager, but as I got a taste for task management, I started hitting its limitations.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000003">
+<h3 id="org0000003"><a class="headerlink" href="#org0000003">¶</a>Remember The Milk (RTM)</h3>
+<div class="outline-text-3" id="text-org0000003">
+<p>
+I was quickly hooked once I discovered it, and ended up as kind of a power user, I even won a year of subscription for <a href="https://www.rememberthemilk.com/forums/tips/22027/">some tips</a> I shared! 
+</p>
+<p>
+For full list of features see <a href="https://www.rememberthemilk.com/upgrade">'Compare plans' section</a>.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000004">
+<h3 id="org0000004"><a class="headerlink" href="#org0000004">¶</a>Org mode</h3>
+<div class="outline-text-3" id="text-org0000004">
+<p>
+I've had several attempts at trying to use <a href="http://spacemacs.org">spacemacs</a> and Org mode in particular until something clicked and I got hooked.
+Most of my org mode habits actually got seamlessly transplanted from RTM workflow, so I'm gonna talk about them further.
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000006">
+<h2 id="org0000006"><a class="headerlink" href="#org0000006">¶</a><span class="section-number-2">2</span> <span class="todo TODO">TODO</span> Workflow etc? or something about features I want</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+After thinking for a bit of the best way to write both about RTM (which I am really greatful for) and org mode without repeating,
+I realized easiest way to avoid repetition would be some sort of Rosetta stone mapping between RTM and org concepts
+I've also marked feasure
+</p>
+<p>
+TODO third column – what it does?
+</p>
+<p>
+<style>
+table colgroup col:nth-child(1) {
+    width: 50%;
+}
+table colgroup col:nth-child(2) {
+    width: 50%;
+}
+</style>
+</p>
+<table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
+<caption class="t-above"><span class="table-number">Table 1:</span> This is the caption for the next table (or link)</caption>
+<colgroup>
+<col class="org-left" />
+<col class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th class="org-left" scope="col">RTM</th>
+<th class="org-left" scope="col">org mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">tags</td>
+<td class="org-left">tags</td>
+</tr>
+<tr>
+<td class="org-left">priorities (only three)</td>
+<td class="org-left">priorities (any number)</td>
+</tr>
+<tr>
+<td class="org-left">hotkeys (gmail-style)</td>
+<td class="org-left">emacs/<a href="https://github.com/emacs-evil/evil">evil mode</a> hotkeys</td>
+</tr>
+<tr>
+<td class="org-left"><a href="https://www.rememberthemilk.com/help/answer/basics-smartlists-whatare">smart lists</a></td>
+<td class="org-left"><a href="https://orgmode.org/manual/Custom-agenda-views.html">custom agenda</a></td>
+</tr>
+<tr>
+<td class="org-left">search</td>
+<td class="org-left">custom agenda query or <a href="https://orgmode.org/manual/Tag-searches.html">tag search</a> or any other means of plaintext search you can possibly think of (TODO link to swoop)</td>
+</tr>
+<tr>
+<td class="org-left"><a href="https://www.rememberthemilk.com/help/answer/basics-smartadd-howdoiuse">smart add</a></td>
+<td class="org-left">a bit different, but available via <a href="https://orgmode.org/manual/Capture-templates.html">capture templates</a> and <a href="https://orgmode.org/org.html#The-date_002ftime-prompt">datetime prompt</a></td>
+</tr>
+<tr>
+<td class="org-left">recurring tasks</td>
+<td class="org-left"><a href="https://orgmode.org/manual/Repeated-tasks.html">repeated tasks</a> (three kinds of them, actually!). However, <a href="https://www.rememberthemilk.com/help/answer/basics-basics-repeatformat">'repeat every'</a> is only partially present. TODO float etc</td>
+</tr>
+<tr>
+<td class="org-left">per-task reminders</td>
+<td class="org-left">missing in standard org, although present in Orgzly app (TODO link)</td>
+</tr>
+<tr>
+<td class="org-left">API</td>
+<td class="org-left">N/A; can be manipulated via elisp/python/other bindings or as any other plaintext</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="org-left">completed tasks</td>
+<td class="org-left"><a href="https://orgmode.org/guide/Archiving.html">archive</a></td>
+</tr>
+<tr>
+<td class="org-left">subtasks</td>
+<td class="org-left">sub-outlines (hoever <a href="https://www.rememberthemilk.com/help/answer/basics-subtasks-repeat">behavior</a> for subtasks of recurring tasks is not present though)</td>
+</tr>
+<tr>
+<td class="org-left">phone app</td>
+<td class="org-left"><a href="https://github.com/orgzly/orgzly-android">orgzly</a> is superior for Android, there are some apps for Iphones, but don't know how good they are</td>
+</tr>
+<tr>
+<td class="org-left">cloud sync</td>
+<td class="org-left">N/A; any means of plain text sync you prefer</td>
+</tr>
+<tr>
+<td class="org-left">lists</td>
+<td class="org-left">separate files</td>
+</tr>
+<tr>
+<td class="org-left">collaboration</td>
+<td class="org-left">missing, or at least not that I know of</td>
+</tr>
+</tbody>
+</table>
+<p>
+I think that stuff above the separator is what made RTM superior for me until I hit its limitations.
+If you're looking for an elaborate GTD-style task manager, but not willing to dive into Org mode, this should probably be your choice.
+</p>
+<p>
+Best thing about org mode is that if something is missing, you at least have possibility to <a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Advising-Functions.html">hack it</a> and even contribute back.
+  1 TODO recurring tasks thing,
+</p>
+<p>
+TODO tag examples
+</p>
+<ul class="org-ul">
+<li>priorities
+TODO how I use priorities</li>
+<li>smart lists (specified by search query)
+TODO list examples</li>
+<li>subtasks</li>
+<li>cloud sync and offline mode in android app</li>
+<li><p>
+repeating tasks (e.g. 'every fifth day of month' or 'every other
+</p>
+<p>
+TODO explain why rtm repeating tasks are good
+</p></li>
+<li>API
+script for packing list
+rtm-paranoid
+script to add tasks from telegram</li>
+</ul>
+<p>
+workflow I had with RTM, pretty similar
+write how I am rescheduling tasks in the beginning of day
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000007">
+<h2 id="org0000007"><a class="headerlink" href="#org0000007">¶</a><span class="section-number-2">3</span> misc</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+I think I can claim that my life is mostly driven by my todo list. 
+Not in the sense that my whole day is scheduled up to the minute and I have to obey it. Quite the opposite actually, I've stopped scheduling things unless they absolutely require a specific time slot.
+</p>
+<p>
+I can survive few days without looking in my todo list at all, e.g. on holiday (although I still do once a day since I'm a bit anxious of missing Somthing Really Important).
+But when it gets to day-to-day routine, I am never bored and always have something meaningful I could read/watch or do. 
+It doesn't feel overwhelming, I kind of accept I don't have time (at least currently) for many things I've marked as TODO. YMMV, of course :) 
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000008">
+<h2 id="org0000008"><a class="headerlink" href="#org0000008">¶</a><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-05-13 20:44]</span></span> write about todolists for travel and org mode workflow?</h2>
+</div>
+<div class="outline-2" id="outline-container-org0000009">
+<h2 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><span class="section-number-2">5</span> <span class="todo TODO">TODO</span> write how I'm using todos with :noexport: right inside this file as I'm coming up with ways to simplify and imporve blog rendering</h2>
+</div>
+<div class="outline-2" id="outline-container-org000000a">
+<h2 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><span class="section-number-2">6</span> <span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-05-29 19:05]</span></span> write about gmail and zero inbox?</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000000b">
+<h2 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><span class="section-number-2">7</span> <span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-05-29 19:35]</span></span> youtube as watchlist?</h2>
+</div>
+<div class="outline-2" id="outline-container-org000000d">
+<h2 id="org000000d"><a class="headerlink" href="#org000000d">¶</a><span class="section-number-2">8</span> <span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-05-29 19:35]</span></span> nocommit and TODOs in code</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div class="outline-3" id="outline-container-org000000c">
+<h3 id="org000000c"><a class="headerlink" href="#org000000c">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-02 22:39]</span></span> hmm maybe write about how I've set up search over everything first? it's kind of a dependency</h3>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000000e">
+<h2 id="org000000e"><a class="headerlink" href="#org000000e">¶</a><span class="section-number-2">9</span> <span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-05-29 19:38]</span></span> scripts for adding TODOs from hypothesis, instapaper and kobo</h2>
+</div>
+<div class="outline-2" id="outline-container-org000000f">
+<h2 id="org000000f"><a class="headerlink" href="#org000000f">¶</a><span class="section-number-2">10</span> <span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-02 22:38]</span></span> capture</h2>
+</div>
+<div class="outline-2" id="outline-container-org0000010">
+<h2 id="org0000010"><a class="headerlink" href="#org0000010">¶</a><span class="section-number-2">11</span> <span class="todo TODO">TODO</span> <span class="priority">[B]</span> I don't use time estimates.   <span class="tag"><span class="blog">blog</span> <span class="todos">todos</span></span></h2>
+<div class="outline-text-2" id="text-11">
+<p>
+Reasons: no need reminding me that there very little time remaining after you account for sleep, full time job, exercise and other maintenance
+I'm not good at time estimates, although that could be something to improve
+As long as you have the priorities, you just do the most important things and it doesn't really matter how long rest of them take
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000013">
+<h2 id="org0000013"><a class="headerlink" href="#org0000013">¶</a><span class="section-number-2">12</span> <span class="todo TODO">TODO</span> <span class="priority">[C]</span> workflow with todos   <span class="tag"><span class="blog">blog</span> <span class="pkm">pkm</span></span></h2>
+<div class="outline-text-2" id="text-12">
+<p>
+Yesterday: ran into an article <a href="https://www.quantamagazine.org/how-feynman-diagrams-revolutionized-physics-20190514/">https://www.quantamagazine.org/how-feynman-diagrams-revolutionized-physics-20190514/</a> which seemed interesting judging by the title, so I immediately shared opened it in instapaper
+Reading through "Now, a group of physicists and mathematicians is studying a geometric object called an “amplituhedron” that has the potential to further simplify calculations of particle interactions." I realised it would be interesting to find out and learn what is amplituhedron. But I'm on the run and a bit tired, and most important hasn't finished reading the whole article yet! So I highlight this sentence and add 'todo' as annotation.
+Next morning, as I check my agenda, this is added as a task in my agenda (note that it got a 'scheduled' thing) by one of my 'orger' scripts
+</p>
+<div class="org-src-container">
+<pre class="src src-html">* TODO group of physicists and mathematicians is studying a geometric object called an “amplituhedron” that has the potential to further simplify calculations of particle interactions. :ip2org:
+ todo
+ from [[https://www.instapaper.com/read/1193269751/10712031][ip]]   [[https://www.quantamagazine.org/how-feynman-diagrams-revolutionized-physics-20190514/][How Feynman Diagrams Revolutionized Physics | Quanta Magazine]]
+</pre>
+</div>
+<p>
+As I go through agenda, I decide it's somewhat interesting to read about at some point, but not very critical. So I
+  unschedule (, u in agenda)
+  give it medium priority [#C] (press 3 in agenda) 
+  refile to study.org file (, r in agenda)
+your hotkeys may vary of course. 
+</p>
+<p>
+While reading the same article, I've highlighted "learn more about Feynman diagrams and how they’ve changed the way physicists work, watch our new In Theory video" and marked as 'todo' as well, so it's now in my agenda. I suspect that that video wouldn't be too heavy on math, so I can watch it tonight while eating my dinner. So I don't unschedule it, but
+   give it low priority [#D] by pressing 4 in agenda 
+   and tag it (pressing T in agenda) with 'watch'
+I still tag and prioritize in case I wouldn't manage to do it today for some reason. Then I'll probably just unschedule the item since planning to watch some short video days in advance is a bit too high friction. Next time I want something to watch I will just call org-tags-view with 'watch' and pick something depending on priority or what I fancy more at the moment.
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000012">
+<h3 id="org0000012"><a class="headerlink" href="#org0000012">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2019-05-15 08:09]</span></span> TODO shit if I keep scheduled in text, it gets detected by agenda. Write that down as one of org mode downsides</h3>
+<div class="outline-text-3" id="text-org0000012">
+</div>
+<div class="outline-4" id="outline-container-org0000011">
+<h4 id="org0000011"><span class="timestamp-wrapper"><span class="timestamp">[2019-05-18 23:32]</span></span> Ugh. add back properties and created to the quoted thing…</h4>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000014">
+<h2 id="org0000014"><a class="headerlink" href="#org0000014">¶</a><span class="section-number-2">13</span> <span class="todo TODO">TODO</span> <span class="priority">[B]</span> post about org mode sort by property - tags   <span class="tag"><span class="blog">blog</span> <span class="reddit">reddit</span></span></h2>
+<div class="outline-text-2" id="text-13">
+</div>
+</div>
+
+    </section>
+
+    
+    <section class="footer">
+        <div class="post-tags"><a class="post-tag" href="../tags.html#pkm">#pkm</a> <a class="post-tag" href="../tags.html#org-mode">#org-mode</a> <a class="post-tag" href="../tags.html#todos">#todos</a> <a class="post-tag" href="../tags.html#gtd">#gtd</a></div>
+        <!-- TODO post-date? -->
+        <div class="date">27 May 2019</div>
+    </section>
+    
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_pkm_todos"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
+        <footer>
+        </footer>
+    </body>
+</html>
