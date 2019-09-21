@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content>
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>Orger TODO | Mildly entertainingᵝ</title>
+
+        <link rel="stylesheet" href="../css/default.css?v=2" />
+        <link rel="stylesheet" href="../css/links.css?v=2" />
+
+        <!-- TODO make it conditional on actually having math on page? -->
+        <script type="text/javascript">
+ window.MathJax = {
+     tex2jax: {
+         // note that hakyll source has got double dollar signs due to special meaning in templates
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+     }
+ };
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="../">Home</a>
+                    <!-- TODO eh, not sure if this symbol is good for that... -->
+                    ·
+                    <a class="fat" href="../ideas.html">Ideas</a>
+                    ·
+                    <a class="fat" href="../notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="../tags.html">Tags</a>
+                </span>
+                <span class="nav-right">
+                    <a class="fat" href="../feed.html">Feed</a>
+                    ·
+                    <a class="fat" href="../site.html">Site</a>
+                    ·
+                    <a class="fat" href="../me.html">Me</a>
+                </span>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<!-- <link rel="stylesheet" href="/css/org.css" /> -->
+<link rel="stylesheet" href="../css/org-default.css" />
+
+<link rel="stylesheet" href="../css/org-extra.css?v=2" />
+
+
+
+<article>
+    <section class="post-title">
+    <h1>Orger TODO</h1>
+    <div class="summary"></h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org0000003">1. What orger does</a>
+<ul>
+<li><a href="#org0000000"><span class="todo TODO">TODO</span> tools for converting in todos?</a></li>
+<li><a href="#org0000001"><span class="todo TODO">TODO</span> telegram? although it's not orger</a></li>
+<li><a href="#org0000002"><span class="todo TODO">TODO</span> telegram2org</a></li>
+</ul>
+</li>
+<li><a href="#org0000011">2. Examples</a>
+<ul>
+<li><a href="#org0000004">instapaper.py</a></li>
+<li><a href="#org0000007">hyp2org.py</a></li>
+<li><a href="#org0000009">kobo.py</a></li>
+<li><a href="#org000000b"><span class="todo TODO">TODO</span> krill.py</a></li>
+<li><a href="#org000000c"><span class="todo TODO">TODO</span> pdfs.py</a></li>
+<li><a href="#org000000d"><span class="todo TODO">TODO</span> rtm2org.py</a></li>
+<li><a href="#org000000e"><span class="todo TODO">TODO</span> twitter.py</a></li>
+<li><a href="#org000000f"><span class="todo TODO">TODO</span> telegram2org</a></li>
+<li><a href="#org0000010"><span class="todo TODO">TODO</span> write about interactive separately? not sure if worth it..</a></li>
+</ul>
+</li>
+<li><a href="#org0000012">3. <span class="todo TODO">TODO</span> Reddit reader</a></li>
+<li><a href="#org0000017">4. Why does that require a separate tool?</a>
+<ul>
+<li><a href="#org0000013"><span class="todo TODO">TODO</span> first, there was no TODO alive? python project to emit org mode</a></li>
+<li><a href="#org0000015"><span class="todo TODO">TODO</span> orger is agnostic to what you feed in it – it could be offline data from your regular backups, or it could be fresh API data</a></li>
+<li><a href="#org0000016">keeping track of already processed items (for Interactive) views is nothing TODO? hard, but it's easy to mess up and doing it every time is just too tedious</a></li>
+</ul>
+</li>
+<li><a href="#org0000019">5. <span class="todo TODO">TODO</span> quite a bit of effort was actually structuring raw data and exposing it through python interfaces</a>
+<ul>
+<li><a href="#org0000018"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-20 09:09]</span></span> link to data providers and my. package?</a></li>
+</ul>
+</li>
+<li><a href="#org000001b">6. types of views</a>
+<ul>
+<li><a href="#org000001a"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-18 16:41]</span></span> rename View to Static?</a></li>
+</ul>
+</li>
+<li><a href="#org0000020">7. Using the data</a>
+<ul>
+<li><a href="#org000001c"><span class="todo TODO">TODO</span> mention recall?</a></li>
+<li><a href="#org000001d">you can also set up</a></li>
+<li><a href="#org000001e"><span class="todo TODO">TODO</span> using Interactive</a></li>
+<li><a href="#org000001f"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-18 16:41]</span></span> while I'm using org-mode as target format and emacs to search over files, there is nothing really special about them.</a></li>
+</ul>
+</li>
+<li><a href="#org0000024">8. Potential improvements and caveats</a>
+<ul>
+<li><a href="#org0000021">one-way data flow</a></li>
+<li><a href="#org0000022"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-18 16:37]</span></span> think how to support more frequent, ideally instantaneous updates to views</a></li>
+<li><a href="#org0000023">race condition (TODO what would be better name? conflict?)</a></li>
+</ul>
+</li>
+<li><a href="#org0000026">9. <span class="done DONE">DONE</span> <span class="priority">[C]</span> github comments   <span class="tag"><span class="orger">orger</span></span></a>
+<ul>
+<li><a href="#org0000025"><span class="timestamp-wrapper"><span class="timestamp">[2019-09-18 22:41]</span></span> need to publish github<sub>provider</sub> first?..</a></li>
+</ul>
+</li>
+<li><a href="#org0000027">10. <span class="todo TODO">TODO</span> think about python version, not sure about f-strings   <span class="tag"><span class="orger">orger</span></span></a></li>
+<li><a href="#org0000028">11. <span class="todo TODO">TODO</span> remove org stuff from kython? just rely on inorganic or make a symlink?   <span class="tag"><span class="org">org</span> <span class="kython">kython</span> <span class="inorganic">inorganic</span></span></a></li>
+<li><a href="#org0000029">12. <span class="todo TODO">TODO</span> minimalistic interface; adding new view is a matter of 15-20 LOC   <span class="tag"><span class="orger">orger</span></span></a></li>
+<li><a href="#org000002a">13. <span class="todo TODO">TODO</span> not sure if there is need for krill? I could just mark items as drill manually?   <span class="tag"><span class="orger">orger</span></span></a></li>
+</ul>
+</div>
+</div>
+<p>
+I consume lots of content (books, articles, reddit, youtube, reddit, etc.) and TODO
+</p>
+<p>
+TODO it's hard to recall and navigate in your digital trace
+</p>
+<p>
+TODO extended mind?
+</p>
+<p>
+It would be cool to be capable of always remembering and instantly recalling information you've interacted with, metadata and your thoughts on it.
+Until we get augmented though, search is as close as you can get.
+</p>
+<p>
+When you actually try that on practice though you run into obstacles. 
+I'll give some I've personally been overcoming as examples, but I'm sure you'll come up with your own:
+</p>
+<ul class="org-ul">
+<li>convenience of access, e.g.:
+<ul class="org-ul">
+<li>to access annotations on my Kobo ebook I'd need to actually fetch my reader and tap on e-ink touch screen. Not much fun!</li>
+<li>if you want to search over annotations in your PDF collections… well good luck, I'm just not aware of such tool (let alone the fact that many pdf viewers wouldn't even let you search throught highlights) TODO link annotations</li>
+<li>there is no easy way to access all of your twitter favorites, people suggest using hacks like <a href="https://webapps.stackexchange.com/a/131374/68104">autoscroll extension</a>.</li>
+</ul></li>
+<li>searching data, e.g.:
+<ul class="org-ul">
+<li>often just not available at all or not incremental, e.g. on instapaper, you can't restrict search to highlights</li>
+<li>builtin <code>Ctrl-F</code> browser search sucks for the most part: you don't get preview, it's not easy and quick to navigate</li>
+</ul></li>
+<li>data ownership and liberation, e.g. what happens if the service is down or gone or banned by your government?
+<ul class="org-ul">
+<li>99% of services don't have support for offline TODO see #offline?
+it may or may not be worrying to you depending on how paranoid you are TODO towards? apocalypse, but my take on it is that at least I'd have my data :)</li>
+<li>if you delete a book on Kobo, the highlights just disappear TODO FIXME investigate maybe that only happens on sideloaded books? still worrying TODO also motivation for incremental backups</li>
+<li>in 2018, instapaper was unavailable in Europe for several month (!) due to missing the GDPR deadline</li>
+</ul></li>
+</ul>
+<p>
+TODO often you don't even quite remember where to search. E.g. you ran into TODO mypy issue for instance. 
+You vaguely recall seeing it somewhere else a year ago. Was it github? Or question on stackoverflow? Or was it just a todo comment in one of your personal projects?
+In essence, ideally you'd want some sort of search engine, but over your personal data, so you'd have unified way of accessing all of it.
+</p>
+<p>
+In essence, in many cases the service controls the way they present you information.
+That doesn't need to be that way, and I feel that separating that would let services on providing good service and community to develop tools for consuming it.
+</p>
+<p>
+TODO there are some collateral benefits of this system: e.g. you won't end up with deleted posts and comments as it often happens on Reddit (if you scrape and back it up properly).
+</p>
+<p>
+TODO details on running
+</p>
+<div class="outline-2" id="outline-container-org0000003">
+<h2 id="org0000003"><a class="headerlink" href="#org0000003">¶</a><span class="section-number-2">1</span> What orger does</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+It really depends on your imagination and needs!
+Minimal thing you could do would be supplying some headers, and even with just that you'd get something when you search for results.
+</p>
+<p>
+You can also add:
+</p>
+<ul class="org-ul">
+<li>timestamp</li>
+<li>tags</li>
+<li>arbitrary properties</li>
+<li>links</li>
+<li>child nodes</li>
+</ul>
+<p>
+See 'Examples' section for more 
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000000">
+<h3 id="org0000000"><a class="headerlink" href="#org0000000">¶</a><span class="todo TODO">TODO</span> tools for converting in todos?</h3>
+</div>
+<div class="outline-3" id="outline-container-org0000001">
+<h3 id="org0000001"><a class="headerlink" href="#org0000001">¶</a><span class="todo TODO">TODO</span> telegram? although it's not orger</h3>
+</div>
+<div class="outline-3" id="outline-container-org0000002">
+<h3 id="org0000002"><a class="headerlink" href="#org0000002">¶</a><span class="todo TODO">TODO</span> telegram2org</h3>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000011">
+<h2 id="org0000011"><a class="headerlink" href="#org0000011">¶</a><span class="section-number-2">2</span> Examples</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Disclaimer: TODO about my package, I wonder if I mention it somewhere? 
+I'm working on cleaning it up from any private information and publishing. Let me know if you're particularly keen on something specific so I could prioritize?
+But hopefully that's readable enough and will give you some inspiration
+</p>
+<p>
+TODO link to views? mode in separate dir I guess?
+</p>
+<p>
+Some featured views I'm generating:
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000004">
+<h3 id="org0000004"><a class="headerlink" href="#org0000004">¶</a>instapaper.py</h3>
+<div class="outline-text-3" id="text-org0000004">
+<p>
+As I mentioned, instapaper doesn't have decent search over annotaitons.
+</p>
+</div>
+<div class="outline-4" id="outline-container-org0000005">
+<h4 id="org0000005"><span class="todo TODO">TODO</span> mention 'context' link</h4>
+</div>
+<div class="outline-4" id="outline-container-org0000006">
+<h4 id="org0000006"><span class="todo TODO">TODO</span> add 'html screenshots?' wonder if that's a thing; could at least export without headings etc</h4>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000007">
+<h3 id="org0000007"><a class="headerlink" href="#org0000007">¶</a>hyp2org.py</h3>
+<div class="outline-text-3" id="text-org0000007">
+<p>
+ When I highlight something on hypothesis, I 
+Generates todo items from hypothesis. 
+Items get scheduled for the same day and appear on my org-mode agenda, so I can just unschedule them if they don't require immediate attention, 
+</p>
+</div>
+<div class="outline-4" id="outline-container-org0000008">
+<h4 id="org0000008"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-18 17:37]</span></span> not sure if worth mentioning</h4>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000009">
+<h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a>kobo.py</h3>
+<div class="outline-text-3" id="text-org0000009">
+<p>
+Generates views for all highlights and comments along with book titles from my Kobo database export.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000b">
+<h3 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><span class="todo TODO">TODO</span> krill.py</h3>
+<div class="outline-text-3" id="text-org000000b">
+</div>
+<div class="outline-4" id="outline-container-org000000a">
+<h4 id="org000000a"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-18 17:41]</span></span> thought I already explained how it works somewhere?</h4>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000c">
+<h3 id="org000000c"><a class="headerlink" href="#org000000c">¶</a><span class="todo TODO">TODO</span> pdfs.py</h3>
+<div class="outline-text-3" id="text-org000000c">
+<p>
+Crawls my filesystem for pdfs and accumulates all annotations in a single view.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000d">
+<h3 id="org000000d"><a class="headerlink" href="#org000000d">¶</a><span class="todo TODO">TODO</span> rtm2org.py</h3>
+<div class="outline-text-3" id="text-org000000d">
+<p>
+I've stopped using RTM a while ago, but there were still some tasks and notes I've left behind, so that mostly for data proliferation.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000e">
+<h3 id="org000000e"><a class="headerlink" href="#org000000e">¶</a><span class="todo TODO">TODO</span> twitter.py</h3>
+<div class="outline-text-3" id="text-org000000e">
+<p>
+It's got two modes
+</p>
+<ul class="org-ul">
+<li>First mode generates a view of everything I've ever tweeted.   TODO lifelogging?</li>
+<li>Second mode generates a view of tweets years ago TODO kinda like that service. It shows up on my agenda, and I find it quite fascinating to see how you've been changing over years.</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000f">
+<h3 id="org000000f"><a class="headerlink" href="#org000000f">¶</a><span class="todo TODO">TODO</span> telegram2org</h3>
+</div>
+<div class="outline-3" id="outline-container-org0000010">
+<h3 id="org0000010"><a class="headerlink" href="#org0000010">¶</a><span class="todo TODO">TODO</span> write about interactive separately? not sure if worth it..</h3>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000012">
+<h2 id="org0000012"><a class="headerlink" href="#org0000012">¶</a><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> Reddit reader</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+This one I particularly find so useful it deserves a separate TODO mention? . I have been sustainably using for almost a year now, so I believe it could be useful to many people.
+</p>
+<p>
+I tend to be curious about lots of different topics so I'm subscribed to over 100 subreddits.
+</p>
+<p>
+For the most part I'm reading Reddit passively and I can't afford spending much time on Reddit every day, so my system for years have been reading updates for a week once a week. 
+</p>
+<p>
+For few select subreddits that most interest me (e.g. quantifiedself) I read all wekkly updates, for the rest I just read weekly top.
+</p>
+<p>
+I tend to do it from my phone on the go/in transport or while I'm waiting somewhere, so the concentration is not exactly perfect and many things are awkward to read or browse on phone.
+</p>
+<p>
+So I tend to favorite interesting submissions (judging by the title) without reading them instead, and later once in a while when I'm at my desktop I have a deeper look at whatever I favorited.
+</p>
+<p>
+This is however gets a little clumsy. 
+</p>
+<ul class="org-ul">
+<li>TODO items in 'saved' can't be rearranged and the only sort available is by 'saving time'.</li>
+</ul>
+<p>
+This would be ok if every time you processed your saved items you cleared all of them, but that's just not very realistic.
+Some things take higher priority; some things just give you few thoughts now and you wanna action on it later.
+So every time you process saved submissions, you end up going through same things all over again, and you have to remember where you stopped last time. 
+That's quite distracting!
+</p>
+<ul class="org-ul">
+<li>sometimes posts/comments get deleted so if you look at saved item months later, you'd not know what did you save.</li>
+</ul>
+<p>
+While there are ways to read removed reddit comments, it's a bit distracting to do too and with orger you'd always have an original version of the item.
+</p>
+<p>
+To be more specific, here's my typical workflow with <code>reddit.org</code> file:
+</p>
+<ul class="org-ul">
+<li>I'm running reddit data exporter and <code>reddit.py</code> every night automatically (via cron).</li>
+<li>when I feel like reading some Reddit, I open <code>reddit.org</code> and jump to new items at the end of file (I can tell them from old by not having priority), and go through them</li>
+<li>some things just get refiled immediately. E.g. if I saved something on /r/Art normally I'd just move it to <code>dump.org</code> TODO</li>
+<li>what isn't refiled, I mark with priority</li>
+<li>when everything is prioritized, I select the whole file, call <code>org-sort-entries</code> and sort by priorities.</li>
+<li>now that everything looks a bit more manageable, I can action on <code>#A</code> and <code>#B</code> items properly.</li>
+</ul>
+<p>
+Some I just read and archive.
+Some give me thoughts or ideas which I can add under the corresponding org-mode heading.
+Some things just require actually acting on them (e.g. new library release), so I can mark it as TODO and schedule so it shows up in my agenda.
+</p>
+<ul class="org-ul">
+<li>also, once in a while I'll look through items with lower (<code>#C</code> / <code>#D</code>) priorities and bump them or archive if they become irrelevant.</li>
+</ul>
+<p>
+Needless to say when I'm searching through all of my information (TODO link to search.org?), reddit saved items pop up as well.
+</p>
+<p>
+The only minor downside of my particular implementation is that items are not removed from TODO on reddit.
+One could probably implement this with API call on archiving/marking item as done or something, I just didn't find it too big of a deal for me.
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000017">
+<h2 id="org0000017"><a class="headerlink" href="#org0000017">¶</a><span class="section-number-2">4</span> Why does that require a separate tool?</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Simply put, I didn't manage to find anything similar
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000013">
+<h3 id="org0000013"><a class="headerlink" href="#org0000013">¶</a><span class="todo TODO">TODO</span> first, there was no TODO alive? python project to emit org mode</h3>
+<div class="outline-text-3" id="text-org0000013">
+<p>
+While it's plaintext, and generating simple outlines is easy, but with more sophisticated inputs, tehre is some nasty business of escaping and sanitizing outputs 
+</p>
+<p>
+when it comes to generating 10+ views, you really want to make sure it's as little effort and minimal boilerplate as it can possibly be
+</p>
+</div>
+<div class="outline-4" id="outline-container-org0000014">
+<h4 id="org0000014"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-18 16:58]</span></span> inorganic</h4>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000015">
+<h3 id="org0000015"><a class="headerlink" href="#org0000015">¶</a><span class="todo TODO">TODO</span> orger is agnostic to what you feed in it – it could be offline data from your regular backups, or it could be fresh API data</h3>
+</div>
+<div class="outline-3" id="outline-container-org0000016">
+<h3 id="org0000016"><a class="headerlink" href="#org0000016">¶</a>keeping track of already processed items (for Interactive) views is nothing TODO? hard, but it's easy to mess up and doing it every time is just too tedious</h3>
+<div class="outline-text-3" id="text-org0000016">
+<p>
+I figured it was worth extracting this 'pattern' in a separate python module
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000019">
+<h2 id="org0000019"><a class="headerlink" href="#org0000019">¶</a><span class="section-number-2">5</span> <span class="todo TODO">TODO</span> quite a bit of effort was actually structuring raw data and exposing it through python interfaces</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div class="outline-3" id="outline-container-org0000018">
+<h3 id="org0000018"><a class="headerlink" href="#org0000018">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-20 09:09]</span></span> link to data providers and my. package?</h3>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000001b">
+<h2 id="org000001b"><a class="headerlink" href="#org000001b">¶</a><span class="section-number-2">6</span> types of views</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Views are meant to be read only and generated from scratch every time
+Interactive are incremental. orger uses json file to keep track of items it already processed so you can modify existing entries.
+</p>
+</div>
+<div class="outline-3" id="outline-container-org000001a">
+<h3 id="org000001a"><a class="headerlink" href="#org000001a">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-18 16:41]</span></span> rename View to Static?</h3>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000020">
+<h2 id="org0000020"><a class="headerlink" href="#org0000020">¶</a><span class="section-number-2">7</span> Using the data</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+I'm using emacs helm-ripgrep and helm-multi-swoop to search through org-files. TODO mention org-tags-view?
+They are incremental and effectively instantaneous. 
+TODO swoop requires buffers to be loaded in your emacs, TODO see search.org
+TODO could link to draft; just don't make it contribute to index?
+</p>
+<p>
+On my Android phone I'm using <a href="https://play.google.com/store/apps/details?id=com.docsearch.pro">Docsearch +</a> which is indexing plaintext files and lets you search in them. While it's not tailored for org-mode files, it's good enough for me.
+</p>
+<p>
+TODO maybe add links to gifs or make some? 
+</p>
+<p>
+TODO link to config.
+</p>
+</div>
+<div class="outline-3" id="outline-container-org000001c">
+<h3 id="org000001c"><a class="headerlink" href="#org000001c">¶</a><span class="todo TODO">TODO</span> mention recall?</h3>
+</div>
+<div class="outline-3" id="outline-container-org000001d">
+<h3 id="org000001d"><a class="headerlink" href="#org000001d">¶</a>you can also set up</h3>
+<div class="outline-text-3" id="text-org000001d">
+<p>
+So if you're not willing to go full on emacs, you could still benefit from this setup by using plaintext search tool of your choice (TODO examples?)
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001e">
+<h3 id="org000001e"><a class="headerlink" href="#org000001e">¶</a><span class="todo TODO">TODO</span> using Interactive</h3>
+</div>
+<div class="outline-3" id="outline-container-org000001f">
+<h3 id="org000001f"><a class="headerlink" href="#org000001f">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-18 16:41]</span></span> while I'm using org-mode as target format and emacs to search over files, there is nothing really special about them.</h3>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000024">
+<h2 id="org0000024"><a class="headerlink" href="#org0000024">¶</a><span class="section-number-2">8</span> Potential improvements and caveats</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div class="outline-3" id="outline-container-org0000021">
+<h3 id="org0000021"><a class="headerlink" href="#org0000021">¶</a>one-way data flow</h3>
+<div class="outline-text-3" id="text-org0000021">
+<p>
+Implementing feedback from emacs, e.g. editing github comment when you edit the corresponding orger item would be really cool, but it requires considerably more effort and would only work within emacs.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000022">
+<h3 id="org0000022"><a class="headerlink" href="#org0000022">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-18 16:37]</span></span> think how to support more frequent, ideally instantaneous updates to views</h3>
+<div class="outline-text-3" id="text-org0000022">
+<p>
+if API doesn't provide push-based inteface (as most of them), ultimately it's a question of polling them carefully to avoid rate limiting
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000023">
+<h3 id="org0000023"><a class="headerlink" href="#org0000023">¶</a>race condition (TODO what would be better name? conflict?)</h3>
+<div class="outline-text-3" id="text-org0000023">
+<p>
+Unfortunately there is a little space for TODO race condition if orger appends something while you're editing file. 
+Orger tries to detect emacs and vim swap/lock files, but it's if you're very unlucky or using different setup it's still possible.
+Hopefully your text editor warns you when the file had been overwritted while you were editing it (e.g. as emacs does).
+</p>
+<p>
+Also I run orger cron jobs at night so it's quite unlikely to overlap with editing anything.
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000026">
+<h2 id="org0000026"><a class="headerlink" href="#org0000026">¶</a><span class="section-number-2">9</span> <span class="done DONE">DONE</span> <span class="priority">[C]</span> github comments   <span class="tag"><span class="orger">orger</span></span></h2>
+<div class="outline-text-2" id="text-9">
+</div>
+<div class="outline-3" id="outline-container-org0000025">
+<h3 id="org0000025"><a class="headerlink" href="#org0000025">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2019-09-18 22:41]</span></span> need to publish github<sub>provider</sub> first?..</h3>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000027">
+<h2 id="org0000027"><a class="headerlink" href="#org0000027">¶</a><span class="section-number-2">10</span> <span class="todo TODO">TODO</span> think about python version, not sure about f-strings   <span class="tag"><span class="orger">orger</span></span></h2>
+<div class="outline-text-2" id="text-10">
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000028">
+<h2 id="org0000028"><a class="headerlink" href="#org0000028">¶</a><span class="section-number-2">11</span> <span class="todo TODO">TODO</span> remove org stuff from kython? just rely on inorganic or make a symlink?   <span class="tag"><span class="org">org</span> <span class="kython">kython</span> <span class="inorganic">inorganic</span></span></h2>
+<div class="outline-text-2" id="text-11">
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000029">
+<h2 id="org0000029"><a class="headerlink" href="#org0000029">¶</a><span class="section-number-2">12</span> <span class="todo TODO">TODO</span> minimalistic interface; adding new view is a matter of 15-20 LOC   <span class="tag"><span class="orger">orger</span></span></h2>
+<div class="outline-text-2" id="text-12">
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000002a">
+<h2 id="org000002a"><a class="headerlink" href="#org000002a">¶</a><span class="section-number-2">13</span> <span class="todo TODO">TODO</span> not sure if there is need for krill? I could just mark items as drill manually?   <span class="tag"><span class="orger">orger</span></span></h2>
+<div class="outline-text-2" id="text-13">
+</div>
+</div>
+
+    </section>
+
+    
+    <section class="footer">
+        <div class="post-tags"></div>
+        <!-- TODO post-date? -->
+        <div class="date">16 September 2019</div>
+    </section>
+    
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_orger"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
+        
+        <footer>
+            
+            
+        </footer>
+    </body>
+</html>
