@@ -9,7 +9,7 @@ SRC="$HBLOG/_site/"
 SELF='sync' # script name
 
 
-"$HBLOG/rebuild"
+BEEPB00P_STABLE=yes "$HBLOG/rebuild"
 rsync -av --delete --exclude "$SELF" --exclude ".git" "$SRC" .
 
 git add --all
