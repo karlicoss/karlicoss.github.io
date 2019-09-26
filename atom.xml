@@ -93,7 +93,7 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org0000003">1. Motivation</a></li>
+<li><a href="#motivation">1. Motivation</a></li>
 <li><a href="#org000000c">2. Annotating web</a>
 <ul>
 <li><a href="#org0000004">Pocket</a></li>
@@ -159,8 +159,8 @@ In this post I'm gonna elaborate on all of that and give some motivation, review
 I won't try to convince you that my method of reading and interacting with information is superior for you: it doesn't have to be, and there are people out there more eloquent than me who do that. I assume you want this too and wondering about the practical details.
 </p>
 <div class="outline-2" id="outline-container-org0000003">
-<h2 id="org0000003"><a class="headerlink" href="#org0000003">¶</a><span class="section-number-2">1</span> Motivation</h2>
-<div class="outline-text-2" id="text-1">
+<h2 id="motivation"><a class="headerlink" href="#motivation">¶</a><span class="section-number-2">1</span> Motivation</h2>
+<div class="outline-text-2" id="text-motivation">
 <div><span class="before-aside">
 At some point in my life I realized I didn't remember most of the books/papers/posts/videos I had consumed few years before. 
 </span><aside class="sidenote">For brevity I'll just refer to all of this as 'content' further on</aside></div>
@@ -200,10 +200,16 @@ I'm going to review some of the tools I tried using and still using and highligh
 I won't really write much about it for one reason which is a big deal: while you can highlight text, you can't leave notes. Nearest functionality is 'recommending' a highlight while reading a comment, but that's only displayed on your 'timeline'.
 </p>
 <p>
+Pocket API doesn't support exporting highlights too, or to be precise it seems to be hidden. If you need it you can use <a href="https://github.com/karlicoss/pockexport">my script</a> where I hacked around it.
+</p>
+<p>
 Also, interesting enough, <a href="#kobo">Kobo reader</a> has got Pocket integration, but for some reason when you read Pocket articles on Kobo, you can't highlight at all (let alone syncing highlights with Pocket). Not sure what's the purpose of this integration.
 </p>
 <p>
 Pocket was acquired by Mozilla in 2017, which might be a good thing, but so far their main focus seem to be readability features.
+</p>
+<p>
+You can also read <a href="https://news.ycombinator.com/item?id=19763106">a rant</a> raising similar issues to what I mentioned.
 </p>
 </div>
 </div>
@@ -2293,7 +2299,7 @@ WARNING:workout-provider:Unhandled: Cycling
 
 
 <div class="output_text output_subarea ">
-<pre>'Regression coefficient: 0.09336471775281274'</pre>
+<pre>'Regression coefficient: 0.09327989169991989'</pre>
 </div>
 
 </div>
@@ -2306,7 +2312,7 @@ WARNING:workout-provider:Unhandled: Cycling
 
 
 <div class="output_text output_subarea ">
-<pre>'Free term: -9.811138358199287'</pre>
+<pre>'Free term: -9.52765439804574'</pre>
 </div>
 
 </div>
@@ -2363,7 +2369,7 @@ WARNING:workout-provider:Unhandled: Cycling
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>8066.711613843021</pre>
+<pre>8059.382642873079</pre>
 </div>
 
 </div>
@@ -2990,6 +2996,774 @@ Hopefully that saves someone else a bit of time.</p>
 ]]></summary>
 </entry>
 <entry>
+    <title>Orger: plaintext reflection of your digital self</title>
+    <link href="https://beepb00p.xyz/orger.html" />
+    <id>https://beepb00p.xyz/orger.html</id>
+    <published>2019-09-26T00:00:00Z</published>
+    <updated>2019-09-26T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="pkm org-mode">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>Orger: plaintext reflection of your digital self | Mildly entertainingᵝ</title>
+
+        <link rel="stylesheet" href="./css/default.css?v=2" />
+        <link rel="stylesheet" href="./css/links.css?v=2" />
+
+        <!-- TODO make it conditional on actually having math on page? -->
+        <script type="text/javascript">
+ window.MathJax = {
+     tex2jax: {
+         // note that hakyll source has got double dollar signs due to special meaning in templates
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+     }
+ };
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    <!-- TODO eh, not sure if this symbol is good for that... -->
+                    ·
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                    ·
+                    <a class="fat" href="./notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
+                </span>
+                <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<!-- <link rel="stylesheet" href="/css/org.css" /> -->
+<link rel="stylesheet" href="./css/org-default.css" />
+
+<link rel="stylesheet" href="./css/org-extra.css?v=2" />
+
+
+
+<article>
+    <section class="post-title">
+    <h1>Orger: plaintext reflection of your digital self</h1>
+    <div class="summary"></h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#intro">1. Intro</a></li>
+<li><a href="#what">2. What Orger does</a></li>
+<li><a href="#demo">3. Demo: displaying Pocket data via Orger</a></li>
+<li><a href="#examples">4. More examples</a>
+<ul>
+<li><a href="#org0000005">instapaper</a></li>
+<li><a href="#org0000006">hypothesis</a></li>
+<li><a href="#org0000007">kobo</a></li>
+<li><a href="#org0000008">pinboard</a></li>
+<li><a href="#org0000009">pdfs</a></li>
+<li><a href="#org000000a">twitter</a></li>
+<li><a href="#org000000b">rtm2org</a></li>
+<li><a href="#org000000c">telegram2org</a></li>
+<li><a href="#org000000d">reddit</a></li>
+</ul>
+</li>
+<li><a href="#why_hard">5. It does sound very simple. Does that really deserve a post?</a></li>
+<li><a href="#org0000010">6. What makes Orger good?</a></li>
+<li><a href="#using">7. Using Orger views</a>
+<ul>
+<li><a href="#org0000011">Typical use patterns</a></li>
+</ul>
+</li>
+<li><a href="#improvements">8. Potential improvements</a>
+<ul>
+<li><a href="#org0000013"><span class="todo TODO">TODO</span> more frequent, ideally realtime updates to views</a></li>
+<li><a href="#org0000014"><span class="todo TODO">TODO</span> alternative export formats</a></li>
+<li><a href="#org0000015"><span class="todo TODO">TODO</span> two-way data flow</a></li>
+<li><a href="#org0000016"><span class="todo TODO">TODO</span> potential for race condition</a></li>
+</ul>
+</li>
+<li><a href="#org0000018">9. ----</a></li>
+</ul>
+</div>
+</div>
+<p>
+TLDR: I'll write about <a href="https://github.com/karlicoss/orger">orger</a>, a tool I'm using to covert my personal data into easily readable and searchable org-mode views.
+I'll present some examples and use cases, that will hopefully be helpful to you as well even if you are not sold by using my tool.
+</p>
+<p>
+If you're impatient, you can jump straight to a <a href="#demo">demo</a>.
+</p>
+<div class="outline-2" id="outline-container-org0000001">
+<h2 id="intro"><a class="headerlink" href="#intro">¶</a><span class="section-number-2">1</span> Intro</h2>
+<div class="outline-text-2" id="text-intro">
+<p>
+I consume lots of digital content (books, articles, reddit, youtube, reddit, etc.) and most of it I find somewhat useful and insightful.
+I want to use that knowledge later, act and build on it. But there's an obstacle: human brain.
+</p>
+<p>
+It would be cool to be capable of always remembering and instantly recalling information you've interacted with, metadata and your thoughts on it.
+Until we get augmented though, there are two options: first is just to accept it and live with it. You might have guessed this is not the option I'm taking.
+</p>
+<div><span class="before-aside">
+Second option is compensating for your sloppy meaty memory and having information you've read at hand and a quick way of searching over it. 
+
+</span><aside>see <a class="post-tag" href="./tags.html#extendedmind">#extendedmind</a></aside></div>
+<p>
+<a id="org0000000"></a>
+That sounds simple enough but as with many simple things, on practice you run into obstacles. 
+I'll give some I've personally been overcoming as examples:
+</p>
+<ul class="org-ul">
+<li>convenience of access, e.g.:
+<ul class="org-ul">
+<li>to access highlights and notes on my Kobo ebook I need to actually reach my reader and tap through e-ink touch screen. Not much fun!</li>
+<li>if you want to search over annotations in your PDF collections… well good luck, I'm just not aware of such a tool. Let alone the fact that many pdf viewers wouldn't even let you search through highlights within a single opened PDF file. TODO link annotations</li>
+<li>there is no easy way to access all of your twitter favorites, people suggest using hacks like <a href="https://webapps.stackexchange.com/a/131374/68104">autoscroll extension</a>.</li>
+</ul></li>
+<li>searching data, e.g.:
+<ul class="org-ul">
+<li>search function often just isn't available at all or search is not incremental, e.g. on Instapaper, you can't restrict search to highlights</li>
+<li>builtin browser search (<code>Ctrl-F</code>) sucks for the most part: it's not very easy to navigate as you don't get previews and you have to look through every match</li>
+<li>sometimes you vaguely recall reading about something but don't remember where exactly. Was it on stackoverflow? Or in some github issue? Or in a conversation with friend?</li>
+</ul></li>
+<li>data ownership and liberation, e.g.
+<ul class="org-ul">
+<li>what happens if data disappears or service is down (temporary/permanently) or banned by your government?</li>
+<li><div><span class="before-aside">99% of services don't have support for offline mode. This may be just a small inconvenience if you're on a train or something, but there is more to it.
+What if some sort of apocalypse happens and you lose all access to data? 
+That depends on your paranoia level of course, and apocalypse is bad enough, but my take on it is that at least I'd have my data :) </span><aside>see <a class="post-tag" href="./tags.html#offline">#offline</a></aside></div></li>
+<li>if you delete a book on Kobo, not only you can't access its annotations, but they seem to get <b>wiped</b> from the database.</li>
+<li>in 2018, instapaper was unavailable in Europe for several months (!) due to missing the GDPR deadline</li>
+</ul></li>
+</ul>
+<p>
+Thinking about that and tinkering helped me understand what I want: some sort of <b><b>search engine</b></b>, over my <b><b>personal data</b></b>, with <b><b>uniform</b></b> and <b><b>always available</b></b> way of accessing it.
+</p>
+<p>
+So, I present you a system that I've developed and that solves all my problems™: <a href="https://github.com/karlicoss/orger">orger</a>.
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000003">
+<h2 id="what"><a class="headerlink" href="#what">¶</a><span class="section-number-2">2</span> What Orger does</h2>
+<div class="outline-text-2" id="text-what">
+<p>
+It's really so quite trivial that it's almost stupid. Orger provides a simple python API to render any data as an Org-mode file. It's easier to give an example:
+</p>
+<div class="org-src-container">
+<pre class="src src-python">from orger import StaticView
+from orger.inorganic import node, link
+from orger.common import dt_heading
+
+import my.github_data
+
+class Github(StaticView):
+  def get_items(self):
+    for event in my.github_data.get_events():
+      yield node(dt_heading(event.dt, event.summary))
+
+Github.main()
+</pre>
+</div>
+<p>
+That ten line program results in a file <code>Github.org</code>:
+</p>
+<div class="org-src-container">
+<pre class="src src-org"># AUTOGENERATED BY /code/orger/github.py
+
+* [2016-10-30 Sun 10:29] opened PR Add __enter__ and __exit__ to Pool stub
+* [2016-11-10 Thu 09:29] opened PR Update gradle to 2.14.1 and gradle plugin to 2.1.1
+* [2016-11-16 Wed 20:20] commented on issue Linker error makes it impossible to use a stack-provided ghc
+* [2016-12-30 Fri 11:57] commented on issue Fix performance in the rare case of hashCode evaluating to zero 
+* [2019-09-21 Sat 16:51] commented on issue Tags containing letters outside of a-zA-Z
+....
+</pre>
+</div>
+<p>
+Even with event summaries only it can already be very useful to search over. What you can potentially do really depends on your imagination and needs! You can also add:
+</p>
+<ul class="org-ul">
+<li>links</li>
+<li>tags</li>
+<li>timestamps</li>
+<li>properties</li>
+<li>child nodes</li>
+</ul>
+<p>
+See <a href="#examples">'Examples'</a> section for more.
+</p>
+<p>
+So as you can see orger itself is a really not sophisticated tool, at least until you spend time trying to reimplement the same.
+As always the devil is in the details (look at that cheeky <code>my.github_data</code> import), which I'll explain <a href="#org0000002">further</a>.
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000004">
+<h2 id="demo"><a class="headerlink" href="#demo">¶</a><span class="section-number-2">3</span> Demo: displaying Pocket data via Orger</h2>
+<div class="outline-text-2" id="text-demo">
+<p>
+I've documented one of modules, <a href="https://github.com/karlicoss/orger/blob/master/modules/pocket_demo.py"><code>pocket_demo</code></a> so you could get the sense of using Orger.
+</p>
+<details><summary>Click to view the code</summary>
+<div class="org-src-container">
+<pre class="src src-python">#!/usr/bin/env python3
+"""
+Demo Orger adapter for Pocket data. For documentation purposes, so please modify pocket.py if you want to contribute.
+"""
+
+"""
+First we define some abstractions for Pocket entities (articles and highlights).
+
+While it's not that necessary and for one script you can get away with using json directly,
+ it does help to separate parsing and rendering, allows you to reuse parsing for other projects
+ and generally makes everything clean.
+
+Also see https://github.com/karlicoss/my package for some inspiration.
+"""
+
+
+from datetime import datetime
+from pathlib import Path
+from typing import NamedTuple, Sequence, Any
+
+class Highlight(NamedTuple):
+    """
+    Abstract representation of Pocket highlight
+    """
+    json: Any
+
+    @property
+    def text(self) -&gt; str:
+	return self.json['quote']
+
+    @property
+    def created(self) -&gt; datetime:
+	return datetime.strptime(self.json['created_at'], '%Y-%m-%d %H:%M:%S')
+
+
+class Article(NamedTuple):
+    """
+    Abstract representation of Pocket saved page
+    """
+    json: Any
+
+    @property
+    def url(self) -&gt; str:
+	return self.json['given_url']
+
+    @property
+    def title(self) -&gt; str:
+	return self.json['given_title']
+
+    @property
+    def pocket_link(self) -&gt; str:
+	return 'https://app.getpocket.com/read/' + self.json['item_id']
+
+    @property
+    def added(self) -&gt; datetime:
+	return datetime.fromtimestamp(int(self.json['time_added']))
+
+    @property
+    def highlights(self) -&gt; Sequence[Highlight]:
+	raw = self.json.get('annotations', [])
+	return list(map(Highlight, raw))
+
+    # TODO add tags?
+
+
+def get_articles(json_path: Path) -&gt; Sequence[Article]:
+    """
+    Parses Pocket export produced by https://github.com/karlicoss/pockexport
+    """
+    import json
+    raw = json.loads(json_path.read_text())['list']
+    return list(map(Article, raw.values()))
+
+"""
+Ok, now we can get to implementing the adapter.
+"""
+from orger import StaticView
+"""
+StaticView means it's meant to be read-only view onto data (as opposed to InteractiveView).
+"""
+from orger.inorganic import node, link
+from orger.common import dt_heading
+
+
+class PocketView(StaticView):
+    def get_items(self):
+	"""
+	get_items returns a sequence/iterator of nodes
+	see orger.inorganic.OrgNode to find out about attributes you can use
+	"""
+	export_file = self.cmdline_args.file # see setup_parser
+	for a in get_articles(export_file):
+	    yield node(
+		heading=dt_heading(
+		    a.added,
+		    link(title=a.title, url=a.url)
+		),
+		body=link(title='Pocket link', url=a.pocket_link), # permalink is pretty convenient to jump straight into Pocket app
+		children=[node( # comments are displayed as org-mode child entries
+		    heading=dt_heading(hl.created, hl.text)
+		) for hl in a.highlights]
+	    )
+
+
+def setup_parser(p):
+    """
+    Optional hooks for extra arguments if you need them in your adapter
+    """
+    p.add_argument('--file', type=Path, help='JSON file from API export', required=True)
+
+
+if __name__ == '__main__':
+    """
+    Usage example: ./pocket.py --file /backups/pocket/last-backup.json --to /data/orger/pocket.org
+    """
+    PocketView.main(setup_parser=setup_parser)
+
+"""
+Example pocket.org output:
+
+# AUTOGENERATED BY /L/zzz_syncthing/coding/orger/pocket.py
+
+* [2018-07-09 Mon 10:56] [[https://www.gwern.net/Complexity-vs-AI][Complexity no Bar to AI - Gwern.net]]
+ [[https://app.getpocket.com/read/1949330650][Pocket link]]
+* [2016-10-21 Fri 14:42] [[https://johncarlosbaez.wordpress.com/2016/09/09/struggles-with-the-continuum-part-2/][Struggles with the Continuum (Part 2) | Azimuth]]
+ [[https://app.getpocket.com/read/1407671000][Pocket link]]
+* [2016-05-31 Tue 18:25] [[http://www.scottaaronson.com/blog/?p=2464][Bell inequality violation finally done right]]
+ [[https://app.getpocket.com/read/1042711293][Pocket link]]
+* [2016-05-31 Tue 18:24] [[https://packetzoom.com/blog/how-to-test-your-app-in-different-network-conditions.html][How to test your app in different network conditions -]]
+ [[https://app.getpocket.com/read/1188624587][Pocket link]]
+* [2016-05-31 Tue 18:24] [[http://www.schibsted.pl/2016/02/hood-okhttps-cache/][What's under the hood of the OkHttp's cache?]]
+ [[https://app.getpocket.com/read/1191143185][Pocket link]]
+* [2016-03-15 Tue 17:27] [[http://joeduffyblog.com/2016/02/07/the-error-model/][Joe Duffy - The Error Model]]
+ [[https://app.getpocket.com/read/1187239791][Pocket link]]
+** [2019-09-25 Wed 18:20] A bug is a kind of error the programmer didn’t expect. Inputs weren’t validated correctly, logic was written wrong, or any host of problems have arisen.
+** [2019-09-25 Wed 18:19] First, throwing an exception is usually ridiculously expensive. This is almost always due to the gathering of a stack trace.
+** [2019-09-25 Wed 18:20] In other words, an exception, as with error codes, is just a different kind of return value!
+"""
+</pre>
+</div>
+</details>
+<details><summary>Click to view the output</summary>
+<div id="content">
+<div class="outline-2" id="outline-container-org6385060">
+<h2 id="org6385060"><a class="headerlink" href="#org6385060">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2018-07-09 Mon 10:56] </span></span> <a href="https://www.gwern.net/Complexity-vs-AI">Complexity no Bar to AI - Gwern.net</a></h2>
+<div class="outline-text-2" id="text-1">
+<p>
+<a href="https://app.getpocket.com/read/1949330650">Pocket link</a>
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-orgf66ad5f">
+<h2 id="orgf66ad5f"><a class="headerlink" href="#orgf66ad5f">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2016-10-21 Fri 14:42] </span></span> <a href="https://johncarlosbaez.wordpress.com/2016/09/09/struggles-with-the-continuum-part-2/">Struggles with the Continuum (Part 2) | Azimuth</a></h2>
+<div class="outline-text-2" id="text-2">
+<p>
+<a href="https://app.getpocket.com/read/1407671000">Pocket link</a>
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-orga907d2c">
+<h2 id="orga907d2c"><a class="headerlink" href="#orga907d2c">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2016-05-31 Tue 18:25] </span></span> <a href="http://www.scottaaronson.com/blog/?p=2464">Bell inequality violation finally done right</a></h2>
+<div class="outline-text-2" id="text-3">
+<p>
+<a href="https://app.getpocket.com/read/1042711293">Pocket link</a>
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-orgaa7b53a">
+<h2 id="orgaa7b53a"><a class="headerlink" href="#orgaa7b53a">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2016-05-31 Tue 18:24] </span></span> <a href="https://packetzoom.com/blog/how-to-test-your-app-in-different-network-conditions.html">How to test your app in different network conditions -</a></h2>
+<div class="outline-text-2" id="text-4">
+<p>
+<a href="https://app.getpocket.com/read/1188624587">Pocket link</a>
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org01f1d77">
+<h2 id="org01f1d77"><a class="headerlink" href="#org01f1d77">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2016-05-31 Tue 18:24] </span></span> <a href="http://www.schibsted.pl/2016/02/hood-okhttps-cache/">What's under the hood of the OkHttp's cache?</a></h2>
+<div class="outline-text-2" id="text-5">
+<p>
+<a href="https://app.getpocket.com/read/1191143185">Pocket link</a>
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-orgdd27fdd">
+<h2 id="orgdd27fdd"><a class="headerlink" href="#orgdd27fdd">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2016-03-15 Tue 17:27] </span></span> <a href="http://joeduffyblog.com/2016/02/07/the-error-model/">Joe Duffy - The Error Model</a></h2>
+<div class="outline-text-2" id="text-6">
+<p>
+<a href="https://app.getpocket.com/read/1187239791">Pocket link</a>
+</p>
+</div>
+<div class="outline-3" id="outline-container-org92bca32">
+<h3 id="org92bca32"><a class="headerlink" href="#org92bca32">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2019-09-25 Wed 18:20] </span></span> A bug is a kind of error the programmer didn’t expect. Inputs weren’t validated correctly, logic was written wrong, or any host of problems have arisen.</h3>
+</div>
+<div class="outline-3" id="outline-container-org41ce646">
+<h3 id="org41ce646"><a class="headerlink" href="#org41ce646">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2019-09-25 Wed 18:19] </span></span> First, throwing an exception is usually ridiculously expensive. This is almost always due to the gathering of a stack trace.</h3>
+</div>
+<div class="outline-3" id="outline-container-orge27b04d">
+<h3 id="orge27b04d"><a class="headerlink" href="#orge27b04d">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2019-09-25 Wed 18:20] </span></span> In other words, an exception, as with error codes, is just a different kind of return value!</h3>
+</div>
+</div>
+</div>
+</details>
+<p>
+As you can see it's quite easy to search in your highlights and jump straight in the pocket app to the article you were reading.
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000000e">
+<h2 id="examples"><a class="headerlink" href="#examples">¶</a><span class="section-number-2">4</span> More examples</h2>
+<div class="outline-text-2" id="text-examples">
+<p>
+I'm using more than ten different Orger modules, most of which I've moved into the <a href="https://github.com/karlicoss/orger/tree/master/modules">repository</a>. Here I'll describe some featured views I'm generating.
+</p>
+<p>
+To give you a heads up, if you read the code, you'll see bunch of imports like <code>from my.hypothesis import ...</code>. 
+I find it easier to move all data parsing in a separate <a href="https://github.com/karlicoss/my"><code>my</code></a> package, that deals with parsing and converting input data (typically, some JSON). 
+That makes everything less messy, separates data and rendering and lets me reuse abstract models in other tools. 
+Also that lets me access my data from any python code, which makes it way easier to use and interact with data.
+</p>
+<p>
+Some of these are still private so if you're interested in something not present in the github repo, please don't be shy and open an issue so I can prioritize.
+</p>
+<p>
+Hopefully the code is readable enough and will give you some inspiration. 
+If you find something confusing or you write your own module and want to contribute, please feel free to open issue/PR!
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000005">
+<h3 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/instapaper.py">instapaper</a></h3>
+<div class="outline-text-3" id="text-org0000005">
+<p>
+Instapaper doesn't have search over annotations, so I implemented my own!
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000006">
+<h3 id="org0000006"><a class="headerlink" href="#org0000006">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/hypothesis.py">hypothesis</a></h3>
+<div class="outline-text-3" id="text-org0000006">
+<p>
+<a href="https://hypothes.is">Hypothesis</a> does have search, but it's still way quicker for me to invoke search in Emacs (takes literally less than a second) than do that in web browser.
+Instapaper doesn't have decent search over annotations, so I implemented my own!
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000007">
+<h3 id="org0000007"><a class="headerlink" href="#org0000007">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/kobo.py">kobo</a></h3>
+<div class="outline-text-3" id="text-org0000007">
+<p>
+Generates views for all highlights and comments along with book titles from my Kobo database export.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000008">
+<h3 id="org0000008"><a class="headerlink" href="#org0000008">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/pinboard.py">pinboard</a></h3>
+<div class="outline-text-3" id="text-org0000008">
+<p>
+Searches over my Pinboard bookmarks.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000009">
+<h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/pdfs.py">pdfs</a></h3>
+<div class="outline-text-3" id="text-org0000009">
+<p>
+Crawls my filesystem for PDF files and collects all highlights and comments in a single view.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000a">
+<h3 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/twitter.py">twitter</a></h3>
+<div class="outline-text-3" id="text-org000000a">
+<p>
+It's got two modes
+</p>
+<ul class="org-ul">
+<li>First mode generates a view of everything I've ever tweeted. TODO</li>
+<li>Second mode generates a view of all older tweets on the same day. I find it quite fascinating to read through it and observe how I've been changing over years.</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000b">
+<h3 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/rtm2org.py">rtm2org</a></h3>
+<div class="outline-text-3" id="text-org000000b">
+<p>
+I stopped using Remember The Milk a while ago, but there are still some tasks and notes I've left behind, which I'm slowly moving to org-mode or canceling over time.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000c">
+<h3 id="org000000c"><a class="headerlink" href="#org000000c">¶</a><a href="https://github.com/karlicoss/telegram2org">telegram2org</a></h3>
+<div class="outline-text-3" id="text-org000000c">
+<p>
+Lets me create todo tasks from Telegram messages in couple of taps.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000d">
+<h3 id="org000000d"><a class="headerlink" href="#org000000d">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/reddit.py">reddit</a></h3>
+<div class="outline-text-3" id="text-org000000d">
+<p>
+Displays and lets me search my Reddit saved posts/comments. I'll write more about it in another post!
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000000f">
+<h2 id="why_hard"><a class="headerlink" href="#why_hard">¶</a><span class="section-number-2">5</span> It does sound very simple. Does that really deserve a post?</h2>
+<div class="outline-text-2" id="text-why_hard">
+<p>
+Well yeah it really does seem simple… until you try to do it.
+</p>
+<ul class="org-ul">
+<li><p>
+emitting Org-mode
+</p>
+<p>
+While it's plaintext, and generating simple outlines is trivial, with more sophisticated inputs, there is some nasty business of escaping and sanitizing that has to be dealt with.
+I didn't manage to find any Python libraries capable of emitting Org-mode. Only project I knew of was <a href="https://github.com/bjonnh/PyOrgMode">PyOrgMode</a> but the author abandoned it.
+</p>
+<p>
+When it comes to generating 10+ views from different data sources, you <b>really</b> want to make sure it's as little effort and minimal boilerplate as it can possibly be.
+</p>
+<p>
+That's how <a href="https://github.com/karlicoss/inorganic">inorganic</a> library was born.
+</p></li>
+<li><p>
+<a id="org0000002"></a>accessing data sources and exposing it through Python interfaces
+</p>
+<p>
+This is probably where most of effort was spent. All sorts of stupid APIs, tedious parsing, you can imagine.
+</p>
+<p>
+I'll write separately about it sometime, for now you can see some of the code I prettified and shared in my github <a href="https://github.com/search?q=topic:export+user:karlicoss&amp;type=Repositories">'export'</a> and <a href="https://github.com/karlicoss/my">my</a> packages.
+I tried to make sure they are easy to use for other people and not specific to my use cases.
+</p></li>
+<li><p>
+keeping track of already processed items for <code>Interactive</code> views
+</p>
+<p>
+Because there is no feedback from org-mode files back to data sources, you want to keep track of items already added in the file, otherwise you're gonna have duplicates.
+</p>
+<p>
+It's not rocket science of course, but it is quite tedious. There is some additional logic that checks for lock files, makes sure writes are atomic, etc. You really don't want to implement it more than once.
+I figured it was worth extracting this 'pattern' in a separate <a href="https://github.com/karlicoss/orger/blob/master/src/orger/state.py">python module</a>.
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000010">
+<h2 id="org0000010"><a class="headerlink" href="#org0000010">¶</a><span class="section-number-2">6</span> What makes Orger good?</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li><p>
+it solves <a href="#org0000000">my problems</a>! 
+</p>
+<p>
+I won't go long into Org-mode propaganda, there are people that do it better than me out there, but for me it's good because it's a decent balance between ease of use and ease of augmenting.
+</p>
+<ul class="org-ul">
+<li>it's easy to do unstructured (i.e. grep) or structured (i.e. tag search in emacs) search on any of your devices be it desktop or phone</li>
+<li>you can open it anywhere you can open a text file</li>
+<li>tasks as easy to create as any other Org outline so it can integrate with your todo list and agenda</li>
+</ul></li>
+<li><p>
+it doesn't require Emacs
+</p>
+<p>
+If you're not willing to go full on Emacs, you can still benefit from this setup by using plaintext viewer and search tool of your choice.
+</p></li>
+<li><p>
+written in Python. I don't claim at all that Python is the best programming language, but that's the one I'm most productive on as well as many other people.
+</p>
+<p>
+Also the fact that it's a real programming language rather than some YAML config makes sure you can do anything and not restricted by stupid DSL.
+</p></li>
+<li>it's extremely easy to add new views — a matter of 10-20 lines of code. TODO link?</li>
+<li>agnostic to what you feed in it – it could be offline data from your regular backups, or it could be fresh API data. Again, it's a real programming language, you can do literally anything.</li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000012">
+<h2 id="using"><a class="headerlink" href="#using">¶</a><span class="section-number-2">7</span> Using Orger views</h2>
+<div class="outline-text-2" id="text-using">
+<p>
+Apart from, obviously, opening Orger items in your favorite text editor, one major strength of this system is being able to search over them.
+</p>
+<p>
+I'll write about my setup separately at some point, but for now I'll give a quick summary and clues.
+</p>
+<p>
+On my desktop I'm just using spacemacs or <a href="https://github.com/karlicoss/cloudmacs">cloudmacs</a> from web browser.
+</p>
+<ul class="org-ul">
+<li>I'm usually just using <a href="https://github.com/syohex/emacs-helm-ag">helm-ag</a> with <a href="https://github.com/BurntSushi/ripgrep">ripgrep</a> (your can find how to marry them <a href="https://gist.github.com/pesterhazy/fabd629fbb89a6cd3d3b92246ff29779">here</a>).</li>
+<li>sometimes <a href="https://github.com/emacsorphanage/helm-swoop">helm-swoop</a> is very convenient, especially <code>helm-multi-swoop</code> function.</li>
+</ul>
+<p>
+These two are incremental (instant feedback) and effectively instantaneous. For more structured search you could use:
+</p>
+<ul class="org-ul">
+<li>good old <a href="https://orgmode.org/manual/Matching-tags-and-properties.html"><code>org-tags-view</code></a></li>
+<li>org-ql with <a href="https://github.com/alphapapa/org-ql#helm-org-ql"><code>helm-org-ql</code></a> is a nicer and incremental alternative</li>
+</ul>
+<p>
+On my Android phone I'm using <a href="https://github.com/orgzly/orgzly-android">orglzy</a> for structured search/viewing Org-mode files. 
+Sometimes <a href="https://play.google.com/store/apps/details?id=com.docsearch.pro">Docsearch +</a> is also useful, which is indexing plaintext files and lets you search in them. While it's not tailored for org-mode files, it's usually good enough for me.
+</p>
+<p>
+You can also set up some proper indexing daemon like <a href="https://www.lesbonscomptes.com/recoll">recoll</a>.
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000011">
+<h3 id="org0000011"><a class="headerlink" href="#org0000011">¶</a>Typical use patterns</h3>
+<div class="outline-text-3" id="text-org0000011">
+<p>
+I'll just give some of my use cases:
+</p>
+<ul class="org-ul">
+<li><p>
+While running tests for <a href="https://github.com/karlicoss/orgparse">orgparse</a> I started randomly getting  <code>AssertionError: Cannot find component 'A@3' for 'orgparse.A@3</code>. 
+</p>
+<p>
+I recall that I had same issue few month ago but don't quite remember what was the fix. 
+I press <code>F1</code> which invokes <code>helm-ag</code> for me and type 'cannot find component'.
+I instantly find a github <a href="https://github.com/python/mypy/issues/7281">issue</a> I opened and figure out what I need to do to work around the problem.
+</p></li>
+<li><p>
+While discussing special relativity with a friend, I recall watching some intuitive rationale for Maxwell's equations, but don't quite recall what was the video.
+</p>
+<p>
+I press <code>F1</code>, type 'Special relativity' and instantly get few results, in particular <a href="https://www.youtube.com/watch?v=1TKSfAkWWN0">this</a> awesome Veritasium video I was looking for.
+</p></li>
+<li><p>
+Recommending books
+</p>
+<p>
+I often struggle to recall the details why I liked a particular book, especially fiction.
+Having all annotations in my <code>kobo.org</code> file lets me quickly look up and skim through highlighted bits so I can freshen up my memory.
+</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000017">
+<h2 id="improvements"><a class="headerlink" href="#improvements">¶</a><span class="section-number-2">8</span> Potential improvements</h2>
+<div class="outline-text-2" id="text-improvements">
+</div>
+<div class="outline-3" id="outline-container-org0000013">
+<h3 id="org0000013"><a class="headerlink" href="#org0000013">¶</a><span class="todo TODO">TODO</span> more frequent, ideally realtime updates to views</h3>
+<div class="outline-text-3" id="text-org0000013">
+<p>
+If the API doesn't provide push-based interface (as most of them), ultimately it's a question of polling them carefully to avoid rate limiting penalties.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000014">
+<h3 id="org0000014"><a class="headerlink" href="#org0000014">¶</a><span class="todo TODO">TODO</span> alternative export formats</h3>
+<div class="outline-text-3" id="text-org0000014">
+<p>
+There is nothing really about Org-mode that's specific to this system. For instance, there are markdown-based organizers out there and people could benefit from using Orger for them.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000015">
+<h3 id="org0000015"><a class="headerlink" href="#org0000015">¶</a><span class="todo TODO">TODO</span> two-way data flow</h3>
+<div class="outline-text-3" id="text-org0000015">
+<p>
+It would be cool to implement feedback from emacs, e.g. editing Github comment when you edit the corresponding Orger item. But it requires considerably more effort and would only work within emacs.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000016">
+<h3 id="org0000016"><a class="headerlink" href="#org0000016">¶</a><span class="todo TODO">TODO</span> potential for race condition</h3>
+<div class="outline-text-3" id="text-org0000016">
+<p>
+Unfortunately there is a little space for race condition if Orger appends something while you're editing file. 
+Orger tries to detect emacs and vim swap/lock files, but it's if you're very unlucky or using different setup it's still possible.
+Hopefully your text editor warns you when the file had been overwritten while you were editing it (e.g. as emacs does).
+</p>
+<p>
+Also I run Orger jobs at night (via cron) so it's quite unlikely to overlap with editing anything.
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000018">
+<h2 id="org0000018"><a class="headerlink" href="#org0000018">¶</a><span class="section-number-2">9</span> ----</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+I'd be interesting in hearing your thoughts or feature requests.
+</p>
+<p>
+This post ended up longer that I expected so in the next part I will tell about more use cases, in particular how I'm using Orger to process Reddit.
+</p>
+</div>
+</div>
+
+    </section>
+
+    
+    <section class="footer">
+        <div class="post-tags"><a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#org-mode">#org-mode</a></div>
+        <!-- TODO post-date? -->
+        <div class="date">26 September 2019</div>
+    </section>
+    
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_orger"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
+        
+        <footer>
+            
+            
+        </footer>
+    </body>
+</html>
+]]></summary>
+</entry>
+<entry>
     <title>How I extend my mind and cope with having fleshy human brain</title>
     <link href="https://beepb00p.xyz/pkm-setup.html" />
     <id>https://beepb00p.xyz/pkm-setup.html</id>
@@ -3123,13 +3897,17 @@ I'm very happy to discuss if you have any questions/suggestions/etc.
 So, this is the plan, which I will fill with links as I write.
 
 <div class="outline-2" id="outline-container-org0000000">
-<h2 id="org0000000"><a class="headerlink" href="#org0000000">¶</a><span class="section-number-2">1</span> <span class="todo TODO">TODO</span> task/todo management</h2>
+<h2 id="org0000000"><a class="headerlink" href="#org0000000">¶</a><span class="section-number-2">1</span> <span class="todo STRT">STRT</span> task/todo management</h2>
+<div class="outline-text-2" id="text-1">
+</div>
 </div>
 <div class="outline-2" id="outline-container-org0000001">
 <h2 id="org0000001"><a class="headerlink" href="#org0000001">¶</a><span class="section-number-2">2</span> <span class="todo TODO">TODO</span> personal wiki</h2>
 </div>
 <div class="outline-2" id="outline-container-org0000002">
-<h2 id="org0000002"><a class="headerlink" href="#org0000002">¶</a><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> searching</h2>
+<h2 id="org0000002"><a class="headerlink" href="#org0000002">¶</a><span class="section-number-2">3</span> <span class="todo STRT">STRT</span> searching</h2>
+<div class="outline-text-2" id="text-3">
+</div>
 </div>
 <div class="outline-2" id="outline-container-org0000003">
 <h2 id="org0000003"><a class="headerlink" href="#org0000003">¶</a><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> logging and capturing</h2>
@@ -3152,7 +3930,9 @@ So, this is the plan, which I will fill with links as I write.
 <h2 id="org0000008"><a class="headerlink" href="#org0000008">¶</a><span class="section-number-2">9</span> <span class="todo TODO">TODO</span> syncing</h2>
 </div>
 <div class="outline-2" id="outline-container-org0000009">
-<h2 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><span class="section-number-2">10</span> <span class="todo TODO">TODO</span> regular backups</h2>
+<h2 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><span class="section-number-2">10</span> <span class="todo STRT">STRT</span> regular backups</h2>
+<div class="outline-text-2" id="text-10">
+</div>
 </div>
 <div class="outline-2" id="outline-container-org000000a">
 <h2 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><span class="section-number-2">11</span> <span class="todo TODO">TODO</span> timeline</h2>
