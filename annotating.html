@@ -58,6 +58,8 @@
             
 
 <!-- <link rel="stylesheet" href="/css/org.css" /> -->
+
+<link rel="stylesheet" href="./css/htmlize.css" />
 <link rel="stylesheet" href="./css/org-default.css" />
 
 <link rel="stylesheet" href="./css/org-extra.css?v=2" />
@@ -982,10 +984,10 @@ I'm using a <b><b>special Python package to access the data</b></b>, which I cal
 As a specific example how I do it: recently my friend asked me if I could recommend them posts I found interesting on <a href="https://slatestarcodex.com/">Slate Star Codex</a>. With a tiny python script I was quickly able to give them some stats on posts I read, so they could choose among them.
 </p>
 <div class="org-src-container">
-<pre class="src src-python">import my.reading.hypothesis
-for p in my.reading.hypothesis.get_pages():
-    if 'slatestarcodex' in p.link: 
-	print(f'{p.link} {len(p.highlights)}')
+<pre class="src src-python"><span class="org-keyword">import</span> my.reading.hypothesis
+<span class="org-keyword">for</span> p <span class="org-keyword">in</span> my.reading.hypothesis.get_pages():
+    <span class="org-keyword">if</span> <span class="org-string">'slatestarcodex'</span> <span class="org-keyword">in</span> p.link: 
+        <span class="org-keyword">print</span>(f<span class="org-string">'{p.link} {len(p.highlights)}'</span>)
 </pre>
 </div>
 </div>
