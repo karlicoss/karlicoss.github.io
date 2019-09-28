@@ -3018,7 +3018,7 @@ Hopefully that saves someone else a bit of time.</p>
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
         
-        <meta name="keywords" content="pkm org-mode">
+        <meta name="keywords" content="pkm orgmode">
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
@@ -3742,7 +3742,7 @@ This post ended up longer that I expected so in the next part I will tell about 
 
     
     <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#org-mode">#org-mode</a></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#orgmode">#orgmode</a></div>
         <!-- TODO post-date? -->
         <div class="date">26 September 2019</div>
     </section>
@@ -3787,7 +3787,7 @@ This post ended up longer that I expected so in the next part I will tell about 
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
         
-        <meta name="keywords" content="pkm org-mode learning">
+        <meta name="keywords" content="pkm orgmode learning">
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
@@ -3957,7 +3957,7 @@ So, this is the plan, which I will fill with links as I write.
 
     
     <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#org-mode">#org-mode</a> <a class="post-tag" href="./tags.html#learning">#learning</a></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#orgmode">#orgmode</a> <a class="post-tag" href="./tags.html#learning">#learning</a></div>
         <!-- TODO post-date? -->
         <div class="date">13 May 2019</div>
     </section>
