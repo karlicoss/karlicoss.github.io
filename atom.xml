@@ -332,10 +332,12 @@ Not available for <a href="https://github.com/karlicoss/grasp/issues/15">mobile 
 <div class="outline-2" id="outline-container-org0000019">
 <h2 id="org0000019"><a class="headerlink" href="#org0000019">¶</a><span class="section-number-2">3</span> Annotating PDFs</h2>
 <div class="outline-text-2" id="text-3">
-<div><span class="before-aside">
+<p>
+Small disclaimer: I don't own a Mac so have no idea what's going on in their world. Sorry!  (UPD: I got <a href="https://twitter.com/i/web/status/1147473985514459137">few recommendations</a> from a follower, perhaps they would be helpful).
+</p>
+<p>
 PDF format is a complicated beast, and its native annotations are a whole different story to annotating web.
-
-</span><aside class="sidenote">Disclaimer: I don't own a Mac so have no idea what's going on in their world. Sorry!</aside></div>
+</p>
 <p>
 First, its ISO standard is <a href="https://www.iso.org/standard/63534.html">not freely available</a>. Adobe website has got some sort of <a href="https://www.adobe.com/devnet/pdf/pdf_reference.html">reference</a>
 which is not the same as standard, but apparently close enough.
@@ -2305,7 +2307,7 @@ WARNING:workout-provider:Unhandled: Cycling
 
 
 <div class="output_text output_subarea ">
-<pre>'Regression coefficient: 0.09327436675039621'</pre>
+<pre>'Regression coefficient: 0.09325012964360162'</pre>
 </div>
 
 </div>
@@ -2318,7 +2320,7 @@ WARNING:workout-provider:Unhandled: Cycling
 
 
 <div class="output_text output_subarea ">
-<pre>'Free term: -9.513484014189771'</pre>
+<pre>'Free term: -9.447671550509767'</pre>
 </div>
 
 </div>
@@ -2375,7 +2377,7 @@ WARNING:workout-provider:Unhandled: Cycling
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>8058.905287234234</pre>
+<pre>8056.81120120718</pre>
 </div>
 
 </div>
@@ -3002,6 +3004,391 @@ Hopefully that saves someone else a bit of time.</p>
 ]]></summary>
 </entry>
 <entry>
+    <title>Using Orger to populate your tasks list</title>
+    <link href="https://beepb00p.xyz/orger-todos.html" />
+    <id>https://beepb00p.xyz/orger-todos.html</id>
+    <published>2019-10-05T00:00:00Z</published>
+    <updated>2019-10-05T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="orgmode productivity orger">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>Using Orger to populate your tasks list | Mildly entertainingᵝ</title>
+
+        <link rel="stylesheet" href="./css/default.css?v=2" />
+        <link rel="stylesheet" href="./css/links.css?v=2" />
+
+        <!-- TODO make it conditional on actually having math on page? -->
+        <script type="text/javascript">
+ window.MathJax = {
+     tex2jax: {
+         // note that hakyll source has got double dollar signs due to special meaning in templates
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+     }
+ };
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    <!-- TODO eh, not sure if this symbol is good for that... -->
+                    ·
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                    ·
+                    <a class="fat" href="./notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
+                </span>
+                <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<!-- <link rel="stylesheet" href="/css/org.css" /> -->
+
+<link rel="stylesheet" href="./css/htmlize.css" />
+<link rel="stylesheet" href="./css/org-default.css" />
+
+<link rel="stylesheet" href="./css/org-extra.css?v=2" />
+
+
+
+<article>
+    <section class="post-title">
+    <h1>Using Orger to populate your tasks list</h1>
+    <div class="summary">Reading Reddit, building spaced repetition queue and quick todos from Telegram messages</h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#reddit">1. reddit: better processing of saved Reddit items</a></li>
+<li><a href="#telegram2org">2. telegram2org: one tap to create tasks from Telegram messages</a></li>
+<li><a href="#hyp2org">3. hyp2org: create tasks from Hypothesis highlights</a></li>
+<li><a href="#krill">4. krill: learn new words from your Kobo books</a></li>
+<li><a href="#org0000004">5. ---</a></li>
+</ul>
+</div>
+</div>
+<p>
+In <a href="orger.html">the first part</a> about Orger I wrote how I'm using it (in particular, the <code>orger.StaticView</code> component) to render my personal data as org-mode files
+for easy, instant access and search.
+</p>
+<p>
+Another generic application of Orger, is populating Org-mode files with outlines. 
+In particular that means tasks for your agenda/spaced repetition routine or whatever else you could imagine it to be useful for.
+</p>
+<p>
+Main goal was to minimize the overhead and distractions caused by creating todos by normal means (opening an app, copying some text, etc.).
+Basically I want it to be completely seamless, almost without thinking at all.
+</p>
+<p>
+You can use the target files as any of your normal org-mode files: modify contents, delete or reschedule tasks, etc.
+When Orger detects new items they would be carefully and atomically appended to the end of file.
+It keeps track of already processed items in a separate JSON file. All this nasty business is dealt with in <code>orger.InteractiveView</code> component.
+</p>
+<p>
+You can find all of interactive Orger modules I'm using <a href="https://github.com/karlicoss/orger/search?q=InteractiveView">on Github</a>. 
+</p>
+<div class="outline-2" id="outline-container-org0000000">
+<h2 id="reddit"><a class="headerlink" href="#reddit">¶</a><span class="section-number-2">1</span> <a href="https://github.com/karlicoss/orger/blob/master/modules/reddit.py">reddit</a>: better processing of saved Reddit items</h2>
+<div class="outline-text-2" id="text-reddit">
+<p>
+This one I have been sustainably using for almost a year now, so I believe it could be useful to many people.
+</p>
+<p>
+I tend to be curious about lots of different topics so I'm subscribed to over 100 subreddits.
+</p>
+<p>
+For the most part I'm reading Reddit passively and I can't afford spending much time on Reddit every day, so my system for years have been reading updates for the past week on Sundays.
+</p>
+<p>
+For few select subreddits that most interest me (e.g. <a href="https://www.reddit.com/r/QuantifiedSelf/">quantifiedself</a> or <a href="https://www.reddit.com/r/orgmode">orgmode</a>)
+I read all updates, for the rest I just read weekly top.
+</p>
+<p>
+I tend to do it from my phone on the go/in transport or while I'm waiting somewhere, so the concentration is not exactly perfect and many things are too awkward to read or browse on phone anyway.
+</p>
+<p>
+So I tend to favorite interesting submissions (judging by the title) without reading them instead, and later once in a while when I'm at my desktop I have a deeper look at whatever I favorited.
+</p>
+<p>
+This is however gets a little clumsy. 
+</p>
+<ul class="org-ul">
+<li><p>
+saved <b>items can't be rearranged</b> in the Reddit interface and the only sort available is by 'saving time'
+</p>
+<p>
+This would be ok if every time you processed your saved items you cleared all of them, but that's just not very realistic.
+</p>
+<p>
+Some things take higher priority; some things just give you few thoughts now and you wanna action on it later.
+So every time you process saved submissions, you end up going through same things all over again, and you have to remember where you stopped last time. 
+That's quite distracting!
+</p></li>
+<li><p>
+you <b>can't add private comments</b> to saved items
+</p>
+<p>
+Using some annotation engine like <a href="https://hypothes.is">Hypothesis</a> on 'Saved' page would be too flaky if Reddit changes design.
+You could annotate saved items directly, but then you won't have an overview on 'Saved' page.
+</p></li>
+<li><p>
+sometimes posts/comments get deleted so if you look at saved item months later, you'd not know what have you saved anymore
+</p>
+<p>
+While there are ways to read removed reddit comments, it's a bit distracting to do too and with orger you'd always have an original version of the item.
+</p></li>
+</ul>
+<p>
+How Orger solves that for me? Here's my typical workflow with <code>reddit.org</code> file:
+</p>
+<ul class="org-ul">
+<li>I'm running <a href="https://github.com/karlicoss/rexport">reddit data exporter</a> and <code>reddit.py</code> every night automatically (via cron).</li>
+<li>when I feel like reading some Reddit, I open <code>reddit.org</code> and jump to new items at the end of file (I can quickly tell them from old ones since they don't have a priority), and go through them</li>
+<li>some things just get refiled immediately. E.g. if it's a recipe it would go to <code>food.org</code>, if it's something C++ related, it would go to <code>cpp.org</code>, etc.</li>
+<li>what isn't refiled, I mark with a priority</li>
+<li>when everything is prioritized, I select the whole file, call <code>org-sort-entries</code> and sort by priorities.</li>
+<li><p>
+now that everything looks a bit more manageable, I can action on the highest priority items (<code>#A</code> and <code>#B</code>) properly.
+</p>
+<p>
+Some I just read and archive.
+</p>
+<p>
+Some give me thoughts or ideas which I can add under the corresponding org-mode heading.
+</p>
+<p>
+Some things just require actually acting on them (e.g. new library release), so I can mark it as TODO and schedule so it shows up in my agenda.
+</p></li>
+<li>also, once in a while I'll look through items with lower (<code>#C</code> / <code>#D</code>) priorities and bump them or archive if they become irrelevant.</li>
+</ul>
+<p>
+Needless to say when I'm searching through all of my Org-mode files, items saved on Reddit pop up as well.
+</p>
+<p>
+The only downside of my particular implementation is that items are not unmarked as 'Saved' on Reddit.
+One could probably implement this with API call on archiving/marking item as done or something, I just didn't find it too big of a deal for me.
+</p>
+<p>
+Here's how it looks for me (with content collapsed):
+</p>
+<div class="org-src-container">
+<pre class="src src-org">
+<span class="org-org-level-1">* </span><span class="org-org-todo">TODO</span><span class="org-org-level-1"> </span><span class="org-org-priority">[#B]</span><span class="org-org-level-1"> </span><span class="org-org-date">[2019-05-18 Sat 19:00]</span><span class="org-org-level-1"> </span><span class="org-org-link"><a href="https://reddit.com/r/spacemacs/comments/bnlgkv/refactoring_in_spacemacs_using_iedit_and_helmedit/">Refactoring in Spacemacs using iedit and helm-edit</a></span><span class="org-org-level-1"> /r/spacemacs</span>
+...
+<span class="org-org-level-1">* </span><span class="org-org-todo">TODO</span><span class="org-org-level-1"> </span><span class="org-org-priority">[#B]</span><span class="org-org-level-1"> </span><span class="org-org-date">[2019-09-02 Mon 12:41]</span><span class="org-org-level-1"> </span><span class="org-org-link"><a href="https://reddit.com/r/scifi/comments/cvy78o/searching_stories_with_super_intelligence_in/eyldzyb/">Searching stories with super intelligence in humans theme</a></span><span class="org-org-level-1"> /r/scifi </span><span class="org-org-level-1"><span class="org-org-tag">:read:</span></span>
+...
+<span class="org-org-level-1">* </span><span class="org-org-priority">[#C]</span><span class="org-org-level-1"> </span><span class="org-org-date">[2019-06-21 Fri 06:50]</span><span class="org-org-level-1"> </span><span class="org-org-link"><a href="https://reddit.com/r/AskMen/comments/c2vw9p/how_do_relationship_fights_affect_men/ermvj9a/">How do relationship fights affect men?</a></span><span class="org-org-level-1"> /r/AskMen </span>
+...
+<span class="org-org-level-1">* </span><span class="org-org-priority">[#D]</span><span class="org-org-level-1"> </span><span class="org-org-date">[2019-01-15 Tue 08:30]</span><span class="org-org-level-1"> </span><span class="org-org-link"><a href="https://reddit.com/r/bodyweightfitness/comments/afutqw/mindmuscle_connection_whats_the_evidence/">Mind-Muscle Connection: What's the evidence?</a></span><span class="org-org-level-1"> /r/bodyweightfitness </span>
+...
+<span class="org-org-level-1">* </span><span class="org-org-date">[2019-09-14 Sat 09:00]</span><span class="org-org-level-1"> </span><span class="org-org-link"><a href="https://reddit.com/r/biology/comments/d1u5je/kinesin_a_motor_protein_walks_different_proteins/">Kinesin, a motor protein, "walks" different proteins from one place to another</a></span><span class="org-org-level-1"> /r/biology</span>
+...
+<span class="org-org-level-1">* </span><span class="org-org-date">[2019-09-24 Tue 19:10]</span><span class="org-org-level-1"> </span><span class="org-org-link"><a href="https://reddit.com/r/Biohackers/comments/d8ky2y/why_you_should_not_blindly_trust_nutrition/">Why you should not blindly trust nutrition experts but instead self experiment.</a></span><span class="org-org-level-1"> /r/Biohackers</span>
+...
+<span class="org-org-level-1">* </span><span class="org-org-date">[2019-10-03 Thu 21:51]</span><span class="org-org-level-1"> </span><span class="org-org-link"><a href="https://reddit.com/r/decentralization/comments/dcxtzm/is_there_an_opensource_decentralized_search_engine/">Is there an opensource decentralized search engine?</a></span><span class="org-org-level-1"> /r/decentralization</span>
+
+
+</pre>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000001">
+<h2 id="telegram2org"><a class="headerlink" href="#telegram2org">¶</a><span class="section-number-2">2</span> <a href="https://github.com/karlicoss/telegram2org">telegram2org</a>: one tap to create tasks from Telegram messages</h2>
+<div class="outline-text-2" id="text-telegram2org">
+<p>
+</p>
+<p>
+Imagine a friend asked you for something, or sent you a link or a video, but you don't have time to process that right at the moment.
+</p>
+<p>
+Normally I'd share their message to my TODO list app so I can process it later.
+However, official Android app for Telegram doesn't have sharing capabilities.
+</p>
+<p>
+This is a tool that allows you to overcome this restriction by forwarding messages you want to
+remember about to a special private channel. Then it grabs the messages from this private channel and creates TODO items from it!
+</p>
+<p>
+That way you keep your focus while not being mean ignoring your friends' messages.
+</p>
+<p>
+I keep tags for the people I communicate most with (creepy I know :P ), so it also maps select people's names to tags,
+so I can quickly have an overview of things to discuss or reply to.
+</p>
+<p>
+It would be fairly straightforward to modify the code for other instant messengers, although there are some potential issues.
+For instance, Whatsapp or Facebook Messenger don't have an API. You can potentially web scrape it or reverse engineer the database on your phone to get messages,
+but I'm personally not motivated enough since I'm not using them much. Unless many people lack this, so let me know!
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000002">
+<h2 id="hyp2org"><a class="headerlink" href="#hyp2org">¶</a><span class="section-number-2">3</span> <a href="https://github.com/karlicoss/orger/blob/master/modules/hyp2org.py">hyp2org</a>: create tasks from Hypothesis highlights</h2>
+<div class="outline-text-2" id="text-hyp2org">
+<p>
+</p>
+<p>
+Sometimes when I'm annotating using <a href="https://hypothes.is">Hypothesis</a>, I want to think more
+about specific highlights, google more about them later or generally act on them somehow.
+</p>
+<p>
+Normally you'd have to copy the URL, highlighted text and create a task from it.
+</p>
+<p>
+This script does that automatically, only thing that you have to do is to mark it with a tag or type 'todo'
+in the annotation text.
+</p>
+<p>
+Items get scheduled and appear on my org-mode agenda,
+so I can un/reschedule them if they don't require immediate attention.
+</p>
+<p>
+Modules for <a href="https://github.com/karlicoss/orger/blob/master/modules/kobo2org.py">Kobo</a>
+and <a href="https://github.com/karlicoss/orger/blob/master/modules/ip2org.py">Instapaper</a>
+work in the pretty much same way.
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000003">
+<h2 id="krill"><a class="headerlink" href="#krill">¶</a><span class="section-number-2">4</span> <a href="https://github.com/karlicoss/orger/blob/master/modules/krill.py">krill</a>: learn new words from your Kobo books</h2>
+<div class="outline-text-2" id="text-krill">
+<p>
+</p>
+<p>
+Automatically import stuff from my Kobo backups into org-mode for further spaced repetition (via org-drill in my case).
+Mainly learning vocabulary with it.
+</p>
+<p>
+It uses <a href="https://github.com/karlicoss/kobuddy">kobuddy</a> to extract data from Kobo exports.
+</p>
+<p>
+The name stands for K[oboD]rill.
+</p>
+<p>
+I'm using <a href="https://orgmode.org/worg/org-contrib/org-drill.html">org-drill</a> for Spaced repetition, but you could potentially use same principle to 
+import cards in Anki or any other spaced repetition engine you like.
+</p>
+<p>
+Here's how it looks for me:
+</p>
+<div class="org-src-container">
+<pre class="src src-org"><span class="org-org-level-1">* </span><span class="org-org-todo">TODO</span><span class="org-org-level-1"> yesterday [ Gestern ]                                          </span><span class="org-org-level-1"><span class="org-org-tag">:drill:</span></span>
+  <span class="org-org-special-keyword">SCHEDULED:</span> <span class="org-org-date">&lt;2019-10-17 Thu&gt;</span>
+<span class="org-org-special-keyword">:PROPERTIES:</span>
+<span class="org-org-special-keyword">:CREATED:</span>  <span class="org-org-date">[2018-11-16 Fri 20:30]</span>
+<span class="org-org-special-keyword">:ID:</span>       <span class="org-org-property-value">986e4686-75ec-40a9-9827-f9458bcb2811</span>
+<span class="org-org-special-keyword">:DRILL_LAST_INTERVAL:</span> <span class="org-org-property-value">200.7488</span>
+<span class="org-org-special-keyword">:DRILL_REPEATS_SINCE_FAIL:</span> <span class="org-org-property-value">6</span>
+<span class="org-org-special-keyword">:DRILL_TOTAL_REPEATS:</span> <span class="org-org-property-value">5</span>
+<span class="org-org-special-keyword">:DRILL_FAILURE_COUNT:</span> <span class="org-org-property-value">0</span>
+<span class="org-org-special-keyword">:DRILL_AVERAGE_QUALITY:</span> <span class="org-org-property-value">4.6</span>
+<span class="org-org-special-keyword">:DRILL_EASE:</span> <span class="org-org-property-value">2.8</span>
+<span class="org-org-special-keyword">:DRILL_LAST_QUALITY:</span> <span class="org-org-property-value">4</span>
+<span class="org-org-special-keyword">:DRILL_LAST_REVIEWED:</span> <span class="org-org-date">[2019-03-30 Sat 21:27]</span>
+<span class="org-org-special-keyword">:END:</span>
+from Learn German with Stories: Café in Berlin - 10 short stories for beginners
+
+<span class="org-org-level-1">* </span><span class="org-org-todo">TODO</span><span class="org-org-level-1"> disquieting                                                    </span><span class="org-org-level-1"><span class="org-org-tag">:drill:</span></span>
+  <span class="org-org-special-keyword">SCHEDULED:</span> <span class="org-org-date">&lt;2019-09-29 Sun&gt;</span>
+<span class="org-org-special-keyword">:PROPERTIES:</span>
+<span class="org-org-special-keyword">:CREATED:</span> <span class="org-org-date">[2019-08-27 Tue 20:12]</span>
+<span class="org-org-special-keyword">:ID:</span>       <span class="org-org-property-value">28652353-c905-46b1-b4a5-bc2daf71125d</span>
+<span class="org-org-special-keyword">:DRILL_LAST_INTERVAL:</span> <span class="org-org-property-value">9.2418</span>
+<span class="org-org-special-keyword">:DRILL_REPEATS_SINCE_FAIL:</span> <span class="org-org-property-value">3</span>
+<span class="org-org-special-keyword">:DRILL_TOTAL_REPEATS:</span> <span class="org-org-property-value">2</span>
+<span class="org-org-special-keyword">:DRILL_FAILURE_COUNT:</span> <span class="org-org-property-value">0</span>
+<span class="org-org-special-keyword">:DRILL_AVERAGE_QUALITY:</span> <span class="org-org-property-value">3.5</span>
+<span class="org-org-special-keyword">:DRILL_EASE:</span> <span class="org-org-property-value">2.36</span>
+<span class="org-org-special-keyword">:DRILL_LAST_QUALITY:</span> <span class="org-org-property-value">4</span>
+<span class="org-org-special-keyword">:DRILL_LAST_REVIEWED:</span> <span class="org-org-date">[2019-09-20 Fri 00:17]</span>
+<span class="org-org-special-keyword">:END:</span>
+ from Worm
+
+<span class="org-org-level-1">* </span><span class="org-org-todo">TODO</span><span class="org-org-level-1"> Plötzlich                                                      </span><span class="org-org-level-1"><span class="org-org-tag">:drill:</span></span>
+  <span class="org-org-special-keyword">SCHEDULED:</span> <span class="org-org-date">&lt;2019-10-05 Sat&gt;</span>
+<span class="org-org-special-keyword">:PROPERTIES:</span>
+<span class="org-org-special-keyword">:CREATED:</span> <span class="org-org-date">[2019-10-04 Fri 14:19]</span>
+<span class="org-org-special-keyword">:END:</span>
+ from Learn German with Stories: Café in Berlin - 10 short stories for beginners
+</pre>
+</div>
+<p>
+Last item was just appended after I connected my reader to computer, whereas two other have been there for a while.
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000004">
+<h2 id="org0000004"><a class="headerlink" href="#org0000004">¶</a><span class="section-number-2">5</span> ---</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Let me know what you think! I'm open to all feedback.
+</p>
+</div>
+</div>
+
+    </section>
+
+    
+    <section class="footer">
+        <div class="post-tags"><a class="post-tag" href="./tags.html#orgmode">#orgmode</a> <a class="post-tag" href="./tags.html#productivity">#productivity</a> <a class="post-tag" href="./tags.html#orger">#orger</a></div>
+        <!-- TODO post-date? -->
+        <div class="date">05 October 2019</div>
+    </section>
+    
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_orger_todos"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
+        
+        <footer>
+            
+            
+        </footer>
+    </body>
+</html>
+]]></summary>
+</entry>
+<entry>
     <title>Orger: plaintext reflection of your digital self</title>
     <link href="https://beepb00p.xyz/orger.html" />
     <id>https://beepb00p.xyz/orger.html</id>
@@ -3018,7 +3405,7 @@ Hopefully that saves someone else a bit of time.</p>
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
         
-        <meta name="keywords" content="pkm orgmode">
+        <meta name="keywords" content="pkm orgmode orger">
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
@@ -3078,7 +3465,7 @@ Hopefully that saves someone else a bit of time.</p>
 <article>
     <section class="post-title">
     <h1>Orger: plaintext reflection of your digital self</h1>
-    <div class="summary"></h2>
+    <div class="summary">Mirror your personal data as org-mode for instant access and search</h2>
     </section>
     <!-- are sections appropriate for that? -->
 
@@ -3123,8 +3510,11 @@ Hopefully that saves someone else a bit of time.</p>
 </div>
 </div>
 <p>
-TLDR: I'll write about <a href="https://github.com/karlicoss/orger">orger</a>, a tool I'm using to covert my personal data into easily readable and searchable org-mode views.
+TLDR: I'll write about <a href="https://github.com/karlicoss/orger">orger</a>, a tool I'm using to convert my personal data into easily readable and searchable org-mode views.
 I'll present some examples and use cases, that will hopefully be helpful to you as well even if you are not sold by using my tool.
+</p>
+<p>
+There is also <a href="orger-todos.html">second part</a> where I'm explaining how it can be used to create tasks for your agenda.
 </p>
 <p>
 If you're impatient, you can jump straight to a <a href="#demo">demo</a>.
@@ -3473,7 +3863,7 @@ If you find something confusing or you write your own module and want to contrib
 <h3 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/instapaper.py">instapaper</a></h3>
 <div class="outline-text-3" id="text-org0000005">
 <p>
-Instapaper doesn't have search over annotations, so I implemented my own!
+Instapaper <a href="annotating.html#instapaper">doesn't have search</a> over annotations, so I implemented my own!
 </p>
 </div>
 </div>
@@ -3535,13 +3925,19 @@ I stopped using Remember The Milk a while ago, but there are still some tasks an
 <p>
 Lets me create todo tasks from Telegram messages in couple of taps (you can't use share function on them in Android).
 </p>
+<p>
+I write about it <a href="orger-todos.org#telegram2org">in the second part</a>.
+</p>
 </div>
 </div>
 <div class="outline-3" id="outline-container-org000000d">
 <h3 id="org000000d"><a class="headerlink" href="#org000000d">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/reddit.py">reddit</a></h3>
 <div class="outline-text-3" id="text-org000000d">
 <p>
-Displays and lets me search my Reddit saved posts/comments. I'll write more about it in another post!
+Displays and lets me search my Reddit saved posts/comments.
+</p>
+<p>
+I write about it <a href="orger-todos.org#reddit">in the second part</a>.
 </p>
 </div>
 </div>
@@ -3602,7 +3998,7 @@ I won't go long into Org-mode propaganda, there are people that do it better tha
 <ul class="org-ul">
 <li>it's easy to do unstructured (i.e. grep) or structured (i.e. tag search in emacs) search on any of your devices be it desktop or phone</li>
 <li>you can open it anywhere you can open a text file</li>
-<li>tasks as easy to create as any other Org outline so it can integrate with your todo list and agenda</li>
+<li>tasks as easy to create as any other Org outline so it can integrate with your todo list and agenda (see more in <a href="orger-todos.html">the second part</a>).</li>
 </ul></li>
 <li><p>
 it doesn't require Emacs
@@ -3742,7 +4138,7 @@ This post ended up longer that I expected so in the next part I will tell about 
 
     
     <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#orgmode">#orgmode</a></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#orgmode">#orgmode</a> <a class="post-tag" href="./tags.html#orger">#orger</a></div>
         <!-- TODO post-date? -->
         <div class="date">26 September 2019</div>
     </section>
@@ -3916,6 +4312,9 @@ So, this is the plan, which I will fill with links as I write.
 <div class="outline-2" id="outline-container-org0000002">
 <h2 id="org0000002"><a class="headerlink" href="#org0000002">¶</a><span class="section-number-2">3</span> <span class="todo STRT">STRT</span> searching</h2>
 <div class="outline-text-2" id="text-3">
+<ul class="org-ul">
+<li>basic summary <a href="./orger.html#using">here</a></li>
+</ul>
 </div>
 </div>
 <div class="outline-2" id="outline-container-org0000003">
@@ -3933,7 +4332,9 @@ So, this is the plan, which I will fill with links as I write.
 <h2 id="org0000006"><a class="headerlink" href="#org0000006">¶</a><span class="section-number-2">7</span> <span class="todo TODO">TODO</span> discovering new information</h2>
 </div>
 <div class="outline-2" id="outline-container-org0000007">
-<h2 id="org0000007"><a class="headerlink" href="#org0000007">¶</a><span class="section-number-2">8</span> <span class="todo TODO">TODO</span> spaced repetition and habits</h2>
+<h2 id="org0000007"><a class="headerlink" href="#org0000007">¶</a><span class="section-number-2">8</span> <span class="todo STRT">STRT</span> spaced repetition and habits</h2>
+<div class="outline-text-2" id="text-8">
+</div>
 </div>
 <div class="outline-2" id="outline-container-org0000008">
 <h2 id="org0000008"><a class="headerlink" href="#org0000008">¶</a><span class="section-number-2">9</span> <span class="todo TODO">TODO</span> syncing</h2>

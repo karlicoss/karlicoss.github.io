@@ -9,7 +9,7 @@
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
         
-        <meta name="keywords" content="pkm orgmode">
+        <meta name="keywords" content="pkm orgmode orger">
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
@@ -69,7 +69,7 @@
 <article>
     <section class="post-title">
     <h1>Orger: plaintext reflection of your digital self</h1>
-    <div class="summary"></h2>
+    <div class="summary">Mirror your personal data as org-mode for instant access and search</h2>
     </section>
     <!-- are sections appropriate for that? -->
 
@@ -114,8 +114,11 @@
 </div>
 </div>
 <p>
-TLDR: I'll write about <a href="https://github.com/karlicoss/orger">orger</a>, a tool I'm using to covert my personal data into easily readable and searchable org-mode views.
+TLDR: I'll write about <a href="https://github.com/karlicoss/orger">orger</a>, a tool I'm using to convert my personal data into easily readable and searchable org-mode views.
 I'll present some examples and use cases, that will hopefully be helpful to you as well even if you are not sold by using my tool.
+</p>
+<p>
+There is also <a href="orger-todos.html">second part</a> where I'm explaining how it can be used to create tasks for your agenda.
 </p>
 <p>
 If you're impatient, you can jump straight to a <a href="#demo">demo</a>.
@@ -464,7 +467,7 @@ If you find something confusing or you write your own module and want to contrib
 <h3 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/instapaper.py">instapaper</a></h3>
 <div class="outline-text-3" id="text-org0000005">
 <p>
-Instapaper doesn't have search over annotations, so I implemented my own!
+Instapaper <a href="annotating.html#instapaper">doesn't have search</a> over annotations, so I implemented my own!
 </p>
 </div>
 </div>
@@ -526,13 +529,19 @@ I stopped using Remember The Milk a while ago, but there are still some tasks an
 <p>
 Lets me create todo tasks from Telegram messages in couple of taps (you can't use share function on them in Android).
 </p>
+<p>
+I write about it <a href="orger-todos.org#telegram2org">in the second part</a>.
+</p>
 </div>
 </div>
 <div class="outline-3" id="outline-container-org000000d">
 <h3 id="org000000d"><a class="headerlink" href="#org000000d">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/reddit.py">reddit</a></h3>
 <div class="outline-text-3" id="text-org000000d">
 <p>
-Displays and lets me search my Reddit saved posts/comments. I'll write more about it in another post!
+Displays and lets me search my Reddit saved posts/comments.
+</p>
+<p>
+I write about it <a href="orger-todos.org#reddit">in the second part</a>.
 </p>
 </div>
 </div>
@@ -593,7 +602,7 @@ I won't go long into Org-mode propaganda, there are people that do it better tha
 <ul class="org-ul">
 <li>it's easy to do unstructured (i.e. grep) or structured (i.e. tag search in emacs) search on any of your devices be it desktop or phone</li>
 <li>you can open it anywhere you can open a text file</li>
-<li>tasks as easy to create as any other Org outline so it can integrate with your todo list and agenda</li>
+<li>tasks as easy to create as any other Org outline so it can integrate with your todo list and agenda (see more in <a href="orger-todos.html">the second part</a>).</li>
 </ul></li>
 <li><p>
 it doesn't require Emacs
@@ -733,7 +742,7 @@ This post ended up longer that I expected so in the next part I will tell about 
 
     
     <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#orgmode">#orgmode</a></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#orgmode">#orgmode</a> <a class="post-tag" href="./tags.html#orger">#orger</a></div>
         <!-- TODO post-date? -->
         <div class="date">26 September 2019</div>
     </section>
