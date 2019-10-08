@@ -2307,7 +2307,7 @@ WARNING:workout-provider:Unhandled: Cycling
 
 
 <div class="output_text output_subarea ">
-<pre>'Regression coefficient: 0.09325012964360162'</pre>
+<pre>'Regression coefficient: 0.09335519223434642'</pre>
 </div>
 
 </div>
@@ -2320,7 +2320,7 @@ WARNING:workout-provider:Unhandled: Cycling
 
 
 <div class="output_text output_subarea ">
-<pre>'Free term: -9.447671550509767'</pre>
+<pre>'Free term: -9.7400392997464'</pre>
 </div>
 
 </div>
@@ -2377,7 +2377,7 @@ WARNING:workout-provider:Unhandled: Cycling
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>8056.81120120718</pre>
+<pre>8065.88860904753</pre>
 </div>
 
 </div>
@@ -4167,7 +4167,7 @@ This post ended up longer that I expected so in the next part I will tell about 
 ]]></summary>
 </entry>
 <entry>
-    <title>How I extend my mind and cope with having fleshy human brain</title>
+    <title>How to cope with having fleshy human brain</title>
     <link href="https://beepb00p.xyz/pkm-setup.html" />
     <id>https://beepb00p.xyz/pkm-setup.html</id>
     <published>2019-05-13T00:00:00Z</published>
@@ -4187,7 +4187,7 @@ This post ended up longer that I expected so in the next part I will tell about 
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
-        <title>How I extend my mind and cope with having fleshy human brain | Mildly entertainingᵝ</title>
+        <title>How to cope with having fleshy human brain | Mildly entertainingᵝ</title>
 
         <link rel="stylesheet" href="./css/default.css?v=2" />
         <link rel="stylesheet" href="./css/links.css?v=2" />
@@ -4242,7 +4242,7 @@ This post ended up longer that I expected so in the next part I will tell about 
 
 <article>
     <section class="post-title">
-    <h1>How I extend my mind and cope with having fleshy human brain</h1>
+    <h1>How to cope with having fleshy human brain</h1>
     <div class="summary">My personal knowledge setup</h2>
     </section>
     <!-- are sections appropriate for that? -->
@@ -4321,10 +4321,15 @@ So, this is the plan, which I will fill with links as I write.
 <h2 id="org0000003"><a class="headerlink" href="#org0000003">¶</a><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> logging and capturing</h2>
 </div>
 <div class="outline-2" id="outline-container-org0000004">
-<h2 id="org0000004"><a class="headerlink" href="#org0000004">¶</a><span class="section-number-2">5</span> <span class="todo TODO">TODO</span> processing captured content</h2>
+<h2 id="org0000004"><a class="headerlink" href="#org0000004">¶</a><span class="section-number-2">5</span> <span class="todo STRT">STRT</span> processing and organizing information</h2>
+<div class="outline-text-2" id="text-5">
+<ul class="org-ul">
+<li>see posts about Orger (<a href="./orger.html">1</a>, <a href="./orger-todos.html">2</a>), in particular, <a href="./orger-todos.html#reddit">reddit processing workflow</a></li>
+</ul>
+</div>
 </div>
 <div class="outline-2" id="outline-container-org0000005">
-<h2 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><span class="section-number-2">6</span> <a href="./annotating.html">Annotating content</a></h2>
+<h2 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><span class="section-number-2">6</span> <a href="./annotating.html">Annotating information</a></h2>
 <div class="outline-text-2" id="text-6">
 </div>
 </div>
@@ -4334,6 +4339,9 @@ So, this is the plan, which I will fill with links as I write.
 <div class="outline-2" id="outline-container-org0000007">
 <h2 id="org0000007"><a class="headerlink" href="#org0000007">¶</a><span class="section-number-2">8</span> <span class="todo STRT">STRT</span> spaced repetition and habits</h2>
 <div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li>example of using Orger <a href="./orger-todos.html#krill">to drill new words from my Kobo reader</a></li>
+</ul>
 </div>
 </div>
 <div class="outline-2" id="outline-container-org0000008">
@@ -4351,7 +4359,9 @@ So, this is the plan, which I will fill with links as I write.
 <h2 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><span class="section-number-2">12</span> <span class="todo TODO">TODO</span> future</h2>
 </div>
 <div class="outline-2" id="outline-container-org000000c">
-<h2 id="org000000c"><a class="headerlink" href="#org000000c">¶</a><span class="section-number-2">13</span> <span class="todo TODO">TODO</span> developing tools</h2>
+<h2 id="org000000c"><a class="headerlink" href="#org000000c">¶</a><span class="section-number-2">13</span> <span class="todo STRT">STRT</span> developing tools</h2>
+<div class="outline-text-2" id="text-13">
+</div>
 </div>
 
     </section>
