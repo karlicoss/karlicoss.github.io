@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content>
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>Static blogging | Mildly entertainingᵝ</title>
+
+        <link rel="stylesheet" href="../css/default.css?v=2" />
+        <link rel="stylesheet" href="../css/links.css?v=2" />
+
+        <!-- TODO make it conditional on actually having math on page? -->
+        <script type="text/javascript">
+ window.MathJax = {
+     tex2jax: {
+         // note that hakyll source has got double dollar signs due to special meaning in templates
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+     }
+ };
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="../">Home</a>
+                    <!-- TODO eh, not sure if this symbol is good for that... -->
+                    ·
+                    <a class="fat" href="../ideas.html">Ideas</a>
+                    ·
+                    <a class="fat" href="../notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="../tags.html">Tags</a>
+                </span>
+                <span class="nav-right">
+                    <a class="fat" href="../feed.html">Feed</a>
+                    ·
+                    <a class="fat" href="../site.html">Site</a>
+                    ·
+                    <a class="fat" href="../me.html">Me</a>
+                </span>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<!-- <link rel="stylesheet" href="/css/org.css" /> -->
+
+<link rel="stylesheet" href="../css/htmlize.css" />
+<link rel="stylesheet" href="../css/org-default.css" />
+
+<link rel="stylesheet" href="../css/org-extra.css?v=2" />
+
+
+
+<article>
+    <section class="post-title">
+    <h1>Static blogging</h1>
+    
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org0000001">1. static blog: benefits of having it compiled with git directory – it's trivial to track changes   <span class="tag"><span class="blog">blog</span></span></a>
+<ul>
+<li><a href="#org0000000">1.1. <span class="timestamp-wrapper"><span class="timestamp">[2019-09-15 11:29]</span></span> just need to make sure there are no random ids/hashes etc</a></li>
+</ul>
+</li>
+<li><a href="#org0000004">2. <span class="todo TODO">TODO</span> Why static blog   <span class="tag"><span class="blog">blog</span></span></a>
+<ul>
+<li><a href="#org0000002">2.1. <span class="timestamp-wrapper"><span class="timestamp">[2019-09-04 20:00]</span></span> Normal are too linear, can't trick into doing what I want</a></li>
+<li><a href="#org0000003">2.2. <span class="timestamp-wrapper"><span class="timestamp">[2019-09-02 21:09]</span></span> motivation for static: everything you don't like you can modify in code   <span class="tag"><span class="me">me</span> <span class="blog">blog</span></span></a></li>
+</ul>
+</li>
+<li><a href="#org0000005">3. <span class="todo TODO">TODO</span> don't be afraid to use conventional command line tools   <span class="tag"><span class="blog">blog</span> <span class="ipynb">ipynb</span></span></a></li>
+<li><a href="#org0000006">4. <span class="todo TODO">TODO</span> as a tip: have a test page   <span class="tag"><span class="blog">blog</span></span></a></li>
+<li><a href="#org0000009">5. <span class="todo TODO">TODO</span> post about screenshot comparison   <span class="tag"><span class="blog">blog</span></span></a>
+<ul>
+<li><a href="#org0000007">5.1. <span class="timestamp-wrapper"><span class="timestamp">[2019-09-21 12:47]</span></span> could post that separately?</a></li>
+<li><a href="#org0000008">5.2. <span class="timestamp-wrapper"><span class="timestamp">[2019-09-21 12:47]</span></span> change CSS on tags and demonstrate it?</a></li>
+</ul>
+</li>
+<li><a href="#org000000b">6. <span class="todo START">START</span> checker that anything that was ever on my blog is still available (post about it too!)   <span class="tag"><span class="blog">blog</span></span></a>
+<ul>
+<li><a href="#org000000a">6.1. <span class="timestamp-wrapper"><span class="timestamp">[2019-09-02 22:43]</span></span> link checker kinda does that?</a></li>
+</ul>
+</li>
+<li><a href="#org000000c">7. <span class="todo TODO">TODO</span> firefox responsive view thing   <span class="tag"><span class="blog">blog</span></span></a></li>
+<li><a href="#org000000d">8. <span class="todo START">START</span> technical choices   <span class="tag"><span class="blog">blog</span> <span class="meta">meta</span></span></a></li>
+<li><a href="#org000000e">9. <span class="todo TODO">TODO</span> about static blog recompiling. hakyll got 'watch', but if it's not available, you can still implement it via (TODO thing shulaev sent me)   <span class="tag"><span class="blog">blog</span> <span class="publish">publish</span></span></a></li>
+<li><a href="#org000000f">10. <span class="timestamp-wrapper"><span class="timestamp">[2019-10-08 23:42]</span></span></a></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000001">
+<h2 id="org0000001"><a class="headerlink" href="#org0000001">¶</a><span class="section-number-2">1</span> static blog: benefits of having it compiled with git directory – it's trivial to track changes   <span class="tag"><span class="blog">blog</span></span></h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div class="outline-3" id="outline-container-org0000000">
+<h3 id="org0000000"><a class="headerlink" href="#org0000000">¶</a><span class="section-number-3">1.1</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-15 11:29]</span></span> just need to make sure there are no random ids/hashes etc</h3>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000004">
+<h2 id="org0000004"><a class="headerlink" href="#org0000004">¶</a><span class="section-number-2">2</span> <span class="todo TODO">TODO</span> Why static blog   <span class="tag"><span class="blog">blog</span></span></h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div class="outline-3" id="outline-container-org0000002">
+<h3 id="org0000002"><a class="headerlink" href="#org0000002">¶</a><span class="section-number-3">2.1</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-04 20:00]</span></span> Normal are too linear, can't trick into doing what I want</h3>
+</div>
+<div class="outline-3" id="outline-container-org0000003">
+<h3 id="org0000003"><a class="headerlink" href="#org0000003">¶</a><span class="section-number-3">2.2</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-02 21:09]</span></span> motivation for static: everything you don't like you can modify in code   <span class="tag"><span class="me">me</span> <span class="blog">blog</span></span></h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+code can do literally anything you wish. Hacker mindset
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000005">
+<h2 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> don't be afraid to use conventional command line tools   <span class="tag"><span class="blog">blog</span> <span class="ipynb">ipynb</span></span></h2>
+<div class="outline-text-2" id="text-3">
+<p>
+example with stripping private todos
+</p>
+<p>
+why it may seem unreliable or hacky, it's very effortless to try it out and in conjunction with
+version control for your outputs, you're unlikely to mess anything up massively 
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000006">
+<h2 id="org0000006"><a class="headerlink" href="#org0000006">¶</a><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> as a tip: have a test page   <span class="tag"><span class="blog">blog</span></span></h2>
+<div class="outline-text-2" id="text-4">
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000009">
+<h2 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><span class="section-number-2">5</span> <span class="todo TODO">TODO</span> post about screenshot comparison   <span class="tag"><span class="blog">blog</span></span></h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div class="outline-3" id="outline-container-org0000007">
+<h3 id="org0000007"><a class="headerlink" href="#org0000007">¶</a><span class="section-number-3">5.1</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-21 12:47]</span></span> could post that separately?</h3>
+</div>
+<div class="outline-3" id="outline-container-org0000008">
+<h3 id="org0000008"><a class="headerlink" href="#org0000008">¶</a><span class="section-number-3">5.2</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-21 12:47]</span></span> change CSS on tags and demonstrate it?</h3>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000000b">
+<h2 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><span class="section-number-2">6</span> <span class="todo START">START</span> checker that anything that was ever on my blog is still available (post about it too!)   <span class="tag"><span class="blog">blog</span></span></h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div class="outline-3" id="outline-container-org000000a">
+<h3 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><span class="section-number-3">6.1</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-02 22:43]</span></span> link checker kinda does that?</h3>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000000c">
+<h2 id="org000000c"><a class="headerlink" href="#org000000c">¶</a><span class="section-number-2">7</span> <span class="todo TODO">TODO</span> firefox responsive view thing   <span class="tag"><span class="blog">blog</span></span></h2>
+<div class="outline-text-2" id="text-7">
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000000d">
+<h2 id="org000000d"><a class="headerlink" href="#org000000d">¶</a><span class="section-number-2">8</span> <span class="todo START">START</span> technical choices   <span class="tag"><span class="blog">blog</span> <span class="meta">meta</span></span></h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li>State "START"      from "TODO"       <span class="timestamp-wrapper"><span class="timestamp">[2019-02-18 20:27]</span></span></li>
+</ul>
+<p>
+minimalistic design
+</p>
+<p>
+disqus: I'd love to use something else… 
+</p>
+<p>
+sorry for that: I'm still allowing guest comments though
+Note: Registered users must now verify their email address prior to posting a comment. Pre-moderation is always enabled for guest comments.
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000000e">
+<h2 id="org000000e"><a class="headerlink" href="#org000000e">¶</a><span class="section-number-2">9</span> <span class="todo TODO">TODO</span> about static blog recompiling. hakyll got 'watch', but if it's not available, you can still implement it via (TODO thing shulaev sent me)   <span class="tag"><span class="blog">blog</span> <span class="publish">publish</span></span></h2>
+<div class="outline-text-2" id="text-9">
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000000f">
+<h2 id="org000000f"><a class="headerlink" href="#org000000f">¶</a><span class="section-number-2">10</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-08 23:42]</span></span></h2>
+</div>
+
+    </section>
+
+    
+    <section class="footer">
+        <div class="post-tags"></div>
+        <!-- TODO post-date? -->
+        <div class="date">[2019-09-20]</div>
+    </section>
+    
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="whaat"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
+        
+        <footer>
+            
+            
+        </footer>
+    </body>
+</html>

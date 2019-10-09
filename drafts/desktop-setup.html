@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content>
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>desktop-setup | Mildly entertainingᵝ</title>
+
+        <link rel="stylesheet" href="../css/default.css?v=2" />
+        <link rel="stylesheet" href="../css/links.css?v=2" />
+
+        <!-- TODO make it conditional on actually having math on page? -->
+        <script type="text/javascript">
+ window.MathJax = {
+     tex2jax: {
+         // note that hakyll source has got double dollar signs due to special meaning in templates
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+     }
+ };
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="../">Home</a>
+                    <!-- TODO eh, not sure if this symbol is good for that... -->
+                    ·
+                    <a class="fat" href="../ideas.html">Ideas</a>
+                    ·
+                    <a class="fat" href="../notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="../tags.html">Tags</a>
+                </span>
+                <span class="nav-right">
+                    <a class="fat" href="../feed.html">Feed</a>
+                    ·
+                    <a class="fat" href="../site.html">Site</a>
+                    ·
+                    <a class="fat" href="../me.html">Me</a>
+                </span>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<!-- <link rel="stylesheet" href="/css/org.css" /> -->
+
+<link rel="stylesheet" href="../css/htmlize.css" />
+<link rel="stylesheet" href="../css/org-default.css" />
+
+<link rel="stylesheet" href="../css/org-extra.css?v=2" />
+
+
+
+<article>
+    <section class="post-title">
+    <h1>desktop-setup</h1>
+    
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org0000000">1. <span class="todo TODO">TODO</span> post about vim keybindings   <span class="tag"><span class="mc">mc</span> <span class="setup">setup</span> <span class="post">post</span></span></a></li>
+<li><a href="#org0000001">2. <span class="todo TODO">TODO</span> about my cgit thing; how I manage public and private dotfiles; symlink frendliness; tokens; nginx   <span class="tag"><span class="blog">blog</span> <span class="setup">setup</span></span></a></li>
+<li><a href="#org0000002">3. <span class="todo START">START</span> /L/repos/configuration-private thing, set up on glumov and sikorsky? also blog about it?   <span class="tag"><span class="setup">setup</span> <span class="blog">blog</span></span></a></li>
+<li><a href="#org0000005">4. Setup</a>
+<ul>
+<li><a href="#org0000003">4.1. <span class="timestamp-wrapper"><span class="timestamp">[2019-06-03 23:40]</span></span> ansible is convenient because of its caching capabilities (+idempotence), so it makes it easy to make a reproducible script   <span class="tag"><span class="blog">blog</span> <span class="setup">setup</span></span></a></li>
+<li><a href="#org0000004">4.2. <span class="todo TODO">TODO</span> example workflow with changed crontab   <span class="tag"><span class="setup">setup</span> <span class="config">config</span> <span class="blog">blog</span></span></a></li>
+</ul>
+</li>
+<li><a href="#org0000006">5. <span class="todo TODO">TODO</span> about nginx config as well   <span class="tag"><span class="blog">blog</span> <span class="setup">setup</span></span></a></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000000">
+<h2 id="org0000000"><a class="headerlink" href="#org0000000">¶</a><span class="section-number-2">1</span> <span class="todo TODO">TODO</span> post about vim keybindings   <span class="tag"><span class="mc">mc</span> <span class="setup">setup</span> <span class="post">post</span></span></h2>
+<div class="outline-text-2" id="text-1">
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000001">
+<h2 id="org0000001"><a class="headerlink" href="#org0000001">¶</a><span class="section-number-2">2</span> <span class="todo TODO">TODO</span> about my cgit thing; how I manage public and private dotfiles; symlink frendliness; tokens; nginx   <span class="tag"><span class="blog">blog</span> <span class="setup">setup</span></span></h2>
+<div class="outline-text-2" id="text-2">
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000002">
+<h2 id="org0000002"><a class="headerlink" href="#org0000002">¶</a><span class="section-number-2">3</span> <span class="todo START">START</span> /L/repos/configuration-private thing, set up on glumov and sikorsky? also blog about it?   <span class="tag"><span class="setup">setup</span> <span class="blog">blog</span></span></h2>
+<div class="outline-text-2" id="text-3">
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000005">
+<h2 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><span class="section-number-2">4</span> Setup</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div class="outline-3" id="outline-container-org0000003">
+<h3 id="org0000003"><a class="headerlink" href="#org0000003">¶</a><span class="section-number-3">4.1</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-06-03 23:40]</span></span> ansible is convenient because of its caching capabilities (+idempotence), so it makes it easy to make a reproducible script   <span class="tag"><span class="blog">blog</span> <span class="setup">setup</span></span></h3>
+</div>
+<div class="outline-3" id="outline-container-org0000004">
+<h3 id="org0000004"><a class="headerlink" href="#org0000004">¶</a><span class="section-number-3">4.2</span> <span class="todo TODO">TODO</span> example workflow with changed crontab   <span class="tag"><span class="setup">setup</span> <span class="config">config</span> <span class="blog">blog</span></span></h3>
+<div class="outline-text-3" id="text-4-2">
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000006">
+<h2 id="org0000006"><a class="headerlink" href="#org0000006">¶</a><span class="section-number-2">5</span> <span class="todo TODO">TODO</span> about nginx config as well   <span class="tag"><span class="blog">blog</span> <span class="setup">setup</span></span></h2>
+<div class="outline-text-2" id="text-5">
+</div>
+</div>
+
+    </section>
+
+    
+    <section class="footer">
+        <div class="post-tags"></div>
+        <!-- TODO post-date? -->
+        <div class="date">[2019-09-20]</div>
+    </section>
+    
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="whaat"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
+        
+        <footer>
+            
+            
+        </footer>
+    </body>
+</html>
