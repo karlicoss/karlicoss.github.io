@@ -276,7 +276,10 @@ Another cool feature is that you can choose to make your annotations public and 
 </p>
 <p>
 To get a sense of it you can skim through <a href="https://web.hypothes.is/help/annotation-basics">tutorial</a> which has plenty of screenshots,
-and I also strongly recommend you checking it out in action here: <a href="https://web.hypothes.is/blog/annotation-is-now-a-web-standard">Annotation Is Now a Web Standard</a>.
+and I also strongly recommend you checking it out in action here: <a href="https://web.hypothes.is/blog/annotation-is-now-a-web-standard">Annotation Is Now a Web Standard</a>,
+or try the very page <a href="https://via.hypothes.is/https://beepb00p.xyz/annotating.html#hypothesis">you're reading now</a>.
+</p>
+<p>
 You don't have to install anything or register, it's just a widget embedded in the page, but do make sure to allow JS.
 You should see yellow highlights and the sidebar on the right.
 </p>
@@ -571,7 +574,7 @@ Stores all of it's stuff in <code>.kobo/KoboReader.sqlite</code> on the device.
 You can check out <a href="https://github.com/karlicoss/kobuddy">kobuddy</a>, which is my attempt to extract useful data from the database and provide nicer high level Python interface. It's also fairly straightforward to open it in <code>sqlitebrowser</code> and play with your own queries.
 </p>
 <p>
-<a id="org000001a"></a>Kobo <b><b>doesn't seem to support cloud sync for annotations</b></b>. I was considering syncing the database wirelessly, as <a href="https://github.com/dropmeaword/kobo-aura-remote">there are</a> some SSH modules for its firmware, but people report it <a href="https://github.com/dropmeaword/kobo-aura-remote/issues/1">may break wifi</a> on it. So I figured it's not worth the trouble and using <a href="https://github.com/karlicoss/kobuddy/blob/master/scripts/backup.py">this script</a> which runs in cron every minute and tries to backup the database from device. I might add it to udev rules at some point, but it's worked well enough so far.
+<a id="org000001a"></a>Kobo <b><b>doesn't seem to support cloud sync for annotations</b></b>. I was considering syncing the database wirelessly, as <a href="https://github.com/dropmeaword/kobo-aura-remote">there are</a> some SSH modules for its firmware, but people report it <a href="https://github.com/dropmeaword/kobo-aura-remote/issues/1">may break wifi</a> on it. I'm using <a href="https://github.com/karlicoss/kobuddy#as-a-backup-tool">kobuddy</a> as well to work around it.
 </p>
 <p>
 <a id="org000001f"></a>There is an official <a href="https://play.google.com/store/apps/details?id=com.kobobooks.android">Android app</a> which lets you manage and annotate books from Kobo store and seems to be syncing progress between eink and phone.
@@ -989,7 +992,7 @@ For that I've got some infrastructure set up.
 That serves not just as data backup, but also as <b><b>data providers</b></b> for my tools. I only interact with these daily snapshots on filesystem rather than directly with API. That helps to avoid dealing with rate limiting, flakiness in network connection or API itself, and makes it way faster to iterate and develop. The only downside is that the data is not necessarily up to date, but perhaps you can dump data more often to get around this; I would still highly recommend you to prefer that to interacting with API directly. 
 </p>
 <p>
-I'm using a <b><b>special Python package to access the data</b></b>, which I called <code>my</code>. It's always in my <code>PYTHONPATH</code> so I can use it from any script/tool or REPL. It's got bunch of different submodules, e.g. <code>my.reading.instapaper</code>, <code>my.reading.kobo</code>, <code>my.reading.polar</code> (there are other modules than <code>my.reading</code>, but that material for a whole separate post). The package itself is not public since it happens to have some personal data in it, at some point I'll try to strip it off and release it (not sure if it would be really relevant for other people anyway).
+I'm using a <b><b>special Python package to access the data</b></b>, which I called <a href="https://github.com/karlicoss/my"><code>my</code></a>. It's always in my <code>PYTHONPATH</code> so I can use it from any script/tool or REPL. It's got bunch of different submodules, e.g. <code>my.reading.instapaper</code>, <code>my.reading.kobo</code>, <code>my.reading.polar</code> (there are other modules than <code>my.reading</code>, but that material for a whole separate post). The package itself is not public since it happens to have some personal data in it, at some point I'll try to strip it off and release it (not sure if it would be really relevant for other people anyway).
 </p>
 </div>
 <div class="outline-3" id="outline-container-org000002b">
@@ -2303,7 +2306,7 @@ WARNING:workout-provider:Unhandled: Cycling
 
 
 <div class="output_text output_subarea ">
-<pre>'Regression coefficient: 0.09335519223434642'</pre>
+<pre>'Regression coefficient: 0.0932774194157544'</pre>
 </div>
 
 </div>
@@ -2316,7 +2319,7 @@ WARNING:workout-provider:Unhandled: Cycling
 
 
 <div class="output_text output_subarea ">
-<pre>'Free term: -9.7400392997464'</pre>
+<pre>'Free term: -9.503488864425037'</pre>
 </div>
 
 </div>
@@ -2373,7 +2376,7 @@ WARNING:workout-provider:Unhandled: Cycling
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>8065.88860904753</pre>
+<pre>8059.16903752118</pre>
 </div>
 
 </div>
