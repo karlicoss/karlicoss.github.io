@@ -1,0 +1,1409 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content>
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>Python: stronger [typed] than you think | Mildly entertainingᵝ</title>
+
+        <link rel="stylesheet" href="../css/default.css?v=2" />
+        <link rel="stylesheet" href="../css/links.css?v=2" />
+
+        <!-- TODO make it conditional on actually having math on page? -->
+        <script type="text/javascript">
+ window.MathJax = {
+     tex2jax: {
+         // note that hakyll source has got double dollar signs due to special meaning in templates
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+     }
+ };
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="../">Home</a>
+                    <!-- TODO eh, not sure if this symbol is good for that... -->
+                    ·
+                    <a class="fat" href="../ideas.html">Ideas</a>
+                    ·
+                    <a class="fat" href="../notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="../tags.html">Tags</a>
+                </span>
+                <span class="nav-right">
+                    <a class="fat" href="../feed.html">Feed</a>
+                    ·
+                    <a class="fat" href="../site.html">Site</a>
+                    ·
+                    <a class="fat" href="../me.html">Me</a>
+                </span>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<!-- <link rel="stylesheet" href="/css/org.css" /> -->
+
+<link rel="stylesheet" href="../css/htmlize.css" />
+<link rel="stylesheet" href="../css/org-default.css" />
+
+<link rel="stylesheet" href="../css/org-extra.css?v=2" />
+
+
+
+<article>
+    <section class="post-title">
+    <h1>Python: stronger [typed] than you think</h1>
+    <div class="summary">mypy-driven error handling</h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#intro">1. Intro aka computers are hard</a></li>
+<li><a href="#problem">2. The problem: parsing Kindle highlights</a></li>
+<li><a href="#wrapper">3. Almost solution: use Result container</a>
+<ul>
+<li><a href="#org0000002">returns.result</a></li>
+<li><a href="#org0000005">result.Result</a></li>
+</ul>
+</li>
+<li><a href="#error_pair">4. Potential solution: (Value, Error) pairs</a></li>
+<li><a href="#step_back">5. <span class="todo STRT">STRT</span> Step back</a>
+<ul>
+<li><a href="#org0000008"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> show returning nonzero exit code for the whole program via tertools tee?</a></li>
+<li><a href="#org0000009"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> demonstrate attaching context to that's odd? so it shows item number as well..</a></li>
+<li><a href="#org000000a"><span class="todo TODO">TODO</span> why not replace <code>isinstance(res, Exception)</code></a></li>
+<li><a href="#org000000b"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-21 22:23]</span></span> demonstrate how fmap looks?</a></li>
+<li><a href="#org000000c"><span class="todo TODO">TODO</span> hmm, ok if you're careful fmap is not too bad??</a></li>
+</ul>
+</li>
+<li><a href="#org000000e">6. <span class="todo STRT">STRT</span> draft   <span class="tag"><span class="python">python</span> <span class="errorhandling">errorhandling</span></span></a></li>
+<li><a href="#org000001e">7. Integrate in text</a>
+<ul>
+<li><a href="#org000000f"><span class="todo STRT">STRT</span> <span class="priority">[B]</span> I used to have fmap-like function but python is not friendly to lambdas to be honest (multiline)   <span class="tag"><span class="kython">kython</span> <span class="kerror">kerror</span> <span class="blog">blog</span></span></a></li>
+<li><a href="#org0000010"><span class="todo STRT">STRT</span> <span class="priority">[C]</span> benefit of not using dummy object – easier to transfor errors (e.g. in kobuddy, events to bookswithevents)   <span class="tag"><span class="blog">blog</span></span></a></li>
+<li><a href="#org0000012"><span class="done DONE">DONE</span> hmm. maybe isinstance instead of unwrap makes more sense? and mypy friendly?   <span class="tag"><span class="python">python</span> <span class="errorhandling">errorhandling</span></span></a></li>
+<li><a href="#org0000014"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> give isinstance a chance</a></li>
+<li><a href="#org0000015"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-21 22:50]</span></span> ok, definitely make it more abstract <span class="underline">after</span> I demonstrate and example</a></li>
+<li><a href="#org0000016"><span class="todo TODO">TODO</span> <span class="priority">[A]</span> bonus: intellij/pycharm TODO LSP? assist</a></li>
+<li><a href="#org0000017"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-21 22:53]</span></span> easy to transform errors. back to non-defensive by throwing,</a></li>
+<li><a href="#org0000018"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> benefit doesn't require modifying existing types, introducing invalid states that signal errors (which might introduce logical inconsistency, e.g. think about cross links etc)</a></li>
+<li><a href="#org0000019"><span class="timestamp-wrapper"><span class="timestamp">[2019-10-19 20:55]</span></span> Piotr Limanowski 🔥 De⎇ it! The Error Handling Techniques   <span class="tag"><span class="blog">blog</span> <span class="errors">errors</span></span></a></li>
+<li><a href="#org000001a"><span class="todo STRT">STRT</span> Could add something similar . No files means warning, could also demonstrate use of tee?   <span class="tag"><span class="errors">errors</span> <span class="blog">blog</span></span></a></li>
+<li><a href="#org000001b"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> Name it 'not so weakly typed'?   <span class="tag"><span class="blog">blog</span> <span class="errors">errors</span></span></a></li>
+<li><a href="#org000001c"><span class="todo TODO">TODO</span> code looking alien (e.g. one-off defs)</a></li>
+<li><a href="#org000001d"><span class="todo TODO">TODO</span> data bubbles up?</a></li>
+</ul>
+</li>
+<li><a href="#org0000021">8. <span class="todo TODO">TODO</span> <span class="priority">[C]</span> Closing points? not sure how to name it</a>
+<ul>
+<li><a href="#org000001f"><span class="todo TODO">TODO</span> Existing tools are pretty good   <span class="tag"><span class="blog">blog</span> <span class="errors">errors</span></span></a></li>
+<li><a href="#org0000020"><span class="todo TODO">TODO</span> Ironically you can't achieve similar level of runtime safety in c++/Java even though they are typically called strongly typed   <span class="tag"><span class="blog">blog</span> <span class="errors">errors</span></span></a></li>
+</ul>
+</li>
+<li><a href="#org000002b">9. <span class="todo TODO">TODO</span> <span class="priority">[C]</span> Extra usecases, or what? more advanced techniques?</a>
+<ul>
+<li><a href="#org0000022"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> my.polar got some examples of konsume and kython error handling… not sure if actually useful?   <span class="tag"><span class="blog">blog</span> <span class="backup">backup</span> <span class="kython">kython</span></span></a></li>
+<li><a href="#org0000023"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-21 22:58]</span></span> unwrap: I guess it falls into category of fun but questionable combinators. still typeable?</a></li>
+<li><a href="#org0000024"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-21 22:59]</span></span> bonus: control behavior by global object that throws or yields? yield error(e)</a></li>
+<li><a href="#org0000025"><span class="todo STRT">STRT</span> even more defensive code/warnings</a></li>
+<li><a href="#org0000026"><span class="todo STRT">STRT</span> about my kython.kerror thing and come up with usecases (e.g. pandas dataframe , yield from exceptions etc)   <span class="tag"><span class="blog">blog</span></span></a></li>
+<li><a href="#org0000029"><span class="todo TODO">TODO</span> error handling: see in kobo <span class="underline"><span class="underline">init</span></span> py , tee for itertools   <span class="tag"><span class="blog">blog</span></span></a></li>
+</ul>
+</li>
+<li><a href="#org000002d">10. Other links</a>
+<ul>
+<li><a href="#org000002c"><span class="todo TODO">TODO</span> more?</a></li>
+</ul>
+</li>
+<li><a href="#org000002e">11. <span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-23 00:27]</span></span> I guess it's also in a sense a guide about what mypy can and can't do and perhaps desigining mypy-friendly interfaces?</a></li>
+<li><a href="#org000002f">12. Exceptions are bad. I know it, you know it, TODO guido knows it??   <span class="tag"><span class="blog">blog</span> <span class="errors">errors</span></span></a></li>
+<li><a href="#org0000030">13. <span class="todo TODO">TODO</span> <span class="priority">[D]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-19 15:29]</span></span> specify file dependencies? not sure …</a></li>
+<li><a href="#org0000033">14. Todos to actually try</a>
+<ul>
+<li><a href="#org0000031"><span class="todo TODO">TODO</span> <span class="priority">[A]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-19 16:08]</span></span> hmm could try walrus operator for is<sub>ok</sub> style filtering?</a></li>
+<li><a href="#org0000032"><span class="todo TODO">TODO</span> <span class="priority">[A]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-23 01:49]</span></span> 'pattern matching' via two iterators? using for loops for pattern matching? that's a bit bad!!!</a></li>
+</ul>
+</li>
+<li><a href="#org0000034">15. <span class="todo TODO">TODO</span> <span class="priority">[B]</span> name somthing I don't have many types, but they are honest??</a></li>
+</ul>
+</div>
+</div>
+<p>
+TLDR: I overview few error handling techniques (with the emphasis on Python, although I mention few other programming languages), some existing Python libraries and suggesting a 
+simple and clean <a href="https://mypy.readthedocs.io/en/latest/introduction.html">mypy</a>-based approach.
+</p>
+<p>
+You might learn few things about error handling in different languages, pattern matching, mypy in general and clues for making your code more mypy-friendly (and IDE friendly if you're using LSP or Intellij).
+</p>
+<div class="outline-2" id="outline-container-org0000000">
+<h2 id="intro"><a class="headerlink" href="#intro">¶</a><span class="section-number-2">1</span> Intro aka computers are hard</h2>
+<div class="outline-text-2" id="text-intro">
+<p>
+I am somewhat obsessed with personal data and information, analysing data for quantified self, lifelogging etc. 
+I am trying to integrate all my informations sources and make it easy to access and search.
+You can see some examples <a href="https://github.com/karlicoss/my">my</a> package, Orger <a href="https://beepb00p.xyz/orger.html">part I</a>, <a href="https://beepb00p.xyz/orger-todos.html">part II</a>.
+</p>
+<p>
+To get this data and manipulate it via programming, of course you need to extract it first (e.g. from json/csv), parse it (e.g. from plaintext),
+or even worse, reverse engineer it from vendor locked formats (e.g. <a href="https://github.com/karlicoss/kobuddy">my kobo parsing library</a>).
+</p>
+<p>
+If you ever worked with data and had to parse some semistructured data (let alone natural language), or scraped web pages, you might start getting flashbacks now.
+Undocumented APIs, bad characters, cryptic regexes, corrupt fields, unexpected nulls, logical inconsistencies, all sorts of things. Data is messy. 
+</p>
+<p>
+You will almost never get it right from the first few attempts, and then when it finally does what your want… it breaks after couple of days because of course you missed some edge cases or data provider just gives you utter garbage. And thing you spend so much effort on stops working, spams your mailbox and requires attention.
+</p>
+<p>
+Most modern programming languages are fairly unforgiving to unexpected, and would crash at the slightest opportunity.
+Some languages do have quirks (e.g. 'undefined' in JS), but generally well written software aborts very soon after something unexpected starts happening.
+</p>
+<p>
+And for a good reason: if it didn't, your program's state would lose the invariants the author intended it to have.
+Ignoring the errors will almost surely prevent the program from getting to desired result anyway, end up with even more severe inconsistencies.
+Or, how about formatting your disk if you're really unlucky?
+</p>
+<p>
+Another good reason to fail fast is that it makes programmer more likely to notice and then fix the bug.
+</p>
+<p>
+So generially as long as you can get away with it, it's a good thing to throw exception or abort the program immediately in some way.
+You might not be able to get away with it if you're literally rocket science or <a href="https://isocpp.org/wiki/faq/exceptions#why-exceptions">flight control software</a>.
+</p>
+<p>
+On the other hand, some errors are less crucial and more manageable than other. So we tend to be realistic when we program, evaluate different failure risks 
+and use try/catch mechanisms where appropriate.
+</p>
+<p>
+Now, I sure we as an engineers could talk about that stuff abstractly forever, so before TODO let mebe a bit more specific
+and introduce a motivating example/problem. TODO real life, except Kobo.
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000001">
+<h2 id="problem"><a class="headerlink" href="#problem">¶</a><span class="section-number-2">2</span> The problem: parsing Kindle highlights</h2>
+<div class="outline-text-2" id="text-problem">
+<p>
+Say, you own a Kindle book. Electronic books are great. Yeah okay they don't smell like the real thing, but the experience of being able to highlight bits of text and type your comment is TODO
+However, then when you want to go through your hightlights after reading to TODO in memory or perhaps to share to a social network. TODO ??
+</p>
+<p>
+So you decide to write a script that would process the highlights, perhaps group them by book, display timestamps and render a nice HTML page
+so you could easily open it from phone and recall latest books you read to discuss with friends.
+</p>
+<p>
+On device, Kindle keeps bookmarks and highlights are stored … in <code>My Clippings.txt</code> file. 
+</p>
+<details><summary>Click to view 'clippings.txt' </summary>
+<pre class="example">
+PHYS771 Lecture 12: Proof (scottaaronson.com)
+- Your Highlight on Page 2 | Added on Sunday, July 21, 2013 10:06:53 AM
+
+Roger Penrose likes to talk about making direct contact with Platonic reality, but it's a bit embarrassing when you think you've made such contact and it turns out the next morning that you were wrong!
+==========
+[Tong][2013] Dynamics and Relativity  
+- Your Highlight on Page 120 | Added on Sunday, August 4, 2013 6:17:21 PM
+
+It is worth mentioning that although the two people disagree on whether the light hits the walls at the same time, this does not mean that they can't be friends.
+==========
+PHYS771 Lecture 12: Proof (scottaaronson.com)
+- Your Highlight on Page 14 | Added on Sunday, August 4, 2013 8:41:53 PM
+
+No hidden-variable theory can be local (I think some guy named Bell proved that).
+</pre>
+</details>
+<p>
+Yes, it's messy format and not really machine friendly. But oh well it's a file, you're a programmer. You know the drill.
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="linenr"> 1: </span><span class="org-keyword">from</span> datetime <span class="org-keyword">import</span> datetime
+<span class="linenr"> 2: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> NamedTuple, Sequence
+<span class="linenr"> 3: </span><span class="org-keyword">import</span> re
+<span class="linenr"> 4: </span><span class="org-keyword">from</span> pathlib <span class="org-keyword">import</span> Path
+<span class="linenr"> 5: </span><span class="org-keyword">from</span> itertools <span class="org-keyword">import</span> groupby
+<span class="linenr"> 6: </span><span class="org-keyword">from</span> textwrap <span class="org-keyword">import</span> wrap
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span><span class="org-keyword">class</span> <span class="org-type">Highlight</span>(NamedTuple):
+<span class="linenr"> 9: </span>    dt: datetime <span class="org-comment-delimiter"># </span><span class="org-comment">date when highlight was made</span>
+<span class="linenr">10: </span>    title: <span class="org-builtin">str</span>   <span class="org-comment-delimiter"># </span><span class="org-comment">book title</span>
+<span class="linenr">11: </span>    page: <span class="org-builtin">str</span>    <span class="org-comment-delimiter"># </span><span class="org-comment">highlight location</span>
+<span class="linenr">12: </span>    text: <span class="org-builtin">str</span>    <span class="org-comment-delimiter"># </span><span class="org-comment">highlighted text</span>
+<span class="linenr">13: </span>
+<span class="linenr">14: </span><span class="org-keyword">def</span> <span class="org-function-name">parse_entry</span>(entry):
+<span class="linenr">15: </span>    <span class="org-variable-name">groups</span> = re.search(
+<span class="linenr">16: </span>        r<span class="org-string">'(?P&lt;title&gt;.*)$\n.*Highlight on Page (?P&lt;page&gt;\d+).*Added on (?P&lt;dts&gt;.*)$\n\n(?P&lt;text&gt;.*)$'</span>, 
+<span class="linenr">17: </span>        entry, 
+<span class="linenr">18: </span>        re.MULTILINE,
+<span class="linenr">19: </span>    )
+<span class="linenr">20: </span>    <span class="org-keyword">assert</span> groups <span class="org-keyword">is</span> <span class="org-keyword">not</span> <span class="org-constant">None</span>, <span class="org-string">"Couldn't match regex!"</span>
+<span class="linenr">21: </span>    <span class="org-variable-name">dt</span> = datetime.strptime(groups[<span class="org-string">'dts'</span>], <span class="org-string">'%A, %B %d, %Y %I:%M:%S %p'</span>)
+<span class="linenr">22: </span>    <span class="org-keyword">return</span> Highlight(
+<span class="linenr">23: </span>        dt=dt,
+<span class="linenr">24: </span>        title=groups[<span class="org-string">'title'</span>],
+<span class="linenr">25: </span>        page=groups[<span class="org-string">'page'</span>],
+<span class="linenr">26: </span>        text=groups[<span class="org-string">'text'</span>],
+<span class="linenr">27: </span>    )
+<span class="linenr">28: </span>
+<span class="linenr">29: </span><span class="org-keyword">def</span> <span class="org-function-name">iter_highlights</span>():
+<span class="linenr">30: </span>    <span class="org-variable-name">data</span> = Path(clippings_file).read_text()
+<span class="linenr">31: </span>    <span class="org-keyword">for</span> entry <span class="org-keyword">in</span> data.split(<span class="org-string">'=========='</span>):
+<span class="linenr">32: </span>        <span class="org-keyword">yield</span> parse_entry(entry.strip())
+<span class="linenr">33: </span>
+<span class="linenr">34: </span>
+<span class="linenr">35: </span><span class="org-keyword">class</span> <span class="org-type">Book</span>(NamedTuple):
+<span class="linenr">36: </span>    <span class="org-doc">"Represents book along with its highlights"</span>
+<span class="linenr">37: </span>    title: <span class="org-builtin">str</span>
+<span class="linenr">38: </span>    highlights: Sequence[Highlight]
+<span class="linenr">39: </span>
+<span class="linenr">40: </span><span class="org-keyword">def</span> <span class="org-function-name">iter_books</span>():
+<span class="linenr">41: </span>    <span class="org-variable-name">key</span> = <span class="org-keyword">lambda</span> e: e.title
+<span class="linenr">42: </span>    <span class="org-keyword">for</span> book, hls <span class="org-keyword">in</span> groupby(<span class="org-builtin">sorted</span>(iter_highlights(), key=key), key=key):
+<span class="linenr">43: </span>        <span class="org-variable-name">highlights</span> = <span class="org-builtin">list</span>(<span class="org-builtin">sorted</span>(hls, key=<span class="org-keyword">lambda</span> hl: hl.dt))
+<span class="linenr">44: </span>        <span class="org-keyword">yield</span> Book(title=book, highlights=highlights)
+<span class="linenr">45: </span>
+<span class="linenr">46: </span><span class="org-keyword">def</span> <span class="org-function-name">print_books</span>():
+<span class="linenr">47: </span>    <span class="org-keyword">for</span> b <span class="org-keyword">in</span> iter_books():
+<span class="linenr">48: </span>        <span class="org-keyword">print</span>(f<span class="org-string">'* {b.title}'</span>)
+<span class="linenr">49: </span>        <span class="org-keyword">for</span> h <span class="org-keyword">in</span> b.highlights:
+<span class="linenr">50: </span>            <span class="org-variable-name">text</span> = <span class="org-string">"\n      "</span>.join(wrap(h.text))
+<span class="linenr">51: </span>            <span class="org-keyword">print</span>(f<span class="org-string">'  - {h.dt:%d %b %Y %H:%M}  {text} [Page {h.page}]'</span>)
+<span class="linenr">52: </span>        <span class="org-keyword">print</span>()
+<span class="linenr">53: </span>print_books()
+</pre>
+</div>
+<pre class="example">
+* PHYS771 Lecture 12: Proof (scottaaronson.com)
+  - 21 Jul 2013 10:06  Roger Penrose likes to talk about making direct contact with Platonic
+      reality, but it's a bit embarrassing when you think you've made such
+      contact and it turns out the next morning that you were wrong! [Page 2]
+  - 04 Aug 2013 20:41  No hidden-variable theory can be local (I think some guy named Bell
+      proved that). [Page 14]
+
+* [Tong][2013] Dynamics and Relativity  
+  - 04 Aug 2013 18:17  It is worth mentioning that although the two people disagree on
+      whether the light hits the walls at the same time, this does not mean
+      that they can't be friends. [Page 120]
+
+</pre>
+<p>
+For the purposes of this post, to keep the output clean examples I am using plain text, not HTML. You'll have to use use your imagination if you can't live without CSS.
+But it still looks kinda nice, doesn't it?
+</p>
+<p>
+Now:
+</p>
+<ul class="org-ul">
+<li><p>
+imagine you've set this script to run in cron, and it's been fine for a while. You left for a three week holiday to finally get some rest from programming; started reading this new book about quant finance (yeah, you've always had TODO ideas about getting a rest from computer) and… your script stopped working.
+</p>
+<pre class="example">
+Traceback (most recent call last):
+  File "&lt;stdin&gt;", line 55, in &lt;module&gt;
+  File "&lt;stdin&gt;", line 49, in print_books
+  File "&lt;stdin&gt;", line 44, in iter_books
+  File "&lt;stdin&gt;", line 34, in iter_highlights
+  File "&lt;stdin&gt;", line 21, in parse_entry
+AssertionError: Couldn't match regex!
+</pre>
+<p>
+You swear out loud, reach for the laptop you promised to distance yourself from and turns our your parser chokes over <code>page</code> instead of <code>Page</code> in one of new entries. (and yes, this is actually the case in my Kindle export)
+</p>
+<p>
+TODO FIXME need line numbers..
+</p>
+<details><summary>Click to view updated 'clippings.txt' </summary>
+<pre class="example">
+PHYS771 Lecture 12: Proof (scottaaronson.com)
+- Your Highlight on Page 2 | Added on Sunday, July 21, 2013 10:06:53 AM
+
+Roger Penrose likes to talk about making direct contact with Platonic reality, but it's a bit embarrassing when you think you've made such contact and it turns out the next morning that you were wrong!
+==========
+[Tong][2013] Dynamics and Relativity  
+- Your Highlight on Page 120 | Added on Sunday, August 4, 2013 6:17:21 PM
+
+It is worth mentioning that although the two people disagree on whether the light hits the walls at the same time, this does not mean that they can't be friends.
+==========
+PHYS771 Lecture 12: Proof (scottaaronson.com)
+- Your Highlight on Page 14 | Added on Sunday, August 4, 2013 8:41:53 PM
+
+No hidden-variable theory can be local (I think some guy named Bell proved that).
+==========
+My Life as a Quant: Reflections on Physics and Finance (Emanuel Derman)
+- Your Highlight on page 54 | Added on Tuesday, October 4, 2013 12:11:16 PM
+
+The Black-Scholes model allows us to determine the fair value of a stock option.
+</pre>
+</details>
+<p>
+You could argue that you should have made the regex in <code>parse_entry</code> case independent in the first place, but it's not something you would normally expect. 
+Kindle specifically got all sorts of nasty things: roman numberals for page numbers, locale dependent dates, inconsitent separatores, and so on.
+</p>
+<p>
+Perhaps you even fix this particular problem, but it's a matter of short time till next parsing issue. It's quite sad if you have to constantly tend for things that are meant to simplify and enhance your life.
+</p></li>
+</ul>
+<p>
+Or,
+</p>
+<ul class="org-ul">
+<li><p>
+you wrote this parser and decided that it could be useful for other people.
+</p>
+<p>
+So for a small fee, you are providing a service that fetches other people's highlights, displays on user's 
+personal pages and maybe lets their friends comment. 
+</p>
+<p>
+Imagine user's highlights result in the same error described abouve. It would be prety sad if parsing a single entry
+took down the whole user's page or prevented updates. No matter how fast you'd be willing to fix these things, users would leave discouraged.
+</p></li>
+</ul>
+<p>
+So, what do we do? One simple strategy would be to wrap the whole <code>parse_entry</code> call in <code>try/except</code>:
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="linenr">1: </span><span class="org-keyword">import</span> logging
+<span class="linenr">2: </span><span class="org-keyword">def</span> <span class="org-function-name">iter_highlights</span>():
+<span class="linenr">3: </span>    <span class="org-variable-name">data</span> = Path(clippings_file).read_text()
+<span class="linenr">4: </span>    <span class="org-keyword">for</span> entry <span class="org-keyword">in</span> data.split(<span class="org-string">'=========='</span>):
+<span class="linenr">5: </span>        <span class="org-keyword">try</span>:
+<span class="linenr">6: </span>            <span class="org-keyword">yield</span> parse_entry(entry.strip())
+<span class="linenr">7: </span>        <span class="org-keyword">except</span> <span class="org-type">Exception</span> <span class="org-keyword">as</span> e:
+<span class="linenr">8: </span>            logging.exception(e)
+</pre>
+</div>
+<p>
+That however has downsides: 
+</p>
+<ul class="org-ul">
+<li>you're not aware that error is happening at all. Who reads the logs, right?</li>
+<li>user expects to see their data, but can't find it. It's pretty frustrating.</li>
+</ul>
+<p>
+What do we want?
+</p>
+<ul class="org-ul">
+<li>keep track of errors, render as much as we can, but terminate with non-zero exit code</li>
+<li>potentially present errors in the interface so you or your users wouldn't worry about lost data</li>
+</ul>
+<p>
+So we need some way of propagating the errors up the call hierarchy instead of throwing immediately or suppressing.
+</p>
+<p>
+TODO mention returning tuples? it's basically simulation of tagged unions..
+TODO we won't get assistance from typing as well since either coulde be optional
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000006">
+<h2 id="wrapper"><a class="headerlink" href="#wrapper">¶</a><span class="section-number-2">3</span> Almost solution: use Result container</h2>
+<div class="outline-text-2" id="text-wrapper">
+<p>
+An abstraction that stood the test of time well is a container that holds a value representing result of type <code>R</code> or value representing error of type <code>E</code>.
+You can vaguely think of it as an interface <code>Result</code>, and two implementations: <code>Ok</code> and <code>Error</code>.
+In runtime, you can ask the instance behind <code>Result</code>, which of these alternative it holds and act accordingly.
+</p>
+<p>
+It's manifested as:
+</p>
+<ul class="org-ul">
+<li><p>
+in Rust: <a href="https://doc.rust-lang.org/std/result/enum.Result.html">std::result::Result</a>. Example borrowed from <a href="https://doc.rust-lang.org/1.30.0/book/second-edition/ch09-02-recoverable-errors-with-result.html">here</a>:
+</p>
+<div class="org-src-container">
+<pre class="src src-rust">let f: Result&lt;File, io::Error&gt; = File::open("hello.txt");
+let f = match f {
+    Ok(file) =&gt; file,
+    Err(error) =&gt; {
+	panic!("There was a problem opening the file: {:?}", error)
+    },
+};
+</pre>
+</div></li>
+<li><p>
+in Haskell: <a href="https://wiki.haskell.org/Handling_errors_in_Haskell#Error_using_the_Either_type">Either E R</a>
+</p>
+<div class="org-src-container">
+<pre class="src src-haskell">main = do
+  line &lt;- getLine
+  case runParser emailParser line of
+    Right (user, domain) -&gt; print ("The email is OK.", user, domain)
+    Left  (pos, err)     -&gt; putStrLn ("Parse error on " &lt;&gt; pos &lt;&gt; ": " &lt;&gt; err)
+</pre>
+</div>
+<p>
+Yes, <code>Left</code> meaning error and <code>Right</code> meaning value are not necessarily obvious. It's easier to think of it as a pun: 'right = correct'.
+Also notice that error is not just a string, but also contains the position where parsing failed.
+</p></li>
+<li>in C++: there is a proposal for <a href="https://issues.isocpp.org/show_bug.cgi?id=29">std::expected&lt;E, R&gt;</a></li>
+</ul>
+<p>
+TODO mention <a href="https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#a-shortcut-for-propagating-errors-the--operator">https://doc.rust-lang.org/book/ch09-02-recoverable-errors-with-result.html#a-shortcut-for-propagating-errors-the--operator</a> propagating in Rust?
+</p>
+<p>
+TODO not idiomatic, point out about alien here
+</p>
+<p>
+So, Rust and Haskell programmers seem to be quite happy with it? Why can't we have same in Python?
+Well, we can, and people tried, so I'll review couple of libraries that do that.
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000002">
+<h3 id="org0000002"><a class="headerlink" href="#org0000002">¶</a><a href="https://github.com/dry-python/returns#result-container">returns.result</a></h3>
+<div class="outline-text-3" id="text-org0000002">
+<p>
+Use Result container (which is clearly inspired by Haskell's <code>Either</code> monad and <code>do</code> notation.
+TODO I could swap? So we try to use bind here and demonstrate how it looks?
+</p>
+<p>
+I guess it's gonna require 
+</p>
+<p>
+TODO shit. there is no proper type safe way to destroy Result at all?? jeez. apparently only unwrap
+TODO boilerplate
+<a href="https://github.com/dry-python/returns/blob/master/returns/result.py">https://github.com/dry-python/returns/blob/master/returns/result.py</a>
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="linenr"> 1: </span><span class="org-keyword">from</span> returns.result <span class="org-keyword">import</span> Result, safe
+<span class="linenr"> 2: </span>
+<span class="linenr"> 3: </span><span class="org-type">@safe</span>
+<span class="linenr"> 4: </span><span class="org-keyword">def</span> <span class="org-function-name">parse_entry</span>(entry):
+<span class="linenr"> 5: </span>    <span class="org-variable-name">groups</span> = re.search(
+<span class="linenr"> 6: </span>        r<span class="org-string">'(?P&lt;title&gt;.*)$\n.*Highlight on Page (?P&lt;page&gt;\d+).*Added on (?P&lt;dts&gt;.*)$\n\n(?P&lt;text&gt;.*)$'</span>, 
+<span class="linenr"> 7: </span>        entry, 
+<span class="linenr"> 8: </span>        re.MULTILINE,
+<span class="linenr"> 9: </span>    )
+<span class="linenr">10: </span>    <span class="org-keyword">assert</span> groups <span class="org-keyword">is</span> <span class="org-keyword">not</span> <span class="org-constant">None</span>, <span class="org-string">"Couldn't match regex!"</span>
+<span class="linenr">11: </span>    <span class="org-variable-name">dt</span> = datetime.strptime(groups[<span class="org-string">'dts'</span>], <span class="org-string">'%A, %B %d, %Y %I:%M:%S %p'</span>)
+<span class="linenr">12: </span>    <span class="org-keyword">return</span> Highlight(
+<span class="linenr">13: </span>        dt=dt,
+<span class="linenr">14: </span>        title=groups[<span class="org-string">'title'</span>],
+<span class="linenr">15: </span>        page=groups[<span class="org-string">'page'</span>],
+<span class="linenr">16: </span>        text=groups[<span class="org-string">'text'</span>],
+<span class="linenr">17: </span>    )
+<span class="linenr">18: </span>
+<span class="linenr">19: </span><span class="org-keyword">def</span> <span class="org-function-name">iter_highlights</span>():
+<span class="linenr">20: </span>    <span class="org-variable-name">data</span> = Path(clippings_file).read_text()
+<span class="linenr">21: </span>    <span class="org-keyword">for</span> entry <span class="org-keyword">in</span> data.split(<span class="org-string">'=========='</span>):
+<span class="linenr">22: </span>        <span class="org-keyword">yield</span> parse_entry(entry.strip())
+<span class="linenr">23: </span>
+<span class="linenr">24: </span><span class="org-keyword">def</span> <span class="org-function-name">iter_books</span>():
+<span class="linenr">25: </span>    <span class="org-variable-name">key</span> = <span class="org-keyword">lambda</span> e: e.title
+<span class="linenr">26: </span>    <span class="org-keyword">for</span> book, hls <span class="org-keyword">in</span> groupby(<span class="org-builtin">sorted</span>(iter_highlights(), key=key), key=key):
+<span class="linenr">27: </span>        <span class="org-variable-name">highlights</span> = <span class="org-builtin">list</span>(<span class="org-builtin">sorted</span>(hls, key=<span class="org-keyword">lambda</span> hl: hl.dt))
+<span class="linenr">28: </span>        <span class="org-keyword">yield</span> Book(title=book, highlights=highlights)
+<span class="linenr">29: </span>
+<span class="linenr">30: </span>print_books()
+</pre>
+</div>
+<p>
+TODO significantly alters return types?
+</p>
+<p>
+TODO luckily I didn't have to reimplement it and found existing implementation on github
+</p>
+<p>
+Going to be confusing, requires nonstandard and TODO no idiomatic
+</p>
+<p>
+I can 
+</p>
+<p>
+Don't want to discourage though TODO I think they did a great job.
+</p>
+<p>
+TODO clever use of types
+</p>
+<p>
+Inspired by haskell's Maybe/Either monad. 
+</p>
+<p>
+If it's your personal project and it genuinely im go for it
+</p>
+<p>
+TODO lift?
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000005">
+<h3 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><a href="https://github.com/dbrgn/result#result">result.Result</a></h3>
+<div class="outline-text-3" id="text-org0000005">
+<p>
+Let's try it on our program and see how it works:
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="linenr">1: </span><span class="org-keyword">from</span> result <span class="org-keyword">import</span> Ok, Err
+<span class="linenr">2: </span><span class="org-keyword">def</span> <span class="org-function-name">iter_highlights</span>():
+<span class="linenr">3: </span>    <span class="org-variable-name">data</span> = Path(clippings_file).read_text()
+<span class="linenr">4: </span>    <span class="org-keyword">for</span> entry <span class="org-keyword">in</span> data.split(<span class="org-string">'=========='</span>):
+<span class="linenr">5: </span>        <span class="org-keyword">try</span>:
+<span class="linenr">6: </span>            <span class="org-keyword">yield</span> Ok(parse_entry(entry.strip()))
+<span class="linenr">7: </span>        <span class="org-keyword">except</span> <span class="org-type">Exception</span> <span class="org-keyword">as</span> e:
+<span class="linenr">8: </span>            <span class="org-keyword">yield</span> Err(<span class="org-builtin">str</span>(e))
+</pre>
+</div>
+<p>
+this is not too bad so far… 
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="linenr"> 9: </span><span class="org-keyword">from</span> itertools <span class="org-keyword">import</span> tee
+<span class="linenr">10: </span><span class="org-keyword">def</span> <span class="org-function-name">iter_books</span>():
+<span class="linenr">11: </span>    <span class="org-variable-name">vit</span>, <span class="org-variable-name">eit</span> = tee(iter_highlights())
+<span class="linenr">12: </span>    <span class="org-variable-name">values</span> = (r.value <span class="org-keyword">for</span> r <span class="org-keyword">in</span> vit <span class="org-keyword">if</span> r.is_ok())
+<span class="linenr">13: </span>    <span class="org-variable-name">errors</span> = (r.err() <span class="org-keyword">for</span> r <span class="org-keyword">in</span> eit <span class="org-keyword">if</span> r.is_err())
+<span class="linenr">14: </span>    <span class="org-variable-name">key</span> = <span class="org-keyword">lambda</span> e: e.title
+<span class="linenr">15: </span>    <span class="org-keyword">for</span> book, hls <span class="org-keyword">in</span> groupby(<span class="org-builtin">sorted</span>(values, key=key), key=key):
+<span class="linenr">16: </span>        <span class="org-variable-name">highlights</span> = <span class="org-builtin">list</span>(<span class="org-builtin">sorted</span>(hls, key=<span class="org-keyword">lambda</span> hl: hl.dt))
+<span class="linenr">17: </span>        <span class="org-keyword">yield</span> Ok(Book(title=book, highlights=highlights))
+<span class="linenr">18: </span>    <span class="org-keyword">yield</span> <span class="org-keyword">from</span> <span class="org-builtin">map</span>(Err, errors)
+<span class="linenr">19: </span>
+<span class="linenr">20: </span><span class="org-keyword">def</span> <span class="org-function-name">print_books</span>():
+<span class="linenr">21: </span>    <span class="org-variable-name">vit</span>, <span class="org-variable-name">eit</span> = tee(iter_books())
+<span class="linenr">22: </span>    <span class="org-variable-name">values</span> = (r.value <span class="org-keyword">for</span> r <span class="org-keyword">in</span> vit <span class="org-keyword">if</span> r.is_ok())
+<span class="linenr">23: </span>    <span class="org-variable-name">errors</span> = (r.err() <span class="org-keyword">for</span> r <span class="org-keyword">in</span> eit <span class="org-keyword">if</span> r.is_err())
+<span class="linenr">24: </span>    <span class="org-keyword">for</span> b <span class="org-keyword">in</span> values:
+<span class="linenr">25: </span>        <span class="org-keyword">print</span>(f<span class="org-string">'* {b.title}'</span>)
+<span class="linenr">26: </span>        <span class="org-keyword">for</span> h <span class="org-keyword">in</span> b.highlights:
+<span class="linenr">27: </span>            <span class="org-variable-name">text</span> = <span class="org-string">"\n      "</span>.join(wrap(h.text))
+<span class="linenr">28: </span>            <span class="org-keyword">print</span>(f<span class="org-string">'  - {h.dt:%d %b %Y %H:%M}  {text} [Page {h.page}]'</span>)
+<span class="linenr">29: </span>        <span class="org-keyword">print</span>()
+<span class="linenr">30: </span>    <span class="org-keyword">for</span> e <span class="org-keyword">in</span> errors:
+<span class="linenr">31: </span>        <span class="org-keyword">print</span>(f<span class="org-string">"* ERROR: {e}"</span>)
+<span class="linenr">32: </span>print_books()
+</pre>
+</div>
+<p>
+TODO FIXME wtf, it's not displayed??
+</p>
+<p>
+Cool, we rendered as much as we can, and the users are not as unhappy.
+TODO The error looks a bit out of nowhere, we will adress what we can do about it later (TODO link to yield from?)
+</p>
+<p>
+Now, the library also TODO fully type annotated, and indeed (todo src link)?
+So lets try to use power of type annotations for TODO??
+</p>
+<p>
+First, just annotate our own code that doesn't have to deal with error handling:
+</p>
+<div class="org-src-container">
+<pre class="src src-python" id="org0000003"><span class="linenr"> 1: </span><span class="org-keyword">from</span> datetime <span class="org-keyword">import</span> datetime
+<span class="linenr"> 2: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> NamedTuple, Sequence
+<span class="linenr"> 3: </span><span class="org-keyword">import</span> re
+<span class="linenr"> 4: </span><span class="org-keyword">from</span> pathlib <span class="org-keyword">import</span> Path
+<span class="linenr"> 5: </span><span class="org-keyword">from</span> itertools <span class="org-keyword">import</span> groupby
+<span class="linenr"> 6: </span><span class="org-keyword">from</span> textwrap <span class="org-keyword">import</span> wrap
+<span class="linenr"> 7: </span>
+<span class="linenr"> 8: </span><span class="org-keyword">class</span> <span class="org-type">Highlight</span>(NamedTuple):
+<span class="linenr"> 9: </span>    dt: datetime <span class="org-comment-delimiter"># </span><span class="org-comment">date when highlight was made</span>
+<span class="linenr">10: </span>    title: <span class="org-builtin">str</span>   <span class="org-comment-delimiter"># </span><span class="org-comment">book title</span>
+<span class="linenr">11: </span>    page: <span class="org-builtin">str</span>    <span class="org-comment-delimiter"># </span><span class="org-comment">highlight location</span>
+<span class="linenr">12: </span>    text: <span class="org-builtin">str</span>    <span class="org-comment-delimiter"># </span><span class="org-comment">highlighted text</span>
+<span class="linenr">13: </span>
+<span class="linenr">14: </span><span class="org-keyword">def</span> <span class="org-function-name">parse_entry</span>(entry: <span class="org-builtin">str</span>) -&gt; Highlight:
+<span class="linenr">15: </span>    <span class="org-variable-name">groups</span> = re.search(
+<span class="linenr">16: </span>        r<span class="org-string">'(?P&lt;title&gt;.*)$\n.*Highlight on Page (?P&lt;page&gt;\d+).*Added on (?P&lt;dts&gt;.*)$\n\n(?P&lt;text&gt;.*)$'</span>, 
+<span class="linenr">17: </span>        entry, 
+<span class="linenr">18: </span>        re.MULTILINE,
+<span class="linenr">19: </span>    )
+<span class="linenr">20: </span>    <span class="org-keyword">assert</span> groups <span class="org-keyword">is</span> <span class="org-keyword">not</span> <span class="org-constant">None</span>, <span class="org-string">"Couldn't match regex!"</span>
+<span class="linenr">21: </span>    <span class="org-variable-name">dt</span> = datetime.strptime(groups[<span class="org-string">'dts'</span>], <span class="org-string">'%A, %B %d, %Y %I:%M:%S %p'</span>)
+<span class="linenr">22: </span>    <span class="org-keyword">return</span> Highlight(
+<span class="linenr">23: </span>        dt=dt,
+<span class="linenr">24: </span>        title=groups[<span class="org-string">'title'</span>],
+<span class="linenr">25: </span>        page=groups[<span class="org-string">'page'</span>],
+<span class="linenr">26: </span>        text=groups[<span class="org-string">'text'</span>],
+<span class="linenr">27: </span>    )
+<span class="linenr">28: </span>
+<span class="linenr">29: </span><span class="org-keyword">class</span> <span class="org-type">Book</span>(NamedTuple):
+<span class="linenr">30: </span>    <span class="org-doc">"Represents book along with its highlights"</span>
+<span class="linenr">31: </span>    title: <span class="org-builtin">str</span>
+<span class="linenr">32: </span>    highlights: Sequence[Highlight]
+<span class="linenr">33: </span>
+<span class="linenr">34: </span>clippings_file: <span class="org-builtin">str</span>
+</pre>
+</div>
+<div class="org-src-container">
+<pre class="src src-python" id="org0000004"><span class="linenr">35: </span><span class="org-keyword">from</span> result <span class="org-keyword">import</span> Ok, Err, Result
+<span class="linenr">36: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> Iterator
+<span class="linenr">37: </span><span class="org-variable-name">Error</span> = <span class="org-builtin">str</span>
+<span class="linenr">38: </span>
+<span class="linenr">39: </span><span class="org-keyword">def</span> <span class="org-function-name">iter_highlights</span>() -&gt; Iterator[Result[Error, Highlight]]:
+<span class="linenr">40: </span>    <span class="org-variable-name">data</span> = Path(clippings_file).read_text()
+<span class="linenr">41: </span>    <span class="org-keyword">for</span> entry <span class="org-keyword">in</span> data.split(<span class="org-string">'=========='</span>):
+<span class="linenr">42: </span>        <span class="org-keyword">try</span>:
+<span class="linenr">43: </span>            <span class="org-keyword">yield</span> Ok(parse_entry(entry.strip()))
+<span class="linenr">44: </span>        <span class="org-keyword">except</span> <span class="org-type">Exception</span> <span class="org-keyword">as</span> e:
+<span class="linenr">45: </span>            <span class="org-keyword">yield</span> Err(<span class="org-builtin">str</span>(e))
+</pre>
+</div>
+<p>
+Now, let's use the <code>Result</code> type. TODO mind the unconventional order of E and R. (link to issue)
+</p>
+<p>
+TODO fuck. empty lines are pretty annoying… had to hack it via "+n 0", but then +n -1 didn't work at all..
+TODO ugh. maybe remove manually via exporter script… 
+TODO I need to re-eval notebooks during export?
+</p>
+<div class="org-src-container">
+<pre class="src src-mypy"><span class="linenr">44: </span>
+<span class="linenr">45: </span>
+<span class="linenr">46: </span><span class="org-keyword">from</span> itertools <span class="org-keyword">import</span> tee
+<span class="linenr">47: </span><span class="org-keyword">def</span> <span class="org-function-name">iter_books</span>() -&gt; Iterator[Result[Error, Book]]:
+<span class="linenr">48: </span>    <span class="org-variable-name">vit</span>, <span class="org-variable-name">eit</span> = tee(iter_highlights())
+<span class="linenr">49: </span>    <span class="org-variable-name">values</span> = (r.ok() <span class="org-keyword">for</span> r <span class="org-keyword">in</span> vit <span class="org-keyword">if</span> r.is_ok())
+<span class="linenr">50: </span>    <span class="org-variable-name">errors</span> = (r      <span class="org-keyword">for</span> r <span class="org-keyword">in</span> eit <span class="org-keyword">if</span> r.is_err())
+<span class="linenr">51: </span>    <span class="org-variable-name">key</span> = <span class="org-keyword">lambda</span> e: e.title
+<span class="linenr">52: </span>    <span class="org-keyword">for</span> book, hls <span class="org-keyword">in</span> groupby(<span class="org-builtin">sorted</span>(values, key=key), key=key):
+<span class="linenr">53: </span>        <span class="org-variable-name">highlights</span> = <span class="org-builtin">list</span>(<span class="org-builtin">sorted</span>(hls, key=<span class="org-keyword">lambda</span> hl: hl.dt))
+<span class="linenr">54: </span>        <span class="org-keyword">yield</span> Ok(Book(title=book, highlights=highlights))
+<span class="linenr">55: </span>    <span class="org-keyword">yield</span> <span class="org-keyword">from</span> errors
+</pre>
+</div>
+<pre class="example">
+Mypy output [exit code 1]:
+/tmp/tmp.xKPEHEa4wh:53: error: Item "None" of "Optional[Highlight]" has no attribute "dt"  [union-attr]
+/tmp/tmp.xKPEHEa4wh:54: error: Argument "highlights" to "Book" has incompatible type "List[Optional[Highlight]]"; expected "Sequence[Highlight]"  [arg-type]
+/tmp/tmp.xKPEHEa4wh:55: error: Incompatible types in "yield from" (actual type "Result[str, Highlight]", expected type "Result[str, Book]")  [misc]
+Found 3 errors in 1 file (checked 1 source file)
+</pre>
+<p>
+Let's go throught the errors:   
+</p>
+<ul class="org-ul">
+<li>errors 1 and 2 are due to <code>ok()</code>  method <a href="https://github.com/dbrgn/result/blob/0778597ddb737754780b3aca956ad944282ee870/result/result.py#L75-L81">returning <code>None</code></a> if TODO not a match?
+TODO in a sense it's not that different from go res, err = result() (but with more code)
+TODO we can fix it by asserting instead  TODO (demonstrate unwrap?)
+TODO then we get potential for runtime issue though, if someone forgets to check for is<sub>ok</sub> or is<sub>err</sub> first
+TODO demonstrate which type values has</li>
+<li>error 3 is because mypy has no idea that in <code>errors</code> iterable, the type of <code>R</code> doesn't matter at all!  You could say mypy is not smart enough, but it would be a very hard if not impossible analysis in general case.
+TODO we can use err() and wrap back in Err</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-mypy"><span class="linenr">44: </span>
+<span class="linenr">45: </span>
+<span class="linenr">46: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> Optional, TypeVar
+<span class="linenr">47: </span><span class="org-variable-name">X</span> = TypeVar(<span class="org-string">'X'</span>)
+<span class="linenr">48: </span><span class="org-keyword">def</span> <span class="org-function-name">unwrap</span>(x: Optional[X]) -&gt; X:
+<span class="linenr">49: </span>    <span class="org-comment-delimiter"># </span><span class="org-comment">similar to https://doc.rust-lang.org/std/option/enum.Option.html#method.unwrap</span>
+<span class="linenr">50: </span>    <span class="org-keyword">assert</span> x <span class="org-keyword">is</span> <span class="org-keyword">not</span> <span class="org-constant">None</span>
+<span class="linenr">51: </span>    <span class="org-keyword">return</span> x
+<span class="linenr">52: </span>
+<span class="linenr">53: </span><span class="org-keyword">from</span> itertools <span class="org-keyword">import</span> tee
+<span class="linenr">54: </span><span class="org-keyword">def</span> <span class="org-function-name">iter_books</span>() -&gt; Iterator[Result[Error, Book]]:
+<span class="linenr">55: </span>    <span class="org-variable-name">vit</span>, <span class="org-variable-name">eit</span> = tee(iter_highlights())
+<span class="linenr">56: </span>    <span class="org-variable-name">values</span> = (unwrap(r.ok())  <span class="org-keyword">for</span> r <span class="org-keyword">in</span> vit <span class="org-keyword">if</span> r.is_ok())
+<span class="linenr">57: </span>    <span class="org-variable-name">errors</span> = (unwrap(r.err()) <span class="org-keyword">for</span> r <span class="org-keyword">in</span> eit <span class="org-keyword">if</span> r.is_err())
+<span class="linenr">58: </span>    <span class="org-variable-name">key</span> = <span class="org-keyword">lambda</span> e: e.title
+<span class="linenr">59: </span>    <span class="org-keyword">for</span> book, hls <span class="org-keyword">in</span> groupby(<span class="org-builtin">sorted</span>(values, key=key), key=key):
+<span class="linenr">60: </span>        <span class="org-variable-name">highlights</span> = <span class="org-builtin">list</span>(<span class="org-builtin">sorted</span>(hls, key=<span class="org-keyword">lambda</span> hl: hl.dt))
+<span class="linenr">61: </span>        <span class="org-keyword">yield</span> Ok(Book(title=book, highlights=highlights))
+<span class="linenr">62: </span>    <span class="org-keyword">for</span> err <span class="org-keyword">in</span> errors:
+<span class="linenr">63: </span>        <span class="org-keyword">yield</span> Err(err)
+</pre>
+</div>
+<pre class="example">
+Mypy output [exit code 0]:
+Success: no issues found in 1 source file
+</pre>
+<p>
+Phew! With some restructuring we've convinced mypy. You can use similar pattern to properly type.
+</p>
+<p>
+TODO lessons learned: predicates (e.g. is ok, is err) are not very helpful for strong safety guarantees. You won't really simulate pattern matching, FWIW better off implementing it via destrucing tuple assignment (TODO how it's properly called??).
+</p>
+<p>
+TODO while we're at it: show fmap?  fmap encapsulates pattern matching so as long as fmap impementor hasn't messed up, you're safe.
+</p>
+<p>
+demonstrate it on the other function because it's more like a map, and also demonstrates you can't use lambda. 
+</p>
+<p>
+(and the author admits it, about pattern matching)
+</p>
+<p>
+There are several problems with that:
+</p>
+<ul class="org-ul">
+<li>readability: TODO extra object, having to introduct variables</li>
+<li><p>
+safety: it's still possible to do something like <code>if res.is_error(): return res.value * 10</code>
+It's not a problem in Rust or haskell because idiomatic use of Result type involves pattern matching:
+TOOD haskell snippet
+</p>
+<p>
+TODO containers creep throughtout the code, so if you don't need it later it's going to be tedious to refactor
+TODO value/is<sub>ok</sub>/is<sub>err</sub> are visual noise. People would reject it?
+</p></li>
+<li>transparency: TODO keeping track of is<sub>ok</sub>. this is again not an issue in languages with pattern matching</li>
+<li>performance: only potential TODO pointless to claim without benchmarking</li>
+<li>TODO composability: fmap style, lambdas etc</li>
+</ul>
+<p>
+TODO <code>returns</code> got a custom mypy module for that.
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000007">
+<h2 id="error_pair"><a class="headerlink" href="#error_pair">¶</a><span class="section-number-2">4</span> Potential solution: (Value, Error) pairs</h2>
+<div class="outline-text-2" id="text-error_pair">
+<p>
+Before before we go on to a solution I propose let's make sure to mention another notable pattern of error handling.
+</p>
+<p>
+TODO ???
+</p>
+<p>
+TODO borrowed from here <a href="https://blog.golang.org/error-handling-and-go">https://blog.golang.org/error-handling-and-go</a>
+</p>
+<div class="org-src-container">
+<pre class="src src-go">f, err := os.Open("filename.ext")
+if err != nil {
+    log.Fatal(err)
+}
+// do something with the open *File f
+</pre>
+</div>
+<p>
+It's not limited by Go though, e.g. you'll often encounter it implicitly in C (which had no exceptions) or C++ code.
+For instance, <a href="https://en.cppreference.com/w/cpp/filesystem/is_symlink"><code>std::filesystem::is_symlink</code></a> comes in two flavours:
+</p>
+<ul class="org-ul">
+<li><code>bool is_symlink( const std::filesystem::path&amp; p )</code>, which throws exceptions on errors.</li>
+<li><p>
+<code>bool is_symlink( const std::filesystem::path&amp; p, std::error_code&amp; ec ) noexcept</code>, which sets <code>ec</code> on errors. 
+</p>
+<p>
+You can think of it as if it returned <code>std::tuple&lt;bool, std::error_code&gt;</code>. I assume it's not that way because the compiler wouldn't be able to distinguish between signatures.
+</p></li>
+</ul>
+<p>
+Personally I as well as many other people find it pretty ugly. No judgement here though as I have no idea behind the design requirements and rationale for such a model in Go.
+Pretty sure one can get used to it after a while and that there are some static flow analysers that help to ensure correct error handling.
+</p>
+<p>
+It's not mypy friendly as return type of <code>Open</code> would have to be <code>Tuple[Optional[Result], Optional[Error]]</code>.
+In addition to checking.
+TODO inhabitants? Namely <code>(None, None): Tuple[NoneType, NoneType]</code> and by all <code>Tuple[Result, Error]</code>.
+TODO product type/sum type?
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000000d">
+<h2 id="step_back"><a class="headerlink" href="#step_back">¶</a><span class="section-number-2">5</span> <span class="todo STRT">STRT</span> Step back</h2>
+<div class="outline-text-2" id="text-step_back">
+<p>
+It seems that we were on the right track with the wrapper type. TODO
+</p>
+<p>
+First, let's attack the problem of readability.
+</p>
+<p>
+Why result containers work in rust or haskell? pattern matching
+</p>
+<p>
+TODO rust tries to combat it with syntactic sugar like try!, haskell with do syntax.
+</p>
+<p>
+Python already has a fairly convenient candidate for Errors: Exception!
+you can inherit it and add extra properties, and what's more you can easily throw it if your code doesn't need to be defensive anymore
+</p>
+<p>
+On the other hand, Exceptions almost never end up as function return values (and when they do, it's normally some fairly unambiguous code dealing specifically with error handling). Hmm, how convenient (TODO thinking emoji)!
+So even though we don't have explicit tagged unions in Python, if we agree that error values are represented as Exceptions, then we do get a disjoint type (i.e. Ok and Error results are mutually exclusive) at runtime.
+</p>
+<p>
+Ok, in languages TODO mention that we don't have 
+</p>
+<ul class="org-ul">
+<li>Q: isn't isinstance considered harmful, code smell or something?</li>
+<li>A: yes. Hang on, it's not as bad as it's sounds.</li>
+</ul>
+<p>
+so, … err yes?
+</p>
+<ul class="org-ul">
+<li>Q: Fair enough, if you are not using wrapper type you can't have ok() or error() method
+wouldn't it be cleaner? if you had a method you could write, values = filter(is<sub>ok</sub>, vit), errors = filter(is<sub>err</sub>, eit)</li>
+<li>A: Yes, a bit cleaner. Hang on.</li>
+</ul>
+<p>
+Ok now is the time. So remember when I said that we don't have pattern matching. TODO guess what, we have if we cooperate with mypy
+</p>
+<p>
+The problem is again that if we use predicate, type checker wouldn't get same insight as from isinstance
+</p>
+<p>
+TODO Remember when I said that we don't have type assisted 
+</p>
+<p>
+So, rule of thumb: yield exceptions and pattern match throught isinstance. Let's see how we can rewrite our program by employing these principles:
+</p>
+<div class="org-src-container">
+<pre class="src src-mypy"><span class="linenr">33: </span>
+<span class="linenr">34: </span><span class="org-comment-delimiter"># </span><span class="org-comment">TODO FIXME don't export that...</span>
+<span class="linenr">35: </span><span class="org-variable-name">clippings_file</span> = <span class="org-string">"/L/data/blog/content/drafts/pyresult/clippings-new.txt"</span>
+<span class="linenr">36: </span>
+<span class="linenr">37: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> Union, TypeVar
+<span class="linenr">38: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> Iterator
+<span class="linenr">39: </span>
+<span class="linenr">40: </span><span class="org-variable-name">T</span> = TypeVar(<span class="org-string">'T'</span>)
+<span class="linenr">41: </span><span class="org-variable-name">Res</span> = Union[T, <span class="org-type">Exception</span>]
+<span class="linenr">42: </span>
+<span class="linenr">43: </span><span class="org-keyword">def</span> <span class="org-function-name">iter_highlights</span>() -&gt; Iterator[Res[Highlight]]:
+<span class="linenr">44: </span>    <span class="org-variable-name">data</span> = Path(clippings_file).read_text()
+<span class="linenr">45: </span>    <span class="org-keyword">for</span> entry <span class="org-keyword">in</span> data.split(<span class="org-string">'=========='</span>):
+<span class="linenr">46: </span>        <span class="org-keyword">try</span>:
+<span class="linenr">47: </span>            <span class="org-keyword">yield</span> parse_entry(entry.strip())
+<span class="linenr">48: </span>        <span class="org-keyword">except</span> <span class="org-type">Exception</span> <span class="org-keyword">as</span> e:
+<span class="linenr">49: </span>            <span class="org-keyword">yield</span> e
+<span class="linenr">50: </span>
+<span class="linenr">51: </span><span class="org-keyword">from</span> itertools <span class="org-keyword">import</span> tee
+<span class="linenr">52: </span><span class="org-keyword">def</span> <span class="org-function-name">iter_books</span>() -&gt; Iterator[Res[Book]]:
+<span class="linenr">53: </span>    <span class="org-variable-name">vit</span>, <span class="org-variable-name">eit</span> = tee(iter_highlights())
+<span class="linenr">54: </span>    <span class="org-variable-name">values</span> = (r <span class="org-keyword">for</span> r <span class="org-keyword">in</span> vit <span class="org-keyword">if</span> <span class="org-keyword">not</span> <span class="org-builtin">isinstance</span>(r, <span class="org-type">Exception</span>))
+<span class="linenr">55: </span>    <span class="org-variable-name">errors</span> = (r <span class="org-keyword">for</span> r <span class="org-keyword">in</span> eit <span class="org-keyword">if</span>     <span class="org-builtin">isinstance</span>(r, <span class="org-type">Exception</span>))
+<span class="linenr">56: </span>    <span class="org-variable-name">key</span> = <span class="org-keyword">lambda</span> e: e.title
+<span class="linenr">57: </span>    <span class="org-keyword">for</span> book, hls <span class="org-keyword">in</span> groupby(<span class="org-builtin">sorted</span>(values, key=key), key=key):
+<span class="linenr">58: </span>        <span class="org-variable-name">highlights</span> = <span class="org-builtin">list</span>(<span class="org-builtin">sorted</span>(hls, key=<span class="org-keyword">lambda</span> hl: hl.dt))
+<span class="linenr">59: </span>        <span class="org-keyword">yield</span> Book(title=book, highlights=highlights)
+<span class="linenr">60: </span>    <span class="org-keyword">yield</span> <span class="org-keyword">from</span> errors
+<span class="linenr">61: </span>
+<span class="linenr">62: </span><span class="org-keyword">def</span> <span class="org-function-name">print_books</span>() -&gt; <span class="org-constant">None</span>:
+<span class="linenr">63: </span>    <span class="org-keyword">for</span> r <span class="org-keyword">in</span> iter_books():
+<span class="linenr">64: </span>        <span class="org-keyword">if</span> <span class="org-builtin">isinstance</span>(r, <span class="org-type">Exception</span>):
+<span class="linenr">65: </span>            <span class="org-keyword">print</span>(f<span class="org-string">"* ERROR: {str(r)}"</span>)
+<span class="linenr">66: </span>        <span class="org-keyword">else</span>:
+<span class="linenr">67: </span>            <span class="org-keyword">print</span>(f<span class="org-string">'* {r.title}'</span>)
+<span class="linenr">68: </span>            <span class="org-keyword">for</span> h <span class="org-keyword">in</span> r.highlights:
+<span class="linenr">69: </span>                <span class="org-variable-name">text</span> = <span class="org-string">"\n      "</span>.join(wrap(h.text))
+<span class="linenr">70: </span>                <span class="org-keyword">print</span>(f<span class="org-string">'  - {h.dt:%d %b %Y %H:%M}  {text} [Page {h.page}]'</span>)
+<span class="linenr">71: </span>            <span class="org-keyword">print</span>()
+<span class="linenr">72: </span>print_books()
+</pre>
+</div>
+<pre class="example">
+Python output [exit code 0]:
+* PHYS771 Lecture 12: Proof (scottaaronson.com)
+  - 21 Jul 2013 10:06  Roger Penrose likes to talk about making direct contact with Platonic
+      reality, but it's a bit embarrassing when you think you've made such
+      contact and it turns out the next morning that you were wrong! [Page 2]
+  - 04 Aug 2013 20:41  No hidden-variable theory can be local (I think some guy named Bell
+      proved that). [Page 14]
+
+* [Tong][2013] Dynamics and Relativity  
+  - 04 Aug 2013 18:17  It is worth mentioning that although the two people disagree on
+      whether the light hits the walls at the same time, this does not mean
+      that they can't be friends. [Page 120]
+
+* ERROR: Couldn't match regex!
+Mypy output [exit code 0]:
+Success: no issues found in 1 source file
+</pre>
+<p>
+Wohoo! Notice TODO again, no alien constructs
+TODO perhaps, diff code and demonstrate how few changes
+</p>
+<p>
+TODO note about contexts
+TODO in iter<sub>books</sub> splitting is kind of inevitable because we want to sort results and group them
+on the other hand we can avoid that in print<sub>books</sub>
+</p>
+<p>
+TODO next, in lack of pattern matching closest we have is isinstance(res, Exception).
+</p>
+<p>
+TODO maybe reorder mypy? first do raw and then demonstrate power of mypy?
+For demonstration purposes let's try it on a toy program that TODO errors on odd?
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000008">
+<h3 id="org0000008"><a class="headerlink" href="#org0000008">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> show returning nonzero exit code for the whole program via tertools tee?</h3>
+<div class="outline-text-3" id="text-org0000008">
+<p>
+maybe advanced section as well…
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000009">
+<h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> demonstrate attaching context to that's odd? so it shows item number as well..</h3>
+</div>
+<div class="outline-3" id="outline-container-org000000a">
+<h3 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><span class="todo TODO">TODO</span> why not replace <code>isinstance(res, Exception)</code></h3>
+</div>
+<div class="outline-3" id="outline-container-org000000b">
+<h3 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-21 22:23]</span></span> demonstrate how fmap looks?</h3>
+<div class="outline-text-3" id="text-org000000b">
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">tmpf</span>(i) -&gt; <span class="org-builtin">str</span>:
+  <span class="org-comment-delimiter"># </span><span class="org-comment">TODO mention issues with closudes and capturing? demonstrate it</span>
+  <span class="org-keyword">if</span> something:
+      <span class="org-keyword">return</span> aaa
+  <span class="org-keyword">else</span>:
+      <span class="org-keyword">return</span> bbb
+<span class="org-keyword">for</span> i <span class="org-keyword">in</span> items:
+  <span class="org-comment-delimiter"># </span><span class="org-comment">TOOD i.fmap(--still needs to take some closure?)</span>
+  <span class="org-comment-delimiter"># </span><span class="org-comment">TODO fmap(i, tmpf) -- could be implemented in terms of instance of, but personally I feel against it? </span>
+  <span class="org-keyword">yield</span> fmap(i, tmpf)
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">vs</span>
+<span class="org-keyword">for</span> i <span class="org-keyword">in</span> items:
+  <span class="org-keyword">if</span> <span class="org-builtin">isinstance</span>(i, <span class="org-type">Exception</span>):
+    <span class="org-keyword">yield</span> i
+    <span class="org-keyword">continue</span>
+  <span class="org-keyword">if</span> something:
+    <span class="org-keyword">yield</span> aaa
+  <span class="org-keyword">else</span>:
+    <span class="org-keyword">yield</span> bbb
+
+</pre>
+</div>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000c">
+<h3 id="org000000c"><a class="headerlink" href="#org000000c">¶</a><span class="todo TODO">TODO</span> hmm, ok if you're careful fmap is not too bad??</h3>
+<div class="outline-text-3" id="text-org000000c">
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">lam</span>(x): 
+    <span class="org-keyword">return</span> x * i 
+<span class="org-keyword">for</span> i <span class="org-keyword">in</span> <span class="org-builtin">range</span>(10): 
+    <span class="org-keyword">yield</span> fmap(i, lam)
+<span class="org-comment-delimiter"># </span><span class="org-comment">alternatively, yield from [fmap(i, lam) for i in range(10]]. could be too much for some people :) </span>
+</pre>
+</div>
+<p>
+eh, ok maybe not so bad after all. ugh.
+harder to transform error (what do I mean by that??)
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000000e">
+<h2 id="org000000e"><a class="headerlink" href="#org000000e">¶</a><span class="section-number-2">6</span> <span class="todo STRT">STRT</span> draft   <span class="tag"><span class="python">python</span> <span class="errorhandling">errorhandling</span></span></h2>
+<div class="outline-text-2" id="text-6">
+<p>
+A common pattern in data processing is having to iterate over rows/arrays of data and parsing each entry.
+ TODO data is messy TODO
+</p>
+<p>
+TODO maybe give telegram extraction as example? Or emfit maybe, since data really was missing
+TODO or kindle parsing?
+</p>
+<p>
+TODO Nones 
+</p>
+<p>
+eh, not sure if it's a good justification? maybe give it as example?
+Nones are nasty since not only it uglifies our interface (in particular for type checking), it also makes the users down the pipeline to check every field for None and just pollutes the code.
+</p>
+<p>
+There are several strategies:
+</p>
+<ul class="org-ul">
+<li>don't do anything. That means that any slightest error (1 in 10000 rows) crashes your whole program. Safe but annoying if you don't have time to fix or handle it immediately</li>
+<li><p>
+fully defensive parsing
+</p>
+<p>
+TODO try/catch around every row, just log
+downside – I mean, who reads logs, right? You'll probably never find out about the error
+</p>
+<p>
+TODO attach row to exception itself
+</p></li>
+<li><p>
+hybrid approach
+</p>
+<p>
+Like previous, but instead of logging the exception, yield it
+</p></li>
+</ul>
+<p>
+TODO assumes generator  
+</p>
+<p>
+TODO tell it's kinda like rust?
+TODO proper generic Exception type?
+In mypy, you'd say Result[T] = Union[T, Exception]
+</p>
+<p>
+The downside of that is if Exception <span class="underline">are</span> your intended generator return types it won't work. However, that seems pretty esoteric
+</p>
+<p>
+Benefits: 
+</p>
+<ul class="org-ul">
+<li><p>
+composability (????) you get to decide which bit of your program handles errors and how
+</p>
+<p>
+You can still choose to suppress them
+I'd often just check them (TODO unwrap) and render in html? that way I can see err TODO and what is more have as good guess about the cause from raw 
+</p></li>
+<li><p>
+safety
+</p>
+<p>
+TODO I guess use the motivation dummy object thing from pinboard
+</p>
+<p>
+TODO in type
+</p></li>
+</ul>
+<p>
+TODO then demonstrate addding context
+</p>
+<p>
+e.g. which row caused the failure (TODO e.g. NoneType attribute error might be cryptic)
+</p>
+<p>
+normally in python we can use raise from for that:
+</p>
+<p>
+raise ParsingError(row) from e
+</p>
+<p>
+Sadly, that does <span class="underline">not</span> read as raise (ParsingError(row) from e), it's a single operator. To TODO any exception object we have to set <span class="underline"><span class="underline">cause</span></span>
+TODO is this mypy friendly?
+just yield e vs ex = ParsingError(row, cause=e); yield e
+</p>
+<p>
+TODO now, about processing?
+</p>
+<p>
+TODO is<sub>ok</sub>() – is not mypy friendly?
+</p>
+<p>
+We want something that looks kinda like pattern matching
+</p>
+<p>
+TODO write about unwrap, the only downside is that you have to know the type? probably can't be dynamic?
+fmap is not very natural in python, especially because python lambdas can't be multiline which sort of discourages proper functional style programming
+</p>
+<p>
+TODO fmap? not sure, I never really used it… perhaps makes more sense to implement in terms of unwrap?
+</p>
+<p>
+TODO sort<sub>res</sub><sub>by</sub>? keeping errors close?
+</p>
+<p>
+for r in results:
+    try:
+       v = unwrap(r)
+    except e: # TODO ah right we don't want that because might confuse 
+       yield e # TODO that would mess up mypy return type?
+    else:
+</p>
+<p>
+yield v
+</p>
+<p>
+Interface stays pretty uniform…
+</p>
+<p>
+TODO ytry and konsume are not useful anymore?
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000001e">
+<h2 id="org000001e"><a class="headerlink" href="#org000001e">¶</a><span class="section-number-2">7</span> Integrate in text</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div class="outline-3" id="outline-container-org000000f">
+<h3 id="org000000f"><a class="headerlink" href="#org000000f">¶</a><span class="todo STRT">STRT</span> <span class="priority">[B]</span> I used to have fmap-like function but python is not friendly to lambdas to be honest (multiline)   <span class="tag"><span class="kython">kython</span> <span class="kerror">kerror</span> <span class="blog">blog</span></span></h3>
+<div class="outline-text-3" id="text-org000000f">
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000010">
+<h3 id="org0000010"><a class="headerlink" href="#org0000010">¶</a><span class="todo STRT">STRT</span> <span class="priority">[C]</span> benefit of not using dummy object – easier to transfor errors (e.g. in kobuddy, events to bookswithevents)   <span class="tag"><span class="blog">blog</span></span></h3>
+<div class="outline-text-3" id="text-org0000010">
+</div>
+<div class="outline-4" id="outline-container-org0000011">
+<h4 id="org0000011"><span class="timestamp-wrapper"><span class="timestamp">[2019-10-19 15:03]</span></span> need to integrate that (where we conclude we need to return something)</h4>
+<div class="outline-text-4" id="text-org0000011">
+<p>
+e.g. for datetime it could be 0 timestamp. however it's just a matter of convention and very easy to miss
+</p>
+</div>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000012">
+<h3 id="org0000012"><a class="headerlink" href="#org0000012">¶</a><span class="done DONE">DONE</span> hmm. maybe isinstance instead of unwrap makes more sense? and mypy friendly?   <span class="tag"><span class="python">python</span> <span class="errorhandling">errorhandling</span></span></h3>
+<div class="outline-text-3" id="text-org0000012">
+<p>
+on the other hand, unwrap would throw it all the way up? not sure if good idea…
+</p>
+</div>
+<div class="outline-4" id="outline-container-org0000013">
+<h4 id="org0000013"><span class="timestamp-wrapper"><span class="timestamp">[2019-10-23 00:58]</span></span> hmm, unwrap is also sort of pattern matching?</h4>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000014">
+<h3 id="org0000014"><a class="headerlink" href="#org0000014">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> give isinstance a chance</h3>
+</div>
+<div class="outline-3" id="outline-container-org0000015">
+<h3 id="org0000015"><a class="headerlink" href="#org0000015">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-21 22:50]</span></span> ok, definitely make it more abstract <span class="underline">after</span> I demonstrate and example</h3>
+<div class="outline-text-3" id="text-org0000015">
+<p>
+first just use Union[Item, 
+also all these Unions in type sigratures make some people's yes hurt
+</p>
+<p>
+now, that works great. however, we have a problem of transparency: someone reading the code wouldn't necessarily know it can yield an exception
+here's where we can get substantial helm from mypy
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000016">
+<h3 id="org0000016"><a class="headerlink" href="#org0000016">¶</a><span class="todo TODO">TODO</span> <span class="priority">[A]</span> bonus: intellij/pycharm TODO LSP? assist</h3>
+</div>
+<div class="outline-3" id="outline-container-org0000017">
+<h3 id="org0000017"><a class="headerlink" href="#org0000017">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-21 22:53]</span></span> easy to transform errors. back to non-defensive by throwing,</h3>
+<div class="outline-text-3" id="text-org0000017">
+<p>
+or converting into a red html text or special dataframe row
+  TODO downside is losing stack trace. but I guess that's inevitable without real coroutines??
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000018">
+<h3 id="org0000018"><a class="headerlink" href="#org0000018">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> benefit doesn't require modifying existing types, introducing invalid states that signal errors (which might introduce logical inconsistency, e.g. think about cross links etc)</h3>
+</div>
+<div class="outline-3" id="outline-container-org0000019">
+<h3 id="org0000019"><a class="headerlink" href="#org0000019">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2019-10-19 20:55]</span></span> Piotr Limanowski 🔥 De⎇ it! The Error Handling Techniques   <span class="tag"><span class="blog">blog</span> <span class="errors">errors</span></span></h3>
+<div class="outline-text-3" id="text-org0000019">
+<p>
+<a href="https://codearsonist.com/talks/derail-it">https://codearsonist.com/talks/derail-it</a>
+Selection:
+Hopefully after the presentation the listener will be able to identify the parts in his projects where the models are applicable and valueble. 
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001a">
+<h3 id="org000001a"><a class="headerlink" href="#org000001a">¶</a><span class="todo STRT">STRT</span> Could add something similar . No files means warning, could also demonstrate use of tee?   <span class="tag"><span class="errors">errors</span> <span class="blog">blog</span></span></h3>
+<div class="outline-text-3" id="text-org000001a">
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001b">
+<h3 id="org000001b"><a class="headerlink" href="#org000001b">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> Name it 'not so weakly typed'?   <span class="tag"><span class="blog">blog</span> <span class="errors">errors</span></span></h3>
+<div class="outline-text-3" id="text-org000001b">
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001c">
+<h3 id="org000001c"><a class="headerlink" href="#org000001c">¶</a><span class="todo TODO">TODO</span> code looking alien (e.g. one-off defs)</h3>
+</div>
+<div class="outline-3" id="outline-container-org000001d">
+<h3 id="org000001d"><a class="headerlink" href="#org000001d">¶</a><span class="todo TODO">TODO</span> data bubbles up?</h3>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000021">
+<h2 id="org0000021"><a class="headerlink" href="#org0000021">¶</a><span class="section-number-2">8</span> <span class="todo TODO">TODO</span> <span class="priority">[C]</span> Closing points? not sure how to name it</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div class="outline-3" id="outline-container-org000001f">
+<h3 id="org000001f"><a class="headerlink" href="#org000001f">¶</a><span class="todo TODO">TODO</span> Existing tools are pretty good   <span class="tag"><span class="blog">blog</span> <span class="errors">errors</span></span></h3>
+<div class="outline-text-3" id="text-org000001f">
+<p>
+I'm not really trying to advocate avoiding external libraries /decorator enabled syntactic sugar etc at any cost . However you might experience friction and opposition when trying to integrate that
+</p>
+<p>
+praise mypy
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000020">
+<h3 id="org0000020"><a class="headerlink" href="#org0000020">¶</a><span class="todo TODO">TODO</span> Ironically you can't achieve similar level of runtime safety in c++/Java even though they are typically called strongly typed   <span class="tag"><span class="blog">blog</span> <span class="errors">errors</span></span></h3>
+<div class="outline-text-3" id="text-org0000020">
+<p>
+Well z although you can if you use Object as return type. So thing that helps is dynamism? Although no, tagged unions def help
+mypy is your friend
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000002b">
+<h2 id="org000002b"><a class="headerlink" href="#org000002b">¶</a><span class="section-number-2">9</span> <span class="todo TODO">TODO</span> <span class="priority">[C]</span> Extra usecases, or what? more advanced techniques?</h2>
+<div class="outline-text-2" id="text-9">
+</div>
+<div class="outline-3" id="outline-container-org0000022">
+<h3 id="org0000022"><a class="headerlink" href="#org0000022">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> my.polar got some examples of konsume and kython error handling… not sure if actually useful?   <span class="tag"><span class="blog">blog</span> <span class="backup">backup</span> <span class="kython">kython</span></span></h3>
+<div class="outline-text-3" id="text-org0000022">
+<p>
+from ..kython.kerror import ResT, echain, unwrap, sort<sub>res</sub><sub>by</sub>
+from ..kython.konsume import wrap, zoom, ignore
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000023">
+<h3 id="org0000023"><a class="headerlink" href="#org0000023">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-21 22:58]</span></span> unwrap: I guess it falls into category of fun but questionable combinators. still typeable?</h3>
+</div>
+<div class="outline-3" id="outline-container-org0000024">
+<h3 id="org0000024"><a class="headerlink" href="#org0000024">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-21 22:59]</span></span> bonus: control behavior by global object that throws or yields? yield error(e)</h3>
+<div class="outline-text-3" id="text-org0000024">
+<p>
+   could probably link to kobuddy
+for unit tests it makes sense to keep code non-defensive. To prevent losing errors 
+TODO benefit is that generator type is still compatible, it just never happens to actually yield errors
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000025">
+<h3 id="org0000025"><a class="headerlink" href="#org0000025">¶</a><span class="todo STRT">STRT</span> even more defensive code/warnings</h3>
+<div class="outline-text-3" id="text-org0000025">
+<p>
+When your return type is <code>Res[Highlight]</code>, you can only return single highlight or a single error. 
+</p>
+<p>
+If you change it to <code>Iterator[Res[Highlight]]</code>, you can be more defensive and instead of returning error, yield it and fallback to some defensive behavior:
+</p>
+<p>
+TODO change Highlight to Note?
+</p>
+<p>
+TODO using iterators because of covariance? also cleaner code?..
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-comment-delimiter"># </span><span class="org-comment">TODO resT?</span>
+<span class="org-keyword">def</span> <span class="org-function-name">parse_highlight</span>(entry: <span class="org-builtin">str</span>) -&gt; Iterator[Res[Highlight]]:
+   <span class="org-comment-delimiter"># </span><span class="org-comment">...</span>
+   <span class="org-variable-name">match</span> = re.search(entry, HL_REGEX)
+   <span class="org-variable-name">book</span> = match.group(<span class="org-string">'book'</span>)
+   <span class="org-variable-name">text</span> = match.group(<span class="org-string">'text'</span>)
+   <span class="org-variable-name">dt_str</span> = match.group(<span class="org-string">'dt'</span>)
+   <span class="org-keyword">if</span> <span class="org-builtin">len</span>(dt_str) == 0:
+       <span class="org-keyword">yield</span> <span class="org-type">Exception</span>(<span class="org-string">"Bad timestamp!"</span>)
+       <span class="org-variable-name">dt</span> = datetime.now() <span class="org-comment-delimiter"># </span><span class="org-comment">better than nothing</span>
+   <span class="org-keyword">else</span>:
+       <span class="org-variable-name">dt</span> = parse_dt(dt_src)
+   <span class="org-keyword">if</span> <span class="org-builtin">len</span>(text) == 0:
+       <span class="org-comment-delimiter"># </span><span class="org-comment">not worth an assert, probably</span>
+       <span class="org-keyword">yield</span> <span class="org-type">Exception</span>(<span class="org-string">"Empty highlight, something might be wrong"</span>)
+
+   <span class="org-keyword">yield</span> Highlight(dt=dt, book=book, text=text)
+</pre>
+</div>
+<p>
+You can think of it as some sort of warnings. (TODO could even have book attached to it so you can group errors)
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000026">
+<h3 id="org0000026"><a class="headerlink" href="#org0000026">¶</a><span class="todo STRT">STRT</span> about my kython.kerror thing and come up with usecases (e.g. pandas dataframe , yield from exceptions etc)   <span class="tag"><span class="blog">blog</span></span></h3>
+<div class="outline-text-3" id="text-org0000026">
+</div>
+<div class="outline-4" id="outline-container-org0000027">
+<h4 id="org0000027"><span class="todo STRT">STRT</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-04-09 20:37]</span></span> also mention using try else for that</h4>
+<div class="outline-text-4" id="text-org0000027">
+</div>
+</div>
+<div class="outline-4" id="outline-container-org0000028">
+<h4 id="org0000028"><span class="timestamp-wrapper"><span class="timestamp">[2019-10-23 02:04]</span></span> I guess it's motivation for transforming error type</h4>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000029">
+<h3 id="org0000029"><a class="headerlink" href="#org0000029">¶</a><span class="todo TODO">TODO</span> error handling: see in kobo <span class="underline"><span class="underline">init</span></span> py , tee for itertools   <span class="tag"><span class="blog">blog</span></span></h3>
+<div class="outline-text-3" id="text-org0000029">
+</div>
+<div class="outline-4" id="outline-container-org000002a">
+<h4 id="org000002a"><span class="timestamp-wrapper"><span class="timestamp">[2019-10-19 14:36]</span></span> just have a 'tricks' section or something?</h4>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000002d">
+<h2 id="org000002d"><a class="headerlink" href="#org000002d">¶</a><span class="section-number-2">10</span> Other links</h2>
+<div class="outline-text-2" id="text-10">
+<ul class="org-ul">
+<li>A good read overviewing different approaches to error handling: <a href="http://joeduffyblog.com/2016/02/07/the-error-model">Jue Duffy - The Error Model</a></li>
+<li><a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p0709r4.pdf">Zero-overhead deterministic exceptions: Throwing values</a> by Herb Sutter</li>
+</ul>
+</div>
+<div class="outline-3" id="outline-container-org000002c">
+<h3 id="org000002c"><a class="headerlink" href="#org000002c">¶</a><span class="todo TODO">TODO</span> more?</h3>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000002e">
+<h2 id="org000002e"><a class="headerlink" href="#org000002e">¶</a><span class="section-number-2">11</span> <span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-23 00:27]</span></span> I guess it's also in a sense a guide about what mypy can and can't do and perhaps desigining mypy-friendly interfaces?</h2>
+</div>
+<div class="outline-2" id="outline-container-org000002f">
+<h2 id="org000002f"><a class="headerlink" href="#org000002f">¶</a><span class="section-number-2">12</span> Exceptions are bad. I know it, you know it, TODO guido knows it??   <span class="tag"><span class="blog">blog</span> <span class="errors">errors</span></span></h2>
+<div class="outline-text-2" id="text-12">
+<p>
+TODO then say that every error handling technique has its place
+Rust has got aborts (even C got abort!) 
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000030">
+<h2 id="org0000030"><a class="headerlink" href="#org0000030">¶</a><span class="section-number-2">13</span> <span class="todo TODO">TODO</span> <span class="priority">[D]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-19 15:29]</span></span> specify file dependencies? not sure …</h2>
+</div>
+<div class="outline-2" id="outline-container-org0000033">
+<h2 id="org0000033"><a class="headerlink" href="#org0000033">¶</a><span class="section-number-2">14</span> Todos to actually try</h2>
+<div class="outline-text-2" id="text-14">
+</div>
+<div class="outline-3" id="outline-container-org0000031">
+<h3 id="org0000031"><a class="headerlink" href="#org0000031">¶</a><span class="todo TODO">TODO</span> <span class="priority">[A]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-19 16:08]</span></span> hmm could try walrus operator for is<sub>ok</sub> style filtering?</h3>
+</div>
+<div class="outline-3" id="outline-container-org0000032">
+<h3 id="org0000032"><a class="headerlink" href="#org0000032">¶</a><span class="todo TODO">TODO</span> <span class="priority">[A]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-23 01:49]</span></span> 'pattern matching' via two iterators? using for loops for pattern matching? that's a bit bad!!!</h3>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000034">
+<h2 id="org0000034"><a class="headerlink" href="#org0000034">¶</a><span class="section-number-2">15</span> <span class="todo TODO">TODO</span> <span class="priority">[B]</span> name somthing I don't have many types, but they are honest??</h2>
+<div class="outline-text-2" id="text-15">
+<p>
+My type deduction is aint but it's honests?  
+</p>
+</div>
+</div>
+
+    </section>
+
+    
+    <section class="footer">
+        <div class="post-tags"></div>
+        <!-- TODO post-date? -->
+        <div class="date">15 September 2019</div>
+    </section>
+    
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_pyresult"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
+        
+        <footer>
+            
+            
+        </footer>
+    </body>
+</html>

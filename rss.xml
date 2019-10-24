@@ -2306,7 +2306,7 @@ WARNING:workout-provider:Unhandled: Cycling
 
 
 <div class="output_text output_subarea ">
-<pre>'Regression coefficient: 0.0932774194157544'</pre>
+<pre>'Regression coefficient: 0.09336475467662801'</pre>
 </div>
 
 </div>
@@ -2319,7 +2319,7 @@ WARNING:workout-provider:Unhandled: Cycling
 
 
 <div class="output_text output_subarea ">
-<pre>'Free term: -9.503488864425037'</pre>
+<pre>'Free term: -9.675543627762124'</pre>
 </div>
 
 </div>
@@ -2376,7 +2376,7 @@ WARNING:workout-provider:Unhandled: Cycling
 
 
 <div class="output_text output_subarea output_execute_result">
-<pre>8059.16903752118</pre>
+<pre>8066.71480406066</pre>
 </div>
 
 </div>
