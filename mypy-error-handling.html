@@ -147,7 +147,7 @@ Another good reason to fail fast is that it makes programmer more likely to noti
 <div><span class="before-aside">
 So generally as long as you can get away with it, it's a good thing to throw exception or abort the program immediately in some way.
 
-</span><aside> you might not be able to get away with it if you're literally doing rocket science or <a href="https://isocpp.org/wiki/faq/exceptions#why-exceptions">flight control software</a> </aside></div>
+</span><aside>you might not be able to get away with it if you're literally doing rocket science or <a href="https://isocpp.org/wiki/faq/exceptions#why-exceptions">flight control software</a></aside></div>
 <p>
 On the other hand, some errors are less crucial and more manageable than other. So we tend to be realistic when we program, evaluate different failure risks 
 and use try/catch mechanisms where appropriate.
@@ -556,9 +556,9 @@ Let's focus just on <code>iter_highlights</code> and <code>iter_books</code> and
 </div>
 <pre class="example">
 Mypy output [exit code 1]:
-/tmp/tmp.XABqzsLs51:52: error: Item "None" of "Optional[Highlight]" has no attribute "dt"  [union-attr]
-/tmp/tmp.XABqzsLs51:53: error: Argument "highlights" to "Book" has incompatible type "List[Optional[Highlight]]"; expected "Sequence[Highlight]"  [arg-type]
-/tmp/tmp.XABqzsLs51:54: error: Incompatible types in "yield from" (actual type "Result[str, Highlight]", expected type "Result[str, Book]")  [misc]
+/tmp/tmp.4jJCl1veei:52: error: Item "None" of "Optional[Highlight]" has no attribute "dt"  [union-attr]
+/tmp/tmp.4jJCl1veei:53: error: Argument "highlights" to "Book" has incompatible type "List[Optional[Highlight]]"; expected "Sequence[Highlight]"  [arg-type]
+/tmp/tmp.4jJCl1veei:54: error: Incompatible types in "yield from" (actual type "Result[str, Highlight]", expected type "Result[str, Book]")  [misc]
 Found 3 errors in 1 file (checked 1 source file)
 </pre>
 <p>
@@ -1113,9 +1113,9 @@ bad: <span class="org-variable-name">Res</span>[<span class="org-builtin">int</s
 Python output [exit code 1]:
 123
 Traceback (most recent call last):
-  File "/tmp/tmp.gRKA7h4UKr", line 13, in &lt;module&gt;
+  File "/tmp/tmp.AJQtFvQWdm", line 13, in &lt;module&gt;
     print(unwrap(bad))
-  File "/tmp/tmp.gRKA7h4UKr", line 6, in unwrap
+  File "/tmp/tmp.AJQtFvQWdm", line 6, in unwrap
     raise res
 RuntimeError: bad
 Mypy output [exit code 0]:
@@ -1197,15 +1197,15 @@ And if we set the error policy to non-defensive, we get exception as soon as we 
 Python output [exit code 1]:
 -1
 Traceback (most recent call last):
-  File "/tmp/tmp.Kj8HX1D115", line 33, in &lt;module&gt;
+  File "/tmp/tmp.nwjV2T8StD", line 33, in &lt;module&gt;
     print_negated()
-  File "/tmp/tmp.Kj8HX1D115", line 27, in print_negated
+  File "/tmp/tmp.nwjV2T8StD", line 27, in print_negated
     for n in iter_numbers():
-  File "/tmp/tmp.Kj8HX1D115", line 24, in iter_numbers
+  File "/tmp/tmp.nwjV2T8StD", line 24, in iter_numbers
     yield Error(e)
-  File "/tmp/tmp.Kj8HX1D115", line 14, in __init__
+  File "/tmp/tmp.nwjV2T8StD", line 14, in __init__
     raise exc
-  File "/tmp/tmp.Kj8HX1D115", line 22, in iter_numbers
+  File "/tmp/tmp.nwjV2T8StD", line 22, in iter_numbers
     yield int(s)
 ValueError: invalid literal for int() with base 10: 'two'
 Mypy output [exit code 0]:
@@ -1233,7 +1233,7 @@ Normally, you'd use  <a href="https://www.python.org/dev/peps/pep-3134/#explicit
 <div><span class="before-aside">
 However the problem is that <code>raise ... from ...</code> is a compound statement, so you can't write <code>yield RuntimeError(entry) from e</code>.
 
-</span><aside> see my investigation attempt <a href="https://stackoverflow.com/questions/58355639/why-raise-exception-from-cause-not-raise-exception-from-cause">here</a> </aside></div>
+</span><aside>see my investigation attempt <a href="https://stackoverflow.com/questions/58355639/why-raise-exception-from-cause-not-raise-exception-from-cause">here</a></aside></div>
 <p>
 I find it handy to have a helper function here: 
 </p>
