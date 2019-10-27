@@ -101,7 +101,7 @@
 <li><a href="#error_object">4. A non-solution #2: special error value</a></li>
 <li><a href="#container">5. Almost solution #1: Result container</a>
 <ul>
-<li><a href="#org000000b">By the way, what's up with <code>Iterator</code> everywhere?</a></li>
+<li><a href="#iterator">By the way, what's up with <code>Iterator</code> everywhere?</a></li>
 </ul>
 </li>
 <li><a href="#combinators">6. Almost solution #2: use error combinators</a></li>
@@ -115,10 +115,10 @@
 <li><a href="#error_context">Improving error context</a></li>
 <li><a href="#warnings">Fine grained defensiveness</a></li>
 <li><a href="#dataframe">Error values, revisited</a></li>
-<li><a href="#org000001c">Cursed pattern matching mechanism</a></li>
+<li><a href="#cursed_pattern_matching">Cursed pattern matching mechanism</a></li>
 </ul>
 </li>
-<li><a href="#org000001e">10. Closing points</a></li>
+<li><a href="#fin">10. Closing points</a></li>
 <li><a href="#links">11. Other links</a></li>
 <li><a href="#org0000020">12. --</a></li>
 </ul>
@@ -657,8 +657,8 @@ Ok, we've learned something, let's try again.
 </p>
 </div>
 <div class="outline-3" id="outline-container-org000000b">
-<h3 id="org000000b"><a class="headerlink" href="#org000000b">¶</a>By the way, what's up with <code>Iterator</code> everywhere?</h3>
-<div class="outline-text-3" id="text-org000000b">
+<h3 id="iterator"><a class="headerlink" href="#iterator">¶</a>By the way, what's up with <code>Iterator</code> everywhere?</h3>
+<div class="outline-text-3" id="text-iterator">
 <p>
 Glad you asked! Several reasons I'm using generators here:
 </p>
@@ -1416,8 +1416,8 @@ E.g. <a href="https://gateway.serph.network/ipfs/Qmc5hBuomCLzb25kg14dAesAcnRSJZH
 </div>
 </div>
 <div class="outline-3" id="outline-container-org000001c">
-<h3 id="org000001c"><a class="headerlink" href="#org000001c">¶</a>Cursed pattern matching mechanism</h3>
-<div class="outline-text-3" id="text-org000001c">
+<h3 id="cursed_pattern_matching"><a class="headerlink" href="#cursed_pattern_matching">¶</a>Cursed pattern matching mechanism</h3>
+<div class="outline-text-3" id="text-cursed_pattern_matching">
 <p>
 This is forbidden knowledge liberated during the latest Area 51 raid. Tsss… don't tell the government.
 </p>
@@ -1491,8 +1491,8 @@ And the obvious downside is that there is a potential to forget to handle except
 </div>
 </div>
 <div class="outline-2" id="outline-container-org000001e">
-<h2 id="org000001e"><a class="headerlink" href="#org000001e">¶</a><span class="section-number-2">10</span> Closing points</h2>
-<div class="outline-text-2" id="text-10">
+<h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">10</span> Closing points</h2>
+<div class="outline-text-2" id="text-fin">
 <ul class="org-ul">
 <li>mypy is your best friend</li>
 <li><p>
