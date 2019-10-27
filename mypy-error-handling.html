@@ -556,9 +556,9 @@ Let's focus just on <code>iter_highlights</code> and <code>iter_books</code> and
 </div>
 <pre class="example">
 Mypy output [exit code 1]:
-/tmp/tmp.4jJCl1veei:52: error: Item "None" of "Optional[Highlight]" has no attribute "dt"  [union-attr]
-/tmp/tmp.4jJCl1veei:53: error: Argument "highlights" to "Book" has incompatible type "List[Optional[Highlight]]"; expected "Sequence[Highlight]"  [arg-type]
-/tmp/tmp.4jJCl1veei:54: error: Incompatible types in "yield from" (actual type "Result[str, Highlight]", expected type "Result[str, Book]")  [misc]
+input.py:52: error: Item "None" of "Optional[Highlight]" has no attribute "dt"  [union-attr]
+input.py:53: error: Argument "highlights" to "Book" has incompatible type "List[Optional[Highlight]]"; expected "Sequence[Highlight]"  [arg-type]
+input.py:54: error: Incompatible types in "yield from" (actual type "Result[str, Highlight]", expected type "Result[str, Book]")  [misc]
 Found 3 errors in 1 file (checked 1 source file)
 </pre>
 <p>
@@ -1113,9 +1113,9 @@ bad: <span class="org-variable-name">Res</span>[<span class="org-builtin">int</s
 Python output [exit code 1]:
 123
 Traceback (most recent call last):
-  File "/tmp/tmp.AJQtFvQWdm", line 13, in &lt;module&gt;
+  File "input.py", line 13, in &lt;module&gt;
     print(unwrap(bad))
-  File "/tmp/tmp.AJQtFvQWdm", line 6, in unwrap
+  File "input.py", line 6, in unwrap
     raise res
 RuntimeError: bad
 Mypy output [exit code 0]:
@@ -1197,15 +1197,15 @@ And if we set the error policy to non-defensive, we get exception as soon as we 
 Python output [exit code 1]:
 -1
 Traceback (most recent call last):
-  File "/tmp/tmp.nwjV2T8StD", line 33, in &lt;module&gt;
+  File "input.py", line 33, in &lt;module&gt;
     print_negated()
-  File "/tmp/tmp.nwjV2T8StD", line 27, in print_negated
+  File "input.py", line 27, in print_negated
     for n in iter_numbers():
-  File "/tmp/tmp.nwjV2T8StD", line 24, in iter_numbers
+  File "input.py", line 24, in iter_numbers
     yield Error(e)
-  File "/tmp/tmp.nwjV2T8StD", line 14, in __init__
+  File "input.py", line 14, in __init__
     raise exc
-  File "/tmp/tmp.nwjV2T8StD", line 22, in iter_numbers
+  File "input.py", line 22, in iter_numbers
     yield int(s)
 ValueError: invalid literal for int() with base 10: 'two'
 Mypy output [exit code 0]:

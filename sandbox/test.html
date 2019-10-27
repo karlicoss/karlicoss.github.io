@@ -135,12 +135,14 @@ whatever
 <div class="outline-text-3" id="text-org0000004">
 <div class="org-src-container">
 <pre class="src src-mypy"><span class="org-keyword">def</span> <span class="org-function-name">whatever</span>(s: <span class="org-builtin">str</span>) -&gt; <span class="org-builtin">int</span>:
-    <span class="org-keyword">return</span> <span class="org-builtin">len</span>(s)
+    <span class="org-keyword">return</span> s + 1
 </pre>
 </div>
 <pre class="example">
-Mypy output [exit code 0]:
-Success: no issues found in 1 source file
+Mypy output [exit code 1]:
+input.py:2: error: Returning Any from function declared to return "int"  [no-any-return]
+input.py:2: error: Unsupported operand types for + ("str" and "int")  [operator]
+Found 2 errors in 1 file (checked 1 source file)
 </pre>
 </div>
 <div class="outline-4" id="outline-container-org0000005">
