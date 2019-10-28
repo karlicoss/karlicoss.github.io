@@ -140,8 +140,15 @@ whatever
 </div>
 <pre class="example">
 Mypy output [exit code 1]:
-input.py:2: error: Returning Any from function declared to return "int"  [no-any-return]
-input.py:2: error: Unsupported operand types for + ("str" and "int")  [operator]
+input.py: note: In function "whatever":
+input.py:2: error: Returning Any from function declared to return
+"int"  [no-any-return]
+        return s + 1
+        ^
+input.py:2: error: Unsupported operand types for + ("str" and "int")
+ [operator]
+        return s + 1
+                   ^
 Found 2 errors in 1 file (checked 1 source file)
 </pre>
 </div>

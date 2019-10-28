@@ -578,9 +578,19 @@ Let's focus just on <code>iter_highlights</code> and <code>iter_books</code> and
 </div>
 <pre class="example">
 Mypy output [exit code 1]:
-input.py:52: error: Item "None" of "Optional[Highlight]" has no attribute "dt"  [union-attr]
-input.py:53: error: Argument "highlights" to "Book" has incompatible type "List[Optional[Highlight]]"; expected "Sequence[Highlight]"  [arg-type]
-input.py:54: error: Incompatible types in "yield from" (actual type "Result[str, Highlight]", expected type "Result[str, Book]")  [misc]
+input.py: note: In function "iter_books":
+input.py:52: error: Item "None" of "Optional[Highlight]" has no
+attribute "dt"  [union-attr]
+	    highlights = list(sorted(hls, key=lambda hl: hl.dt))
+							 ^
+input.py:53: error: Argument "highlights" to "Book" has incompatible
+type "List[Optional[Highlight]]"; expected "Sequence[Highlight]"  [arg-type]
+	    yield Ok(Book(title=book, highlights=highlights))
+						 ^
+input.py:54: error: Incompatible types in "yield from" (actual type
+"Result[str, Highlight]", expected type "Result[str, Book]")  [misc]
+	yield from errors
+	^
 Found 3 errors in 1 file (checked 1 source file)
 </pre>
 <p>

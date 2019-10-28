@@ -75,7 +75,7 @@
 
     <section class="content">
     <p>
-(this section is still under construction)
+🚧🚧 this section is still under construction 🚧🚧
 </p>
 <div class="outline-2" id="outline-container-org0000000">
 <h2 id="org0000000"><a class="headerlink" href="#org0000000">¶</a>Motivation for doing this</h2>
@@ -86,6 +86,8 @@ In no particular order,
 <ul class="org-ul">
 <li>I'm interested in many different things which I don't have time to explore on my own (<a href="./ideas.html">ideas</a>, <a href="./notes.html">notes</a>), but I'd be happy to discuss them with people who are looking up similar things on the Internet.</li>
 <li>I'm working on different <a class="post-tag" href="./tags.html#tools">#tools</a>, which I also would like to share with other people because it's satisfying, can inspire other people to do similar things, and open source community can help with maintaining them.</li>
+</ul>
+<ul class="org-ul">
 <li>I've got a fairly big knowledge repository of semi-curated data, which I'd like to share both for other people's and my benefit.</li>
 <li>Sometimes there is an urge to share things that don't fit in few tweets and I want to make them somewhat more persistent.</li>
 <li><div><span class="before-aside">
@@ -112,12 +114,51 @@ I'm a bit fan of leaving TODOs wherever I can; I can't stand forgetting useful t
 <p>
 Motivation for choice of software: somewhere along the lines of <a href="https://www.gwern.net/About#long-site">Gwern</a>.
 </p>
+<p>
+I'm in progress of writing a post explaining my setup, but if you are specifically curious about something, feel free to ask!
+</p>
 </div>
 <div class="outline-3" id="outline-container-org0000003">
 <h3 id="org0000003"><a class="headerlink" href="#org0000003">¶</a><span class="todo TODO">TODO</span> why static blog?</h3>
+<div class="outline-text-3" id="text-org0000003">
+<p>
+In progress of writing about it, stay tuned!
+</p>
+<p>
+But basically:
+</p>
+<ul class="org-ul">
+<li>lightweight</li>
+<li>simple</li>
+<li>resilient</li>
+</ul>
+</div>
 </div>
 <div class="outline-3" id="outline-container-org0000004">
-<h3 id="org0000004"><a class="headerlink" href="#org0000004">¶</a><span class="todo TODO">TODO</span> comments</h3>
+<h3 id="software_comments"><a class="headerlink" href="#software_comments">¶</a>comments</h3>
+<div class="outline-text-3" id="text-software_comments">
+<p>
+For the most part, I expect discussion on Reddit/Twitter or wherever I share my posts.
+However it's good to have an extra means of commenting just in case.
+</p>
+<p>
+I'm using <a href="https://posativ.org/isso">Isso</a> at the moment, since it's:
+</p>
+<ul class="org-ul">
+<li>very easy to set up and admin</li>
+<li>very lightweight</li>
+<li><p>
+very simple
+</p>
+<p>
+Data is stored in an sqlite database, which means it would be easy to migrate the comments if I decide to switch
+(or at least doable, unlike Disqus where I didn't manage to change domain name).
+</p>
+<p>
+Also it's easy to back up, so your comments would be safe!
+</p></li>
+</ul>
+</div>
 </div>
 </div>
 <div class="outline-2" id="outline-container-org0000005">
@@ -137,27 +178,69 @@ Some of the blogs that inspired this in terms of content, structure, design deci
 <ul class="org-ul">
 <li>in particular, some of sidenotes CSS</li>
 </ul></li>
-<li><a href="https://wiki.nikitavoloboev.xyz/">Everything I Know</a></li>
+<li><a href="https://wiki.nikitavoloboev.xyz/">Everything I Know</a>
+<ul class="org-ul">
+<li>I've got lots of random notes on different topics which I'm gradually going to share, perhaps similarly to that wiki</li>
+</ul></li>
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000000d">
-<h2 id="org000000d"><a class="headerlink" href="#org000000d">¶</a><span class="todo TODO">TODO</span> how to make it easier?</h2>
-<div class="outline-text-2" id="text-org000000d">
+<div class="outline-2" id="outline-container-org000000c">
+<h2 id="org000000c"><a class="headerlink" href="#org000000c">¶</a><span class="todo TODO">TODO</span> how to make it easier?</h2>
+<div class="outline-text-2" id="text-org000000c">
 </div>
 <div class="outline-3" id="outline-container-org0000006">
 <h3 id="org0000006"><a class="headerlink" href="#org0000006">¶</a><span class="todo TODO">TODO</span> VCS integration</h3>
 <div class="outline-text-3" id="text-org0000006">
-<p>
-e.g. ipython notebooks, mapping vcs changes into less fine grained 'versions'?
-</p>
+<ul class="org-ul">
+<li>not everything is easy to put under version control
+
+<ul class="org-ul">
+<li>for instance ipython notebooks are essentially huge JSONs also containing outputs.
+I'm using <a href="https://github.com/kynan/nbstripout">nbstripout</a> so I can only keep important bits in git.</li>
+</ul></li>
+<li>sometimes things are not deterministic, for instance if you use temporary directories in literate notebooks</li>
+<li>large files, e.g. plots generated from ipython notebooks ideally need to be kept under version control too</li>
+</ul>
+<ul class="org-ul">
+<li>it would be nice to generate public history of changes for each page directly from git history</li>
+</ul>
 </div>
 </div>
 <div class="outline-3" id="outline-container-org0000007">
-<h3 id="org0000007"><a class="headerlink" href="#org0000007">¶</a><span class="todo TODO">TODO</span> comments</h3>
-<div class="outline-text-3" id="text-org0000007">
+<h3 id="easier_comments"><a class="headerlink" href="#easier_comments">¶</a><span class="todo TODO">TODO</span> comments</h3>
+<div class="outline-text-3" id="text-easier_comments">
 <p>
-e.g. disqus is a bit shit, selfhosting is tedious and requires technical skill
+Disqus is a bit shit.
+I think of people's thoughts and comments are sacred and while I make sure mine are backed up, losing others' information is somewhat irresponsible.
+</p>
+<p>
+So before starting the blog I actually practiced migrating domain names and post URLs (who knows, it might be necessary in the future) against a test Disqus instance, and that didn't really work well.
+</p>
+<ul class="org-ul">
+<li><p>
+you can only manage comments data via the API, and do migrations over their web tool, which is pretty manual and error prone.
+</p>
+<p>
+In contrast, with <a href="#software_comments">Isso</a>, which I'm using at the moment I can back up the database, write a proper migration script, test it and if anything breaks, just restore the old database.
+</p></li>
+</ul>
+<p>
+Other downsides of Disqus:
+</p>
+<ul class="org-ul">
+<li>takes noticeable time to load. I prefer my pages to be as lightweight as possible.</li>
+<li>shows ads. It's fair enough considering they provide hosting</li>
+<li>let alone usual stuff about privacy, tracking etc, but I don't know much about Disqus specifically in that regard</li>
+</ul>
+<p>
+Selfhosting however is somewhat tedious and requires technical skill, so it's understandable many people prefer just inserting a bit of javascript from Disqus that does the job.
+</p>
+<p>
+Ideally I'd want comments to be some sort of <a href="./annotating.html#social_function">annotation overlay</a>.
+So you could comment at any place in text, without having to jump back and forth.
+Perhaps one could choose any annotation platform they like and I would just need to query the comments from each of these platforms and display all of them.
+It's a bit vague though, so needs a proper think!
 </p>
 </div>
 </div>
@@ -165,7 +248,20 @@ e.g. disqus is a bit shit, selfhosting is tedious and requires technical skill
 <h3 id="org0000008"><a class="headerlink" href="#org0000008">¶</a><span class="todo TODO">TODO</span> dead links</h3>
 <div class="outline-text-3" id="text-org0000008">
 <p>
-requires technical skills, needs to be more automatic (perhaps service provided by archive.org?)   
+Link rot is pretty bad, Gwern <a href="https://www.gwern.net/Archiving-URLs#link-rot">writes about it</a> in high detail.
+</p>
+<p>
+I don't want to contribute to the problem, so at the moment I'm using <a href="https://github.com/linkchecker/linkchecker">linkchecker</a> running every night in Cron, seems to work well.
+So far haven't had any genuinely rotten links, but it does protect against typos in urls and that sort of thing.
+In Firefox, I'm using <a href="https://addons.mozilla.org/en-US/firefox/addon/simple-link-checker">Simple Link Checker</a> addon, 
+it also helps with checking other things, e.g. Github readmes.
+</p>
+<p>
+At the moment preventing dead urls requires some technical skills.
+</p>
+<p>
+Ideally it'd be more automatic, perhaps some sort of service that crawls your website every week/month or so and sends you a report.
+archive.org seems like an appropriate platform to kick this off.
 </p>
 </div>
 </div>
@@ -173,7 +269,7 @@ requires technical skills, needs to be more automatic (perhaps service provided 
 <h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><span class="todo TODO">TODO</span> hosting</h3>
 <div class="outline-text-3" id="text-org0000009">
 <p>
-technical skill, tedious as well
+Technical skill, tedious as well.
 </p>
 </div>
 </div>
@@ -181,7 +277,10 @@ technical skill, tedious as well
 <h3 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><span class="todo TODO">TODO</span> spell checking and other forms of linting</h3>
 <div class="outline-text-3" id="text-org000000a">
 <p>
-perhaps can be aided by the text editor?
+At the moment I'm using ispell in emacs, seems to work well, but ideally I'd like it to be integrated as a 'pre-publish' hook or something.
+</p>
+<p>
+Also would be useful to have semantic (e.g. grammar) checks as well, I often skip words when typing.
 </p>
 </div>
 </div>
@@ -189,16 +288,10 @@ perhaps can be aided by the text editor?
 <h3 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><span class="todo TODO">TODO</span> diffing</h3>
 <div class="outline-text-3" id="text-org000000b">
 <p>
-no easy way to compare htmls (apart from git, but that doesn't really help with design changes)
+No easy way to compare htmls. For content you can use git, but that doesn't help with design (e.g. CSS) changes that might be quite catastrophic.
 </p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org000000c">
-<h3 id="org000000c"><a class="headerlink" href="#org000000c">¶</a><span class="todo TODO">TODO</span> various difficulties</h3>
-<div class="outline-text-3" id="text-org000000c">
 <p>
-perhaps via
-</p>
+At the moment, I'm using some hacky semi-automatic screenshot comparison.</p>
 </div>
 </div>
 </div>
