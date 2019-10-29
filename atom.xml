@@ -86,7 +86,7 @@
 <article>
     <section class="post-title">
     <h1>Python: safer typed than you think</h1>
-    <div class="summary">mypy-driven error handling, exception mechanisms in other languages, fun with pattern matching and type variance</h2>
+    <div class="summary">mypy assisted error handling, exception mechanisms in other languages, fun with pattern matching and type variance</h2>
     </section>
     <!-- are sections appropriate for that? -->
 
@@ -137,41 +137,41 @@ You might learn few things about error handling in different languages, pattern 
 <p>
 I am somewhat obsessed with personal data and information, analyzing data for quantified self, lifelogging etc. 
 I am trying to integrate all my information sources and make it easy to access and search.
-You can see some examples <a href="https://github.com/karlicoss/my">my</a> package, Orger <a href="https://beepb00p.xyz/orger.html">part I</a>, <a href="https://beepb00p.xyz/orger-todos.html">part II</a>.
+You can see some examples in <a href="https://github.com/karlicoss/my">my</a> package and Orger: <a href="https://beepb00p.xyz/orger.html">part I</a>, <a href="https://beepb00p.xyz/orger-todos.html">part II</a>.
 </p>
 <p>
-To get this data and manipulate it via programming, of course you need to extract it first (e.g. from json/csv), parse it (e.g. from plaintext),
+To get this data, manipulate with it and interact with, of course, you need to extract it first (e.g. from json/csv), parse it (e.g. from plaintext),
 or even worse, reverse engineer it from vendor locked formats (e.g. in my <a href="https://github.com/karlicoss/kobuddy">kobo parsing library</a>).
 </p>
 <p>
 If you ever worked with data and had to parse some semi-structured data (let alone natural language), or scraped web pages, you might start getting flashbacks now.
-Undocumented APIs, bad characters, cryptic regexes, corrupt fields, unexpected nulls, logical inconsistencies, all sorts of things. Ew. <b>Data is messy</b>. 
+Undocumented APIs, bad characters, cryptic regexes, corrupt fields, unexpected nulls, logical inconsistencies, all sorts of things.
+You will almost never get it right from the first few attempts, and then when it finally does what your want… it breaks after couple of days because of course you missed some edge cases or data provider just gives you utter garbage for no reason. And thing you've spent so much effort on stops working, spams your mailbox and requires attention.
 </p>
 <p>
-You will almost never get it right from the first few attempts, and then when it finally does what your want… it breaks after couple of days because of course you missed some edge cases or data provider just gives you utter garbage. And thing you spend so much effort on stops working, spams your mailbox and requires attention.
+Ew. <b>Data is messy</b>. 
 </p>
 <p>
 Most modern programming languages are fairly unforgiving to unexpected, and would crash at the slightest opportunity.
 Some languages do have quirks (e.g. 'undefined' in JS), but generally well written software aborts very soon after something unexpected starts happening.
+And for good reasons:
+</p>
+<ul class="org-ul">
+<li><p>
+if it didn't, your program's state would lose the properties the author intended it to have.
 </p>
 <p>
-And for a good reason: if it didn't, your program's state would lose the invariants the author intended it to have.
-Ignoring the errors will almost surely prevent the program from getting to desired result anyway, end up with even more severe inconsistencies.
-Or, how about formatting your disk if you're really unlucky?
+Ignoring the errors will almost surely prevent the program from getting to desired result anyway and end up with even more severe, or potentially catastrophic inconsistencies. How about formatting your disk if you're <i>really</i> unlucky?
+</p></li>
+<li>another good reason to fail fast is that it makes the programmer more likely to notice and then fix the bug</li>
+</ul>
+<p>
+So in most cases, as long as you can get away with it, it's <b>good to throw exception or abort</b> the program immediately in some way.
+You might not be able to do that if you're literally doing rocket science or <a href="https://isocpp.org/wiki/faq/exceptions#why-exceptions">flight control software</a>, but most of us aren't.
+For typical software engineering problems, some errors are less crucial and more manageable than other errors. So we try to be pragmatic when we program, evaluate failure risks and use try/catch mechanisms where appropriate.
 </p>
 <p>
-Another good reason to fail fast is that it makes programmer more likely to notice and then fix the bug.
-</p>
-<div><span class="before-aside">
-So generally as long as you can get away with it, it's <b>good to throw exception or abort</b> the program immediately in some way.
-
-</span><aside>you might not be able to get away with it if you're literally doing rocket science or <a href="https://isocpp.org/wiki/faq/exceptions#why-exceptions">flight control software</a></aside></div>
-<p>
-On the other hand, some errors are less crucial and more manageable than other. So we tend to be realistic when we program, evaluate different failure risks 
-and use try/catch mechanisms where appropriate.
-</p>
-<p>
-Now, I sure we as an engineers we could handwave about about that stuff forever, so let me be more specific straightaway
+Now, I'm sure we as an engineers we could handwave about about that stuff forever, so let me be more specific straightaway
 and introduce a motivating <b>real life problem</b> that I actually had to solve.
 </p>
 </div>
@@ -435,8 +435,8 @@ Sometimes it's inevitable though, e.g. I'm giving an example <a href="#dataframe
 An abstraction that stood the test of time well is a container that holds a <b>result</b> representing one of two:
 </p>
 <ul class="org-ul">
-<li><b>success value, representing the desired outcome</b> of type <code>T</code></li>
-<li>or <b>'error value', holding error description</b> of type <code>E</code>.</li>
+<li><b>success value</b>, representing the <b>desired outcome</b> of type <code>T</code></li>
+<li>or <b>'error value'</b>, holding <b>error description</b> of type <code>E</code>.</li>
 </ul>
 <p>
 I will try to stick to the same semantics further down, 'result' typically meaning that it could be either desired value or error.
@@ -1025,6 +1025,7 @@ Success: no issues found in 1 source file
 Yay, it works and typechecks. Now you can decide for yourself how clean it is by comparing it side by side with <a href="#org0000002">the original code</a> without error handling. You'd see that the only differences (apart from indentation) is code for error handling.
 </p>
 <p>
+<a name="upsides"></a>
 Here's what I like about this approach: 
 </p>
 <ul class="org-ul">
@@ -1049,15 +1050,15 @@ You can completely ignore mypy and error handling, until you're happy, then you 
 <b>no memory overhead</b> caused by constant wrapping and unwrapping. 
 </p>
 <p>
-I don't want to make claims about CPU here, e.g. on my computer, isolated micro benchmark with <code>isinstance(r, Exception)</code> runs in 50ns,
-whereas isolated benchmark using <code>is_err()</code> call and then unpacking <code>err()</code> runs is 60ns.
+I don't really want to make claims about CPU here. I tried isolated micro benchmarking; suing <code>isinstance(r, Exception)</code> runs in 50ns,
+using <code>is_err()</code> call and then unpacking <code>err()</code> runs is 60ns.
 But these numbers might not make sense under a realistic data flow.
 </p></li>
 <li><p>
-<b>easy to operate and transform</b> values, you just write regular Python code without any artificial lambdas or functions.
+<b>easy to operate and transform</b> values, you just write regular Python code without extra lambdas or kludgy local functions.
 </p>
 <p>
-If you don't need to handle the error, you can just yield it one level up as we do in <code>iter_books</code>.
+If you don't need to handle the error, you can just yield it up the call stack as we do in <code>iter_books</code>.
 </p></li>
 <li><b>doesn't require modifying existing types</b>, and introducing invalid states that signal errors (mentioned <a href="#error_object">here</a>)</li>
 <li><p>
@@ -1523,8 +1524,8 @@ Have to admit, I was one of these haters few years ago. But in this case Python 
 writing is damn hard
 </p>
 <p>
-Literate programming is even harder, however I'm glad I've started doing this in emacs and org mode, 
-that saved me massive amounts of code duplication and reference rot.
+Literate programming is even harder, however I'm glad I've started doing this in Emacs and Org mode.
+That saved me from otherwise massive amounts of code duplication and reference rot.
 </p></li>
 </ul>
 </div>
@@ -4351,8 +4352,6 @@ Ideally everything should work while fully offline without relying on any servic
 <p>
 Currently it's not always feasible due to technical complications (e.g. having to selfhost), but this is a good value to pursue.
 </p></li>
-</ul>
-<ul class="org-ul">
 <li><p>
 <a name="social_function"></a> <b><b>Social and collaborative</b></b>
 </p>
