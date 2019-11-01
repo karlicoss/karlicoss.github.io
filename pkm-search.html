@@ -9,11 +9,11 @@
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
         
-        <meta name="keywords" content="pkm">
+        <meta name="keywords" content="pkm search emacs orgmode">
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
-        <title>Searching and accessing TODO | Mildly entertainingᵝ</title>
+        <title>Building personal search infrastructure | Mildly entertainingᵝ</title>
 
         <link rel="stylesheet" href="./css/default.css?v=2" />
         <link rel="stylesheet" href="./css/links.css?v=2" />
@@ -68,8 +68,8 @@
 
 <article>
     <section class="post-title">
-    <h1>Searching and accessing TODO</h1>
-    <div class="summary"></h2>
+    <h1>Building personal search infrastructure</h1>
+    <div class="summary">How I search and access my knowledge; demo of using Emacs and Ripgrep as a code and information search engine.</h2>
     </section>
     <!-- are sections appropriate for that? -->
 
@@ -78,188 +78,179 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#why">1. Why search?</a>
+<li><a href="#why">1. Why search?</a></li>
+<li><a href="#what">2. What do I search?</a></li>
+<li><a href="#personal_information">3. Searching in personal information</a>
 <ul>
-<li><a href="#org0000000"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-17 00:55]</span></span> instant search changes the way you think</a></li>
+<li><a href="#org_mode">Org mode notes</a></li>
+<li><a href="#other">Other plaintext, chats and social media</a></li>
 </ul>
 </li>
-<li><a href="#org0000005">2. What do I search?</a>
+<li><a href="#recoll">4. Recoll</a></li>
+<li><a href="#android">5. Searching on Android</a>
 <ul>
-<li><a href="#org0000004"><span class="todo TODO">TODO</span> misc advice?</a></li>
-</ul>
-</li>
-<li><a href="#org0000006">3. How do I search?</a></li>
-<li><a href="#org0000007">4. <span class="todo TODO">TODO</span> <span class="priority">[B]</span> Orger/social media</a></li>
-<li><a href="#phone">5. <span class="done DONE">DONE</span> Searching on Android</a>
-<ul>
-<li><a href="#org0000008">Orgzly</a></li>
-<li><a href="#org0000009">Docsearch +</a></li>
+<li><a href="#org0000009">Orgzly</a></li>
+<li><a href="#org000000a">Docsearch +</a></li>
 <li><a href="#recoll_web">Recoll Web</a></li>
 </ul>
 </li>
-<li><a href="#code">6. Searching code</a>
+<li><a href="#web">6. Web search</a>
 <ul>
-<li><a href="#org000000c">My ideal code search tool</a></li>
-<li><a href="#org000000d"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-02 23:40]</span></span> maybe use sufs? not sure..</a></li>
-<li><a href="#org000000e"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-20 18:50]</span></span> could comment here after I publish: https://github.com/BurntSushi/ripgrep/issues/95</a></li>
-<li><a href="#org0000012">Examples:</a></li>
-<li><a href="#org0000013"><span class="todo TODO">TODO</span> <span class="priority">[D]</span> add search in filenames for code?</a></li>
-<li><a href="#org0000014"><span class="todo TODO">TODO</span> about bash<sub>profile</sub> ans stuff. Arguably, emacs is more like a shell so it makes sense to use same interactive aliases etc?</a></li>
-<li><a href="#org0000015"><span class="todo TODO">TODO</span> would be nice to generate grep context in characters…</a></li>
-<li><a href="#org0000016"><span class="todo TODO">TODO</span> incremental search</a></li>
-<li><a href="#org0000017"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> set max cols to current emacs window width</a></li>
-<li><a href="#org0000018"><span class="timestamp-wrapper"><span class="timestamp">[2019-09-05 20:35]</span></span> still thinking about fuzzy finding etc…</a></li>
-<li><a href="#org000001a"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-05-02 00:01]</span></span> having all of my code cloned somewhere is quite useful to search in familiar code   <span class="tag"><span class="coding">coding</span> <span class="pkm">pkm</span> <span class="blog">blog</span></span></a></li>
-<li><a href="#org000001b"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> implement collecting repos across the filesystem? not sure how to cache…</a></li>
-<li><a href="#org000001c"><span class="todo TODO">TODO</span> if I have a repository I search often (e.g. Hakyll/org-mode), I just clone it locally and that's it</a></li>
+<li><a href="#org000000d">Firefox enhancements</a></li>
+<li><a href="#org000000e">Chrome enhancements</a></li>
 </ul>
 </li>
-<li><a href="#browser">7. Browser search</a></li>
-<li><a href="#org0000025">8. <span class="priority">[B]</span> Persistent swoop/daemon</a>
+<li><a href="#code">7. Searching in code</a>
 <ul>
-<li><a href="#org000001f"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> use 'spacetime' as swoop demo?   <span class="tag"><span class="blog">blog</span> <span class="search">search</span></span></a></li>
-<li><a href="#org0000020"><span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-06 00:32]</span></span> emacsorphanage/helm-swoop: Efficiently hopping squeezed lines powered by Emacs helm interface   <span class="tag"><span class="gr">gr</span></span></a></li>
-<li><a href="#org0000021"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> swoop-change contrast a bit?   <span class="tag"><span class="blog">blog</span> <span class="search">search</span></span></a></li>
-<li><a href="#org0000022"><span class="priority">[C]</span> can't use rifle because I've got some legacy non-org mode files + various chat logs   <span class="tag"><span class="search">search</span> <span class="swoop">swoop</span></span></a></li>
-<li><a href="#org0000024">tried find-file-literally and it's not a speedup at all   <span class="tag"><span class="search">search</span> <span class="swoop">swoop</span></span></a></li>
+<li><a href="#org0000010">Why?</a></li>
+<li><a href="#org0000011">What do I want</a></li>
+<li><a href="#org0000012">Existing code search tools</a></li>
+<li><a href="#org0000014">Solution: use Emacs and Ripgrep</a></li>
 </ul>
 </li>
-<li><a href="#org0000026">9. Future and my holy grail</a></li>
-<li><a href="#org000002a">10. <span class="todo START">START</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-02 23:33]</span></span> post about search   <span class="tag"><span class="search">search</span></span></a>
+<li><a href="#appendix_cloudmacs">8. Appendix: searching away from computer</a></li>
+<li><a href="#appendix_daemon">9. Appendix: Lightning fast Emacs</a>
 <ul>
-<li><a href="#org0000027"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-03 20:09]</span></span> mention tags for people</a></li>
+<li><a href="#org0000017">running daemon on startup</a></li>
 </ul>
 </li>
-<li><a href="#org000002d">11. <span class="todo TODO">TODO</span> <span class="priority">[B]</span> my setup: real and typical usecase   <span class="tag"><span class="pkm">pkm</span> <span class="orger">orger</span></span></a>
-<ul>
-<li><a href="#org000002b"><span class="timestamp-wrapper"><span class="timestamp">[2019-10-03 19:56]</span></span> e.g. one problem is solves is figuring out content you already processed?</a></li>
-<li><a href="#org000002c"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-28 23:02]</span></span> I guess have it for each?</a></li>
+<li><a href="#appendix_emacs">10. Appending: general Emacs tips</a></li>
+<li><a href="#future">11. Future and my holy grail of search</a></li>
+<li><a href="#org000001b">12. --</a></li>
 </ul>
-</li>
-<li><a href="#org0000032">12. <span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-03 21:33]</span></span> invoking Emacs</a>
-<ul>
-<li><a href="#org000002e"><span class="todo TODO">TODO</span> present my script</a></li>
-<li><a href="#org000002f"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-03 21:37]</span></span> separate instance for swoop?</a></li>
-<li><a href="#org0000030"><span class="todo TODO">TODO</span> <span class="priority">[A]</span> step 1: make sure your tools launch lightning fast.</a></li>
-<li><a href="#org0000031"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-03 23:33]</span></span> spacemacs hook?</a></li>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000000">
+<h2 id="why"><a class="headerlink" href="#why">¶</a><span class="section-number-2">1</span> Why search?</h2>
+<div class="outline-text-2" id="text-why">
+<div><span class="before-aside">
+Having information in the digital form, collecting and writing notes is incredibly valuable.
+Our brains are good at associations, pattern matching and creative thinking, not storing arrays of structured data, and external memory is one of the main thinking hacks computers aid us with. 
+</span><aside>see <a class="post-tag" href="./tags.html#extendedmind">#extendedmind</a></aside></div>
+<p>
+However this information is not so useful if you can't access and search it quickly.
+Instant search changes the way you think. Ever got sense of flow while working through some problem, and trying different things from Stackoverflow or documentation?
+</p>
+<p>
+These days, if you have decent connection, you are seconds away from finding almost any public knowledge in the internet.
+However, there is another aspect of information: personal and specific to <i>your</i> needs, work and hobbies.
+It's <i>your</i> todo list, <i>your</i> private notes, books <i>you</i> are reading. Of course, it's not integrated with the outside world, hence the experience of interacting with it is very different.
+</p>
+<p>
+Some examples:
+</p>
+<ul class="org-ul">
+<li><div><span class="before-aside">
+To find something from <i>my</i> Messenger history with a friend, I need to be online, open Facebook, navigate to search and use the interface Facebook's employees thought convenient (spoiler: it sucks) 
+</span><aside><a class="post-tag" href="./tags.html#offline">#offline</a></aside></div>
+<p>
+It's <i>my</i> information, something that came out from my brain. Why can't I have it available anywhere, anytime, presented the way I prefer?
+</p></li>
+<li><p>
+To find something in <i>my</i> Kobo ebook, I need to reach my device physically and type the query using the virtual keyboard (yep, e-ink lag!). Not a very pleasant experience.
+</p>
+<p>
+It's something <i>I</i> own and have read. Why does it have to be so hard?
+</p></li>
 </ul>
-</li>
-<li><a href="#org0000033">13. <span class="todo TODO">TODO</span> <span class="priority">[B]</span> daemon starts up, but I guess need to bind command to post-startup hook. perhaps show a notification or something?</a></li>
-<li><a href="#org0000036">14. <span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-04 00:30]</span></span> killing emacs</a>
-<ul>
-<li><a href="#org0000034"><span class="timestamp-wrapper"><span class="timestamp">[2019-10-04 00:30]</span></span> it's pretty confusing!</a></li>
-<li><a href="#org0000035"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-04 01:13]</span></span> we have to dig into</a></li>
-</ul>
-</li>
-<li><a href="#org000003b">15. <span class="todo START">START</span> <span class="priority">[C]</span> Ideally helm search would be similar to so showing in context like intellij   <span class="tag"><span class="pkm">pkm</span> <span class="search">search</span> <span class="swoop">swoop</span></span></a>
-<ul>
-<li><a href="#org0000038"><span class="timestamp-wrapper"><span class="timestamp">[2019-05-11 15:54]</span></span> helm-swoop also helm-occur?</a></li>
-<li><a href="#org0000039"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-08-20 21:39]</span></span> hmm maybe should use swoop for noraml project search too?</a></li>
-<li><a href="#org000003a"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-14 22:46]</span></span> dunno, could try swoop in fundamental mode?</a></li>
-</ul>
-</li>
-<li><a href="#org000003c">16. <span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-15 21:12]</span></span> setting up list of targets for helm/swoop</a></li>
-<li><a href="#org000003d">17. emacs/WM keybindings</a></li>
-<li><a href="#org000003e">18. <span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-12-07 21:49]</span></span> Helm-swoop by visual lines? /r/emacs   <span class="tag"><span class="pkm">pkm</span> <span class="search">search</span> <span class="blog">blog</span></span></a></li>
-<li><a href="#org0000040">19. <span class="todo TODO">TODO</span> search enhancements in firefox?   <span class="tag"><span class="pkm">pkm</span> <span class="search">search</span> <span class="blog">blog</span></span></a>
-<ul>
-<li><a href="#org000003f"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-16 23:36]</span></span> highlight all</a></li>
-</ul>
-</li>
-<li><a href="#org0000041">20. <span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-14 23:15]</span></span> find configuration for emacs…</a></li>
-<li><a href="#org0000042">21. <span class="todo TODO">TODO</span> <span class="priority">[C]</span> for future: full text web page history indexing? gonna require bookmark archiver..</a></li>
-<li><a href="#org0000043">22. <span class="priority">[B]</span> Recoll</a></li>
-<li><a href="#org0000044">23. <span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-20 21:04]</span></span> Helm: search within buffer feature? - Emacs Stack Exchange   <span class="tag"><span class="gr">gr</span></span></a></li>
-</ul>
+<p>
+Such things are pretty frustrating to me, so I've been working on making them easier. Search has to be <a href="https://en.wikipedia.org/wiki/Incremental_search">incremental</a>, fast and as convenient to use as possible.
+I'll be sharing some of workflows, tricks and thoughts in this post.
+</p>
+<p>
+The post is geared towards using Emacs and Org-mode, but hopefully you'll find some useful tricks for your current tools and workflow even if you don't.
+There is (almost) nothing inherently special about Emacs, I'm sure you can achieve similar workflows in other modern text editors given they are flexible enough.
+</p>
+<p>
+Note: throughout the post I will link to my <a href="https://github.com/karlicoss/dotfiles-emacs">emacs config</a> snippets. 
+To prevent code references from staling, I use permalinks, but check master branch as well in case of patches or more comments in code.
+</p>
 </div>
 </div>
 <div class="outline-2" id="outline-container-org0000001">
-<h2 id="why"><a class="headerlink" href="#why">¶</a><span class="section-number-2">1</span> Why search?</h2>
-<div class="outline-text-2" id="text-why">
+<h2 id="what"><a class="headerlink" href="#what">¶</a><span class="section-number-2">2</span> What do I search?</h2>
+<div class="outline-text-2" id="text-what">
 <p>
-Writing notes and capturing information is valuable. However it's useless if you can't access and search it quickly.
+I'll write about searching in
 </p>
-<p>
-TODO collecting and writing notes 
-</p>
-<p>
-TODO I was annoyed at not being capable to quickly search and access TODO
-</p>
-<p>
-TODO note throughout the post I will link to my emacs config snippets. 
-I link to permalinks (referred by commit hash instead of 'master'), TODO. However please check master as well in case of patches etc
-</p>
-<p>
-TODO
-</p>
-<p>
-This is more geared towards emacs and org-mode, but hopefully you'll find some useful tricks for your current tools and workflow even if you don't.
-</p>
-<p>
-While I'm using and referring to Emacs, there is nothing special about it, 
-and I'm sure you can achieve similar workflows in other modern text editors given they are flexible enough.
-</p>
-<p>
-I feel that robust and instantaneous search is one of the main thinking hacks computers give over human brains, and in my worksflow I try to make sure search is as easy and quick to perform as possible.
-</p>
-</div>
-<div class="outline-3" id="outline-container-org0000000">
-<h3 id="org0000000"><a class="headerlink" href="#org0000000">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-17 00:55]</span></span> instant search changes the way you think</h3>
-<div class="outline-text-3" id="text-org0000000">
-<p>
-e.g. ever got sense of flow when solving some annoying problem/compilation error, searching and trying on Stackoverflow?
-</p>
-</div>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000005">
-<h2 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><span class="section-number-2">2</span> What do I search?</h2>
-<div class="outline-text-2" id="text-2">
 <ul class="org-ul">
 <li>my personal notes, tasks and knowledge repository (this blog included)</li>
 <li>all digital trace I'm leaving (tweets, internet comments, annotations)</li>
-<li>chat logs with people so I can quickly jump and restore context</li>
-<li>full text books and papers I'm reading</li>
-<li>TODO code that I'm writing</li>
-<li>information on the internet, but that goes kinda without saying   
-even here you can be more effecient</li>
+<li>chat logs with people</li>
+<li>books and papers I'm reading</li>
+<li>code that I'm working on</li>
+<li>information on the Internet (duh!)</li>
 </ul>
 </div>
-<div class="outline-3" id="outline-container-org0000004">
-<h3 id="org0000004"><a class="headerlink" href="#org0000004">¶</a><span class="todo TODO">TODO</span> misc advice?</h3>
-<div class="outline-text-3" id="text-org0000004">
-</div>
-<div class="outline-4" id="outline-container-org0000002">
-<h4 id="org0000002">e.g. using projectile search? not sure if anything else could be interesting..</h4>
-</div>
-<div class="outline-4" id="outline-container-org0000003">
-<h4 id="org0000003"><span class="todo TODO">TODO</span> rrr –line-number changing –follow ~/configs-nogit/emacs/ag-targets –max-columns 150   <span class="tag"><span class="blog">blog</span> <span class="search">search</span></span></h4>
-<div class="outline-text-4" id="text-org0000003">
-</div>
-</div>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000006">
-<h2 id="org0000006"><a class="headerlink" href="#org0000006">¶</a><span class="section-number-2">3</span> How do I search?</h2>
 </div>
 <div class="outline-2" id="outline-container-org0000007">
-<h2 id="org0000007"><a class="headerlink" href="#org0000007">¶</a><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> <span class="priority">[B]</span> Orger/social media</h2>
-<div class="outline-text-2" id="text-4">
+<h2 id="personal_information"><a class="headerlink" href="#personal_information">¶</a><span class="section-number-2">3</span> Searching in personal information</h2>
+<div class="outline-text-2" id="text-personal_information">
 <p>
-I find having to navigate to specific services TODO
+By personal information I refer to things like todo list, personal wiki or whatever you use to store information relevant to your life.
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000003">
+<h3 id="org_mode"><a class="headerlink" href="#org_mode">¶</a>Org mode notes</h3>
+<div class="outline-text-3" id="text-org_mode">
+<p>
+For the most part, I keep things in Org mode. Apart from any regular means of plaintext search (I'll write about it <a href="#other">later</a>), for me it's important to search over tags:
+</p>
+<ul class="org-ul">
+<li><a href="https://orgmode.org/manual/Matching-tags-and-properties.html"><code>org-tags-view</code></a> is available by default and an easy way to run simple tag searches</li>
+<li><p>
+<a href="https://github.com/alphapapa/org-ql#screenshots">org-ql</a>
 </p>
 <p>
-What is more, often you don't remember whether or not you were discussing something on Telegram or Facebook or Reddit, etc; so having a unified search over all of them is extremely helpful.
+It's a relatively new package, with new query syntax as the main feature, which is much easier to use and remember than builtin Org query syntax: <a href="https://github.com/alphapapa/org-ql#comparison-with-org-agenda-searches">comparison</a>.
 </p>
 <p>
-Basically, I'm mirroring most of my information as org-mode.
-You can read about it in detail here: <a href="./orger.html">part I</a>, <a href="./orger-todos.html">part II</a>.
+I mainly use these commands:
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/alphapapa/org-ql#helm-org-ql"><code>helm-org-ql</code></a> for <b>incremental</b> search in the current buffer</li>
+<li><a href="https://github.com/alphapapa/org-ql#org-ql-search"><code>org-ql-search</code></a> <b>interactively</b> prompts you for the search target, sort and grouping</li>
+</ul></li>
+</ul>
+<p>
+Another notable mention is <a href="https://github.com/alphapapa/org-rifle#screenshots">org-rifle</a>, which is an entry based search, presenting headings along with the matched content in Helm buffer.
+However as the author <a href="https://github.com/alphapapa/org-rifle/issues/42#issuecomment-544114082">mentioned</a> it might be obsoleted by org-ql soon. 
 </p>
 <p>
-That lets me find anything I've tweeted/bookmarked on Pinboard/highlighted in Instapaper or Kobo/upvoted on Reddit, etc. instantaneously.
+Here are some typical workflows with my org-mode:
+</p>
+<ul class="org-ul">
+<li><p>
+<a id="org0000002"></a> tags for friends
 </p>
 <p>
-Few other plaintext mirrors I'm using:
+I see an interesting article or think of something which would be good to share with a friend, but at the moment it's not quite a good time to send it.  I can just capture it and attach a tag (e.g. <code>ann</code> or <code>jeremy</code>). That way next time we chat I can just look up things under their tag and send them.
+</p>
+<p>
+It works the other way around as well: if they send me a link or ask me to do something, but I can't do it immediately. I have a special script that converts chat messages into todo items and automatically attach the corresponding tag. I write more about it <a href="./orger-todos.html#telegram2org">here</a>.
+</p></li>
+<li><p>
+assembling blog posts
+</p>
+<p>
+Unfortunately, I can't just sit and write comprehensible texts without preparation.
+Typically I have thoughts on the topic now and then, which I just note down and mark with the tag.
+When I feel it's time to prepare the post, I can just search by the tag (e.g. <code>tags:search</code> for this post), and refile the items into the file with the post draft.
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000006">
+<h3 id="other"><a class="headerlink" href="#other">¶</a>Other plaintext, chats and social media</h3>
+<div class="outline-text-3" id="text-other">
+<p>
+As I mentioned, I find having to switch to the browser, wait till the service loads and cope with crappy search implementations to services very distracting and frustrating.
+</p>
+<p>
+What is more, often you don't remember whether or not you were discussing something on Telegram or Facebook or Reddit, etc; so having a unified search over all of your stuff is extremely helpful.
+</p>
+<p>
+For instant messaging, I'm using plaintext mirrors, so chat history is always available in plaintext on my computers:
 </p>
 <ul class="org-ul">
 <li><a href="https://github.com/karlicoss/telegram-backup-to-txt">Telegram messages</a>
@@ -267,21 +258,87 @@ Didn't bother with org-mode because files would be too huge and there isn't much
 <li><a href="https://github.com/Totktonada/vk_messages_backup">Vkontakte messages</a>
 Sadly export tool stopped working because of API restrictions, but I'm not using VK much anymore either. At least I got historic messages.</li>
 </ul>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org000000b">
-<h2 id="phone"><a class="headerlink" href="#phone">¶</a><span class="section-number-2">5</span> <span class="done DONE">DONE</span> Searching on Android</h2>
-<div class="outline-text-2" id="text-phone">
 <p>
-Most of my notes and knowledge repositoriry are plaintext, so it is easily and continuously shared on my phone via Dropbox/Syncthing.
+Most services where I can comment, write or leave annotation, I'm mirroring as org-mode.
+I write about it in detail here: <a href="./orger.html">part I</a>, <a href="./orger-todos.html">part II</a>.
+</p>
+<p>
+That gives me source data for a search engine over anything I've ever:
+</p>
+<ul class="org-ul">
+<li>tweeted</li>
+<li>bookmarked on Pinboard</li>
+<li>highlighted in Instapaper or Kobo</li>
+<li>saved or upvoted on Reddit</li>
+<li>etc., etc.</li>
+</ul>
+<p>
+All these files are either non-Org or somewhat heavy for structured Org-mode search. In addition, I have many old files from my pre-orgmode era when I was using Gitit or Zim.
+</p>
+<p>
+To search over them, I'm using Emacs and Ripgrep (you can read why <a href="#org0000004">later</a>):
+</p>
+<p>
+<a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L130-L134"><code>my/search</code></a>
+runs ripgrep against <code>my/search-targets</code> variable contains paths to notes, chat logs, Orger outputs etc.
+</p>
+<p>
+The interesting bit about <code>my/search</code> is <a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L87-L127"><code>--my/one-off-helm-follow-mode</code></a> call. It's a somewhat horrible hack that  automatically enables helm-follow mode so you don't have to press <code>C-c C-f</code> every time you invoke helm.
+</p>
+<p>
+Finally, to make sure I can invoke search in an instance, I'm using a <a href="#org0000005">global keybinding</a>.
+</p>
+<p>
+Here's a <b>demo</b> <a href="https://file.globalupload.io/wu7HYYyJaY.gif">gif (5Mb)</a> of using this.
+You can see that as a result, I'm getting my Kobo highlights (<code>kobo.org</code>), my reading list (<code>read.org</code>) and even some video (<code>youtube.org</code>)!
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000008">
+<h2 id="recoll"><a class="headerlink" href="#recoll">¶</a><span class="section-number-2">4</span> Recoll</h2>
+<div class="outline-text-2" id="text-recoll">
+<p>
+Recoll is an indexer that runs as daemon (or a regular cron job) and a full text search tool.
+</p>
+<p>
+It supports many <a href="https://www.lesbonscomptes.com/recoll/features.html">formats and other features</a>, so I suggest checking them out for yourself.
+</p>
+<p>
+Even though I index all my documents, I find it quicker to run grep I described above to search in plaintext. 
+So for me, Recoll is mostly for searching and quickly jumping to results in <b>PDFs and EPUBs</b> (see <a href="https://www.lesbonscomptes.com/recoll/pics/recoll-pdf-snippets.html">screenshot</a>).
+</p>
+<p>
+There is <a href="https://github.com/emacs-helm/helm-recoll">helm-recoll</a> Emacs module, but I found it a bit awkward to use, and Recoll GUI feels significantly superior.
+Basically only thing helm-recoll does is presenting you list of filenames that match your query.
+It feels that it should be straightforward to modify the module and integrate abstract, snippets and other things you can query Recoll for.
+</p>
+<p>
+Considering I don't need use Recoll it too often, I just gave up on helm-recoll and using GUI.
+</p>
+<p>
+I'm also running a <a href="https://github.com/koniu/recoll-webui">Web UI</a> on my VPS, so I can use it from my phone, or potentially from other computers.
+</p>
+<p>
+Recoll's distinguishing features are proper <a href="https://www.lesbonscomptes.com/recoll/usermanual/webhelp/docs/RCL.SEARCH.LANG.html">search query language</a>
+and <a href="https://www.lesbonscomptes.com/recoll/usermanual/webhelp/docs/RCL.INDEXING.MONITOR.html">realtime, inotify based indexing</a>.
+I don't have that much data yet to benefit massively from proper search queries, but I can see that it could be potentially useful in future as amount of personal data grows.
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000000c">
+<h2 id="android"><a class="headerlink" href="#android">¶</a><span class="section-number-2">5</span> Searching on Android</h2>
+<div class="outline-text-2" id="text-android">
+<p>
+Most of my notes and knowledge repository are plaintext, so it is easily and continuously shared on my phone via Dropbox/Syncthing.
 </p>
 <p>
 Since using Emacs on Android is hardly a meaningful experience, I'm working around it by using other apps.
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000008">
-<h3 id="org0000008"><a class="headerlink" href="#org0000008">¶</a><a href="https://github.com/orgzly/orgzly-android">Orgzly</a></h3>
-<div class="outline-text-3" id="text-org0000008">
+<div class="outline-3" id="outline-container-org0000009">
+<h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><a href="https://github.com/orgzly/orgzly-android">Orgzly</a></h3>
+<div class="outline-text-3" id="text-org0000009">
 <p>
 I can't recommend it enough, it's got many things done right, very fast and the code is extremely readable and well tested so it's easy to contribute.
 </p>
@@ -293,24 +350,23 @@ You can save <a href="https://lh3.googleusercontent.com/FweBE2T3T3wZwJC64DQgtGj8
 Searches can be displayed as persistent widgets, e.g. I find convenient to have a phone screen dedicated to 'Buy' search (<code>t.buy</code> query) or 'Do at work' search (<code>t.@work</code> query).
 </p>
 <p>
-I also keep tags for some people, so when I socialize with them I can quickly search by the corresponding tag (e.g. <code>t.ivan</code>) and discuss things that I've noted to discuss with them before. TODO meh?
+As I described <a href="#org0000002">above</a>, I keep few saved search queries for some friends so I can recall what I wanted to discuss with them.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000009">
-<h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><a href="https://play.google.com/store/apps/details?id=com.docsearch.pro">Docsearch +</a></h3>
-<div class="outline-text-3" id="text-org0000009">
+<div class="outline-3" id="outline-container-org000000a">
+<h3 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><a href="https://play.google.com/store/apps/details?id=com.docsearch.pro">Docsearch +</a></h3>
+<div class="outline-text-3" id="text-org000000a">
 <p>
-Docsearch is a fairly unknown app (e.g. zero search results on Reddit or twitter) which I know no alternatives for.  
-It's a 
+Docsearch is a not very well-known (e.g. zero search results on Reddit or Twitter), but I don't know any alternatives for it.
 </p>
 <p>
-Fulltext indexing
-snippets
+It's a fulltext indexing and search app for plaintext files, but apparently it even supports EPUBs and PDFs.
+<a href="https://lh3.googleusercontent.com/psPhmFoawEzwZQpwBGgVz42ojnR-uAi70Li4DBc4Z13wLOTannvT2suaxZQA9YX_Bg=w2560-h1295">Here's</a> how matches list looks. Screenshots on Google Play give a pretty good idea what the app does.
 </p>
 <p>
-I find it convenient to use for quick search over things that are not imported in orgzly, e.g. <code>.txt</code> chat logs (Telegram, VK) and huge org-mode files TODO link to orger?
-TODO screenshot!
+I find it convenient for quick search over things that are not imported in Orgzly, e.g. <code>.txt</code> chat logs (Telegram, VK) and huge org-mode files
+I described <a href="#other">above</a>.
 </p>
 <p>
 It's a bit backwards in terms of UI (even though I like that it's compact and functional), but main downside is it's not opensource.
@@ -318,195 +374,18 @@ I'd be extremely happy to replace this with some open source application, so ple
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000a">
+<div class="outline-3" id="outline-container-org000000b">
 <h3 id="recoll_web"><a class="headerlink" href="#recoll_web">¶</a>Recoll Web</h3>
 <div class="outline-text-3" id="text-recoll_web">
 <p>
-On the rare occasions when I need to search in pdfs or books (which I don't sync on my phone)
-, I just use Recoll <a href="https://github.com/koniu/recoll-webui">Web UI</a> that I'm selfhosting.
+On the rare occasions when I need to search in pdfs or books (which I don't sync on my phone) , I just use Recoll <a href="https://github.com/koniu/recoll-webui">Web UI</a> that I'm selfhosting.
 </p>
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000001d">
-<h2 id="code"><a class="headerlink" href="#code">¶</a><span class="section-number-2">6</span> Searching code</h2>
-<div class="outline-text-2" id="text-code">
-<p>
-TLDR: I tried different existing code search tools, was disappointed and ended up using Emacs + ripgrep.  
-</p>
-<p>
-TODO motivation section + provide examples? prototyping
-I write a lot of code for various personal purposes and experimenting.
-I also tend to create a git repository at a slightest opportunity just as a means of code backup/rollback (and often it results in actual projects, so I need a repository anyway).
-</p>
-<p>
-These repositories are scattered across the filesystem and TODO want to search or ???
-</p>
-<p>
-Got a habit of leaving lots of TODO and FIXME items scattered across the code
-</p>
-<p>
-would be cool to have some sort of agenda view (e.g. intellij provides that, but normally)
-</p>
-<p>
-my code inevitable has few FIXMEs of varying degrees of severity
-</p>
-<p>
-I have lots of small repositories and trying to connect everything TODO. Often you remember the usecase you've already had so being able to quickly search across all of your repositores 
-</p>
-<p>
-So, I wanted some code search and indexing tool which could collect all the code on my filesystem and let me search throught it.
-It sounds as a fairly straightforward thing to wish, but to my surprise, none of existing tools I found and tried helped me:
-</p>
-<ul class="org-ul">
-<li><p>
-<a href="https://github.com/sourcegraph/sourcegraph">Sourcegraph</a>
-</p>
-<p>
-Lets you index Github/Bitbucket/Gitlab repos etc, but the process for adding local repositories <a href="https://docs.sourcegraph.com/admin/repo/add_from_local_disk">is extremely tedious</a>.
-Also apparently, it clones repositores first so it's not exactly realtime indexing.
-Overall, I feel that perhaps it makes sense for companies that use few monorepos, but not suitable for 
-</p></li>
-<li><a href="https://oracle.github.io/opengrok">OpenGrok</a>: <a href="https://github.com/oracle/opengrok/wiki/How-to-setup-OpenGrok">setup</a> looks extremely heavy, doesn't support realtime search in arbitrary paths</li>
-<li><a href="https://github.com/hound-search/hound">Hound</a>: <a href="https://github.com/hound-search/hound/issues/83">doesn't support</a> recusive repository discovery.</li>
-<li><a href="https://github.com/google/zoekt">zoekt</a>: manual is pretty confusing and also looks tailored for huge standalone repos</li>
-<li><a href="https://livegrep.com">Livegrep</a>: tailored to huge monorepos (see <a href="https://news.ycombinator.com/item?id=3869880">HN discussion</a>)</li>
-</ul>
-<p>
-Disappointed, I figured that least I can do is at least improve my workflow with grep. And it actually turned out to work pretty well!
-</p>
-<p>
-In essence, I'm collecting all git repositories across my filesystem on 5 minute timer
-</p>
-<p>
-TODO pkm script
-</p>
-<p>
-TODO things I did
-</p>
-<ul class="org-ul">
-<li><a href="https://github.com/karlicoss/dotfiles-emacs/blob/96350f92d3e8465d635758000e066bcc527b28a5/.spacemacs.d/config.el#L73"><code>my/search-code</code></a> TODO keyblindings invokes <code>spacemacs/helm-files-do-rg</code> against all directories with code.</li>
-<li><a href="https://github.com/karlicoss/dotfiles-emacs/blob/96350f92d3e8465d635758000e066bcc527b28a5/.spacemacs.d/config.el#L57"><code>my/code-targets</code></a> returns all git repositories it can reach from <code>my/git-repos-search-root</code>.
-It also caches refreshes the cache every five minutes so we don't have to crawl filesystem on every search. That saves me few seconds on every search.</li>
-<li>switch from grep to ripgrep (TODO link?)</li>
-</ul>
-<p>
-Why ripgrep? I'll list reasons to use it relevant for me:
-</p>
-<ul class="org-ul">
-<li>it's <b>very</b> fast, both by <a href="https://github.com/BurntSushi/ripgrep#quick-examples-comparing-tools">benchmarks</a> and subjective experiments. You can read more comprehensive benchmarks <a href="https://blog.burntsushi.net/ripgrep/#code-search-benchmarks">here</a>.</li>
-<li>respects <code>.gitignore</code> files, so by maintaining <code>.gitignore</code> properly (e.g. adding <code>node_modules=/=venv</code> etc) you can make sure you only get meaningful matches in code search.</li>
-<li>respects <code>.ignore</code> files. Sometimes code has to be under version control, but you don't want it to show up in search (e.g. could happen if you have vendorized code or minified javascript or static html files).
-In that case you can use <code>.ignore</code> files with the same syntax to exclude certain parterns from ripgrep's reach without messing with <code>.gitignore</code>.</li>
-</ul>
-<p>
-TODO gif? maybe with some python thing
-TODO using SSD
-</p>
-<p>
-<a href="https://github.com/karlicoss/dotfiles-emacs/blob/96350f92d3e8465d635758000e066bcc527b28a5/.spacemacs.d/config.el#L57">https://github.com/karlicoss/dotfiles-emacs/blob/96350f92d3e8465d635758000e066bcc527b28a5/.spacemacs.d/config.el#L57</a>
-</p>
-</div>
-<div class="outline-3" id="outline-container-org000000c">
-<h3 id="org000000c"><a class="headerlink" href="#org000000c">¶</a>My ideal code search tool</h3>
-<div class="outline-text-3" id="text-org000000c">
-<ul class="org-ul">
-<li>Runs against local code. Any code, so it wouldn't have to be dependent on git let alone fetch repositories from github.
-This is quite important as you can always pull and refresh github repositories locally with a side running script TODO screwed</li>
-<li>realtime, inotify-based indexing</li>
-<li>simple semantic search in definitions/variables etc with fallback to grep if the language isn't supported</li>
-</ul>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org000000d">
-<h3 id="org000000d"><a class="headerlink" href="#org000000d">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-02 23:40]</span></span> maybe use sufs? not sure..</h3>
-</div>
-<div class="outline-3" id="outline-container-org000000e">
-<h3 id="org000000e"><a class="headerlink" href="#org000000e">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-20 18:50]</span></span> could comment here after I publish: <a href="https://github.com/BurntSushi/ripgrep/issues/95">https://github.com/BurntSushi/ripgrep/issues/95</a></h3>
-</div>
-<div class="outline-3" id="outline-container-org0000012">
-<h3 id="org0000012"><a class="headerlink" href="#org0000012">¶</a>Examples:</h3>
-<div class="outline-text-3" id="text-org0000012">
-</div>
-<div class="outline-4" id="outline-container-org000000f">
-<h4 id="org000000f">kython <a href="https://github.com/karlicoss/kython">https://github.com/karlicoss/kython</a></h4>
-<div class="outline-text-4" id="text-org000000f">
-<p>
-sometimes I want to change the interface and find all the usages
-</p>
-</div>
-</div>
-<div class="outline-4" id="outline-container-org0000010">
-<h4 id="org0000010">dashboards/data providers etc</h4>
-<div class="outline-text-4" id="text-org0000010">
-<p>
-after you changed some paths it would be good to update the code accordingly
-</p>
-</div>
-</div>
-<div class="outline-4" id="outline-container-org0000011">
-<h4 id="org0000011"><span class="todo TODO">TODO</span> more?</h4>
-<div class="outline-text-4" id="text-org0000011">
-<p>
-TODO e.g. recalling using some library or trick so you can quickly jump to it
-</p>
-</div>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000013">
-<h3 id="org0000013"><a class="headerlink" href="#org0000013">¶</a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> add search in filenames for code?</h3>
-<div class="outline-text-3" id="text-org0000013">
-<p>
-TODO findcode-targets?
-</p>
-<p>
-having daemon emacs is pretty convenient
-also terminal?
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000014">
-<h3 id="org0000014"><a class="headerlink" href="#org0000014">¶</a><span class="todo TODO">TODO</span> about bash<sub>profile</sub> ans stuff. Arguably, emacs is more like a shell so it makes sense to use same interactive aliases etc?</h3>
-</div>
-<div class="outline-3" id="outline-container-org0000015">
-<h3 id="org0000015"><a class="headerlink" href="#org0000015">¶</a><span class="todo TODO">TODO</span> would be nice to generate grep context in characters…</h3>
-</div>
-<div class="outline-3" id="outline-container-org0000016">
-<h3 id="org0000016"><a class="headerlink" href="#org0000016">¶</a><span class="todo TODO">TODO</span> incremental search</h3>
-</div>
-<div class="outline-3" id="outline-container-org0000017">
-<h3 id="org0000017"><a class="headerlink" href="#org0000017">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> set max cols to current emacs window width</h3>
-</div>
-<div class="outline-3" id="outline-container-org0000018">
-<h3 id="org0000018"><a class="headerlink" href="#org0000018">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2019-09-05 20:35]</span></span> still thinking about fuzzy finding etc…</h3>
-<div class="outline-text-3" id="text-org0000018">
-<p>
-GUI mostly sucks… so I need something that invokes a terminal with prompt to launch mc
-</p>
-<p>
-F1 and F3 bindings for searching   
-</p>
-<p>
-I rely on symlinks a lot, hence symlink-checker
-</p>
-</div>
-<div class="outline-4" id="outline-container-org0000019">
-<h4 id="org0000019"><span class="timestamp-wrapper"><span class="timestamp">[2019-09-05 21:49]</span></span> I feel almost sorry advocating emacs for everything. You know it's like one of these thing everybody tells you you would want to do and you think you'd never do it and then you … do it.</h4>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org000001a">
-<h3 id="org000001a"><a class="headerlink" href="#org000001a">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-05-02 00:01]</span></span> having all of my code cloned somewhere is quite useful to search in familiar code   <span class="tag"><span class="coding">coding</span> <span class="pkm">pkm</span> <span class="blog">blog</span></span></h3>
-</div>
-<div class="outline-3" id="outline-container-org000001b">
-<h3 id="org000001b"><a class="headerlink" href="#org000001b">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> implement collecting repos across the filesystem? not sure how to cache…</h3>
-</div>
-<div class="outline-3" id="outline-container-org000001c">
-<h3 id="org000001c"><a class="headerlink" href="#org000001c">¶</a><span class="todo TODO">TODO</span> if I have a repository I search often (e.g. Hakyll/org-mode), I just clone it locally and that's it</h3>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org000001e">
-<h2 id="browser"><a class="headerlink" href="#browser">¶</a><span class="section-number-2">7</span> Browser search</h2>
-<div class="outline-text-2" id="text-browser">
+<div class="outline-2" id="outline-container-org000000f">
+<h2 id="web"><a class="headerlink" href="#web">¶</a><span class="section-number-2">6</span> Web search</h2>
+<div class="outline-text-2" id="text-web">
 <p>
 If you're reading this at all, chances you're quite good at using web search already. <a href="https://www.gwern.net/Search#search">Gwern</a> got a good writeup on the subject.
 </p>
@@ -603,13 +482,24 @@ Knowing how to compose a search query is one thing, but navigating to the servic
 </tbody>
 </table>
 <p>
-Some of these obvious, some deserve notable mention:
+Some of these obvious, some deserve separate mention:
 </p>
 <ul class="org-ul">
-<li>reddit contains vast amounts of (somewhat curated) human knowledge. Chances are that if a link is good, it would be on reddit already.
-So often if google search ?? are not very meaningful or trivial, I'd just search on reddit</li>
-<li>twitter is similar: there is certainly more spam there, but sometimes it's interesting to type a link or blog post title in twitter search to see how real people reacted</li>
-<li>pinboard is a great source of curated URLS TODO ???</li>
+<li><p>
+reddit contains vast amounts of (somewhat curated) human knowledge
+</p>
+<p>
+Google search often gives dubious and not very meaningful results on certain topics (e.g. product reviews, exercise, dieting).
+On reddit, you'd at least find real people sharing their <b>honest and real opinions</b>.
+Chances are that if a link is good, you would find it on  on reddit anyway.
+</p></li>
+<li><p>
+twitter is similar: there is certainly more spam there, but sometimes it's interesting to type a link or blog post title in twitter search to see how <b>real people reacted</b>. 
+</p>
+<p>
+That has limited utility, e.g. doesn't work with politicizied content, but if the topic of interest is rare, could be very useful.
+</p></li>
+<li><a href="https://pinboard.in">pinboard</a> is an awesome source of curated content as well</li>
 </ul>
 <p>
 For some code documentation search I find very convenient to have documentation available locally.
@@ -640,65 +530,402 @@ Sadly, the extension mentioned above doesn't work with <code>file://</code> sche
 you can use the method described <a href="https://superuser.com/a/7336/300795">here</a>, it's as easy as adding a bookmark.
 </p>
 <p>
-Also, recently I ran into <a href="https://devdocs.io/offline">devdocs.io</a>, it's using your browser's <b>offline</b> storage to cache the documentation.
+Recently I ran into <a href="https://devdocs.io/offline">devdocs.io</a>, it's using your browser's <b>offline</b> storage to cache the documentation.
 I'm still getting used to it, but it's amazing how faster it is than jumping to documentation online. You can use it with multiple languages, you just type the search engine prefix first, and then language prefix (e.g. <code>dd cpp emplace_back</code>).
 </p>
 <p>
 Finally, it may be convenient to set up <a href="https://github.com/hrs/engine-mode">engine-mode</a> in Emacs, or <a href="https://github.com/syl20bnr/spacemacs/tree/master/layers/+web-services/search-engine">search-engine layer</a> in Spacemacs. It lets you select a bit of text and search it in browser (e.g. <code>SPC s G</code> to do google search). I find it convenient when I need to search many things in bulk.
 </p>
 </div>
-</div>
-<div class="outline-2" id="outline-container-org0000025">
-<h2 id="org0000025"><a class="headerlink" href="#org0000025">¶</a><span class="section-number-2">8</span> <span class="priority">[B]</span> Persistent swoop/daemon</h2>
-<div class="outline-text-2" id="text-8">
-</div>
-<div class="outline-3" id="outline-container-org000001f">
-<h3 id="org000001f"><a class="headerlink" href="#org000001f">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> use 'spacetime' as swoop demo?   <span class="tag"><span class="blog">blog</span> <span class="search">search</span></span></h3>
-<div class="outline-text-3" id="text-org000001f">
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000020">
-<h3 id="org0000020"><a class="headerlink" href="#org0000020">¶</a><span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-06 00:32]</span></span> emacsorphanage/helm-swoop: Efficiently hopping squeezed lines powered by Emacs helm interface   <span class="tag"><span class="gr">gr</span></span></h3>
-<div class="outline-text-3" id="text-org0000020">
+<div class="outline-3" id="outline-container-org000000d">
+<h3 id="org000000d"><a class="headerlink" href="#org000000d">¶</a>Firefox enhancements</h3>
+<div class="outline-text-3" id="text-org000000d">
 <p>
-<a href="https://github.com/emacsorphanage/helm-swoop">https://github.com/emacsorphanage/helm-swoop</a>
+I find it convenient to enable <a href="https://www.ghacks.net/2016/06/11/firefox-page-search-improvements">'highlight all'</a> for search within a page.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000021">
-<h3 id="org0000021"><a class="headerlink" href="#org0000021">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> swoop-change contrast a bit?   <span class="tag"><span class="blog">blog</span> <span class="search">search</span></span></h3>
-<div class="outline-text-3" id="text-org0000021">
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000022">
-<h3 id="org0000022"><a class="headerlink" href="#org0000022">¶</a><span class="priority">[C]</span> can't use rifle because I've got some legacy non-org mode files + various chat logs   <span class="tag"><span class="search">search</span> <span class="swoop">swoop</span></span></h3>
-<div class="outline-text-3" id="text-org0000022">
+<div class="outline-3" id="outline-container-org000000e">
+<h3 id="org000000e"><a class="headerlink" href="#org000000e">¶</a>Chrome enhancements</h3>
+<div class="outline-text-3" id="text-org000000e">
 <p>
-<a href="https://github.com/alphapapa/org-rifle/issues/42">https://github.com/alphapapa/org-rifle/issues/42</a>
+When I used Chrome, one thing that annoyed me was that it populates search engines automatically, and <a href="https://support.google.com/chrome/forum/AAAAP1KN0B0DOS1J_u6N8I">there is not way to disable it</a>.
+</p>
+<p>
+There is a nice open source <a href="https://chrome.google.com/webstore/detail/dont-add-custom-search-en/dnodlcololidkjgbpeoleabmkocdhacc">extension</a> that prevents Chrome from doing it.
 </p>
 </div>
-<div class="outline-4" id="outline-container-org0000023">
-<h4 id="org0000023"><span class="timestamp-wrapper"><span class="timestamp">[2019-10-06 16:25]</span></span> also this could be helpful for people who use or in the process of transition from other formats</h4>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000024">
-<h3 id="org0000024"><a class="headerlink" href="#org0000024">¶</a>tried find-file-literally and it's not a speedup at all   <span class="tag"><span class="search">search</span> <span class="swoop">swoop</span></span></h3>
-<div class="outline-text-3" id="text-org0000024">
-</div>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000026">
-<h2 id="org0000026"><a class="headerlink" href="#org0000026">¶</a><span class="section-number-2">9</span> Future and my holy grail</h2>
-<div class="outline-text-2" id="text-9">
+<div class="outline-2" id="outline-container-org0000015">
+<h2 id="code"><a class="headerlink" href="#code">¶</a><span class="section-number-2">7</span> Searching in code</h2>
+<div class="outline-text-2" id="text-code">
 <p>
-My ultimate goal is to have my 'external' knowledge as tighly integrated as if it was imprinted on my brain neurons. 
+TLDR: I tried different existing code search tools, was disappointed and ended up using Emacs + Ripgrep.  
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000010">
+<h3 id="org0000010"><a class="headerlink" href="#org0000010">¶</a>Why?</h3>
+<div class="outline-text-3" id="text-org0000010">
+<p>
+I've got lots of personal projects, experiments, data processing and backup scripts on my computer.
+I also tend to create a git repository at a slightest opportunity primarily as a means of code backup/rollback, but often it results in actual projects, so I would need a repository anyway.
+Naturally, these repositories end up scattered across the whole filesystem, making it tricky to remember where I've put the code or that it even existed in the first place.
+</p>
+<p>
+It's very convenient to have some sort of code search engine if you're in a similar situation to mine for multiple reasons:
+</p>
+<ul class="org-ul">
+<li><p>
+Doing potentially breaking code changes
+</p>
+<p>
+For instance, I want to remove some unused function or refactor something in <a href="https://github.com/karlicoss/my"><code>my</code></a> package, which is a Python library to access my personal data.
+It's used in lots of scripts or dashboards that run in Cron every day.
+</p>
+<p>
+I could just go for it, remove the function and hope nothing fails, but if it does then I'd have to deal with fixing it again.
+It's frustrating and I'd rather search for function usages in all of my code and make sure it's actually safe to remove.
+</p></li>
+<li><p>
+Reusing code snippets and tricks
+</p>
+<p>
+When you're getting familiar to some new library or framework, you often end up googling how to solve problems twice.
+Sometimes you remember solving the problem you've already had, but don't quite recall where. 
+</p>
+<p>
+For instance for me, such library is <a href="https://docs.sqlalchemy.org/en/13/core">Sqlalchemy</a>.
+It's very convenient for handling databases, but I only need it infrequently, so can never remember how to work with it.
+Reading documentation all over again is not very helpful because I've got very few usecases and queries that are specific to my purposes.
+</p>
+<p>
+If I can search for <code>sqlalchemy</code> in my code, it shows every repository where I used it so I can quickly copy bit of code I'm interested at.
+</p></li>
+<li><p>
+Forgotten code
+</p>
+<p>
+It happens that I remember writing code for some purpose, but don't quite recall where I put it.
+Even if you keep all your repos in the same location, you might forget how you named it.
+</p>
+<p>
+Full text search, however, allows to find it if you remember some comments or class/function names.
+</p></li>
+<li><p>
+Help and documentation
+</p>
+<p>
+However good is library's documentation, sometimes it just isn't covering your typical needs. If you're a power user, docs are almost never enough and you end up reading the code to bend the library into doing what you want.
+</p>
+<p>
+For me such libraries are <a href="https://code.orgmode.org/bzg/org-mode">Org mode</a> or <a href="https://github.com/jaspervdj/hakyll">Hakyll</a>, so I often had to search in their code on Github.
+Searching on Github however is quite awkward. It's slow, it's not incremental and lacks navigation.
+</p>
+<p>
+If I have a local clone of the repository on my disk, I can search over it in an instant (without having it opened in the first place) and use familiar tools (e.g. IDE) for navigation.
+</p></li>
+</ul>
+<p>
+At the time, I was just using recursive <code>grep</code> and then opening some of results in vim to refine.
+That's a pretty pathetic workflow. 
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000011">
+<h3 id="org0000011"><a class="headerlink" href="#org0000011">¶</a>What do I want</h3>
+<div class="outline-text-3" id="text-org0000011">
+<p>
+My ideal code search tool would:
+</p>
+<ul class="org-ul">
+<li><p>
+run against code on my filesystem
+</p>
+<p>
+Just any source files, so it wouldn't have to fetch repositories from Github and keep them somewhere separately.
+</p></li>
+<li><p>
+realtime indexing 
+</p>
+<p>
+Ideally, inotify-based, but any means of refreshing search index without having to commit first would be nice.
+</p></li>
+<li>semantic search in definitions/variables etc with fallback to simple search if the language isn't supported</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000012">
+<h3 id="org0000012"><a class="headerlink" href="#org0000012">¶</a>Existing code search tools</h3>
+<div class="outline-text-3" id="text-org0000012">
+<p>
+So, I wanted some code search and indexing tool that could watch over all the source file on my filesystem and let me search through them.
+</p>
+<p>
+It sounds as a fairly straightforward wish, but to my surprise, none of existing projects I found and tried do the job:
+</p>
+<ul class="org-ul">
+<li><p>
+<a href="https://github.com/sourcegraph/sourcegraph">Sourcegraph</a>
+</p>
+<p>
+Lets you index Github/Bitbucket/Gitlab repos etc, but the process for adding local repositories <a href="https://docs.sourcegraph.com/admin/repo/add_from_local_disk">is extremely tedious</a>.
+Also apparently, it clones repositories first so it's not exactly realtime indexing.
+</p>
+<p>
+Overall, I feel that it only makes sense for companies that use few monorepos.
+</p></li>
+<li><a href="https://oracle.github.io/opengrok">OpenGrok</a>: <a href="https://github.com/oracle/opengrok/wiki/How-to-setup-OpenGrok">setup</a> looks extremely heavy, doesn't support realtime search in arbitrary paths</li>
+<li><a href="https://github.com/hound-search/hound">Hound</a>: <a href="https://github.com/hound-search/hound/issues/83">doesn't support</a> recursive repository discovery.</li>
+<li><a href="https://github.com/google/zoekt">zoekt</a>: manual is pretty confusing and also looks tailored for huge standalone repos</li>
+<li><a href="https://livegrep.com">Livegrep</a>: tailored to huge monorepos (see <a href="https://news.ycombinator.com/item?id=3869880">HN discussion</a>)</li>
+</ul>
+<p>
+As you can see, none of these are convenient for searching in personal code.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000014">
+<h3 id="org0000014"><a class="headerlink" href="#org0000014">¶</a>Solution: use Emacs and Ripgrep</h3>
+<div class="outline-text-3" id="text-org0000014">
+<p>
+Disappointed, I figured that least I could do is at least somehow improve my workflow with grep.
+</p>
+<p>
+So, what are the problems with using <code>grep</code>?
+</p>
+<ul class="org-ul">
+<li>running it against all of code results in false positives. <code>node_modules</code>, minified javascript, etc., you name it
+<ul class="org-ul">
+<li>you probably want to at least ignore anything that's ignored by <code>.gitignore</code></li>
+</ul></li>
+<li>getting bunch of output lines in terminal is not interactive
+<ul class="org-ul">
+<li>you have to repeat the command to refine the results</li>
+<li>you can't quickly navigate to the result, check it and go back</li>
+</ul></li>
+<li>running it recursively against your filesystem root is ridiculously slow, even if you use an SSD
+<ul class="org-ul">
+<li>you probably want to restrict your search to directories that look like a project (e.g. repositories), and again, exclude files ignored by version control</li>
+</ul></li>
+</ul>
+<p>
+<a id="org0000004"></a>
+As it turns out, <code>ripgrep</code> is the tool!
+</p>
+<ul class="org-ul">
+<li>respects <code>.gitignore</code> files, so by maintaining <code>.gitignore</code> properly (e.g. adding <code>node_modules=/=venv</code> etc) you can make sure you only get <b>meaningful matches</b> when searching for code.</li>
+<li>respects <code>.ignore</code> files. Sometimes code has to be under version control, but you don't want it to show up in search (e.g. could happen if you have vendorized code or minified javascript or static html files).
+In that case you can use <code>.ignore</code> files with the same syntax to exclude certain patterns from ripgrep's reach without messing with <code>.gitignore</code>.</li>
+<li>it's <b>very</b> fast, both by <a href="https://github.com/BurntSushi/ripgrep#quick-examples-comparing-tools">benchmarks</a> and subjective experiments. You can read more comprehensive benchmarks <a href="https://blog.burntsushi.net/ripgrep/#code-search-benchmarks">here</a>.</li>
+</ul>
+<p>
+If you just use ripgrep instead of grep, code search becomes magnitude more pleasant, but it's still not interactive. Long story short, we can use <code>helm</code> in <code>emacs</code> to achieve <b>interactivity</b> and incremental search.
+</p>
+<p>
+The only thing that's left is restricting the search to git repositories only.
+Ripgrep relies on regexes, so we can't do something like Xpath queries and tell it to only search in directories, that contain <code>.git</code> directory. I ended up using a two step approach:
+</p>
+<ul class="org-ul">
+<li><p>
+first, <a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L75-L83"><code>my/code-targets</code></a> returns all git repositories it can reach from <code>my/git-repos-search-root</code>.
+</p>
+<p>
+I'm using <a href="https://github.com/sharkdp/fd"><code>fd</code></a> to go through the disk and collect all candidate git repositories.
+</p>
+<p>
+Even though fd is already ridiculously <a href="https://github.com/sharkdp/fd#benchmark">fast</a>, this step still takes some time, so I'm caching the repositories. Cache is refreshed in the background every five minutes so we don't have to crawl the filesystem every time. That saves me few seconds on every search.
+</p></li>
+</ul>
+<ul class="org-ul">
+<li>then, <a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L136-L140"><code>my/search-code</code></a> keybindings invokes <code>ripgrep</code> against all my directories with code, defined in <code>my/code-targets</code> function.</li>
+</ul>
+<p>
+So, literally running grep against my code turned out to be a pretty good solution. I've got about 350 repositories and it works in a blink. Note, however, that I'm using SSD.
+</p>
+<p>
+Ripgrep searches in real files on my disk, so any changes are reflected <b>immediately</b>, which removes the need for indexing (apart from performance concerns).
+It would still be nice to avoid unnecessary operations, and of course, semantic search would be great, and that is definitely going to require some sort of indexer.
+</p>
+<p>
+I've got a <a href="#org0000013">global keybinding</a> to invoke Emacs with a prompt to search in code, so I can do in in a blink.
+</p>
+<p>
+Here's a <a href="https://file.globalupload.io/onCac7sh9M.gif">gif (3.5 Mb)</a> showing it <b>in action</b>: say, I remember using <code>pyautogui</code> for automating <a href="https://github.com/karlicoss/grasp">Grasp</a> tests, but I forgot which function I actually need to use. Searching for 'pyautogui' brings me all the repositories where I'm using it and lets me quickly find out the command I need without having to read the documentation all over again.
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000016">
+<h2 id="appendix_cloudmacs"><a class="headerlink" href="#appendix_cloudmacs">¶</a><span class="section-number-2">8</span> Appendix: searching away from computer</h2>
+<div class="outline-text-2" id="text-appendix_cloudmacs">
+<p>
+I'm running Spacemacs on my VPS, so if I'm not near my computer and <a href="#android">phone search</a> doesn't help for some reason, I can still access and search my data. You can read about it <a href="./cloudmacs.html">here</a>.
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000018">
+<h2 id="appendix_daemon"><a class="headerlink" href="#appendix_daemon">¶</a><span class="section-number-2">9</span> Appendix: Lightning fast Emacs</h2>
+<div class="outline-text-2" id="text-appendix_daemon">
+<p>
+As you might have noticed, I'm relying on Emacs as my primary means of interacting with my information, whether it's capturing, accessing or searching.
+That means that I want it as fast as possible, in a matter of milliseconds. Seconds spent waiting to launch discourage break your concentration and workflow.
+</p>
+<p>
+Most of the time I've got Emacs window open on one of my desktops anyway, but sometimes it isn't, or I don't want to pollute the current Emacs instance with my search. So I've got a handy helper <a href="https://github.com/karlicoss/dotfiles-emacs/blob/master/bin/gemacsclient">script</a> to quickly invoke persistent Emacs frame for me:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment"> -eux</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">Wrapper script to invoke interactive emacs commands in a daemon instance.</span>
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">These days many people don't suspect it,</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">but Emacs got server ('emacs' binary) and client ('emacsclient') parts.</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">Launching server (i.e. default 'emacs' command) evaluates the config</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">and could potentially take seconds if it's very heavy</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">Launching the client however is lightning fast. It's just a matter of creating a window.</span>
+
+
+<span class="org-variable-name">ARGS</span>=(
+ <span class="org-comment-delimiter"># </span><span class="org-comment">This trick gives you best of two worlds: if there is an Emacs daemon running,</span>
+ <span class="org-comment-delimiter"># </span><span class="org-comment">it just connects to it. Otherwise, it spawns a daemon first and then connects to it.</span>
+ <span class="org-comment-delimiter"># </span><span class="org-comment">Without this setting if you didn't have a daemon running, the command would fail.</span>
+ -a <span class="org-string">''</span>
+
+ <span class="org-comment-delimiter"># </span><span class="org-comment">spawn new GUI window, otherwise it tries to launch client in terminal</span>
+ --create-frame 
+ --frame-parameters=<span class="org-string">"'(fullscreen . maximized)"</span>
+
+ <span class="org-comment-delimiter"># </span><span class="org-comment">process rest of arguments as elisp code</span>
+ --eval
+  <span class="org-comment-delimiter"># </span><span class="org-comment">bring focus to the window</span>
+ <span class="org-string">'(select-frame-set-input-focus (selected-frame))'</span>
+)
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">without any extra args it just invokes the daemon instance, otherwise executes the args</span>
+<span class="org-keyword">exec</span> emacsclient <span class="org-string">"${ARGS[@]}"</span> <span class="org-sh-escaped-newline">\</span>
+                 <span class="org-string">"$@"</span>          <span class="org-comment-delimiter"># </span><span class="org-comment">pass through whatever else you are trying to run</span>
+</pre>
+</div>
+<p>
+I've got a global keybinding (<code>Win+m</code>) that invokes this script. In addition the script accepts a function to call so you can open Emacs with a search prompt, so I have few more handy keybindings:
+</p>
+<ul class="org-ul">
+<li><a id="org0000005"></a> <code>Win+F1</code> for searching in my <a href="#other">notes and knowledge repository</a></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment"> -eux</span>
+<span class="org-keyword">exec</span> <span class="org-string">"~/bin/gemacsclient"</span> <span class="org-string">"(spacemacs/defer-until-after-user-config #'my/search)"</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li><a id="org0000013"></a> <code>Win+F3</code> for searching in my repositories</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment"> -eux</span>
+<span class="org-keyword">exec</span> <span class="org-string">"~/bin/gemacsclient"</span> <span class="org-string">"(spacemacs/defer-until-after-user-config #'my/search-code)"</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li><code>Win+a</code> to open my org-mode agenda</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment"> -eux</span>
+<span class="org-keyword">exec</span> <span class="org-string">"~/bin/gemacsclient"</span> <span class="org-string">"(spacemacs/defer-until-after-user-config #'my/switch-to-agenda)"</span>
+</pre>
+</div>
+<ul class="org-ul">
+<li><code>Win+c</code> to open org-capture</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment"> -eux</span>
+<span class="org-keyword">exec</span> <span class="org-string">"~/bin/gemacsclient"</span> <span class="org-string">"(spacemacs/defer-until-after-user-config #'org-capture)"</span>
+</pre>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000017">
+<h3 id="org0000017"><a class="headerlink" href="#org0000017">¶</a>running daemon on startup</h3>
+<div class="outline-text-3" id="text-org0000017">
+<p>
+It might be convenient to always have the daemon running, for that I'm using a systemd unit in <code>~/.config/systemd/user/emacs-daemon.service</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">[Unit]
+<span class="org-variable-name">Description</span>=Emacs daemon
+
+[Service]
+<span class="org-variable-name">Type</span>=forking
+<span class="org-comment-delimiter"># </span><span class="org-comment">running via bash -l makes it pick up .profile, which sets up PATH etc</span>
+<span class="org-variable-name">ExecStart</span>=/bin/bash -l -c <span class="org-string">'/usr/bin/emacs --daemon'</span>
+<span class="org-variable-name">ExecStop</span>=/usr/bin/emacsclient --eval <span class="org-string">"(kill-emacs)"</span>
+<span class="org-variable-name">Environment</span>=<span class="org-variable-name">SSH_AUTH_SOCK</span>=%t/keyring/ssh
+<span class="org-variable-name">Restart</span>=always
+
+[Install]
+<span class="org-variable-name">WantedBy</span>=default.target
+</pre>
+</div>
+<p>
+It's nothing unusual perhaps apart from using <code>bash -l</code> so Emacs picks up your <code>.profile</code> file. Without it, you almost certainly will encounter issues with missing binaries because they would not be in your <code>PATH</code>.
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000019">
+<h2 id="appendix_emacs"><a class="headerlink" href="#appendix_emacs">¶</a><span class="section-number-2">10</span> Appending: general Emacs tips</h2>
+<div class="outline-text-2" id="text-appendix_emacs">
+<p>
+These tips might be pretty obvious, but they belong to this post, so here you go:
+</p>
+<ul class="org-ul">
+<li>if you're on Spacemacs, use <a href="https://github.com/syl20bnr/spacemacs/tree/develop"><code>develop</code></a> branch. Master is pretty backwards.</li>
+<li><p>
+search with <code>ripgrep</code> instead of <code>grep</code> (not only in Emacs!). It's just <a href="#org0000004">better</a>.
+</p>
+<p>
+In Spacemacs, set up your <code>init.el</code>:
+</p></li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-elisp">dotspacemacs-search-tools '(<span class="org-string">"rg"</span> <span class="org-string">"ag"</span> <span class="org-string">"pt"</span> <span class="org-string">"ack"</span> <span class="org-string">"grep"</span>)
+
+dotspacemacs-additional-packages '(helm-rg)
+</pre>
+</div>
+<ul class="org-ul">
+<li><p>
+use <a href="https://github.com/emacsorphanage/helm-swoop"><code>helm-swoop</code></a> for search within the buffer
+</p>
+<p>
+It's easier to watch a <a href="https://raw.githubusercontent.com/ShingoFukuyama/images/master/helm-swoop.gif">demo GIF</a> than to explain.
+Swoop opens a Helm window with search result summary and jumps between results in the original buffer as you navigate in helm (<code>C-j/C-k</code>).
+</p>
+<p>
+I <b><b>highly</b></b> recommend it as a primary way of searching withing a buffer. Bind it it to some convenient combination and get used to it (e.g. mine is <code>SPC RET</code>).
+</p>
+<p>
+There is also <code>helm-occur</code>, which has similar functionality, but it seems inferior to swoop.
+</p></li>
+<li><p>
+use <code>helm-follow-mode</code> (<code>C-c C-f</code> in Helm buffer) to jump between search results in any Helm search
+</p>
+<p>
+E.g. you can use it with <code>helm-org-in-buffer-headings</code> as a neat way to navigate within an Org file.
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000001a">
+<h2 id="future"><a class="headerlink" href="#future">¶</a><span class="section-number-2">11</span> Future and my holy grail of search</h2>
+<div class="outline-text-2" id="text-future">
+<p>
+My ultimate goal is to have my 'external' knowledge as highly integrated as possible, as if it was imprinted on my brain neurons. 
 </p>
 <p>
   Ideally I want to be able to do fulltext realtime search over anything that I ever had in my visual field.
 Not even necessarily text, but audio and video as well.
 </p>
 <p>
-That way one wouldn't have to distinguish between different services and medium(s? TOOD) of information at all, be it digital or analogue.
+That way one wouldn't have to distinguish between different services and mediums of information at all, be it digital or analogue.
 </p>
 <p>
 Technically it's not impossible with the current technology:
@@ -716,261 +943,45 @@ Technically it's not impossible with the current technology:
 However each of these is a pretty hard problem and hardly with high demand from people.   
 </p>
 <p>
-Considering Google Glass hasn't made it, the technology is not exactly there, so we have to use more explicit (TODO different phrasing) cludges.
-In the meantime I can at least make sure my external TODO information? is available as quickly as possible from any device.
+Considering Google Glass hasn't made it, the technology is not exactly there, so we have to rely on kludges like the ones I described above.
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000002a">
-<h2 id="org000002a"><a class="headerlink" href="#org000002a">¶</a><span class="section-number-2">10</span> <span class="todo START">START</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-02 23:33]</span></span> post about search   <span class="tag"><span class="search">search</span></span></h2>
-<div class="outline-text-2" id="text-10">
-</div>
-<div class="outline-3" id="outline-container-org0000027">
-<h3 id="org0000027"><a class="headerlink" href="#org0000027">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-03 20:09]</span></span> mention tags for people</h3>
-<div class="outline-text-3" id="text-org0000027">
-<p>
-   sometimes I see an interesting article or just a funny meme which would be good to share with a friend, but it's not quite a good time to interact with them otherwise
-so I'll 
-</p>
-</div>
-<div class="outline-4" id="outline-container-org0000028">
-<h4 id="org0000028"><span class="timestamp-wrapper"><span class="timestamp">[2019-10-03 20:10]</span></span> Ideally I'd want it to display TODO tasks 'in the context', e.g. during IM chatting with a person, and I'm working on a tool which might help with that   <span class="tag"><span class="promnesia">promnesia</span></span></h4>
-</div>
-<div class="outline-4" id="outline-container-org0000029">
-<h4 id="org0000029"><span class="timestamp-wrapper"><span class="timestamp">[2019-10-19 18:43]</span></span> I guess it's 'misc tips' category</h4>
-</div>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org000002d">
-<h2 id="org000002d"><a class="headerlink" href="#org000002d">¶</a><span class="section-number-2">11</span> <span class="todo TODO">TODO</span> <span class="priority">[B]</span> my setup: real and typical usecase   <span class="tag"><span class="pkm">pkm</span> <span class="orger">orger</span></span></h2>
-<div class="outline-text-2" id="text-11">
-<p>
-I ran upon a bookmark <a href="https://thirdtriumvirate.wordpress.com/">https://thirdtriumvirate.wordpress.com/</a> . why was it interesting? I don't remember. I switch to my emacs, type F1 and search for thirdtriumvirate and boom – I find it in my Hypothesis View. Apparently there was some good post I liked ( <a href="https://thirdtriumvirate.wordpress.com/2019/02/13/the-frustrating-success-of-the-standard-model/">The Frustrating Success of Our Best Theory of Physics</a> ) so I figured it's worth going throught the blog
-</p>
-<p>
-Ideally though: I don't even need to switch to emacs. wereyouhere is capable of quick search and answering 'how did I end up here' at a single keystroke.
-</p>
-</div>
-<div class="outline-3" id="outline-container-org000002b">
-<h3 id="org000002b"><a class="headerlink" href="#org000002b">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2019-10-03 19:56]</span></span> e.g. one problem is solves is figuring out content you already processed?</h3>
-</div>
-<div class="outline-3" id="outline-container-org000002c">
-<h3 id="org000002c"><a class="headerlink" href="#org000002c">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-28 23:02]</span></span> I guess have it for each?</h3>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000032">
-<h2 id="org0000032"><a class="headerlink" href="#org0000032">¶</a><span class="section-number-2">12</span> <span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-03 21:33]</span></span> invoking Emacs</h2>
+<div class="outline-2" id="outline-container-org000001b">
+<h2 id="org000001b"><a class="headerlink" href="#org000001b">¶</a><span class="section-number-2">12</span> --</h2>
 <div class="outline-text-2" id="text-12">
 <p>
-I've chosen to have Emacs as my primary means of interacting with my information, be it capturing, accessing or searching.
-That means that I want it as fast as possible, in a matter of milliseconds.
+My closing tips would be:
 </p>
-<p>
-TODO inline the script?
-</p>
-<p>
-By default though if you have say, Spacemacs it might take 
-TODO wonder if emacs is same?
-</p>
-</div>
-<div class="outline-3" id="outline-container-org000002e">
-<h3 id="org000002e"><a class="headerlink" href="#org000002e">¶</a><span class="todo TODO">TODO</span> present my script</h3>
-<div class="outline-text-3" id="text-org000002e">
-<p>
-This serves as an entry point for any TODO so I can bind a global hotkey   
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org000002f">
-<h3 id="org000002f"><a class="headerlink" href="#org000002f">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-03 21:37]</span></span> separate instance for swoop?</h3>
-</div>
-<div class="outline-3" id="outline-container-org0000030">
-<h3 id="org0000030"><a class="headerlink" href="#org0000030">¶</a><span class="todo TODO">TODO</span> <span class="priority">[A]</span> step 1: make sure your tools launch lightning fast.</h3>
-<div class="outline-text-3" id="text-org0000030">
-<p>
-Seconds wasted on launching and waiting break your flow. Better spend time on it once and never think about that later.
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000031">
-<h3 id="org0000031"><a class="headerlink" href="#org0000031">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-03 23:33]</span></span> spacemacs hook?</h3>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000033">
-<h2 id="org0000033"><a class="headerlink" href="#org0000033">¶</a><span class="section-number-2">13</span> <span class="todo TODO">TODO</span> <span class="priority">[B]</span> daemon starts up, but I guess need to bind command to post-startup hook. perhaps show a notification or something?</h2>
-</div>
-<div class="outline-2" id="outline-container-org0000036">
-<h2 id="org0000036"><a class="headerlink" href="#org0000036">¶</a><span class="section-number-2">14</span> <span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-04 00:30]</span></span> killing emacs</h2>
-<div class="outline-text-2" id="text-14">
-<p>
-It's problematic (at least for me).
-</p>
-<p>
-I like to keep my instances of emacs generally separate as I often have windows open for weeks where I'm working on different things.
-</p>
-<p>
-TOOD setting for gui thing?
-</p>
-<p>
-On the other hand I have a persistent daemon for adhoc things and swoop daemon; and by default if you press qq/qQ, it will die as well.
-</p>
-<p>
-You could use frame-killer; but then you end up with orphaned instances from emacs GUI
-TODO make sure it's still the case if I don't use spacemacs-gui thing
-</p>
-<p>
-So, solution TODO
-</p>
-<p>
-There is a <code>dotspacemacs-persistent-server</code> variable <a href="https://github.com/syl20bnr/spacemacs/blob/develop/core/core-dotspacemacs.el#L356">https://github.com/syl20bnr/spacemacs/blob/develop/core/core-dotspacemacs.el#L356</a>
-<a href="https://github.com/syl20bnr/spacemacs/blob/fdd38eec9b7bcb5ed92404d3c30401791808e968/core/core-dotspacemacs.el#L356">https://github.com/syl20bnr/spacemacs/blob/fdd38eec9b7bcb5ed92404d3c30401791808e968/core/core-dotspacemacs.el#L356</a>
-which if you set it to <code>t</code> show
-TODO but apparently it impacts not <code>spacemacs/kill-emacs</code> but <code>kill-emacs</code> (which is not bound to any key by default).
-</p>
-</div>
-<div class="outline-3" id="outline-container-org0000034">
-<h3 id="org0000034"><a class="headerlink" href="#org0000034">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2019-10-04 00:30]</span></span> it's pretty confusing!</h3>
-<div class="outline-text-3" id="text-org0000034">
-<p>
-spacemacs/kill-emacs <a href="https://github.com/syl20bnr/spacemacs/blob/develop/layers/+spacemacs/spacemacs-defaults/funcs.el#L976">https://github.com/syl20bnr/spacemacs/blob/develop/layers/+spacemacs/spacemacs-defaults/funcs.el#L976</a>    SPC qQ
-<a href="https://github.com/syl20bnr/spacemacs/blob/fdd38eec9b7bcb5ed92404d3c30401791808e968/layers/%2Bspacemacs/spacemacs-defaults/funcs.el#L973">https://github.com/syl20bnr/spacemacs/blob/fdd38eec9b7bcb5ed92404d3c30401791808e968/layers/%2Bspacemacs/spacemacs-defaults/funcs.el#L973</a>
-</p>
-<p>
-or spacemacs/prompt-kill-emacs <a href="https://github.com/syl20bnr/spacemacs/blob/fdd38eec9b7bcb5ed92404d3c30401791808e968/layers/%2Bspacemacs/spacemacs-defaults/funcs.el#L979">https://github.com/syl20bnr/spacemacs/blob/fdd38eec9b7bcb5ed92404d3c30401791808e968/layers/%2Bspacemacs/spacemacs-defaults/funcs.el#L979</a>
-  which is default SPC q q
-</p>
-<p>
-There is an advice 
-<a href="https://github.com/syl20bnr/spacemacs/blob/fdd38eec9b7bcb5ed92404d3c30401791808e968/layers/%2Bspacemacs/spacemacs-defaults/funcs.el#L953">https://github.com/syl20bnr/spacemacs/blob/fdd38eec9b7bcb5ed92404d3c30401791808e968/layers/%2Bspacemacs/spacemacs-defaults/funcs.el#L953</a>
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000035">
-<h3 id="org0000035"><a class="headerlink" href="#org0000035">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-04 01:13]</span></span> we have to dig into</h3>
-<div class="outline-text-3" id="text-org0000035">
-<p>
-(defun server-running-p (&amp;optional name)
-  "Test whether server NAME is running.
-</p>
-<p>
-(unless name (setq name server-name))
-</p>
-<p>
-by default server-name ends up being "server" even if you don't start emacs in daemon mode, so it thinks the server is running and doesn't kill the GUI what TODO ???
-</p>
-<p>
-by setting custom server-name we can stop emacs from that
-</p>
-</div>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org000003b">
-<h2 id="org000003b"><a class="headerlink" href="#org000003b">¶</a><span class="section-number-2">15</span> <span class="todo START">START</span> <span class="priority">[C]</span> Ideally helm search would be similar to so showing in context like intellij   <span class="tag"><span class="pkm">pkm</span> <span class="search">search</span> <span class="swoop">swoop</span></span></h2>
-<div class="outline-text-2" id="text-15">
-</div>
-<div class="outline-3" id="outline-container-org0000038">
-<h3 id="org0000038"><a class="headerlink" href="#org0000038">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2019-05-11 15:54]</span></span> helm-swoop also helm-occur?</h3>
-<div class="outline-text-3" id="text-org0000038">
-</div>
-<div class="outline-4" id="outline-container-org0000037">
-<h4 id="org0000037"><span class="timestamp-wrapper"><span class="timestamp">[2019-05-11 19:19]</span></span> helm-multi-swoop-projectile is good; doesn't look like it is capable of arbitrary files though?</h4>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000039">
-<h3 id="org0000039"><a class="headerlink" href="#org0000039">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-08-20 21:39]</span></span> hmm maybe should use swoop for noraml project search too?</h3>
-</div>
-<div class="outline-3" id="outline-container-org000003a">
-<h3 id="org000003a"><a class="headerlink" href="#org000003a">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-14 22:46]</span></span> dunno, could try swoop in fundamental mode?</h3>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org000003c">
-<h2 id="org000003c"><a class="headerlink" href="#org000003c">¶</a><span class="section-number-2">16</span> <span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-15 21:12]</span></span> setting up list of targets for helm/swoop</h2>
-</div>
-<div class="outline-2" id="outline-container-org000003d">
-<h2 id="org000003d"><a class="headerlink" href="#org000003d">¶</a><span class="section-number-2">17</span> emacs/WM keybindings</h2>
-<div class="outline-text-2" id="text-17">
 <ul class="org-ul">
-<li><code>F1</code> (emacs) / <code>Win+F1</code> (global): run search in all of my notes/orger views etc</li>
-<li><code>F3</code> (emacs) / <code>Win+F3</code> (global): run code search against TODO</li>
-<li>TODO (emacs) / <code>Win+c</code>  (global): run org-capture</li>
-<li>TODO swoop?</li>
+<li><p>
+start simple
+</p>
+<p>
+It's better to have a crappy adhoc script or bash alias that runs <code>grep</code> over your <code>~/notes</code> directory than no means of searching at all.
+</p></li>
+<li><p>
+keep your things as plaintext as possible
+</p>
+<p>
+This is a somewhat sad advice to give in 2019, but the reality is it's still extremely tedious to work with anything else.
+</p></li>
+<li><p>
+whichever tools you use, make sure they launch in an instant
+</p>
+<p>
+Seconds wasted on waiting break your flow. Better spend time on setting it up once and never think about that later.
+</p></li>
+<li><p>
+give Emacs a try
+</p>
+<p>
+I feel almost sorry advocating Emacs for everything, but despite my disgust at Elisp and occasional frustration, 
+it just happens to be superior in terms of bending it to do what you want it.
+</p></li>
 </ul>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org000003e">
-<h2 id="org000003e"><a class="headerlink" href="#org000003e">¶</a><span class="section-number-2">18</span> <span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-12-07 21:49]</span></span> <a href="https://reddit.com/r/emacs/comments/a43pee/helmswoop_by_visual_lines/ebbeztb/">Helm-swoop by visual lines?</a> /r/emacs   <span class="tag"><span class="pkm">pkm</span> <span class="search">search</span> <span class="blog">blog</span></span></h2>
-<div class="outline-text-2" id="text-18">
 <p>
-That might be possible, but it would probably be slow in large files.
-</p>
-<p>
-I use `helm-org-in-buffer-headings`, `helm-org-rifle`, and my own little [helm-swish](<a href="https://gist.github.com/alphapapa/ce6cf8a85d8a28c3a2f146057772ec8d">https://gist.github.com/alphapapa/ce6cf8a85d8a28c3a2f146057772ec8d</a>) command (faster than `helm-swoop`, but without fancy features).
-</p>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000040">
-<h2 id="org0000040"><a class="headerlink" href="#org0000040">¶</a><span class="section-number-2">19</span> <span class="todo TODO">TODO</span> search enhancements in firefox?   <span class="tag"><span class="pkm">pkm</span> <span class="search">search</span> <span class="blog">blog</span></span></h2>
-<div class="outline-text-2" id="text-19">
-</div>
-<div class="outline-3" id="outline-container-org000003f">
-<h3 id="org000003f"><a class="headerlink" href="#org000003f">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-16 23:36]</span></span> highlight all</h3>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000041">
-<h2 id="org0000041"><a class="headerlink" href="#org0000041">¶</a><span class="section-number-2">20</span> <span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-14 23:15]</span></span> find configuration for emacs…</h2>
-<div class="outline-text-2" id="text-20">
-<p>
-find <i>L -iname '.git' -printf '%h\n' | xargs readlink -f | sort 
-fdfind -E <span class="underline"><span class="underline">pycache</span></span> -E venv -e py -e ipynb -e sh  -x echo '{/</i>}' | sort | uniq
-</p>
-<p>
-find /L -iname '.git' -printf '%h\0' | xargs -0 readlink -f | sort
-</p>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000042">
-<h2 id="org0000042"><a class="headerlink" href="#org0000042">¶</a><span class="section-number-2">21</span> <span class="todo TODO">TODO</span> <span class="priority">[C]</span> for future: full text web page history indexing? gonna require bookmark archiver..</h2>
-</div>
-<div class="outline-2" id="outline-container-org0000043">
-<h2 id="org0000043"><a class="headerlink" href="#org0000043">¶</a><span class="section-number-2">22</span> <span class="priority">[B]</span> Recoll</h2>
-<div class="outline-text-2" id="text-22">
-<p>
-Recoll is an indexing (runs as daemon or a regular cron job) and full text search tool.
-</p>
-<p>
-It supports many <a href="https://www.lesbonscomptes.com/recoll/features.html">formats and other features</a>, so I suggest checking them out for youself.
-</p>
-<p>
-Even though I index all my documents, I find it quicker to run grep I described above to search in plaintext. 
-So for me, Recoll is mostly for searching and quickly jumping to results in PDFs and EPUBs (see <a href="https://www.lesbonscomptes.com/recoll/pics/recoll-pdf-snippets.html">screenshot</a>).
-</p>
-<p>
-There is <a href="https://github.com/emacs-helm/helm-recoll">helm-recoll</a> Emacs module, but I found it a bit awkward to use, and Recoll GUI feels significantly superior.
-Basically only thing helm-recoll does is presenting you list of filenames that match your query.
-It feels that it should be straightforward to modify the module and integrate abstract, snippets and other things you can query Recoll for.
-</p>
-<p>
-Considering I don't need use Recoll it too often, I just gave up on helm-recoll and using GUI.
-</p>
-<p>
-I'm also running a <a href="https://github.com/koniu/recoll-webui">Web UI</a> on my VPS, so I can use it from my phone, or potentially from other computers.
-</p>
-<p>
-Recoll's distinguishing features are proper <a href="https://www.lesbonscomptes.com/recoll/usermanual/webhelp/docs/RCL.SEARCH.LANG.html">search query language</a>
-and <a href="https://www.lesbonscomptes.com/recoll/usermanual/webhelp/docs/RCL.INDEXING.MONITOR.html">realtime, inotify based indexing</a>.
-I don't have that much data yet to benefit massively from proper search queries, but I can see that it could be potentially useful in future as amount of personal data grows.
-</p>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000044">
-<h2 id="org0000044"><a class="headerlink" href="#org0000044">¶</a><span class="section-number-2">23</span> <span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-20 21:04]</span></span> Helm: search within buffer feature? - Emacs Stack Exchange   <span class="tag"><span class="gr">gr</span></span></h2>
-<div class="outline-text-2" id="text-23">
-<p>
-<a href="https://emacs.stackexchange.com/questions/2563/helm-search-within-buffer-feature">https://emacs.stackexchange.com/questions/2563/helm-search-within-buffer-feature</a>
-Selection:
-</p>
-<p>
-You can use helm-occur as a tool that comes with the basic helm module for this. But to me, one of the best helm based tools for buffer searching is Shingo Fukuyama's helm-swoop. You can get it from github and via MELPA. It has your required functionality of being able to drop your point at the position of the match (which can be a regexp). But you can also use C-g to have the cursor back where you started.
+As always, I'm open to feedback and would love to hear what is or setup or help you if you're struggling with something!
 </p>
 </div>
 </div>
@@ -979,9 +990,9 @@ You can use helm-occur as a tool that comes with the basic helm module for this.
 
     
     <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#pkm">#pkm</a></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#search">#search</a> <a class="post-tag" href="./tags.html#emacs">#emacs</a> <a class="post-tag" href="./tags.html#orgmode">#orgmode</a></div>
         <!-- TODO post-date? -->
-        <div class="date">15 September 2019</div>
+        <div class="date">01 November 2019</div>
     </section>
     
 

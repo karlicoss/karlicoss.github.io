@@ -291,6 +291,21 @@
 <li><a href="#org0000090"><span class="timestamp-wrapper"><span class="timestamp">[2019-10-18 22:43]</span></span> wtf marked as spam… https://github.community/t5/How-to-use-Git-and-GitHub/Feature-request-normalising-Github-topics-and-showing-count/m-p/35136</a></li>
 </ul>
 </li>
+<li><a href="#org0000092">79. why style sucks: comments after )))) (on last line). too many git changes when you add one line   <span class="tag"><span class="elisp">elisp</span></span></a></li>
+<li><a href="#org0000093">80. why elisp sucks: reliance on tabulation (e.g. if you change let to let* <span class="underline">everything</span> shifts)   <span class="tag"><span class="elisp">elisp</span></span></a></li>
+<li><a href="#org0000094">81. why elisp sucks: inconsistent function names (dash and s kind of help)   <span class="tag"><span class="elisp">elisp</span></span></a></li>
+<li><a href="#org0000095">82. why elisp sucks: no check<sub>output</sub>/check<sub>call</sub>   <span class="tag"><span class="elisp">elisp</span></span></a></li>
+<li><a href="#org0000096">83. why elisp sucks:  buffer-size   <span class="tag"><span class="elisp">elisp</span></span></a></li>
+<li><a href="#org0000097">84. awkward indentation apparently aids parinfer in placing parens, however sometimes it results in code errors without noticing   <span class="tag"><span class="elisp">elisp</span></span></a></li>
+<li><a href="#org0000098">85. <span class="todo TODO">TODO</span> defining custom language on top of existing, e.g. demonstrating static analysis tools   <span class="tag"><span class="publish">publish</span> <span class="blog">blog</span> <span class="literate">literate</span></span></a></li>
+<li><a href="#org0000099">86. <span class="todo TODO">TODO</span> disappearing pinboard bookmarks   <span class="tag"><span class="backup">backup</span> <span class="motivation">motivation</span> <span class="blog">blog</span></span></a></li>
+<li><a href="#org000009b">87. <span class="todo TODO">TODO</span> reddit – upvotes are just gone from 'upvoted'???   <span class="tag"><span class="backup">backup</span> <span class="motivation">motivation</span> <span class="blog">blog</span></span></a>
+<ul>
+<li><a href="#org000009a"><span class="timestamp-wrapper"><span class="timestamp">[2019-10-27 21:33]</span></span> def need to merge..</a></li>
+</ul>
+</li>
+<li><a href="#org000009c">88. <span class="todo TODO">TODO</span> motivation for collecting agenda files by myself: emacs is slow and buggy   <span class="tag"><span class="blog">blog</span></span></a></li>
+<li><a href="#org000009d">89. <span class="todo TODO">TODO</span> correlate temp sensor with hiking?   <span class="tag"><span class="blog">blog</span> <span class="qs">qs</span> <span class="lifelogging">lifelogging</span></span></a></li>
 </ul>
 </div>
 </div>
@@ -1188,6 +1203,92 @@ e.g. libraries should never configure logging
 </div>
 <div class="outline-3" id="outline-container-org0000090">
 <h3 id="org0000090"><a class="headerlink" href="#org0000090">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2019-10-18 22:43]</span></span> wtf marked as spam… <a href="https://github.community/t5/How-to-use-Git-and-GitHub/Feature-request-normalising-Github-topics-and-showing-count/m-p/35136">https://github.community/t5/How-to-use-Git-and-GitHub/Feature-request-normalising-Github-topics-and-showing-count/m-p/35136</a></h3>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000092">
+<h2 id="org0000092"><a class="headerlink" href="#org0000092">¶</a><span class="section-number-2">79</span> why style sucks: comments after )))) (on last line). too many git changes when you add one line   <span class="tag"><span class="elisp">elisp</span></span></h2>
+<div class="outline-text-2" id="text-79">
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000093">
+<h2 id="org0000093"><a class="headerlink" href="#org0000093">¶</a><span class="section-number-2">80</span> why elisp sucks: reliance on tabulation (e.g. if you change let to let* <span class="underline">everything</span> shifts)   <span class="tag"><span class="elisp">elisp</span></span></h2>
+<div class="outline-text-2" id="text-80">
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000094">
+<h2 id="org0000094"><a class="headerlink" href="#org0000094">¶</a><span class="section-number-2">81</span> why elisp sucks: inconsistent function names (dash and s kind of help)   <span class="tag"><span class="elisp">elisp</span></span></h2>
+<div class="outline-text-2" id="text-81">
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000095">
+<h2 id="org0000095"><a class="headerlink" href="#org0000095">¶</a><span class="section-number-2">82</span> why elisp sucks: no check<sub>output</sub>/check<sub>call</sub>   <span class="tag"><span class="elisp">elisp</span></span></h2>
+<div class="outline-text-2" id="text-82">
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000096">
+<h2 id="org0000096"><a class="headerlink" href="#org0000096">¶</a><span class="section-number-2">83</span> why elisp sucks:  buffer-size   <span class="tag"><span class="elisp">elisp</span></span></h2>
+<div class="outline-text-2" id="text-83">
+<p>
+doesn't take an argument so need with-current-buffer
+</p>
+<p>
+<a href="https://www.gnu.org/software/emacs/manual/html_node/eintr/Buffer-Size-_0026-Locations.html">https://www.gnu.org/software/emacs/manual/html_node/eintr/Buffer-Size-_0026-Locations.html</a>
+</p>
+<p>
+can't jump to source code because it's in C?
+</p>
+<p>
+whereas buffer-filename takes optional argument
+<a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/Buffer-File-Name.html">https://www.gnu.org/software/emacs/manual/html_node/elisp/Buffer-File-Name.html</a>
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000097">
+<h2 id="org0000097"><a class="headerlink" href="#org0000097">¶</a><span class="section-number-2">84</span> awkward indentation apparently aids parinfer in placing parens, however sometimes it results in code errors without noticing   <span class="tag"><span class="elisp">elisp</span></span></h2>
+<div class="outline-text-2" id="text-84">
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000098">
+<h2 id="org0000098"><a class="headerlink" href="#org0000098">¶</a><span class="section-number-2">85</span> <span class="todo TODO">TODO</span> defining custom language on top of existing, e.g. demonstrating static analysis tools   <span class="tag"><span class="publish">publish</span> <span class="blog">blog</span> <span class="literate">literate</span></span></h2>
+<div class="outline-text-2" id="text-85">
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000099">
+<h2 id="org0000099"><a class="headerlink" href="#org0000099">¶</a><span class="section-number-2">86</span> <span class="todo TODO">TODO</span> disappearing pinboard bookmarks   <span class="tag"><span class="backup">backup</span> <span class="motivation">motivation</span> <span class="blog">blog</span></span></h2>
+<div class="outline-text-2" id="text-86">
+<p>
+in /L/zzz<sub>syncthing</sub>/TODO/sort/pinboard-disappearing.txt
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000009b">
+<h2 id="org000009b"><a class="headerlink" href="#org000009b">¶</a><span class="section-number-2">87</span> <span class="todo TODO">TODO</span> reddit – upvotes are just gone from 'upvoted'???   <span class="tag"><span class="backup">backup</span> <span class="motivation">motivation</span> <span class="blog">blog</span></span></h2>
+<div class="outline-text-2" id="text-87">
+<p>
+E.g. 
+('20190922121312:promnesia', DbVisit(norm<sub>url</sub>='reddit.com/r/deepweb/comments/bwtame/my<sub>pc</sub><sub>is</sub><sub>a</sub><sub>little</sub><sub>bugged</sub>', orig<sub>url</sub>='https://reddit.com/r/deepweb/comments/bwtame/my<sub>pc</sub><sub>is</sub><sub>a</sub><sub>little</sub><sub>bugged</sub>/', dt=datetime.datetime(2019, 6, 4, 20, 0, 21, tzinfo=datetime.timezone.utc), locator=Loc(title='upvoted My PC is a little bugged.', href='https://reddit.com/r/deepweb/comments/bwtame/my<sub>pc</sub><sub>is</sub><sub>a</sub><sub>little</sub><sub>bugged</sub>/'), src='red', context='My PC is a little bugged.', duration=None))
+('20190922121312:promnesia', DbVisit(norm<sub>url</sub>='i.redd.it/rgok8se40c231.jpg', orig<sub>url</sub>='https://i.redd.it/rgok8se40c231.jpg', dt=datetime.datetime(2019, 6, 4, 20, 0, 21, tzinfo=datetime.timezone.utc), locator=Loc(title='upvoted My PC is a little bugged.', href='https://reddit.com/r/deepweb/comments/bwtame/my<sub>pc</sub><sub>is</sub><sub>a</sub><sub>little</sub><sub>bugged</sub>/'), src='red', context='My PC is a little bugged.', duration=None))
+</p>
+<p>
+there aren't even that many saved… the fuck??
+xzcat /L/backups/reddit/reddit-20190602144048.json.xz | jq '.upvoted | length'
+</p>
+</div>
+<div class="outline-3" id="outline-container-org000009a">
+<h3 id="org000009a"><a class="headerlink" href="#org000009a">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2019-10-27 21:33]</span></span> def need to merge..</h3>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000009c">
+<h2 id="org000009c"><a class="headerlink" href="#org000009c">¶</a><span class="section-number-2">88</span> <span class="todo TODO">TODO</span> motivation for collecting agenda files by myself: emacs is slow and buggy   <span class="tag"><span class="blog">blog</span></span></h2>
+<div class="outline-text-2" id="text-88">
+<p>
+e.g. agenda tries to include lock files!
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000009d">
+<h2 id="org000009d"><a class="headerlink" href="#org000009d">¶</a><span class="section-number-2">89</span> <span class="todo TODO">TODO</span> correlate temp sensor with hiking?   <span class="tag"><span class="blog">blog</span> <span class="qs">qs</span> <span class="lifelogging">lifelogging</span></span></h2>
+<div class="outline-text-2" id="text-89">
 </div>
 </div>
 
