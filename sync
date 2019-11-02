@@ -3,7 +3,7 @@ set -eu
 DIR="$(dirname "$0")"
 cd "$DIR"
 
-HBLOG="$DIR/../hblog"
+HBLOG="$DIR/../beepb00p"
 SRC="$HBLOG/_site/"
 
 SELF='sync' # script name
