@@ -15,9 +15,12 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
 
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
@@ -31,18 +34,7 @@
         <link rel="stylesheet" href="./css/default.css?v=2" />
         <link rel="stylesheet" href="./css/links.css?v=2" />
 
-        <!-- TODO make it conditional on actually having math on page? -->
-        <script type="text/javascript">
- window.MathJax = {
-     tex2jax: {
-         // note that hakyll source has got double dollar signs due to special meaning in templates
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         processEscapes: true
-     }
- };
-</script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
+        
     </head>
     <body>
         <header>
@@ -207,7 +199,7 @@ By personal information I refer to things like todo list, personal wiki or whate
 <h3 id="org_mode"><a class="headerlink" href="#org_mode">¶</a>Org mode notes</h3>
 <div class="outline-text-3" id="text-org_mode">
 <p>
-For the most part, I keep things in Org mode, and I use Emacs to work with it. Apart from any regular means of plaintext search (I'll write about it <a href="#other">later</a>), for me it's important to search over tags:
+For the most part, I keep things in Org mode, and I use Emacs to work with it. Apart from regular means of plaintext search (I'll write about it <a href="#other">later</a>), for me it's important to search over tags:
 </p>
 <ul class="org-ul">
 <li><a href="https://orgmode.org/manual/Matching-tags-and-properties.html"><code>org-tags-view</code></a> is available by default and an easy way to run simple tag searches</li>
@@ -764,7 +756,7 @@ It would still be nice to avoid unnecessary operations, and of course, semantic 
 I've got a <a href="#org0000013">global keybinding</a> to invoke Emacs with a prompt to search in code, so I can do in in a blink.
 </p>
 <p>
-Here's a <a href="https://file.globalupload.io/onCac7sh9M.gif">gif (3.5 Mb)</a> showing it <b>in action</b>: say, am working on testing a browser extension, and need to interact with in via hotkeys. I remember using <code>pyautogui</code> for automating <a href="https://github.com/karlicoss/grasp">Grasp</a> tests, but I forgot which function I actually need to use. Searching for 'pyautogui' brings me all the repositories where I'm using it and lets me quickly find out the command I need without having to read the documentation all over again.
+Here's a <a href="https://file.globalupload.io/onCac7sh9M.gif">gif (3.5 Mb)</a> showing it <b>in action</b>: say, I am working on testing a browser extension, and need to interact with in via hotkeys. I remember using <code>pyautogui</code> for automating <a href="https://github.com/karlicoss/grasp">Grasp</a> tests, but I forgot which function I actually need to use. Searching for 'pyautogui' brings me all the repositories where I'm using it and lets me quickly find out the command I need without having to read the documentation all over again.
 </p>
 </div>
 </div>
@@ -1041,9 +1033,12 @@ As always, I'm open to feedback and would love to hear what is or setup or help 
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
 
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
@@ -1057,18 +1052,7 @@ As always, I'm open to feedback and would love to hear what is or setup or help 
         <link rel="stylesheet" href="./css/default.css?v=2" />
         <link rel="stylesheet" href="./css/links.css?v=2" />
 
-        <!-- TODO make it conditional on actually having math on page? -->
-        <script type="text/javascript">
- window.MathJax = {
-     tex2jax: {
-         // note that hakyll source has got double dollar signs due to special meaning in templates
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         processEscapes: true
-     }
- };
-</script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
+        
     </head>
     <body>
         <header>
@@ -2613,9 +2597,12 @@ Let me know what you think! I'm open to all feedback.
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
 
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
@@ -2629,18 +2616,7 @@ Let me know what you think! I'm open to all feedback.
         <link rel="stylesheet" href="./css/default.css?v=2" />
         <link rel="stylesheet" href="./css/links.css?v=2" />
 
-        <!-- TODO make it conditional on actually having math on page? -->
-        <script type="text/javascript">
- window.MathJax = {
-     tex2jax: {
-         // note that hakyll source has got double dollar signs due to special meaning in templates
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         processEscapes: true
-     }
- };
-</script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
+        
     </head>
     <body>
         <header>
@@ -2998,9 +2974,12 @@ Let me know what you think! I'm open to all feedback.
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
 
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
@@ -3014,18 +2993,7 @@ Let me know what you think! I'm open to all feedback.
         <link rel="stylesheet" href="./css/default.css?v=2" />
         <link rel="stylesheet" href="./css/links.css?v=2" />
 
-        <!-- TODO make it conditional on actually having math on page? -->
-        <script type="text/javascript">
- window.MathJax = {
-     tex2jax: {
-         // note that hakyll source has got double dollar signs due to special meaning in templates
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         processEscapes: true
-     }
- };
-</script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
+        
     </head>
     <body>
         <header>
@@ -3774,9 +3742,12 @@ This post ended up longer that I expected so in the next part I will tell about 
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
 
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
@@ -3790,18 +3761,7 @@ This post ended up longer that I expected so in the next part I will tell about 
         <link rel="stylesheet" href="./css/default.css?v=2" />
         <link rel="stylesheet" href="./css/links.css?v=2" />
 
-        <!-- TODO make it conditional on actually having math on page? -->
-        <script type="text/javascript">
- window.MathJax = {
-     tex2jax: {
-         // note that hakyll source has got double dollar signs due to special meaning in templates
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         processEscapes: true
-     }
- };
-</script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
+        
     </head>
     <body>
         <header>
@@ -3927,9 +3887,12 @@ To get around that there is a somewhat hacky <a href="https://github.com/karlico
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
 
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
@@ -3943,18 +3906,7 @@ To get around that there is a somewhat hacky <a href="https://github.com/karlico
         <link rel="stylesheet" href="./css/default.css?v=2" />
         <link rel="stylesheet" href="./css/links.css?v=2" />
 
-        <!-- TODO make it conditional on actually having math on page? -->
-        <script type="text/javascript">
- window.MathJax = {
-     tex2jax: {
-         // note that hakyll source has got double dollar signs due to special meaning in templates
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         processEscapes: true
-     }
- };
-</script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
+        
     </head>
     <body>
         <header>
@@ -4471,7 +4423,7 @@ WARNING:workout-provider:Unhandled: Cycling
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Regression coefficient: 0.093
-Free term: -9.613
+Free term: -9.857
 </pre>
 </div>
 </div>
@@ -4526,7 +4478,7 @@ Free term: -9.613
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>8066.128
+<pre>8073.827
 </pre>
 </div>
 </div>
@@ -4597,9 +4549,12 @@ Free term: -9.613
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
 
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
@@ -4613,18 +4568,7 @@ Free term: -9.613
         <link rel="stylesheet" href="./css/default.css?v=2" />
         <link rel="stylesheet" href="./css/links.css?v=2" />
 
-        <!-- TODO make it conditional on actually having math on page? -->
-        <script type="text/javascript">
- window.MathJax = {
-     tex2jax: {
-         // note that hakyll source has got double dollar signs due to special meaning in templates
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         processEscapes: true
-     }
- };
-</script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
+        
     </head>
     <body>
         <header>
@@ -5706,9 +5650,12 @@ I'd be interested to know what do you think, and how are you managing your annot
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
 
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
@@ -5722,18 +5669,7 @@ I'd be interested to know what do you think, and how are you managing your annot
         <link rel="stylesheet" href="./css/default.css?v=2" />
         <link rel="stylesheet" href="./css/links.css?v=2" />
 
-        <!-- TODO make it conditional on actually having math on page? -->
-        <script type="text/javascript">
- window.MathJax = {
-     tex2jax: {
-         // note that hakyll source has got double dollar signs due to special meaning in templates
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         processEscapes: true
-     }
- };
-</script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
+        
     </head>
     <body>
         <header>
@@ -5933,9 +5869,12 @@ So, this is the plan, which I will fill with links as I write.
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
 
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
@@ -5949,18 +5888,7 @@ So, this is the plan, which I will fill with links as I write.
         <link rel="stylesheet" href="./css/default.css?v=2" />
         <link rel="stylesheet" href="./css/links.css?v=2" />
 
-        <!-- TODO make it conditional on actually having math on page? -->
-        <script type="text/javascript">
- window.MathJax = {
-     tex2jax: {
-         // note that hakyll source has got double dollar signs due to special meaning in templates
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         processEscapes: true
-     }
- };
-</script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
+        
     </head>
     <body>
         <header>
@@ -6073,9 +6001,12 @@ This realization made the irritation go and made the rest of exploration a bit m
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
 
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
@@ -6089,18 +6020,7 @@ This realization made the irritation go and made the rest of exploration a bit m
         <link rel="stylesheet" href="./css/default.css?v=2" />
         <link rel="stylesheet" href="./css/links.css?v=2" />
 
-        <!-- TODO make it conditional on actually having math on page? -->
-        <script type="text/javascript">
- window.MathJax = {
-     tex2jax: {
-         // note that hakyll source has got double dollar signs due to special meaning in templates
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         processEscapes: true
-     }
- };
-</script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
+        
     </head>
     <body>
         <header>
@@ -6193,9 +6113,12 @@ This realization made the irritation go and made the rest of exploration a bit m
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
 
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
@@ -6209,18 +6132,7 @@ This realization made the irritation go and made the rest of exploration a bit m
         <link rel="stylesheet" href="./css/default.css?v=2" />
         <link rel="stylesheet" href="./css/links.css?v=2" />
 
-        <!-- TODO make it conditional on actually having math on page? -->
-        <script type="text/javascript">
- window.MathJax = {
-     tex2jax: {
-         // note that hakyll source has got double dollar signs due to special meaning in templates
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         processEscapes: true
-     }
- };
-</script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
+        
     </head>
     <body>
         <header>
@@ -6316,9 +6228,12 @@ This realization made the irritation go and made the rest of exploration a bit m
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
 
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
@@ -6332,7 +6247,7 @@ This realization made the irritation go and made the rest of exploration a bit m
         <link rel="stylesheet" href="./css/default.css?v=2" />
         <link rel="stylesheet" href="./css/links.css?v=2" />
 
-        <!-- TODO make it conditional on actually having math on page? -->
+        
         <script type="text/javascript">
  window.MathJax = {
      tex2jax: {
@@ -6344,6 +6259,7 @@ This realization made the irritation go and made the rest of exploration a bit m
 </script>
 <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
+        
     </head>
     <body>
         <header>
@@ -6881,9 +6797,12 @@ Hopefully that saves someone else a bit of time.</p>
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
 
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
@@ -6897,18 +6816,7 @@ Hopefully that saves someone else a bit of time.</p>
         <link rel="stylesheet" href="./css/default.css?v=2" />
         <link rel="stylesheet" href="./css/links.css?v=2" />
 
-        <!-- TODO make it conditional on actually having math on page? -->
-        <script type="text/javascript">
- window.MathJax = {
-     tex2jax: {
-         // note that hakyll source has got double dollar signs due to special meaning in templates
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         processEscapes: true
-     }
- };
-</script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
+        
     </head>
     <body>
         <header>
@@ -7039,9 +6947,12 @@ Hopefully that saves someone else a bit of time.</p>
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
 
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
@@ -7055,18 +6966,7 @@ Hopefully that saves someone else a bit of time.</p>
         <link rel="stylesheet" href="./css/default.css?v=2" />
         <link rel="stylesheet" href="./css/links.css?v=2" />
 
-        <!-- TODO make it conditional on actually having math on page? -->
-        <script type="text/javascript">
- window.MathJax = {
-     tex2jax: {
-         // note that hakyll source has got double dollar signs due to special meaning in templates
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         processEscapes: true
-     }
- };
-</script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
+        
     </head>
     <body>
         <header>
@@ -7186,9 +7086,12 @@ the two grids are identical.</code></pre>
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
 
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
@@ -7202,18 +7105,7 @@ the two grids are identical.</code></pre>
         <link rel="stylesheet" href="./css/default.css?v=2" />
         <link rel="stylesheet" href="./css/links.css?v=2" />
 
-        <!-- TODO make it conditional on actually having math on page? -->
-        <script type="text/javascript">
- window.MathJax = {
-     tex2jax: {
-         // note that hakyll source has got double dollar signs due to special meaning in templates
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         processEscapes: true
-     }
- };
-</script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
+        
     </head>
     <body>
         <header>
@@ -7339,9 +7231,12 @@ the two grids are identical.</code></pre>
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
 
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
@@ -7355,18 +7250,7 @@ the two grids are identical.</code></pre>
         <link rel="stylesheet" href="./css/default.css?v=2" />
         <link rel="stylesheet" href="./css/links.css?v=2" />
 
-        <!-- TODO make it conditional on actually having math on page? -->
-        <script type="text/javascript">
- window.MathJax = {
-     tex2jax: {
-         // note that hakyll source has got double dollar signs due to special meaning in templates
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         processEscapes: true
-     }
- };
-</script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
+        
     </head>
     <body>
         <header>
