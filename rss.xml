@@ -233,7 +233,7 @@ Here are some typical workflows with my org-mode:
 I see an interesting article or think of something which would be good to share with a friend, but at the moment it's not quite a good time to send it.  I can just capture it and attach a tag (e.g. <samp class="inline">ann</samp> or <samp class="inline">jeremy</samp>). That way next time we chat I can just look up things under their tag and send them.
 </p>
 <p>
-It works the other way around as well: if they send me a link or ask me to do something, but I can't do it immediately. I have a special script that converts chat messages into todo items and automatically attach the corresponding tag. I write more about it <a href="./orger-todos.html#telegram2org">here</a>.
+It works the other way around as well: imagine they sent me a link or asked me to do something, but I can't do it immediately. I have a special script that converts chat messages into todo items and automatically attaches the corresponding tag. I write more about it <a href="./orger-todos.html#telegram2org">here</a>.
 </p></li>
 <li><p>
 assembling blog posts
@@ -1293,10 +1293,11 @@ Yes, it's a messy format and not very machine friendly. But oh well it's a file,
       that they can't be friends. [Page 120]
 
 </pre>
-<p>
-For the purposes of this post, to keep the output clean examples I am using plain text, not HTML. You'll have to use your imagination if you can't live without CSS.
-But it still looks kinda nice, doesn't it?
-</p>
+<div><span class="before-aside">
+For the purposes of this post, to keep the example output clean, I am just using plain text.
+Even though it's not quite HTML with CSS, it still looks kinda nice, doesn't it?
+
+</span><aside>if you're wondering why <code class="inline">yield</code> I'll explain it <a href="#iterator">further down</a></aside></div>
 <p>
 Now:
 </p>
@@ -1355,8 +1356,8 @@ Or,
 you wrote this parser and decided that it could be useful for other people.
 </p>
 <p>
-So for a small fee, you are providing a service that fetches other people's highlights, displays on user's 
-personal pages and maybe lets their friends comment. 
+So for a small fee, you are providing a service that fetches highlights from their Kindles, displays on 
+profile pages and lets their friends comment. 
 </p>
 <p>
 Imagine user's highlights result in the same error described above. It would be pretty sad if parsing a single entry
@@ -1564,7 +1565,7 @@ Cool, we rendered as much as we can, and we get the error displayed as well, so 
 The error looks a bit out of nowhere, but at least it's there. We will address how we can improve it <a href="#error_context">later</a>.
 </p>
 <p>
-Sadly, for someone else who looks at <code class="inline">iter_highlights</code> or <code class="inline">iter_books</code> signatures, it's not obvious that it yields <code class="inline">Result</code> objects, not <code class="inline">Book</code> without reading the code.
+Sadly, for someone else who looks at <code class="inline">iter_highlights</code> or <code class="inline">iter_books</code> signatures, it's not obvious that it yields <code class="inline">Result</code> objects, not <code class="inline">Book~/~Highlight</code> objects without reading the code.
 It's a thankless job for a human to keep track of, and <a href="https://mypy.readthedocs.io/en/latest/introduction.html"><b>mypy</b></a> is a perfect fit for this task.
 Gladly, the library already <a href="https://github.com/dbrgn/result/blob/master/result/result.py">comes with type annotations</a>.
 </p>
@@ -1654,7 +1655,7 @@ Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
 <p>
-Phew! With some minor changes restructuring we've convinced mypy.
+Phew! With some minor changes and restructuring we've convinced mypy.
 </p>
 <p>
 <a id="org0000008"></a>
@@ -1752,10 +1753,10 @@ As a consequence, <code class="inline">iter_highlights</code> required no change
 Ok, that definitely requires some explanation…
 </p>
 <p>
-<code class="inline">returns</code> library public API doesn't provide any way to tell between success and failure (<a href="https://returns.readthedocs.io/en/latest/pages/result.html#what-is-the-difference-between-success-and-success">kind of deliberately</a>), the types <code class="inline">_Success</code> and <code class="inline">_Failure</code> are private, and the only method that we can use seems to be <code class="inline">.value_or(default)</code>. This method returns the success value if the result is <code class="inline">Success</code> and <code class="inline">default</code> in case of <code class="inline">Failure</code>. So we use a <b>sentinel object to distinguish</b> between actual success values and <code class="inline">default</code> ones and also have to trick mypy with a <code class="inline">cast</code>.
+<code class="inline">returns</code> library public API doesn't provide any way to tell between success and failure (<a href="https://returns.readthedocs.io/en/latest/pages/result.html#what-is-the-difference-between-success-and-success">kind of deliberately</a>). The types <code class="inline">_Success</code> and <code class="inline">_Failure</code> are private, and the only method that we can use seems to be <a href="https://returns.readthedocs.io/en/latest/pages/result.html#returns.result.Result.value_or"><code class="inline">result.value_or(default)</code></a>. This method returns the success value if <code class="inline">result</code> is <code class="inline">Success</code> and falls back to <code class="inline">default</code> if <code class="inline">result</code> is a <code class="inline">Failure</code>. So we use a <b>sentinel object to distinguish</b> between actual success values and <code class="inline">default</code> ones, and also have to trick mypy with a <code class="inline">cast</code>.
 </p>
 <p>
-Apart from this this function suffers from exactly the same issues as the <code class="inline">iter_books</code> implementation from <a href="#org0000008">the previous section</a> for the same reason: contract is too complicated to be expressed in mypy.
+Apart from this obscurity, the function suffers from exactly the same issues as the <code class="inline">iter_books</code> implementation from <a href="#org0000008">the previous section</a>, and for the same reason: contract is too complicated to be expressed in mypy.
 </p>
 <p>
 One could argue that this function is going to look awkward anyway since we need to separate list of results into successes and errors. Let's see the function that should be more straightforward:
@@ -1776,8 +1777,8 @@ One could argue that this function is going to look awkward anyway since we need
 <p>
 The idea here is that we can use <code class="inline">map</code> method (that works like <code class="inline">fmap</code> in Haskell) and use it to print successful results,
 and chain it with <code class="inline">fix</code> that works like like <code class="inline">fmap</code>, but for errors. In a sense, these methods encapsulate pattern matching 
-(which Python lacks syntactically) so as long the implementor did the dirty business of doing it dynamically right, you're safe.
-However I feel that in this particular library overdid this encapsulation a bit, hence very hacky implementation of <code class="inline">iter_books</code>.
+(which Python lacks syntactically) so as long the implementor did the dirty business of correctly doing it dynamically, you're safe.
+However I feel that this particular library overdid this encapsulation a bit, hence very hacky implementation of <code class="inline">iter_books</code>.
 </p>
 <p>
 Lambdas <a href="https://stackoverflow.com/a/1233520/706389"><b>can't be multiline</b></a>, so we have to define a local function for <code class="inline">print_ok</code>.
@@ -1815,7 +1816,7 @@ Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
 <p>
-Overall I'm not sold, Python simply <b>lacks syntax</b> that lets you unpack and compose these result objects in a clean way and you end up with boilerplate.
+Overall I'm not sold, Python simply <b>lacks syntax</b> that lets you unpack and compose <code class="inline">Result</code> objects in a clean way and you end up with boilerplate.
 <a href="https://returns.readthedocs.io/en/latest/pages/io.html#returns.io.IO.lift"><code class="inline">lifts</code></a> are not very readable in Haskell, let alone in Python.
 </p>
 <p>
@@ -1834,7 +1835,7 @@ But as much as I like ideas from functional programming, I'm almost certain that
 <h2 id="pair"><a class="headerlink" href="#pair">¶</a><span class="section-number-2">7</span> Still-not-quite-a-solution #3: (Value, Error) pairs</h2>
 <div class="outline-text-2" id="text-pair">
 <p>
-Before before we go on to a solution I propose let's make sure to mention another notable pattern of error handling.
+Before we go on to the solution I propose let me mention another notable pattern of error handling.
 </p>
 <p>
 It's commonly used in <a href="https://blog.golang.org/error-handling-and-go">Go</a>.
@@ -1848,7 +1849,7 @@ if err != nil {
 </pre>
 </div>
 <p>
-And it's not limited by Go, e.g. you'll often encounter it implicitly in C (which had no exceptions) or C++ code.
+However, it's not limited only by Go, e.g. you'd often encounter it implicitly in C (which had no exceptions) or C++ code.
 For instance, <a href="https://en.cppreference.com/w/cpp/filesystem/is_symlink"><code class="inline">std::filesystem::is_symlink</code></a> comes in two flavours:
 </p>
 <ul class="org-ul">
@@ -1865,8 +1866,8 @@ Personally I as well as many other people find it pretty ugly. No judgment here 
 Pretty sure one can get used to it after a while and that there are some static flow analyzers that help to ensure correct error handling.
 </p>
 <p>
-Main issue regarding python is it's not mypy friendly as return type of <code class="inline">Open</code> would have to be <code class="inline">Tuple[Optional[Result], Optional[Error]]</code>.
-In the type theory language, it is a <a href="https://en.wikipedia.org/wiki/Product_type">product type</a>, so in addition to all members of <code class="inline">Result</code> type and all members of <code class="inline">Error</code> type, it also got inhabitants that <b>don't make sense for our program</b>, such as <code class="inline">(None, None)</code> and also all of <code class="inline">Tuple[Result, Error]</code>. 
+Main issue with this approach regarding Python is that it's not mypy friendly as return type of <code class="inline">Open</code> would have to be <code class="inline">Tuple[Optional[Success], Optional[Error]]</code>.
+In the type theory language, it is a <a href="https://en.wikipedia.org/wiki/Product_type">product type</a>, so in addition to all members of <code class="inline">Success</code> type and all members of <code class="inline">Error</code> type, it also got inhabitants that <b>don't make sense for our program</b>, such as <code class="inline">(None, None)</code> and also all of <code class="inline">Tuple[Success, Error]</code>. 
 </p>
 <p>
 In other words, nothing on type level prevents the callee (<code class="inline">os.Open</code>) from returning something like <code class="inline">(file_descriptor, "whoops")</code>, which has ambiguous meaning.
@@ -1906,10 +1907,10 @@ you might have to refactor a lot of code.
 <li><b>performance and memory use</b>: not going to make claims here as I haven't benchmarked, but there is a potential for overhead caused by extra wrapper objects.</li>
 </ul>
 <p>
-First, we'll attack readability and safety simultaneously.  
+First, we'll attack readability and safety. Yes, at the same time!  
 </p>
 <p>
-In part it's solved with syntactic sugar in other languages like <code class="inline">do</code> syntax in <code class="inline">Haskell</code> and <code class="inline">try!</code> macro, <code class="inline">?</code> operator in <a href="https://doc.rust-lang.org/edition-guide/rust-2018/error-handling-and-panics/the-question-mark-operator-for-easier-error-handling.html">Rust</a>. Sometimes it's inevitable and you have to inject values into rust's <code class="inline">Result</code> explicitly via <code class="inline">Ok/Err</code> constructors. However check like <code class="inline">.is_ok()</code> or <code class="inline">isLeft</code> are really not that common in Rust and Haskell. Reason is <b>pattern matching</b>! E.g. if we had pattern matching in python we could write something like:
+In part it's solved with syntactic sugar in other languages like <code class="inline">do</code> syntax in <code class="inline">Haskell</code>, or <code class="inline">try!</code> macro and <code class="inline">?</code> operator in <a href="https://doc.rust-lang.org/edition-guide/rust-2018/error-handling-and-panics/the-question-mark-operator-for-easier-error-handling.html">Rust</a>. Sometimes it's inevitable and you have to inject values into rust's <code class="inline">Result</code> explicitly via <code class="inline">Ok/Err</code> constructors. However checking for  <code class="inline">.is_ok()</code> or <code class="inline">isRight</code> is really not that common in idiomatic Rust and Haskell. Reason is <b>pattern matching</b>! E.g. if we had pattern matching in Python we could write something like:
 </p>
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">print_books</span>():
@@ -1965,8 +1966,8 @@ So, rules of thumb:
 </p>
 <ul class="org-ul">
 <li>use <code class="inline">Union[T, Exception]</code> to represent type for results that hold <code class="inline">T</code> but can also end up with an error</li>
-<li><code class="inline">return</code> or <code class="inline">yield</code> exceptions and values without using any extra wrapping</li>
-<li>pattern match through <code class="inline">isinstance</code></li>
+<li><code class="inline">return</code> or <code class="inline">yield</code> exceptions and success values without using any extra wrappers</li>
+<li>'pattern match' through <code class="inline">isinstance</code></li>
 </ul>
 <p>
 Let's see how we can rewrite our program by employing these principles:
@@ -2058,7 +2059,7 @@ You can completely ignore mypy and error handling, until you're happy, then you 
 <b>no memory overhead</b> caused by constant wrapping and unwrapping. 
 </p>
 <p>
-I don't really want to make claims about CPU here. I tried isolated micro benchmarking; suing <code class="inline">isinstance(r, Exception)</code> runs in 50ns,
+I don't really want to make claims about CPU here. I tried isolated micro benchmarking; using <code class="inline">isinstance(r, Exception)</code> runs in 50ns,
 using <code class="inline">is_err()</code> call and then unpacking <code class="inline">err()</code> runs is 60ns.
 But these numbers might not make sense under a realistic data flow.
 </p></li>
@@ -2205,7 +2206,7 @@ Success: no issues found in 1 source file
 <div class="outline-text-3" id="text-org0000018">
 <p>
 When you're actively working on your code and running tests, you want to make sure that there are no errors and be as non-defensive as possible.
-However, in the field, then you want to keep the code defensive. To do that quickly, you can use the following trick:
+However, in the field, you want to keep the code more defensive. To do that quickly, you can use the following trick:
 </p>
 <div class="org-src-container">
 <pre class="src src-mypy" id="org0000016"><span class="linenr"> 5: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> Generic
@@ -2289,7 +2290,7 @@ Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
 <p>
-Even though you never actually return <code class="inline">Error</code> under the non-defensive policy, you <b>don't have to change any of the type signatures</b>: <code class="inline">Iterator[int]</code> is still a perfectly good <code class="inline">Iterator[Res[int]]</code>.
+Even though you never actually return <code class="inline">Error</code> under the non-defensive policy, you <b>don't have to change any of the type signatures</b>: <code class="inline">Iterator[int]</code> is still a perfectly good <code class="inline">Iterator[Res[int]]</code>. Thanks, <a href="#org000000a">covariance</a>!
 </p>
 <p>
 I'm using this technique in my <a href="https://github.com/karlicoss/kobuddy#as-a-standalone-app">Kobo parser</a> and control it via <samp class="inline">--errors</samp> argument.
@@ -2355,7 +2356,7 @@ Remember <a href="#org0000001"><code class="inline">parse_entry</code></a>? Its 
 that will be handled by <code class="inline">iter_highlights</code>. 
 </p>
 <p>
-If we change return type to <samp class="inline">Iterator[Res[Highlight]]</samp>, we can be more defensive and do some <b>neat fallbacks</b>:
+If we change return type to <code class="inline">Iterator[Res[Highlight]]</code>, we can be more defensive and do some <b>neat fallbacks</b>:
 </p>
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">parse_entry</span>(entry: <span class="org-builtin">str</span>) -&gt; Iterator[Res[Highlight]]:
@@ -2388,7 +2389,7 @@ If we change return type to <samp class="inline">Iterator[Res[Highlight]]</samp>
 You can think of <code class="inline">Exceptions</code> coming from <code class="inline">parse_entry</code> as sort of warnings and you can handle them accordingly in <code class="inline">iter_highlights</code>, e.g. attach extra context.
 </p>
 <p>
-Of course, this complicates code and you can't predict all possible errors, so there is always some balance of how defensive you can be.
+Of course, this complicates code, and you can't predict all possible errors anyway, so there is always some balance of how defensive you can be.
 </p>
 </div>
 </div>
@@ -2499,9 +2500,8 @@ We can exploit this for our specific case on <code class="inline">Union[T, Excep
 </pre>
 </div>
 <p>
-This looks a bit odd. We still need to type the <code class="inline">Exception</code> (you can't do <code class="inline">except e</code>). 
-Note that we have to use <code class="inline">else</code> block: if you put code in it under <code class="inline">try</code>, you'll start catching exceptions coming from the printing code,
-which is unintended.
+This looks a bit odd. We still have to type <code class="inline">Exception</code>, you can't just write <code class="inline">except e</code>, which hardly makes it different from <code class="inline">isinstance</code>. 
+Note that we have to use <code class="inline">else</code> block: if you put code in it under <code class="inline">try</code>, you'll start catching exceptions coming from the printing code, which is unintended.
 </p>
 <p>
 And the obvious downside is that there is a potential to forget to handle exception signaled by <code class="inline">unwrap</code> and mypy can't help you here.
