@@ -1,8 +1,8 @@
-/* TODO testing css changes via screenshot?? */
 html {
   font-size: 100%;
-  font-family: sans-serif;
+  font-family: "Source Serif Pro", serif;
 }
+
 
 @media (min-width: 80rem) {
     body {
@@ -299,3 +299,16 @@ a.headerlink:hover {
 #isso-root .avatar {
     display: none;
 }
+
+
+
+/* highlight inline code produced by org-mode */
+/* TODO support for ipynb as well? */
+code.inline {
+    color: green;
+}
+a code.inline {
+    /* TODO not sure about this one... */
+    text-decoration: underline;
+}
+/* end */

@@ -18,8 +18,9 @@
 
         <title>Building personal search infrastructure for your knowledge and code | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css?v=2" />
-        <link rel="stylesheet" href="./css/links.css?v=2" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=3" />
 
         
     </head>
@@ -54,7 +55,7 @@
 <link rel="stylesheet" href="./css/htmlize.css" />
 <link rel="stylesheet" href="./css/org-default.css" />
 
-<link rel="stylesheet" href="./css/org-extra.css?v=2" />
+<link rel="stylesheet" href="./css/org-extra.css?v=3" />
 
 
 
@@ -189,7 +190,7 @@ By personal information I refer to things like todo list, personal wiki or whate
 For the most part, I keep things in Org mode, and I use Emacs to work with it. Apart from regular means of plaintext search (I'll write about it <a href="#other">later</a>), for me it's important to search over tags:
 </p>
 <ul class="org-ul">
-<li><a href="https://orgmode.org/manual/Matching-tags-and-properties.html"><code>org-tags-view</code></a> is available by default and an easy way to run simple tag searches</li>
+<li><a href="https://orgmode.org/manual/Matching-tags-and-properties.html"><code class="inline">org-tags-view</code></a> is available by default and an easy way to run simple tag searches</li>
 <li><p>
 <a href="https://github.com/alphapapa/org-ql#screenshots">org-ql</a>
 </p>
@@ -200,8 +201,8 @@ It's a relatively new package, with new query syntax as the main feature, which 
 I mainly use these commands:
 </p>
 <ul class="org-ul">
-<li><a href="https://github.com/alphapapa/org-ql#helm-org-ql"><code>helm-org-ql</code></a> for <b>incremental</b> search in the current buffer</li>
-<li><a href="https://github.com/alphapapa/org-ql#org-ql-search"><code>org-ql-search</code></a> <b>interactively</b> prompts you for the search target, sort and grouping</li>
+<li><a href="https://github.com/alphapapa/org-ql#helm-org-ql"><code class="inline">helm-org-ql</code></a> for <b>incremental</b> search in the current buffer</li>
+<li><a href="https://github.com/alphapapa/org-ql#org-ql-search"><code class="inline">org-ql-search</code></a> <b>interactively</b> prompts you for the search target, sort and grouping</li>
 </ul></li>
 </ul>
 <p>
@@ -216,7 +217,7 @@ Here are some typical workflows with my org-mode:
 <a id="org0000002"></a> tags for friends
 </p>
 <p>
-I see an interesting article or think of something which would be good to share with a friend, but at the moment it's not quite a good time to send it.  I can just capture it and attach a tag (e.g. <code>ann</code> or <code>jeremy</code>). That way next time we chat I can just look up things under their tag and send them.
+I see an interesting article or think of something which would be good to share with a friend, but at the moment it's not quite a good time to send it.  I can just capture it and attach a tag (e.g. <samp class="inline">ann</samp> or <samp class="inline">jeremy</samp>). That way next time we chat I can just look up things under their tag and send them.
 </p>
 <p>
 It works the other way around as well: if they send me a link or ask me to do something, but I can't do it immediately. I have a special script that converts chat messages into todo items and automatically attach the corresponding tag. I write more about it <a href="./orger-todos.html#telegram2org">here</a>.
@@ -227,7 +228,7 @@ assembling blog posts
 <p>
 Unfortunately, I can't just sit and write comprehensible texts without preparation.
 Typically I have thoughts on the topic now and then, which I just note down and mark with the tag.
-When I feel it's time to prepare the post, I can just search by the tag (e.g. <code>tags:search</code> for this post), and refile the items into the file with the post draft.
+When I feel it's time to prepare the post, I can just search by the tag (e.g. <code class="inline">tags:search</code> for this post), and refile the items into the file with the post draft.
 </p></li>
 </ul>
 </div>
@@ -271,18 +272,18 @@ All these files are either non-Org or somewhat heavy for structured Org-mode sea
 To search over them, I'm using Emacs and Ripgrep (you can read why <a href="#org0000004">later</a>):
 </p>
 <p>
-<a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L130-L134"><code>my/search</code></a>
-runs ripgrep against <code>my/search-targets</code> variable contains paths to notes, chat logs, Orger outputs etc.
+<a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L130-L134"><code class="inline">my/search</code></a>
+runs ripgrep against <code class="inline">my/search-targets</code> variable contains paths to notes, chat logs, Orger outputs etc.
 </p>
 <p>
-The interesting bit about <code>my/search</code> is <a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L87-L127"><code>--my/one-off-helm-follow-mode</code></a> call. It's a somewhat horrible hack that  automatically enables helm-follow mode so you don't have to press <code>C-c C-f</code> every time you invoke helm.
+The interesting bit about <code class="inline">my/search</code> is <a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L87-L127"><code class="inline">--my/one-off-helm-follow-mode</code></a> call. It's a somewhat horrible hack that  automatically enables helm-follow mode so you don't have to press <code class="inline">C-c C-f</code> every time you invoke helm.
 </p>
 <p>
 Finally, to make sure I can invoke search in an instance, I'm using a <a href="#org0000005">global keybinding</a>.
 </p>
 <p>
 Here's a <b>demo</b> <a href="https://file.globalupload.io/wu7HYYyJaY.gif">gif (5Mb)</a> of using this to search 'greg egan' in my knowledge repository.
-You can see that as a result, I'm getting my Kobo highlights (<code>kobo.org</code>), my reading list (<code>read.org</code>) and even some video (<code>youtube.org</code>)!
+You can see that as a result, I'm getting my Kobo highlights (<samp class="inline">kobo.org</samp>), my reading list (<samp class="inline">read.org</samp>) and even some video (<samp class="inline">youtube.org</samp>)!
 </p>
 </div>
 </div>
@@ -339,7 +340,7 @@ It has its own small <a href="http://www.orgzly.com/help#search">query language<
 </p>
 <p>
 You can save <a href="https://lh3.googleusercontent.com/FweBE2T3T3wZwJC64DQgtGj8vv8jKPBGTClnRAApSOHdKq4hiFdpq_JjEBPsMj_nTDA=w2560-h1295">search queries</a>, which ends up being pretty similar to custom Org-mode <b><b>agendas</b></b>.
-Searches can be displayed as persistent widgets, e.g. I find convenient to have a phone screen dedicated to 'Buy' search (<code>t.buy</code> query) or 'Do at work' search (<code>t.@work</code> query).
+Searches can be displayed as persistent widgets, e.g. I find convenient to have a phone screen dedicated to 'Buy' search (<code class="inline">t.buy</code> query) or 'Do at work' search (<code class="inline">t.@work</code> query).
 </p>
 <p>
 As I described <a href="#org0000002">above</a>, I keep few saved search queries for some friends so I can recall what I wanted to discuss with them.
@@ -357,7 +358,7 @@ It's a fulltext indexing and search app for plaintext files, but apparently it e
 <a href="https://lh3.googleusercontent.com/psPhmFoawEzwZQpwBGgVz42ojnR-uAi70Li4DBc4Z13wLOTannvT2suaxZQA9YX_Bg=w2560-h1295">Here's</a> how matches list looks. Screenshots on Google Play give a pretty good idea what the app does.
 </p>
 <p>
-I find it convenient for quick search over things that are not imported in Orgzly, e.g. <code>.txt</code> chat logs (Telegram, VK) and huge org-mode files
+I find it convenient for quick search over things that are not imported in Orgzly, e.g. <samp class="inline">.txt</samp> chat logs (Telegram, VK) and huge org-mode files
 I described <a href="#other">above</a>.
 </p>
 <p>
@@ -394,82 +395,82 @@ Knowing how to compose a search query is one thing, but navigating to the servic
 <tr>
 <td class="org-left">g</td>
 <td class="org-left">Google</td>
-<td class="org-left"><code>https://www.google.com/complete/search?client=firefox&amp;q={searchTerms}</code></td>
+<td class="org-left"><samp class="inline">https://www.google.com/complete/search?client=firefox&amp;q={searchTerms}</samp></td>
 </tr>
 <tr>
 <td class="org-left">d</td>
 <td class="org-left">DuckDuckGo</td>
-<td class="org-left"><code>https://duckduckgo.com/?q={searchTerms}&amp;t=canonical</code></td>
+<td class="org-left"><samp class="inline">https://duckduckgo.com/?q={searchTerms}&amp;t=canonical</samp></td>
 </tr>
 <tr>
 <td class="org-left">r</td>
 <td class="org-left">Reddit</td>
-<td class="org-left"><code>https://www.reddit.com/search?q={searchTerms}</code></td>
+<td class="org-left"><samp class="inline">https://www.reddit.com/search?q={searchTerms}</samp></td>
 </tr>
 <tr>
 <td class="org-left">gh</td>
 <td class="org-left">GitHub</td>
-<td class="org-left"><code>https://github.com/search?q={searchTerms}&amp;ref=opensearch</code></td>
+<td class="org-left"><samp class="inline">https://github.com/search?q={searchTerms}&amp;ref=opensearch</samp></td>
 </tr>
 <tr>
 <td class="org-left">pin</td>
 <td class="org-left">Pinboard: search all</td>
-<td class="org-left"><code>https://pinboard.in/search/?query={searchTerms}r&amp;all=Search+All</code></td>
+<td class="org-left"><samp class="inline">https://pinboard.in/search/?query={searchTerms}r&amp;all=Search+All</samp></td>
 </tr>
 <tr>
 <td class="org-left">tw</td>
 <td class="org-left">Twitter</td>
-<td class="org-left"><code>https://twitter.com/search</code></td>
+<td class="org-left"><samp class="inline">https://twitter.com/search</samp></td>
 </tr>
 <tr>
 <td class="org-left">y</td>
 <td class="org-left">YouTube</td>
-<td class="org-left"><code>https://www.youtube.com/results?search_query={searchTerms}&amp;page={startPage?}&amp;utm_source=opensearch</code></td>
+<td class="org-left"><samp class="inline">https://www.youtube.com/results?search_query={searchTerms}&amp;page={startPage?}&amp;utm_source=opensearch</samp></td>
 </tr>
 <tr>
 <td class="org-left">m</td>
 <td class="org-left">Google Maps</td>
-<td class="org-left"><code>https://www.google.com/maps/search/{searchTerms}?hl=en&amp;source=opensearch</code></td>
+<td class="org-left"><samp class="inline">https://www.google.com/maps/search/{searchTerms}?hl=en&amp;source=opensearch</samp></td>
 </tr>
 <tr>
 <td class="org-left">w</td>
 <td class="org-left">Wikipedia (en)</td>
-<td class="org-left"><code>https://en.wikipedia.org/wiki/Special:Search</code></td>
+<td class="org-left"><samp class="inline">https://en.wikipedia.org/wiki/Special:Search</samp></td>
 </tr>
 <tr>
 <td class="org-left">cpp</td>
 <td class="org-left">Cppreference</td>
-<td class="org-left"><code>https://en.cppreference.com/mwiki/index.php?search={searchTerms}</code></td>
+<td class="org-left"><samp class="inline">https://en.cppreference.com/mwiki/index.php?search={searchTerms}</samp></td>
 </tr>
 <tr>
 <td class="org-left">js</td>
 <td class="org-left">MDN</td>
-<td class="org-left"><code>https://developer.mozilla.org/en-US/search?q={searchTerms}</code></td>
+<td class="org-left"><samp class="inline">https://developer.mozilla.org/en-US/search?q={searchTerms}</samp></td>
 </tr>
 <tr>
 <td class="org-left">eb</td>
 <td class="org-left">Ebay</td>
-<td class="org-left"><code>https://www.ebay.co.uk/sch/i.html?_nkw={searchTerms}</code></td>
+<td class="org-left"><samp class="inline">https://www.ebay.co.uk/sch/i.html?_nkw={searchTerms}</samp></td>
 </tr>
 <tr>
 <td class="org-left">am</td>
 <td class="org-left">Amazon.co.uk</td>
-<td class="org-left"><code>https://www.amazon.co.uk/exec/obidos/external-search/</code></td>
+<td class="org-left"><samp class="inline">https://www.amazon.co.uk/exec/obidos/external-search/</samp></td>
 </tr>
 <tr>
 <td class="org-left">tru</td>
 <td class="org-left">Translate en-ru</td>
-<td class="org-left"><code>https://translate.google.com/#view=home&amp;op=translate&amp;sl=en&amp;tl=ru&amp;text={searchTerms}</code></td>
+<td class="org-left"><samp class="inline">https://translate.google.com/#view=home&amp;op=translate&amp;sl=en&amp;tl=ru&amp;text={searchTerms}</samp></td>
 </tr>
 <tr>
 <td class="org-left">tde</td>
 <td class="org-left">Translate en-de</td>
-<td class="org-left"><code>https://translate.google.com/#view=home&amp;op=translate&amp;sl=en&amp;tl=de&amp;text={searchTerms}</code></td>
+<td class="org-left"><samp class="inline">https://translate.google.com/#view=home&amp;op=translate&amp;sl=en&amp;tl=de&amp;text={searchTerms}</samp></td>
 </tr>
 <tr>
 <td class="org-left">dd</td>
 <td class="org-left">DevDocs</td>
-<td class="org-left"><code>https://devdocs.io/#q={searchTerms}</code></td>
+<td class="org-left"><samp class="inline">https://devdocs.io/#q={searchTerms}</samp></td>
 </tr>
 </tbody>
 </table>
@@ -509,24 +510,24 @@ Here's what I'm using for that:
 <tbody>
 <tr>
 <td class="org-left">py</td>
-<td class="org-left"><code>file:///usr/share/doc/python3/html/search.html?q=%s</code></td>
+<td class="org-left"><samp class="inline">file:///usr/share/doc/python3/html/search.html?q=%s</samp></td>
 </tr>
 <tr>
 <td class="org-left">rust</td>
-<td class="org-left"><code>file:///home/karlicos/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/share/doc/rust/html/std/option/index.html?search=%s</code></td>
+<td class="org-left"><samp class="inline">file:///home/karlicos/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/share/doc/rust/html/std/option/index.html?search=%s</samp></td>
 </tr>
 </tbody>
 </table>
 <p>
-Sadly, the extension mentioned above doesn't work with <code>file://</code> schema for some reason, so to add it in Firefox,
+Sadly, the extension mentioned above doesn't work with <samp class="inline">file://</samp> schema for some reason, so to add it in Firefox,
 you can use the method described <a href="https://superuser.com/a/7336/300795">here</a>, it's as easy as adding a bookmark.
 </p>
 <p>
 Recently I ran into <a href="https://devdocs.io/offline">devdocs.io</a>, it's using your browser's <b>offline</b> storage to cache the documentation.
-I'm still getting used to it, but it's amazing how faster it is than jumping to documentation online. You can use it with multiple languages, you just type the search engine prefix first, and then language prefix (e.g. <code>dd cpp emplace_back</code>).
+I'm still getting used to it, but it's amazing how faster it is than jumping to documentation online. You can use it with multiple languages, you just type the search engine prefix first, and then language prefix (e.g. <code class="inline">dd cpp emplace_back</code>).
 </p>
 <p>
-Finally, it may be convenient to set up <a href="https://github.com/hrs/engine-mode">engine-mode</a> in Emacs, or <a href="https://github.com/syl20bnr/spacemacs/tree/master/layers/+web-services/search-engine">search-engine layer</a> in Spacemacs. It lets you select a bit of text and search it in browser (e.g. <code>SPC s G</code> to do google search). I find it convenient when I need to search many things in bulk.
+Finally, it may be convenient to set up <a href="https://github.com/hrs/engine-mode">engine-mode</a> in Emacs, or <a href="https://github.com/syl20bnr/spacemacs/tree/master/layers/+web-services/search-engine">search-engine layer</a> in Spacemacs. It lets you select a bit of text and search it in browser (e.g. <code class="inline">SPC s G</code> to do google search). I find it convenient when I need to search many things in bulk.
 </p>
 </div>
 <div class="outline-3" id="outline-container-org000000d">
@@ -572,7 +573,7 @@ It's very convenient to have some sort of code search engine if you're in a simi
 Doing potentially breaking code changes
 </p>
 <p>
-For instance, I want to remove some unused function or refactor something in <a href="https://github.com/karlicoss/my"><code>my</code></a> package, which is a Python library to access my personal data.
+For instance, I want to remove some unused function or refactor something in <a href="https://github.com/karlicoss/my"><code class="inline">my</code></a> package, which is a Python library to access my personal data.
 It's used in lots of scripts or dashboards that run in Cron every day.
 </p>
 <p>
@@ -592,7 +593,7 @@ It's very convenient for handling databases, but I only need it infrequently, so
 Reading documentation all over again is not very helpful because I've got very few usecases and queries that are specific to my purposes.
 </p>
 <p>
-If I can search for <code>sqlalchemy</code> in my code, it shows every repository where I used it so I can quickly copy bit of code I'm interested at.
+If I can search for <code class="inline">sqlalchemy</code> in my code, it shows every repository where I used it so I can quickly copy bit of code I'm interested at.
 </p></li>
 <li><p>
 Forgotten code
@@ -619,7 +620,7 @@ If I have a local clone of the repository on my disk, I can search over it in an
 </p></li>
 </ul>
 <p>
-At the time, I was just using recursive <code>grep</code> and then opening some of results in vim to refine.
+At the time, I was just using recursive <code class="inline">grep</code> and then opening some of results in vim to refine.
 That's a pretty pathetic workflow. 
 </p>
 </div>
@@ -684,12 +685,12 @@ As you can see, none of these are convenient for searching in personal code.
 Disappointed, I figured that least I could do is at least somehow improve my workflow with grep.
 </p>
 <p>
-So, what are the problems with using <code>grep</code>?
+So, what are the problems with using <code class="inline">grep</code>?
 </p>
 <ul class="org-ul">
-<li>running it against all of code results in false positives. <code>node_modules</code>, minified javascript, etc., you name it
+<li>running it against all of code results in false positives. <samp class="inline">node_modules</samp>, minified javascript, etc., you name it
 <ul class="org-ul">
-<li>you probably want to at least ignore anything that's ignored by <code>.gitignore</code></li>
+<li>you probably want to at least ignore anything that's ignored by <code class="inline">.gitignore</code></li>
 </ul></li>
 <li>getting bunch of output lines in terminal is not interactive
 <ul class="org-ul">
@@ -703,34 +704,34 @@ So, what are the problems with using <code>grep</code>?
 </ul>
 <p>
 <a id="org0000004"></a>
-As it turns out, <code>ripgrep</code> is the tool!
+As it turns out, <code class="inline">ripgrep</code> is the tool!
 </p>
 <ul class="org-ul">
-<li>respects <code>.gitignore</code> files, so by maintaining <code>.gitignore</code> properly (e.g. adding <code>node_modules=/=venv</code> etc) you can make sure you only get <b>meaningful matches</b> when searching for code.</li>
-<li>respects <code>.ignore</code> files. Sometimes code has to be under version control, but you don't want it to show up in search (e.g. could happen if you have vendorized code or minified javascript or static html files).
-In that case you can use <code>.ignore</code> files with the same syntax to exclude certain patterns from ripgrep's reach without messing with <code>.gitignore</code>.</li>
+<li>respects <code class="inline">.gitignore</code> files, so by maintaining <code class="inline">.gitignore</code> properly (e.g. adding <samp class="inline">node_modules=/=venv</samp> etc) you can make sure you only get <b>meaningful matches</b> when searching for code.</li>
+<li>respects <code class="inline">.ignore</code> files. Sometimes code has to be under version control, but you don't want it to show up in search (e.g. could happen if you have vendorized code or minified javascript or static html files).
+In that case you can use <code class="inline">.ignore</code> files with the same syntax to exclude certain patterns from ripgrep's reach without messing with <code class="inline">.gitignore</code>.</li>
 <li>it's <b>very</b> fast, both by <a href="https://github.com/BurntSushi/ripgrep#quick-examples-comparing-tools">benchmarks</a> and subjective experiments. You can read more comprehensive benchmarks <a href="https://blog.burntsushi.net/ripgrep/#code-search-benchmarks">here</a>.</li>
 </ul>
 <p>
-If you just use ripgrep instead of grep, code search becomes magnitude more pleasant, but it's still not interactive. Long story short, we can use <code>helm</code> in <code>emacs</code> to achieve <b>interactivity</b> and incremental search.
+If you just use ripgrep instead of grep, code search becomes magnitude more pleasant, but it's still not interactive. Long story short, we can use <code class="inline">helm</code> in Emacs to achieve <b>interactivity</b> and incremental search.
 </p>
 <p>
 The only thing that's left is restricting the search to git repositories only.
-Ripgrep relies on regexes, so we can't do something like Xpath queries and tell it to only search in directories, that contain <code>.git</code> directory. I ended up using a two step approach:
+Ripgrep relies on regexes, so we can't do something like Xpath queries and tell it to only search in directories, that contain <code class="inline">.git</code> directory. I ended up using a two step approach:
 </p>
 <ul class="org-ul">
 <li><p>
-first, <a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L75-L83"><code>my/code-targets</code></a> returns all git repositories it can reach from <code>my/git-repos-search-root</code>.
+first, <a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L75-L83"><code class="inline">my/code-targets</code></a> returns all git repositories it can reach from <code class="inline">my/git-repos-search-root</code>.
 </p>
 <p>
-I'm using <a href="https://github.com/sharkdp/fd"><code>fd</code></a> to go through the disk and collect all candidate git repositories.
+I'm using <a href="https://github.com/sharkdp/fd"><code class="inline">fd</code></a> to go through the disk and collect all candidate git repositories.
 </p>
 <p>
 Even though fd is already ridiculously <a href="https://github.com/sharkdp/fd#benchmark">fast</a>, this step still takes some time, so I'm caching the repositories. Cache is refreshed in the background every five minutes so we don't have to crawl the filesystem every time. That saves me few seconds on every search.
 </p></li>
 </ul>
 <ul class="org-ul">
-<li>then, <a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L136-L140"><code>my/search-code</code></a> keybindings invokes <code>ripgrep</code> against all my directories with code, defined in <code>my/code-targets</code> function.</li>
+<li>then, <a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L136-L140"><code class="inline">my/search-code</code></a> keybindings invokes <code class="inline">ripgrep</code> against all my directories with code, defined in <code class="inline">my/code-targets</code> function.</li>
 </ul>
 <p>
 So, literally running grep against my code turned out to be a pretty good solution. I've got about 350 repositories and it works in a blink. Note, however, that I'm using SSD.
@@ -743,7 +744,7 @@ It would still be nice to avoid unnecessary operations, and of course, semantic 
 I've got a <a href="#org0000013">global keybinding</a> to invoke Emacs with a prompt to search in code, so I can do in in a blink.
 </p>
 <p>
-Here's a <a href="https://file.globalupload.io/onCac7sh9M.gif">gif (3.5 Mb)</a> showing it <b>in action</b>: say, I am working on testing a browser extension, and need to interact with in via hotkeys. I remember using <code>pyautogui</code> for automating <a href="https://github.com/karlicoss/grasp">Grasp</a> tests, but I forgot which function I actually need to use. Searching for 'pyautogui' brings me all the repositories where I'm using it and lets me quickly find out the command I need without having to read the documentation all over again.
+Here's a <a href="https://file.globalupload.io/onCac7sh9M.gif">gif (3.5 Mb)</a> showing it <b>in action</b>: say, I am working on testing a browser extension, and need to interact with in via hotkeys. I remember using <code class="inline">pyautogui</code> for automating <a href="https://github.com/karlicoss/grasp">Grasp</a> tests, but I forgot which function I actually need to use. Searching for 'pyautogui' brings me all the repositories where I'm using it and lets me quickly find out the command I need without having to read the documentation all over again.
 </p>
 </div>
 </div>
@@ -799,10 +800,10 @@ Most of the time I've got Emacs window open on one of my desktops anyway, but so
 </pre>
 </div>
 <p>
-I've got a global keybinding (<code>Win+m</code>) that invokes this script. In addition the script accepts a function to call so you can open Emacs with a search prompt, so I have few more handy keybindings:
+I've got a global keybinding (<code class="inline">Win+m</code>) that invokes this script. In addition the script accepts a function to call so you can open Emacs with a search prompt, so I have few more handy keybindings:
 </p>
 <ul class="org-ul">
-<li><a id="org0000005"></a> <code>Win+F1</code> for searching in my <a href="#other">notes and knowledge repository</a></li>
+<li><a id="org0000005"></a> <code class="inline">Win+F1</code> for searching in my <a href="#other">notes and knowledge repository</a></li>
 </ul>
 <div class="org-src-container">
 <pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment"> -eux</span>
@@ -810,7 +811,7 @@ I've got a global keybinding (<code>Win+m</code>) that invokes this script. In a
 </pre>
 </div>
 <ul class="org-ul">
-<li><a id="org0000013"></a> <code>Win+F3</code> for searching in my repositories</li>
+<li><a id="org0000013"></a> <code class="inline">Win+F3</code> for searching in my repositories</li>
 </ul>
 <div class="org-src-container">
 <pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment"> -eux</span>
@@ -818,7 +819,7 @@ I've got a global keybinding (<code>Win+m</code>) that invokes this script. In a
 </pre>
 </div>
 <ul class="org-ul">
-<li><code>Win+a</code> to open my org-mode agenda</li>
+<li><code class="inline">Win+a</code> to open my org-mode agenda</li>
 </ul>
 <div class="org-src-container">
 <pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment"> -eux</span>
@@ -826,7 +827,7 @@ I've got a global keybinding (<code>Win+m</code>) that invokes this script. In a
 </pre>
 </div>
 <ul class="org-ul">
-<li><code>Win+c</code> to open org-capture</li>
+<li><code class="inline">Win+c</code> to open org-capture</li>
 </ul>
 <div class="org-src-container">
 <pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment"> -eux</span>
@@ -838,7 +839,7 @@ I've got a global keybinding (<code>Win+m</code>) that invokes this script. In a
 <h3 id="org0000017"><a class="headerlink" href="#org0000017">¶</a>running daemon on startup</h3>
 <div class="outline-text-3" id="text-org0000017">
 <p>
-It might be convenient to always have the daemon running, for that I'm using a systemd unit in <code>~/.config/systemd/user/emacs-daemon.service</code>.
+It might be convenient to always have the daemon running, for that I'm using a systemd unit in <samp class="inline">~/.config/systemd/user/emacs-daemon.service</samp>.
 </p>
 <div class="org-src-container">
 <pre class="src src-bash">[Unit]
@@ -857,7 +858,7 @@ It might be convenient to always have the daemon running, for that I'm using a s
 </pre>
 </div>
 <p>
-It's nothing unusual perhaps apart from using <code>bash -l</code> so Emacs picks up your <code>.profile</code> file. Without it, you almost certainly will encounter issues with missing binaries because they would not be in your <code>PATH</code>.
+It's nothing unusual perhaps apart from using <code class="inline">bash -l</code> so Emacs picks up your <code class="inline">.profile</code> file. Without it, you almost certainly will encounter issues with missing binaries because they would not be in your <code class="inline">PATH</code>.
 </p>
 </div>
 </div>
@@ -869,12 +870,12 @@ It's nothing unusual perhaps apart from using <code>bash -l</code> so Emacs pick
 These tips might be pretty obvious, but they belong to this post, so here you go:
 </p>
 <ul class="org-ul">
-<li>if you're on Spacemacs, use <a href="https://github.com/syl20bnr/spacemacs/tree/develop"><code>develop</code></a> branch. Master is pretty backwards.</li>
+<li>if you're on Spacemacs, use <a href="https://github.com/syl20bnr/spacemacs/tree/develop"><code class="inline">develop</code></a> branch. Master is pretty backwards.</li>
 <li><p>
-search with <code>ripgrep</code> instead of <code>grep</code> (not only in Emacs!). It's just <a href="#org0000004">better</a>.
+search with <code class="inline">ripgrep</code> instead of <code class="inline">grep</code> (not only in Emacs!). It's just <a href="#org0000004">better</a>.
 </p>
 <p>
-In Spacemacs, set up your <code>init.el</code>:
+In Spacemacs, set up your <code class="inline">init.el</code>:
 </p></li>
 </ul>
 <div class="org-src-container">
@@ -885,23 +886,23 @@ dotspacemacs-additional-packages '(helm-rg)
 </div>
 <ul class="org-ul">
 <li><p>
-use <a href="https://github.com/emacsorphanage/helm-swoop"><code>helm-swoop</code></a> for search within the buffer
+use <a href="https://github.com/emacsorphanage/helm-swoop"><code class="inline">helm-swoop</code></a> for search within the buffer
 </p>
 <p>
 It's easier to watch a <a href="https://raw.githubusercontent.com/ShingoFukuyama/images/master/helm-swoop.gif">demo GIF</a> than to explain.
-Swoop opens a Helm window with search result summary and jumps between results in the original buffer as you navigate in helm (<code>C-j/C-k</code>).
+Swoop opens a Helm window with search result summary and jumps between results in the original buffer as you navigate in helm (<code class="inline">C-j/C-k</code>).
 </p>
 <p>
-I <b><b>highly</b></b> recommend it as a primary way of searching withing a buffer. Bind it it to some convenient combination and get used to it (e.g. mine is <code>SPC RET</code>).
+I <b><b>highly</b></b> recommend it as a primary way of searching withing a buffer. Bind it it to some convenient combination and get used to it (e.g. mine is <code class="inline">SPC RET</code>).
 </p>
 <p>
-There is also <code>helm-occur</code>, which has similar functionality, but it seems inferior to swoop.
+There is also <code class="inline">helm-occur</code>, which has similar functionality, but it seems inferior to swoop.
 </p></li>
 <li><p>
-use <code>helm-follow-mode</code> (<code>C-c C-f</code> in Helm buffer) to jump between search results in any Helm search
+use <code class="inline">helm-follow-mode</code> (<code class="inline">C-c C-f</code> in Helm buffer) to jump between search results in any Helm search
 </p>
 <p>
-E.g. you can use it with <code>helm-org-in-buffer-headings</code> as a neat way to navigate within an Org file.
+E.g. you can use it with <code class="inline">helm-org-in-buffer-headings</code> as a neat way to navigate within an Org file.
 </p></li>
 </ul>
 </div>
@@ -950,7 +951,7 @@ My closing tips would be:
 start simple
 </p>
 <p>
-It's better to have a crappy adhoc script or bash alias that runs <code>grep</code> over your <code>~/notes</code> directory than no means of searching at all.
+It's better to have a crappy adhoc script or bash alias that runs <code class="inline">grep</code> over your <samp class="inline">~/notes</samp> directory than no means of searching at all.
 </p></li>
 <li><p>
 keep your things as plaintext as possible

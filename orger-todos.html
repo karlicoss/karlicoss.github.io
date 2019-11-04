@@ -18,8 +18,9 @@
 
         <title>Using Orger to populate your tasks list | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css?v=2" />
-        <link rel="stylesheet" href="./css/links.css?v=2" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=3" />
 
         
     </head>
@@ -54,7 +55,7 @@
 <link rel="stylesheet" href="./css/htmlize.css" />
 <link rel="stylesheet" href="./css/org-default.css" />
 
-<link rel="stylesheet" href="./css/org-extra.css?v=2" />
+<link rel="stylesheet" href="./css/org-extra.css?v=3" />
 
 
 
@@ -79,7 +80,7 @@
 </div>
 </div>
 <p>
-In <a href="orger.html">the first part</a> about Orger I wrote how I'm using it (in particular, the <code>orger.StaticView</code> component) to render my personal data as org-mode files
+In <a href="orger.html">the first part</a> about Orger I wrote how I'm using it (in particular, the <code class="inline">orger.StaticView</code> component) to render my personal data as org-mode files
 for easy, instant access and search.
 </p>
 <p>
@@ -93,7 +94,7 @@ Basically I want it to be completely seamless, almost without thinking at all.
 <p>
 You can use the target files as any of your normal org-mode files: modify contents, delete or reschedule tasks, etc.
 When Orger detects new items they would be carefully and atomically appended to the end of file.
-It keeps track of already processed items in a separate JSON file. All this nasty business is dealt with in <code>orger.InteractiveView</code> component.
+It keeps track of already processed items in a separate JSON file. All this nasty business is dealt with in <code class="inline">orger.InteractiveView</code> component.
 </p>
 <p>
 You can find all of interactive Orger modules I'm using <a href="https://github.com/karlicoss/orger/search?q=InteractiveView">on Github</a>. 
@@ -150,16 +151,16 @@ While there are ways to read removed reddit comments, it's a bit distracting to 
 </p></li>
 </ul>
 <p>
-How Orger solves that for me? Here's my typical workflow with <code>reddit.org</code> file:
+How Orger solves that for me? Here's my typical workflow with <samp class="inline">reddit.org</samp> file:
 </p>
 <ul class="org-ul">
-<li>I'm running <a href="https://github.com/karlicoss/rexport">reddit data exporter</a> and <code>reddit.py</code> every night automatically (via cron).</li>
-<li>when I feel like reading some Reddit, I open <code>reddit.org</code> and jump to new items at the end of file (I can quickly tell them from old ones since they don't have a priority), and go through them</li>
-<li>some things just get refiled immediately. E.g. if it's a recipe it would go to <code>food.org</code>, if it's something C++ related, it would go to <code>cpp.org</code>, etc.</li>
+<li>I'm running <a href="https://github.com/karlicoss/rexport">reddit data exporter</a> and <samp class="inline">reddit.py</samp> every night automatically (via cron).</li>
+<li>when I feel like reading some Reddit, I open <samp class="inline">reddit.org</samp> and jump to new items at the end of file (I can quickly tell them from old ones since they don't have a priority), and go through them</li>
+<li>some things just get refiled immediately. E.g. if it's a recipe it would go to <samp class="inline">food.org</samp>, if it's something C++ related, it would go to <samp class="inline">cpp.org</samp>, etc.</li>
 <li>what isn't refiled, I mark with a priority</li>
-<li>when everything is prioritized, I select the whole file, call <code>org-sort-entries</code> and sort by priorities.</li>
+<li>when everything is prioritized, I select the whole file, call <code class="inline">org-sort-entries</code> and sort by priorities.</li>
 <li><p>
-now that everything looks a bit more manageable, I can action on the highest priority items (<code>#A</code> and <code>#B</code>) properly.
+now that everything looks a bit more manageable, I can action on the highest priority items (<code class="inline">#A</code> and <code class="inline">#B</code>) properly.
 </p>
 <p>
 Some I just read and archive.
@@ -170,7 +171,7 @@ Some give me thoughts or ideas which I can add under the corresponding org-mode 
 <p>
 Some things just require actually acting on them (e.g. new library release), so I can mark it as TODO and schedule so it shows up in my agenda.
 </p></li>
-<li>also, once in a while I'll look through items with lower (<code>#C</code> / <code>#D</code>) priorities and bump them or archive if they become irrelevant.</li>
+<li>also, once in a while I'll look through items with lower (<code class="inline">#C</code> / <code class="inline">#D</code>) priorities and bump them or archive if they become irrelevant.</li>
 </ul>
 <p>
 Needless to say when I'm searching through all of my Org-mode files, items saved on Reddit pop up as well.

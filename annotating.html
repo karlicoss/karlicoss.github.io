@@ -18,8 +18,9 @@
 
         <title>How to annotate literally everything | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css?v=2" />
-        <link rel="stylesheet" href="./css/links.css?v=2" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=3" />
 
         
     </head>
@@ -54,7 +55,7 @@
 <link rel="stylesheet" href="./css/htmlize.css" />
 <link rel="stylesheet" href="./css/org-default.css" />
 
-<link rel="stylesheet" href="./css/org-extra.css?v=2" />
+<link rel="stylesheet" href="./css/org-extra.css?v=3" />
 
 
 
@@ -276,7 +277,7 @@ It's somewhat not obvious in terms of browser UI how to actually use them though
 <p>
 One downside of this service is that you won't be able to annotate while offline.
 I feel it's actually more of mobile browser's problem in general rather than Hypothesis though.
-While you potentially can annotate offline without querying API and preserving data in <code>localStorage</code>, if you can't load the page in the first place, it doesn't matter. Perhaps that can be given better support in browsers.
+While you potentially can annotate offline without querying API and preserving data in <samp class="inline">localStorage</samp>, if you can't load the page in the first place, it doesn't matter. Perhaps that can be given better support in browsers.
 </p>
 <p>
 Hypothesis got <a href="https://h.readthedocs.io/en/latest/api-reference/v1/#tag/annotations/paths/~1search/get">JSON API</a> which gives access to your and other people's public annotations.
@@ -327,7 +328,7 @@ In addition to Highlight and Text types there are things like support for stylin
 <p>
 Using native PDF annotations has one major drawback: you will have to save metadata back to the PDF file at some point.
 At worst it could be impossible due to DRM, but in any case, you'd need to somehow remember that some of your documents might have private notes inside.
-I get around it by making a copy of the file I'm about to annotate first, and giving it <code>[annotated]</code> prefix so I wouldn't confuse it with the original file.
+I get around it by making a copy of the file I'm about to annotate first, and giving it <samp class="inline">[annotated]</samp> prefix so I wouldn't confuse it with the original file.
 </p>
 </div>
 <div class="outline-3" id="outline-container-org0000010">
@@ -354,7 +355,7 @@ However it's got a nasty few years old bug (<a href="https://bugs.launchpad.net/
 Annotation process (<a href="./annotating/okular.jpg">screenshot</a>) is pretty pleasant, hitting Ctrl-S results in saving the file you're working on without any problems.
 </p>
 <p>
-<a id="org000000e"></a>Okular also got support for something called <a href="https://docs.kde.org/stable5/en/kdegraphics/okular/annotations.html">'document archive'</a>, which saves the original document in a zip file along with <code>metadata.xml</code>, which allows you to <b><b>annotate non-PDF files</b></b> (e.g. DJVU), which is a very neat feature. It's obviously Okular specific, in theory though it's possible to process <code>metadata.xml</code> with other tools.
+<a id="org000000e"></a>Okular also got support for something called <a href="https://docs.kde.org/stable5/en/kdegraphics/okular/annotations.html">'document archive'</a>, which saves the original document in a zip file along with <samp class="inline">metadata.xml</samp>, which allows you to <b><b>annotate non-PDF files</b></b> (e.g. DJVU), which is a very neat feature. It's obviously Okular specific, in theory though it's possible to process <samp class="inline">metadata.xml</samp> with other tools.
 </p>
 <p>
 <a id="org000000f"></a>Search in okular can't be restricted to annotations only and while you can use normal PDF search for inline notes and highlights (along with the other text that happened to match), it doesn't work at all for popups.
@@ -401,14 +402,14 @@ It mentions annotation editing in <a href="https://mupdf.com/release_history.htm
 <h3 id="orgnoter"><a class="headerlink" href="#orgnoter">¶</a><a href="https://github.com/weirdNox/org-noter">Emacs: org-noter</a></h3>
 <div class="outline-text-3" id="text-orgnoter">
 <p>
-Org-noter (as of 1.3.0) allows you to annotate a PDF while keeping the text annotations in a separate <code>org</code> file which keep track of PDF locations in Org note properties.
+Org-noter (as of 1.3.0) allows you to annotate a PDF while keeping the text annotations in a separate <samp class="inline">org</samp> file which keep track of PDF locations in Org note properties.
 <a href="https://github.com/weirdNox/org-noter#screencast">Here's</a> a short demo.
 </p>
 <p>
 For me the main drawback is that it <b><b>doesn't let you highlight</b></b>, which I tend to do a lot.
 </p>
 <p>
-Existing annotations in PDF can be imported via <a href="https://github.com/weirdNox/org-noter/blob/920798e2a977ca74b77cf728ee40bb48450f941b/org-noter.el#L1455"><code>org-noter-create-skeleton</code></a> function (it didn't work for me for some reason though, and I wasn't motivated enough to investigate).
+Existing annotations in PDF can be imported via <a href="https://github.com/weirdNox/org-noter/blob/920798e2a977ca74b77cf728ee40bb48450f941b/org-noter.el#L1455"><code class="inline">org-noter-create-skeleton</code></a> function (it didn't work for me for some reason though, and I wasn't motivated enough to investigate).
 </p>
 </div>
 </div>
@@ -419,7 +420,7 @@ Existing annotations in PDF can be imported via <a href="https://github.com/weir
 Xournal is different from the above PDF viewers, since it isn't using types of annotations described in the PDF standard and instead uses its own <a href="http://xournal.sourceforge.net/manual.html#tools">tools</a>.
 </p>
 <p>
-It doesn't modify the original files and instead keeps <code>.xoj</code> file containing the metadata and pointing at the original PDF, so in that sense it's pretty similar to <a href="#org000000e">okular</a>. Similarly, it's xournal-specific and can't be viewed anywhere else unless you export it in PDF before sharing (at which point your annotations wold basically become background images).
+It doesn't modify the original files and instead keeps <samp class="inline">.xoj</samp> file containing the metadata and pointing at the original PDF, so in that sense it's pretty similar to <a href="#org000000e">okular</a>. Similarly, it's xournal-specific and can't be viewed anywhere else unless you export it in PDF before sharing (at which point your annotations wold basically become background images).
 </p>
 </div>
 </div>
@@ -448,8 +449,8 @@ Polar is a new project which aims to be not just reader, but 'personal knowledge
 <li>supports <a href="https://getpolarized.io/#integrated-annotations">highlights and comments</a></li>
 <li><a href="https://getpolarized.io/assets/screenshots/document-repo-2019-04.webp">document repository</a>, so you have overview of all the stuff you ever read/commented. It also keeps track of your reading position.</li>
 <li>the <b><b>PDFs are fingerprinted</b></b>, so you don't need to worry about moving them around your filesystem</li>
-<li><code>~.polar</code> directory holds all the data, which makes it <b><b>easy to share among your computers</b></b> (e.g. via git, or if you keep it on Dropbox and symlink)</li>
-<li>metadata is in well structured <code>json</code> files, which makes it easy to access from scripts</li>
+<li><samp class="inline">~.polar</samp> directory holds all the data, which makes it <b><b>easy to share among your computers</b></b> (e.g. via git, or if you keep it on Dropbox and symlink)</li>
+<li>metadata is in well structured <samp class="inline">json</samp> files, which makes it easy to access from scripts</li>
 <li>highlight locators keep <a href="https://github.com/burtonator/polar-bookshelf/blob/ac36e59e98d378e1ff7ab02aa241b89fdbb68c46/web/js/metadata/TextHighlightsTest.ts#L164">matched text</a> alongside the absolute coordinates, which leaves potential for matching against different editions of the PDF file</li>
 <li>it's got <a href="https://github.com/burtonator/polar-bookshelf#personal-knowledge-repository">builtin flashcards engine</a>. Personally, I'm too used to <a href="https://orgmode.org/worg/org-contrib/org-drill.html">org-drill</a> now, but that's a great a way of introducing <b><b>spaced repetition</b></b> to people.</li>
 <li>the author is very passionate about this project, invests a lot of effort and quite <a href="https://getpolarized.io/2019/04/11/Polar-Initial-Crowdfunding-Campaign.html">ambitious</a></li>
@@ -522,9 +523,9 @@ Perhaps the only differences are how you can search and access the annotations.
 <h3 id="kindle"><a class="headerlink" href="#kindle">¶</a>Kindle</h3>
 <div class="outline-text-3" id="text-kindle">
 <p>
-Kindle stores bookmarks, notes and highlights in <code>My Clippings.txt</code> on the device.
+Kindle stores bookmarks, notes and highlights in <code class="inline">My Clippings.txt</code> on the device.
 The good thing about the format is that it's already plaintext and fairly human readable, so you might be happy with that alone.
-The format is a bit nasty for parsing (as you would expect from something with <code>.txt</code> extension). Dates are locale dependent, document locators may or may not have roman numerals, separators are inconsistent at times, etc. 
+The format is a bit nasty for parsing (as you would expect from something with <samp class="inline">.txt</samp> extension). Dates are locale dependent, document locators may or may not have roman numerals, separators are inconsistent at times, etc. 
 When I was using Kindle I was just copying the file from time to time, and you can set up some sort of automatic copying when your device is connected similarly to  what I'm doing with <a href="#org000001a">Kobo</a>.
 </p>
 <p>
@@ -538,7 +539,7 @@ But that's also restricted to books bought from Amazon.
 </p>
 <p>
 <a id="org000001c"></a>Search function is somewhat limited: you can search in the book and it displays your highlights alongside content it found in the book, but you can't restrict search to highlights. You can't search in notes either.
-Funny enough though, the <code>My Clipping.txt</code> file can be opened on Kindle itself (as any other <code>txt</code> file), and then you can search in it. It's not super convenient, but better than nothing. (I wasn't brave enough to try and see what happens if you try to highlight in this file.)
+Funny enough though, the <code class="inline">My Clipping.txt</code> file can be opened on Kindle itself (as any other <code class="inline">txt</code> file), and then you can search in it. It's not super convenient, but better than nothing. (I wasn't brave enough to try and see what happens if you try to highlight in this file.)
 </p>
 </div>
 </div>
@@ -546,11 +547,11 @@ Funny enough though, the <code>My Clipping.txt</code> file can be opened on Kind
 <h3 id="kobo"><a class="headerlink" href="#kobo">¶</a>Kobo</h3>
 <div class="outline-text-3" id="text-kobo">
 <p>
-Stores all of it's stuff in <code>.kobo/KoboReader.sqlite</code> on the device.
+Stores all of it's stuff in <code class="inline">.kobo/KoboReader.sqlite</code> on the device.
 </p>
 <p>
 <a id="org000001e"></a>The database has got lots of cool stuff: in addition to highlights and notes you can also access reading progress, time spend reading and possibly some other interesting data I didn't manage to reverse engineer yet.
-You can check out <a href="https://github.com/karlicoss/kobuddy">kobuddy</a>, which is my attempt to extract useful data from the database and provide nicer high level Python interface. It's also fairly straightforward to open it in <code>sqlitebrowser</code> and play with your own queries.
+You can check out <a href="https://github.com/karlicoss/kobuddy">kobuddy</a>, which is my attempt to extract useful data from the database and provide nicer high level Python interface. It's also fairly straightforward to open it in <code class="inline">sqlitebrowser</code> and play with your own queries.
 </p>
 <p>
 <a id="org000001a"></a>Kobo <b><b>doesn't seem to support cloud sync for annotations</b></b>. I was considering syncing the database wirelessly, as <a href="https://github.com/dropmeaword/kobo-aura-remote">there are</a> some SSH modules for its firmware, but people report it <a href="https://github.com/dropmeaword/kobo-aura-remote/issues/1">may break wifi</a> on it. I'm using <a href="https://github.com/karlicoss/kobuddy#as-a-backup-tool">kobuddy</a> as well to work around it.
@@ -971,7 +972,7 @@ For that I've got some infrastructure set up.
 That serves not just as data backup, but also as <b><b>data providers</b></b> for my tools. I only interact with these daily snapshots on filesystem rather than directly with API. That helps to avoid dealing with rate limiting, flakiness in network connection or API itself, and makes it way faster to iterate and develop. The only downside is that the data is not necessarily up to date, but perhaps you can dump data more often to get around this; I would still highly recommend you to prefer that to interacting with API directly. 
 </p>
 <p>
-I'm using a <b><b>special Python package to access the data</b></b>, which I called <a href="https://github.com/karlicoss/my"><code>my</code></a>. It's always in my <code>PYTHONPATH</code> so I can use it from any script/tool or REPL. It's got bunch of different submodules, e.g. <code>my.reading.instapaper</code>, <code>my.reading.kobo</code>, <code>my.reading.polar</code> (there are other modules than <code>my.reading</code>, but that material for a whole separate post). The package itself is not public since it happens to have some personal data in it, at some point I'll try to strip it off and release it (not sure if it would be really relevant for other people anyway).
+I'm using a <b><b>special Python package to access the data</b></b>, which I called <a href="https://github.com/karlicoss/my"><code class="inline">my</code></a>. It's always in my <code class="inline">PYTHONPATH</code> so I can use it from any script/tool or REPL. It's got bunch of different submodules, e.g. <code class="inline">my.reading.instapaper</code>, <code class="inline">my.reading.kobo</code>, <code class="inline">my.reading.polar</code> (there are other modules than <code class="inline">my.reading</code>, but that material for a whole separate post). The package itself is not public since it happens to have some personal data in it, at some point I'll try to strip it off and release it (not sure if it would be really relevant for other people anyway).
 </p>
 </div>
 <div class="outline-3" id="outline-container-org000002b">
@@ -994,13 +995,13 @@ As a specific example how I do it: recently my friend asked me if I could recomm
 <div class="outline-text-3" id="text-org000002c">
 <p>
 <a id="org0000000"></a>I've got bunch of scripts and a rendering tool which I named <a href="https://github.com/karlicoss/orger">orger</a> (yep, haven't invested that much thought into naming).
-Basically, these scripts take specific data source as input and produce org-mode output, e.g. renders <code>json</code> backed up from Instapaper into <code>instapaper.org</code> file. That runs every few hours and keeps the contents relatively up to date.
+Basically, these scripts take specific data source as input and produce org-mode output, e.g. renders <samp class="inline">json</samp> backed up from Instapaper into <samp class="inline">instapaper.org</samp> file. That runs every few hours and keeps the contents relatively up to date.
 </p>
 <p>
 I chose org-mode as I was already used to its features, keybindings and metadata. Also the hierarchy (e.g. book → highlight → comments) fits naturally into outline format. But not that it's a real necessity, I feel that as long as it's searchable plaintext, it's good enough.
 </p>
 <p>
-To search them, I've got a <b><b>global keybinding</b></b>, which invokes Emacs with incremental search prompt against the directory with rendered <code>org</code> files, which lets me interact with them in a blink on my computer. On Android I'm using <a href="https://play.google.com/store/apps/details?id=com.docsearch">DocSearch</a> indexer (sadly it's not incremental, and app is not open source, so I'm looking for alternative).
+To search them, I've got a <b><b>global keybinding</b></b>, which invokes Emacs with incremental search prompt against the directory with rendered <samp class="inline">org</samp> files, which lets me interact with them in a blink on my computer. On Android I'm using <a href="https://play.google.com/store/apps/details?id=com.docsearch">DocSearch</a> indexer (sadly it's not incremental, and app is not open source, so I'm looking for alternative).
 </p>
 <p>
 Finally, I've got a <a href="https://www.lesbonscomptes.com/recoll">Recoll</a> indexer instance + web interface running on my VPS; so if necessary I can access and search annotations via the internet.
@@ -1018,7 +1019,7 @@ But I also don't want to interrupt from reading and losing context: that especia
 So, as a workaround, I have programmed rules that pick out notes that start with "TODO" or marked with "TODO" tags; etc, and they are <b><b>automatically added to my agenda</b></b>. Later, when I see it on agenda, I'd assign it a priority and reschedule/unschedule depending on importance.
 </p>
 <p>
-<a href="https://github.com/karlicoss/orger/blob/350e76000e34db49cf6b574041b98bd813040851/ip2org.py#L16">Here's</a> an example of me using using <code>my.instapaper</code> module for that.
+<a href="https://github.com/karlicoss/orger/blob/350e76000e34db49cf6b574041b98bd813040851/ip2org.py#L16">Here's</a> an example of me using using <code class="inline">my.instapaper</code> module for that.
 </p>
 </div>
 </div>

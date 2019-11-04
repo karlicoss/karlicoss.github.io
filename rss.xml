@@ -31,8 +31,9 @@
 
         <title>Building personal search infrastructure for your knowledge and code | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css?v=2" />
-        <link rel="stylesheet" href="./css/links.css?v=2" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=3" />
 
         
     </head>
@@ -67,7 +68,7 @@
 <link rel="stylesheet" href="./css/htmlize.css" />
 <link rel="stylesheet" href="./css/org-default.css" />
 
-<link rel="stylesheet" href="./css/org-extra.css?v=2" />
+<link rel="stylesheet" href="./css/org-extra.css?v=3" />
 
 
 
@@ -202,7 +203,7 @@ By personal information I refer to things like todo list, personal wiki or whate
 For the most part, I keep things in Org mode, and I use Emacs to work with it. Apart from regular means of plaintext search (I'll write about it <a href="#other">later</a>), for me it's important to search over tags:
 </p>
 <ul class="org-ul">
-<li><a href="https://orgmode.org/manual/Matching-tags-and-properties.html"><code>org-tags-view</code></a> is available by default and an easy way to run simple tag searches</li>
+<li><a href="https://orgmode.org/manual/Matching-tags-and-properties.html"><code class="inline">org-tags-view</code></a> is available by default and an easy way to run simple tag searches</li>
 <li><p>
 <a href="https://github.com/alphapapa/org-ql#screenshots">org-ql</a>
 </p>
@@ -213,8 +214,8 @@ It's a relatively new package, with new query syntax as the main feature, which 
 I mainly use these commands:
 </p>
 <ul class="org-ul">
-<li><a href="https://github.com/alphapapa/org-ql#helm-org-ql"><code>helm-org-ql</code></a> for <b>incremental</b> search in the current buffer</li>
-<li><a href="https://github.com/alphapapa/org-ql#org-ql-search"><code>org-ql-search</code></a> <b>interactively</b> prompts you for the search target, sort and grouping</li>
+<li><a href="https://github.com/alphapapa/org-ql#helm-org-ql"><code class="inline">helm-org-ql</code></a> for <b>incremental</b> search in the current buffer</li>
+<li><a href="https://github.com/alphapapa/org-ql#org-ql-search"><code class="inline">org-ql-search</code></a> <b>interactively</b> prompts you for the search target, sort and grouping</li>
 </ul></li>
 </ul>
 <p>
@@ -229,7 +230,7 @@ Here are some typical workflows with my org-mode:
 <a id="org0000002"></a> tags for friends
 </p>
 <p>
-I see an interesting article or think of something which would be good to share with a friend, but at the moment it's not quite a good time to send it.  I can just capture it and attach a tag (e.g. <code>ann</code> or <code>jeremy</code>). That way next time we chat I can just look up things under their tag and send them.
+I see an interesting article or think of something which would be good to share with a friend, but at the moment it's not quite a good time to send it.  I can just capture it and attach a tag (e.g. <samp class="inline">ann</samp> or <samp class="inline">jeremy</samp>). That way next time we chat I can just look up things under their tag and send them.
 </p>
 <p>
 It works the other way around as well: if they send me a link or ask me to do something, but I can't do it immediately. I have a special script that converts chat messages into todo items and automatically attach the corresponding tag. I write more about it <a href="./orger-todos.html#telegram2org">here</a>.
@@ -240,7 +241,7 @@ assembling blog posts
 <p>
 Unfortunately, I can't just sit and write comprehensible texts without preparation.
 Typically I have thoughts on the topic now and then, which I just note down and mark with the tag.
-When I feel it's time to prepare the post, I can just search by the tag (e.g. <code>tags:search</code> for this post), and refile the items into the file with the post draft.
+When I feel it's time to prepare the post, I can just search by the tag (e.g. <code class="inline">tags:search</code> for this post), and refile the items into the file with the post draft.
 </p></li>
 </ul>
 </div>
@@ -284,18 +285,18 @@ All these files are either non-Org or somewhat heavy for structured Org-mode sea
 To search over them, I'm using Emacs and Ripgrep (you can read why <a href="#org0000004">later</a>):
 </p>
 <p>
-<a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L130-L134"><code>my/search</code></a>
-runs ripgrep against <code>my/search-targets</code> variable contains paths to notes, chat logs, Orger outputs etc.
+<a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L130-L134"><code class="inline">my/search</code></a>
+runs ripgrep against <code class="inline">my/search-targets</code> variable contains paths to notes, chat logs, Orger outputs etc.
 </p>
 <p>
-The interesting bit about <code>my/search</code> is <a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L87-L127"><code>--my/one-off-helm-follow-mode</code></a> call. It's a somewhat horrible hack that  automatically enables helm-follow mode so you don't have to press <code>C-c C-f</code> every time you invoke helm.
+The interesting bit about <code class="inline">my/search</code> is <a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L87-L127"><code class="inline">--my/one-off-helm-follow-mode</code></a> call. It's a somewhat horrible hack that  automatically enables helm-follow mode so you don't have to press <code class="inline">C-c C-f</code> every time you invoke helm.
 </p>
 <p>
 Finally, to make sure I can invoke search in an instance, I'm using a <a href="#org0000005">global keybinding</a>.
 </p>
 <p>
 Here's a <b>demo</b> <a href="https://file.globalupload.io/wu7HYYyJaY.gif">gif (5Mb)</a> of using this to search 'greg egan' in my knowledge repository.
-You can see that as a result, I'm getting my Kobo highlights (<code>kobo.org</code>), my reading list (<code>read.org</code>) and even some video (<code>youtube.org</code>)!
+You can see that as a result, I'm getting my Kobo highlights (<samp class="inline">kobo.org</samp>), my reading list (<samp class="inline">read.org</samp>) and even some video (<samp class="inline">youtube.org</samp>)!
 </p>
 </div>
 </div>
@@ -352,7 +353,7 @@ It has its own small <a href="http://www.orgzly.com/help#search">query language<
 </p>
 <p>
 You can save <a href="https://lh3.googleusercontent.com/FweBE2T3T3wZwJC64DQgtGj8vv8jKPBGTClnRAApSOHdKq4hiFdpq_JjEBPsMj_nTDA=w2560-h1295">search queries</a>, which ends up being pretty similar to custom Org-mode <b><b>agendas</b></b>.
-Searches can be displayed as persistent widgets, e.g. I find convenient to have a phone screen dedicated to 'Buy' search (<code>t.buy</code> query) or 'Do at work' search (<code>t.@work</code> query).
+Searches can be displayed as persistent widgets, e.g. I find convenient to have a phone screen dedicated to 'Buy' search (<code class="inline">t.buy</code> query) or 'Do at work' search (<code class="inline">t.@work</code> query).
 </p>
 <p>
 As I described <a href="#org0000002">above</a>, I keep few saved search queries for some friends so I can recall what I wanted to discuss with them.
@@ -370,7 +371,7 @@ It's a fulltext indexing and search app for plaintext files, but apparently it e
 <a href="https://lh3.googleusercontent.com/psPhmFoawEzwZQpwBGgVz42ojnR-uAi70Li4DBc4Z13wLOTannvT2suaxZQA9YX_Bg=w2560-h1295">Here's</a> how matches list looks. Screenshots on Google Play give a pretty good idea what the app does.
 </p>
 <p>
-I find it convenient for quick search over things that are not imported in Orgzly, e.g. <code>.txt</code> chat logs (Telegram, VK) and huge org-mode files
+I find it convenient for quick search over things that are not imported in Orgzly, e.g. <samp class="inline">.txt</samp> chat logs (Telegram, VK) and huge org-mode files
 I described <a href="#other">above</a>.
 </p>
 <p>
@@ -407,82 +408,82 @@ Knowing how to compose a search query is one thing, but navigating to the servic
 <tr>
 <td class="org-left">g</td>
 <td class="org-left">Google</td>
-<td class="org-left"><code>https://www.google.com/complete/search?client=firefox&amp;q={searchTerms}</code></td>
+<td class="org-left"><samp class="inline">https://www.google.com/complete/search?client=firefox&amp;q={searchTerms}</samp></td>
 </tr>
 <tr>
 <td class="org-left">d</td>
 <td class="org-left">DuckDuckGo</td>
-<td class="org-left"><code>https://duckduckgo.com/?q={searchTerms}&amp;t=canonical</code></td>
+<td class="org-left"><samp class="inline">https://duckduckgo.com/?q={searchTerms}&amp;t=canonical</samp></td>
 </tr>
 <tr>
 <td class="org-left">r</td>
 <td class="org-left">Reddit</td>
-<td class="org-left"><code>https://www.reddit.com/search?q={searchTerms}</code></td>
+<td class="org-left"><samp class="inline">https://www.reddit.com/search?q={searchTerms}</samp></td>
 </tr>
 <tr>
 <td class="org-left">gh</td>
 <td class="org-left">GitHub</td>
-<td class="org-left"><code>https://github.com/search?q={searchTerms}&amp;ref=opensearch</code></td>
+<td class="org-left"><samp class="inline">https://github.com/search?q={searchTerms}&amp;ref=opensearch</samp></td>
 </tr>
 <tr>
 <td class="org-left">pin</td>
 <td class="org-left">Pinboard: search all</td>
-<td class="org-left"><code>https://pinboard.in/search/?query={searchTerms}r&amp;all=Search+All</code></td>
+<td class="org-left"><samp class="inline">https://pinboard.in/search/?query={searchTerms}r&amp;all=Search+All</samp></td>
 </tr>
 <tr>
 <td class="org-left">tw</td>
 <td class="org-left">Twitter</td>
-<td class="org-left"><code>https://twitter.com/search</code></td>
+<td class="org-left"><samp class="inline">https://twitter.com/search</samp></td>
 </tr>
 <tr>
 <td class="org-left">y</td>
 <td class="org-left">YouTube</td>
-<td class="org-left"><code>https://www.youtube.com/results?search_query={searchTerms}&amp;page={startPage?}&amp;utm_source=opensearch</code></td>
+<td class="org-left"><samp class="inline">https://www.youtube.com/results?search_query={searchTerms}&amp;page={startPage?}&amp;utm_source=opensearch</samp></td>
 </tr>
 <tr>
 <td class="org-left">m</td>
 <td class="org-left">Google Maps</td>
-<td class="org-left"><code>https://www.google.com/maps/search/{searchTerms}?hl=en&amp;source=opensearch</code></td>
+<td class="org-left"><samp class="inline">https://www.google.com/maps/search/{searchTerms}?hl=en&amp;source=opensearch</samp></td>
 </tr>
 <tr>
 <td class="org-left">w</td>
 <td class="org-left">Wikipedia (en)</td>
-<td class="org-left"><code>https://en.wikipedia.org/wiki/Special:Search</code></td>
+<td class="org-left"><samp class="inline">https://en.wikipedia.org/wiki/Special:Search</samp></td>
 </tr>
 <tr>
 <td class="org-left">cpp</td>
 <td class="org-left">Cppreference</td>
-<td class="org-left"><code>https://en.cppreference.com/mwiki/index.php?search={searchTerms}</code></td>
+<td class="org-left"><samp class="inline">https://en.cppreference.com/mwiki/index.php?search={searchTerms}</samp></td>
 </tr>
 <tr>
 <td class="org-left">js</td>
 <td class="org-left">MDN</td>
-<td class="org-left"><code>https://developer.mozilla.org/en-US/search?q={searchTerms}</code></td>
+<td class="org-left"><samp class="inline">https://developer.mozilla.org/en-US/search?q={searchTerms}</samp></td>
 </tr>
 <tr>
 <td class="org-left">eb</td>
 <td class="org-left">Ebay</td>
-<td class="org-left"><code>https://www.ebay.co.uk/sch/i.html?_nkw={searchTerms}</code></td>
+<td class="org-left"><samp class="inline">https://www.ebay.co.uk/sch/i.html?_nkw={searchTerms}</samp></td>
 </tr>
 <tr>
 <td class="org-left">am</td>
 <td class="org-left">Amazon.co.uk</td>
-<td class="org-left"><code>https://www.amazon.co.uk/exec/obidos/external-search/</code></td>
+<td class="org-left"><samp class="inline">https://www.amazon.co.uk/exec/obidos/external-search/</samp></td>
 </tr>
 <tr>
 <td class="org-left">tru</td>
 <td class="org-left">Translate en-ru</td>
-<td class="org-left"><code>https://translate.google.com/#view=home&amp;op=translate&amp;sl=en&amp;tl=ru&amp;text={searchTerms}</code></td>
+<td class="org-left"><samp class="inline">https://translate.google.com/#view=home&amp;op=translate&amp;sl=en&amp;tl=ru&amp;text={searchTerms}</samp></td>
 </tr>
 <tr>
 <td class="org-left">tde</td>
 <td class="org-left">Translate en-de</td>
-<td class="org-left"><code>https://translate.google.com/#view=home&amp;op=translate&amp;sl=en&amp;tl=de&amp;text={searchTerms}</code></td>
+<td class="org-left"><samp class="inline">https://translate.google.com/#view=home&amp;op=translate&amp;sl=en&amp;tl=de&amp;text={searchTerms}</samp></td>
 </tr>
 <tr>
 <td class="org-left">dd</td>
 <td class="org-left">DevDocs</td>
-<td class="org-left"><code>https://devdocs.io/#q={searchTerms}</code></td>
+<td class="org-left"><samp class="inline">https://devdocs.io/#q={searchTerms}</samp></td>
 </tr>
 </tbody>
 </table>
@@ -522,24 +523,24 @@ Here's what I'm using for that:
 <tbody>
 <tr>
 <td class="org-left">py</td>
-<td class="org-left"><code>file:///usr/share/doc/python3/html/search.html?q=%s</code></td>
+<td class="org-left"><samp class="inline">file:///usr/share/doc/python3/html/search.html?q=%s</samp></td>
 </tr>
 <tr>
 <td class="org-left">rust</td>
-<td class="org-left"><code>file:///home/karlicos/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/share/doc/rust/html/std/option/index.html?search=%s</code></td>
+<td class="org-left"><samp class="inline">file:///home/karlicos/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/share/doc/rust/html/std/option/index.html?search=%s</samp></td>
 </tr>
 </tbody>
 </table>
 <p>
-Sadly, the extension mentioned above doesn't work with <code>file://</code> schema for some reason, so to add it in Firefox,
+Sadly, the extension mentioned above doesn't work with <samp class="inline">file://</samp> schema for some reason, so to add it in Firefox,
 you can use the method described <a href="https://superuser.com/a/7336/300795">here</a>, it's as easy as adding a bookmark.
 </p>
 <p>
 Recently I ran into <a href="https://devdocs.io/offline">devdocs.io</a>, it's using your browser's <b>offline</b> storage to cache the documentation.
-I'm still getting used to it, but it's amazing how faster it is than jumping to documentation online. You can use it with multiple languages, you just type the search engine prefix first, and then language prefix (e.g. <code>dd cpp emplace_back</code>).
+I'm still getting used to it, but it's amazing how faster it is than jumping to documentation online. You can use it with multiple languages, you just type the search engine prefix first, and then language prefix (e.g. <code class="inline">dd cpp emplace_back</code>).
 </p>
 <p>
-Finally, it may be convenient to set up <a href="https://github.com/hrs/engine-mode">engine-mode</a> in Emacs, or <a href="https://github.com/syl20bnr/spacemacs/tree/master/layers/+web-services/search-engine">search-engine layer</a> in Spacemacs. It lets you select a bit of text and search it in browser (e.g. <code>SPC s G</code> to do google search). I find it convenient when I need to search many things in bulk.
+Finally, it may be convenient to set up <a href="https://github.com/hrs/engine-mode">engine-mode</a> in Emacs, or <a href="https://github.com/syl20bnr/spacemacs/tree/master/layers/+web-services/search-engine">search-engine layer</a> in Spacemacs. It lets you select a bit of text and search it in browser (e.g. <code class="inline">SPC s G</code> to do google search). I find it convenient when I need to search many things in bulk.
 </p>
 </div>
 <div class="outline-3" id="outline-container-org000000d">
@@ -585,7 +586,7 @@ It's very convenient to have some sort of code search engine if you're in a simi
 Doing potentially breaking code changes
 </p>
 <p>
-For instance, I want to remove some unused function or refactor something in <a href="https://github.com/karlicoss/my"><code>my</code></a> package, which is a Python library to access my personal data.
+For instance, I want to remove some unused function or refactor something in <a href="https://github.com/karlicoss/my"><code class="inline">my</code></a> package, which is a Python library to access my personal data.
 It's used in lots of scripts or dashboards that run in Cron every day.
 </p>
 <p>
@@ -605,7 +606,7 @@ It's very convenient for handling databases, but I only need it infrequently, so
 Reading documentation all over again is not very helpful because I've got very few usecases and queries that are specific to my purposes.
 </p>
 <p>
-If I can search for <code>sqlalchemy</code> in my code, it shows every repository where I used it so I can quickly copy bit of code I'm interested at.
+If I can search for <code class="inline">sqlalchemy</code> in my code, it shows every repository where I used it so I can quickly copy bit of code I'm interested at.
 </p></li>
 <li><p>
 Forgotten code
@@ -632,7 +633,7 @@ If I have a local clone of the repository on my disk, I can search over it in an
 </p></li>
 </ul>
 <p>
-At the time, I was just using recursive <code>grep</code> and then opening some of results in vim to refine.
+At the time, I was just using recursive <code class="inline">grep</code> and then opening some of results in vim to refine.
 That's a pretty pathetic workflow. 
 </p>
 </div>
@@ -697,12 +698,12 @@ As you can see, none of these are convenient for searching in personal code.
 Disappointed, I figured that least I could do is at least somehow improve my workflow with grep.
 </p>
 <p>
-So, what are the problems with using <code>grep</code>?
+So, what are the problems with using <code class="inline">grep</code>?
 </p>
 <ul class="org-ul">
-<li>running it against all of code results in false positives. <code>node_modules</code>, minified javascript, etc., you name it
+<li>running it against all of code results in false positives. <samp class="inline">node_modules</samp>, minified javascript, etc., you name it
 <ul class="org-ul">
-<li>you probably want to at least ignore anything that's ignored by <code>.gitignore</code></li>
+<li>you probably want to at least ignore anything that's ignored by <code class="inline">.gitignore</code></li>
 </ul></li>
 <li>getting bunch of output lines in terminal is not interactive
 <ul class="org-ul">
@@ -716,34 +717,34 @@ So, what are the problems with using <code>grep</code>?
 </ul>
 <p>
 <a id="org0000004"></a>
-As it turns out, <code>ripgrep</code> is the tool!
+As it turns out, <code class="inline">ripgrep</code> is the tool!
 </p>
 <ul class="org-ul">
-<li>respects <code>.gitignore</code> files, so by maintaining <code>.gitignore</code> properly (e.g. adding <code>node_modules=/=venv</code> etc) you can make sure you only get <b>meaningful matches</b> when searching for code.</li>
-<li>respects <code>.ignore</code> files. Sometimes code has to be under version control, but you don't want it to show up in search (e.g. could happen if you have vendorized code or minified javascript or static html files).
-In that case you can use <code>.ignore</code> files with the same syntax to exclude certain patterns from ripgrep's reach without messing with <code>.gitignore</code>.</li>
+<li>respects <code class="inline">.gitignore</code> files, so by maintaining <code class="inline">.gitignore</code> properly (e.g. adding <samp class="inline">node_modules=/=venv</samp> etc) you can make sure you only get <b>meaningful matches</b> when searching for code.</li>
+<li>respects <code class="inline">.ignore</code> files. Sometimes code has to be under version control, but you don't want it to show up in search (e.g. could happen if you have vendorized code or minified javascript or static html files).
+In that case you can use <code class="inline">.ignore</code> files with the same syntax to exclude certain patterns from ripgrep's reach without messing with <code class="inline">.gitignore</code>.</li>
 <li>it's <b>very</b> fast, both by <a href="https://github.com/BurntSushi/ripgrep#quick-examples-comparing-tools">benchmarks</a> and subjective experiments. You can read more comprehensive benchmarks <a href="https://blog.burntsushi.net/ripgrep/#code-search-benchmarks">here</a>.</li>
 </ul>
 <p>
-If you just use ripgrep instead of grep, code search becomes magnitude more pleasant, but it's still not interactive. Long story short, we can use <code>helm</code> in <code>emacs</code> to achieve <b>interactivity</b> and incremental search.
+If you just use ripgrep instead of grep, code search becomes magnitude more pleasant, but it's still not interactive. Long story short, we can use <code class="inline">helm</code> in Emacs to achieve <b>interactivity</b> and incremental search.
 </p>
 <p>
 The only thing that's left is restricting the search to git repositories only.
-Ripgrep relies on regexes, so we can't do something like Xpath queries and tell it to only search in directories, that contain <code>.git</code> directory. I ended up using a two step approach:
+Ripgrep relies on regexes, so we can't do something like Xpath queries and tell it to only search in directories, that contain <code class="inline">.git</code> directory. I ended up using a two step approach:
 </p>
 <ul class="org-ul">
 <li><p>
-first, <a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L75-L83"><code>my/code-targets</code></a> returns all git repositories it can reach from <code>my/git-repos-search-root</code>.
+first, <a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L75-L83"><code class="inline">my/code-targets</code></a> returns all git repositories it can reach from <code class="inline">my/git-repos-search-root</code>.
 </p>
 <p>
-I'm using <a href="https://github.com/sharkdp/fd"><code>fd</code></a> to go through the disk and collect all candidate git repositories.
+I'm using <a href="https://github.com/sharkdp/fd"><code class="inline">fd</code></a> to go through the disk and collect all candidate git repositories.
 </p>
 <p>
 Even though fd is already ridiculously <a href="https://github.com/sharkdp/fd#benchmark">fast</a>, this step still takes some time, so I'm caching the repositories. Cache is refreshed in the background every five minutes so we don't have to crawl the filesystem every time. That saves me few seconds on every search.
 </p></li>
 </ul>
 <ul class="org-ul">
-<li>then, <a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L136-L140"><code>my/search-code</code></a> keybindings invokes <code>ripgrep</code> against all my directories with code, defined in <code>my/code-targets</code> function.</li>
+<li>then, <a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L136-L140"><code class="inline">my/search-code</code></a> keybindings invokes <code class="inline">ripgrep</code> against all my directories with code, defined in <code class="inline">my/code-targets</code> function.</li>
 </ul>
 <p>
 So, literally running grep against my code turned out to be a pretty good solution. I've got about 350 repositories and it works in a blink. Note, however, that I'm using SSD.
@@ -756,7 +757,7 @@ It would still be nice to avoid unnecessary operations, and of course, semantic 
 I've got a <a href="#org0000013">global keybinding</a> to invoke Emacs with a prompt to search in code, so I can do in in a blink.
 </p>
 <p>
-Here's a <a href="https://file.globalupload.io/onCac7sh9M.gif">gif (3.5 Mb)</a> showing it <b>in action</b>: say, I am working on testing a browser extension, and need to interact with in via hotkeys. I remember using <code>pyautogui</code> for automating <a href="https://github.com/karlicoss/grasp">Grasp</a> tests, but I forgot which function I actually need to use. Searching for 'pyautogui' brings me all the repositories where I'm using it and lets me quickly find out the command I need without having to read the documentation all over again.
+Here's a <a href="https://file.globalupload.io/onCac7sh9M.gif">gif (3.5 Mb)</a> showing it <b>in action</b>: say, I am working on testing a browser extension, and need to interact with in via hotkeys. I remember using <code class="inline">pyautogui</code> for automating <a href="https://github.com/karlicoss/grasp">Grasp</a> tests, but I forgot which function I actually need to use. Searching for 'pyautogui' brings me all the repositories where I'm using it and lets me quickly find out the command I need without having to read the documentation all over again.
 </p>
 </div>
 </div>
@@ -812,10 +813,10 @@ Most of the time I've got Emacs window open on one of my desktops anyway, but so
 </pre>
 </div>
 <p>
-I've got a global keybinding (<code>Win+m</code>) that invokes this script. In addition the script accepts a function to call so you can open Emacs with a search prompt, so I have few more handy keybindings:
+I've got a global keybinding (<code class="inline">Win+m</code>) that invokes this script. In addition the script accepts a function to call so you can open Emacs with a search prompt, so I have few more handy keybindings:
 </p>
 <ul class="org-ul">
-<li><a id="org0000005"></a> <code>Win+F1</code> for searching in my <a href="#other">notes and knowledge repository</a></li>
+<li><a id="org0000005"></a> <code class="inline">Win+F1</code> for searching in my <a href="#other">notes and knowledge repository</a></li>
 </ul>
 <div class="org-src-container">
 <pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment"> -eux</span>
@@ -823,7 +824,7 @@ I've got a global keybinding (<code>Win+m</code>) that invokes this script. In a
 </pre>
 </div>
 <ul class="org-ul">
-<li><a id="org0000013"></a> <code>Win+F3</code> for searching in my repositories</li>
+<li><a id="org0000013"></a> <code class="inline">Win+F3</code> for searching in my repositories</li>
 </ul>
 <div class="org-src-container">
 <pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment"> -eux</span>
@@ -831,7 +832,7 @@ I've got a global keybinding (<code>Win+m</code>) that invokes this script. In a
 </pre>
 </div>
 <ul class="org-ul">
-<li><code>Win+a</code> to open my org-mode agenda</li>
+<li><code class="inline">Win+a</code> to open my org-mode agenda</li>
 </ul>
 <div class="org-src-container">
 <pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment"> -eux</span>
@@ -839,7 +840,7 @@ I've got a global keybinding (<code>Win+m</code>) that invokes this script. In a
 </pre>
 </div>
 <ul class="org-ul">
-<li><code>Win+c</code> to open org-capture</li>
+<li><code class="inline">Win+c</code> to open org-capture</li>
 </ul>
 <div class="org-src-container">
 <pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment"> -eux</span>
@@ -851,7 +852,7 @@ I've got a global keybinding (<code>Win+m</code>) that invokes this script. In a
 <h3 id="org0000017"><a class="headerlink" href="#org0000017">¶</a>running daemon on startup</h3>
 <div class="outline-text-3" id="text-org0000017">
 <p>
-It might be convenient to always have the daemon running, for that I'm using a systemd unit in <code>~/.config/systemd/user/emacs-daemon.service</code>.
+It might be convenient to always have the daemon running, for that I'm using a systemd unit in <samp class="inline">~/.config/systemd/user/emacs-daemon.service</samp>.
 </p>
 <div class="org-src-container">
 <pre class="src src-bash">[Unit]
@@ -870,7 +871,7 @@ It might be convenient to always have the daemon running, for that I'm using a s
 </pre>
 </div>
 <p>
-It's nothing unusual perhaps apart from using <code>bash -l</code> so Emacs picks up your <code>.profile</code> file. Without it, you almost certainly will encounter issues with missing binaries because they would not be in your <code>PATH</code>.
+It's nothing unusual perhaps apart from using <code class="inline">bash -l</code> so Emacs picks up your <code class="inline">.profile</code> file. Without it, you almost certainly will encounter issues with missing binaries because they would not be in your <code class="inline">PATH</code>.
 </p>
 </div>
 </div>
@@ -882,12 +883,12 @@ It's nothing unusual perhaps apart from using <code>bash -l</code> so Emacs pick
 These tips might be pretty obvious, but they belong to this post, so here you go:
 </p>
 <ul class="org-ul">
-<li>if you're on Spacemacs, use <a href="https://github.com/syl20bnr/spacemacs/tree/develop"><code>develop</code></a> branch. Master is pretty backwards.</li>
+<li>if you're on Spacemacs, use <a href="https://github.com/syl20bnr/spacemacs/tree/develop"><code class="inline">develop</code></a> branch. Master is pretty backwards.</li>
 <li><p>
-search with <code>ripgrep</code> instead of <code>grep</code> (not only in Emacs!). It's just <a href="#org0000004">better</a>.
+search with <code class="inline">ripgrep</code> instead of <code class="inline">grep</code> (not only in Emacs!). It's just <a href="#org0000004">better</a>.
 </p>
 <p>
-In Spacemacs, set up your <code>init.el</code>:
+In Spacemacs, set up your <code class="inline">init.el</code>:
 </p></li>
 </ul>
 <div class="org-src-container">
@@ -898,23 +899,23 @@ dotspacemacs-additional-packages '(helm-rg)
 </div>
 <ul class="org-ul">
 <li><p>
-use <a href="https://github.com/emacsorphanage/helm-swoop"><code>helm-swoop</code></a> for search within the buffer
+use <a href="https://github.com/emacsorphanage/helm-swoop"><code class="inline">helm-swoop</code></a> for search within the buffer
 </p>
 <p>
 It's easier to watch a <a href="https://raw.githubusercontent.com/ShingoFukuyama/images/master/helm-swoop.gif">demo GIF</a> than to explain.
-Swoop opens a Helm window with search result summary and jumps between results in the original buffer as you navigate in helm (<code>C-j/C-k</code>).
+Swoop opens a Helm window with search result summary and jumps between results in the original buffer as you navigate in helm (<code class="inline">C-j/C-k</code>).
 </p>
 <p>
-I <b><b>highly</b></b> recommend it as a primary way of searching withing a buffer. Bind it it to some convenient combination and get used to it (e.g. mine is <code>SPC RET</code>).
+I <b><b>highly</b></b> recommend it as a primary way of searching withing a buffer. Bind it it to some convenient combination and get used to it (e.g. mine is <code class="inline">SPC RET</code>).
 </p>
 <p>
-There is also <code>helm-occur</code>, which has similar functionality, but it seems inferior to swoop.
+There is also <code class="inline">helm-occur</code>, which has similar functionality, but it seems inferior to swoop.
 </p></li>
 <li><p>
-use <code>helm-follow-mode</code> (<code>C-c C-f</code> in Helm buffer) to jump between search results in any Helm search
+use <code class="inline">helm-follow-mode</code> (<code class="inline">C-c C-f</code> in Helm buffer) to jump between search results in any Helm search
 </p>
 <p>
-E.g. you can use it with <code>helm-org-in-buffer-headings</code> as a neat way to navigate within an Org file.
+E.g. you can use it with <code class="inline">helm-org-in-buffer-headings</code> as a neat way to navigate within an Org file.
 </p></li>
 </ul>
 </div>
@@ -963,7 +964,7 @@ My closing tips would be:
 start simple
 </p>
 <p>
-It's better to have a crappy adhoc script or bash alias that runs <code>grep</code> over your <code>~/notes</code> directory than no means of searching at all.
+It's better to have a crappy adhoc script or bash alias that runs <code class="inline">grep</code> over your <samp class="inline">~/notes</samp> directory than no means of searching at all.
 </p></li>
 <li><p>
 keep your things as plaintext as possible
@@ -1049,8 +1050,9 @@ As always, I'm open to feedback and would love to hear what is or setup or help 
 
         <title>Python: better typed than you think | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css?v=2" />
-        <link rel="stylesheet" href="./css/links.css?v=2" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=3" />
 
         
     </head>
@@ -1085,7 +1087,7 @@ As always, I'm open to feedback and would love to hear what is or setup or help 
 <link rel="stylesheet" href="./css/htmlize.css" />
 <link rel="stylesheet" href="./css/org-default.css" />
 
-<link rel="stylesheet" href="./css/org-extra.css?v=2" />
+<link rel="stylesheet" href="./css/org-extra.css?v=3" />
 
 
 
@@ -1107,7 +1109,7 @@ As always, I'm open to feedback and would love to hear what is or setup or help 
 <li><a href="#error_object">4. A non-solution #2: special error value</a></li>
 <li><a href="#container">5. Almost solution #1: Result container</a>
 <ul>
-<li><a href="#iterator">By the way, what's up with <code>Iterator</code> everywhere?</a></li>
+<li><a href="#iterator">By the way, what's up with <code class="inline">Iterator</code> everywhere?</a></li>
 </ul>
 </li>
 <li><a href="#combinators">6. Almost solution #2: use error combinators</a></li>
@@ -1195,7 +1197,7 @@ So you decide to write a script that would process the highlights, perhaps group
 so you could easily open it from phone and recall latest books you read to discuss with friends.
 </p>
 <p>
-On device, Kindle keeps bookmarks and highlights are stored … in <code>My Clippings.txt</code> file. 
+On device, Kindle keeps bookmarks and highlights are stored … in <samp class="inline">My Clippings.txt</samp> file. 
 </p>
 <details><summary>Click to view 'clippings.txt' </summary>
 <pre class="example">
@@ -1312,7 +1314,7 @@ Traceback (most recent call last):
 AssertionError: Couldn't match regex!
 </pre>
 <p>
-You swear out loud, reach for the laptop you promised to distance yourself from and turns our your parser chokes over <code>page</code> instead of <code>Page</code> in one of new entries. (and yes, this was actually the case in my Kindle export)
+You swear out loud, reach for the laptop you promised to distance yourself from and turns our your parser chokes over <samp class="inline">page</samp> instead of <samp class="inline">Page</samp> in one of new entries. (and yes, this was actually the case in my Kindle export)
 </p>
 <details><summary>Click to view updated 'clippings.txt' </summary>
 <pre class="example">
@@ -1338,7 +1340,7 @@ The Black-Scholes model allows us to determine the fair value of a stock option.
 </pre>
 </details>
 <p>
-You could argue that you should have made the regex in <code>parse_entry</code> case independent in the first place, but it's not something you would normally expect. 
+You could argue that you should have made the regex in <code class="inline">parse_entry</code> case independent in the first place, but it's not something you would normally expect. 
 Kindle specifically got all sorts of nasty things: roman numerals for page numbers, locale dependent dates, inconsistent separators, and so on.
 </p>
 <p>
@@ -1374,7 +1376,7 @@ What do we do?
 <h2 id="logging"><a class="headerlink" href="#logging">¶</a><span class="section-number-2">3</span> A non-solution #1: logging</h2>
 <div class="outline-text-2" id="text-logging">
 <p>
-One simple strategy would be to make parsing fully defensive, wrap the whole <code>parse_entry</code> call in <code>try/except</code> and log:
+One simple strategy would be to make parsing fully defensive, wrap the whole <code class="inline">parse_entry</code> call in <code class="inline">try/except</code> and log:
 </p>
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr">33: </span><span class="org-keyword">import</span> logging
@@ -1411,7 +1413,7 @@ So we need some way of propagating the errors up the call hierarchy instead of t
 <h2 id="error_object"><a class="headerlink" href="#error_object">¶</a><span class="section-number-2">4</span> A non-solution #2: special error value</h2>
 <div class="outline-text-2" id="text-error_object">
 <p>
-Often it's tempting to fallback to some sort of special 'default' or 'error' value. I bet you've seen this before: <code>0</code> or <code>INT_MAX</code> meaning error for integer type, or <code>""</code> for string types. We could try something similar and squeeze exception into the <code>Highlight</code> object itself. 
+Often it's tempting to fallback to some sort of special 'default' or 'error' value. I bet you've seen this before: <code class="inline">0</code> or <code class="inline">INT_MAX</code> meaning error for integer type, or <code class="inline">""</code> for string types. We could try something similar and squeeze exception into the <code class="inline">Highlight</code> object itself. 
 </p>
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr">33: </span><span class="org-keyword">def</span> <span class="org-function-name">iter_highlights</span>():
@@ -1424,10 +1426,10 @@ Often it's tempting to fallback to some sort of special 'default' or 'error' val
 </pre>
 </div>
 <p>
-One obvious problem is that it's very nontransparent and <b>relies on implicit convention</b>: there is no way of telling that this function might return some special <code>Highlight</code> which should be treated as error. That not only complicates code, but might also introduce logical inconsistencies.
+One obvious problem is that it's very nontransparent and <b>relies on implicit convention</b>: there is no way of telling that this function might return some special <code class="inline">Highlight</code> which should be treated as error. That not only complicates code, but might also introduce logical inconsistencies.
 </p>
 <p>
-E.g. if your <code>Highlight</code> object also returned book's ISBN and you filled it with some arbitrary text, it would almost surely not be a valid ISBN, that might cause failures down the pipeline.
+E.g. if your <code class="inline">Highlight</code> object also returned book's ISBN and you filled it with some arbitrary text, it would almost surely not be a valid ISBN, that might cause failures down the pipeline.
 </p>
 <p>
 Sometimes it's inevitable though, e.g. I'm giving an example <a href="#dataframe">later</a>.
@@ -1441,15 +1443,15 @@ Sometimes it's inevitable though, e.g. I'm giving an example <a href="#dataframe
 An abstraction that stood the test of time well is a container that holds a <b>result</b> representing one of two:
 </p>
 <ul class="org-ul">
-<li><b>success value</b>, representing the <b>desired outcome</b> of type <code>T</code></li>
-<li>or <b>'error value'</b>, holding <b>error description</b> of type <code>E</code>.</li>
+<li><b>success value</b>, representing the <b>desired outcome</b> of type <code class="inline">T</code></li>
+<li>or <b>'error value'</b>, holding <b>error description</b> of type <code class="inline">E</code>.</li>
 </ul>
 <p>
 I will try to stick to the same semantics further down, 'result' typically meaning that it could be either desired value or error.
 </p>
 <p>
-You can vaguely think of it as an interface <code>Result</code>, and two implementations: <code>Ok</code> and <code>Error</code>.
-In runtime, you can ask the instance behind <code>Result</code>, which of these alternative it holds and act accordingly.
+You can vaguely think of it as an interface <code class="inline">Result</code>, and two implementations: <code class="inline">Ok</code> and <code class="inline">Error</code>.
+In runtime, you can ask the instance behind <code class="inline">Result</code>, which of these alternative it holds and act accordingly.
 </p>
 <p>
 It has manifested as:
@@ -1469,7 +1471,7 @@ let f = match f {
 </pre>
 </div></li>
 <li><p>
-in Haskell: <a href="https://wiki.haskell.org/Handling_errors_in_Haskell#Error_using_the_Either_type"><code>Either E T</code></a>
+in Haskell: <a href="https://wiki.haskell.org/Handling_errors_in_Haskell#Error_using_the_Either_type"><code class="inline">Either E T</code></a>
 </p>
 <div class="org-src-container">
 <pre class="src src-haskell">main = do
@@ -1480,10 +1482,10 @@ in Haskell: <a href="https://wiki.haskell.org/Handling_errors_in_Haskell#Error_u
 </pre>
 </div>
 <p>
-Yes, <code>Left</code> meaning error and <code>Right</code> meaning success are not necessarily obvious. It's kinda a pun: "right" also means "correct".
+Yes, <code class="inline">Left</code> meaning error and <code class="inline">Right</code> meaning success are not necessarily obvious. It's kinda a pun: "right" also means "correct".
 Also notice that error is not just a string, but also contains the position where parsing failed.
 </p></li>
-<li>in C++: there is a proposal for <a href="https://issues.isocpp.org/show_bug.cgi?id=29"><code>std::expected&lt;E, T&gt;</code></a></li>
+<li>in C++: there is a proposal for <a href="https://issues.isocpp.org/show_bug.cgi?id=29"><code class="inline">std::expected&lt;E, T&gt;</code></a></li>
 </ul>
 <p>
 So, Rust and Haskell programmers seem to be quite happy with it? <b>Why can't we have same in Python?</b>
@@ -1505,7 +1507,7 @@ To make it easier to compare to <a href="#org0000002">the original code</a> I su
 </pre>
 </div>
 <p>
-We've had to wrap success and error values in <code>Ok</code> and <code>Err</code>, but so far it's not too bad.
+We've had to wrap success and error values in <code class="inline">Ok</code> and <code class="inline">Err</code>, but so far it's not too bad.
 </p>
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr">41: </span><span class="org-keyword">from</span> itertools <span class="org-keyword">import</span> tee
@@ -1521,7 +1523,7 @@ We've had to wrap success and error values in <code>Ok</code> and <code>Err</cod
 </pre>
 </div>
 <p>
-We use <a href="https://docs.python.org/3/library/itertools.html#itertools.tee"><code>itertools.tee</code></a> here so we don't have to pollute our code with temporary lists.
+We use <a href="https://docs.python.org/3/library/itertools.html#itertools.tee"><code class="inline">itertools.tee</code></a> here so we don't have to pollute our code with temporary lists.
 </p>
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr">51: </span><span class="org-keyword">def</span> <span class="org-function-name">print_books</span>():
@@ -1562,7 +1564,7 @@ Cool, we rendered as much as we can, and we get the error displayed as well, so 
 The error looks a bit out of nowhere, but at least it's there. We will address how we can improve it <a href="#error_context">later</a>.
 </p>
 <p>
-Sadly, for someone else who looks at <code>iter_highlights</code> or <code>iter_books</code> signatures, it's not obvious that it yields <code>Result</code> objects, not <code>Book</code> without reading the code.
+Sadly, for someone else who looks at <code class="inline">iter_highlights</code> or <code class="inline">iter_books</code> signatures, it's not obvious that it yields <code class="inline">Result</code> objects, not <code class="inline">Book</code> without reading the code.
 It's a thankless job for a human to keep track of, and <a href="https://mypy.readthedocs.io/en/latest/introduction.html"><b>mypy</b></a> is a perfect fit for this task.
 Gladly, the library already <a href="https://github.com/dbrgn/result/blob/master/result/result.py">comes with type annotations</a>.
 </p>
@@ -1570,7 +1572,7 @@ Gladly, the library already <a href="https://github.com/dbrgn/result/blob/master
 So, let's try to use mypy to aid us at writing correct code.
 </p>
 <p>
-Let's focus just on <code>iter_highlights</code> and <code>iter_books</code> and use the <code>Result</code> type.
+Let's focus just on <code class="inline">iter_highlights</code> and <code class="inline">iter_books</code> and use the <code class="inline">Result</code> type.
 </p>
 <div class="org-src-container">
 <pre class="src src-python" id="org0000007"><span class="linenr">34: </span><span class="org-keyword">from</span> result <span class="org-keyword">import</span> Ok, Err, Result
@@ -1620,8 +1622,8 @@ Found 3 errors in 1 file (checked 1 source file)
 Umm. Let's go through the errors:   
 </p>
 <ul class="org-ul">
-<li>errors 1 and 2 are due to <code>ok()</code> method being too defensive and <a href="https://github.com/dbrgn/result/blob/0778597ddb737754780b3aca956ad944282ee870/result/result.py#L75-L81">returning <code>None</code></a> if <code>is_ok</code> is <code>False</code>. Ideally, you'd throw exception here, because such a situation is a <b>programming bug</b>. We can just enforce non-optional type here via <code>unopt</code> helper.</li>
-<li>error 3 happens because even though we filtered error values, mypy has no idea about that, so it still assumes that <code>errors</code> might hold <code>Highlight</code> objects. You could blame mypy of not being smart enough, but it would be a very <b>hard if not impossible analysis</b> in general case. We can get around this by unpacking error and wrapping back in <code>Err</code>.</li>
+<li>errors 1 and 2 are due to <code class="inline">ok()</code> method being too defensive and <a href="https://github.com/dbrgn/result/blob/0778597ddb737754780b3aca956ad944282ee870/result/result.py#L75-L81">returning <code class="inline">None</code></a> if <code class="inline">is_ok</code> is <code class="inline">False</code>. Ideally, you'd throw exception here, because such a situation is a <b>programming bug</b>. We can just enforce non-optional type here via <code class="inline">unopt</code> helper.</li>
+<li>error 3 happens because even though we filtered error values, mypy has no idea about that, so it still assumes that <code class="inline">errors</code> might hold <code class="inline">Highlight</code> objects. You could blame mypy of not being smart enough, but it would be a very <b>hard if not impossible analysis</b> in general case. We can get around this by unpacking error and wrapping back in <code class="inline">Err</code>.</li>
 </ul>
 <p>
 Let's apply these insights and try again:
@@ -1659,13 +1661,13 @@ Phew! With some minor changes restructuring we've convinced mypy.
 It does come with some downsides:
 </p>
 <ul class="org-ul">
-<li><b>readability</b>: there is a bit of visual noise since you need to add <code>Ok/Err</code> wrappers and access the success value via <code>.value</code> property</li>
+<li><b>readability</b>: there is a bit of visual noise since you need to add <code class="inline">Ok/Err</code> wrappers and access the success value via <code class="inline">.value</code> property</li>
 <li><p>
-<b>safety</b>: you could forget to call <code>is_ok/is_err</code> before calling <code>ok/err</code>, and mypy won't even blink.
+<b>safety</b>: you could forget to call <code class="inline">is_ok/is_err</code> before calling <code class="inline">ok/err</code>, and mypy won't even blink.
 </p>
 <p>
 <a id="org0000009"></a>
-The contract <code>if .is_ok() is True, then it's safe to call .ok()</code> is too complicated to be encoded as a type that mypy can handle. You'll get <code>None</code> or exception thrown in runtime. The author of the library admits it by the way, so it's not a criticism, just highlighting limitations of mypy here!
+The contract <samp class="inline">if .is_ok() is True, then it's safe to call .ok()</samp> is too complicated to be encoded as a type that mypy can handle. You'll get <code class="inline">None</code> or exception thrown in runtime. The author of the library admits it by the way, so it's not a criticism, just highlighting limitations of mypy here!
 </p></li>
 </ul>
 <p>
@@ -1673,15 +1675,15 @@ Ok, we've learned something, let's try again.
 </p>
 </div>
 <div class="outline-3" id="outline-container-org000000b">
-<h3 id="iterator"><a class="headerlink" href="#iterator">¶</a>By the way, what's up with <code>Iterator</code> everywhere?</h3>
+<h3 id="iterator"><a class="headerlink" href="#iterator">¶</a>By the way, what's up with <code class="inline">Iterator</code> everywhere?</h3>
 <div class="outline-text-3" id="text-iterator">
 <p>
 Glad you asked! Several reasons I'm using generators here:
 </p>
 <ul class="org-ul">
-<li>it makes code cleaner because there is <b>no need for temporary lists</b>, calling <code>.append</code> and then returning them in the end.</li>
+<li>it makes code cleaner because there is <b>no need for temporary lists</b>, calling <code class="inline">.append</code> and then returning them in the end.</li>
 <li>it makes code faster (again, no temporary lists), and also it <b>feels faster</b> because you print items as soon as you process</li>
-<li><code>Iterator</code> type is <b>covariant</b>, whereas <code>List</code> is not. I'm elaborating on it <a href="#org000000a">later</a>.</li>
+<li><code class="inline">Iterator</code> type is <b>covariant</b>, whereas <code class="inline">List</code> is not. I'm elaborating on it <a href="#org000000a">later</a>.</li>
 </ul>
 </div>
 </div>
@@ -1690,11 +1692,11 @@ Glad you asked! Several reasons I'm using generators here:
 <h2 id="combinators"><a class="headerlink" href="#combinators">¶</a><span class="section-number-2">6</span> Almost solution #2: use error combinators</h2>
 <div class="outline-text-2" id="text-combinators">
 <p>
-<a href="https://github.com/dry-python/returns#result-container">returns.result</a> library, clearly inspired by Haskell's <code>Either</code> monad and <code>do</code> notation.
+<a href="https://github.com/dry-python/returns#result-container">returns.result</a> library, clearly inspired by Haskell's <code class="inline">Either</code> monad and <code class="inline">do</code> notation.
 I'm quite glad someone already implemented it and I didn't have to reinvent the wheel here.
 </p>
 <p>
-So, let's try and rewrite the code using <code>returns.result.Result</code>:
+So, let's try and rewrite the code using <code class="inline">returns.result.Result</code>:
 </p>
 <div class="org-src-container">
 <pre class="src src-mypy" id="org000000d"><span class="linenr">19: </span><span class="org-keyword">from</span> returns.result <span class="org-keyword">import</span> safe
@@ -1724,10 +1726,10 @@ So, let's try and rewrite the code using <code>returns.result.Result</code>:
 </pre>
 </div>
 <p>
-So far the only difference from <a href="#org0000002">the original code</a> is <a href="https://returns.readthedocs.io/en/latest/pages/result.html#safe"><code>@safe</code></a> decorator on <code>parse_entry</code>, which basically deals with catching all exceptions and wrapping into <code>Result</code>.
+So far the only difference from <a href="#org0000002">the original code</a> is <a href="https://returns.readthedocs.io/en/latest/pages/result.html#safe"><code class="inline">@safe</code></a> decorator on <code class="inline">parse_entry</code>, which basically deals with catching all exceptions and wrapping into <code class="inline">Result</code>.
 </p>
 <p>
-As a consequence, <code>iter_highlights</code> required no changes in its body. (which may not be a desirable thing as we'll see <a href="#error_context">later</a>)
+As a consequence, <code class="inline">iter_highlights</code> required no changes in its body. (which may not be a desirable thing as we'll see <a href="#error_context">later</a>)
 </p>
 <div class="org-src-container">
 <pre class="src src-mypy" id="org000000e"><span class="linenr">43: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> cast
@@ -1750,10 +1752,10 @@ As a consequence, <code>iter_highlights</code> required no changes in its body. 
 Ok, that definitely requires some explanation…
 </p>
 <p>
-<code>returns</code> library public API doesn't provide any way to tell between success and failure (<a href="https://returns.readthedocs.io/en/latest/pages/result.html#what-is-the-difference-between-success-and-success">kind of deliberately</a>), the types <code>_Success</code> and <code>_Failure</code> are private, and the only method that we can use seems to be <code>.value_or(default)</code>. This method returns the success value if the result is <code>Success</code> and <code>default</code> in case of <code>Failure</code>. So we use a <b>sentinel object to distinguish</b> between actual success values and <code>default</code> ones and also have to trick mypy with a <code>cast</code>.
+<code class="inline">returns</code> library public API doesn't provide any way to tell between success and failure (<a href="https://returns.readthedocs.io/en/latest/pages/result.html#what-is-the-difference-between-success-and-success">kind of deliberately</a>), the types <code class="inline">_Success</code> and <code class="inline">_Failure</code> are private, and the only method that we can use seems to be <code class="inline">.value_or(default)</code>. This method returns the success value if the result is <code class="inline">Success</code> and <code class="inline">default</code> in case of <code class="inline">Failure</code>. So we use a <b>sentinel object to distinguish</b> between actual success values and <code class="inline">default</code> ones and also have to trick mypy with a <code class="inline">cast</code>.
 </p>
 <p>
-Apart from this this function suffers from exactly the same issues as the <code>iter_books</code> implementation from <a href="#org0000008">the previous section</a> for the same reason: contract is too complicated to be expressed in mypy.
+Apart from this this function suffers from exactly the same issues as the <code class="inline">iter_books</code> implementation from <a href="#org0000008">the previous section</a> for the same reason: contract is too complicated to be expressed in mypy.
 </p>
 <p>
 One could argue that this function is going to look awkward anyway since we need to separate list of results into successes and errors. Let's see the function that should be more straightforward:
@@ -1772,22 +1774,22 @@ One could argue that this function is going to look awkward anyway since we need
 </pre>
 </div>
 <p>
-The idea here is that we can use <code>map</code> method (that works like <code>fmap</code> in Haskell) and use it to print successful results,
-and chain it with <code>fix</code> that works like like <code>fmap</code>, but for errors. In a sense, these methods encapsulate pattern matching 
+The idea here is that we can use <code class="inline">map</code> method (that works like <code class="inline">fmap</code> in Haskell) and use it to print successful results,
+and chain it with <code class="inline">fix</code> that works like like <code class="inline">fmap</code>, but for errors. In a sense, these methods encapsulate pattern matching 
 (which Python lacks syntactically) so as long the implementor did the dirty business of doing it dynamically right, you're safe.
-However I feel that in this particular library overdid this encapsulation a bit, hence very hacky implementation of <code>iter_books</code>.
+However I feel that in this particular library overdid this encapsulation a bit, hence very hacky implementation of <code class="inline">iter_books</code>.
 </p>
 <p>
-Lambdas <a href="https://stackoverflow.com/a/1233520/706389"><b>can't be multiline</b></a>, so we have to define a local function for <code>print_ok</code>.
+Lambdas <a href="https://stackoverflow.com/a/1233520/706389"><b>can't be multiline</b></a>, so we have to define a local function for <code class="inline">print_ok</code>.
 </p>
 <p>
-There is a <a href="https://github.com/python/mypy/issues/4226">bug in mypy</a> that sometimes prevents you from inlining the lambda and struggles with type inference. Here I'm hitting this bug with <code>print_error</code>, that's why it's not <code>.fix(lambda e: print(f"* ERROR: {e}"))</code>).
+There is a <a href="https://github.com/python/mypy/issues/4226">bug in mypy</a> that sometimes prevents you from inlining the lambda and struggles with type inference. Here I'm hitting this bug with <code class="inline">print_error</code>, that's why it's not <code class="inline">.fix(lambda e: print(f"* ERROR: {e}"))</code>.
 </p>
 <p>
-Another potential problem is one could forget to implement one of <code>map/fix</code> clauses, since <b>nothing enforces calling them</b>. Even if you're detecting unused variables, missing <code>.fix</code> clause could stay unnoticed forever. It's very similar to forgetting <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch"><code>catch</code></a> when using Javascript Promises.
+Another potential problem is one could forget to implement one of <code class="inline">map/fix</code> clauses, since <b>nothing enforces calling them</b>. Even if you're detecting unused variables, missing <code class="inline">.fix</code> clause could stay unnoticed forever. It's very similar to forgetting <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch"><code class="inline">catch</code></a> when using Javascript Promises.
 </p>
 <p>
-It might be possible to enforce with some static analysis though, e.g. via mypy plugin by flagging dangling/temporary <code>Result</code> values (e.g. similarly to <a href="https://doc.rust-lang.org/std/result/#results-must-be-used"><code>must_use</code></a> attribute in Rust), but it's a project on its own.
+It might be possible to enforce with some static analysis though, e.g. via mypy plugin by flagging dangling/temporary <code class="inline">Result</code> values (e.g. similarly to <a href="https://doc.rust-lang.org/std/result/#results-must-be-used"><code class="inline">must_use</code></a> attribute in Rust), but it's a project on its own.
 </p>
 <p>
 Well at the very least it works and type checks!
@@ -1814,7 +1816,7 @@ Success: no issues found in 1 source file
 </pre>
 <p>
 Overall I'm not sold, Python simply <b>lacks syntax</b> that lets you unpack and compose these result objects in a clean way and you end up with boilerplate.
-<a href="https://returns.readthedocs.io/en/latest/pages/io.html#returns.io.IO.lift"><code>lifts</code></a> are not very readable in Haskell, let alone in Python.
+<a href="https://returns.readthedocs.io/en/latest/pages/io.html#returns.io.IO.lift"><code class="inline">lifts</code></a> are not very readable in Haskell, let alone in Python.
 </p>
 <p>
 I think authors did a great experiment though, the more people have fun with types, the more good abstractions we'll find. 
@@ -1847,15 +1849,15 @@ if err != nil {
 </div>
 <p>
 And it's not limited by Go, e.g. you'll often encounter it implicitly in C (which had no exceptions) or C++ code.
-For instance, <a href="https://en.cppreference.com/w/cpp/filesystem/is_symlink"><code>std::filesystem::is_symlink</code></a> comes in two flavours:
+For instance, <a href="https://en.cppreference.com/w/cpp/filesystem/is_symlink"><code class="inline">std::filesystem::is_symlink</code></a> comes in two flavours:
 </p>
 <ul class="org-ul">
-<li><code>bool is_symlink( const std::filesystem::path&amp; p )</code>, which throws exceptions on errors.</li>
+<li><code class="inline">bool is_symlink( const std::filesystem::path&amp; p )</code>, which throws exceptions on errors.</li>
 <li><p>
-<code>bool is_symlink( const std::filesystem::path&amp; p, std::error_code&amp; ec ) noexcept</code>, which sets <code>ec</code> on errors. 
+<code class="inline">bool is_symlink( const std::filesystem::path&amp; p, std::error_code&amp; ec ) noexcept</code>, which sets <code class="inline">ec</code> on errors. 
 </p>
 <p>
-You can think of it as if it returned <code>std::tuple&lt;bool, std::error_code&gt;</code>. I assume it's not that way because the compiler wouldn't be able to distinguish between signatures.
+You can think of it as if it returned <code class="inline">std::tuple&lt;bool, std::error_code&gt;</code>. I assume it's not that way because the compiler wouldn't be able to distinguish between signatures.
 </p></li>
 </ul>
 <p>
@@ -1863,11 +1865,11 @@ Personally I as well as many other people find it pretty ugly. No judgment here 
 Pretty sure one can get used to it after a while and that there are some static flow analyzers that help to ensure correct error handling.
 </p>
 <p>
-Main issue regarding python is it's not mypy friendly as return type of <code>Open</code> would have to be <code>Tuple[Optional[Result], Optional[Error]]</code>.
-In the type theory language, it is a <a href="https://en.wikipedia.org/wiki/Product_type">product type</a>, so in addition to all members of <code>Result</code> type and all members of <code>Error</code> type, it also got inhabitants that <b>don't make sense for our program</b>, such as <code>(None, None)</code> and also all of <code>Tuple[Result, Error]</code>. 
+Main issue regarding python is it's not mypy friendly as return type of <code class="inline">Open</code> would have to be <code class="inline">Tuple[Optional[Result], Optional[Error]]</code>.
+In the type theory language, it is a <a href="https://en.wikipedia.org/wiki/Product_type">product type</a>, so in addition to all members of <code class="inline">Result</code> type and all members of <code class="inline">Error</code> type, it also got inhabitants that <b>don't make sense for our program</b>, such as <code class="inline">(None, None)</code> and also all of <code class="inline">Tuple[Result, Error]</code>. 
 </p>
 <p>
-In other words, nothing on type level prevents the callee (<code>os.Open</code>) from returning something like <code>(file_descriptor, "whoops")</code>, which has ambiguous meaning.
+In other words, nothing on type level prevents the callee (<code class="inline">os.Open</code>) from returning something like <code class="inline">(file_descriptor, "whoops")</code>, which has ambiguous meaning.
 If we use it we would have to pay with sacrificing type safety or <b>extra code on caller site</b> to eliminate these impossible program states:
 </p>
 <div class="org-src-container">
@@ -1891,7 +1893,7 @@ Let's recall the problems we had again:
 </p>
 <ul class="org-ul">
 <li><p>
-<b>readability</b>: extra wrappers and accessor methods like <code>Ok/Success/Error/is_ok()/.unwrap()</code>.
+<b>readability</b>: extra wrappers and accessor methods like <code class="inline">Ok/Success/Error/is_ok()/.unwrap()</code>.
 </p>
 <p>
 It's <b>visual noise</b> and also they creep throughout the code, so if you decide you won't need them later,
@@ -1899,15 +1901,15 @@ you might have to refactor a lot of code.
 </p></li>
 </ul>
 <ul class="org-ul">
-<li><b>safety</b>: it's still possible to write logically inconsistent code like <code>if res.is_error(): return res.value * 10</code>.</li>
-<li><b>composability</b>: <code>fmap</code>-style combinators are not really going to look good because Python lacks multiline lambdas.</li>
+<li><b>safety</b>: it's still possible to write logically inconsistent code like <code class="inline">if res.is_error(): return res.value * 10</code>.</li>
+<li><b>composability</b>: <code class="inline">fmap</code>-style combinators are not really going to look good because Python lacks multiline lambdas.</li>
 <li><b>performance and memory use</b>: not going to make claims here as I haven't benchmarked, but there is a potential for overhead caused by extra wrapper objects.</li>
 </ul>
 <p>
 First, we'll attack readability and safety simultaneously.  
 </p>
 <p>
-In part it's solved with syntactic sugar in other languages like <code>do</code> syntax in <code>Haskell</code> and <code>try!</code> macro, <code>?</code> operator in <a href="https://doc.rust-lang.org/edition-guide/rust-2018/error-handling-and-panics/the-question-mark-operator-for-easier-error-handling.html">Rust</a>. Sometimes it's inevitable and you have to inject values into rust's <code>Result</code> explicitly via <code>Ok/Err</code> constructors. However check like <code>.is_ok()</code> or <code>isLeft</code> are really not that common in Rust and Haskell. Reason is <b>pattern matching</b>! E.g. if we had pattern matching in python we could write something like:
+In part it's solved with syntactic sugar in other languages like <code class="inline">do</code> syntax in <code class="inline">Haskell</code> and <code class="inline">try!</code> macro, <code class="inline">?</code> operator in <a href="https://doc.rust-lang.org/edition-guide/rust-2018/error-handling-and-panics/the-question-mark-operator-for-easier-error-handling.html">Rust</a>. Sometimes it's inevitable and you have to inject values into rust's <code class="inline">Result</code> explicitly via <code class="inline">Ok/Err</code> constructors. However check like <code class="inline">.is_ok()</code> or <code class="inline">isLeft</code> are really not that common in Rust and Haskell. Reason is <b>pattern matching</b>! E.g. if we had pattern matching in python we could write something like:
 </p>
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">print_books</span>():
@@ -1924,7 +1926,7 @@ In part it's solved with syntactic sugar in other languages like <code>do</code>
 </pre>
 </div>
 <p>
-That's cleaner than checking for <code>is_ok/is_err</code> and unpacking; and also makes it type safe because <code>b</code> and <code>e</code> already have the appropriate types. In our imaginary world where python had this syntax, surely mypy would have supported it too, right?
+That's cleaner than checking for <code class="inline">is_ok/is_err</code> and unpacking; and also makes it type safe because <code class="inline">b</code> and <code class="inline">e</code> already have the appropriate types. In our imaginary world where python had this syntax, surely mypy would have supported it too, right?
 </p>
 <p>
 Oh wait. It kind of <a href="https://mypy.readthedocs.io/en/latest/kinds_of_types.html#union-types">supports it already</a>!
@@ -1943,28 +1945,28 @@ Oh wait. It kind of <a href="https://mypy.readthedocs.io/en/latest/kinds_of_type
 </pre>
 </div>
 <p>
-So, mypy keeps track of the <a href="https://en.wikipedia.org/wiki/Typing_environment">typing context</a> and <b>narrows it down</b> after certain operations, in particular, <code>isinstance</code> checks and <a href="https://mypy.readthedocs.io/en/latest/kinds_of_types.html#optional-types-and-the-none-type"><code>is None/is not None</code> checks</a>.
+So, mypy keeps track of the <a href="https://en.wikipedia.org/wiki/Typing_environment">typing context</a> and <b>narrows it down</b> after certain operations, in particular, <code class="inline">isinstance</code> checks and <a href="https://mypy.readthedocs.io/en/latest/kinds_of_types.html#optional-types-and-the-none-type"><code class="inline">is None/is not None</code> checks</a>.
 </p>
 <p>
 That looks <b>very similar to pattern matching</b> both in terms of syntax and typing rules.
 </p>
 <p>
-So, it seems that <code>Union</code> would represent our result type. Do we still need to come up with some special wrapper for errors?
-Not really, Python already has a fairly convenient candidate for it: <code>Exception</code>! Most often you have it anyway in <code>except</code> clause, if it's not enough, you can inherit it, add extra fields and treat as any other type.
+So, it seems that <code class="inline">Union</code> would represent our result type. Do we still need to come up with some special wrapper for errors?
+Not really, Python already has a fairly convenient candidate for it: <code class="inline">Exception</code>! Most often you have it anyway in <code class="inline">except</code> clause, if it's not enough, you can inherit it, add extra fields and treat as any other type.
 </p>
 <p>
 On the other hand, Exceptions almost never end up as function return values (and when they do, it's normally some fairly unambiguous code dealing specifically with error handling). Hmm, how convenient 🤔.
 </p>
 <p>
-So even though we don't have explicit tagged unions in Python, if we agree that error values are represented as Exceptions, then we do get a disjoint type (i.e. <code>Ok</code> and <code>Error</code> are mutually exclusive) at runtime.
+So even though we don't have explicit tagged unions in Python, if we agree that error values are represented as Exceptions, then we do get a disjoint type (i.e. <code class="inline">Ok</code> and <code class="inline">Error</code> are mutually exclusive) at runtime.
 </p>
 <p>
 So, rules of thumb: 
 </p>
 <ul class="org-ul">
-<li>use <code>Union[T, Exception]</code> to represent type for results that hold <code>T</code> but can also end up with an error</li>
-<li><code>return</code> or <code>yield</code> exceptions and values without using any extra wrapping</li>
-<li>pattern match through <code>isinstance</code></li>
+<li>use <code class="inline">Union[T, Exception]</code> to represent type for results that hold <code class="inline">T</code> but can also end up with an error</li>
+<li><code class="inline">return</code> or <code class="inline">yield</code> exceptions and values without using any extra wrapping</li>
+<li>pattern match through <code class="inline">isinstance</code></li>
 </ul>
 <p>
 Let's see how we can rewrite our program by employing these principles:
@@ -2039,14 +2041,14 @@ Here's what I like about this approach:
 no extra wrapper classes, code is <b>clean and readable</b>
 </p>
 <p>
-Also note that surprisingly, Python's dynamic nature actually helps here. E.g. if you rewrote <code>iter_books</code> in Rust, you'd have to use <code>Ok</code> and <code>Err</code> to wrap the return values into <code>Res</code> object. I can imagine you might be able get away with explicit wrapping if you use language with conversions like <code>Scala</code> or <code>C++</code>.
+Also note that surprisingly, Python's dynamic nature actually helps here. E.g. if you rewrote <code class="inline">iter_books</code> in Rust, you'd have to use <code class="inline">Ok</code> and <code class="inline">Err</code> to wrap the return values into <code class="inline">Res</code> object. I can imagine you might be able get away with explicit wrapping if you use language with conversions like <code class="inline">Scala</code> or <code class="inline">C++</code>.
 </p></li>
 <li><p>
 because of no runtime wrappers, <b>on the 'successful' code path, the callee doesn't need extra code</b> to wrap/unwrap anything.
 </p>
 <p>
 You can prototype and mess with your program in the interpreter without having to think about errors.
-If you do get an error, it would just most likely crash the whole program with <code>AttributeError</code>, which is essentially the desired non-defensive
+If you do get an error, it would just most likely crash the whole program with <code class="inline">AttributeError</code>, which is essentially the desired non-defensive
 behaviour during prototyping.
 </p>
 <p>
@@ -2056,15 +2058,15 @@ You can completely ignore mypy and error handling, until you're happy, then you 
 <b>no memory overhead</b> caused by constant wrapping and unwrapping. 
 </p>
 <p>
-I don't really want to make claims about CPU here. I tried isolated micro benchmarking; suing <code>isinstance(r, Exception)</code> runs in 50ns,
-using <code>is_err()</code> call and then unpacking <code>err()</code> runs is 60ns.
+I don't really want to make claims about CPU here. I tried isolated micro benchmarking; suing <code class="inline">isinstance(r, Exception)</code> runs in 50ns,
+using <code class="inline">is_err()</code> call and then unpacking <code class="inline">err()</code> runs is 60ns.
 But these numbers might not make sense under a realistic data flow.
 </p></li>
 <li><p>
 <b>easy to operate and transform</b> values, you just write regular Python code without extra lambdas or kludgy local functions.
 </p>
 <p>
-If you don't need to handle the error, you can just yield it up the call stack as we do in <code>iter_books</code>.
+If you don't need to handle the error, you can just yield it up the call stack as we do in <code class="inline">iter_books</code>.
 </p></li>
 <li><b>doesn't require modifying existing types</b>, and introducing invalid states that signal errors (mentioned <a href="#error_object">here</a>)</li>
 <li><p>
@@ -2075,12 +2077,12 @@ If you don't need to handle the error, you can just yield it up the call stack a
 I wouldn't try to explain it here, as it's something you need to experiment with and get comfortable. You can also find some explanations and examples <a href="https://mypy.readthedocs.io/en/latest/generics.html#variance-of-generic-types">here</a>.
 </p>
 <p>
-It short, we can let <code>Res[T]</code> to be contravariant with respect to <code>T</code>, because it's a simple immutable wrapper around <code>T</code>.
+It short, we can let <code class="inline">Res[T]</code> to be contravariant with respect to <code class="inline">T</code>, because it's a simple immutable wrapper around <code class="inline">T</code>.
 </p>
 <p>
-If you were defining your own generic class, you'd have to declare <code>T = TypeVar('T', covariant=True)</code>.
+If you were defining your own generic class, you'd have to declare <code class="inline">T = TypeVar('T', covariant=True)</code>.
 It's somewhat misleading, because <b>variance is a property of a generic container</b>, however for some historic reasons in mypy, you specify variance in the definition of type variable.
-However, because <code>Res</code> is merely an alias to <code>Union</code>, you <a href="https://mypy.readthedocs.io/en/latest/generics.html#generic-type-aliases">don't have to remember to do it</a>, because <code>Union</code> is already defined as covariant in both its type arguments.
+However, because <code class="inline">Res</code> is merely an alias to <code class="inline">Union</code>, you <a href="https://mypy.readthedocs.io/en/latest/generics.html#generic-type-aliases">don't have to remember to do it</a>, because <code class="inline">Union</code> is already defined as covariant in both its type arguments.
 </p></li>
 </ul>
 <p>
@@ -2088,7 +2090,7 @@ Downsides:
 </p>
 <ul class="org-ul">
 <li><p>
-<code>isinstance</code> looks a bit verbose and might be frowned upon as it's <b>often considered as code smell</b>
+<code class="inline">isinstance</code> looks a bit verbose and might be frowned upon as it's <b>often considered as code smell</b>
 </p>
 <p>
 We can't get around this and hide in a helper function for the same reason mentioned <a href="#org0000009">above</a>, 
@@ -2097,10 +2099,10 @@ but it might be solved in mypy in <a href="https://github.com/python/mypy/issues
 </ul>
 <p>
 That's basically what I wanted to show! I've been using this pattern for a while now and I think it could work well.
-Remember about typing contexts and how <code>isinstance</code> / <code>is None</code> checks impact it, and you can keep your code clean and safe.
+Remember about typing contexts and how <code class="inline">isinstance</code> / <code class="inline">is None</code> checks impact it, and you can keep your code clean and safe.
 </p>
 <p>
-Not suggesting you to go and rewrite all your code from using <code>try/catch</code> now though. Every error handling style has its place, and 
+Not suggesting you to go and rewrite all your code from using <code class="inline">try/catch</code> now though. Every error handling style has its place, and 
 hopefully you'll figure out parts of your projects where it's applicable.
 </p>
 </div>
@@ -2158,7 +2160,7 @@ Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
 <p>
-The downside now is that you do need to wrap your exception (i.e. presumably you still want to keep the message and stacktrace) in <code>Error</code> container.
+The downside now is that you do need to wrap your exception (i.e. presumably you still want to keep the message and stacktrace) in <code class="inline">Error</code> container.
 </p>
 </div>
 </div>
@@ -2166,7 +2168,7 @@ The downside now is that you do need to wrap your exception (i.e. presumably you
 <h3 id="unwrap"><a class="headerlink" href="#unwrap">¶</a>unwrap</h3>
 <div class="outline-text-3" id="text-unwrap">
 <p>
-Sometimes it's desirable to quickly switch result back to non-defensive version. You can do it by using a simple helper function <code>unwrap</code> (naming inspired by <a href="https://doc.rust-lang.org/std/result/enum.Result.html#method.unwrap">rust</a>):
+Sometimes it's desirable to quickly switch result back to non-defensive version. You can do it by using a simple helper function <code class="inline">unwrap</code> (naming inspired by <a href="https://doc.rust-lang.org/std/result/enum.Result.html#method.unwrap">rust</a>):
 </p>
 <div class="org-src-container">
 <pre class="src src-mypy"><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> Union, TypeVar
@@ -2221,10 +2223,10 @@ However, in the field, then you want to keep the code defensive. To do that quic
 </pre>
 </div>
 <p>
-The idea here is <code>Error.defensive_policy</code> determines if exception will be handled defensively or thrown straightaway. <b>This is enforced on type level</b>, because in order to get <code>Error</code> you need to call its constructor at some point.
+The idea here is <code class="inline">Error.defensive_policy</code> determines if exception will be handled defensively or thrown straightaway. <b>This is enforced on type level</b>, because in order to get <code class="inline">Error</code> you need to call its constructor at some point.
 </p>
 <p>
-Also note the use of <code>bound=Exception</code> on the type variable, this is because we can only <code>raise</code> something that inherits <code>Exception</code>.
+Also note the use of <code class="inline">bound=Exception</code> on the type variable, this is because we can only <code class="inline">raise</code> something that inherits <code class="inline">Exception</code>.
 </p>
 <div class="org-src-container">
 <pre class="src src-mypy" id="org0000017"><span class="linenr">17: </span>
@@ -2287,10 +2289,10 @@ Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
 <p>
-Even though you never actually return <code>Error</code> under the non-defensive policy, you <b>don't have to change any of the type signatures</b>: <code>Iterator[int]</code> is still a perfectly good <code>Iterator[Res[int]]</code>.
+Even though you never actually return <code class="inline">Error</code> under the non-defensive policy, you <b>don't have to change any of the type signatures</b>: <code class="inline">Iterator[int]</code> is still a perfectly good <code class="inline">Iterator[Res[int]]</code>.
 </p>
 <p>
-I'm using this technique in my <a href="https://github.com/karlicoss/kobuddy#as-a-standalone-app">Kobo parser</a> and control it via <code>--errors</code> argument.
+I'm using this technique in my <a href="https://github.com/karlicoss/kobuddy#as-a-standalone-app">Kobo parser</a> and control it via <samp class="inline">--errors</samp> argument.
 On CI, it runs in non-defensive mode of course. However it's likely to fail for other people first time they are using it because the library has to decode binary blobs in unknown format. So one can run it in defensive mode, get most of their data and just ignore errors till they are fixed.
 </p>
 </div>
@@ -2299,14 +2301,14 @@ On CI, it runs in non-defensive mode of course. However it's likely to fail for 
 <h3 id="error_context"><a class="headerlink" href="#error_context">¶</a>Improving error context</h3>
 <div class="outline-text-3" id="text-error_context">
 <p>
-If you remember <a href="#org0000006">the output</a>, we got a rather cryptic <code>ERROR: Couldn't match regex!</code>.
+If you remember <a href="#org0000006">the output</a>, we got a rather cryptic <samp class="inline">ERROR: Couldn't match regex!</samp>.
 That's of course not desirable because you can't easily tell what exactly is causing the error.
 </p>
 <p>
-Normally, you'd use  <a href="https://www.python.org/dev/peps/pep-3134/#explicit-exception-chaining">exception chaining</a>, i.e. <code>raise EXCEPTION from CAUSE</code> syntax <a class="coderef" href="#coderef-throw_exc" onmouseout="CodeHighlightOff(this, 'coderef-throw_exc');" onmouseover="CodeHighlightOn(this, 'coderef-throw_exc');">here</a>.
+Normally, you'd use  <a href="https://www.python.org/dev/peps/pep-3134/#explicit-exception-chaining">exception chaining</a>, i.e. <code class="inline">raise EXCEPTION from CAUSE</code> syntax <a class="coderef" href="#coderef-throw_exc" onmouseout="CodeHighlightOff(this, 'coderef-throw_exc');" onmouseover="CodeHighlightOn(this, 'coderef-throw_exc');">here</a>.
 </p>
 <div><span class="before-aside">
-However the problem is that <code>raise ... from ...</code> is a compound statement, so you can't write <code>yield RuntimeError(entry) from e</code>.
+However the problem is that <code class="inline">raise ... from ...</code> is a compound statement, so you can't write <code class="inline">yield RuntimeError(entry) from e</code>.
 
 </span><aside>see my investigation attempt <a href="https://stackoverflow.com/questions/58355639/why-raise-exception-from-cause-not-raise-exception-from-cause">here</a></aside></div>
 <p>
@@ -2321,7 +2323,7 @@ I find it handy to have a helper function here:
 </pre>
 </div>
 <p>
-, then you can write  <code>yield echain(RuntimeError(entry), from_=e)</code>, and use <code>traceback.format_exception</code> to unroll it and get the stacktrace.
+, then you can write  <code class="inline">yield echain(RuntimeError(entry), from_=e)</code>, and use <code class="inline">traceback.format_exception</code> to unroll it and get the stacktrace.
 The result looks like this:
 </p>
 <pre class="example">
@@ -2349,11 +2351,11 @@ Now that's better!
 <h3 id="warnings"><a class="headerlink" href="#warnings">¶</a>Fine grained defensiveness</h3>
 <div class="outline-text-3" id="text-warnings">
 <p>
-Remember <a href="#org0000001"><code>parse_entry</code></a>? Its return type is <code>Highlight</code>, so it can return a single highlight or throw a single error,
-that will be handled by <code>iter_highlights</code>. 
+Remember <a href="#org0000001"><code class="inline">parse_entry</code></a>? Its return type is <code class="inline">Highlight</code>, so it can return a single highlight or throw a single error,
+that will be handled by <code class="inline">iter_highlights</code>. 
 </p>
 <p>
-If we change return type to <code>Iterator[Res[Highlight]]</code>, we can be more defensive and do some <b>neat fallbacks</b>:
+If we change return type to <samp class="inline">Iterator[Res[Highlight]]</samp>, we can be more defensive and do some <b>neat fallbacks</b>:
 </p>
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">parse_entry</span>(entry: <span class="org-builtin">str</span>) -&gt; Iterator[Res[Highlight]]:
@@ -2383,7 +2385,7 @@ If we change return type to <code>Iterator[Res[Highlight]]</code>, we can be mor
 </pre>
 </div>
 <p>
-You can think of <code>Exceptions</code> coming from <code>parse_entry</code> as sort of warnings and you can handle them accordingly in <code>iter_highlights</code>, e.g. attach extra context.
+You can think of <code class="inline">Exceptions</code> coming from <code class="inline">parse_entry</code> as sort of warnings and you can handle them accordingly in <code class="inline">iter_highlights</code>, e.g. attach extra context.
 </p>
 <p>
 Of course, this complicates code and you can't predict all possible errors, so there is always some balance of how defensive you can be.
@@ -2394,10 +2396,10 @@ Of course, this complicates code and you can't predict all possible errors, so t
 <h3 id="dataframe"><a class="headerlink" href="#dataframe">¶</a>Error values, revisited</h3>
 <div class="outline-text-3" id="text-dataframe">
 <p>
-One case where I find <a href="#error_object">'special error value'</a> more or less appropriate is when your function returns a pandas <code>DataFrame</code>.
+One case where I find <a href="#error_object">'special error value'</a> more or less appropriate is when your function returns a pandas <code class="inline">DataFrame</code>.
 </p>
 <p>
-When manipulating dataframes, you typically don't iterate explicitly, but apply more idiomatic (and often efficient!) combinators like <code>merge</code>, <code>join</code>, <code>concat</code> etc,
+When manipulating dataframes, you typically don't iterate explicitly, but apply more idiomatic (and often efficient!) combinators like <code class="inline">merge</code>, <code class="inline">join</code>, <code class="inline">concat</code> etc,
  so it makes sense to try and keep errors inside the dataframe. For me, it looks somewhat like this:
 </p>
 <div class="org-src-container">
@@ -2423,7 +2425,7 @@ When manipulating dataframes, you typically don't iterate explicitly, but apply 
 </pre>
 </div>
 <p>
-It looks pretty clean since <code>DataFrame</code> constructor automatically creates the necessary columns and fills missing values with <code>None</code>.
+It looks pretty clean since <code class="inline">DataFrame</code> constructor automatically creates the necessary columns and fills missing values with <code class="inline">None</code>.
 (you can see some frame examples <a href="./heartbeats_vs_kcals.html">here</a>).
 </p>
 <p>
@@ -2442,7 +2444,7 @@ This is forbidden knowledge liberated during the latest Area 51 raid. Tsss… do
 Have to admit, this is a pretty weird idea that I haven't got practical use for, but still.   
 </p>
 <p>
-What's a construction in Python language that's dispatching objects according to their type? <code>try/catch</code>!
+What's a construction in Python language that's dispatching objects according to their type? <code class="inline">try/catch</code>!
 </p>
 <div class="org-src-container">
 <pre class="src src-mypy"><span class="org-keyword">class</span> <span class="org-type">A</span>(<span class="org-type">Exception</span>): <span class="org-keyword">pass</span>
@@ -2474,10 +2476,10 @@ Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
 <p>
-It certainly looks unconventional, and you can only use that as long as your object inherits from <code>Exception</code>.
+It certainly looks unconventional, and you can only use that as long as your object inherits from <code class="inline">Exception</code>.
 </p>
 <p>
-We can exploit this for our specific case on <code>Union[T, Exception]</code> by using <a href="#unwrap"><code>unwrap</code></a>:
+We can exploit this for our specific case on <code class="inline">Union[T, Exception]</code> by using <a href="#unwrap"><code class="inline">unwrap</code></a>:
 </p>
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">print_books</span>():
@@ -2497,12 +2499,12 @@ We can exploit this for our specific case on <code>Union[T, Exception]</code> by
 </pre>
 </div>
 <p>
-This looks a bit odd. We still need to type the <code>Exception</code> (you can't do <code>except e</code>). 
-Note that we have to use <code>else</code> block: if you put code in it under <code>try</code>, you'll start catching exceptions coming from the printing code,
+This looks a bit odd. We still need to type the <code class="inline">Exception</code> (you can't do <code class="inline">except e</code>). 
+Note that we have to use <code class="inline">else</code> block: if you put code in it under <code class="inline">try</code>, you'll start catching exceptions coming from the printing code,
 which is unintended.
 </p>
 <p>
-And the obvious downside is that there is a potential to forget to handle exception signaled by <code>unwrap</code> and mypy can't help you here.
+And the obvious downside is that there is a potential to forget to handle exception signaled by <code class="inline">unwrap</code> and mypy can't help you here.
 </p>
 </div>
 </div>
@@ -2613,8 +2615,9 @@ Let me know what you think! I'm open to all feedback.
 
         <title>Using Orger to populate your tasks list | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css?v=2" />
-        <link rel="stylesheet" href="./css/links.css?v=2" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=3" />
 
         
     </head>
@@ -2649,7 +2652,7 @@ Let me know what you think! I'm open to all feedback.
 <link rel="stylesheet" href="./css/htmlize.css" />
 <link rel="stylesheet" href="./css/org-default.css" />
 
-<link rel="stylesheet" href="./css/org-extra.css?v=2" />
+<link rel="stylesheet" href="./css/org-extra.css?v=3" />
 
 
 
@@ -2674,7 +2677,7 @@ Let me know what you think! I'm open to all feedback.
 </div>
 </div>
 <p>
-In <a href="orger.html">the first part</a> about Orger I wrote how I'm using it (in particular, the <code>orger.StaticView</code> component) to render my personal data as org-mode files
+In <a href="orger.html">the first part</a> about Orger I wrote how I'm using it (in particular, the <code class="inline">orger.StaticView</code> component) to render my personal data as org-mode files
 for easy, instant access and search.
 </p>
 <p>
@@ -2688,7 +2691,7 @@ Basically I want it to be completely seamless, almost without thinking at all.
 <p>
 You can use the target files as any of your normal org-mode files: modify contents, delete or reschedule tasks, etc.
 When Orger detects new items they would be carefully and atomically appended to the end of file.
-It keeps track of already processed items in a separate JSON file. All this nasty business is dealt with in <code>orger.InteractiveView</code> component.
+It keeps track of already processed items in a separate JSON file. All this nasty business is dealt with in <code class="inline">orger.InteractiveView</code> component.
 </p>
 <p>
 You can find all of interactive Orger modules I'm using <a href="https://github.com/karlicoss/orger/search?q=InteractiveView">on Github</a>. 
@@ -2745,16 +2748,16 @@ While there are ways to read removed reddit comments, it's a bit distracting to 
 </p></li>
 </ul>
 <p>
-How Orger solves that for me? Here's my typical workflow with <code>reddit.org</code> file:
+How Orger solves that for me? Here's my typical workflow with <samp class="inline">reddit.org</samp> file:
 </p>
 <ul class="org-ul">
-<li>I'm running <a href="https://github.com/karlicoss/rexport">reddit data exporter</a> and <code>reddit.py</code> every night automatically (via cron).</li>
-<li>when I feel like reading some Reddit, I open <code>reddit.org</code> and jump to new items at the end of file (I can quickly tell them from old ones since they don't have a priority), and go through them</li>
-<li>some things just get refiled immediately. E.g. if it's a recipe it would go to <code>food.org</code>, if it's something C++ related, it would go to <code>cpp.org</code>, etc.</li>
+<li>I'm running <a href="https://github.com/karlicoss/rexport">reddit data exporter</a> and <samp class="inline">reddit.py</samp> every night automatically (via cron).</li>
+<li>when I feel like reading some Reddit, I open <samp class="inline">reddit.org</samp> and jump to new items at the end of file (I can quickly tell them from old ones since they don't have a priority), and go through them</li>
+<li>some things just get refiled immediately. E.g. if it's a recipe it would go to <samp class="inline">food.org</samp>, if it's something C++ related, it would go to <samp class="inline">cpp.org</samp>, etc.</li>
 <li>what isn't refiled, I mark with a priority</li>
-<li>when everything is prioritized, I select the whole file, call <code>org-sort-entries</code> and sort by priorities.</li>
+<li>when everything is prioritized, I select the whole file, call <code class="inline">org-sort-entries</code> and sort by priorities.</li>
 <li><p>
-now that everything looks a bit more manageable, I can action on the highest priority items (<code>#A</code> and <code>#B</code>) properly.
+now that everything looks a bit more manageable, I can action on the highest priority items (<code class="inline">#A</code> and <code class="inline">#B</code>) properly.
 </p>
 <p>
 Some I just read and archive.
@@ -2765,7 +2768,7 @@ Some give me thoughts or ideas which I can add under the corresponding org-mode 
 <p>
 Some things just require actually acting on them (e.g. new library release), so I can mark it as TODO and schedule so it shows up in my agenda.
 </p></li>
-<li>also, once in a while I'll look through items with lower (<code>#C</code> / <code>#D</code>) priorities and bump them or archive if they become irrelevant.</li>
+<li>also, once in a while I'll look through items with lower (<code class="inline">#C</code> / <code class="inline">#D</code>) priorities and bump them or archive if they become irrelevant.</li>
 </ul>
 <p>
 Needless to say when I'm searching through all of my Org-mode files, items saved on Reddit pop up as well.
@@ -2990,8 +2993,9 @@ Let me know what you think! I'm open to all feedback.
 
         <title>Orger: plaintext reflection of your digital self | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css?v=2" />
-        <link rel="stylesheet" href="./css/links.css?v=2" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=3" />
 
         
     </head>
@@ -3026,7 +3030,7 @@ Let me know what you think! I'm open to all feedback.
 <link rel="stylesheet" href="./css/htmlize.css" />
 <link rel="stylesheet" href="./css/org-default.css" />
 
-<link rel="stylesheet" href="./css/org-extra.css?v=2" />
+<link rel="stylesheet" href="./css/org-extra.css?v=3" />
 
 
 
@@ -3115,7 +3119,7 @@ I'll give some I've personally been overcoming as examples:
 <li>searching data, e.g.:
 <ul class="org-ul">
 <li>search function often just isn't available at all or search is not incremental, e.g. on Instapaper, you can't restrict search to highlights</li>
-<li>builtin browser search (<code>Ctrl-F</code>) sucks for the most part: it's not very easy to navigate as you don't get previews and you have to look through every match</li>
+<li>builtin browser search (<code class="inline">Ctrl-F</code>) sucks for the most part: it's not very easy to navigate as you don't get previews and you have to look through every match</li>
 <li>sometimes you vaguely recall reading about something but don't remember where exactly. Was it on stackoverflow? Or in some github issue? Or in a conversation with friend?</li>
 </ul></li>
 <li>data ownership and liberation, e.g.
@@ -3158,7 +3162,7 @@ Github.main()
 </pre>
 </div>
 <p>
-That ten line program results in a file <code>Github.org</code>:
+That ten line program results in a file <samp class="inline">Github.org</samp>:
 </p>
 <div class="org-src-container">
 <pre class="src src-org"><span class="org-comment"># AUTOGENERATED BY /code/orger/github.py</span>
@@ -3186,7 +3190,7 @@ See <a href="#examples">'Examples'</a> section for more.
 </p>
 <p>
 So as you can see orger itself is a really not sophisticated tool, at least until you spend time trying to reimplement the same.
-As always the devil is in the details (look at that cheeky <code>my.github_data</code> import), which I'll explain <a href="#org0000002">further</a>.
+As always the devil is in the details (look at that cheeky <code class="inline">my.github_data</code> import), which I'll explain <a href="#org0000002">further</a>.
 </p>
 </div>
 </div>
@@ -3194,7 +3198,7 @@ As always the devil is in the details (look at that cheeky <code>my.github_data<
 <h2 id="demo"><a class="headerlink" href="#demo">¶</a><span class="section-number-2">3</span> Demo: displaying Pocket data via Orger</h2>
 <div class="outline-text-2" id="text-demo">
 <p>
-I've documented one of modules, <a href="https://github.com/karlicoss/orger/blob/master/modules/pocket_demo.py"><code>pocket_demo</code></a> so you could get the sense of using Orger.
+I've documented one of modules, <a href="https://github.com/karlicoss/orger/blob/master/modules/pocket_demo.py"><samp class="inline">pocket_demo</samp></a> so you could get the sense of using Orger.
 </p>
 <details><summary>Click to view the code</summary>
 <div class="org-src-container">
@@ -3412,8 +3416,8 @@ As you can see it's quite easy to search in your highlights and jump straight in
 I'm using more than ten different Orger modules, most of which I've moved into the <a href="https://github.com/karlicoss/orger/tree/master/modules">repository</a>. Here I'll describe some featured views I'm generating.
 </p>
 <p>
-To give you a heads up, if you read the code, you'll see bunch of imports like <code>from my.hypothesis import ...</code>. 
-I find it easier to move all data parsing in a separate <a href="https://github.com/karlicoss/my"><code>my</code></a> package, that deals with parsing and converting input data (typically, some JSON). 
+To give you a heads up, if you read the code, you'll see bunch of imports like <code class="inline">from my.hypothesis import ...</code>. 
+I find it easier to move all data parsing in a separate <a href="https://github.com/karlicoss/my"><samp class="inline">my</samp></a> package, that deals with parsing and converting input data (typically, some JSON). 
 That makes everything less messy, separates data and rendering and lets me reuse abstract models in other tools. 
 Also that lets me access my data from any python code, which makes it way easier to use and interact with data.
 </p>
@@ -3539,7 +3543,7 @@ I'll write separately about it sometime, for now you can see some of the code I 
 I tried to make sure they are easy to use for other people and not specific to my use cases.
 </p></li>
 <li><p>
-keeping track of already processed items for <code>Interactive</code> views
+keeping track of already processed items for <samp class="inline">Interactive</samp> views
 </p>
 <p>
 Because there is no feedback from org-mode files back to data sources, you want to keep track of items already added in the file, otherwise you're gonna have duplicates.
@@ -3597,14 +3601,14 @@ On my desktop I'm just using spacemacs or <a href="https://github.com/karlicoss/
 </p>
 <ul class="org-ul">
 <li>I'm usually just using <a href="https://github.com/syohex/emacs-helm-ag">helm-ag</a> with <a href="https://github.com/BurntSushi/ripgrep">ripgrep</a> (your can find how to marry them <a href="https://gist.github.com/pesterhazy/fabd629fbb89a6cd3d3b92246ff29779">here</a>).</li>
-<li>sometimes <a href="https://github.com/emacsorphanage/helm-swoop">helm-swoop</a> is very convenient, especially <code>helm-multi-swoop</code> function.</li>
+<li>sometimes <a href="https://github.com/emacsorphanage/helm-swoop">helm-swoop</a> is very convenient, especially <samp class="inline">helm-multi-swoop</samp> function.</li>
 </ul>
 <p>
 These two are incremental (instant feedback) and effectively instantaneous. For more structured search you could use:
 </p>
 <ul class="org-ul">
-<li>good old <a href="https://orgmode.org/manual/Matching-tags-and-properties.html"><code>org-tags-view</code></a></li>
-<li>org-ql with <a href="https://github.com/alphapapa/org-ql#helm-org-ql"><code>helm-org-ql</code></a> is a nicer and incremental alternative</li>
+<li>good old <a href="https://orgmode.org/manual/Matching-tags-and-properties.html"><samp class="inline">org-tags-view</samp></a></li>
+<li>org-ql with <a href="https://github.com/alphapapa/org-ql#helm-org-ql"><samp class="inline">helm-org-ql</samp></a> is a nicer and incremental alternative</li>
 </ul>
 <p>
 On my Android phone I'm using <a href="https://github.com/orgzly/orgzly-android">orglzy</a> for structured search/viewing Org-mode files. 
@@ -3622,25 +3626,25 @@ I'll just give some of my use cases:
 </p>
 <ul class="org-ul">
 <li><p>
-While running tests for <a href="https://github.com/karlicoss/orgparse">orgparse</a> I started randomly getting  <code>AssertionError: Cannot find component 'A@3' for 'orgparse.A@3</code>. 
+While running tests for <a href="https://github.com/karlicoss/orgparse">orgparse</a> I started randomly getting  <samp class="inline">AssertionError: Cannot find component 'A@3' for 'orgparse.A@3</samp>. 
 </p>
 <p>
 I recall that I had same issue few month ago but don't quite remember what was the fix. 
-I press <code>F1</code> which invokes <code>helm-ag</code> for me and type 'cannot find component'.
-I instantly find a github <a href="https://github.com/python/mypy/issues/7281">issue</a> I opened in <code>github.org</code> and figure out what I need to do to work around the problem.
+I press <samp class="inline">F1</samp> which invokes <code class="inline">helm-ag</code> for me and type 'cannot find component'.
+I instantly find a github <a href="https://github.com/python/mypy/issues/7281">issue</a> I opened in <samp class="inline">github.org</samp> and figure out what I need to do to work around the problem.
 </p></li>
 <li><p>
 While discussing special relativity with a friend, I recall watching some intuitive rationale for Maxwell's equations, but don't quite recall what was the video.
 </p>
 <p>
-I press <code>F1</code>, type 'Special relativity' and instantly get few results, in particular <a href="https://www.youtube.com/watch?v=1TKSfAkWWN0">this</a> awesome Veritasium video in <code>youtube.org</code>, which I was looking for.
+I press <samp class="inline">F1</samp>, type 'Special relativity' and instantly get few results, in particular <a href="https://www.youtube.com/watch?v=1TKSfAkWWN0">this</a> awesome Veritasium video in <samp class="inline">youtube.org</samp>, which I was looking for.
 </p></li>
 <li><p>
 Recommending books
 </p>
 <p>
 I often struggle to recall the details why I liked a particular book, especially fiction.
-Having all annotations in my <code>kobo.org</code> file lets me quickly look up and skim through highlighted bits so I can freshen up my memory.
+Having all annotations in my <samp class="inline">kobo.org</samp> file lets me quickly look up and skim through highlighted bits so I can freshen up my memory.
 </p></li>
 </ul>
 </div>
@@ -3758,8 +3762,9 @@ This post ended up longer that I expected so in the next part I will tell about 
 
         <title>Cloudmacs and getting to know Docker | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css?v=2" />
-        <link rel="stylesheet" href="./css/links.css?v=2" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=3" />
 
         
     </head>
@@ -3794,7 +3799,7 @@ This post ended up longer that I expected so in the next part I will tell about 
 <link rel="stylesheet" href="./css/htmlize.css" />
 <link rel="stylesheet" href="./css/org-default.css" />
 
-<link rel="stylesheet" href="./css/org-extra.css?v=2" />
+<link rel="stylesheet" href="./css/org-extra.css?v=3" />
 
 
 
@@ -3823,13 +3828,13 @@ However, it wasn't anywhere as convenient as emacs. Also after an update it some
 Dropbox is not capable of previewing arbitrary text files let alone edit; and even if it could you obviously wouldn't get anything close to your usual emacs workflow.
 </p>
 <p>
-And you could imagine that while elisp/vim style editing is fairly application <a href="https://github.com/brookhong/Surfingkeys#vim-editor-and-emacs-editor">agnostic</a>, it's a thankless job to rewrire/port all the amazing emacs packages and features I'm used to like neotree, helm, refile, swoop, agenda, projectile, org-drill etc.
+And you could imagine that while Emacs/Vim style editing is fairly application <a href="https://github.com/brookhong/Surfingkeys#vim-editor-and-emacs-editor">agnostic</a>, it's a thankless job to rewrire/port all the amazing emacs packages and features I'm used to like neotree, helm, refile, swoop, agenda, projectile, org-drill etc.
 </p>
 <p>
 So I figured the only thing that would keep me happy is to run emacs itself over the web! Thankfully, due to its TUI interface that works surprisingly well.
 </p>
 <p>
-It works <b><b>really</b></b> well with spacemacs/evil style <code>SPC</code> and comma bindings because they for the most part don't overlap with OS/browser hotkeys.
+It works <b><b>really</b></b> well with spacemacs/evil style <code class="inline">SPC</code> and comma bindings because they for the most part don't overlap with OS/browser hotkeys.
 </p>
 <p>
 Also it's the first time I properly used Docker apart from running other people's containers so here are few non-obvious things I learnt which you might find useful:
@@ -3903,8 +3908,9 @@ To get around that there is a somewhat hacky <a href="https://github.com/karlico
 
         <title>Making sense of Endomondo's calorie estimation | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css?v=2" />
-        <link rel="stylesheet" href="./css/links.css?v=2" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=3" />
 
         
     </head>
@@ -4565,8 +4571,9 @@ Free term: -9.857
 
         <title>How to annotate literally everything | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css?v=2" />
-        <link rel="stylesheet" href="./css/links.css?v=2" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=3" />
 
         
     </head>
@@ -4601,7 +4608,7 @@ Free term: -9.857
 <link rel="stylesheet" href="./css/htmlize.css" />
 <link rel="stylesheet" href="./css/org-default.css" />
 
-<link rel="stylesheet" href="./css/org-extra.css?v=2" />
+<link rel="stylesheet" href="./css/org-extra.css?v=3" />
 
 
 
@@ -4823,7 +4830,7 @@ It's somewhat not obvious in terms of browser UI how to actually use them though
 <p>
 One downside of this service is that you won't be able to annotate while offline.
 I feel it's actually more of mobile browser's problem in general rather than Hypothesis though.
-While you potentially can annotate offline without querying API and preserving data in <code>localStorage</code>, if you can't load the page in the first place, it doesn't matter. Perhaps that can be given better support in browsers.
+While you potentially can annotate offline without querying API and preserving data in <samp class="inline">localStorage</samp>, if you can't load the page in the first place, it doesn't matter. Perhaps that can be given better support in browsers.
 </p>
 <p>
 Hypothesis got <a href="https://h.readthedocs.io/en/latest/api-reference/v1/#tag/annotations/paths/~1search/get">JSON API</a> which gives access to your and other people's public annotations.
@@ -4874,7 +4881,7 @@ In addition to Highlight and Text types there are things like support for stylin
 <p>
 Using native PDF annotations has one major drawback: you will have to save metadata back to the PDF file at some point.
 At worst it could be impossible due to DRM, but in any case, you'd need to somehow remember that some of your documents might have private notes inside.
-I get around it by making a copy of the file I'm about to annotate first, and giving it <code>[annotated]</code> prefix so I wouldn't confuse it with the original file.
+I get around it by making a copy of the file I'm about to annotate first, and giving it <samp class="inline">[annotated]</samp> prefix so I wouldn't confuse it with the original file.
 </p>
 </div>
 <div class="outline-3" id="outline-container-org0000010">
@@ -4901,7 +4908,7 @@ However it's got a nasty few years old bug (<a href="https://bugs.launchpad.net/
 Annotation process (<a href="./annotating/okular.jpg">screenshot</a>) is pretty pleasant, hitting Ctrl-S results in saving the file you're working on without any problems.
 </p>
 <p>
-<a id="org000000e"></a>Okular also got support for something called <a href="https://docs.kde.org/stable5/en/kdegraphics/okular/annotations.html">'document archive'</a>, which saves the original document in a zip file along with <code>metadata.xml</code>, which allows you to <b><b>annotate non-PDF files</b></b> (e.g. DJVU), which is a very neat feature. It's obviously Okular specific, in theory though it's possible to process <code>metadata.xml</code> with other tools.
+<a id="org000000e"></a>Okular also got support for something called <a href="https://docs.kde.org/stable5/en/kdegraphics/okular/annotations.html">'document archive'</a>, which saves the original document in a zip file along with <samp class="inline">metadata.xml</samp>, which allows you to <b><b>annotate non-PDF files</b></b> (e.g. DJVU), which is a very neat feature. It's obviously Okular specific, in theory though it's possible to process <samp class="inline">metadata.xml</samp> with other tools.
 </p>
 <p>
 <a id="org000000f"></a>Search in okular can't be restricted to annotations only and while you can use normal PDF search for inline notes and highlights (along with the other text that happened to match), it doesn't work at all for popups.
@@ -4948,14 +4955,14 @@ It mentions annotation editing in <a href="https://mupdf.com/release_history.htm
 <h3 id="orgnoter"><a class="headerlink" href="#orgnoter">¶</a><a href="https://github.com/weirdNox/org-noter">Emacs: org-noter</a></h3>
 <div class="outline-text-3" id="text-orgnoter">
 <p>
-Org-noter (as of 1.3.0) allows you to annotate a PDF while keeping the text annotations in a separate <code>org</code> file which keep track of PDF locations in Org note properties.
+Org-noter (as of 1.3.0) allows you to annotate a PDF while keeping the text annotations in a separate <samp class="inline">org</samp> file which keep track of PDF locations in Org note properties.
 <a href="https://github.com/weirdNox/org-noter#screencast">Here's</a> a short demo.
 </p>
 <p>
 For me the main drawback is that it <b><b>doesn't let you highlight</b></b>, which I tend to do a lot.
 </p>
 <p>
-Existing annotations in PDF can be imported via <a href="https://github.com/weirdNox/org-noter/blob/920798e2a977ca74b77cf728ee40bb48450f941b/org-noter.el#L1455"><code>org-noter-create-skeleton</code></a> function (it didn't work for me for some reason though, and I wasn't motivated enough to investigate).
+Existing annotations in PDF can be imported via <a href="https://github.com/weirdNox/org-noter/blob/920798e2a977ca74b77cf728ee40bb48450f941b/org-noter.el#L1455"><code class="inline">org-noter-create-skeleton</code></a> function (it didn't work for me for some reason though, and I wasn't motivated enough to investigate).
 </p>
 </div>
 </div>
@@ -4966,7 +4973,7 @@ Existing annotations in PDF can be imported via <a href="https://github.com/weir
 Xournal is different from the above PDF viewers, since it isn't using types of annotations described in the PDF standard and instead uses its own <a href="http://xournal.sourceforge.net/manual.html#tools">tools</a>.
 </p>
 <p>
-It doesn't modify the original files and instead keeps <code>.xoj</code> file containing the metadata and pointing at the original PDF, so in that sense it's pretty similar to <a href="#org000000e">okular</a>. Similarly, it's xournal-specific and can't be viewed anywhere else unless you export it in PDF before sharing (at which point your annotations wold basically become background images).
+It doesn't modify the original files and instead keeps <samp class="inline">.xoj</samp> file containing the metadata and pointing at the original PDF, so in that sense it's pretty similar to <a href="#org000000e">okular</a>. Similarly, it's xournal-specific and can't be viewed anywhere else unless you export it in PDF before sharing (at which point your annotations wold basically become background images).
 </p>
 </div>
 </div>
@@ -4995,8 +5002,8 @@ Polar is a new project which aims to be not just reader, but 'personal knowledge
 <li>supports <a href="https://getpolarized.io/#integrated-annotations">highlights and comments</a></li>
 <li><a href="https://getpolarized.io/assets/screenshots/document-repo-2019-04.webp">document repository</a>, so you have overview of all the stuff you ever read/commented. It also keeps track of your reading position.</li>
 <li>the <b><b>PDFs are fingerprinted</b></b>, so you don't need to worry about moving them around your filesystem</li>
-<li><code>~.polar</code> directory holds all the data, which makes it <b><b>easy to share among your computers</b></b> (e.g. via git, or if you keep it on Dropbox and symlink)</li>
-<li>metadata is in well structured <code>json</code> files, which makes it easy to access from scripts</li>
+<li><samp class="inline">~.polar</samp> directory holds all the data, which makes it <b><b>easy to share among your computers</b></b> (e.g. via git, or if you keep it on Dropbox and symlink)</li>
+<li>metadata is in well structured <samp class="inline">json</samp> files, which makes it easy to access from scripts</li>
 <li>highlight locators keep <a href="https://github.com/burtonator/polar-bookshelf/blob/ac36e59e98d378e1ff7ab02aa241b89fdbb68c46/web/js/metadata/TextHighlightsTest.ts#L164">matched text</a> alongside the absolute coordinates, which leaves potential for matching against different editions of the PDF file</li>
 <li>it's got <a href="https://github.com/burtonator/polar-bookshelf#personal-knowledge-repository">builtin flashcards engine</a>. Personally, I'm too used to <a href="https://orgmode.org/worg/org-contrib/org-drill.html">org-drill</a> now, but that's a great a way of introducing <b><b>spaced repetition</b></b> to people.</li>
 <li>the author is very passionate about this project, invests a lot of effort and quite <a href="https://getpolarized.io/2019/04/11/Polar-Initial-Crowdfunding-Campaign.html">ambitious</a></li>
@@ -5069,9 +5076,9 @@ Perhaps the only differences are how you can search and access the annotations.
 <h3 id="kindle"><a class="headerlink" href="#kindle">¶</a>Kindle</h3>
 <div class="outline-text-3" id="text-kindle">
 <p>
-Kindle stores bookmarks, notes and highlights in <code>My Clippings.txt</code> on the device.
+Kindle stores bookmarks, notes and highlights in <code class="inline">My Clippings.txt</code> on the device.
 The good thing about the format is that it's already plaintext and fairly human readable, so you might be happy with that alone.
-The format is a bit nasty for parsing (as you would expect from something with <code>.txt</code> extension). Dates are locale dependent, document locators may or may not have roman numerals, separators are inconsistent at times, etc. 
+The format is a bit nasty for parsing (as you would expect from something with <samp class="inline">.txt</samp> extension). Dates are locale dependent, document locators may or may not have roman numerals, separators are inconsistent at times, etc. 
 When I was using Kindle I was just copying the file from time to time, and you can set up some sort of automatic copying when your device is connected similarly to  what I'm doing with <a href="#org000001a">Kobo</a>.
 </p>
 <p>
@@ -5085,7 +5092,7 @@ But that's also restricted to books bought from Amazon.
 </p>
 <p>
 <a id="org000001c"></a>Search function is somewhat limited: you can search in the book and it displays your highlights alongside content it found in the book, but you can't restrict search to highlights. You can't search in notes either.
-Funny enough though, the <code>My Clipping.txt</code> file can be opened on Kindle itself (as any other <code>txt</code> file), and then you can search in it. It's not super convenient, but better than nothing. (I wasn't brave enough to try and see what happens if you try to highlight in this file.)
+Funny enough though, the <code class="inline">My Clipping.txt</code> file can be opened on Kindle itself (as any other <code class="inline">txt</code> file), and then you can search in it. It's not super convenient, but better than nothing. (I wasn't brave enough to try and see what happens if you try to highlight in this file.)
 </p>
 </div>
 </div>
@@ -5093,11 +5100,11 @@ Funny enough though, the <code>My Clipping.txt</code> file can be opened on Kind
 <h3 id="kobo"><a class="headerlink" href="#kobo">¶</a>Kobo</h3>
 <div class="outline-text-3" id="text-kobo">
 <p>
-Stores all of it's stuff in <code>.kobo/KoboReader.sqlite</code> on the device.
+Stores all of it's stuff in <code class="inline">.kobo/KoboReader.sqlite</code> on the device.
 </p>
 <p>
 <a id="org000001e"></a>The database has got lots of cool stuff: in addition to highlights and notes you can also access reading progress, time spend reading and possibly some other interesting data I didn't manage to reverse engineer yet.
-You can check out <a href="https://github.com/karlicoss/kobuddy">kobuddy</a>, which is my attempt to extract useful data from the database and provide nicer high level Python interface. It's also fairly straightforward to open it in <code>sqlitebrowser</code> and play with your own queries.
+You can check out <a href="https://github.com/karlicoss/kobuddy">kobuddy</a>, which is my attempt to extract useful data from the database and provide nicer high level Python interface. It's also fairly straightforward to open it in <code class="inline">sqlitebrowser</code> and play with your own queries.
 </p>
 <p>
 <a id="org000001a"></a>Kobo <b><b>doesn't seem to support cloud sync for annotations</b></b>. I was considering syncing the database wirelessly, as <a href="https://github.com/dropmeaword/kobo-aura-remote">there are</a> some SSH modules for its firmware, but people report it <a href="https://github.com/dropmeaword/kobo-aura-remote/issues/1">may break wifi</a> on it. I'm using <a href="https://github.com/karlicoss/kobuddy#as-a-backup-tool">kobuddy</a> as well to work around it.
@@ -5518,7 +5525,7 @@ For that I've got some infrastructure set up.
 That serves not just as data backup, but also as <b><b>data providers</b></b> for my tools. I only interact with these daily snapshots on filesystem rather than directly with API. That helps to avoid dealing with rate limiting, flakiness in network connection or API itself, and makes it way faster to iterate and develop. The only downside is that the data is not necessarily up to date, but perhaps you can dump data more often to get around this; I would still highly recommend you to prefer that to interacting with API directly. 
 </p>
 <p>
-I'm using a <b><b>special Python package to access the data</b></b>, which I called <a href="https://github.com/karlicoss/my"><code>my</code></a>. It's always in my <code>PYTHONPATH</code> so I can use it from any script/tool or REPL. It's got bunch of different submodules, e.g. <code>my.reading.instapaper</code>, <code>my.reading.kobo</code>, <code>my.reading.polar</code> (there are other modules than <code>my.reading</code>, but that material for a whole separate post). The package itself is not public since it happens to have some personal data in it, at some point I'll try to strip it off and release it (not sure if it would be really relevant for other people anyway).
+I'm using a <b><b>special Python package to access the data</b></b>, which I called <a href="https://github.com/karlicoss/my"><code class="inline">my</code></a>. It's always in my <code class="inline">PYTHONPATH</code> so I can use it from any script/tool or REPL. It's got bunch of different submodules, e.g. <code class="inline">my.reading.instapaper</code>, <code class="inline">my.reading.kobo</code>, <code class="inline">my.reading.polar</code> (there are other modules than <code class="inline">my.reading</code>, but that material for a whole separate post). The package itself is not public since it happens to have some personal data in it, at some point I'll try to strip it off and release it (not sure if it would be really relevant for other people anyway).
 </p>
 </div>
 <div class="outline-3" id="outline-container-org000002b">
@@ -5541,13 +5548,13 @@ As a specific example how I do it: recently my friend asked me if I could recomm
 <div class="outline-text-3" id="text-org000002c">
 <p>
 <a id="org0000000"></a>I've got bunch of scripts and a rendering tool which I named <a href="https://github.com/karlicoss/orger">orger</a> (yep, haven't invested that much thought into naming).
-Basically, these scripts take specific data source as input and produce org-mode output, e.g. renders <code>json</code> backed up from Instapaper into <code>instapaper.org</code> file. That runs every few hours and keeps the contents relatively up to date.
+Basically, these scripts take specific data source as input and produce org-mode output, e.g. renders <samp class="inline">json</samp> backed up from Instapaper into <samp class="inline">instapaper.org</samp> file. That runs every few hours and keeps the contents relatively up to date.
 </p>
 <p>
 I chose org-mode as I was already used to its features, keybindings and metadata. Also the hierarchy (e.g. book → highlight → comments) fits naturally into outline format. But not that it's a real necessity, I feel that as long as it's searchable plaintext, it's good enough.
 </p>
 <p>
-To search them, I've got a <b><b>global keybinding</b></b>, which invokes Emacs with incremental search prompt against the directory with rendered <code>org</code> files, which lets me interact with them in a blink on my computer. On Android I'm using <a href="https://play.google.com/store/apps/details?id=com.docsearch">DocSearch</a> indexer (sadly it's not incremental, and app is not open source, so I'm looking for alternative).
+To search them, I've got a <b><b>global keybinding</b></b>, which invokes Emacs with incremental search prompt against the directory with rendered <samp class="inline">org</samp> files, which lets me interact with them in a blink on my computer. On Android I'm using <a href="https://play.google.com/store/apps/details?id=com.docsearch">DocSearch</a> indexer (sadly it's not incremental, and app is not open source, so I'm looking for alternative).
 </p>
 <p>
 Finally, I've got a <a href="https://www.lesbonscomptes.com/recoll">Recoll</a> indexer instance + web interface running on my VPS; so if necessary I can access and search annotations via the internet.
@@ -5565,7 +5572,7 @@ But I also don't want to interrupt from reading and losing context: that especia
 So, as a workaround, I have programmed rules that pick out notes that start with "TODO" or marked with "TODO" tags; etc, and they are <b><b>automatically added to my agenda</b></b>. Later, when I see it on agenda, I'd assign it a priority and reschedule/unschedule depending on importance.
 </p>
 <p>
-<a href="https://github.com/karlicoss/orger/blob/350e76000e34db49cf6b574041b98bd813040851/ip2org.py#L16">Here's</a> an example of me using using <code>my.instapaper</code> module for that.
+<a href="https://github.com/karlicoss/orger/blob/350e76000e34db49cf6b574041b98bd813040851/ip2org.py#L16">Here's</a> an example of me using using <code class="inline">my.instapaper</code> module for that.
 </p>
 </div>
 </div>
@@ -5666,8 +5673,9 @@ I'd be interested to know what do you think, and how are you managing your annot
 
         <title>How to cope with having fleshy human brain | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css?v=2" />
-        <link rel="stylesheet" href="./css/links.css?v=2" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=3" />
 
         
     </head>
@@ -5702,7 +5710,7 @@ I'd be interested to know what do you think, and how are you managing your annot
 <link rel="stylesheet" href="./css/htmlize.css" />
 <link rel="stylesheet" href="./css/org-default.css" />
 
-<link rel="stylesheet" href="./css/org-extra.css?v=2" />
+<link rel="stylesheet" href="./css/org-extra.css?v=3" />
 
 
 
@@ -5885,8 +5893,9 @@ So, this is the plan, which I will fill with links as I write.
 
         <title>Don't shoot the artist | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css?v=2" />
-        <link rel="stylesheet" href="./css/links.css?v=2" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=3" />
 
         
     </head>
@@ -5921,7 +5930,7 @@ So, this is the plan, which I will fill with links as I write.
 <link rel="stylesheet" href="./css/htmlize.css" />
 <link rel="stylesheet" href="./css/org-default.css" />
 
-<link rel="stylesheet" href="./css/org-extra.css?v=2" />
+<link rel="stylesheet" href="./css/org-extra.css?v=3" />
 
 
 
@@ -6017,8 +6026,9 @@ This realization made the irritation go and made the rest of exploration a bit m
 
         <title>sufs | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css?v=2" />
-        <link rel="stylesheet" href="./css/links.css?v=2" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=3" />
 
         
     </head>
@@ -6129,8 +6139,9 @@ This realization made the irritation go and made the rest of exploration a bit m
 
         <title>On cognitive demand of recycling | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css?v=2" />
-        <link rel="stylesheet" href="./css/links.css?v=2" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=3" />
 
         
     </head>
@@ -6244,8 +6255,9 @@ This realization made the irritation go and made the rest of exploration a bit m
 
         <title>Forcing IPython to display multiple equations in single line | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css?v=2" />
-        <link rel="stylesheet" href="./css/links.css?v=2" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=3" />
 
         
         <script type="text/javascript">
@@ -6813,8 +6825,9 @@ Hopefully that saves someone else a bit of time.</p>
 
         <title>I've found Google Takeouts to silently remove old data | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css?v=2" />
-        <link rel="stylesheet" href="./css/links.css?v=2" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=3" />
 
         
     </head>
@@ -6963,8 +6976,9 @@ Hopefully that saves someone else a bit of time.</p>
 
         <title>Quantifying quantified-mind.com | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css?v=2" />
-        <link rel="stylesheet" href="./css/links.css?v=2" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=3" />
 
         
     </head>
@@ -7102,8 +7116,9 @@ the two grids are identical.</code></pre>
 
         <title>Sleep tracking | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css?v=2" />
-        <link rel="stylesheet" href="./css/links.css?v=2" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=3" />
 
         
     </head>
@@ -7247,8 +7262,9 @@ the two grids are identical.</code></pre>
 
         <title>Grasp | Mildly entertainingᵝ</title>
 
-        <link rel="stylesheet" href="./css/default.css?v=2" />
-        <link rel="stylesheet" href="./css/links.css?v=2" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=3" />
 
         
     </head>
