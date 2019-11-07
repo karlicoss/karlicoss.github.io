@@ -20,7 +20,7 @@
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
-        <link rel="stylesheet" href="./css/links.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
     </head>
@@ -533,9 +533,9 @@ Cool, we rendered as much as we can, and we get the error displayed as well, so 
 The error looks a bit out of nowhere, but at least it's there. We will address how we can improve it <a href="#error_context">later</a>.
 </p>
 <p>
-Sadly, for someone else who looks at <code class="inline">iter_highlights</code> or <code class="inline">iter_books</code> signatures, it's not obvious that it yields <code class="inline">Result</code> objects, not <code class="inline">Book~/~Highlight</code> objects without reading the code.
+Sadly, for someone else who looks at <code class="inline">iter_highlights</code> or <code class="inline">iter_books</code> signatures, it's not obvious that it yields <code class="inline">Result</code> objects, not <code class="inline">Book/Highlight</code> objects without reading the code.
 It's a thankless job for a human to keep track of, and <a href="https://mypy.readthedocs.io/en/latest/introduction.html"><b>mypy</b></a> is a perfect fit for this task.
-Gladly, the library already <a href="https://github.com/dbrgn/result/blob/master/result/result.py">comes with type annotations</a>.
+Gladly, <code class="inline">result</code> library already <a href="https://github.com/dbrgn/result/blob/master/result/result.py">comes with type annotations</a>.
 </p>
 <p>
 So, let's try to use mypy to aid us at writing correct code.
@@ -661,7 +661,7 @@ Glad you asked! Several reasons I'm using generators here:
 <h2 id="combinators"><a class="headerlink" href="#combinators">¶</a><span class="section-number-2">6</span> Almost solution #2: use error combinators</h2>
 <div class="outline-text-2" id="text-combinators">
 <p>
-<a href="https://github.com/dry-python/returns#result-container">returns.result</a> library, clearly inspired by Haskell's <code class="inline">Either</code> monad and <code class="inline">do</code> notation.
+Now, let's try out <a href="https://github.com/dry-python/returns#result-container">returns.result</a> library, clearly inspired by Haskell's <code class="inline">Either</code> monad and <code class="inline">do</code> notation.
 I'm quite glad someone already implemented it and I didn't have to reinvent the wheel here.
 </p>
 <p>
@@ -862,7 +862,7 @@ Let's recall the problems we had again:
 </p>
 <ul class="org-ul">
 <li><p>
-<b>readability</b>: extra wrappers and accessor methods like <code class="inline">Ok/Success/Error/is_ok()/.unwrap()</code>.
+<b>readability</b>: extra wrappers and accessor methods like <code class="inline">Ok/Success/Error/.is_ok()/.unwrap()</code>.
 </p>
 <p>
 It's <b>visual noise</b> and also they creep throughout the code, so if you decide you won't need them later,
@@ -1550,6 +1550,11 @@ Let me know what you think! I'm open to all feedback.
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         
         <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
             
             
         </footer>

@@ -3,7 +3,6 @@ html {
   font-family: "Source Serif Pro", serif;
 }
 
-
 @media (min-width: 80rem) {
     body {
         width: 70rem; /* TODO how to choose good width?? */

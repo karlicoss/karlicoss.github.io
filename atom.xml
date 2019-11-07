@@ -37,7 +37,7 @@
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
-        <link rel="stylesheet" href="./css/links.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
     </head>
@@ -1021,6 +1021,11 @@ As always, I'm open to feedback and would love to hear what is or setup or help 
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         
         <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
             
             
         </footer>
@@ -1056,7 +1061,7 @@ As always, I'm open to feedback and would love to hear what is or setup or help 
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
-        <link rel="stylesheet" href="./css/links.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
     </head>
@@ -1569,9 +1574,9 @@ Cool, we rendered as much as we can, and we get the error displayed as well, so 
 The error looks a bit out of nowhere, but at least it's there. We will address how we can improve it <a href="#error_context">later</a>.
 </p>
 <p>
-Sadly, for someone else who looks at <code class="inline">iter_highlights</code> or <code class="inline">iter_books</code> signatures, it's not obvious that it yields <code class="inline">Result</code> objects, not <code class="inline">Book~/~Highlight</code> objects without reading the code.
+Sadly, for someone else who looks at <code class="inline">iter_highlights</code> or <code class="inline">iter_books</code> signatures, it's not obvious that it yields <code class="inline">Result</code> objects, not <code class="inline">Book/Highlight</code> objects without reading the code.
 It's a thankless job for a human to keep track of, and <a href="https://mypy.readthedocs.io/en/latest/introduction.html"><b>mypy</b></a> is a perfect fit for this task.
-Gladly, the library already <a href="https://github.com/dbrgn/result/blob/master/result/result.py">comes with type annotations</a>.
+Gladly, <code class="inline">result</code> library already <a href="https://github.com/dbrgn/result/blob/master/result/result.py">comes with type annotations</a>.
 </p>
 <p>
 So, let's try to use mypy to aid us at writing correct code.
@@ -1697,7 +1702,7 @@ Glad you asked! Several reasons I'm using generators here:
 <h2 id="combinators"><a class="headerlink" href="#combinators">¶</a><span class="section-number-2">6</span> Almost solution #2: use error combinators</h2>
 <div class="outline-text-2" id="text-combinators">
 <p>
-<a href="https://github.com/dry-python/returns#result-container">returns.result</a> library, clearly inspired by Haskell's <code class="inline">Either</code> monad and <code class="inline">do</code> notation.
+Now, let's try out <a href="https://github.com/dry-python/returns#result-container">returns.result</a> library, clearly inspired by Haskell's <code class="inline">Either</code> monad and <code class="inline">do</code> notation.
 I'm quite glad someone already implemented it and I didn't have to reinvent the wheel here.
 </p>
 <p>
@@ -1898,7 +1903,7 @@ Let's recall the problems we had again:
 </p>
 <ul class="org-ul">
 <li><p>
-<b>readability</b>: extra wrappers and accessor methods like <code class="inline">Ok/Success/Error/is_ok()/.unwrap()</code>.
+<b>readability</b>: extra wrappers and accessor methods like <code class="inline">Ok/Success/Error/.is_ok()/.unwrap()</code>.
 </p>
 <p>
 It's <b>visual noise</b> and also they creep throughout the code, so if you decide you won't need them later,
@@ -2586,6 +2591,11 @@ Let me know what you think! I'm open to all feedback.
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         
         <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
             
             
         </footer>
@@ -2621,7 +2631,7 @@ Let me know what you think! I'm open to all feedback.
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
-        <link rel="stylesheet" href="./css/links.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
     </head>
@@ -2964,6 +2974,11 @@ Let me know what you think! I'm open to all feedback.
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         
         <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
             
             
         </footer>
@@ -2999,7 +3014,7 @@ Let me know what you think! I'm open to all feedback.
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
-        <link rel="stylesheet" href="./css/links.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
     </head>
@@ -3733,6 +3748,11 @@ This post ended up longer that I expected so in the next part I will tell about 
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         
         <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
             
             
         </footer>
@@ -3760,7 +3780,7 @@ This post ended up longer that I expected so in the next part I will tell about 
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
         
-        <meta name="keywords" content="emacs selfhosted pkm">
+        <meta name="keywords" content="emacs pkm selfhosted">
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
@@ -3768,7 +3788,7 @@ This post ended up longer that I expected so in the next part I will tell about 
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
-        <link rel="stylesheet" href="./css/links.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
     </head>
@@ -3810,7 +3830,7 @@ This post ended up longer that I expected so in the next part I will tell about 
 <article>
     <section class="post-title">
     <h1>Cloudmacs and getting to know Docker</h1>
-    
+    <div class="summary">How I really wanted Spacemacs in web browser and my wish came true</h2>
     </section>
     <!-- are sections appropriate for that? -->
 
@@ -3858,7 +3878,7 @@ To get around that there is a somewhat hacky <a href="https://github.com/karlico
 
     
     <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#emacs">#emacs</a> <a class="post-tag" href="./tags.html#selfhosted">#selfhosted</a> <a class="post-tag" href="./tags.html#pkm">#pkm</a></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#emacs">#emacs</a> <a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#selfhosted">#selfhosted</a></div>
         <!-- TODO post-date? -->
         <div class="date">12 September 2019</div>
     </section>
@@ -3879,6 +3899,11 @@ To get around that there is a somewhat hacky <a href="https://github.com/karlico
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         
         <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
             
             
         </footer>
@@ -3914,7 +3939,7 @@ To get around that there is a somewhat hacky <a href="https://github.com/karlico
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
-        <link rel="stylesheet" href="./css/links.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
     </head>
@@ -4433,7 +4458,7 @@ WARNING:workout-provider:Unhandled: Cycling
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Regression coefficient: 0.093
-Free term: -9.857
+Free term: -9.681
 </pre>
 </div>
 </div>
@@ -4488,7 +4513,7 @@ Free term: -9.857
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>8073.827
+<pre>8068.934
 </pre>
 </div>
 </div>
@@ -4542,6 +4567,11 @@ Free term: -9.857
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         
         <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
             
             
         </footer>
@@ -4577,7 +4607,7 @@ Free term: -9.857
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
-        <link rel="stylesheet" href="./css/links.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
     </head>
@@ -4619,7 +4649,7 @@ Free term: -9.857
 <article>
     <section class="post-title">
     <h1>How to annotate literally everything</h1>
-    <div class="summary">Comprehensive overview of existing tools, thoughts on future and interacting with your data</h2>
+    <div class="summary">Comprehensive overview of existing tools, strategies and thoughts on interacting with your data</h2>
     </section>
     <!-- are sections appropriate for that? -->
 
@@ -5644,6 +5674,11 @@ I'd be interested to know what do you think, and how are you managing your annot
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         
         <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
             
             
         </footer>
@@ -5679,7 +5714,7 @@ I'd be interested to know what do you think, and how are you managing your annot
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
-        <link rel="stylesheet" href="./css/links.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
     </head>
@@ -5864,6 +5899,11 @@ So, this is the plan, which I will fill with links as I write.
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         
         <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
             
             
         </footer>
@@ -5899,7 +5939,7 @@ So, this is the plan, which I will fill with links as I write.
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
-        <link rel="stylesheet" href="./css/links.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
     </head>
@@ -5997,6 +6037,11 @@ This realization made the irritation go and made the rest of exploration a bit m
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         
         <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
             
             
         </footer>
@@ -6032,7 +6077,7 @@ This realization made the irritation go and made the rest of exploration a bit m
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
-        <link rel="stylesheet" href="./css/links.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
     </head>
@@ -6110,6 +6155,11 @@ This realization made the irritation go and made the rest of exploration a bit m
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         
         <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
             
             
         </footer>
@@ -6145,7 +6195,7 @@ This realization made the irritation go and made the rest of exploration a bit m
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
-        <link rel="stylesheet" href="./css/links.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
     </head>
@@ -6226,6 +6276,11 @@ This realization made the irritation go and made the rest of exploration a bit m
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         
         <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
             
             
         </footer>
@@ -6261,7 +6316,7 @@ This realization made the irritation go and made the rest of exploration a bit m
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
-        <link rel="stylesheet" href="./css/links.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
         <script type="text/javascript">
@@ -6796,6 +6851,11 @@ Hopefully that saves someone else a bit of time.</p>
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         
         <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
             
             
         </footer>
@@ -6831,7 +6891,7 @@ Hopefully that saves someone else a bit of time.</p>
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
-        <link rel="stylesheet" href="./css/links.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
     </head>
@@ -6947,6 +7007,11 @@ Hopefully that saves someone else a bit of time.</p>
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         
         <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
             
             
         </footer>
@@ -6982,7 +7047,7 @@ Hopefully that saves someone else a bit of time.</p>
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
-        <link rel="stylesheet" href="./css/links.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
     </head>
@@ -7087,6 +7152,11 @@ the two grids are identical.</code></pre>
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         
         <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
             
             
         </footer>
@@ -7122,7 +7192,7 @@ the two grids are identical.</code></pre>
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
-        <link rel="stylesheet" href="./css/links.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
     </head>
@@ -7233,6 +7303,11 @@ the two grids are identical.</code></pre>
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         
         <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
             
             
         </footer>
@@ -7268,7 +7343,7 @@ the two grids are identical.</code></pre>
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
-        <link rel="stylesheet" href="./css/links.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
     </head>
@@ -7412,6 +7487,11 @@ Why do they always mention that? Is that important?</code></pre>
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         
         <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
             
             
         </footer>
