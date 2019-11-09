@@ -73,6 +73,7 @@
 
 
 <article>
+    
     <section class="post-title">
     <h1>Building personal search infrastructure for your knowledge and code</h1>
     <div class="summary">Overview of search tools for your computer and phone, demo of using Emacs and Ripgrep as desktop search engine</h2>
@@ -1097,6 +1098,7 @@ As always, I'm open to feedback and would love to hear what is or setup or help 
 
 
 <article>
+    
     <section class="post-title">
     <h1>Python: better typed than you think</h1>
     <div class="summary">mypy assisted error handling, exception mechanisms in other languages, fun with pattern matching and type variance</h2>
@@ -2667,6 +2669,7 @@ Let me know what you think! I'm open to all feedback.
 
 
 <article>
+    
     <section class="post-title">
     <h1>Using Orger to populate your tasks list</h1>
     <div class="summary">Reading Reddit, building spaced repetition queue and quick todos from Telegram messages</h2>
@@ -3050,6 +3053,7 @@ Let me know what you think! I'm open to all feedback.
 
 
 <article>
+    
     <section class="post-title">
     <h1>Orger: plaintext reflection of your digital self</h1>
     <div class="summary">Mirror your personal data as org-mode for instant access and search</h2>
@@ -3824,6 +3828,7 @@ This post ended up longer that I expected so in the next part I will tell about 
 
 
 <article>
+    
     <section class="post-title">
     <h1>Cloudmacs and getting to know Docker</h1>
     <div class="summary">How I really wanted Spacemacs in web browser and my wish came true</h2>
@@ -3971,6 +3976,7 @@ To get around that there is a somewhat hacky <a href="https://github.com/karlico
 
 
 <article>
+    
     <section class="post-title">
     <h1>Making sense of Endomondo's calorie estimation</h1>
     
@@ -4643,6 +4649,7 @@ Free term: -9.608
 
 
 <article>
+    
     <section class="post-title">
     <h1>How to annotate literally everything</h1>
     <div class="summary">Comprehensive overview of existing tools, strategies and thoughts on interacting with your data</h2>
@@ -5750,6 +5757,7 @@ I'd be interested to know what do you think, and how are you managing your annot
 
 
 <article>
+    
     <section class="post-title">
     <h1>How to cope with having fleshy human brain</h1>
     <div class="summary">My personal knowledge setup</h2>
@@ -5975,6 +5983,7 @@ So, this is the plan, which I will fill with links as I write.
 
 
 <article>
+    
     <section class="post-title">
     <h1>Don't shoot the artist</h1>
     <div class="summary">How I visited a contemporary art museum and didn't get it</h2>
@@ -6107,6 +6116,7 @@ This realization made the irritation go and made the rest of exploration a bit m
 
 
 <article>
+    
     <section class="post-title">
     <h1>sufs</h1>
     <div class="summary">Tool to merge directories via symlinks</h2>
@@ -6225,6 +6235,7 @@ This realization made the irritation go and made the rest of exploration a bit m
 
 
 <article>
+    
     <section class="post-title">
     <h1>On cognitive demand of recycling</h1>
     <div class="summary">So many questions, so few answers</h2>
@@ -6360,6 +6371,7 @@ This realization made the irritation go and made the rest of exploration a bit m
 
 
 <article>
+    
     <section class="post-title">
     <h1>Forcing IPython to display multiple equations in single line</h1>
     <div class="summary">How I sacrificed few hours of my life for aethetics</h2>
@@ -6921,6 +6933,7 @@ Hopefully that saves someone else a bit of time.</p>
 
 
 <article>
+    
     <section class="post-title">
     <h1>I've found Google Takeouts to silently remove old data</h1>
     <div class="summary">Crosspost from /r/DataHoarder</h2>
@@ -7077,6 +7090,7 @@ Hopefully that saves someone else a bit of time.</p>
 
 
 <article>
+    
     <section class="post-title">
     <h1>Quantifying quantified-mind.com</h1>
     <div class="summary">Exploiting javascript to reverse engineer cognitive score</h2>
@@ -7222,6 +7236,7 @@ the two grids are identical.</code></pre>
 
 
 <article>
+    
     <section class="post-title">
     <h1>Sleep tracking</h1>
     <div class="summary">How not to do it</h2>
@@ -7373,6 +7388,7 @@ the two grids are identical.</code></pre>
 
 
 <article>
+    
     <section class="post-title">
     <h1>Grasp</h1>
     <div class="summary">How to capture information from your browser and stay sane</h2>
