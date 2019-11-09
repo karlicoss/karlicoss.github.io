@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content>
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>Investigating effect of spinning power output on HR | Mildly entertainingᵝ</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=4" />
+
+        
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    <!-- TODO eh, not sure if this symbol is good for that... -->
+                    ·
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                    ·
+                    <a class="fat" href="./notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
+                </span>
+                <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+            </nav>
+        </header>
+
+        <main>
+            
+<link rel="stylesheet" href="./css/ipynb.css" />
+<link rel="stylesheet" href="./css/ipynb-syntax.css" />
+
+
+
+
+<article>
+    
+    <div>THIS IS A DRAFT! It will appear on the main page once finished!</div>
+    
+    <section class="post-title">
+    <h1>Investigating effect of spinning power output on HR</h1>
+    
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I was curious how effort exerted during the exercise impacts heart rate and whether that correlates strongly with subjective fatigue and exhaustion.</p>
+<p>It seemed that easiest way to experiment would be spinning machine. Running only has single variable, speed. One could f change incline, but that would be harder to predict.</p>
+<p>For elliptical machine or rowing machine it would be even more complicated!</p>
+<p>With stationary bike, there are two variables that potentially impact power you need to exert:</p>
+<ul>
+<li>revolitions per minute, or angular velocity, that has linear effect on power (no air resistance as it's stationary!)</li>
+<li>resistance, which isn't exactly specified, but one would expect it to be proportional to the force you have to apply (i.e. <a href="https://en.wikipedia.org/wiki/Torque">torque</a>)</li>
+</ul>
+<p>The <a href="https://www.technogym.com/gb/indoor-cycling-live-bike.html">spinning machine</a> I was using displays the pace (i.e. revolutions per minute), so all you have to do is maintain it. In addition it's displaying current resistance level and reports power in watts.</p>
+<p>During exercise, I'm using a chest HR tracker, so simplest thing to do would be take whatever power spinning machine reports and try to find correlation with moving total/average of HR.</p>
+<p>However, being paranoid and lacking any documentation for the machine, I decided no to trust its numbers blindly and check them instead. Technogym's website doesn't help in clarifying how power is computed. They have some sensible information <a href="https://www.technogym.com/gb/newsroom/power-meter-what-is-how-it-works">like</a>:</p>
+<blockquote><p>The power meter must be accurate.</p>
+<p>The power measurement must be precise and repeatable. A 3-5 watt error is not significant, but if a system is not reliable there may be deviations of many tens of watts, i.e. equal to or greater than the amount of power that is gained from one year's training.</p>
+</blockquote>
+<p>Let's see how accurate is their power meter!</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Throughout different exercivse sessions, I've taken bunch of measurements of RPM, resistance and power:</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+   
+   <details class="cell-collapsed">
+   <summary>Collapsed IPython cell <span class="cell-collapsed-expand">(click to expand)</span></summary>
+       
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO could only collapse inputs?</span>
+<span class="n">datas</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">58 10 129</span>
+<span class="s2">56 10 127</span>
+<span class="s2">56 10 127</span>
+<span class="s2">56 8  94</span>
+<span class="s2">57 8  98</span>
+<span class="s2">56 8  94</span>
+<span class="s2">58 10 133</span>
+<span class="s2">56 10 126</span>
+<span class="s2">56 8  93</span>
+<span class="s2">55 8  91</span>
+<span class="s2">56 8  94</span>
+<span class="s2">56 10 128</span>
+<span class="s2">55 10 124</span>
+<span class="s2">54 10 119</span>
+<span class="s2">53 8  87</span>
+<span class="s2">55 8  93</span>
+<span class="s2">55 8  90</span>
+<span class="s2">95 8  240</span>
+
+<span class="s2">70 10 198</span>
+<span class="s2">55 8  85</span>
+<span class="s2">95 8  226</span>
+<span class="s2">95 8  229</span>
+<span class="s2">95 8  228</span>
+<span class="s2">95 8  227</span>
+
+<span class="s2">97 8  236</span>
+<span class="s2">95 8  227</span>
+<span class="s2">95 8  227</span>
+<span class="s2">95 8  230</span>
+<span class="s2">60 10 156</span>
+<span class="s2">61 10 154</span>
+<span class="s2">62 10 162</span>
+<span class="s2">61 10 156</span>
+<span class="s2">55 10 125</span>
+<span class="s2">56 10 128</span>
+<span class="s2">57 8  89</span>
+<span class="s2">56 8  87</span>
+<span class="s2">57 8  90</span>
+<span class="s2">57 8  91</span>
+<span class="s2">60 8  101</span>
+<span class="s2">56 10 129</span>
+<span class="s2">57 10 131</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">datas</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'rpm'</span><span class="p">,</span> <span class="s1">'resistance'</span><span class="p">,</span> <span class="s1">'watts'</span><span class="p">],</span>
+<span class="p">)</span>
+<span class="c1"># btw, if anyone knows a more elegant way of conveting such a table in dataframe, I'd be happy to know!</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+   </details>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>rpm</th>
+      <th>resistance</th>
+      <th>watts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>25</th>
+      <td>95</td>
+      <td>8</td>
+      <td>227</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>56</td>
+      <td>8</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>61</td>
+      <td>10</td>
+      <td>154</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>57</td>
+      <td>8</td>
+      <td>98</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>56</td>
+      <td>8</td>
+      <td>94</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>61</td>
+      <td>10</td>
+      <td>156</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>95</td>
+      <td>8</td>
+      <td>230</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>56</td>
+      <td>10</td>
+      <td>128</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>57</td>
+      <td>8</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>62</td>
+      <td>10</td>
+      <td>162</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I't reasonable to assume that power depends linearly both on RPM and resistance, so we conjecture <code>watts = rpm x resistance</code>. Let's see if it holds against what the spinning machine reports:</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">'font'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">'regular'</span><span class="p">)</span>
+
+<span class="n">dff</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">dff</span><span class="p">[</span><span class="s1">'rpm x resistance'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'rpm'</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">'resistance'</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">dff</span><span class="p">[</span><span class="s1">'rpm x resistance'</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">dff</span><span class="p">[</span><span class="s1">'watts'</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">dff</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">'rpm x resistance'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'watts'</span><span class="p">,</span>
+    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Power, theoretical, angular velocity multiplied by resistance'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Power, watts as reported by the machine'</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="spinning-hr-analysis_files/spinning-hr-analysis_5_0.png">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">dff</span><span class="p">[[</span><span class="s1">'rpm x resistance'</span><span class="p">]]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">dff</span><span class="p">[</span><span class="s1">'watts'</span><span class="p">],</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  watts   R-squared:                       0.982
+Model:                            OLS   Adj. R-squared:                  0.981
+Method:                 Least Squares   F-statistic:                     2109.
+Date:                Sat, 09 Nov 2019   Prob (F-statistic):           1.43e-35
+Time:                        15:38:26   Log-Likelihood:                -138.70
+No. Observations:                  41   AIC:                             281.4
+Df Residuals:                      39   BIC:                             284.8
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+====================================================================================
+                       coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------------
+const             -110.6016      5.605    -19.732      0.000    -121.939     -99.264
+rpm x resistance     0.4406      0.010     45.929      0.000       0.421       0.460
+==============================================================================
+Omnibus:                        1.196   Durbin-Watson:                   1.017
+Prob(Omnibus):                  0.550   Jarque-Bera (JB):                1.049
+Skew:                          -0.190   Prob(JB):                        0.592
+Kurtosis:                       2.315   Cond. No.                     2.87e+03
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 2.87e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/home/karlicos/.local/lib/python3.7/site-packages/numpy/core/fromnumeric.py:2389: FutureWarning: Method .ptp is deprecated and will be removed in a future version. Use numpy.ptp instead.
+  return ptp(axis=axis, out=out, **kwargs)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Wow, that doesn't look so well.</p>
+<p>Free parameter is about <code>-100</code> watts, which is quite a lot considering my high internsity intervals are <code>250</code> watts. 
+I don't think it can be explained by friction either: if anything, friction would shift the plot up and make the free coeffecient positive.</p>
+<p>At this point, I'm not sure what it means. I guess I'll try to make more measurements at really low resistances and speeds to make the model more complete, but I would be too surprised if either watts or resistance reported by the machine are just made up.</p>
+
+</div>
+</div>
+</div>
+
+
+
+ 
+
+
+    </section>
+
+    
+    <section class="footer">
+        <div class="post-tags"></div>
+        <!-- TODO post-date? -->
+        <div class="date">09 November 2019</div>
+    </section>
+    
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_spinning_hr_analysis"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
+        
+        <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
+            
+            
+        </footer>
+    </body>
+</html>
