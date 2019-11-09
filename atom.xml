@@ -145,7 +145,7 @@ Instant search changes the way you think. Ever got sense of flow while working t
 <p>
 These days, if you have decent connection, you are seconds away from finding almost any public knowledge in the internet.
 However, there is another aspect of information: personal and specific to <i>your</i> needs, work and hobbies.
-It's <i>your</i> todo list, <i>your</i> private notes, books <i>you</i> are reading. Of course, it's not integrated with the outside world, hence the experience of interacting with it is very different.
+It's <i>your</i> todo list, <i>your</i> private notes, books <i>you</i> are reading. Of course, it's not that well integrated with the outside world, hence the tooling and experience of interacting with it is very different.
 </p>
 <p>
 Some examples:
@@ -255,10 +255,10 @@ When I feel it's time to prepare the post, I can just search by the tag (e.g. <c
 <h3 id="other"><a class="headerlink" href="#other">¶</a>Other plaintext, chats and social media</h3>
 <div class="outline-text-3" id="text-other">
 <p>
-As I mentioned, I find having to switch to the browser, wait till the service loads and cope with crappy search implementations to services very distracting and frustrating.
+As I mentioned, I find having to switch to the browser, wait till the website loads and cope with crappy search implementations very distracting and frustrating.
 </p>
 <p>
-What is more, often you don't remember whether or not you were discussing something on Telegram or Facebook or Reddit, etc; so having a unified search over all of your stuff is extremely helpful.
+What is more, often you don't even remember whether exactly you were discussing something: on Telegram or Facebook or Reddit? So having a single point of entry to your information and unified search over all of your stuff is extremely helpful.
 </p>
 <p>
 For instant messaging, I'm using plaintext mirrors, so chat history is always available in plaintext on my computers:
@@ -508,12 +508,12 @@ Chances are that if a link is good, you would find it on  on reddit anyway.
 twitter is similar: there is certainly more spam there, but sometimes it's interesting to type a link or blog post title in twitter search to see how <b>real people reacted</b>. 
 </p>
 <p>
-That has limited utility, e.g. doesn't work with politicizied content, but if the topic of interest is rare, could be very useful.
+That has limited utility, e.g. doesn't work with politicized content, but if the topic of interest is rare, could be very useful.
 </p></li>
 <li><a href="https://pinboard.in">pinboard</a> is an awesome source of curated content as well</li>
 </ul>
 <p>
-For some code documentation search I find very convenient to have documentation available locally.
+Next, I find it very convenient to have some code documentation available locally.
 First, it helps when you're on wonky internet or just offline for whatever reason.
 Second, it's feels <b>really fast</b>, even if you're on fiber.
 </p>
@@ -545,7 +545,7 @@ Recently I ran into <a href="https://devdocs.io/offline">devdocs.io</a>, it's us
 I'm still getting used to it, but it's amazing how faster it is than jumping to documentation online. You can use it with multiple languages, you just type the search engine prefix first, and then language prefix (e.g. <code class="inline">dd cpp emplace_back</code>).
 </p>
 <p>
-Finally, it may be convenient to set up <a href="https://github.com/hrs/engine-mode">engine-mode</a> in Emacs, or <a href="https://github.com/syl20bnr/spacemacs/tree/master/layers/+web-services/search-engine">search-engine layer</a> in Spacemacs. It lets you select a bit of text and search it in browser (e.g. <code class="inline">SPC s G</code> to do google search). I find it convenient when I need to search many things in bulk.
+Finally, it may be convenient to set up <a href="https://github.com/hrs/engine-mode">engine-mode</a> in Emacs, or <a href="https://github.com/syl20bnr/spacemacs/tree/master/layers/+web-services/search-engine">search-engine layer</a> in Spacemacs. It lets you invoke a browser search directly from Emacs (e.g. <code class="inline">SPC s G</code> to do google search). I find it convenient when I need to search many things in bulk.
 </p>
 </div>
 <div class="outline-3" id="outline-container-org000000d">
@@ -580,7 +580,7 @@ TLDR: I tried different existing code search tools, was disappointed and ended u
 <div class="outline-text-3" id="text-org0000010">
 <p>
 I've got lots of personal projects, experiments, data processing and backup scripts on my computer.
-I also tend to create a git repository at a slightest opportunity primarily as a means of code backup/rollback, but often it results in actual projects, so I would need a repository anyway.
+I also tend to create a git repository at a slightest opportunity primarily as a means of code backup/rollback and progress tracking, but often it results in actual projects, so I would need a repository anyway.
 Naturally, these repositories end up scattered across the whole filesystem, making it tricky to remember where I've put the code or that it even existed in the first place.
 </p>
 <p>
@@ -700,7 +700,7 @@ As you can see, none of these are convenient for searching in personal code.
 <h3 id="org0000014"><a class="headerlink" href="#org0000014">¶</a>Solution: use Emacs and Ripgrep</h3>
 <div class="outline-text-3" id="text-org0000014">
 <p>
-Disappointed, I figured that least I could do is at least somehow improve my workflow with grep.
+Disappointed, I figured that least I could do is at somehow improve my workflow with grep.
 </p>
 <p>
 So, what are the problems with using <code class="inline">grep</code>?
@@ -725,7 +725,7 @@ So, what are the problems with using <code class="inline">grep</code>?
 As it turns out, <code class="inline">ripgrep</code> is the tool!
 </p>
 <ul class="org-ul">
-<li>respects <code class="inline">.gitignore</code> files, so by maintaining <code class="inline">.gitignore</code> properly (e.g. adding <samp class="inline">node_modules=/=venv</samp> etc) you can make sure you only get <b>meaningful matches</b> when searching for code.</li>
+<li>respects <code class="inline">.gitignore</code> files, so by maintaining <code class="inline">.gitignore</code> properly (e.g. adding <samp class="inline">node_modules/venv</samp> etc) you can make sure you only get <b>meaningful matches</b> when searching for code.</li>
 <li>respects <code class="inline">.ignore</code> files. Sometimes code has to be under version control, but you don't want it to show up in search (e.g. could happen if you have vendorized code or minified javascript or static html files).
 In that case you can use <code class="inline">.ignore</code> files with the same syntax to exclude certain patterns from ripgrep's reach without messing with <code class="inline">.gitignore</code>.</li>
 <li>it's <b>very</b> fast, both by <a href="https://github.com/BurntSushi/ripgrep#quick-examples-comparing-tools">benchmarks</a> and subjective experiments. You can read more comprehensive benchmarks <a href="https://blog.burntsushi.net/ripgrep/#code-search-benchmarks">here</a>.</li>
@@ -756,7 +756,7 @@ So, literally running grep against my code turned out to be a pretty good soluti
 </p>
 <p>
 Ripgrep searches in real files on my disk, so any changes are reflected <b>immediately</b>, which removes the need for indexing (apart from performance concerns).
-It would still be nice to avoid unnecessary operations, and of course, semantic search would be great, and that is definitely going to require some sort of indexer.
+It would still be nice to avoid unnecessary disk operations, and of course, semantic search would be great, and that is definitely going to require some sort of indexer.
 </p>
 <p>
 I've got a <a href="#org0000013">global keybinding</a> to invoke Emacs with a prompt to search in code, so I can do in in a blink.
@@ -1007,6 +1007,16 @@ As always, I'm open to feedback and would love to hear what is or setup or help 
     </section>
     
 
+    
+    <br>
+    <div>Discussion:</div>
+    <ul>
+    
+        <li><a href="https://www.reddit.com/r/emacs/comments/dq42vk/building_personal_search_engine_using_emacs_and">/r/emacs</a></li>
+    
+    </ul>
+    
+
     <section class="comments">
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
 </script>
@@ -1130,7 +1140,7 @@ As always, I'm open to feedback and would love to hear what is or setup or help 
 <ul>
 <li><a href="#api">Custom error type</a></li>
 <li><a href="#unwrap">unwrap</a></li>
-<li><a href="#org0000018">Defensive errors policy</a></li>
+<li><a href="#global_policy">Global error policy</a></li>
 <li><a href="#error_context">Improving error context</a></li>
 <li><a href="#warnings">Fine grained defensiveness</a></li>
 <li><a href="#dataframe">Error values, revisited</a></li>
@@ -1687,7 +1697,7 @@ Ok, we've learned something, let's try again.
 </p>
 </div>
 <div class="outline-3" id="outline-container-org000000b">
-<h3 id="iterator"><a class="headerlink" href="#iterator">¶</a>By the way, what's up with <code class="inline">Iterator</code> everywhere?</h3>
+<h3 id="iterator"><a class="headerlink" href="#iterator">¶</a>By the way, what's up with <a href="https://docs.python.org/3/library/typing.html#typing.Iterator"><code class="inline">Iterator</code></a> everywhere?</h3>
 <div class="outline-text-3" id="text-iterator">
 <p>
 Glad you asked! Several reasons I'm using generators here:
@@ -1695,7 +1705,7 @@ Glad you asked! Several reasons I'm using generators here:
 <ul class="org-ul">
 <li>it makes code cleaner because there is <b>no need for temporary lists</b>, calling <code class="inline">.append</code> and then returning them in the end.</li>
 <li>it makes code faster (again, no temporary lists), and also it <b>feels faster</b> because you print items as soon as you process</li>
-<li><code class="inline">Iterator</code> type is <b>covariant</b>, whereas <code class="inline">List</code> is not. I'm elaborating on it <a href="#org000000a">later</a>.</li>
+<li><code class="inline">Iterator</code> type is <b>covariant</b>, whereas <code class="inline">List</code> is not. I'm elaborating on it <a href="#org000000a">later</a>. I'm also using <a href="https://docs.python.org/3/library/typing.html#typing.Sequence"><code class="inline">Sequence</code></a> for the same reason.</li>
 </ul>
 </div>
 </div>
@@ -1823,6 +1833,7 @@ Python output [exit code 0]:
       whether the light hits the walls at the same time, this does not mean
       that they can't be friends. [Page 120]
 * ERROR: Couldn't match regex!
+
 Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
@@ -2038,6 +2049,7 @@ Python output [exit code 0]:
       that they can't be friends. [Page 120]
 
 * ERROR: Couldn't match regex!
+
 Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
@@ -2086,10 +2098,10 @@ If you don't need to handle the error, you can just yield it up the call stack a
 </p>
 <p>
 <a href="https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)">Variance</a> reflects how compound types (e.g. containers/functions) behave with respect to inheritance of their arguments and return types. You might have also heard of this as Liskov substitution principle.
-I wouldn't try to explain it here, as it's something you need to experiment with and get comfortable. You can also find some explanations and examples <a href="https://mypy.readthedocs.io/en/latest/generics.html#variance-of-generic-types">here</a>.
+I wouldn't try to explain it here, as it's a topic that deserves a whole post and something you need to experiment with and get comfortable. You can also find some explanations and examples <a href="https://mypy.readthedocs.io/en/latest/generics.html#variance-of-generic-types">here</a>.
 </p>
 <p>
-It short, we can let <code class="inline">Res[T]</code> to be contravariant with respect to <code class="inline">T</code>, because it's a simple immutable wrapper around <code class="inline">T</code>.
+It short, we can let <code class="inline">Res[T]</code> to be covariant with respect to <code class="inline">T</code>, because it's a simple immutable wrapper around <code class="inline">T</code>.
 </p>
 <p>
 If you were defining your own generic class, you'd have to declare <code class="inline">T = TypeVar('T', covariant=True)</code>.
@@ -2168,6 +2180,7 @@ Python output [exit code 0]:
 ERROR! invalid literal for int() with base 10: 'two'
 -3
 -4
+
 Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
@@ -2207,17 +2220,18 @@ Traceback (most recent call last):
   File "input.py", line 6, in unwrap
     raise res
 RuntimeError: bad
+
 Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
 </div>
 </div>
 <div class="outline-3" id="outline-container-org0000018">
-<h3 id="org0000018"><a class="headerlink" href="#org0000018">¶</a>Defensive errors policy</h3>
-<div class="outline-text-3" id="text-org0000018">
+<h3 id="global_policy"><a class="headerlink" href="#global_policy">¶</a>Global error policy</h3>
+<div class="outline-text-3" id="text-global_policy">
 <p>
 When you're actively working on your code and running tests, you want to make sure that there are no errors and be as non-defensive as possible.
-However, in the field, you want to keep the code more defensive. To do that quickly, you can use the following trick:
+However, in the field, you want to keep the code more defensive. To switch behaviours quickly, you can use the following trick:
 </p>
 <div class="org-src-container">
 <pre class="src src-mypy" id="org0000016"><span class="linenr"> 5: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> Generic
@@ -2271,6 +2285,7 @@ Python output [exit code 0]:
 ERROR! invalid literal for int() with base 10: 'two'
 -3
 -4
+
 Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
@@ -2297,6 +2312,7 @@ Traceback (most recent call last):
   File "input.py", line 22, in iter_numbers
     yield int(s)
 ValueError: invalid literal for int() with base 10: 'two'
+
 Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
@@ -2305,7 +2321,7 @@ Even though you never actually return <code class="inline">Error</code> under th
 </p>
 <p>
 I'm using this technique in my <a href="https://github.com/karlicoss/kobuddy#as-a-standalone-app">Kobo parser</a> and control it via <samp class="inline">--errors</samp> argument.
-On CI, it runs in non-defensive mode of course. However it's likely to fail for other people first time they are using it because the library has to decode binary blobs in unknown format. So one can run it in defensive mode, get most of their data and just ignore errors till they are fixed.
+On CI, it runs in non-defensive mode of course. However when other people use the library for the first time they, something is likely to fail. It deals with decoding binary blobs in unspecified format after all! So one can run it in defensive mode, get most of their data and just ignore (hopefully few) errors till they are fixed.
 </p>
 </div>
 </div>
@@ -2484,6 +2500,7 @@ Python output [exit code 0]:
 Matched B!
 Unhandled object: &lt;class '__main__.C'&gt; 
 Matched A!
+
 Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
@@ -2576,6 +2593,22 @@ Let me know what you think! I'm open to all feedback.
         <!-- TODO post-date? -->
         <div class="date">26 October 2019</div>
     </section>
+    
+
+    
+    <br>
+    <div>Discussion:</div>
+    <ul>
+    
+        <li><a href="https://lobste.rs/s/xxzwij/python_is_better_typed_than_you_think">lobste.rs</a></li>
+    
+        <li><a href="https://www.reddit.com/r/Python/comments/dplkz6/python_safer_typed_than_you_think">reddit</a></li>
+    
+        <li><a href="https://news.ycombinator.com/item?id=21397150">hackernews</a></li>
+    
+        <li><a href="https://news.ycombinator.com/item?id=21456706">hackernews</a></li>
+    
+    </ul>
     
 
     <section class="comments">
@@ -2960,6 +2993,16 @@ Let me know what you think! I'm open to all feedback.
         <!-- TODO post-date? -->
         <div class="date">05 October 2019</div>
     </section>
+    
+
+    
+    <br>
+    <div>Discussion:</div>
+    <ul>
+    
+        <li><a href="https://www.reddit.com/r/orgmode/comments/dgdej4/orger_part_ii_reading_reddit_via_orgmode_quick">/r/orgmode</a></li>
+    
+    </ul>
     
 
     <section class="comments">
@@ -3737,6 +3780,18 @@ This post ended up longer that I expected so in the next part I will tell about 
     </section>
     
 
+    
+    <br>
+    <div>Discussion:</div>
+    <ul>
+    
+        <li><a href="https://www.reddit.com/r/orgmode/comments/da1sf0/orger_plaintext_reflection_of_your_digital_self">/r/orgmode</a></li>
+    
+        <li><a href="https://lobste.rs/s/rr9pxd/orger_plaintext_reflection_your_digital">lobste.rs</a></li>
+    
+    </ul>
+    
+
     <section class="comments">
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
 </script>
@@ -3887,6 +3942,18 @@ To get around that there is a somewhat hacky <a href="https://github.com/karlico
         <!-- TODO post-date? -->
         <div class="date">12 September 2019</div>
     </section>
+    
+
+    
+    <br>
+    <div>Discussion:</div>
+    <ul>
+    
+        <li><a href="https://www.reddit.com/r/selfhosted/comments/d38utu/cloudmacs_make_your_lovely_emacs_setup_accessible">/r/selfhosted</a></li>
+    
+        <li><a href="https://www.reddit.com/r/orgmode/comments/d3pm06/cloudmacs_work_with_your_orgmode_files_and_agenda">/r/orgmode</a></li>
+    
+    </ul>
     
 
     <section class="comments">
@@ -4556,6 +4623,16 @@ Free term: -9.608
         <!-- TODO post-date? -->
         <div class="date">03 August 2019</div>
     </section>
+    
+
+    
+    <br>
+    <div>Discussion:</div>
+    <ul>
+    
+        <li><a href="https://www.reddit.com/r/dataisbeautiful/comments/cmqfeu/oc_dependency_of_energy_spent_during_exercise_on">/r/dataisbeautiful</a></li>
+    
+    </ul>
     
 
     <section class="comments">
@@ -5666,6 +5743,16 @@ I'd be interested to know what do you think, and how are you managing your annot
     </section>
     
 
+    
+    <br>
+    <div>Discussion:</div>
+    <ul>
+    
+        <li><a href="https://www.reddit.com/r/opensource/comments/cazgsa/annotating_everything_overview_of_linuxandroid">reddit</a></li>
+    
+    </ul>
+    
+
     <section class="comments">
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
 </script>
@@ -5892,6 +5979,8 @@ So, this is the plan, which I will fill with links as I write.
     </section>
     
 
+    
+
     <section class="comments">
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
 </script>
@@ -6031,6 +6120,8 @@ This realization made the irritation go and made the rest of exploration a bit m
     </section>
     
 
+    
+
     <section class="comments">
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
 </script>
@@ -6148,6 +6239,8 @@ This realization made the irritation go and made the rest of exploration a bit m
         <!-- TODO post-date? -->
         <div class="date">09 May 2019</div>
     </section>
+    
+
     
 
     <section class="comments">
@@ -6270,6 +6363,8 @@ This realization made the irritation go and made the rest of exploration a bit m
         <!-- TODO post-date? -->
         <div class="date">18 April 2019</div>
     </section>
+    
+
     
 
     <section class="comments">
@@ -6848,6 +6943,8 @@ Hopefully that saves someone else a bit of time.</p>
     </section>
     
 
+    
+
     <section class="comments">
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
 </script>
@@ -7005,6 +7102,16 @@ Hopefully that saves someone else a bit of time.</p>
     </section>
     
 
+    
+    <br>
+    <div>Discussion:</div>
+    <ul>
+    
+        <li><a href="https://www.reddit.com/r/DataHoarder/comments/ayt5cu/ive_found_out_google_takeout_archives_are_not">/r/DataHoarder</a></li>
+    
+    </ul>
+    
+
     <section class="comments">
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
 </script>
@@ -7149,6 +7256,16 @@ the two grids are identical.</code></pre>
         <!-- TODO post-date? -->
         <div class="date">06 March 2019</div>
     </section>
+    
+
+    
+    <br>
+    <div>Discussion:</div>
+    <ul>
+    
+        <li><a href="https://www.reddit.com/r/QuantifiedSelf/comments/ayfieu/quantifying_quantifiedmindcom">reddit</a></li>
+    
+    </ul>
     
 
     <section class="comments">
@@ -7301,6 +7418,8 @@ the two grids are identical.</code></pre>
         <!-- TODO post-date? -->
         <div class="date">21 February 2019</div>
     </section>
+    
+
     
 
     <section class="comments">
@@ -7486,6 +7605,16 @@ Why do they always mention that? Is that important?</code></pre>
         <!-- TODO post-date? -->
         <div class="date">09 February 2019</div>
     </section>
+    
+
+    
+    <br>
+    <div>Discussion:</div>
+    <ul>
+    
+        <li><a href="https://www.reddit.com/r/orgmode/comments/akazos/orggrasp_browser_extension_for_orgcapture">reddit</a></li>
+    
+    </ul>
     
 
     <section class="comments">

@@ -128,7 +128,7 @@ Instant search changes the way you think. Ever got sense of flow while working t
 <p>
 These days, if you have decent connection, you are seconds away from finding almost any public knowledge in the internet.
 However, there is another aspect of information: personal and specific to <i>your</i> needs, work and hobbies.
-It's <i>your</i> todo list, <i>your</i> private notes, books <i>you</i> are reading. Of course, it's not integrated with the outside world, hence the experience of interacting with it is very different.
+It's <i>your</i> todo list, <i>your</i> private notes, books <i>you</i> are reading. Of course, it's not that well integrated with the outside world, hence the tooling and experience of interacting with it is very different.
 </p>
 <p>
 Some examples:
@@ -238,10 +238,10 @@ When I feel it's time to prepare the post, I can just search by the tag (e.g. <c
 <h3 id="other"><a class="headerlink" href="#other">¶</a>Other plaintext, chats and social media</h3>
 <div class="outline-text-3" id="text-other">
 <p>
-As I mentioned, I find having to switch to the browser, wait till the service loads and cope with crappy search implementations to services very distracting and frustrating.
+As I mentioned, I find having to switch to the browser, wait till the website loads and cope with crappy search implementations very distracting and frustrating.
 </p>
 <p>
-What is more, often you don't remember whether or not you were discussing something on Telegram or Facebook or Reddit, etc; so having a unified search over all of your stuff is extremely helpful.
+What is more, often you don't even remember whether exactly you were discussing something: on Telegram or Facebook or Reddit? So having a single point of entry to your information and unified search over all of your stuff is extremely helpful.
 </p>
 <p>
 For instant messaging, I'm using plaintext mirrors, so chat history is always available in plaintext on my computers:
@@ -491,12 +491,12 @@ Chances are that if a link is good, you would find it on  on reddit anyway.
 twitter is similar: there is certainly more spam there, but sometimes it's interesting to type a link or blog post title in twitter search to see how <b>real people reacted</b>. 
 </p>
 <p>
-That has limited utility, e.g. doesn't work with politicizied content, but if the topic of interest is rare, could be very useful.
+That has limited utility, e.g. doesn't work with politicized content, but if the topic of interest is rare, could be very useful.
 </p></li>
 <li><a href="https://pinboard.in">pinboard</a> is an awesome source of curated content as well</li>
 </ul>
 <p>
-For some code documentation search I find very convenient to have documentation available locally.
+Next, I find it very convenient to have some code documentation available locally.
 First, it helps when you're on wonky internet or just offline for whatever reason.
 Second, it's feels <b>really fast</b>, even if you're on fiber.
 </p>
@@ -528,7 +528,7 @@ Recently I ran into <a href="https://devdocs.io/offline">devdocs.io</a>, it's us
 I'm still getting used to it, but it's amazing how faster it is than jumping to documentation online. You can use it with multiple languages, you just type the search engine prefix first, and then language prefix (e.g. <code class="inline">dd cpp emplace_back</code>).
 </p>
 <p>
-Finally, it may be convenient to set up <a href="https://github.com/hrs/engine-mode">engine-mode</a> in Emacs, or <a href="https://github.com/syl20bnr/spacemacs/tree/master/layers/+web-services/search-engine">search-engine layer</a> in Spacemacs. It lets you select a bit of text and search it in browser (e.g. <code class="inline">SPC s G</code> to do google search). I find it convenient when I need to search many things in bulk.
+Finally, it may be convenient to set up <a href="https://github.com/hrs/engine-mode">engine-mode</a> in Emacs, or <a href="https://github.com/syl20bnr/spacemacs/tree/master/layers/+web-services/search-engine">search-engine layer</a> in Spacemacs. It lets you invoke a browser search directly from Emacs (e.g. <code class="inline">SPC s G</code> to do google search). I find it convenient when I need to search many things in bulk.
 </p>
 </div>
 <div class="outline-3" id="outline-container-org000000d">
@@ -563,7 +563,7 @@ TLDR: I tried different existing code search tools, was disappointed and ended u
 <div class="outline-text-3" id="text-org0000010">
 <p>
 I've got lots of personal projects, experiments, data processing and backup scripts on my computer.
-I also tend to create a git repository at a slightest opportunity primarily as a means of code backup/rollback, but often it results in actual projects, so I would need a repository anyway.
+I also tend to create a git repository at a slightest opportunity primarily as a means of code backup/rollback and progress tracking, but often it results in actual projects, so I would need a repository anyway.
 Naturally, these repositories end up scattered across the whole filesystem, making it tricky to remember where I've put the code or that it even existed in the first place.
 </p>
 <p>
@@ -683,7 +683,7 @@ As you can see, none of these are convenient for searching in personal code.
 <h3 id="org0000014"><a class="headerlink" href="#org0000014">¶</a>Solution: use Emacs and Ripgrep</h3>
 <div class="outline-text-3" id="text-org0000014">
 <p>
-Disappointed, I figured that least I could do is at least somehow improve my workflow with grep.
+Disappointed, I figured that least I could do is at somehow improve my workflow with grep.
 </p>
 <p>
 So, what are the problems with using <code class="inline">grep</code>?
@@ -708,7 +708,7 @@ So, what are the problems with using <code class="inline">grep</code>?
 As it turns out, <code class="inline">ripgrep</code> is the tool!
 </p>
 <ul class="org-ul">
-<li>respects <code class="inline">.gitignore</code> files, so by maintaining <code class="inline">.gitignore</code> properly (e.g. adding <samp class="inline">node_modules=/=venv</samp> etc) you can make sure you only get <b>meaningful matches</b> when searching for code.</li>
+<li>respects <code class="inline">.gitignore</code> files, so by maintaining <code class="inline">.gitignore</code> properly (e.g. adding <samp class="inline">node_modules/venv</samp> etc) you can make sure you only get <b>meaningful matches</b> when searching for code.</li>
 <li>respects <code class="inline">.ignore</code> files. Sometimes code has to be under version control, but you don't want it to show up in search (e.g. could happen if you have vendorized code or minified javascript or static html files).
 In that case you can use <code class="inline">.ignore</code> files with the same syntax to exclude certain patterns from ripgrep's reach without messing with <code class="inline">.gitignore</code>.</li>
 <li>it's <b>very</b> fast, both by <a href="https://github.com/BurntSushi/ripgrep#quick-examples-comparing-tools">benchmarks</a> and subjective experiments. You can read more comprehensive benchmarks <a href="https://blog.burntsushi.net/ripgrep/#code-search-benchmarks">here</a>.</li>
@@ -739,7 +739,7 @@ So, literally running grep against my code turned out to be a pretty good soluti
 </p>
 <p>
 Ripgrep searches in real files on my disk, so any changes are reflected <b>immediately</b>, which removes the need for indexing (apart from performance concerns).
-It would still be nice to avoid unnecessary operations, and of course, semantic search would be great, and that is definitely going to require some sort of indexer.
+It would still be nice to avoid unnecessary disk operations, and of course, semantic search would be great, and that is definitely going to require some sort of indexer.
 </p>
 <p>
 I've got a <a href="#org0000013">global keybinding</a> to invoke Emacs with a prompt to search in code, so I can do in in a blink.
@@ -988,6 +988,16 @@ As always, I'm open to feedback and would love to hear what is or setup or help 
         <!-- TODO post-date? -->
         <div class="date">01 November 2019</div>
     </section>
+    
+
+    
+    <br>
+    <div>Discussion:</div>
+    <ul>
+    
+        <li><a href="https://www.reddit.com/r/emacs/comments/dq42vk/building_personal_search_engine_using_emacs_and">/r/emacs</a></li>
+    
+    </ul>
     
 
     <section class="comments">

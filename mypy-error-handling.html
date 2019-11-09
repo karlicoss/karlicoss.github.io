@@ -88,7 +88,7 @@
 <ul>
 <li><a href="#api">Custom error type</a></li>
 <li><a href="#unwrap">unwrap</a></li>
-<li><a href="#org0000018">Defensive errors policy</a></li>
+<li><a href="#global_policy">Global error policy</a></li>
 <li><a href="#error_context">Improving error context</a></li>
 <li><a href="#warnings">Fine grained defensiveness</a></li>
 <li><a href="#dataframe">Error values, revisited</a></li>
@@ -645,7 +645,7 @@ Ok, we've learned something, let's try again.
 </p>
 </div>
 <div class="outline-3" id="outline-container-org000000b">
-<h3 id="iterator"><a class="headerlink" href="#iterator">¶</a>By the way, what's up with <code class="inline">Iterator</code> everywhere?</h3>
+<h3 id="iterator"><a class="headerlink" href="#iterator">¶</a>By the way, what's up with <a href="https://docs.python.org/3/library/typing.html#typing.Iterator"><code class="inline">Iterator</code></a> everywhere?</h3>
 <div class="outline-text-3" id="text-iterator">
 <p>
 Glad you asked! Several reasons I'm using generators here:
@@ -653,7 +653,7 @@ Glad you asked! Several reasons I'm using generators here:
 <ul class="org-ul">
 <li>it makes code cleaner because there is <b>no need for temporary lists</b>, calling <code class="inline">.append</code> and then returning them in the end.</li>
 <li>it makes code faster (again, no temporary lists), and also it <b>feels faster</b> because you print items as soon as you process</li>
-<li><code class="inline">Iterator</code> type is <b>covariant</b>, whereas <code class="inline">List</code> is not. I'm elaborating on it <a href="#org000000a">later</a>.</li>
+<li><code class="inline">Iterator</code> type is <b>covariant</b>, whereas <code class="inline">List</code> is not. I'm elaborating on it <a href="#org000000a">later</a>. I'm also using <a href="https://docs.python.org/3/library/typing.html#typing.Sequence"><code class="inline">Sequence</code></a> for the same reason.</li>
 </ul>
 </div>
 </div>
@@ -781,6 +781,7 @@ Python output [exit code 0]:
       whether the light hits the walls at the same time, this does not mean
       that they can't be friends. [Page 120]
 * ERROR: Couldn't match regex!
+
 Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
@@ -996,6 +997,7 @@ Python output [exit code 0]:
       that they can't be friends. [Page 120]
 
 * ERROR: Couldn't match regex!
+
 Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
@@ -1044,10 +1046,10 @@ If you don't need to handle the error, you can just yield it up the call stack a
 </p>
 <p>
 <a href="https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)">Variance</a> reflects how compound types (e.g. containers/functions) behave with respect to inheritance of their arguments and return types. You might have also heard of this as Liskov substitution principle.
-I wouldn't try to explain it here, as it's something you need to experiment with and get comfortable. You can also find some explanations and examples <a href="https://mypy.readthedocs.io/en/latest/generics.html#variance-of-generic-types">here</a>.
+I wouldn't try to explain it here, as it's a topic that deserves a whole post and something you need to experiment with and get comfortable. You can also find some explanations and examples <a href="https://mypy.readthedocs.io/en/latest/generics.html#variance-of-generic-types">here</a>.
 </p>
 <p>
-It short, we can let <code class="inline">Res[T]</code> to be contravariant with respect to <code class="inline">T</code>, because it's a simple immutable wrapper around <code class="inline">T</code>.
+It short, we can let <code class="inline">Res[T]</code> to be covariant with respect to <code class="inline">T</code>, because it's a simple immutable wrapper around <code class="inline">T</code>.
 </p>
 <p>
 If you were defining your own generic class, you'd have to declare <code class="inline">T = TypeVar('T', covariant=True)</code>.
@@ -1126,6 +1128,7 @@ Python output [exit code 0]:
 ERROR! invalid literal for int() with base 10: 'two'
 -3
 -4
+
 Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
@@ -1165,17 +1168,18 @@ Traceback (most recent call last):
   File "input.py", line 6, in unwrap
     raise res
 RuntimeError: bad
+
 Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
 </div>
 </div>
 <div class="outline-3" id="outline-container-org0000018">
-<h3 id="org0000018"><a class="headerlink" href="#org0000018">¶</a>Defensive errors policy</h3>
-<div class="outline-text-3" id="text-org0000018">
+<h3 id="global_policy"><a class="headerlink" href="#global_policy">¶</a>Global error policy</h3>
+<div class="outline-text-3" id="text-global_policy">
 <p>
 When you're actively working on your code and running tests, you want to make sure that there are no errors and be as non-defensive as possible.
-However, in the field, you want to keep the code more defensive. To do that quickly, you can use the following trick:
+However, in the field, you want to keep the code more defensive. To switch behaviours quickly, you can use the following trick:
 </p>
 <div class="org-src-container">
 <pre class="src src-mypy" id="org0000016"><span class="linenr"> 5: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> Generic
@@ -1229,6 +1233,7 @@ Python output [exit code 0]:
 ERROR! invalid literal for int() with base 10: 'two'
 -3
 -4
+
 Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
@@ -1255,6 +1260,7 @@ Traceback (most recent call last):
   File "input.py", line 22, in iter_numbers
     yield int(s)
 ValueError: invalid literal for int() with base 10: 'two'
+
 Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
@@ -1263,7 +1269,7 @@ Even though you never actually return <code class="inline">Error</code> under th
 </p>
 <p>
 I'm using this technique in my <a href="https://github.com/karlicoss/kobuddy#as-a-standalone-app">Kobo parser</a> and control it via <samp class="inline">--errors</samp> argument.
-On CI, it runs in non-defensive mode of course. However it's likely to fail for other people first time they are using it because the library has to decode binary blobs in unknown format. So one can run it in defensive mode, get most of their data and just ignore errors till they are fixed.
+On CI, it runs in non-defensive mode of course. However when other people use the library for the first time they, something is likely to fail. It deals with decoding binary blobs in unspecified format after all! So one can run it in defensive mode, get most of their data and just ignore (hopefully few) errors till they are fixed.
 </p>
 </div>
 </div>
@@ -1442,6 +1448,7 @@ Python output [exit code 0]:
 Matched B!
 Unhandled object: &lt;class '__main__.C'&gt; 
 Matched A!
+
 Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
@@ -1534,6 +1541,22 @@ Let me know what you think! I'm open to all feedback.
         <!-- TODO post-date? -->
         <div class="date">26 October 2019</div>
     </section>
+    
+
+    
+    <br>
+    <div>Discussion:</div>
+    <ul>
+    
+        <li><a href="https://lobste.rs/s/xxzwij/python_is_better_typed_than_you_think">lobste.rs</a></li>
+    
+        <li><a href="https://www.reddit.com/r/Python/comments/dplkz6/python_safer_typed_than_you_think">reddit</a></li>
+    
+        <li><a href="https://news.ycombinator.com/item?id=21397150">hackernews</a></li>
+    
+        <li><a href="https://news.ycombinator.com/item?id=21456706">hackernews</a></li>
+    
+    </ul>
     
 
     <section class="comments">
