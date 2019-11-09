@@ -115,6 +115,9 @@
 <li><a href="#org0000027">20. <span class="todo TODO">TODO</span> hypothesis: wonder how it works on timestamped archive.org stuff?   <span class="tag"><span class="gr">gr</span> <span class="annotations">annotations</span></span></a></li>
 <li><a href="#org0000028">21. <span class="todo TODO">TODO</span> <span class="priority">[B]</span> for demo, need to index and start server immediately   <span class="tag"><span class="promnesia">promnesia</span></span></a></li>
 <li><a href="#org0000029">22. <span class="todo TODO">TODO</span> <span class="priority">[C]</span> hmm some interesting stuff to index   <span class="tag"><span class="promnesia">promnesia</span></span></a></li>
+<li><a href="#org000002a">23. <span class="todo TODO">TODO</span> demonstrate indexing as json and as more specific instapaper?   <span class="tag"><span class="promnesia">promnesia</span></span></a></li>
+<li><a href="#org000002b">24. <span class="todo TODO">TODO</span> https://twitter.com/i/web/status/1156086851633131520   <span class="tag"><span class="canonify">canonify</span></span></a></li>
+<li><a href="#org000002c">25. <span class="todo TODO">TODO</span> fuck, ok, server def shouldn't use indexing config   <span class="tag"><span class="promnesia">promnesia</span></span></a></li>
 </ul>
 </div>
 </div>
@@ -404,7 +407,33 @@ e.g. if the original page is gone I can still easily link my saved annotations t
 <p>
 /promnesia adhoc auto /L/zzz<sub>syncthing</sub>/info
 ./promnesia adhoc auto /L/zzz<sub>syncthing</sub>/study
-./promnesia adhoc auto /L/zzz<sub>syncthing</sub>/projects</p>
+./promnesia adhoc auto /L/zzz<sub>syncthing</sub>/projects
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000002a">
+<h2 id="org000002a"><a class="headerlink" href="#org000002a">¶</a><span class="section-number-2">23</span> <span class="todo TODO">TODO</span> demonstrate indexing as json and as more specific instapaper?   <span class="tag"><span class="promnesia">promnesia</span></span></h2>
+<div class="outline-text-2" id="text-23">
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000002b">
+<h2 id="org000002b"><a class="headerlink" href="#org000002b">¶</a><span class="section-number-2">24</span> <span class="todo TODO">TODO</span> <a href="https://twitter.com/i/web/status/1156086851633131520">https://twitter.com/i/web/status/1156086851633131520</a>   <span class="tag"><span class="canonify">canonify</span></span></h2>
+<div class="outline-text-2" id="text-24">
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000002c">
+<h2 id="org000002c"><a class="headerlink" href="#org000002c">¶</a><span class="section-number-2">25</span> <span class="todo TODO">TODO</span> fuck, ok, server def shouldn't use indexing config   <span class="tag"><span class="promnesia">promnesia</span></span></h2>
+<div class="outline-text-2" id="text-25">
+<p>
+ile "/L/zzz<sub>syncthing</sub>/soft/stable/promnesia/src/promnesia/config.py", line 53, in import<sub>config</sub>
+Nov 07 21:31:34 glumov bash[527]:     spec.loader.exec<sub>module</sub>(mod) # type: ignore
+Nov 07 21:31:34 glumov bash[527]:   File "&lt;frozen importlib.<sub>bootstrap</sub><sub>external</sub>&gt;", line 678, in exec<sub>module</sub>
+Nov 07 21:31:34 glumov bash[527]:   File "&lt;frozen importlib.<sub>bootstrap</sub>&gt;", line 219, in _call<sub>with</sub><sub>frames</sub><sub>removed</sub>
+Nov 07 21:31:34 glumov bash[527]:   File "config.py", line 11, in &lt;module&gt;
+Nov 07 21:31:34 glumov bash[527]:     import promnesia.indexers.instapaper as instapaper
+Nov 07 21:31:34 glumov bash[527]:   File "/L/zzz<sub>syncthing</sub>/soft/stable/promnesia/src/promnesia/indexers/instapaper.py", line 7, in &lt;module&gt;
+Nov 07 21:31:34 glumov bash[527]:     import my.instapaper as ip # type: ignore
+Nov 07 21:31:34 glumov bash[527]: ModuleNotFoundError: No module named 'my'</p>
 </div>
 </div>
 
