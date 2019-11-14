@@ -1010,6 +1010,8 @@ As always, I'm open to feedback and would love to hear what is or setup or help 
     
         <li><a href="https://www.reddit.com/r/emacs/comments/dq42vk/building_personal_search_engine_using_emacs_and">/r/emacs</a></li>
     
+        <li><a href="https://irreal.org/blog/?p=8422">irreal</a></li>
+    
     </ul>
     
 
@@ -4527,7 +4529,7 @@ WARNING:workout-provider:Unhandled: Cycling
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Regression coefficient: 0.093
-Free term: -9.608
+Free term: -9.547
 </pre>
 </div>
 </div>
@@ -4582,7 +4584,7 @@ Free term: -9.608
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>8066.982
+<pre>8066.064
 </pre>
 </div>
 </div>
@@ -5947,22 +5949,33 @@ So, this is the plan, which I will fill with links as I write.
 </div>
 <div class="outline-2" id="outline-container-org0000008">
 <h2 id="org0000008"><a class="headerlink" href="#org0000008">¶</a><span class="section-number-2">9</span> <span class="todo TODO">TODO</span> syncing</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+I'm using Dropbox and Syncthing to access my data and information from every device.
+</p>
+</div>
 </div>
 <div class="outline-2" id="outline-container-org0000009">
 <h2 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><span class="section-number-2">10</span> <span class="todo STRT">STRT</span> regular backups</h2>
 <div class="outline-text-2" id="text-10">
+<p>
+I export and back up pretty much everything.
+</p>
 </div>
 </div>
 <div class="outline-2" id="outline-container-org000000a">
 <h2 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><span class="section-number-2">11</span> <span class="todo TODO">TODO</span> timeline</h2>
 </div>
 <div class="outline-2" id="outline-container-org000000b">
-<h2 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><span class="section-number-2">12</span> <span class="todo TODO">TODO</span> future</h2>
+<h2 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><span class="section-number-2">12</span> <span class="todo STRT">STRT</span> tools and infrastructure</h2>
+<div class="outline-text-2" id="text-12">
+<ul class="org-ul">
+<li>I'm using special <a href="./mypkg.html">my.</a> Python package to access all of my personal information and interact with it.</li>
+</ul>
+</div>
 </div>
 <div class="outline-2" id="outline-container-org000000c">
-<h2 id="org000000c"><a class="headerlink" href="#org000000c">¶</a><span class="section-number-2">13</span> <span class="todo STRT">STRT</span> developing tools</h2>
-<div class="outline-text-2" id="text-13">
-</div>
+<h2 id="org000000c"><a class="headerlink" href="#org000000c">¶</a><span class="section-number-2">13</span> <span class="todo TODO">TODO</span> future</h2>
 </div>
 
     </section>

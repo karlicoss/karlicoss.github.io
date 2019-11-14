@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="infra pkm quantifiedself">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>my. package | Mildly entertainingᵝ</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=4" />
+
+        
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    <!-- TODO eh, not sure if this symbol is good for that... -->
+                    ·
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                    ·
+                    <a class="fat" href="./notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
+                </span>
+                <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<!-- <link rel="stylesheet" href="/css/org.css" /> -->
+
+<link rel="stylesheet" href="./css/htmlize.css" />
+<link rel="stylesheet" href="./css/org-default.css" />
+
+<link rel="stylesheet" href="./css/org-extra.css?v=3" />
+
+
+
+<article>
+    
+    <div>THIS IS A DRAFT! It will appear on the main page once finished!</div>
+    
+    <section class="post-title">
+    <h1>my. package</h1>
+    <div class="summary">Connecting and interacting with my personal data</h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org0000000">1. <span class="todo TODO">TODO</span> <span class="priority">[A]</span> I want to connect all my data</a></li>
+<li><a href="#org0000001">2. <span class="todo TODO">TODO</span> data needs to interact</a></li>
+<li><a href="#org0000002">3. <span class="todo TODO">TODO</span> <span class="priority">[B]</span> post structure of private my. package via org-babel?   <span class="tag"><span class="my">my</span></span></a></li>
+<li><a href="#org0000003">4. <span class="todo TODO">TODO</span> <span class="priority">[C]</span> maybe first post public correlation between sleep and something else? easy candidates are days of week I guess   <span class="tag"><span class="blog">blog</span> <span class="my">my</span></span></a></li>
+<li><a href="#org0000006">5. <span class="todo TODO">TODO</span> <span class="priority">[C]</span> why python?</a>
+<ul>
+<li><a href="#org0000004"><span class="timestamp-wrapper"><span class="timestamp">[2019-10-01 21:05]</span></span> makes it easier to share with other people</a></li>
+<li><a href="#org0000005"><span class="timestamp-wrapper"><span class="timestamp">[2019-11-14 23:27]</span></span> tbh, deserves a whole separate post</a></li>
+</ul>
+</li>
+<li><a href="#org000000a">6. Principles I used when porting</a>
+<ul>
+<li><a href="#org0000007"><span class="todo TODO">TODO</span> defensive: mypy helps a lot</a></li>
+<li><a href="#org0000009">separate data retrieval and data access</a></li>
+</ul>
+</li>
+<li><a href="#org0000012">7. Using it for other tools</a>
+<ul>
+<li><a href="#org000000b">orger</a></li>
+<li><a href="#org000000e">various tag:quantified-self dashboards</a></li>
+<li><a href="#org000000f">promnesia</a></li>
+<li><a href="#org0000010"><span class="todo TODO">TODO</span> timeline  tag:timeline</a></li>
+<li><a href="#org0000011">easy interactive querying (see example)</a></li>
+</ul>
+</li>
+<li><a href="#examples">8. Example usecases</a>
+<ul>
+<li><a href="#lastfm">What were my music listening stats for 2018?</a></li>
+<li><a href="#hypothesis_stats">What are the most interesting Slate Star Codex posts I've read?</a></li>
+<li><a href="#workouts">Accessing workouts data</a></li>
+<li><a href="#kobo_progress">Book reading progress</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+I'm using <a href="https://github.com/karlicoss/my">my</a> package as main interface to access my all my personal data.
+</p>
+<p>
+I tried different things over the years and I figured.
+</p>
+<div class="outline-2" id="outline-container-org0000000">
+<h2 id="org0000000"><a class="headerlink" href="#org0000000">¶</a><span class="section-number-2">1</span> <span class="todo TODO">TODO</span> <span class="priority">[A]</span> I want to connect all my data</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000001">
+<h2 id="org0000001"><a class="headerlink" href="#org0000001">¶</a><span class="section-number-2">2</span> <span class="todo TODO">TODO</span> data needs to interact</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>e.g. plotting sleep data vs exercise data</li>
+<li>weight data vs food consumption data</li>
+<li>sleep data vs rescuetime stats</li>
+<li>resting HR on whether or not you had a day off work</li>
+<li>merging e.g. jawbone, fitbit and emfit sleep data (which I used at different times)</li>
+</ul>
+<p>
+Saddest thing for me is that while I made it as simple as possible, it is still requires some effort to set up even for software engineers let alone people without technical expertise.
+</p>
+<p>
+I'm not quite sure how to make it easier
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000002">
+<h2 id="org0000002"><a class="headerlink" href="#org0000002">¶</a><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> <span class="priority">[B]</span> post structure of private my. package via org-babel?   <span class="tag"><span class="my">my</span></span></h2>
+<div class="outline-text-2" id="text-3">
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000003">
+<h2 id="org0000003"><a class="headerlink" href="#org0000003">¶</a><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> <span class="priority">[C]</span> maybe first post public correlation between sleep and something else? easy candidates are days of week I guess   <span class="tag"><span class="blog">blog</span> <span class="my">my</span></span></h2>
+<div class="outline-text-2" id="text-4">
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000006">
+<h2 id="org0000006"><a class="headerlink" href="#org0000006">¶</a><span class="section-number-2">5</span> <span class="todo TODO">TODO</span> <span class="priority">[C]</span> why python?</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div class="outline-3" id="outline-container-org0000004">
+<h3 id="org0000004"><a class="headerlink" href="#org0000004">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2019-10-01 21:05]</span></span> makes it easier to share with other people</h3>
+</div>
+<div class="outline-3" id="outline-container-org0000005">
+<h3 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2019-11-14 23:27]</span></span> tbh, deserves a whole separate post</h3>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000000a">
+<h2 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><span class="section-number-2">6</span> Principles I used when porting</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div class="outline-3" id="outline-container-org0000007">
+<h3 id="org0000007"><a class="headerlink" href="#org0000007">¶</a><span class="todo TODO">TODO</span> defensive: <a href="./mypy-error-handling.html">mypy helps a lot</a></h3>
+</div>
+<div class="outline-3" id="outline-container-org0000009">
+<h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a>separate data retrieval and data access</h3>
+<div class="outline-text-3" id="text-org0000009">
+</div>
+<div class="outline-4" id="outline-container-org0000008">
+<h4 id="org0000008"><span class="todo TODO">TODO</span> write about historic data? offline first?</h4>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000012">
+<h2 id="org0000012"><a class="headerlink" href="#org0000012">¶</a><span class="section-number-2">7</span> Using it for other tools</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div class="outline-3" id="outline-container-org000000b">
+<h3 id="org000000b"><a class="headerlink" href="#org000000b">¶</a>orger</h3>
+</div>
+<div class="outline-3" id="outline-container-org000000e">
+<h3 id="org000000e"><a class="headerlink" href="#org000000e">¶</a>various <a class="post-tag" href="./tags.html#quantified-self">#quantified-self</a> dashboards</h3>
+<div class="outline-text-3" id="text-org000000e">
+</div>
+<div class="outline-4" id="outline-container-org000000c">
+<h4 id="org000000c"><span class="todo TODO">TODO</span> link to plots</h4>
+</div>
+<div class="outline-4" id="outline-container-org000000d">
+<h4 id="org000000d"><span class="todo TODO">TODO</span> I'm working on releasing rest of stuff</h4>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000f">
+<h3 id="org000000f"><a class="headerlink" href="#org000000f">¶</a><a href="https://github.com/karlicoss/promnesia">promnesia</a></h3>
+</div>
+<div class="outline-3" id="outline-container-org0000010">
+<h3 id="org0000010"><a class="headerlink" href="#org0000010">¶</a><span class="todo TODO">TODO</span> timeline  <a class="post-tag" href="./tags.html#timeline">#timeline</a></h3>
+</div>
+<div class="outline-3" id="outline-container-org0000011">
+<h3 id="org0000011"><a class="headerlink" href="#org0000011">¶</a>easy interactive querying (see example)</h3>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000017">
+<h2 id="examples"><a class="headerlink" href="#examples">¶</a><span class="section-number-2">8</span> Example usecases</h2>
+<div class="outline-text-2" id="text-examples">
+<p>
+Also see <a href="https://github.com/karlicoss/my#usage-examples">readme</a> for <samp class="inline">my.</samp> package.
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000013">
+<h3 id="lastfm"><a class="headerlink" href="#lastfm">¶</a>What were my music listening stats for 2018?</h3>
+<div class="outline-text-3" id="text-lastfm">
+<p>
+Single import away from getting tracks you listened to:
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">from</span> my.lastfm <span class="org-keyword">import</span> get_scrobbles
+<span class="org-variable-name">scrobbles</span> = get_scrobbles()
+scrobbles[200: 205]
+</pre>
+</div>
+<pre class="example">
+[Scrobble(raw={'album': 'Nevermind', 'artist': 'Nirvana', 'date': '1282488504', 'name': 'Drain You'}),
+ Scrobble(raw={'album': 'Dirt', 'artist': 'Alice in Chains', 'date': '1282489764', 'name': 'Would?'}),
+ Scrobble(raw={'album': 'Bob Dylan: The Collection', 'artist': 'Bob Dylan', 'date': '1282493517', 'name': 'Like a Rolling Stone'}),
+ Scrobble(raw={'album': 'Dark Passion Play', 'artist': 'Nightwish', 'date': '1282493819', 'name': 'Amaranth'}),
+ Scrobble(raw={'album': 'Rolled Gold +', 'artist': 'The Rolling Stones', 'date': '1282494161', 'name': "You Can't Always Get What You Want"})]
+</pre>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">import</span> pandas <span class="org-keyword">as</span> pd
+<span class="org-variable-name">df</span> = pd.DataFrame([{
+    <span class="org-string">'dt'</span>: s.dt, 
+    <span class="org-string">'track'</span>: s.track,
+} <span class="org-keyword">for</span> s <span class="org-keyword">in</span> scrobbles])
+<span class="org-variable-name">cdf</span> = df.set_index(<span class="org-string">'dt'</span>)
+<span class="org-variable-name">cdf</span> = cdf.set_index(cdf.index.tz_localize(<span class="org-constant">None</span>))
+cdf[200: 205]
+</pre>
+</div>
+<pre class="example">
+                                                                 track
+dt                                                                    
+2010-08-22 14:48:24                                Nirvana — Drain You
+2010-08-22 15:09:24                           Alice in Chains — Would?
+2010-08-22 16:11:57                   Bob Dylan — Like a Rolling Stone
+2010-08-22 16:16:59                               Nightwish — Amaranth
+2010-08-22 16:22:41  The Rolling Stones — You Can't Always Get What...
+</pre>
+<p>
+We can use <a href="https://github.com/martijnvermaat/calmap">calmap</a> library to plot a github-style listening activity map:
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">import</span> calmap
+<span class="org-keyword">import</span> matplotlib.pyplot <span class="org-keyword">as</span> plt
+plt.figure(figsize=(10, 2.3))
+calmap.yearplot(cdf[<span class="org-string">'track'</span>], how=<span class="org-string">'count'</span>, year=2018)
+plt.tight_layout()
+plt.title(<span class="org-string">'My listening activity for 2018'</span>)
+<span class="org-variable-name">plot_file</span> = <span class="org-string">'lastfm_2018.png'</span>
+plt.savefig(plot_file)
+plot_file
+</pre>
+</div>
+<div class="figure">
+<p><img alt="lastfm_2018.png" src="lastfm_2018.png" />
+</p>
+</div>
+<p>
+This isn't necessarily very insightful data, but fun to look at now and then!
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000014">
+<h3 id="hypothesis_stats"><a class="headerlink" href="#hypothesis_stats">¶</a>What are the most interesting Slate Star Codex posts I've read?</h3>
+<div class="outline-text-3" id="text-hypothesis_stats">
+<p>
+My friend asked me if I could recommend them posts I found interesting on <a href="https://slatestarcodex.com">Slate Star Codex</a>.
+With few lines of Python I can quickly recommend them posts I engaged most with, the ones I annotated most on <a href="https://hypothes.is">Hypothesis</a>.
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">from</span> my.hypothesis <span class="org-keyword">import</span> get_pages
+<span class="org-keyword">from</span> collections <span class="org-keyword">import</span> Counter
+<span class="org-variable-name">cc</span> = Counter({p.link: <span class="org-builtin">len</span>(p.highlights) <span class="org-keyword">for</span> p <span class="org-keyword">in</span> get_pages() <span class="org-keyword">if</span> <span class="org-string">'slatestarcodex'</span> <span class="org-keyword">in</span> p.link})
+<span class="org-keyword">return</span> cc.most_common(10)
+</pre>
+</div>
+<table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
+<colgroup>
+<col class="org-left" />
+<col class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><a href="http://slatestarcodex.com/2013/10/20/the-anti-reactionary-faq/">http://slatestarcodex.com/2013/10/20/the-anti-reactionary-faq/</a></td>
+<td class="org-right">32</td>
+</tr>
+<tr>
+<td class="org-left"><a href="https://slatestarcodex.com/2013/03/03/reactionary-philosophy-in-an-enormous-planet-sized-nutshell/">https://slatestarcodex.com/2013/03/03/reactionary-philosophy-in-an-enormous-planet-sized-nutshell/</a></td>
+<td class="org-right">17</td>
+</tr>
+<tr>
+<td class="org-left"><a href="http://slatestarcodex.com/2014/12/17/the-toxoplasma-of-rage/">http://slatestarcodex.com/2014/12/17/the-toxoplasma-of-rage/</a></td>
+<td class="org-right">16</td>
+</tr>
+<tr>
+<td class="org-left"><a href="https://slatestarcodex.com/2014/03/17/what-universal-human-experiences-are-you-missing-without-realizing-it/">https://slatestarcodex.com/2014/03/17/what-universal-human-experiences-are-you-missing-without-realizing-it/</a></td>
+<td class="org-right">16</td>
+</tr>
+<tr>
+<td class="org-left"><a href="http://slatestarcodex.com/2014/07/30/meditations-on-moloch/">http://slatestarcodex.com/2014/07/30/meditations-on-moloch/</a></td>
+<td class="org-right">12</td>
+</tr>
+<tr>
+<td class="org-left"><a href="http://slatestarcodex.com/2015/04/21/universal-love-said-the-cactus-person/">http://slatestarcodex.com/2015/04/21/universal-love-said-the-cactus-person/</a></td>
+<td class="org-right">11</td>
+</tr>
+<tr>
+<td class="org-left"><a href="http://slatestarcodex.com/2015/01/01/untitled/">http://slatestarcodex.com/2015/01/01/untitled/</a></td>
+<td class="org-right">11</td>
+</tr>
+<tr>
+<td class="org-left"><a href="https://slatestarcodex.com/2017/02/09/considerations-on-cost-disease/">https://slatestarcodex.com/2017/02/09/considerations-on-cost-disease/</a></td>
+<td class="org-right">10</td>
+</tr>
+<tr>
+<td class="org-left"><a href="http://slatestarcodex.com/2013/04/25/in-defense-of-psych-treatment-for-attempted-suicide/">http://slatestarcodex.com/2013/04/25/in-defense-of-psych-treatment-for-attempted-suicide/</a></td>
+<td class="org-right">9</td>
+</tr>
+<tr>
+<td class="org-left"><a href="https://slatestarcodex.com/2014/09/30/i-can-tolerate-anything-except-the-outgroup/">https://slatestarcodex.com/2014/09/30/i-can-tolerate-anything-except-the-outgroup/</a></td>
+<td class="org-right">9</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000015">
+<h3 id="workouts"><a class="headerlink" href="#workouts">¶</a>Accessing workouts data</h3>
+<div class="outline-text-3" id="text-workouts">
+<p>
+E.g. see use of <code class="inline">my.workouts</code> <a href=".//heartbeats_vs_kcals.html">here</a>.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000016">
+<h3 id="kobo_progress"><a class="headerlink" href="#kobo_progress">¶</a>Book reading progress</h3>
+<div class="outline-text-3" id="text-kobo_progress">
+<p>
+I publish my reading stats on <a href="https://www.goodreads.com/user/show/22191391-dima-gerasimov">Goodreads</a> so other people can see what I'm reading/have read, but Kobo <a href="https://beepb00p.xyz/ideas.html#kobo2goodreads">lacks integration</a> with Goodreads.
+I'm using <a href="https://github.com/karlicoss/kobuddy">kobuddy</a> to access my my Kobo data, and I've got a regular task that reminds me to sync my progress once a month.
+</p>
+<p>
+The task looks like this:
+</p>
+<div class="org-src-container">
+<pre class="src src-org"><span class="org-org-level-1">* </span><span class="org-org-todo">TODO</span><span class="org-org-level-1"> </span><span class="org-org-priority">[#C]</span><span class="org-org-level-1"> sync </span><span class="org-org-link"><a href="https://goodreads.com">reading progress</a></span><span class="org-org-level-1"> with kobo </span>
+  <span class="org-org-special-keyword">DEADLINE:</span> <span class="org-org-date">&lt;2019-11-24 Sun .+4w -0d&gt;</span>
+<span class="org-org-link"><a href="eshell: with_my python3 -c "import my.books.kobo as kobo; kobo.print_progress()"">eshell: with_my python3 -c "import my.books.kobo as kobo; kobo.print_progress()"</a></span>
+</pre>
+</div>
+<p>
+With a single enter press on the embedded eshell command I can print the progress and fill in the completed books on Goodreads, e.g.:
+</p>
+<pre class="example">
+
+A_Mathematician's_Apology by G. H. Hardy
+Started : 21 Aug 2018 11:44
+Finished: 22 Aug 2018 12:32
+
+Fear and Loathing in Las Vegas: A Savage Journey to the Heart of the American Dream (Vintage) by Thompson, Hunter S.
+Started : 06 Sep 2018 05:54
+Finished: 09 Sep 2018 12:21
+
+Sapiens: A Brief History of Humankind by Yuval Noah Harari
+Started : 09 Sep 2018 12:22
+Finished: 16 Sep 2018 07:25
+
+Inadequate Equilibria: Where and How Civilizations Get Stuck by Eliezer Yudkowsky
+Started : 31 Jul 2018 22:54
+Finished: 16 Sep 2018 07:25
+
+Albion Dreaming by Andy Roberts
+Started : 20 Aug 2018 21:16
+Finished: 16 Sep 2018 07:26
+</pre>
+</div>
+</div>
+</div>
+
+    </section>
+
+    
+    <section class="footer">
+        <div class="post-tags"><a class="post-tag" href="./tags.html#infra">#infra</a> <a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#quantifiedself">#quantifiedself</a></div>
+        <!-- TODO post-date? -->
+        <div class="date">14 November 2019</div>
+    </section>
+    
+
+    
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_mypkg"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
+        
+        <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
+            
+            
+        </footer>
+    </body>
+</html>

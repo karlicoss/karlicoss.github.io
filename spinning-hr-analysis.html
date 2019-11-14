@@ -166,11 +166,16 @@
 <span class="s2">56 10 129</span>
 <span class="s2">57 10 131</span>
 <span class="s2">&quot;&quot;&quot;</span>
+
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
-    <span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">datas</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span>
-    <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'rpm'</span><span class="p">,</span> <span class="s1">'resistance'</span><span class="p">,</span> <span class="s1">'watts'</span><span class="p">],</span>
-<span class="p">)</span>
+<span class="k">def</span> <span class="nf">make_df</span><span class="p">(</span><span class="n">datas</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">datas</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'rpm'</span><span class="p">,</span> <span class="s1">'resistance'</span><span class="p">,</span> <span class="s1">'watts'</span><span class="p">],</span>
+    <span class="p">)</span>    
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">make_df</span><span class="p">(</span><span class="n">datas</span><span class="p">)</span>
+
 <span class="c1"># btw, if anyone knows a more elegant way of conveting such a table in dataframe, I'd be happy to know!</span>
 </pre></div>
 
@@ -335,24 +340,27 @@
 <span class="kn">import</span> <span class="nn">matplotlib</span>
 <span class="n">matplotlib</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">'font'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">'regular'</span><span class="p">)</span>
 
-<span class="n">dff</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="n">dff</span><span class="p">[</span><span class="s1">'rpm x resistance'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'rpm'</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">'resistance'</span><span class="p">]</span>
+<span class="k">def</span> <span class="nf">plot_df</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">dff</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">dff</span><span class="p">[</span><span class="s1">'rpm x resistance'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'rpm'</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">'resistance'</span><span class="p">]</span>
 
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">dff</span><span class="p">[</span><span class="s1">'rpm x resistance'</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">dff</span><span class="p">[</span><span class="s1">'watts'</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">dff</span><span class="p">[</span><span class="s1">'rpm x resistance'</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">dff</span><span class="p">[</span><span class="s1">'watts'</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
-    <span class="n">data</span><span class="o">=</span><span class="n">dff</span><span class="p">,</span>
-    <span class="n">x</span><span class="o">=</span><span class="s1">'rpm x resistance'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'watts'</span><span class="p">,</span>
-    <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
-<span class="p">)</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">dff</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="s1">'rpm x resistance'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'watts'</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Power, theoretical, angular velocity multiplied by resistance'</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Power, watts as reported by the machine'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Power, theoretical, angular velocity multiplied by resistance'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Power, watts as reported by the machine'</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+<span class="n">plot_df</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -392,10 +400,16 @@
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">dff</span><span class="p">[[</span><span class="s1">'rpm x resistance'</span><span class="p">]]</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
-<span class="n">res</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">dff</span><span class="p">[</span><span class="s1">'watts'</span><span class="p">],</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<span class="k">def</span> <span class="nf">print_stats</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">dff</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">dff</span><span class="p">[</span><span class="s1">'rpm x resistance'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'rpm'</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">'resistance'</span><span class="p">]</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">dff</span><span class="p">[[</span><span class="s1">'rpm x resistance'</span><span class="p">]]</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">dff</span><span class="p">[</span><span class="s1">'watts'</span><span class="p">],</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="c1"># TODO ugh. remove Date/Time from summary... </span>
+    <span class="c1"># https://www.statsmodels.org/stable/_modules/statsmodels/iolib/summary.html#Summary</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<span class="n">print_stats</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -417,8 +431,8 @@
 Dep. Variable:                  watts   R-squared:                       0.982
 Model:                            OLS   Adj. R-squared:                  0.981
 Method:                 Least Squares   F-statistic:                     2109.
-Date:                Sat, 09 Nov 2019   Prob (F-statistic):           1.43e-35
-Time:                        17:41:57   Log-Likelihood:                -138.70
+Date:                Thu, 14 Nov 2019   Prob (F-statistic):           1.43e-35
+Time:                        23:47:15   Log-Likelihood:                -138.70
 No. Observations:                  41   AIC:                             281.4
 Df Residuals:                      39   BIC:                             284.8
 Df Model:                           1                                         
@@ -472,6 +486,171 @@ strong multicollinearity or other numerical problems.
 <p>Free parameter is about <code>-100</code> watts, which is quite a lot considering my high internsity intervals are <code>250</code> watts. 
 I don't think it can be explained by friction either: if anything, friction would shift the plot up and make the free coeffecient positive.</p>
 <p>At this point, I'm not sure what it means. I guess I'll try to make more measurements at really low resistances and speeds to make the model more complete, but I would be too surprised if either watts or resistance reported by the machine are just made up.</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>UPD from 2019-11-14: I collected more data corresponding to different resistances/velocities. It's actually quite hard to consisntently spin very slowly, so I think I might need one more round of data collection to complete the picture!</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">new_df</span> <span class="o">=</span> <span class="n">make_df</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">96  4  66</span>
+<span class="s2">99  4  69</span>
+<span class="s2">101 6  146</span>
+<span class="s2">103 6  149</span>
+<span class="s2">110 6  166</span>
+<span class="s2">111 6  170</span>
+<span class="s2">50  13 186</span>
+<span class="s2">36  13 107</span>
+<span class="s2">36  13 105</span>
+<span class="s2">31  10 41</span>
+<span class="s2">30  10 44</span>
+<span class="s2">28  10 39</span>
+<span class="s2">117 8  323</span>
+<span class="s2">116 8  320</span>
+<span class="s2">116 8  322</span>
+<span class="s2">48  6  40</span>
+<span class="s2">49  6  37</span>
+<span class="s2">60  2  24</span>
+<span class="s2">59  2  23</span>
+<span class="s2">86  2  40</span>
+<span class="s2">106 2  48</span>
+<span class="s2">62  5  44</span>
+<span class="s2">61  5  44</span>
+<span class="s2">81  5  70</span>
+<span class="s2">81  5  70</span>
+<span class="s2">93  5  90</span>
+<span class="s2">97  5  97</span>
+<span class="s2">35  12 87</span>
+<span class="s2">33  12 81</span>
+<span class="s2">25  12 51</span>
+<span class="s2">26  12 55</span>
+<span class="s2">27  1  50</span>
+<span class="s2">39  8  46</span>
+<span class="s2">39  8  44</span>
+<span class="s2">30  8  29</span>
+<span class="s2">30  8  31</span>
+<span class="s2">32  8  31</span>
+<span class="s2">32  8  31</span>
+<span class="s2">29  8  29</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">new_df</span><span class="p">])</span>
+<span class="n">plot_df</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">print_stats</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="spinning-hr-analysis_files/spinning-hr-analysis_10_0.png">
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  watts   R-squared:                       0.924
+Model:                            OLS   Adj. R-squared:                  0.923
+Method:                 Least Squares   F-statistic:                     952.2
+Date:                Thu, 14 Nov 2019   Prob (F-statistic):           1.82e-45
+Time:                        23:47:15   Log-Likelihood:                -352.79
+No. Observations:                  80   AIC:                             709.6
+Df Residuals:                      78   BIC:                             714.3
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+====================================================================================
+                       coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------------
+const              -60.3329      6.129     -9.843      0.000     -72.535     -48.130
+rpm x resistance     0.3614      0.012     30.857      0.000       0.338       0.385
+==============================================================================
+Omnibus:                       57.648   Durbin-Watson:                   1.094
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              238.330
+Skew:                           2.326   Prob(JB):                     1.77e-52
+Kurtosis:                      10.062   Cond. No.                     1.42e+03
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.42e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>WIP: Ok, it clearly started diverging from the nice linear dependency, especially at lower values of theoretical power. It's time to try to break it down and see which of the components is to blame: resistance or speed.</p>
 
 </div>
 </div>

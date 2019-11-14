@@ -78,6 +78,7 @@
 <li><a href="#links">Links</a></li>
 <li><a href="#org0000009">Spacing between items</a></li>
 <li><a href="#org000000a">Different kind of inline code</a></li>
+<li><a href="#plot">plot</a></li>
 </ul>
 </div>
 </div>
@@ -203,6 +204,27 @@ and some text
 <p>
 <code class="inline">this_is_code()</code> and <samp class="inline">/this/is/verbatim</samp>
 </p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000000b">
+<h2 id="plot"><a class="headerlink" href="#plot">¶</a>plot</h2>
+<div class="outline-text-2" id="text-plot">
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">import</span> matplotlib, numpy
+matplotlib.use(<span class="org-string">'Agg'</span>)
+<span class="org-keyword">import</span> matplotlib.pyplot <span class="org-keyword">as</span> plt
+<span class="org-variable-name">fig</span> = plt.figure(figsize=(6, 2))
+<span class="org-variable-name">x</span> = numpy.linspace(-10, 10)
+plt.plot(numpy.sin(x))
+fig.tight_layout()
+plt.savefig(<span class="org-string">'test.png'</span>)
+<span class="org-keyword">return</span> <span class="org-string">'test.png'</span> 
+</pre>
+</div>
+<div class="figure">
+<p><img alt="test.png" src="test.png" />
+</p>
+</div>
 </div>
 </div>
 
