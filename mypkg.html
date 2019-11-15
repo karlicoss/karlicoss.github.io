@@ -90,16 +90,16 @@
 <li><a href="#org0000009">separate data retrieval and data access</a></li>
 </ul>
 </li>
-<li><a href="#org0000012">7. Using it for other tools</a>
+<li><a href="#org0000012">7. Using the package</a>
 <ul>
-<li><a href="#org000000b">orger</a></li>
+<li><a href="#org000000b">Orger, tool to convert data into readable and searchable Org-mode views</a></li>
 <li><a href="#org000000e">various tag:quantified-self dashboards</a></li>
-<li><a href="#org000000f">promnesia</a></li>
+<li><a href="#org000000f"><span class="todo TODO">TODO</span> promnesia</a></li>
 <li><a href="#org0000010"><span class="todo TODO">TODO</span> timeline  tag:timeline</a></li>
 <li><a href="#org0000011">easy interactive querying (see example)</a></li>
 </ul>
 </li>
-<li><a href="#examples">8. Example usecases</a>
+<li><a href="#examples">8. Other usecases</a>
 <ul>
 <li><a href="#lastfm">What were my music listening stats for 2018?</a></li>
 <li><a href="#hypothesis_stats">What are the most interesting Slate Star Codex posts I've read?</a></li>
@@ -107,6 +107,7 @@
 <li><a href="#kobo_progress">Book reading progress</a></li>
 </ul>
 </li>
+<li><a href="#similar">9. Similar projects/setups</a></li>
 </ul>
 </div>
 </div>
@@ -177,11 +178,14 @@ I'm not quite sure how to make it easier
 </div>
 </div>
 <div class="outline-2" id="outline-container-org0000012">
-<h2 id="org0000012"><a class="headerlink" href="#org0000012">¶</a><span class="section-number-2">7</span> Using it for other tools</h2>
+<h2 id="org0000012"><a class="headerlink" href="#org0000012">¶</a><span class="section-number-2">7</span> Using the package</h2>
 <div class="outline-text-2" id="text-7">
+<p>
+Mainly I use it to provider data for my automated scripts, tools and dashboards.
+</p>
 </div>
 <div class="outline-3" id="outline-container-org000000b">
-<h3 id="org000000b"><a class="headerlink" href="#org000000b">¶</a>orger</h3>
+<h3 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><a href="file:///orger.html">Orger</a>, tool to convert data into readable and searchable Org-mode views</h3>
 </div>
 <div class="outline-3" id="outline-container-org000000e">
 <h3 id="org000000e"><a class="headerlink" href="#org000000e">¶</a>various <a class="post-tag" href="./tags.html#quantified-self">#quantified-self</a> dashboards</h3>
@@ -195,7 +199,7 @@ I'm not quite sure how to make it easier
 </div>
 </div>
 <div class="outline-3" id="outline-container-org000000f">
-<h3 id="org000000f"><a class="headerlink" href="#org000000f">¶</a><a href="https://github.com/karlicoss/promnesia">promnesia</a></h3>
+<h3 id="org000000f"><a class="headerlink" href="#org000000f">¶</a><span class="todo TODO">TODO</span> <a href="https://github.com/karlicoss/promnesia">promnesia</a></h3>
 </div>
 <div class="outline-3" id="outline-container-org0000010">
 <h3 id="org0000010"><a class="headerlink" href="#org0000010">¶</a><span class="todo TODO">TODO</span> timeline  <a class="post-tag" href="./tags.html#timeline">#timeline</a></h3>
@@ -205,7 +209,7 @@ I'm not quite sure how to make it easier
 </div>
 </div>
 <div class="outline-2" id="outline-container-org0000017">
-<h2 id="examples"><a class="headerlink" href="#examples">¶</a><span class="section-number-2">8</span> Example usecases</h2>
+<h2 id="examples"><a class="headerlink" href="#examples">¶</a><span class="section-number-2">8</span> Other usecases</h2>
 <div class="outline-text-2" id="text-examples">
 <p>
 Also see <a href="https://github.com/karlicoss/my#usage-examples">readme</a> for <samp class="inline">my.</samp> package.
@@ -251,7 +255,7 @@ dt
 2010-08-22 16:22:41  The Rolling Stones — You Can't Always Get What...
 </pre>
 <p>
-We can use <a href="https://github.com/martijnvermaat/calmap">calmap</a> library to plot a github-style listening activity map:
+We can use <a href="https://github.com/martijnvermaat/calmap">calmap</a> library to plot a github-style music listening activity heatmap:
 </p>
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-keyword">import</span> calmap
@@ -259,7 +263,7 @@ We can use <a href="https://github.com/martijnvermaat/calmap">calmap</a> library
 plt.figure(figsize=(10, 2.3))
 calmap.yearplot(cdf[<span class="org-string">'track'</span>], how=<span class="org-string">'count'</span>, year=2018)
 plt.tight_layout()
-plt.title(<span class="org-string">'My listening activity for 2018'</span>)
+plt.title(<span class="org-string">'My music listening activity for 2018'</span>)
 <span class="org-variable-name">plot_file</span> = <span class="org-string">'lastfm_2018.png'</span>
 plt.savefig(plot_file)
 plot_file
@@ -388,6 +392,14 @@ Started : 20 Aug 2018 21:16
 Finished: 16 Sep 2018 07:26
 </pre>
 </div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000018">
+<h2 id="similar"><a class="headerlink" href="#similar">¶</a><span class="section-number-2">9</span> Similar projects/setups</h2>
+<div class="outline-text-2" id="text-similar">
+<ul class="org-ul">
+<li><a href="https://github.com/markwk/qs_ledger">QS ledger</a> from Mark Koester</li>
+</ul>
 </div>
 </div>
 

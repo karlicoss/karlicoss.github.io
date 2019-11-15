@@ -12,7 +12,7 @@
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
         
-        <meta name="keywords" content="cognitive quantified-self selenium">
+        <meta name="keywords" content="quantified-self cognitive selenium">
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
@@ -63,17 +63,24 @@
 
     <section class="content">
     <p><a href="http://www.quantified-mind.com/about">Quantified Mind</a> is a website which provides a handful of cognitive tests. It lets you choose a bunch of tests and you can run them whenever you wish, adding quantitative variables you are measuring alongside (e.g. hours of sleep, or cups of coffee you drank) or just arbitrary notes. <a href="http://quantifiedself.com/wp-content/uploads/2012/04/QM_collage.jpg">Here</a> is how it looks like.</p>
-<p>Why is it interesting? If you are like me and don’t feel much obvious subjective effects of conventional stimulants, sleep or exercise, it would be great to have some objective measure in case the effects are subtle but present. For you it could be saving half an hour of sleep per night by using melatonin, or realizing coffee doesn’t have effect on your cognitive performance, or something else.</p>
-<p>That sounded pretty interesting to me, and I started doing some tests (simple reaction time, visual matching, sorting and 1-back). However, given that effects are subtle in the first place, I wasn’t expecting to get any insights by gazing at collected data, so I needed to make sure I can export my experiments to run some sort of regression on them later.</p>
-<p>To my disappointment, when I ran thirty or something sessions and downloaded the CSV, it didn’t have error rate/reaction time, but you are only getting some magical ‘score’. It was unclear what it meant from the FAQ so I emailed the authors and got a response:</p>
+<p>Why is it interesting? If you are <a href="./tags.html#quantified-self">like me</a> and don’t feel any obvious/significant subjective effects of conventional stimulants, sleep or exercise, it would be great to have some objective measure in case the effects are subtle but present. For you it could be saving half an hour of sleep per night by using melatonin, or realizing coffee doesn’t have effect on your cognitive performance, or something else.</p>
+<p>That sounded pretty interesting to me, and I started taking some tests (simple reaction time, visual matching, sorting and 1-back). However, given that effects are subtle in the first place, I wasn’t expecting to get any insights by gazing at collected data, so I needed to make sure I can export my experiments to run some sort of regression on them later.</p>
+<p>To my disappointment, when I ran thirty or something sessions and exported the CSV, it didn’t have error rate/reaction time, but you are only getting some magical ‘score’. It was unclear what it meant from the FAQ so I emailed the authors and got a response:</p>
 <pre><code>As for scores - it's a calculation that involves everything in a test, so for simple reaction time it involves both reaction times
 and accuracy. 
 The actual formulas aren't available, but the instructions are always simple: go for accuracy first, and try to be as fast as you can
 without sacrificing accuracy.</code></pre>
-<p>“Formulas aren’t available” was quite unsatisfactory to me. What are they actually measuring? So before carrying on and doing more tests I tried to reverse engineer the model.</p>
+<p>“Formulas aren’t available” was quite unsatisfactory to me. What are they actually measuring? So before carrying on and collecting more data I tried to reverse engineer the model.</p>
 <h1 id="implementation">Implementation</h1>
-<p>The idea was simple: choose couple of tests that are easy to automate. Luckily, the website is not using flash and not very heavy on javascript or obfuscation, so interacting with elements via javascript was fairly easy. In essence, I’m varying average reaction time (delay) and number of errors (which I make deliberately in the script), and inject the script into chrome via Selenium. Then I record the scores for further analysis.</p>
-<p>If you wanna experiment by yourself, <a href="https://github.com/karlicoss/qm-reverse-engineering">here’s</a> the repository and if you don’t feel like running the scripts for a day to collect data, I uploaded it to <a href="https://github.com/karlicoss/qm-reverse-engineering/releases">releases</a>.</p>
+<p>The idea was simple: choose couple of tests that are easy to <strong>automate</strong> via Selenium Webdriver. Automation was necessary to collect lots of data corresponding to different input performance characteristics.</p>
+<p>In essence:</p>
+<ul>
+<li>I’m varying <strong>average reaction time</strong> (delay) and <strong>number of errors</strong> (which I make deliberately)</li>
+<li>then I <a href="https://github.com/karlicoss/qm-reverse-engineering/blob/master/js_scripts.py">generate</a> a bit of Javascript and inject it into the browser via Selenium.</li>
+<li>once the automated test session is finished, I recorded the score for further analysis.</li>
+</ul>
+<p>Thankfully, the website is not using flash and is not heavy on obfuscation, so interacting with elements via javascript was fairly easy.</p>
+<p>If you wanna experiment by yourself, <a href="https://github.com/karlicoss/qm-reverse-engineering">here’s</a> the repository and if you don’t feel like running the scripts for a day to collect data, I also uploaded it to <a href="https://github.com/karlicoss/qm-reverse-engineering/releases">releases</a>.</p>
 <h1 id="tests">Tests</h1>
 <p>I’ve chosen “Simple reaction time” and “Visual matching”. From the <a href="http://www.quantified-mind.com/science">“science”</a> section:</p>
 <pre><code>The first is “Simple Reaction Time,” which assesses how quickly a person can respond to a single stimulus (a circle that turns 
@@ -90,12 +97,18 @@ the two grids are identical.</code></pre>
 <h1 id="observations">Observations</h1>
 <ul>
 <li><p>Same score could mean different things; you can see it from the plots if you draw horizontal lines, they would intersect multiple curves corresponding to different delays.</p>
-<p>So, for instance, if you get score 600 on visual matching, that could mean that you did the test with 880ms reaction and 0 errors, or with 840ms reaction and 2 errors or 760ms reaction and 4 errors. These are fairly different results and even though it’s good to have some sort of aggregate score, it’s also useful to distinguish. E.g. maybe caffeine makes you less patient so you press early and make more errors.</p></li>
-<li><p>For low reaction time (&lt;300ms for simple reaction time &lt;600ms for visual matching), the plots don’t look continuous, there are some sudden drops. That’s pretty suspicious IMO.</p>
+<p>So, for instance, if you get score 600 on visual matching, that could mean that you did the test with:</p>
+<ul>
+<li>880ms reaction and 0 errors, or</li>
+<li>840ms reaction and 2 errors, or</li>
+<li>760ms reaction and 4 errors</li>
+</ul>
+<p>These are fairly different results and even though it’s good to have some sort of aggregate score, it’s also useful to distinguish. E.g. maybe caffeine makes you less patient so you press early and make more errors.</p></li>
+<li><p>For low reaction time (&lt;300ms for simple reaction time &lt;600ms for visual matching), the plots <strong>don’t look continuous</strong>, there are some sudden drops. That’s pretty suspicious IMO.</p>
 <p>Perhaps that could explained by the fact that such low times are impossible to get by average humans and they are out of the test domain.</p></li>
-<li><p>If you keep number of error fixed, one would expect that score grows as the reaction time goes does. That is not the case on plots, probably related to the artifact above.</p></li>
-<li><p>If you keep reaction time fixed, you would expect the score to decrease monotonically with the number of errors. You can see that for simple reaction time after 600ms, the score actually monotonically <strong>increases</strong> as you make more errors. Again, one could argue that reaction of 600 ms is too long for average human on this test (e.g. I score about 230), but I can easily imagine drugs (even such as alcohol) resulting in these scores, which could also be interesting to measure.</p></li>
-<li><p>If you think about, 8 (out of 16) errors is what you would get on visual matching if you answer randomly (which you could do with almost arbitrary low reaction time). So if you do that, say, with 400ms delay, according to the plot you would score around 620 points. Which is what I get by doing the test myself with 800ms reaction and making 1 error. So what does the score represent then?</p></li>
+<li><p>If you keep number of errors fixed, one would expect that score grows as the reaction time goes down. That is not the case on plots, probably related to the artifact above.</p></li>
+<li><p>If you keep reaction time fixed, you would expect the score to decrease monotonically with the number of errors. You can see that for simple reaction time after 600ms, the score actually monotonically <strong>increases as you make more errors</strong>. Again, one could argue that reaction of 600 ms is too long for average human on this test (e.g. I score about 230), but I can easily imagine drugs (even such as alcohol) resulting in these scores, which could also be interesting to measure.</p></li>
+<li><p>If you think about, 8 (out of 16) errors is what you would get on visual matching <strong>if you answer completely at random</strong> (which you could do with almost arbitrary low reaction time). So if you do that, say, with 400ms delay, according to the plot you would score around 620 points. Which is what I get by doing the test myself with 800ms reaction and making 1 error. So what does the score represent then?</p></li>
 </ul>
 <h1 id="summary">Summary</h1>
 <p>I can’t see how is that score meaningful and I’m glad I didn’t spend more time doing these tests. Perhaps one is better off measuring reaction time directly instead of some mystical ‘score’.</p>
@@ -105,7 +118,7 @@ the two grids are identical.</code></pre>
 
     
     <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#cognitive">#cognitive</a> <a class="post-tag" href="./tags.html#quantified-self">#quantified-self</a> <a class="post-tag" href="./tags.html#selenium">#selenium</a></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#quantified-self">#quantified-self</a> <a class="post-tag" href="./tags.html#cognitive">#cognitive</a> <a class="post-tag" href="./tags.html#selenium">#selenium</a></div>
         <!-- TODO post-date? -->
         <div class="date">06 March 2019</div>
     </section>

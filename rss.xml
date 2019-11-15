@@ -3130,7 +3130,7 @@ Let me know what you think! I'm open to all feedback.
 <li><a href="#org0000010">6. What makes Orger good?</a></li>
 <li><a href="#using">7. Using Orger views</a>
 <ul>
-<li><a href="#org0000011">Typical use patterns</a></li>
+<li><a href="#usecases">Typical use patterns</a></li>
 </ul>
 </li>
 <li><a href="#improvements">8. Potential improvements</a>
@@ -3141,7 +3141,8 @@ Let me know what you think! I'm open to all feedback.
 <li><a href="#org0000016"><span class="todo TODO">TODO</span> potential for race condition</a></li>
 </ul>
 </li>
-<li><a href="#org0000018">9. ----</a></li>
+<li><a href="#similar">9. Similar projects</a></li>
+<li><a href="#org0000019">10. ----</a></li>
 </ul>
 </div>
 </div>
@@ -3655,36 +3656,32 @@ Also the fact that it's a real programming language rather than some YAML config
 <h2 id="using"><a class="headerlink" href="#using">¶</a><span class="section-number-2">7</span> Using Orger views</h2>
 <div class="outline-text-2" id="text-using">
 <p>
-Apart from, obviously, opening org mode file in your favorite text editor, one major strength of this system is being able to search over them.
+Apart from, obviously, opening org mode file in your favorite text editor, one major strength of this system is being able to effortlessly search over them. 
 </p>
 <p>
-I'll write about my setup separately at some point, but for now I'll give a quick summary and clues.
-</p>
-<p>
-On my desktop I'm just using spacemacs or <a href="https://github.com/karlicoss/cloudmacs">cloudmacs</a> from web browser.
+I'm writing extensively about my information search setup <a href="./pkm-search.html#personal_information">here</a>. In summary:
 </p>
 <ul class="org-ul">
-<li>I'm usually just using <a href="https://github.com/syohex/emacs-helm-ag">helm-ag</a> with <a href="https://github.com/BurntSushi/ripgrep">ripgrep</a> (your can find how to marry them <a href="https://gist.github.com/pesterhazy/fabd629fbb89a6cd3d3b92246ff29779">here</a>).</li>
-<li>sometimes <a href="https://github.com/emacsorphanage/helm-swoop">helm-swoop</a> is very convenient, especially <samp class="inline">helm-multi-swoop</samp> function.</li>
+<li>on my desktop I'm just using spacemacs or <a href="https://github.com/karlicoss/cloudmacs">cloudmacs</a> from web browser</li>
+<li>in Emacs, I'm usually just using <a href="https://github.com/syohex/emacs-helm-ag">helm-ag</a> with <a href="https://github.com/BurntSushi/ripgrep">ripgrep</a></li>
+<li>sometimes <a href="https://github.com/emacsorphanage/helm-swoop">helm-swoop</a> is very convenient</li>
+<li><a href="https://orgmode.org/manual/Matching-tags-and-properties.html"><samp class="inline">org-tags-view</samp></a> or <a href="https://github.com/alphapapa/org-ql#helm-org-ql"><samp class="inline">helm-org-ql</samp></a> for structured Org-mode search</li>
+<li>I've got hotkeys set up that invoke Emacs window with search prompt in a blink</li>
 </ul>
 <p>
-These two are incremental (instant feedback) and effectively instantaneous. For more structured search you could use:
+On my phone I'm using:
 </p>
 <ul class="org-ul">
-<li>good old <a href="https://orgmode.org/manual/Matching-tags-and-properties.html"><samp class="inline">org-tags-view</samp></a></li>
-<li>org-ql with <a href="https://github.com/alphapapa/org-ql#helm-org-ql"><samp class="inline">helm-org-ql</samp></a> is a nicer and incremental alternative</li>
+<li><a href="https://github.com/orgzly/orgzly-android">orglzy</a> for structured search/viewing Org-mode files</li>
+<li><a href="https://play.google.com/store/apps/details?id=com.docsearch.pro">Docsearch +</a> for</li>
 </ul>
-<p>
-On my Android phone I'm using <a href="https://github.com/orgzly/orgzly-android">orglzy</a> for structured search/viewing Org-mode files. 
-Sometimes <a href="https://play.google.com/store/apps/details?id=com.docsearch.pro">Docsearch +</a> is also useful, which is indexing plaintext files and lets you search in them. While it's not tailored for org-mode files, it's usually good enough for me.
-</p>
 <p>
 You can also set up some proper indexing daemon like <a href="https://www.lesbonscomptes.com/recoll">recoll</a>.
 </p>
 </div>
 <div class="outline-3" id="outline-container-org0000011">
-<h3 id="org0000011"><a class="headerlink" href="#org0000011">¶</a>Typical use patterns</h3>
-<div class="outline-text-3" id="text-org0000011">
+<h3 id="usecases"><a class="headerlink" href="#usecases">¶</a>Typical use patterns</h3>
+<div class="outline-text-3" id="text-usecases">
 <p>
 I'll just give some of my use cases:
 </p>
@@ -3757,8 +3754,27 @@ Also I run Orger jobs at night (via cron) so it's quite unlikely to overlap with
 </div>
 </div>
 <div class="outline-2" id="outline-container-org0000018">
-<h2 id="org0000018"><a class="headerlink" href="#org0000018">¶</a><span class="section-number-2">9</span> ----</h2>
-<div class="outline-text-2" id="text-9">
+<h2 id="similar"><a class="headerlink" href="#similar">¶</a><span class="section-number-2">9</span> Similar projects</h2>
+<div class="outline-text-2" id="text-similar">
+<ul class="org-ul">
+<li><p>
+<a href="https://github.com/novoid/Memacs">Memacs</a> by Karl Voit.
+</p>
+<p>
+I only discovered it after I released Orger, so frankly haven't got to try it yet! It looks very similar in terms of goals and seems we can cooperate on rendering parts at least. 
+</p>
+<p>
+One (as I see it) big advantage of my setup is that data providers are abstracted away in <code class="inline">my.</code> package, which makes everything more modular and resilient. However Memacs seems to be flexible as well, so it can be used with e.g. <code class="inline">my.</code> package as well.
+</p>
+<p>
+If someone compares Memacs and Orger please let me know, I'd be happy to link it! It would also be more objective than comparison by myself!
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000019">
+<h2 id="org0000019"><a class="headerlink" href="#org0000019">¶</a><span class="section-number-2">10</span> ----</h2>
+<div class="outline-text-2" id="text-10">
 <p>
 I'd be interesting in hearing your thoughts or feature requests.
 </p>
@@ -6351,7 +6367,7 @@ This realization made the irritation go and made the rest of exploration a bit m
     <section class="content">
     <p>Even since I moved to the UK I’ve of course been separating waste. I wasn’t ever questioning the positive value of recycling or suspecting it could be a conspiracy designed to drain my time or anything along that line. In many ways it’s even easier since you can pile up plastic/cardboard/glass and just throw it away in bulk, and have a smaller food waste bin. I was never too crazy about it though, so I never bothered recycling every last bit of material that I possibly could.</p>
 <p>Recently though I started wondering if I should be more efficient at recycling, so I googled for a bit, and … got nowhere.</p>
-<p>For instance, one of my fluorescent light bulbs died. It’s not recycled by the council, so can’t be put in the recycling dumpster. Apparently it also contains mercury and shouldn’t be put in general waste either. The closest recycling facility that accepts energy efficient bulbs is 15 mins from me by tube. The question is — disregarding that I don’t feel like spending half an hour in transport to recycle couple of light bulbs: is it more efficient for the planet if instead of going there I just spend that time on my high paying job and donate the money. I seriously suspect that recycling a bulb is <a href="https://en.wikipedia.org/wiki/Effective_altruism">not the most environmentally efficient thing I can do with my skills</a>. <strong>How much environmental impact in terms of pure dollars of damage does a light bulb have anyway?</strong> Sadly, I didn’t manage to find any specific numbers.</p>
+<p>For instance, one of my fluorescent light bulbs died. It’s not recycled by the council, so can’t be put in the recycling dumpster. Apparently it also contains mercury and shouldn’t be put in general waste either. The closest recycling facility that accepts energy efficient bulbs is 15 mins from me by tube. The question is — disregarding that I don’t feel like spending half an hour in transport to recycle couple of light bulbs: is it more efficient for the planet if instead of going there I just spend that time on my job and donate the money? I seriously suspect that recycling a bulb is not the most environmentally efficient thing <a href="https://en.wikipedia.org/wiki/Effective_altruism">I can do with my skills</a>. <strong>How much environmental impact in terms of pure dollars of damage does a light bulb have anyway?</strong> Sadly, I didn’t manage to find any specific numbers.</p>
 <p>Another thing that puzzled me: <strong>is it worth washing a soiled plastic container before recycling?</strong> You’re wasting hot water and detergents after all, which also has some environmental impact (also your time if you wash manually). The internet gives confusing answers, starting from people who put their greasy plastic in dishwasher to suggestions to only give a quick rinse. I can’t understand how rinsing without washing helps against attracting bacteria and greasing paper in mixed recycling. Couldn’t google anything meaningful either.</p>
 <p>Interesting enough, while looking that up, I ran into many discussions of using paper plates vs washing ceramic plates — apparently it’s unclear which is more environmental! <a href="https://sustainability.stackexchange.com/a/6020">Here’s</a> an example calculation which gives <code>$0.78</code> vs <code>$0.63</code>, the difference I find pretty marginal. Generally all over the place the answer seems to be “it depends on your detergent, electricity source, etc”. <strong>How is an average person meant to figure that out?</strong></p>
 <p>Lastly, it’s not even clear which <a href="https://www.pureplanetrecycling.co.uk/types-of-plastics/">types of plastic</a> materials you can recycle. For instance, my <a href="https://www.towerhamlets.gov.uk/lgnl/environment_and_waste/recycling_and_waste/a-z_recycling_guide.aspx">council’s website</a> has no mention of specific materials whatsoever, only ‘trays’, ‘yogurt pots’ and ‘bags’.</p>
@@ -7168,7 +7184,7 @@ Hopefully that saves someone else a bit of time.</p>
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
         
-        <meta name="keywords" content="cognitive quantified-self selenium">
+        <meta name="keywords" content="quantified-self cognitive selenium">
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
@@ -7219,17 +7235,24 @@ Hopefully that saves someone else a bit of time.</p>
 
     <section class="content">
     <p><a href="http://www.quantified-mind.com/about">Quantified Mind</a> is a website which provides a handful of cognitive tests. It lets you choose a bunch of tests and you can run them whenever you wish, adding quantitative variables you are measuring alongside (e.g. hours of sleep, or cups of coffee you drank) or just arbitrary notes. <a href="http://quantifiedself.com/wp-content/uploads/2012/04/QM_collage.jpg">Here</a> is how it looks like.</p>
-<p>Why is it interesting? If you are like me and don’t feel much obvious subjective effects of conventional stimulants, sleep or exercise, it would be great to have some objective measure in case the effects are subtle but present. For you it could be saving half an hour of sleep per night by using melatonin, or realizing coffee doesn’t have effect on your cognitive performance, or something else.</p>
-<p>That sounded pretty interesting to me, and I started doing some tests (simple reaction time, visual matching, sorting and 1-back). However, given that effects are subtle in the first place, I wasn’t expecting to get any insights by gazing at collected data, so I needed to make sure I can export my experiments to run some sort of regression on them later.</p>
-<p>To my disappointment, when I ran thirty or something sessions and downloaded the CSV, it didn’t have error rate/reaction time, but you are only getting some magical ‘score’. It was unclear what it meant from the FAQ so I emailed the authors and got a response:</p>
+<p>Why is it interesting? If you are <a href="./tags.html#quantified-self">like me</a> and don’t feel any obvious/significant subjective effects of conventional stimulants, sleep or exercise, it would be great to have some objective measure in case the effects are subtle but present. For you it could be saving half an hour of sleep per night by using melatonin, or realizing coffee doesn’t have effect on your cognitive performance, or something else.</p>
+<p>That sounded pretty interesting to me, and I started taking some tests (simple reaction time, visual matching, sorting and 1-back). However, given that effects are subtle in the first place, I wasn’t expecting to get any insights by gazing at collected data, so I needed to make sure I can export my experiments to run some sort of regression on them later.</p>
+<p>To my disappointment, when I ran thirty or something sessions and exported the CSV, it didn’t have error rate/reaction time, but you are only getting some magical ‘score’. It was unclear what it meant from the FAQ so I emailed the authors and got a response:</p>
 <pre><code>As for scores - it's a calculation that involves everything in a test, so for simple reaction time it involves both reaction times
 and accuracy. 
 The actual formulas aren't available, but the instructions are always simple: go for accuracy first, and try to be as fast as you can
 without sacrificing accuracy.</code></pre>
-<p>“Formulas aren’t available” was quite unsatisfactory to me. What are they actually measuring? So before carrying on and doing more tests I tried to reverse engineer the model.</p>
+<p>“Formulas aren’t available” was quite unsatisfactory to me. What are they actually measuring? So before carrying on and collecting more data I tried to reverse engineer the model.</p>
 <h1 id="implementation">Implementation</h1>
-<p>The idea was simple: choose couple of tests that are easy to automate. Luckily, the website is not using flash and not very heavy on javascript or obfuscation, so interacting with elements via javascript was fairly easy. In essence, I’m varying average reaction time (delay) and number of errors (which I make deliberately in the script), and inject the script into chrome via Selenium. Then I record the scores for further analysis.</p>
-<p>If you wanna experiment by yourself, <a href="https://github.com/karlicoss/qm-reverse-engineering">here’s</a> the repository and if you don’t feel like running the scripts for a day to collect data, I uploaded it to <a href="https://github.com/karlicoss/qm-reverse-engineering/releases">releases</a>.</p>
+<p>The idea was simple: choose couple of tests that are easy to <strong>automate</strong> via Selenium Webdriver. Automation was necessary to collect lots of data corresponding to different input performance characteristics.</p>
+<p>In essence:</p>
+<ul>
+<li>I’m varying <strong>average reaction time</strong> (delay) and <strong>number of errors</strong> (which I make deliberately)</li>
+<li>then I <a href="https://github.com/karlicoss/qm-reverse-engineering/blob/master/js_scripts.py">generate</a> a bit of Javascript and inject it into the browser via Selenium.</li>
+<li>once the automated test session is finished, I recorded the score for further analysis.</li>
+</ul>
+<p>Thankfully, the website is not using flash and is not heavy on obfuscation, so interacting with elements via javascript was fairly easy.</p>
+<p>If you wanna experiment by yourself, <a href="https://github.com/karlicoss/qm-reverse-engineering">here’s</a> the repository and if you don’t feel like running the scripts for a day to collect data, I also uploaded it to <a href="https://github.com/karlicoss/qm-reverse-engineering/releases">releases</a>.</p>
 <h1 id="tests">Tests</h1>
 <p>I’ve chosen “Simple reaction time” and “Visual matching”. From the <a href="http://www.quantified-mind.com/science">“science”</a> section:</p>
 <pre><code>The first is “Simple Reaction Time,” which assesses how quickly a person can respond to a single stimulus (a circle that turns 
@@ -7246,12 +7269,18 @@ the two grids are identical.</code></pre>
 <h1 id="observations">Observations</h1>
 <ul>
 <li><p>Same score could mean different things; you can see it from the plots if you draw horizontal lines, they would intersect multiple curves corresponding to different delays.</p>
-<p>So, for instance, if you get score 600 on visual matching, that could mean that you did the test with 880ms reaction and 0 errors, or with 840ms reaction and 2 errors or 760ms reaction and 4 errors. These are fairly different results and even though it’s good to have some sort of aggregate score, it’s also useful to distinguish. E.g. maybe caffeine makes you less patient so you press early and make more errors.</p></li>
-<li><p>For low reaction time (&lt;300ms for simple reaction time &lt;600ms for visual matching), the plots don’t look continuous, there are some sudden drops. That’s pretty suspicious IMO.</p>
+<p>So, for instance, if you get score 600 on visual matching, that could mean that you did the test with:</p>
+<ul>
+<li>880ms reaction and 0 errors, or</li>
+<li>840ms reaction and 2 errors, or</li>
+<li>760ms reaction and 4 errors</li>
+</ul>
+<p>These are fairly different results and even though it’s good to have some sort of aggregate score, it’s also useful to distinguish. E.g. maybe caffeine makes you less patient so you press early and make more errors.</p></li>
+<li><p>For low reaction time (&lt;300ms for simple reaction time &lt;600ms for visual matching), the plots <strong>don’t look continuous</strong>, there are some sudden drops. That’s pretty suspicious IMO.</p>
 <p>Perhaps that could explained by the fact that such low times are impossible to get by average humans and they are out of the test domain.</p></li>
-<li><p>If you keep number of error fixed, one would expect that score grows as the reaction time goes does. That is not the case on plots, probably related to the artifact above.</p></li>
-<li><p>If you keep reaction time fixed, you would expect the score to decrease monotonically with the number of errors. You can see that for simple reaction time after 600ms, the score actually monotonically <strong>increases</strong> as you make more errors. Again, one could argue that reaction of 600 ms is too long for average human on this test (e.g. I score about 230), but I can easily imagine drugs (even such as alcohol) resulting in these scores, which could also be interesting to measure.</p></li>
-<li><p>If you think about, 8 (out of 16) errors is what you would get on visual matching if you answer randomly (which you could do with almost arbitrary low reaction time). So if you do that, say, with 400ms delay, according to the plot you would score around 620 points. Which is what I get by doing the test myself with 800ms reaction and making 1 error. So what does the score represent then?</p></li>
+<li><p>If you keep number of errors fixed, one would expect that score grows as the reaction time goes down. That is not the case on plots, probably related to the artifact above.</p></li>
+<li><p>If you keep reaction time fixed, you would expect the score to decrease monotonically with the number of errors. You can see that for simple reaction time after 600ms, the score actually monotonically <strong>increases as you make more errors</strong>. Again, one could argue that reaction of 600 ms is too long for average human on this test (e.g. I score about 230), but I can easily imagine drugs (even such as alcohol) resulting in these scores, which could also be interesting to measure.</p></li>
+<li><p>If you think about, 8 (out of 16) errors is what you would get on visual matching <strong>if you answer completely at random</strong> (which you could do with almost arbitrary low reaction time). So if you do that, say, with 400ms delay, according to the plot you would score around 620 points. Which is what I get by doing the test myself with 800ms reaction and making 1 error. So what does the score represent then?</p></li>
 </ul>
 <h1 id="summary">Summary</h1>
 <p>I can’t see how is that score meaningful and I’m glad I didn’t spend more time doing these tests. Perhaps one is better off measuring reaction time directly instead of some mystical ‘score’.</p>
@@ -7261,7 +7290,7 @@ the two grids are identical.</code></pre>
 
     
     <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#cognitive">#cognitive</a> <a class="post-tag" href="./tags.html#quantified-self">#quantified-self</a> <a class="post-tag" href="./tags.html#selenium">#selenium</a></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#quantified-self">#quantified-self</a> <a class="post-tag" href="./tags.html#cognitive">#cognitive</a> <a class="post-tag" href="./tags.html#selenium">#selenium</a></div>
         <!-- TODO post-date? -->
         <div class="date">06 March 2019</div>
     </section>

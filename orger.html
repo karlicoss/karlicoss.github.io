@@ -92,7 +92,7 @@
 <li><a href="#org0000010">6. What makes Orger good?</a></li>
 <li><a href="#using">7. Using Orger views</a>
 <ul>
-<li><a href="#org0000011">Typical use patterns</a></li>
+<li><a href="#usecases">Typical use patterns</a></li>
 </ul>
 </li>
 <li><a href="#improvements">8. Potential improvements</a>
@@ -103,7 +103,8 @@
 <li><a href="#org0000016"><span class="todo TODO">TODO</span> potential for race condition</a></li>
 </ul>
 </li>
-<li><a href="#org0000018">9. ----</a></li>
+<li><a href="#similar">9. Similar projects</a></li>
+<li><a href="#org0000019">10. ----</a></li>
 </ul>
 </div>
 </div>
@@ -617,36 +618,32 @@ Also the fact that it's a real programming language rather than some YAML config
 <h2 id="using"><a class="headerlink" href="#using">¶</a><span class="section-number-2">7</span> Using Orger views</h2>
 <div class="outline-text-2" id="text-using">
 <p>
-Apart from, obviously, opening org mode file in your favorite text editor, one major strength of this system is being able to search over them.
+Apart from, obviously, opening org mode file in your favorite text editor, one major strength of this system is being able to effortlessly search over them. 
 </p>
 <p>
-I'll write about my setup separately at some point, but for now I'll give a quick summary and clues.
-</p>
-<p>
-On my desktop I'm just using spacemacs or <a href="https://github.com/karlicoss/cloudmacs">cloudmacs</a> from web browser.
+I'm writing extensively about my information search setup <a href="./pkm-search.html#personal_information">here</a>. In summary:
 </p>
 <ul class="org-ul">
-<li>I'm usually just using <a href="https://github.com/syohex/emacs-helm-ag">helm-ag</a> with <a href="https://github.com/BurntSushi/ripgrep">ripgrep</a> (your can find how to marry them <a href="https://gist.github.com/pesterhazy/fabd629fbb89a6cd3d3b92246ff29779">here</a>).</li>
-<li>sometimes <a href="https://github.com/emacsorphanage/helm-swoop">helm-swoop</a> is very convenient, especially <samp class="inline">helm-multi-swoop</samp> function.</li>
+<li>on my desktop I'm just using spacemacs or <a href="https://github.com/karlicoss/cloudmacs">cloudmacs</a> from web browser</li>
+<li>in Emacs, I'm usually just using <a href="https://github.com/syohex/emacs-helm-ag">helm-ag</a> with <a href="https://github.com/BurntSushi/ripgrep">ripgrep</a></li>
+<li>sometimes <a href="https://github.com/emacsorphanage/helm-swoop">helm-swoop</a> is very convenient</li>
+<li><a href="https://orgmode.org/manual/Matching-tags-and-properties.html"><samp class="inline">org-tags-view</samp></a> or <a href="https://github.com/alphapapa/org-ql#helm-org-ql"><samp class="inline">helm-org-ql</samp></a> for structured Org-mode search</li>
+<li>I've got hotkeys set up that invoke Emacs window with search prompt in a blink</li>
 </ul>
 <p>
-These two are incremental (instant feedback) and effectively instantaneous. For more structured search you could use:
+On my phone I'm using:
 </p>
 <ul class="org-ul">
-<li>good old <a href="https://orgmode.org/manual/Matching-tags-and-properties.html"><samp class="inline">org-tags-view</samp></a></li>
-<li>org-ql with <a href="https://github.com/alphapapa/org-ql#helm-org-ql"><samp class="inline">helm-org-ql</samp></a> is a nicer and incremental alternative</li>
+<li><a href="https://github.com/orgzly/orgzly-android">orglzy</a> for structured search/viewing Org-mode files</li>
+<li><a href="https://play.google.com/store/apps/details?id=com.docsearch.pro">Docsearch +</a> for</li>
 </ul>
-<p>
-On my Android phone I'm using <a href="https://github.com/orgzly/orgzly-android">orglzy</a> for structured search/viewing Org-mode files. 
-Sometimes <a href="https://play.google.com/store/apps/details?id=com.docsearch.pro">Docsearch +</a> is also useful, which is indexing plaintext files and lets you search in them. While it's not tailored for org-mode files, it's usually good enough for me.
-</p>
 <p>
 You can also set up some proper indexing daemon like <a href="https://www.lesbonscomptes.com/recoll">recoll</a>.
 </p>
 </div>
 <div class="outline-3" id="outline-container-org0000011">
-<h3 id="org0000011"><a class="headerlink" href="#org0000011">¶</a>Typical use patterns</h3>
-<div class="outline-text-3" id="text-org0000011">
+<h3 id="usecases"><a class="headerlink" href="#usecases">¶</a>Typical use patterns</h3>
+<div class="outline-text-3" id="text-usecases">
 <p>
 I'll just give some of my use cases:
 </p>
@@ -719,8 +716,27 @@ Also I run Orger jobs at night (via cron) so it's quite unlikely to overlap with
 </div>
 </div>
 <div class="outline-2" id="outline-container-org0000018">
-<h2 id="org0000018"><a class="headerlink" href="#org0000018">¶</a><span class="section-number-2">9</span> ----</h2>
-<div class="outline-text-2" id="text-9">
+<h2 id="similar"><a class="headerlink" href="#similar">¶</a><span class="section-number-2">9</span> Similar projects</h2>
+<div class="outline-text-2" id="text-similar">
+<ul class="org-ul">
+<li><p>
+<a href="https://github.com/novoid/Memacs">Memacs</a> by Karl Voit.
+</p>
+<p>
+I only discovered it after I released Orger, so frankly haven't got to try it yet! It looks very similar in terms of goals and seems we can cooperate on rendering parts at least. 
+</p>
+<p>
+One (as I see it) big advantage of my setup is that data providers are abstracted away in <code class="inline">my.</code> package, which makes everything more modular and resilient. However Memacs seems to be flexible as well, so it can be used with e.g. <code class="inline">my.</code> package as well.
+</p>
+<p>
+If someone compares Memacs and Orger please let me know, I'd be happy to link it! It would also be more objective than comparison by myself!
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000019">
+<h2 id="org0000019"><a class="headerlink" href="#org0000019">¶</a><span class="section-number-2">10</span> ----</h2>
+<div class="outline-text-2" id="text-10">
 <p>
 I'd be interesting in hearing your thoughts or feature requests.
 </p>
