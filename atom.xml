@@ -137,7 +137,7 @@
 <div><span class="before-aside">
 Having information in the digital form, collecting and writing notes is incredibly valuable.
 Our brains are good at associations, pattern matching and creative thinking, not storing arrays of structured data, and external memory is one of the main thinking hacks computers aid us with. 
-</span><aside>see <a class="post-tag" href="./tags.html#extendedmind">#extendedmind</a></aside></div>
+</span><aside class="sidenote">see <a class="post-tag" href="./tags.html#extendedmind">#extendedmind</a></aside></div>
 <p>
 However this information is not so useful if you can't access and search it quickly.
 Instant search changes the way you think. Ever got sense of flow while working through some problem, and trying different things from Stackoverflow or documentation?
@@ -153,7 +153,7 @@ Some examples:
 <ul class="org-ul">
 <li><div><span class="before-aside">
 To find something from <i>my</i> Messenger history with a friend, I need to be online, open Facebook, navigate to search and use the interface Facebook's employees thought convenient (spoiler: it sucks) 
-</span><aside><a class="post-tag" href="./tags.html#offline">#offline</a></aside></div>
+</span><aside class="sidenote"><a class="post-tag" href="./tags.html#offline">#offline</a></aside></div>
 <p>
 It's <i>my</i> information, something that came out from my brain. Why can't I have it available anywhere, anytime, presented the way I prefer?
 </p></li>
@@ -1320,7 +1320,7 @@ Yes, it's a messy format and not very machine friendly. But oh well it's a file,
 For the purposes of this post, to keep the example output clean, I am just using plain text.
 Even though it's not quite HTML with CSS, it still looks kinda nice, doesn't it?
 
-</span><aside>if you're wondering why <code class="inline">yield</code> I'll explain it <a href="#iterator">further down</a></aside></div>
+</span><aside class="sidenote">if you're wondering why <code class="inline">yield</code> I'll explain it <a href="#iterator">further down</a></aside></div>
 <p>
 Now:
 </p>
@@ -2340,7 +2340,7 @@ Normally, you'd use  <a href="https://www.python.org/dev/peps/pep-3134/#explicit
 <div><span class="before-aside">
 However the problem is that <code class="inline">raise ... from ...</code> is a compound statement, so you can't write <code class="inline">yield RuntimeError(entry) from e</code>.
 
-</span><aside>see my investigation attempt <a href="https://stackoverflow.com/questions/58355639/why-raise-exception-from-cause-not-raise-exception-from-cause">here</a></aside></div>
+</span><aside class="sidenote">see my investigation attempt <a href="https://stackoverflow.com/questions/58355639/why-raise-exception-from-cause-not-raise-exception-from-cause">here</a></aside></div>
 <p>
 I find it handy to have a helper function here: 
 </p>
@@ -3172,7 +3172,7 @@ Until we get augmented though, there are two options: first is just to accept it
 <div><span class="before-aside">
 Second option is compensating for your sloppy meaty memory and having information you've read at hand and a quick way of searching over it. 
 
-</span><aside>see <a class="post-tag" href="./tags.html#extendedmind">#extendedmind</a></aside></div>
+</span><aside class="sidenote">see <a class="post-tag" href="./tags.html#extendedmind">#extendedmind</a></aside></div>
 <p>
 <a id="org0000000"></a>
 That sounds simple enough but as with many simple things, on practice you run into obstacles. 
@@ -3196,7 +3196,7 @@ I'll give some I've personally been overcoming as examples:
 <li>what happens if data disappears or service is down (temporary/permanently) or banned by your government?</li>
 <li><div><span class="before-aside">99% of services don't have support for offline mode. This may be just a small inconvenience if you're on a train or something, but there is more to it.
 What if some sort of apocalypse happens and you lose all access to data? 
-That depends on your paranoia level of course, and apocalypse is bad enough, but my take on it is that at least I'd have my data :) </span><aside>see <a class="post-tag" href="./tags.html#offline">#offline</a></aside></div></li>
+That depends on your paranoia level of course, and apocalypse is bad enough, but my take on it is that at least I'd have my data :) </span><aside class="sidenote">see <a class="post-tag" href="./tags.html#offline">#offline</a></aside></div></li>
 <li>if you delete a book on Kobo, not only you can't access its annotations, but they seem to get <b>wiped</b> from the database.</li>
 <li>in 2018, instapaper was unavailable in Europe for several months (!) due to missing the GDPR deadline</li>
 </ul></li>
@@ -4549,7 +4549,7 @@ WARNING:workout-provider:Unhandled: Cycling
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Regression coefficient: 0.093
-Free term: -9.547
+Free term: -9.475
 </pre>
 </div>
 </div>
@@ -4604,7 +4604,7 @@ Free term: -9.547
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>8066.064
+<pre>8064.019
 </pre>
 </div>
 </div>
@@ -4830,7 +4830,7 @@ I won't try to convince you that my method of reading and interacting with infor
 <div class="outline-text-2" id="text-motivation">
 <div><span class="before-aside">
 At some point in my life I realized I didn't remember most of the books/papers/posts/videos I had consumed few years before. 
-</span><aside class="sidenote">For brevity I'll just refer to all of this as 'content' further on</aside></div>
+</span><aside class="sidenote sidenote">For brevity I'll just refer to all of this as 'content' further on</aside></div>
 <p>
 That bothered me increasingly until I bought a Kindle which had 'highlight' functionality and virtual keyboard; and I had discovered it to help a lot with recalling.
 </p>
