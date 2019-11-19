@@ -1,0 +1,879 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content>
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>Scrapyroo | Mildly entertainingᵝ</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=4" />
+
+        
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    <!-- TODO eh, not sure if this symbol is good for that... -->
+                    ·
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                    ·
+                    <a class="fat" href="./notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
+                </span>
+                <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<!-- <link rel="stylesheet" href="/css/org.css" /> -->
+
+<link rel="stylesheet" href="./css/htmlize.css" />
+<link rel="stylesheet" href="./css/org-default.css" />
+
+<link rel="stylesheet" href="./css/org-extra.css?v=3" />
+
+
+
+<article>
+    
+    <div>THIS IS A DRAFT! It will appear on the main page once finished!</div>
+    
+    <section class="post-title">
+    <h1>Scrapyroo</h1>
+    
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <div class="NOTES">
+<p>
+Hi, I'm Dima and today I'm gonna tell you about Scrapyroo, which is a tool I implemented to search over Deliveroo menus and make my life a bit easier.
+</p>
+<p>
+Also just to make clear: I'm not employed by Deliveroo!
+So it's not like I'm just pitching you the feature I implemented on my day job :P
+</p>
+</div>
+<div class="outline-2" id="outline-container-org0000000">
+<h2 id="org0000000"><a class="headerlink" href="#org0000000">¶</a><span class="section-number-2">1</span> Past Rust experience</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Virtually none apart from some Project Euler.
+</p>
+<div class="NOTES">
+<p>
+I wouldn't necessarily call it a project as I got away with not writing much of new Rust code.
+(which is a good thing! Library I'm going to tell you about does deals with most of hard boring stuff)
+But certainly this is my first proper interaction with the Rust ecosystem.
+</p>
+<p>
+I am comfortable with many different other programming languages though and have been following Rust news.
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000001">
+<h2 id="org0000001"><a class="headerlink" href="#org0000001">¶</a><span class="section-number-2">2</span> Deliveroo is great!</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+I can't imagine ordering food without a service like this.
+</p>
+<div class="NOTES">
+<p>
+Not sure if there are any Deliveroo employees here, but I want to thank you for a great product!
+</p>
+<p>
+As a millennial/someone born in mid 90s, I am imagining life before services like Deliveroo and Uber as some sort of dark ages.
+</p>
+<p>
+My older friends told me some dreadful stories. Apparently you'd browse through paper menus, have to phone call the operator and coordinate the courier?
+</p>
+<p>
+Brrr.. I'm lucky to live now.
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000006">
+<h2 id="org0000006"><a class="headerlink" href="#org0000006">¶</a><span class="section-number-2">3</span> The problem</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+No full-text menu search :(
+</p>
+<p>
+It's ok for getting <b>something</b> to eat, but not great when you know what you want to order.
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000002">
+<h3 id="org0000002"><a class="headerlink" href="#org0000002">¶</a><span class="section-number-3">3.1</span> You can't find specific food!</h3>
+<div class="outline-text-3" id="text-3-1">
+<ul class="org-ul">
+<li>craving things</li>
+<li>varying your diet</li>
+<li>accommodating multiple people's prefs at the same time</li>
+</ul>
+<div class="NOTES">
+<p>
+Craving: e.g. if you want to treat yourself with some dessert, better get something you'd <b>really</b> enjoy instead of mediocre one because that's what the restaurant offered.
+</p>
+<p>
+Varying: I'm trying to expose myself to all kinds of food to make sure I'm not missing on some important nutrients.
+</p>
+<p>
+Multiple people: you and your friends want different things and you need to choose a single restaurant to order from.
+</p>
+</div>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000003">
+<h3 id="org0000003"><a class="headerlink" href="#org0000003">¶</a><span class="section-number-3">3.2</span> </h3>
+<div class="outline-text-3" id="text-3-2">
+<div class="figure">
+<p><img alt="categories.png" src="pic/categories.png" />
+</p>
+</div>
+<div class="NOTES">
+<p>
+Just to demonstrate what I'm talking about, here's the Deliveroo web interface (mobile looks similar).
+</p>
+<p>
+You can filter by dietary restrictions, fair enough, but then finest you can do is to pick "Categories".
+</p>
+<p>
+Some of them kinda make sense (e.g. "Bagels"), some of them are too broad (e.g. what is "Asian/American"? could be anything).
+Some of them are just plain weird, like what is "Back to school" supposed to mean?
+</p>
+<p>
+This is the best you're gonna get from Deliveroo.
+</p>
+</div>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000004">
+<h3 id="org0000004"><a class="headerlink" href="#org0000004">¶</a><span class="section-number-3">3.3</span> </h3>
+<div class="outline-text-3" id="text-3-3">
+<div class="figure">
+<p><img alt="tabs.png" src="pic/tabs.png" />
+</p>
+</div>
+<div class="NOTES">
+<p>
+Say, you want some grilled tuna and green vegetables. 
+</p>
+<p>
+Best you can do is open all 15 places that serve fish in different tabs,
+Ctrl-F tuna and then try to decide among them.
+</p>
+</div>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000005">
+<h3 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><span class="section-number-3">3.4</span> Sad!</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+Full text search is a basic human right!     
+</p>
+<div class="NOTES">
+<p>
+I asked people and that's apparently what they accept and never even questioned!  
+</p>
+<p>
+It feels especially wrong to me because human brains are good at creativity.
+Not so good at stuff like text search – that's one of things computers are <b>exceptionally</b> good at and we're ought to exploit that.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000000b">
+<h2 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><span class="section-number-2">4</span> What can we do?</h2>
+<div class="outline-text-2" id="text-4">
+<ul class="org-ul">
+<li><p>
+scrape menu data off Deliveroo website
+</p>
+<div class="NOTES">
+<p>
+e.g. every day at 10 AM
+</p>
+<p>
+About 600 restaurants deliver to my postcode.
+</p>
+<p>
+50Mb json file (although lots of it are not so useful?)
+</p>
+</div></li>
+<li><p>
+index menu data
+</p>
+<div class="NOTES">
+<p>
+Indexing needed mostly because I want
+</p>
+<ul class="org-ul">
+<li>search operators</li>
+<li>stemming, e.g. removing inflection, so there's no difference, between 'grill and grilled'</li>
+</ul>
+</div></li>
+<li>backend to serve indexed data</li>
+<li>frontend to search in the data</li>
+</ul>
+</div>
+<div class="outline-3" id="outline-container-org0000007">
+<h3 id="org0000007"><a class="headerlink" href="#org0000007">¶</a><span class="section-number-3">4.1</span> Scraping menus</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Python (<a href="https://github.com/scrapy/scrapy">scrapy</a>). Almost no need for HTML parsing!
+</p>
+<div class="figure">
+<p><img alt="json.png" src="pic/json.png" />
+</p>
+</div>
+<div class="NOTES">
+<p>
+To try it for yourself, go to some restaurant, e.g.
+<a href="https://deliveroo.co.uk/menu/london/spitalfields/tokyo-sushi-finsbury-park">https://deliveroo.co.uk/menu/london/spitalfields/tokyo-sushi-finsbury-park</a>
+open chrome inspector and type <code class="inline">{"</code> .  <code class="inline">js-react-on-rails-context</code> should be among the results.
+</p>
+<p>
+If there are any Deliveroo developers here, sorry for public dissection!
+</p>
+</div>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000008">
+<h3 id="org0000008"><a class="headerlink" href="#org0000008">¶</a><span class="section-number-3">4.2</span> Scraping menus</h3>
+<div class="outline-text-3" id="text-4-2">
+<div class="org-src-container">
+<pre class="src src-json">{
+  "urls": ["/menu/london/liverpool-street/pub-classics-from-greene-king-bishopsgate"],
+  "delivery_location": { "address": [ -0.0623, 51.123 ]},
+  "id": 189155,
+  "name": "Pub Classics from Greene King - Kings Arms",
+  "description": "Bringing the pub to your door",
+  "uname": "pub-classics-from-greene-king-bishopsgate",
+  "menu": {"items": [
+     {
+	 "id": 31299189,
+	 "name": "Chickpea, Red Pepper &amp; Hoisin Burger (VE)",
+	 "description": "Chickpea and mixed vegetable burger",
+	 "price": "\u00a310.79"
+     },
+     {
+	 "id": 31085809,
+	 "name": "Fish &amp; Chips with Wine for 2",
+	 "description": "2 x cod with chips and a bottle of wine\r\n",
+	 "price": "\u00a338.99"
+     }
+  ]}
+}
+</pre>
+</div>
+<div class="NOTES">
+<p>
+We get something like that (I've filtered out irrelevant stuff) for each restaurant.
+</p>
+<p>
+Scraped json data is kept separately to checkpoint in case scraping/indexing fails.
+</p>
+</div>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000009">
+<h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><span class="section-number-3">4.3</span> Indexing menus &amp; serving data</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+<a href="https://github.com/tantivy-search/tantivy">Tantivy</a>!   
+</p>
+<div class="NOTES">
+<p>
+I'm going to be explaining why it works well later in the presentation.
+</p>
+</div>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000a">
+<h3 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><span class="section-number-3">4.4</span> Frontend</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+HTML and some Javascript/React
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000000d">
+<h2 id="org000000d"><a class="headerlink" href="#org000000d">¶</a><span class="section-number-2">5</span> Scrapyroo</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+(Live demo)
+</p>
+</div>
+<div class="outline-3" id="outline-container-org000000c">
+<h3 id="org000000c"><a class="headerlink" href="#org000000c">¶</a><span class="section-number-3">5.1</span> Features</h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li><p>
+search queries
+</p>
+<div class="NOTES">
+<p>
+demo: say you want some halloumi and green vegetables.
+</p>
+<p>
+Type: 'halloumi AND vegetables'. Whoa, vegetable smoothie? No, thank you.
+So we can add 'AND -"vegetable smoothie"'. Ah, that's better now!
+</p>
+<p>
+Say you want some desert. 'AND cheesecake' or 'AND "ice cream"'. Nice, few places serve this!
+</p>
+</div>
+<div class="NOTES">
+<p>
+Or you're ordering with two other friends. 
+</p>
+<p>
+One you want prawns, another one chicken salad, and the third wants some feta.
+</p>
+<p>
+'prawns AND "chicken salad" AND "feta"' – and we instantly find few matches!
+</p>
+<p>
+Without full text search there is no way you would ever find it.
+</p>
+</div></li>
+<li><p>
+search as you type
+</p>
+<div class="NOTES">
+<p>
+At the moment requests index on almost every keystroke, wonder if we could benefit somehow?
+</p>
+<p>
+Demonstrate in dev tools
+</p>
+</div></li>
+<li>works from phone as well as desktop browser</li>
+</ul>
+<div class="NOTES">
+<ul class="org-ul">
+<li>debug? maybe later if I got a bit more time</li>
+<li>ui perhaps is a bit rough</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000000e">
+<h2 id="org000000e"><a class="headerlink" href="#org000000e">¶</a><span class="section-number-2">6</span> Why Tantivy?</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li><p>
+initial <a href="https://lunrjs.com">lunrjs</a> implementation was visibly laggy even on desktop
+</p>
+<div class="NOTES">
+<p>
+Need to carry data inside the huge html – not that great.
+</p>
+<p>
+You need Internet anyway to make an order, so I didn't mind having a proper backend.
+</p>
+</div></li>
+<li><p>
+also, why not?
+</p>
+<div class="NOTES">
+<p>
+Wanted to try out Rust for some real project.
+</p>
+<p>
+Never used any other search engine libraries and was recommended Tantivy.
+</p>
+</div></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000010">
+<h2 id="org0000010"><a class="headerlink" href="#org0000010">¶</a><span class="section-number-2">7</span> Tantivy: good</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+Features:
+</p>
+<ul class="org-ul">
+<li><p>
+<a href="https://docs.rs/tantivy/0.10.3/tantivy/struct.Snippet.html">highlight positions</a>, snippets
+</p>
+<div class="NOTES">
+<p>
+alt-tab to the presentation and show what I mean by snippets?
+</p>
+<p>
+Without the snippets: pretty sad. 
+</p>
+<p>
+Demonstrate lack of snippets:
+</p>
+<ul class="org-ul">
+<li>disable highlights in chrome inspector</li>
+<li>tick 'show unmatched'</li>
+<li>untick 'show matched first'</li>
+</ul>
+</div></li>
+<li><p>
+<a href="https://docs.rs/tantivy/0.10.3/tantivy/struct.IndexWriter.html">transactional</a> index updates
+</p>
+<div class="NOTES">
+<p>
+add/delete/rollback/commit
+</p>
+</div></li>
+<li><p>
+<a href="https://docs.rs/tantivy/0.10.3/tantivy/enum.ReloadPolicy.html">autoreloading</a> latest commit in searchers 
+</p>
+<div class="NOTES">
+<p>
+
+Caveat: have to be careful when deploying index remotely, <code class="inline">meta.json</code> file has to be deployed <b>last</b>!
+</p>
+<p>
+I'm in progress of writing up a github issue, will put the link here.  
+</p>
+</div></li>
+<li><a href="https://github.com/tantivy-search/tantivy-py">Python bindings</a></li>
+<li><p>
+well documented, easy to modify
+</p>
+<div class="NOTES">
+<p>
+Mention <a href="https://tantivy-search.github.io/tantivy/tantivy/schema/struct.Facet.html">facets</a>? 
+</p>
+</div></li>
+</ul>
+</div>
+<div class="outline-3" id="outline-container-org000000f">
+<h3 id="org000000f"><a class="headerlink" href="#org000000f">¶</a><span class="section-number-3">7.1</span> Tantivy CLI: awesome</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+Takes you from zero to prototype in a matter of minutes without distracting on irrelevant stuff.
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">tantivy-cli new    -i your_index  <span class="org-comment-delimiter"># </span><span class="org-comment">interactive!</span>
+tantivy-cli index  -i your_index &lt; data.jsonl
+tantivy-cli serve  -i your_index <span class="org-comment-delimiter"># </span><span class="org-comment">http interface</span>
+tantivy-cli search -i your_index -q <span class="org-string">"spinach AND paneer"</span> <span class="org-comment-delimiter"># </span><span class="org-comment">cli queries</span>
+</pre>
+</div>
+<div class="NOTES">
+<p>
+And I'm not exaggerating about minutes!
+</p>
+<p>
+I spent most time on scraping and frontend.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000011">
+<h2 id="org0000011"><a class="headerlink" href="#org0000011">¶</a><span class="section-number-2">8</span> Tantivy: bad</h2>
+<div class="outline-text-2" id="text-8">
+<ul class="org-ul">
+<li><p>
+no nested document support (<a href="https://github.com/tantivy-search/tantivy/issues/617">yet</a>)
+</p>
+<ul class="org-ul">
+<li>would be nice to have queries like <samp class="inline">starter:dumpling AND main:salad</samp></li>
+<li>potentially less resource wasteful</li>
+</ul>
+<div class="NOTES">
+<p>
+You can't return matched menu items only, have to index and serve the whole menu.
+</p>
+<p>
+It's not too bad though, I'm getting around this by relying on line breaks to only display matched items.
+</p>
+</div></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000014">
+<h2 id="org0000014"><a class="headerlink" href="#org0000014">¶</a><span class="section-number-2">9</span> Enhancing Tantivy</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+Rust observations:
+</p>
+<ul class="org-ul">
+<li><p>
+single binary: very easy to deploy
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">cargo install tantivy-cli --root /Dropbox/soft/tantivy-cli
+</pre>
+</div>
+<div class="NOTES">
+<p>
+Especially on VPS, which only (huh!) got two cores and wouldn't handle compiling Rust well
+</p>
+</div></li>
+<li><p>
+<a href="https://doc.rust-lang.org/edition-guide/rust-2018/platform-and-target-support/musl-support-for-fully-static-binaries.html"><code class="inline">musl</code></a>: minimal libc implementation
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">apt install musl-tools 
+rustup target add x86_64-unknown-linux-musl
+cargo build/install --target x86_64-unknown-linux-musl
+</pre>
+</div>
+<div class="NOTES">
+<p>
+Turned out my desktop and my VPS where I wanted to run the backend use different libc version.
+</p>
+<p>
+Normally that would mean crosscompiling and all the associated horror.
+</p>
+<p>
+With Rust it turned out to be a matter of adding a target via rustup and that's it!
+</p>
+</div></li>
+<li><p>
+<a href="https://doc.rust-lang.org/rust-by-example/trait/derive.html">derive</a> debug/serialize
+</p>
+<div class="NOTES">
+<p>
+First seen in Haskell!
+</p>
+<p>
+Python: kind of there via NamedTuples/dataclasses
+</p>
+<p>
+I often miss it in C++!
+You can implement it with templates, macros or <code class="inline">boost::preprocessor</code> depending on how much you hate yourself/your team :P
+But it's a very reasonable default feature to have.
+</p>
+</div></li>
+</ul>
+</div>
+<div class="outline-3" id="outline-container-org0000012">
+<h3 id="org0000012"><a class="headerlink" href="#org0000012">¶</a><span class="section-number-3">9.1</span> </h3>
+<div class="outline-text-3" id="text-9-1">
+<p>
+Cargo: <b>very</b> easy to change dependency to local
+</p>
+<pre class="example">
+tantivy-cli/Cargo.toml:
+- tantivy = "0.10"
++ tantivy = { path = "/coding/tantivy" }
+</pre>
+<div class="NOTES">
+<p>
+I managed to run this with the minimal effort.
+</p>
+<p>
+There is tantivy, tantivy-cli and tantivy-py.
+I was experimenting with exposing this snippet API from tantivy so needed to change dependency.
+</p>
+<p>
+To be fair, not too bad in pip:
+</p>
+<p>
+<code class="inline">pip3 install --user 'git+https://github.com/karlicoss/tantivy-py@delete-all-documents'</code>
+</p>
+<p>
+However, not discoverable via <code class="inline">--help</code>, you have to know what to look for!
+</p>
+</div>
+<ul class="org-ul">
+<li><p>
+or, github: 
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">cargo install  <span class="org-sh-escaped-newline">\</span>
+--git https://github.com/karlicoss/tantivy-cli <span class="org-sh-escaped-newline">\</span>
+--branch serve-snippets
+</pre>
+</div>
+<div class="NOTES">
+<p>
+I had to patch tantivy a bit, and it would take me a bit of time to get PRs accepted to upstream.
+</p>
+<p>
+You can try it as easy as you would 
+</p>
+</div></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000013">
+<h3 id="org0000013"><a class="headerlink" href="#org0000013">¶</a><span class="section-number-3">9.2</span> </h3>
+<div class="outline-text-3" id="text-9-2">
+<p>
+<a href="https://github.com/tantivy-search/tantivy-py">tantivy-py</a>: surprisingly simple integration
+</p>
+<ul class="org-ul">
+<li><p>
+just <code class="inline">pip install</code> thanks to <a href="https://github.com/PyO3/setuptools-rust"><samp class="inline">setuptools-rust</samp></a>.
+</p>
+<div class="NOTES">
+<p>
+Benefits from existing Rust ecosystem: e.g. can run <code class="inline">cargo build</code>, etc. You just write normal Rust code.
+</p>
+</div></li>
+<li><p>
+easy to interface
+</p>
+<div class="org-src-container">
+<pre class="src src-rust">fn delete_all_documents(&amp;mut self) -&gt; PyResult&lt;u64&gt; {
+  self.inner_index_writer.delete_all_documents().map_err(to_pyerr)
+}
+</pre>
+</div>
+<p>
+Powered by <a href="https://github.com/PyO3/pyo3#using-rust-from-python">PyO3</a>.
+</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000015">
+<h2 id="org0000015"><a class="headerlink" href="#org0000015">¶</a><span class="section-number-2">10</span> Contributions back</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+Pull requests in progress:
+</p>
+<ul class="org-ul">
+<li><p>
+exposing absolute highlight positions
+</p>
+<div class="NOTES">
+<p>
+<a href="https://docs.rs/tantivy/0.10.2/tantivy/struct.Snippet.html#method.to_html"><code class="inline">to_html</code></a> isn't gonna work well, you'll want to restyle it.
+</p>
+</div></li>
+<li><p>
+React sandbox to interact with CLI backend
+</p>
+<div class="NOTES">
+<p>
+Most of my time was spent on getting around frontend quirks, so that would make prototyping even easier.
+</p>
+</div></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000016">
+<h2 id="org0000016"><a class="headerlink" href="#org0000016">¶</a><span class="section-number-2">11</span> Outtakes</h2>
+<div class="outline-text-2" id="text-11">
+<ul class="org-ul">
+<li><p>
+rust &amp; tantivy
+</p>
+<p>
+Very pleasant experience, no frustration
+</p></li>
+<li><p>
+my life is simpler now!
+</p>
+<p>
+I don't have to waste time browsing through the website
+</p></li>
+<li>discovered places I'd have never found otherwise</li>
+<li><p>
+you don't have to suffer from inconvenience in your life   
+</p>
+<div class="NOTES">
+<p>
+If you can program, you are literally capable of anything you can think of (well, given enough time :P).
+</p>
+<p>
+You can bend the interactions with the outside world the way you want.
+</p>
+</div></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000017">
+<h2 id="org0000017"><a class="headerlink" href="#org0000017">¶</a><span class="section-number-2">12</span> Credits</h2>
+<div class="outline-text-2" id="text-12">
+<ul class="org-ul">
+<li><a href="https://github.com/petr-tik">github.com/petr-tik</a></li>
+</ul>
+<div class="NOTES">
+<p>
+Petr pushed me to actually give a talk, helped with Tantivy and gave me lots of helpful advice on improving the presentation. Thank you!
+</p>
+<p>
+He's passionate about Tantivy and will be happy to help you if you think something is missing or can be improved.
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000018">
+<h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">13</span> Thanks!</h2>
+<div class="outline-text-2" id="text-fin">
+<div class="NOTES">
+<p>
+Questions?  
+</p>
+</div>
+<ul class="org-ul">
+<li><a href="https://github.com/karlicoss/scrapyroo">github.com/karlicoss/scrapyroo</a></li>
+<li><p>
+<a href="https://beepb00p.xyz/scrapyroo.html">beepb00p.xyz/scrapyroo.html</a>: presentation with speaker notes
+</p>
+<div class="NOTES">
+<p>
+The presentation will be available as plain text (as well as my notes), so hopefully you won't miss anything.
+</p>
+</div></li>
+</ul>
+<p>
+Tantivy: 
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/tantivy-search">github.com/tantivy-search</a></li>
+<li><a href="https://gitter.im/tantivy-search/tantivy">gitter.im/tantivy-search/tantivy</a></li>
+<li><a href="https://docs.rs/tantivy">docs.rs/tantivy</a></li>
+</ul>
+<p>
+Me:
+</p>
+<ul class="org-ul">
+<li>💻 <a href="https://github.com/karlicoss">github.com/karlicoss</a></li>
+<li>🐦 <a href="https://twitter.com/karlicoss">twitter.com/karlicoss</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000001b">
+<h2 id="org000001b"><a class="headerlink" href="#org000001b">¶</a><span class="section-number-2">14</span> Appendix: Tantivy details</h2>
+<div class="outline-text-2" id="text-14">
+</div>
+<div class="outline-3" id="outline-container-org0000019">
+<h3 id="org0000019"><a class="headerlink" href="#org0000019">¶</a><span class="section-number-3">14.1</span> how are scores calculated?</h3>
+<div class="outline-text-3" id="text-14-1">
+<p>
+See <a href="https://docs.rs/tantivy/0.10.3/tantivy/query/struct.Explanation.html"><code class="inline">Explanation</code></a>. Basically builds a computation tree for a given match.
+</p>
+<p>
+Demonstrate <a href="https://docs.rs/tantivy/0.10.3/tantivy/query/trait.Query.html#method.explain"><code class="inline">explain</code></a> in logs?
+</p>
+<p>
+'pretty' json is a little rough at the moment.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001a">
+<h3 id="org000001a"><a class="headerlink" href="#org000001a">¶</a><span class="section-number-3">14.2</span> how are snippets selected?</h3>
+<div class="outline-text-3" id="text-14-2">
+<p>
+Somewhat heuristic, see <a href="https://github.com/tantivy-search/tantivy/blob/42756c7474317c2b1aa0610278b54c0bb0c70fb9/src/snippet/mod.rs#L144"><code class="inline">search_fragment</code></a>
+</p>
+<blockquote>
+<p>
+The returned list is non-empty and contain less than 12 possibly overlapping fragments.
+</p>
+<p>
+It is ok to emit non-overlapping fragments, for instance, one short and one long containing the same keyword, in order
+to leave optimization opportunity to the fragment selector upstream.
+</p>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000001f">
+<h2 id="org000001f"><a class="headerlink" href="#org000001f">¶</a><span class="section-number-2">15</span> Appendix: random Rust things</h2>
+<div class="outline-text-2" id="text-15">
+</div>
+<div class="outline-3" id="outline-container-org000001c">
+<h3 id="org000001c"><a class="headerlink" href="#org000001c">¶</a><span class="section-number-3">15.1</span> Unicode handling</h3>
+<div class="outline-text-3" id="text-15-1">
+<p>
+didn't have time to figure it out, so I just stripped all non-ascii
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001d">
+<h3 id="org000001d"><a class="headerlink" href="#org000001d">¶</a><span class="section-number-3">15.2</span> <a href="https://github.com/serde-rs/serde">serde</a> and <code class="inline">#[derive(Serialize)]</code></h3>
+<div class="outline-text-3" id="text-15-2">
+<p>
+ran into <a href="https://serde.rs/remote-derive.html">orphan rule</a>
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001e">
+<h3 id="org000001e"><a class="headerlink" href="#org000001e">¶</a><span class="section-number-3">15.3</span> binary size:</h3>
+<div class="outline-text-3" id="text-15-3">
+<pre class="example">
+/coding/tantivy-cli/target $ du -hd1
+2.2G	./x86_64-unknown-linux-musl
+2.2G	./debug
+1.5G	./release
+5.8G	.
+</pre>
+<p>
+Not very cloud sync-friendly! However happily accepts symlink as <code class="inline">target</code> directory, so not too bad.
+</p>
+</div>
+</div>
+</div>
+
+    </section>
+
+    
+    <section class="footer">
+        <div class="post-tags"></div>
+        <!-- TODO post-date? -->
+        <div class="date">19 November 2019</div>
+    </section>
+    
+
+    
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_scrapyroo"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
+        
+        <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
+            
+            
+        </footer>
+    </body>
+</html>
