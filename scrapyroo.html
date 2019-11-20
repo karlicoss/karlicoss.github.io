@@ -12,7 +12,7 @@
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
         
-        <meta name="keywords" content>
+        <meta name="keywords" content="infra scraping rust">
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
@@ -61,18 +61,50 @@
 
 <article>
     
-    <div>THIS IS A DRAFT! It will appear on the main page once finished!</div>
-    
     <section class="post-title">
     <h1>Scrapyroo</h1>
-    
+    <div class="summary">How I was unhappy about Deliveroo search and implemented my own</h2>
     </section>
     <!-- are sections appropriate for that? -->
 
     <section class="content">
-    <div class="NOTES">
+    <div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org0000000">1. Past Rust experience</a></li>
+<li><a href="#org0000001">2. Deliveroo is great!</a></li>
+<li><a href="#org0000006">3. The problem</a></li>
+<li><a href="#org000000b">4. What can we do?</a></li>
+<li><a href="#scrapyroo">5. Scrapy<font color="#b7410e">r</font><font color="#00ccbc">oo</font></a></li>
+<li><a href="#org000000e">6. Why Tantivy?</a></li>
+<li><a href="#org0000010">7. Tantivy: good</a></li>
+<li><a href="#org0000011">8. Tantivy: bad</a></li>
+<li><a href="#org0000014">9. Enhancing Tantivy</a></li>
+<li><a href="#org0000015">10. Contributions back</a></li>
+<li><a href="#org0000016">11. Outtakes</a></li>
+<li><a href="#org0000017">12. Credits</a></li>
+<li><a href="#fin">13. Thanks!</a></li>
+<li><a href="#org000001b">14. Appendix: Tantivy details</a></li>
+<li><a href="#org000001f">15. Appendix: random Rust things</a></li>
+</ul>
+</div>
+</div>
+<div class="NOTES">
 <p>
-Hi, I'm Dima and today I'm gonna tell you about Scrapyroo, which is a tool I implemented to search over Deliveroo menus and make my life a bit easier.
+These are my slides + speaker notes from <a href="https://www.meetup.com/Rust-London-User-Group/events/266262531">November Rust London User Group meetup</a>. 
+Huge thanks to <a href="https://twitter.com/ernestkissiedu">Ernest</a> for organising!
+</p>
+<p>
+Presentation is done in org-reveal and source is available <a href="https://github.com/karlicoss/scrapyroo-slides">here</a>. <b>Grey areas are speaker notes</b>, rest are actual slides.
+</p>
+</div>
+<div class="NOTES">
+<p>
+Hi, I'm Dima and today I'm gonna tell you about <a href="https://github.com/karlicoss/scrapyroo">Scrapyroo</a>, which is a tool I built to search over Deliveroo menus and make my life a bit easier.
+</p>
+<p>
+The tool was made possible by <a href="https://github.com/tantivy-search/tantivy">Tantivy</a>, <a href="https://github.com/scrapy/scrapy">scrapy</a> and <a href="https://reactjs.org">React</a>
 </p>
 <p>
 Also just to make clear: I'm not employed by Deliveroo!
@@ -87,12 +119,14 @@ Virtually none apart from some Project Euler.
 </p>
 <div class="NOTES">
 <p>
-I wouldn't necessarily call it a project as I got away with not writing much of new Rust code.
-(which is a good thing! Library I'm going to tell you about does deals with most of hard boring stuff)
-But certainly this is my first proper interaction with the Rust ecosystem.
+This time I also got away with not writing much of new Rust code.
+Which is a good thing! Library I'm going to tell you about does deals with most of complicated and tedious stuff.
 </p>
 <p>
-I am comfortable with many different other programming languages though and have been following Rust news.
+But this is my first proper interaction with the Rust ecosystem.
+</p>
+<p>
+I am comfortable with many different other programming languages though and have been following Rust news, so haven't struggled with the languages specifically.
 </p>
 </div>
 </div>
@@ -123,14 +157,32 @@ Brrr.. I'm lucky to live now.
 <h2 id="org0000006"><a class="headerlink" href="#org0000006">¶</a><span class="section-number-2">3</span> The problem</h2>
 <div class="outline-text-2" id="text-3">
 <p>
-No full-text menu search :(
+No search by menus, only restaurants/cuisines :(
 </p>
 <p>
 It's ok for getting <b>something</b> to eat, but not great when you know what you want to order.
 </p>
+<div class="NOTES">
+<p>
+UPDATE: Some spooky stuff happened 🎃
+On the morning of Tuesday, 19 November when I was to give this talk I found out that the search bar on Deliveroo has gone from "Restaurants or cuisines" to "Dishes, restaurants or cuisines"!
+</p>
+<p>
+Which meant  that Deliveroo supported searching in dish names.
+I thought I'd gone bonkers until few of my friends confirmed that they didn't remember that and it must have been added very recently, over the weekend.
+</p>
+<p>
+I like to think that I'm very important and that wasn't a coincidence so maybe I have some sort of superpower.
+If you miss a feature in some web service you're using, let me know, maybe I can implement it and that would get the service to implement it too :P (could start with editing tweets, perhaps?)
+</p>
+<p>
+So, you can search in dishes too now, however hopefully that doesn't make my tool irrelevant, you'd be able to see for yourself later.
+(e.g. full text menu search, not just titles, search as you type, queries)
+</p>
+</div>
 </div>
 <div class="outline-3" id="outline-container-org0000002">
-<h3 id="org0000002"><a class="headerlink" href="#org0000002">¶</a><span class="section-number-3">3.1</span> You can't find specific food!</h3>
+<h3 id="org0000002"><a class="headerlink" href="#org0000002">¶</a><span class="section-number-3">3.1</span> You can't find specific dishes!</h3>
 <div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
 <li>craving things</li>
@@ -139,14 +191,13 @@ It's ok for getting <b>something</b> to eat, but not great when you know what yo
 </ul>
 <div class="NOTES">
 <p>
-Craving: e.g. if you want to treat yourself with some dessert, better get something you'd <b>really</b> enjoy instead of mediocre one because that's what the restaurant offered.
+Why would you want this?
 </p>
-<p>
-Varying: I'm trying to expose myself to all kinds of food to make sure I'm not missing on some important nutrients.
-</p>
-<p>
-Multiple people: you and your friends want different things and you need to choose a single restaurant to order from.
-</p>
+<ul class="org-ul">
+<li>Craving: e.g. if you want to treat yourself with some dessert, better get something you'd <b>really</b> enjoy instead of mediocre one because that's what the restaurant offered.</li>
+<li>Varying: I'm trying to expose myself to all kinds of food to make sure I'm not missing on some important nutrients.</li>
+<li>Multiple people: you and your friends want different things and you need to choose a single restaurant to order from.</li>
+</ul>
 </div>
 </div>
 </div>
@@ -200,10 +251,10 @@ Full text search is a basic human right!
 </p>
 <div class="NOTES">
 <p>
-I asked people and that's apparently what they accept and never even questioned!  
+I asked people and apparently they just accepted and never questioned that sad workflow!  
 </p>
 <p>
-It feels especially wrong to me because human brains are good at creativity.
+It feels especially wrong to me because human brains are good at creative things.
 Not so good at stuff like text search – that's one of things computers are <b>exceptionally</b> good at and we're ought to exploit that.
 </p>
 </div>
@@ -225,7 +276,7 @@ e.g. every day at 10 AM
 About 600 restaurants deliver to my postcode.
 </p>
 <p>
-50Mb json file (although lots of it are not so useful?)
+Results in huge json file.
 </p>
 </div></li>
 <li><p>
@@ -261,7 +312,7 @@ To try it for yourself, go to some restaurant, e.g.
 open chrome inspector and type <code class="inline">{"</code> .  <code class="inline">js-react-on-rails-context</code> should be among the results.
 </p>
 <p>
-If there are any Deliveroo developers here, sorry for public dissection!
+If there are any Deliveroo developers here, sorry for public dissection of your website!
 </p>
 </div>
 </div>
@@ -327,11 +378,20 @@ HTML and some Javascript/React
 </div>
 </div>
 <div class="outline-2" id="outline-container-org000000d">
-<h2 id="org000000d"><a class="headerlink" href="#org000000d">¶</a><span class="section-number-2">5</span> Scrapyroo</h2>
-<div class="outline-text-2" id="text-5">
+<h2 id="scrapyroo"><a class="headerlink" href="#scrapyroo">¶</a><span class="section-number-2">5</span> Scrapy<font color="#b7410e">r</font><font color="#00ccbc">oo</font></h2>
+<div class="outline-text-2" id="text-scrapyroo">
 <p>
-(Live demo)
+(Live demo). You can try it here: <a href="https://scrapyroo.karlicoss.xyz">scrapyroo.karlicoss.xyz</a>
 </p>
+<div class="NOTES">
+<p>
+Note that this only indexes my district (Whitechapel).
+Also not sure for how long I'll expose it, but I'll make a demo video before shutting it down.
+</p>
+<p>
+Also there is a screenshot in <a href="https://github.com/karlicoss/scrapyroo">readme</a>.
+</p>
+</div>
 </div>
 <div class="outline-3" id="outline-container-org000000c">
 <h3 id="org000000c"><a class="headerlink" href="#org000000c">¶</a><span class="section-number-3">5.1</span> Features</h3>
@@ -345,11 +405,11 @@ search queries
 demo: say you want some halloumi and green vegetables.
 </p>
 <p>
-Type: 'halloumi AND vegetables'. Whoa, vegetable smoothie? No, thank you.
-So we can add 'AND -"vegetable smoothie"'. Ah, that's better now!
+Type: 'halloumi AND vegetables'. Whoa, vegetable smoothie in results? No, thank you.
+So we can use phrase query (quotes) and exclusive query (-): add 'AND -"vegetable smoothie"'. Ah, that's better now!
 </p>
 <p>
-Say you want some desert. 'AND cheesecake' or 'AND "ice cream"'. Nice, few places serve this!
+Say you also want some desert. add 'AND cheesecake' or 'AND "ice cream"'. Nice, few places actually serve this combination!
 </p>
 </div>
 <div class="NOTES">
@@ -371,7 +431,8 @@ search as you type
 </p>
 <div class="NOTES">
 <p>
-At the moment requests index on almost every keystroke, wonder if we could benefit somehow?
+At the moment requests index on almost every keystroke, would be nice to keep a persistent connection,
+although that's something that is hard to implement in a generic way.
 </p>
 <p>
 Demonstrate in dev tools
@@ -381,7 +442,7 @@ Demonstrate in dev tools
 </ul>
 <div class="NOTES">
 <ul class="org-ul">
-<li>debug? maybe later if I got a bit more time</li>
+<li>show debug mode? maybe later if I got a bit more time</li>
 <li>ui perhaps is a bit rough</li>
 </ul>
 </div>
@@ -400,7 +461,7 @@ initial <a href="https://lunrjs.com">lunrjs</a> implementation was visibly laggy
 Need to carry data inside the huge html – not that great.
 </p>
 <p>
-You need Internet anyway to make an order, so I didn't mind having a proper backend.
+You need internet anyway to make an order, so I didn't mind having a proper backend.
 </p>
 </div></li>
 <li><p>
@@ -478,18 +539,20 @@ Mention <a href="https://tantivy-search.github.io/tantivy/tantivy/schema/struct.
 <h3 id="org000000f"><a class="headerlink" href="#org000000f">¶</a><span class="section-number-3">7.1</span> Tantivy CLI: awesome</h3>
 <div class="outline-text-3" id="text-7-1">
 <p>
-Takes you from zero to prototype in a matter of minutes without distracting on irrelevant stuff.
+Takes you from zero to prototype in a matter of <b>minutes</b> without distracting on irrelevant stuff.
 </p>
 <div class="org-src-container">
 <pre class="src src-bash">tantivy-cli new    -i your_index  <span class="org-comment-delimiter"># </span><span class="org-comment">interactive!</span>
 tantivy-cli index  -i your_index &lt; data.jsonl
 tantivy-cli serve  -i your_index <span class="org-comment-delimiter"># </span><span class="org-comment">http interface</span>
 tantivy-cli search -i your_index -q <span class="org-string">"spinach AND paneer"</span> <span class="org-comment-delimiter"># </span><span class="org-comment">cli queries</span>
+tantivy-cli bench  <span class="org-comment-delimiter"># </span><span class="org-comment">query benchmarking</span>
 </pre>
 </div>
 <div class="NOTES">
 <p>
 And I'm not exaggerating about minutes!
+You can index data and expose it to your frontend without a singe line of code.
 </p>
 <p>
 I spent most time on scraping and frontend.
@@ -661,6 +724,11 @@ Powered by <a href="https://github.com/PyO3/pyo3#using-rust-from-python">PyO3</a
 <div class="outline-2" id="outline-container-org0000015">
 <h2 id="org0000015"><a class="headerlink" href="#org0000015">¶</a><span class="section-number-2">10</span> Contributions back</h2>
 <div class="outline-text-2" id="text-10">
+<div class="NOTES">
+<p>
+I figured Tantivy could benefit from some things I implemented.
+</p>
+</div>
 <p>
 Pull requests in progress:
 </p>
@@ -674,7 +742,7 @@ exposing absolute highlight positions
 </p>
 </div></li>
 <li><p>
-React sandbox to interact with CLI backend
+React boilerplate to interact with CLI backend
 </p>
 <div class="NOTES">
 <p>
@@ -719,8 +787,9 @@ You can bend the interactions with the outside world the way you want.
 <h2 id="org0000017"><a class="headerlink" href="#org0000017">¶</a><span class="section-number-2">12</span> Credits</h2>
 <div class="outline-text-2" id="text-12">
 <ul class="org-ul">
-<li><a href="https://github.com/petr-tik">github.com/petr-tik</a></li>
-</ul>
+<li><p>
+<a href="https://github.com/petr-tik">github.com/petr-tik</a>: ask him about Tantivy!
+</p>
 <div class="NOTES">
 <p>
 Petr pushed me to actually give a talk, helped with Tantivy and gave me lots of helpful advice on improving the presentation. Thank you!
@@ -728,7 +797,9 @@ Petr pushed me to actually give a talk, helped with Tantivy and gave me lots of 
 <p>
 He's passionate about Tantivy and will be happy to help you if you think something is missing or can be improved.
 </p>
-</div>
+</div></li>
+<li><a href="https://twitter.com/katya_titkova">Katya</a>: beta testing and ghostwriting</li>
+</ul>
 </div>
 </div>
 <div class="outline-2" id="outline-container-org0000018">
@@ -742,7 +813,7 @@ Questions?
 <ul class="org-ul">
 <li><a href="https://github.com/karlicoss/scrapyroo">github.com/karlicoss/scrapyroo</a></li>
 <li><p>
-<a href="https://beepb00p.xyz/scrapyroo.html">beepb00p.xyz/scrapyroo.html</a>: presentation with speaker notes
+<a href="https://beepb00p.xyz/scrapyroo.html">beepb00p.xyz/scrapyroo.html</a>: speaker notes!
 </p>
 <div class="NOTES">
 <p>
@@ -844,7 +915,7 @@ Not very cloud sync-friendly! However happily accepts symlink as <code class="in
 
     
     <section class="footer">
-        <div class="post-tags"></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#infra">#infra</a> <a class="post-tag" href="./tags.html#scraping">#scraping</a> <a class="post-tag" href="./tags.html#rust">#rust</a></div>
         <!-- TODO post-date? -->
         <div class="date">19 November 2019</div>
     </section>
