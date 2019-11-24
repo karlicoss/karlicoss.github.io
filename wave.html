@@ -1,0 +1,2281 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="physics ipython">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>Solving wave equation with SymPy | Mildly entertainingᵝ</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=4" />
+
+        
+        <script type="text/javascript">
+ window.MathJax = {
+     tex2jax: {
+         // note that hakyll source has got double dollar signs due to special meaning in templates
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+     }
+ };
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    <!-- TODO eh, not sure if this symbol is good for that... -->
+                    ·
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                    ·
+                    <a class="fat" href="./notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
+                </span>
+                <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+            </nav>
+        </header>
+
+        <main>
+            
+<link rel="stylesheet" href="./css/ipynb.css" />
+<link rel="stylesheet" href="./css/ipynb-syntax.css" />
+
+
+
+
+<article>
+    
+    <div>THIS IS A DRAFT! It will appear on the main page once finished!</div>
+    
+    <section class="post-title">
+    <h1>Solving wave equation with SymPy</h1>
+    
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Recently I've been trying to play with wave equation for a guitar/piano string. I wanted to try out different boundary conditions, maybe the inhomogenous versions of equation. (TODO link to manual solution) Anyway, I didn't feel like doing that on paper (especially tedious when you're using something other than $1$ for the various string parameters), and wanted to get something closed form and analytical for performance reasons. Sympy was a natural choice for that... but it turned out to be pretty tricky even for the simplest wave equation!
+The goal/challenge I set was basically to solve as much as possible without invoking assumptions coming from prior knowledge of the equation. That involves restricting the domains, assuming the specific shape of solution etc.</p>
+<p>Hopefully this post gives you an idea of some advanced sympy things you can do, since all the computations using Sympy I've seen so far 
+One could argue that realistically you can't get far with symbolic computations anyway. However, I don't feel like this is a good excuse not to try to improve things and free yourself of the cognitive burden of redoing same symbolic manipulations over and over again.</p>
+<p>If you read this post and realise I'm doing more manipulations than I should be doing please do let me know!</p>
+<h1 id="TODO-it's-a-shame-it's-that-hard.-TODO-something-about-Nielsen?">TODO it's a shame it's that hard. TODO something about Nielsen?<a class="anchor-link" href="#TODO-it's-a-shame-it's-that-hard.-TODO-something-about-Nielsen?">¶</a></h1>
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># use that in Jupiter web client</span>
+<span class="k">def</span> <span class="nf">mdisplay_md</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+        <span class="o">*</span><span class="p">[</span><span class="n">f</span><span class="s1">'${latex(x)}$'</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">args</span><span class="p">],</span>
+        <span class="o">**</span><span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">f</span><span class="s1">'${latex(v)}$'</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()})</span>
+    <span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">as_text</span><span class="p">(</span><span class="n">thing</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">IPython.core.interactiveshell</span> <span class="k">import</span> <span class="n">InteractiveShell</span> <span class="c1"># type: ignore</span>
+    <span class="n">plain_formatter</span> <span class="o">=</span> <span class="n">InteractiveShell</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">display_formatter</span><span class="o">.</span><span class="n">formatters</span><span class="p">[</span><span class="s1">'text/plain'</span><span class="p">]</span>
+    <span class="n">pp</span> <span class="o">=</span> <span class="n">plain_formatter</span><span class="p">(</span><span class="n">thing</span><span class="p">)</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">pp</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">lines</span>
+
+<span class="k">def</span> <span class="nf">vpad</span><span class="p">(</span><span class="n">lines</span><span class="p">,</span> <span class="n">height</span><span class="p">):</span>
+    <span class="n">width</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="p">[</span><span class="s1">' '</span> <span class="o">*</span> <span class="n">width</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">))]</span> <span class="o">+</span> <span class="n">lines</span>
+
+<span class="c1"># terminal and emacs can't display markdown, so we have to use that as a workaround</span>
+<span class="k">def</span> <span class="nf">mdisplay_plain</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">re</span>
+    <span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">chain</span>
+    <span class="n">fargs</span>   <span class="o">=</span> <span class="p">[</span><span class="n">as_text</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+    <span class="n">fkwargs</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">as_text</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+    <span class="n">height</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">chain</span><span class="p">(</span><span class="n">fargs</span><span class="p">,</span> <span class="n">fkwargs</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+
+    <span class="n">pargs</span>   <span class="o">=</span> <span class="p">[</span><span class="n">vpad</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">fargs</span><span class="p">]</span>
+    <span class="n">pkwargs</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">vpad</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">height</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">fkwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+
+    <span class="n">pos</span> <span class="o">=</span> <span class="n">height</span> <span class="o">//</span> <span class="mi">2</span>
+
+    <span class="n">lines</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">h</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
+        <span class="n">largs</span>   <span class="o">=</span> <span class="p">[</span><span class="n">a</span><span class="p">[</span><span class="n">h</span><span class="p">]</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">pargs</span><span class="p">]</span>
+        <span class="n">lkwargs</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span><span class="p">[</span><span class="n">h</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">pkwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+        <span class="n">fstr</span> <span class="o">=</span> <span class="n">fmt</span> <span class="k">if</span> <span class="n">h</span> <span class="o">==</span> <span class="n">pos</span> <span class="k">else</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">'[^</span><span class="si">{}</span><span class="s1">]'</span><span class="p">,</span> <span class="s1">' '</span><span class="p">,</span> <span class="n">fmt</span><span class="p">)</span>
+        <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fstr</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">largs</span><span class="p">,</span> <span class="o">**</span><span class="n">lkwargs</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">lines</span><span class="p">))</span>
+
+<span class="n">mdisplay</span> <span class="o">=</span> <span class="n">mdisplay_plain</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="c1"># TODO P hmm try that? %matplotlib notebook . that fucks up export though...</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">Math</span><span class="p">,</span> <span class="n">Markdown</span>
+<span class="kn">from</span> <span class="nn">sympy</span> <span class="k">import</span> <span class="o">*</span>
+<span class="n">init_printing</span><span class="p">(</span><span class="n">use_latex</span><span class="o">=</span><span class="s1">'mathjax'</span><span class="p">)</span>
+<span class="c1"># TODO P wonder if we can convert to latex by default??</span>
+<span class="c1"># TODO P I guess the answer is here?? https://docs.sympy.org/latest/_modules/sympy/printing/str.html</span>
+<span class="c1"># TODO P shit. text has to be displayed as markdown...</span>
+<span class="c1"># TODO P shit. maybe wrap patterns in text, and everythin else is latex??</span>
+<span class="c1"># TODO render line numbers</span>
+<span class="c1"># somehow there is no nice function in sympy to display stuff in the same line...</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ok, let's define the equation in Sympy now.</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="k">import</span> <span class="n">Derivative</span> <span class="k">as</span> <span class="n">D</span><span class="p">,</span> <span class="n">Function</span> <span class="k">as</span> <span class="n">F</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">'x t'</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s1">'u'</span><span class="p">)(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<span class="n">eq</span> <span class="o">=</span> <span class="n">Eq</span><span class="p">(</span><span class="n">D</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">D</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">x_l</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">'L'</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">x_r</span> <span class="o">=</span> <span class="n">L</span>
+
+<span class="n">mdisplay</span><span class="p">(</span><span class="s2">&quot;PDE: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">eq</span><span class="p">)</span> <span class="c1"># TODO velocity??</span>
+<span class="n">mdisplay</span><span class="p">(</span><span class="s2">&quot;BCs: $u(x_l, t) = 0$, $u(x_r, t) = 0$, $x_l=$</span><span class="si">{}</span><span class="s2">, $x_r=$</span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">x_l</span><span class="p">,</span> <span class="n">x_r</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>       2              2         
+      ∂              ∂          
+PDE: ───(u(x, t)) = ───(u(x, t))
+       2              2         
+     ∂x             ∂t          
+BCs: $u(x_l, t) = 0$, $u(x_r, t) = 0$, $x_l=$0, $x_r=$L
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For solving partial differential equations, we've got <code>sympy.solvers.pde.pdsolve</code>. However, there seems to be no way to specify initial/boundary conditions for it. Or well, I guess we'd have to deal with them later. Let's give it a try:</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># pdsolve(eq)</span>
+<span class="c1"># TODO shit! sympy stops at first error...</span>
+<span class="c1"># TODO find a way to ignore the errors</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Huh. It can't handle wave equation?? So, what can it do?</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">pde</span><span class="o">.</span><span class="n">allhints</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_text output_subarea ">
+<pre>('1st_linear_constant_coeff_homogeneous',
+ '1st_linear_constant_coeff',
+ '1st_linear_constant_coeff_Integral',
+ '1st_linear_variable_coeff')</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Sigh. No second order? That's a bit embarrasing. Ok, turns out we can at least aid with the separation of variables.
+TODO count hints?</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s1">'X'</span><span class="p">)(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s1">'T'</span><span class="p">)(</span><span class="n">t</span><span class="p">)</span>
+<span class="p">[</span><span class="n">sep_X</span><span class="p">,</span> <span class="n">sep_T</span><span class="p">]</span> <span class="o">=</span> <span class="n">pde_separate_mul</span><span class="p">(</span><span class="n">eq</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="p">[</span><span class="n">X</span><span class="p">,</span> <span class="n">T</span><span class="p">])</span>
+<span class="n">display</span><span class="p">((</span><span class="n">sep_X</span><span class="p">,</span> <span class="n">sep_T</span><span class="p">))</span>
+<span class="c1"># TODO at which point are we actually invoking linearity??</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$\displaystyle \left( \frac{\frac{d^{2}}{d x^{2}} X{\left(x \right)}}{X{\left(x \right)}}, \  \frac{\frac{d^{2}}{d t^{2}} T{\left(t \right)}}{T{\left(t \right)}}\right)$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As always with separation of variables, we've have to equate these with some constant. I guess I won't surprise you now by denoting it as $-E$.</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">E</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">'E'</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">eqX</span> <span class="o">=</span> <span class="n">Eq</span><span class="p">(</span><span class="n">sep_X</span><span class="p">,</span> <span class="o">-</span><span class="n">E</span><span class="p">)</span>
+<span class="n">eqT</span> <span class="o">=</span> <span class="n">Eq</span><span class="p">(</span><span class="n">sep_T</span><span class="p">,</span> <span class="o">-</span><span class="n">E</span><span class="p">)</span>
+<span class="n">display</span><span class="p">((</span><span class="n">eqX</span><span class="p">,</span> <span class="n">eqT</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$\displaystyle \left( \frac{\frac{d^{2}}{d x^{2}} X{\left(x \right)}}{X{\left(x \right)}} = - E, \  \frac{\frac{d^{2}}{d t^{2}} T{\left(t \right)}}{T{\left(t \right)}} = - E\right)$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's start with solving for $X$. <a href="https://docs.sympy.org/latest/modules/solvers/ode.html#dsolve"><code>sympy.solvers.ode.dsolve</code></a> does seem to support boundary conditions! Let's try that. First, let's check whether we can aid Sympy at solving this:</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">classify_ode</span><span class="p">(</span><span class="n">eqX</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[9]:</div>
+
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>('nth_linear_constant_coeff_homogeneous', '2nd_power_series_ordinary')</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Cool, so it should be capable of handling that!</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bc_l</span> <span class="o">=</span> <span class="n">Eq</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_l</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">bc_r</span> <span class="o">=</span> <span class="n">Eq</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_r</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">mdisplay</span><span class="p">(</span><span class="s2">&quot;BCS: </span><span class="si">{}</span><span class="s2">, </span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">bc_l</span><span class="p">,</span> <span class="n">bc_r</span><span class="p">)</span>
+<span class="n">Xsol</span> <span class="o">=</span> <span class="n">dsolve</span><span class="p">(</span>
+    <span class="n">eqX</span><span class="p">,</span>
+    <span class="n">X</span><span class="p">,</span>
+    <span class="n">ics</span><span class="o">=</span><span class="p">{</span>
+        <span class="n">bc_l</span><span class="o">.</span><span class="n">lhs</span><span class="p">:</span> <span class="n">bc_l</span><span class="o">.</span><span class="n">rhs</span><span class="p">,</span>
+        <span class="n">bc_r</span><span class="o">.</span><span class="n">lhs</span><span class="p">:</span> <span class="n">bc_l</span><span class="o">.</span><span class="n">rhs</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="n">hint</span><span class="o">=</span><span class="s1">'nth_linear_constant_coeff_homogeneous'</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Xsol</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>BCS: X(0) = 0, X(L) = 0
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$\displaystyle X{\left(x \right)} = 0$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Huh? It certainly is a solution, but we all know there's gotta be more. Let's take a look at the general solution then...</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Xsol</span> <span class="o">=</span> <span class="n">dsolve</span><span class="p">(</span>
+    <span class="n">eqX</span><span class="p">,</span>
+    <span class="n">X</span><span class="p">,</span>
+    <span class="n">hint</span><span class="o">=</span><span class="s1">'nth_linear_constant_coeff_homogeneous'</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Xsol</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$\displaystyle X{\left(x \right)} = C_{1} e^{- x \sqrt{- E}} + C_{2} e^{x \sqrt{- E}}$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Right, so looks like the extra solutions are somehow lost in the process. Well, let's try to explicitly solve for the initital conditions.</p>
+<p>One problem with that is: how do you know what are the integration variables. I mean, we can see they are $C_1$ and $C_2$, but surely we can't rely on <code>symbols('C_1 C_2')</code> since no one guarantees they would be named same in the next version of sympy. Or you might have had <code>C_1</code> used up by something else.</p>
+<p>First thing I did was to declare <code>consts = Xsol.free_symbols.difference({E, x}))</code>. After looking at ode module source code, turned out once could make it <a href="https://github.com/sympy/sympy/blob/a627ef1d3b8d89be3349d6d59d8642d64afb02e5/sympy/solvers/ode.py#L636">even more elegant</a>.</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">constants</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">Xsol</span><span class="o">.</span><span class="n">free_symbols</span> <span class="o">-</span> <span class="n">eqX</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">)</span>
+<span class="n">system</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Eq</span><span class="p">(</span><span class="n">Xsol</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_l</span><span class="p">)</span><span class="o">.</span><span class="n">rhs</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="n">Eq</span><span class="p">(</span><span class="n">Xsol</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_r</span><span class="p">)</span><span class="o">.</span><span class="n">rhs</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+<span class="p">]</span>
+<span class="n">display</span><span class="p">(</span><span class="n">system</span><span class="p">)</span>
+
+<span class="n">linsolve</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="n">constants</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$\displaystyle \left[ C_{1} + C_{2} = 0, \  C_{1} e^{- L \sqrt{- E}} + C_{2} e^{L \sqrt{- E}} = 0\right]$
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[12]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle \left\{\left( 0, \  0\right)\right\}$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Trivial solution only? Again? We know there are more, actually infinite number of them, depending on $E$!</p>
+<p>After a bit of research turned out there is the <a href="https://docs.sympy.org/latest/modules/solvers/solveset.html"><code>solveset</code></a> module, which is capable of properly solving algebraic equations like $e^{q} = 1$ and actually getting inifinite solution sets. Let's try that:</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sympy.solvers.solveset</span> <span class="k">import</span> <span class="n">linsolve</span> <span class="k">as</span> <span class="n">slinsolve</span>
+<span class="n">slinsolve</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="n">constants</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[13]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle \left\{\left( 0, \  0\right)\right\}$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Nope.. Perhaps it wants us to specify the parameter we solve against explicitly? We can't use <code>linsolve</code> anymore then since the equation is not linear in $E$, but luckily we've got <code>nonlinsolve</code>!</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sympy.solvers.solveset</span> <span class="k">import</span> <span class="n">nonlinsolve</span> <span class="k">as</span> <span class="n">snonlinsolve</span>
+<span class="n">nonlinsolve</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="n">constants</span> <span class="o">+</span> <span class="p">[</span><span class="n">E</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[14]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle \left\{\left( 0, \  0, \  E\right), \left( C_{2}, \  - C_{2}, \  0\right)\right\}$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>No luck. Let's try and debug it by removing the complexity.</p>
+<p>A simpler version of that system would be, of course, a system of 1 equation with a parameter, such that discrete values of parameter determine the solutions space.</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Y</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">'Y'</span><span class="p">)</span>
+<span class="n">system</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">Y</span> <span class="o">*</span> <span class="p">(</span><span class="n">exp</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">E</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="n">display</span><span class="p">(</span><span class="o">*</span><span class="n">system</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$\displaystyle Y \left(e^{\sqrt{- E}} - 1\right)$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">snonlinsolve</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="p">[</span><span class="n">Y</span><span class="p">,</span> <span class="n">E</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[16]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle \left\{\left( 0, \  E\right), \left( Y, \  0\right)\right\}$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ok, looks like we're on the right track. It's clearly missing the exponential bit, let's try it in separation.</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">solveset</span><span class="p">(</span><span class="n">exp</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">E</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="c1"># TODO need to store captured outputs for persistence</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[17]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle \left\{E \mid E \in \mathbb{C} \wedge e^{\sqrt{- E}} - 1 = 0 \right\}$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Right. It's definitely confused. Remember, we defined $E$ to be real, which means that $\sqrt{-E}$ would be pure imaginary and that could be exploited!</p>
+<p>And googling immediately yields that</p>
+
+<pre><code>Solveset is designed to be independent of the assumptions on the variable being solved for and instead, uses the domain argument to decide the solver to dispatch the equation to
+
+</code></pre>
+<p>My gut feeling was that it had something to do with the (multivalued) complex square root. And indeed:</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Y</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">'Y'</span><span class="p">)</span>
+<span class="n">solveset</span><span class="p">(</span><span class="n">exp</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[18]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle \left\{2 n i \pi\; |\; n \in \mathbb{Z}\right\}$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's experiment for a bit how solveset works.</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sympy.solvers.solveset</span> <span class="k">import</span> <span class="n">solveset_complex</span>
+<span class="n">solveset_complex</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">Y</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[19]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle \left\{-1\right\}$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Huh. Surely there should be two solutions, corresponding to $\sqrt 1  = \pm 1$? I suppose it's time to read some docs on how <code>solveset</code> works. <a href="https://docs.sympy.org/latest/modules/solvers/solveset.html#what-are-the-general-methods-employed-by-solveset-to-solve-an-equation">This</a> gives us a bit of a hint.</p>
+
+<pre><code>The respective solver now tries to invert the equation using the routines invert_real and invert_complex. These routines are based on the concept of mathematical inverse (though not exactly). It reduces the real/complex valued equation f(x)=y to a set of equations: {g(x)=h1(y),g(x)=h2(y),...,g(x)=hn(y)} where g(x) is a simpler function than f(x). 
+
+</code></pre>
+<p>We're clearly interested at <a href="https://github.com/sympy/sympy/blob/fd0e200ab363ecb53d95e91260b5aea284c092cc/sympy/solvers/solveset.py#L285"><code>invert_complex</code> code</a> . It looks a bit mad, e.g. <a href="https://github.com/sympy/sympy/blob/fd0e200ab363ecb53d95e91260b5aea284c092cc/sympy/solvers/solveset.py#L308-L311">here</a> it explicitly excludes trigonometric functions. I wonder why? (TODO raise an issue or something?)</p>
+<p>TODO sqrt docs?
+TODO not sure what that was about...</p>
+<p>I figured shit got serious, so I cloned sympy repository and a after a bit, <a href="https://github.com/sympy/sympy/blob/a627ef1d3b8d89be3349d6d59d8642d64afb02e5/sympy/solvers/tests/test_solveset.py#L743-L744">tracked down</a> the problem.</p>
+
+<pre><code>assert solveset_complex(4*x*(1 - a * sqrt(x)), x) == \
+    FiniteSet(S(0), 1 / a ** 2)
+
+</code></pre>
+<p>That doesn't look good for us.. there should be an extra solution $-\frac{1}{a^2}$. Git blaming gives us <a href="https://github.com/sympy/sympy/commit/6727f89a9be376bacd88d5392551807fd4d7f8dc">this</a> which tells us the test was commited five years ago. So basically this behaviour has been in sympy for ages and protected by unit test.</p>
+<p>I would imagine that the explanation is that multivalued functions like <code>sqrt</code>, <code>asin</code>, etc. are dumbed down and treated as their principal branches.</p>
+<p>So in a sense, it's good that we this weird thing $\left\{E \mid E \in \mathbb{C} \wedge e^{\sqrt{E}} - 1 = 0 \right\}$ as a result before, since that at least doesn't assume any specific complex branch. I hope one day I'll get to fix that in Sympy, but for now let's try and at least aid it at converting this thing into the desired solutions set.</p>
+<p>Apparently what we need to do is to analyse the subexpressions where $E$ appears under the square root, and then do case analysis on its sign, just as you would do when solving manually. The easy thing to do for the simple wave equation would be just replacing $k = \sqrt{-E}$.</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">'k'</span><span class="p">)</span>
+<span class="n">subst</span> <span class="o">=</span> <span class="n">Eq</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">E</span><span class="p">),</span> <span class="n">k</span><span class="p">)</span>
+
+<span class="n">system</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">eq</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">subst</span><span class="o">.</span><span class="n">lhs</span><span class="p">,</span> <span class="n">subst</span><span class="o">.</span><span class="n">rhs</span><span class="p">)</span> <span class="k">for</span> <span class="n">eq</span> <span class="ow">in</span> <span class="n">system</span>
+<span class="p">]</span>
+<span class="n">Xsol</span> <span class="o">=</span> <span class="n">Xsol</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">subst</span><span class="o">.</span><span class="n">lhs</span><span class="p">,</span> <span class="n">subst</span><span class="o">.</span><span class="n">rhs</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">system</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Xsol</span><span class="p">)</span>
+
+<span class="n">res</span> <span class="o">=</span> <span class="n">snonlinsolve</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="n">constants</span> <span class="o">+</span> <span class="p">[</span><span class="n">k</span><span class="p">])</span>
+<span class="n">mdisplay</span><span class="p">(</span><span class="s2">&quot;Solutions: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">res</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$\displaystyle \left[ Y \left(e^{k} - 1\right)\right]$
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$\displaystyle X{\left(x \right)} = C_{1} e^{- k x} + C_{2} e^{k x}$
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Solutions: {(C₂, C₁, 0), (C₂, C₁, {2⋅n⋅ⅈ⋅π | n ∊ ℤ})}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Nice! That looks way better! If you look closer though, you can see that the first solution is contained in the second solution. So we'd like to reduce the complexity and discard the first one.</p>
+<p>But if you remember, we want to do it with as little explicit steps as we can. How do we do that? We could try and fully expland the solutions in terms of <code>ImageSet</code>, that is $\{ (C_2, C_1, 2 n i \pi) \mid n \in \mathbb{Z} \}$.</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">bindFiniteSet</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">FiniteSet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">args</span>
+<span class="k">def</span> <span class="nf">bindImageSet</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ImageSet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">lamda</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">base_set</span>
+<span class="p">(</span><span class="n">first</span><span class="p">,</span> <span class="n">second</span><span class="p">)</span> <span class="o">=</span> <span class="n">bindFiniteSet</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="p">(</span><span class="n">C1sol</span><span class="p">,</span> <span class="n">C2sol</span><span class="p">,</span> <span class="n">kSol</span><span class="p">)</span> <span class="o">=</span> <span class="n">second</span>
+<span class="n">lamda</span><span class="p">,</span> <span class="n">base</span> <span class="o">=</span> <span class="n">bindImageSet</span><span class="p">(</span><span class="n">kSol</span><span class="p">)</span>
+<span class="n">mdisplay</span><span class="p">(</span><span class="s2">&quot;$C_1$ = </span><span class="si">{}</span><span class="s2">; C2 = </span><span class="si">{}</span><span class="s2">; k = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">C1sol</span><span class="p">,</span> <span class="n">C2sol</span><span class="p">,</span> <span class="n">kSol</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>$C_1$ = C₂; C2 = C₁; k = {2⋅n⋅ⅈ⋅π | n ∊ ℤ}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">bindTuple</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">.</span><span class="n">args</span>
+
+<span class="k">def</span> <span class="nf">flatten</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">bindTuple</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Set</span><span class="p">)</span> <span class="k">else</span> <span class="n">FiniteSet</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">ProductSet</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">collapse</span><span class="p">(</span><span class="n">solutions</span><span class="p">):</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="n">EmptySet</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">sol</span> <span class="ow">in</span> <span class="n">solutions</span><span class="o">.</span><span class="n">args</span><span class="p">:</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">ret</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="n">flatten</span><span class="p">(</span><span class="n">sol</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">ret</span>
+
+<span class="n">collapsed</span> <span class="o">=</span> <span class="n">collapse</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">collapsed</span><span class="p">)</span>
+
+<span class="c1"># TODO need to turn to ImageSet?</span>
+<span class="c1"># TODO and then we can substitute for each N separately...</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$\displaystyle \left\{C_{2}\right\} \times \left\{C_{1}\right\} \times \left\{2 n i \pi\; |\; n \in \mathbb{Z}\right\}$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now, at the very least it would assert if something goes wrong. Let's actually substitute everything now.</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Xsol</span> <span class="o">=</span> <span class="n">Xsol</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span>
+    <span class="n">constants</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">C1sol</span><span class="p">,</span>
+    <span class="n">constants</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">C2sol</span><span class="p">,</span>
+<span class="p">})</span>
+<span class="c1"># only one constant </span>
+<span class="c1"># [const] = set(constants) - Xsol.free_symbols</span>
+<span class="c1"># display(const)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">IndexedBase</span><span class="p">(</span><span class="s1">'A'</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">IndexedBase</span><span class="p">(</span><span class="s1">'B'</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">'n'</span><span class="p">,</span> <span class="n">integer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">term</span> <span class="o">=</span> <span class="n">Xsol</span><span class="o">.</span><span class="n">rhs</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span>
+    <span class="n">constants</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span> <span class="n">A</span><span class="p">[</span><span class="n">n</span><span class="p">],</span>
+    <span class="n">constants</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> <span class="n">B</span><span class="p">[</span><span class="n">n</span><span class="p">],</span>
+    <span class="n">k</span><span class="p">:</span> <span class="n">lamda</span><span class="p">(</span><span class="n">n</span><span class="p">),</span>
+<span class="p">})</span>
+<span class="n">term</span> <span class="o">=</span> <span class="n">collect</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="p">[</span><span class="n">A</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">B</span><span class="p">[</span><span class="n">n</span><span class="p">]])</span> <span class="c1"># for nicer grouping</span>
+<span class="n">basis</span> <span class="o">=</span> <span class="n">ImageSet</span><span class="p">(</span>
+    <span class="n">Lambda</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">term</span><span class="p">),</span>    
+    <span class="n">base</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">mdisplay</span><span class="p">(</span><span class="s2">&quot;Solutions basis: </span><span class="si">{}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span> <span class="c1"># TODO shit, that doesn't need to be formatted like latex</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>                 ⎧ 2⋅ⅈ⋅π⋅n⋅x         -2⋅ⅈ⋅π⋅n⋅x             ⎫
+Solutions basis: ⎨ℯ         ⋅A[n] + ℯ          ⋅B[n] | n ∊ ℤ⎬
+                 ⎩                                          ⎭
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ok, we're getting closer now. One concern is that we've got linearly dependent functions in our basis, the ones corresponding to $n$ and $-n$. I guess it's the nonlinsolve to blame. Can we do anything to eliminate extra solutions in the meantime?</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">eliminate_dependency</span><span class="p">(</span><span class="n">iset</span><span class="p">,</span> <span class="n">idx</span><span class="p">,</span> <span class="n">var</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="n">iset</span><span class="o">.</span><span class="n">base_set</span> <span class="o">==</span> <span class="n">Integers</span>
+    <span class="n">prop</span> <span class="o">=</span> <span class="n">simplify</span><span class="p">(</span><span class="n">basis</span><span class="o">.</span><span class="n">lamda</span><span class="p">(</span><span class="n">idx</span><span class="p">)</span> <span class="o">/</span> <span class="n">basis</span><span class="o">.</span><span class="n">lamda</span><span class="p">(</span><span class="o">-</span><span class="n">idx</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">prop</span><span class="o">.</span><span class="n">free_symbols</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">var</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">prop</span><span class="o">.</span><span class="n">free_symbols</span>
+    <span class="c1"># now that we verified linear dependency, we can shrink the index space</span>
+    <span class="k">return</span> <span class="n">ImageSet</span><span class="p">(</span><span class="n">iset</span><span class="o">.</span><span class="n">lamda</span><span class="p">,</span> <span class="n">Naturals0</span><span class="p">)</span>
+
+<span class="c1"># basis = eliminate_dependency(basis, n, x)</span>
+<span class="c1"># display(basis)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ok, now to find out $B_n$, we're gonna need the general solution. TODO continuus bit -- I suppose another time.
+TODO actually, integrate over other values of k too! They all result in 0, but still!
+TODO this might be important when we solve something like schrodinger equation, where the spectrum might have continuous part!</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># shit, that didn't work. requires lower and upper bounds</span>
+<span class="c1"># kinda makes sense, we can't just sum over arbitrary sets...</span>
+<span class="c1"># but we do want to sum over countable sets!</span>
+<span class="k">def</span> <span class="nf">sum_iset</span><span class="p">(</span><span class="n">iset</span><span class="p">):</span>
+    <span class="n">bs</span> <span class="o">=</span> <span class="n">iset</span><span class="o">.</span><span class="n">base_set</span>
+    <span class="n">lamda</span> <span class="o">=</span> <span class="n">iset</span><span class="o">.</span><span class="n">lamda</span>
+    <span class="p">[</span><span class="n">var</span><span class="p">]</span> <span class="o">=</span> <span class="n">lamda</span><span class="o">.</span><span class="n">variables</span>
+    <span class="k">return</span> <span class="n">Sum</span><span class="p">(</span>
+        <span class="n">lamda</span><span class="p">(</span><span class="n">var</span><span class="p">),</span>
+        <span class="p">(</span><span class="n">var</span><span class="p">,</span> <span class="n">bs</span><span class="o">.</span><span class="n">_inf</span><span class="p">,</span> <span class="n">bs</span><span class="o">.</span><span class="n">_sup</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="n">Xsol2</span> <span class="o">=</span> <span class="n">sum_iset</span><span class="p">(</span><span class="n">basis</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Xsol2</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$\displaystyle \sum_{n=-\infty}^{\infty} \left(e^{2 i \pi n x} {A}_{n} + e^{- 2 i \pi n x} {B}_{n}\right)$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO FIXME exploiting that A = 0..</span>
+<span class="k">def</span> <span class="nf">get_func</span><span class="p">(</span><span class="n">idx</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">simplify</span><span class="p">(</span><span class="n">Xsol2</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">idx</span><span class="p">)</span> <span class="o">/</span> <span class="n">B</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span>
+
+<span class="c1"># if we not assume n to be nonnegative it will make integration a bit easier for sympy</span>
+<span class="c1"># from sympy.assumptions.assume import global_assumptions</span>
+<span class="c1"># from sympy import Q</span>
+<span class="c1"># global_assumptions.add(Q.nonnegative(n))</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">'m'</span><span class="p">,</span> <span class="n">integer</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="c1"># , nonnegative=True)</span>
+
+<span class="c1"># TODO ???? takes a lot to compute this</span>
+
+<span class="c1"># integrate(get_func(n) * get_func(m), (x, 0, L))</span>
+<span class="c1"># TODO wtf??? that's messy</span>
+
+<span class="c1">#def sum_map(f, iset, idx):</span>
+<span class="c1">#    return Sum(</span>
+<span class="c1">#        f(idx, iset.lamda(idx)),</span>
+<span class="c1">#        (idx, iset.base_set._inf, iset.base_set._sup),</span>
+<span class="c1">#    )</span>
+
+
+<span class="c1"># B = IndexedBase('B')</span>
+
+<span class="c1"># sol = sum_map(lambda idx, term: Xsol.subs({</span>
+<span class="c1">#    C1: A[idx],</span>
+<span class="c1">#    C2: B[idx],</span>
+<span class="c1">#    k : term,</span>
+<span class="c1">#}), K, idx=n)</span>
+
+
+<span class="c1"># print('General solution:')</span>
+<span class="c1"># display(sol)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sympy.solvers.solveset</span> <span class="k">import</span> <span class="n">invert_complex</span><span class="p">,</span> <span class="n">invert_real</span><span class="p">,</span> <span class="n">_solve_radical</span><span class="p">,</span> <span class="n">_solveset</span><span class="p">,</span> <span class="n">solveset_complex</span>
+<span class="n">QQ</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">'QQ'</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># snonlinsolve([(Y - 1) * (exp(I * sqrt(YY)) - 1)],[Y, YY])</span>
+<span class="c1"># TODO FIX -- simplify its output??</span>
+<span class="kn">from</span> <span class="nn">sympy.solvers.solveset</span> <span class="k">import</span> <span class="n">linsolve</span> <span class="k">as</span> <span class="n">slinsolve</span>
+<span class="n">display</span><span class="p">(</span><span class="n">linsolve</span><span class="p">(</span><span class="n">system</span><span class="p">,</span> <span class="n">constants</span><span class="p">))</span>
+<span class="c1"># TODO shit is E even the right name for the constant???</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$\displaystyle \emptyset$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sympy.solvers.solveset</span> <span class="k">import</span> <span class="n">linsolve</span>
+<span class="kn">from</span> <span class="nn">sympy.solvers.ode</span> <span class="k">import</span> <span class="n">ode_nth_linear_constant_coeff_homogeneous</span> <span class="k">as</span> <span class="n">ode_solve</span>
+<span class="kn">from</span> <span class="nn">sympy.core.numbers</span> <span class="k">import</span> <span class="n">IntegerConstant</span>
+<span class="c1"># `</span>
+<span class="n">k</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">'k'</span><span class="p">)</span>
+<span class="n">E</span> <span class="o">=</span> <span class="n">k</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="c1"># E = symbols('E', real=True)</span>
+<span class="c1"># eqT = Eq(_eqT + E) # ).canonical</span>
+<span class="c1"># canonical moves all variables to the left and numbers to the right</span>
+<span class="n">Tsol</span> <span class="o">=</span> <span class="n">dsolve</span><span class="p">(</span><span class="n">eqT</span><span class="p">)</span><span class="o">.</span><span class="n">rhs</span>
+<span class="c1"># shit, it won't eliminate solutions based on k :(</span>
+<span class="n">Xsol</span> <span class="o">=</span> <span class="n">dsolve</span><span class="p">(</span>
+    <span class="n">eqX</span><span class="p">,</span>
+    <span class="n">X</span><span class="p">,</span>
+    <span class="c1">#ics={</span>
+    <span class="c1">#    X.subs(x, x_l): 0,</span>
+    <span class="c1">#    X.subs(x, x_r): 0,            </span>
+    <span class="c1">#},</span>
+    <span class="n">hint</span><span class="o">=</span><span class="s1">'nth_linear_constant_coeff_homogeneous'</span><span class="p">,</span>
+    <span class="c1"># returns = 'both',</span>
+    
+<span class="p">)</span><span class="o">.</span><span class="n">rhs</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;General solutions for X and T:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">((</span><span class="n">Xsol</span><span class="p">,</span> <span class="n">Tsol</span><span class="p">))</span>
+
+<span class="c1"># how to specify constants for DE solver??</span>
+<span class="p">[</span><span class="n">C1</span><span class="p">,</span> <span class="n">C2</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">Xsol</span><span class="o">.</span><span class="n">free_symbols</span><span class="o">.</span><span class="n">difference</span><span class="p">({</span><span class="n">k</span><span class="p">,</span> <span class="n">x</span><span class="p">}))</span>
+
+<span class="n">bcs_l</span> <span class="o">=</span> <span class="n">Eq</span><span class="p">(</span><span class="n">Xsol</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_l</span><span class="p">))</span>
+<span class="n">bcs_r</span> <span class="o">=</span> <span class="n">Eq</span><span class="p">(</span><span class="n">Xsol</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_r</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;BC enforces:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">((</span><span class="n">bcs_l</span><span class="p">,</span> <span class="n">bcs_r</span><span class="p">))</span>
+
+
+<span class="c1"># TODO blog about that, give examples?</span>
+<span class="c1"># so, solveset stuff can't handle </span>
+<span class="p">[</span><span class="n">c1_c2</span><span class="p">]</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">bcs_l</span><span class="p">,</span> <span class="n">C1</span><span class="p">)</span>
+<span class="c1"># solve(bcs_r.subs(C1, c1_c2))</span>
+<span class="c1"># [{C2:0},{k:0},{k:iπ}]</span>
+<span class="c1"># TODO what do we do with C2 = 0 solution???</span>
+<span class="n">K</span> <span class="o">=</span> <span class="n">solveset</span><span class="p">(</span><span class="n">bcs_r</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">C1</span><span class="p">,</span> <span class="n">c1_c2</span><span class="p">),</span> <span class="n">k</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Allowed values of k:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
+
+<span class="c1"># TODO how to eliminate negative k solutions?</span>
+<span class="c1"># there must be something wrong with our approach if we have to do that manually. right?</span>
+<span class="c1"># something unnatural. maybe we want to impose some sort of symmetry first??</span>
+<span class="c1"># ah, basically separate equation in left and right waves first?</span>
+
+<span class="c1"># so, can we eliminate extra constants and instead use the whole range of ks ????</span>
+
+<span class="c1"># hmm. maybe the redundancy is coming from separation of variables? e.g. negative and positive energies?</span>
+
+
+<span class="c1"># TODO generate sequence of edits from git commits?...</span>
+
+<span class="c1"># basis = imageset(lambda kk: Xsol.subs(k, kk), K)</span>
+<span class="c1"># print(&quot;Solutions basis:&quot;)</span>
+<span class="c1"># display(basis)</span>
+
+<span class="c1"># here, sympy retuns something called ImageSet. it basically means that the solutions image of Z under x -&gt; x i pi</span>
+
+
+<span class="c1"># right, how to define infinite coefficients? can it just be a function?</span>
+<span class="c1"># TODO how to sum something over imageset????</span>
+
+<span class="c1"># TODO base_set??</span>
+
+
+<span class="c1"># shit, that didn't work. requires lower and upper bounds</span>
+<span class="c1"># kinda makes sense, we can't just sum over arbitrary sets...</span>
+<span class="c1"># but we do want to sum over countable sets!</span>
+
+<span class="k">def</span> <span class="nf">sum_map</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">iset</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Sum</span><span class="p">(</span>
+        <span class="n">f</span><span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">iset</span><span class="o">.</span><span class="n">lamda</span><span class="p">(</span><span class="n">idx</span><span class="p">)),</span>
+        <span class="p">(</span><span class="n">idx</span><span class="p">,</span> <span class="n">iset</span><span class="o">.</span><span class="n">base_set</span><span class="o">.</span><span class="n">_inf</span><span class="p">,</span> <span class="n">iset</span><span class="o">.</span><span class="n">base_set</span><span class="o">.</span><span class="n">_sup</span><span class="p">),</span>
+    <span class="p">)</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">IndexedBase</span><span class="p">(</span><span class="s1">'A'</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">IndexedBase</span><span class="p">(</span><span class="s1">'B'</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">'n'</span><span class="p">)</span>
+
+<span class="n">sol</span> <span class="o">=</span> <span class="n">sum_map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">idx</span><span class="p">,</span> <span class="n">term</span><span class="p">:</span> <span class="n">Xsol</span><span class="o">.</span><span class="n">subs</span><span class="p">({</span>
+    <span class="n">C1</span><span class="p">:</span> <span class="n">A</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span>
+    <span class="n">C2</span><span class="p">:</span> <span class="n">B</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span>
+    <span class="n">k</span> <span class="p">:</span> <span class="n">term</span><span class="p">,</span>
+<span class="p">}),</span> <span class="n">K</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">'General solution:'</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+
+<span class="c1"># hmm, it's a bit awkward, we've got quite a bit of redundancy in </span>
+<span class="c1"># in textbooks, that's violated in an ad-hoc manner at the step (TODO refer to line, with a marker?)</span>
+<span class="c1"># the proper way to deal with this would be rewriting the solution</span>
+<span class="c1"># and only then enforce a bc!</span>
+
+<span class="c1"># TODO do we need to eliminate negative coefficients??</span>
+
+<span class="c1"># imageset(lambda u: u**2, allowed_ks)</span>
+<span class="c1">#Xsol</span>
+<span class="c1"># print(allowed_ks.domain)</span>
+<span class="c1"># ok, now we basically restrict ourselves to considering only specific waves</span>
+
+<span class="c1"># TODO pick first N coeffs and do initial transform?</span>
+<span class="c1"># usol = Xsol.rhs * Tsol.rhs</span>
+<span class="c1"># linsolve(, [C1, C2])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;rewrite: C[0] = (A_0 + B_0) / 2; for n&gt;0: C[n] = B_n + A_{-n}; C[-n] = B_{-n} + A_n&quot;</span><span class="p">)</span>
+<span class="c1"># C = IndexedBase('C')</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">'C'</span><span class="p">)</span>
+<span class="c1"># sol = Sum(C[n] * exp(I * pi * n * x), (n, -oo, oo))</span>
+
+<span class="c1"># TODO here, extract the exponent from split solution..</span>
+<span class="n">sol</span> <span class="o">=</span> <span class="n">Integral</span><span class="p">(</span><span class="n">C</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="n">I</span> <span class="o">*</span> <span class="n">k</span> <span class="o">*</span> <span class="n">x</span><span class="p">),</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="o">-</span><span class="n">oo</span><span class="p">,</span> <span class="n">oo</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;General sol&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+<span class="c1"># TODO how to check they are equivalent??</span>
+<span class="n">bc_l</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_l</span><span class="p">)</span>
+<span class="n">bc_r</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_r</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;BCS:&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">((</span><span class="n">Eq</span><span class="p">(</span><span class="n">bc_l</span><span class="p">),</span> <span class="n">Eq</span><span class="p">(</span><span class="n">bc_r</span><span class="p">)))</span>
+<span class="c1"># TODO is there a way to solve that automatically???</span>
+
+<span class="k">def</span> <span class="nf">mComm</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="bp">cls</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="bp">cls</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">expr</span><span class="o">.</span><span class="n">args</span>
+
+<span class="k">def</span> <span class="nf">mAdd</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
+    <span class="c1"># TODO is there anything standard in sympy?</span>
+    <span class="k">return</span> <span class="n">mComm</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">Add</span><span class="p">)</span>
+    
+<span class="k">def</span> <span class="nf">mMul</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">mComm</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">Mul</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">mIntegral</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">Integral</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">expr</span><span class="o">.</span><span class="n">limits</span><span class="p">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">function</span>
+
+<span class="k">def</span> <span class="nf">pullIntegral</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">Integral</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">expr</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">Mul</span><span class="p">):</span>
+        <span class="c1"># TODO might work for a constant...</span>
+        <span class="n">parts</span> <span class="o">=</span> <span class="p">[</span><span class="n">pullIntegral</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">mMul</span><span class="p">(</span><span class="n">expr</span><span class="p">)]</span>
+        <span class="c1"># TODO only one should be integral, rest constants?</span>
+        <span class="n">consts</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">rest</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">IntegerConstant</span><span class="p">):</span>
+                <span class="n">consts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">rest</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+        <span class="n">rest</span> <span class="o">=</span> <span class="p">[</span><span class="n">pullIntegral</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rest</span><span class="p">]</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rest</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">lims</span><span class="p">,</span> <span class="n">fun</span> <span class="o">=</span> <span class="n">mIntegral</span><span class="p">(</span><span class="n">rest</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">Integral</span><span class="p">(</span><span class="n">Mul</span><span class="p">(</span><span class="o">*</span><span class="n">consts</span><span class="p">)</span> <span class="o">*</span> <span class="n">fun</span><span class="p">,</span> <span class="n">lims</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">res</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">Mul</span><span class="p">(</span><span class="o">*</span><span class="n">consts</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">rest</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">res</span> <span class="o">=</span> <span class="n">res</span> <span class="o">*</span> <span class="n">Mul</span><span class="p">(</span><span class="o">*</span><span class="n">rest</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">res</span>
+    <span class="k">return</span> <span class="n">expr</span>
+    
+
+<span class="k">def</span> <span class="nf">asIntegral</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">pullIntegral</span><span class="p">(</span><span class="n">expr</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">Integral</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">res</span>
+    <span class="c1"># if is</span>
+
+<span class="k">def</span> <span class="nf">combine_isum</span><span class="p">(</span><span class="n">isum</span><span class="p">):</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="n">mAdd</span><span class="p">(</span><span class="n">isum</span><span class="p">)</span>
+    <span class="n">parts</span> <span class="o">=</span> <span class="p">[</span><span class="n">asIntegral</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">]</span>
+    <span class="c1"># TODO shit, is there something for pulling stuff under integral?</span>
+    <span class="c1"># TODO expression with limits</span>
+    <span class="n">lims</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">limits</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">]</span>
+    <span class="n">exprs</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">.</span><span class="n">function</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">parts</span><span class="p">]</span>
+    <span class="p">[</span><span class="n">lim</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">lims</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">Integral</span><span class="p">(</span><span class="n">Add</span><span class="p">(</span><span class="o">*</span><span class="n">exprs</span><span class="p">),</span> <span class="n">lim</span><span class="p">)</span>
+    
+    <span class="c1"># TODO generify for expr with limits</span>
+    
+<span class="k">def</span> <span class="nf">int2sum</span><span class="p">(</span><span class="n">thing</span><span class="p">):</span>
+    <span class="n">lims</span><span class="p">,</span> <span class="n">func</span> <span class="o">=</span> <span class="n">mIntegral</span><span class="p">(</span><span class="n">thing</span><span class="p">)</span>
+    <span class="p">[</span><span class="n">q1</span><span class="p">,</span> <span class="n">_</span><span class="p">]</span> <span class="o">=</span> <span class="n">mMul</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="n">KK</span> <span class="o">=</span> <span class="n">solveset</span><span class="p">(</span><span class="n">q1</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">KK</span>
+    
+    <span class="c1"># TODO how to bind it to list of integrals? some sort of generic shape??</span>
+<span class="c1"># TODO right! so if we got independent things, we should test BOTH linear combinations</span>
+<span class="n">bcs1</span> <span class="o">=</span> <span class="n">rcollect</span><span class="p">(</span><span class="n">combine_isum</span><span class="p">(</span><span class="n">bc_l</span> <span class="o">+</span> <span class="n">bc_r</span><span class="p">),</span> <span class="n">C</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">bcs1</span><span class="p">)</span>
+
+<span class="n">bcs2</span> <span class="o">=</span> <span class="n">rcollect</span><span class="p">(</span><span class="n">combine_isum</span><span class="p">(</span><span class="n">bc_l</span> <span class="o">-</span> <span class="n">bc_r</span><span class="p">),</span> <span class="n">C</span><span class="p">(</span><span class="n">k</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">bcs2</span><span class="p">)</span>
+
+<span class="c1">#lims1, func1 = mIntegral(bcs1)</span>
+<span class="c1">#[qq1, _] = mMul(func1)</span>
+<span class="c1">#lims2, func2 = mIntegral(bcs2)</span>
+<span class="c1">#[qq2, _] = mMul(func2)</span>
+
+<span class="c1">#from sympy.solvers.solveset import linsolve as slinsolve, nonlinsolve as snonlinsolve</span>
+<span class="c1"># KK = solveset([qq1, qq2], k)</span>
+
+<span class="c1"># KK = slinsolve([qq1, qq2], k)</span>
+<span class="c1"># display(qq1)</span>
+<span class="c1"># display(qq2)</span>
+<span class="c1"># nope.. they were independent and should be solved independently!!</span>
+
+<span class="k">def</span> <span class="nf">the</span><span class="p">(</span><span class="n">objs</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">objs</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;expected non-empty list&quot;</span>
+    <span class="k">assert</span> <span class="nb">all</span><span class="p">([</span><span class="n">o</span> <span class="o">==</span> <span class="n">objs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">objs</span><span class="p">]),</span> <span class="s2">&quot;not all objects are equal&quot;</span>
+    <span class="k">return</span> <span class="n">objs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">asLambda1</span><span class="p">(</span><span class="n">expr</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">Lambda</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">expr</span><span class="o">.</span><span class="n">variables</span><span class="p">,</span> <span class="n">expr</span><span class="o">.</span><span class="n">expr</span>
+
+<span class="c1"># TODO https://docs.sympy.org/latest/tutorial/manipulation.html is not too helpful though...</span>
+<span class="k">def</span> <span class="nf">combine_imagesets</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">):</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">s1</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">s2</span><span class="p">)</span>
+    <span class="n">sets</span> <span class="o">=</span> <span class="p">[</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">]</span>
+    <span class="c1"># TODO assert all are image sets? or pull them out</span>
+    <span class="n">dom</span> <span class="o">=</span> <span class="n">the</span><span class="p">([</span><span class="n">s</span><span class="o">.</span><span class="n">base_set</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sets</span><span class="p">])</span>
+    <span class="c1"># TODO ok, need to  analyse lamdas...</span>
+    <span class="c1"># TODO should be same variable???</span>
+    <span class="n">v1</span><span class="p">,</span> <span class="n">e1</span> <span class="o">=</span> <span class="n">asLambda1</span><span class="p">(</span><span class="n">s1</span><span class="o">.</span><span class="n">lamda</span><span class="p">)</span>
+    <span class="n">v2</span><span class="p">,</span> <span class="n">e2</span> <span class="o">=</span> <span class="n">asLambda1</span><span class="p">(</span><span class="n">s2</span><span class="o">.</span><span class="n">lamda</span><span class="p">)</span>
+    <span class="c1"># print(cse([e1, e2]))</span>
+    <span class="c1"># assert v1 == v2</span>
+    <span class="c1"># basically, we need to figure out if e1 == e2 for some n? then we can discard one of them!!</span>
+    <span class="c1"># and if only one elem left, we don't need the finiteset?</span>
+    <span class="c1"># ah shit, we need to replace the function!</span>
+    <span class="c1"># display(solve(e1 - e2))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;GCD&quot;</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">factor_list</span><span class="p">(</span><span class="n">e1</span><span class="p">))</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">factor_list</span><span class="p">(</span><span class="n">e2</span><span class="p">))</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">gcd_terms</span><span class="p">([</span><span class="n">e1</span><span class="p">,</span> <span class="n">e2</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">imageset</span><span class="p">(</span><span class="k">lambda</span> <span class="n">q</span><span class="p">:</span> <span class="n">FiniteSet</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">lamda</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">sets</span><span class="p">]),</span> <span class="n">dom</span><span class="p">)</span>
+    
+    
+<span class="c1"># TODO shit, how to simplify them???</span>
+<span class="c1"># combine_imagesets()</span>
+<span class="c1"># fucking hell. why is that so tricky????</span>
+<span class="c1"># anyway:</span>
+<span class="n">display</span><span class="p">(</span><span class="n">int2sum</span><span class="p">(</span><span class="n">bcs</span><span class="p">)</span> <span class="o">+</span> <span class="n">int2sum</span><span class="p">(</span><span class="n">bcs2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;which is same as:&quot;</span><span class="p">)</span>
+<span class="c1"># TODO again, need some sort of quickcheck for expressions, sets etc</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">'n'</span><span class="p">)</span>
+<span class="n">Ns</span> <span class="o">=</span> <span class="n">imageset</span><span class="p">(</span><span class="n">Lambda</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">n</span><span class="p">),</span> <span class="n">Integers</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">Ns</span><span class="p">)</span>
+<span class="c1"># TODO now we actually need int2sum</span>
+<span class="c1"># something that pick subintegral expression </span>
+
+<span class="k">def</span> <span class="nf">change_limits</span><span class="p">(</span><span class="n">expr</span><span class="p">,</span> <span class="n">ns</span><span class="p">):</span>
+    <span class="c1"># expr.limits</span>
+    <span class="n">ef</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">function</span>
+    <span class="p">[</span><span class="n">ev</span><span class="p">]</span> <span class="o">=</span> <span class="n">expr</span><span class="o">.</span><span class="n">variables</span>
+    <span class="n">lamda</span> <span class="o">=</span> <span class="n">ns</span><span class="o">.</span><span class="n">lamda</span>
+    <span class="n">lf</span> <span class="o">=</span> <span class="n">lamda</span><span class="o">.</span><span class="n">expr</span>
+    <span class="p">[</span><span class="n">lv</span><span class="p">]</span> <span class="o">=</span> <span class="n">lamda</span><span class="o">.</span><span class="n">variables</span>
+    <span class="n">bs</span> <span class="o">=</span> <span class="n">ns</span><span class="o">.</span><span class="n">base_set</span>   
+    <span class="k">return</span> <span class="n">Sum</span><span class="p">(</span><span class="n">ef</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">ev</span><span class="p">,</span> <span class="n">lamda</span><span class="p">(</span><span class="n">lv</span><span class="p">)),</span> <span class="p">(</span><span class="n">lv</span><span class="p">,</span> <span class="n">bs</span><span class="o">.</span><span class="n">_inf</span><span class="p">,</span> <span class="n">bs</span><span class="o">.</span><span class="n">_sup</span><span class="p">))</span>
+<span class="c1"># ugh. so dirty..</span>
+<span class="n">res2</span> <span class="o">=</span> <span class="n">change_limits</span><span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">Ns</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;After substituting restrictions on wavevectors&quot;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">res2</span><span class="p">)</span>
+
+
+
+<span class="kn">from</span> <span class="nn">sympy.integrals.transforms</span> <span class="k">import</span> <span class="n">_fourier_transform</span>
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">'u'</span><span class="p">)</span>
+<span class="n">integrate</span><span class="p">(</span><span class="n">res2</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">I</span> <span class="o">*</span> <span class="n">pi</span> <span class="o">*</span> <span class="n">u</span> <span class="o">*</span> <span class="n">x</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_l</span><span class="p">,</span> <span class="n">x_r</span><span class="p">))</span>
+
+<span class="c1"># shit. I guess we run at the fact that expr(-I pi u x) are not basis functions for the problem once again...</span>
+<span class="c1"># still, shouldn't prevent us from solving. right???</span>
+
+
+<span class="c1"># fucking hell.. why does that work???</span>
+
+
+<span class="c1"># TODO next: initial condition to find Cs?</span>
+<span class="c1"># basically, here we're going to restrict ourselves? or we can get away with fully symbolic for a while?...</span>
+<span class="c1"># TODO ok, just multiply all by exp(- i pi k x)</span>
+<span class="c1"># TODO how to eliminate C_{k+1} vs C_{k-1} ???</span>
+<span class="c1"># wonder if division by two in classic particle in a box coming from the fact that they have to normalise by 2</span>
+<span class="c1"># since they are using degenerate solution space</span>
+
+
+<span class="c1"># TODO do final chage of variables from C(pi * n) to some indexed function?..</span>
+
+<span class="c1"># TODO shit... but coeffs are not independent.. because originally we had two equations??</span>
+<span class="c1"># mm. ok, individual things don't have to satisfy bcs!</span>
+
+
+    
+<span class="c1"># when k = 2 pi n, it works for any C</span>
+<span class="c1"># when it's not, thet that can only work when all of C are 0, due to properties of L^2 space</span>
+<span class="c1"># TODO could implement solving integral equations in python?...</span>
+<span class="c1"># basically, C(k) is non-zero on k = 2 pi n and 0 otherwise</span>
+
+<span class="c1"># TODO hmm interesting, looks kinda like a discrepancy between pi *n and 2 n pi + pi</span>
+<span class="c1"># but, actually, I guess this is kinda disguised in the linear combination thing! this form explicitly forbids cosines!</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>General solutions for X and T:
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$\displaystyle \left( C_{1} e^{- x \sqrt{- E}} + C_{2} e^{x \sqrt{- E}}, \  C_{1} e^{- t \sqrt{- E}} + C_{2} e^{t \sqrt{- E}}\right)$
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-28-980207416d34&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">     26</span> 
+<span class="ansi-green-intense-fg ansi-bold">     27</span> <span class="ansi-red-fg"># how to specify constants for DE solver??</span>
+<span class="ansi-green-fg">---&gt; 28</span><span class="ansi-red-fg"> </span><span class="ansi-blue-fg">[</span>C1<span class="ansi-blue-fg">,</span> C2<span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> list<span class="ansi-blue-fg">(</span>Xsol<span class="ansi-blue-fg">.</span>free_symbols<span class="ansi-blue-fg">.</span>difference<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">{</span>k<span class="ansi-blue-fg">,</span> x<span class="ansi-blue-fg">}</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     29</span> 
+<span class="ansi-green-intense-fg ansi-bold">     30</span> bcs_l <span class="ansi-blue-fg">=</span> Eq<span class="ansi-blue-fg">(</span>Xsol<span class="ansi-blue-fg">.</span>subs<span class="ansi-blue-fg">(</span>x<span class="ansi-blue-fg">,</span> x_l<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">ValueError</span>: too many values to unpack (expected 2)</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># shit. it can't handle restrictions on k :(</span>
+<span class="kn">from</span> <span class="nn">sympy.solvers.solveset</span> <span class="k">import</span> <span class="n">linsolve</span> <span class="k">as</span> <span class="n">slinsolve</span>
+
+<span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">'A B k'</span><span class="p">)</span>
+
+
+<span class="n">slinsolve</span><span class="p">([</span>
+    <span class="n">A</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="p">))</span> <span class="o">+</span> <span class="n">exp</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="p">)),</span>
+<span class="p">],</span> <span class="p">[</span><span class="n">A</span><span class="p">])</span>
+
+<span class="c1"># right, it just can't figure out multiple solutions??</span>
+<span class="c1"># solveset(exp(k) - 1)</span>
+
+<span class="c1"># shit, it can't handle eliminating certain k's :( </span>
+<span class="n">slinsolve</span><span class="p">([</span>
+    <span class="n">A</span><span class="p">,</span>
+    <span class="mi">0</span><span class="p">,</span>
+    <span class="c1">#exp(k) - 1,</span>
+<span class="p">],</span> <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">])</span>
+
+<span class="n">E</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">'E'</span><span class="p">,</span> <span class="n">real</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">k</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">'k'</span><span class="p">)</span>
+
+<span class="c1"># TODO shit, it won't handle sqrt??</span>
+<span class="n">solveset</span><span class="p">(</span><span class="n">exp</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="o">-</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="p">))</span>
+
+
+<span class="c1"># solveset(exp(k) - 1)</span>
+<span class="n">solveset</span><span class="p">(</span><span class="n">exp</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">slinsolve</span><span class="p">([</span>
+    <span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="p">,</span>
+    <span class="n">A</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="n">k</span><span class="p">)</span> <span class="o">+</span> <span class="n">B</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="n">k</span><span class="p">),</span>
+<span class="p">],</span>
+    <span class="p">[</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">]</span>
+<span class="p">)</span>
+
+
+<span class="c1">#solve([</span>
+<span class="c1">#    exp(k) + 1,</span>
+<span class="c1">#], returns='solveset')</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[29]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle \left\{\left( 0, \  0\right)\right\}$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[30]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sympy.core.rules</span> <span class="k">import</span> <span class="n">Transform</span>
+<span class="k">def</span> <span class="nf">split</span><span class="p">(</span><span class="n">integ</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Add</span><span class="p">(</span><span class="o">*</span><span class="p">[</span><span class="n">integ</span><span class="o">.</span><span class="n">func</span><span class="p">(</span><span class="n">term</span><span class="p">,</span> <span class="o">*</span><span class="n">integ</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">Add</span><span class="o">.</span><span class="n">make_args</span><span class="p">(</span><span class="n">integ</span><span class="o">.</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])])</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">'F'</span><span class="p">)</span>
+<span class="n">G</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">'G'</span><span class="p">)</span>
+<span class="n">H</span> <span class="o">=</span> <span class="n">Function</span><span class="p">(</span><span class="s1">'H'</span><span class="p">)</span>
+<span class="n">A</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">'A B'</span><span class="p">)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">'z'</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">'v'</span><span class="p">)</span>
+<span class="n">it</span> <span class="o">=</span> <span class="n">Integral</span><span class="p">(</span><span class="n">F</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">*</span> <span class="n">z</span> <span class="o">+</span> <span class="o">-</span><span class="n">G</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">*</span> <span class="n">z</span><span class="p">,</span> <span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">oo</span><span class="p">))</span>
+<span class="n">display</span><span class="p">(</span><span class="n">it</span><span class="p">)</span>
+<span class="n">thing</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="n">xreplace</span><span class="p">(</span><span class="n">Transform</span><span class="p">(</span><span class="n">split</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">Integral</span><span class="p">)))</span>
+
+<span class="p">[</span><span class="n">left</span><span class="p">,</span> <span class="n">right</span><span class="p">]</span> <span class="o">=</span> <span class="n">mAdd</span><span class="p">(</span><span class="n">thing</span><span class="p">)</span>
+<span class="n">rrr</span> <span class="o">=</span> <span class="n">Add</span><span class="p">(</span>
+    <span class="n">left</span><span class="p">,</span>
+    <span class="n">right</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">,</span> <span class="n">z</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">rrr</span><span class="p">)</span>
+<span class="n">rrr</span><span class="o">.</span><span class="n">subs_expr</span><span class="p">({</span>
+    <span class="n">F</span><span class="p">(</span><span class="n">z</span><span class="p">):</span> <span class="n">H</span><span class="p">(</span><span class="n">z</span><span class="p">),</span>
+    <span class="n">G</span><span class="p">(</span><span class="o">-</span><span class="n">z</span><span class="p">):</span> <span class="n">H</span><span class="p">(</span><span class="n">z</span><span class="p">),</span>
+<span class="p">})</span>
+<span class="c1"># TODO shit...</span>
+<span class="c1"># TODO replace function with a partial??</span>
+
+
+
+<span class="c1"># TODO how to assert that expressions are equivalent???</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_latex output_subarea ">
+$\displaystyle \int\limits_{0}^{\infty} \left(z F{\left(z \right)} - z G{\left(z \right)}\right)\, dz$
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-30-a6dca8e88d67&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-intense-fg ansi-bold">     12</span> thing <span class="ansi-blue-fg">=</span> it<span class="ansi-blue-fg">.</span>xreplace<span class="ansi-blue-fg">(</span>Transform<span class="ansi-blue-fg">(</span>split<span class="ansi-blue-fg">,</span> <span class="ansi-green-fg">lambda</span> i<span class="ansi-blue-fg">:</span> isinstance<span class="ansi-blue-fg">(</span>i<span class="ansi-blue-fg">,</span> Integral<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     13</span> 
+<span class="ansi-green-fg">---&gt; 14</span><span class="ansi-red-fg"> </span><span class="ansi-blue-fg">[</span>left<span class="ansi-blue-fg">,</span> right<span class="ansi-blue-fg">]</span> <span class="ansi-blue-fg">=</span> mAdd<span class="ansi-blue-fg">(</span>thing<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">     15</span> rrr = Add(
+<span class="ansi-green-intense-fg ansi-bold">     16</span>     left<span class="ansi-blue-fg">,</span>
+
+<span class="ansi-red-fg">NameError</span>: name 'mAdd' is not defined</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">q</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">'q w'</span><span class="p">)</span>
+<span class="n">ee</span> <span class="o">=</span> <span class="n">Eq</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+<span class="n">ee</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1"># display(ee)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[31]:</div>
+
+
+
+
+<div class="output_latex output_subarea output_execute_result">
+$\displaystyle 0 = w$
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO NOTE: the bc equations:</span>
+<span class="c1"># solve [C1 + C2 =0, C1 * exp(i * k) + C2 * exp(-i * k) =0]</span>
+<span class="c1"># sage couldn't hande it either</span>
+<span class="c1"># wolfram alpha did though!</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+
+
+
+ 
+
+
+    </section>
+
+    
+    <section class="footer">
+        <div class="post-tags"><a class="post-tag" href="./tags.html#physics">#physics</a> <a class="post-tag" href="./tags.html#ipython">#ipython</a></div>
+        <!-- TODO post-date? -->
+        <div class="date">23 December 2018</div>
+    </section>
+    
+
+    
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_wave"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
+        
+        <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
+            
+            
+        </footer>
+    </body>
+</html>

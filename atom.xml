@@ -1327,7 +1327,7 @@ As I described <a href="#org0000002">above</a>, I keep few saved search queries 
 <h3 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><a href="https://play.google.com/store/apps/details?id=com.docsearch.pro">Docsearch +</a></h3>
 <div class="outline-text-3" id="text-org000000a">
 <p>
-Docsearch is a not very well-known (e.g. zero search results on Reddit or Twitter), but I don't know any alternatives for it.
+Docsearch is a not very well-known tool (e.g. zero search results on Reddit or Twitter), but I don't know any alternatives for it.
 </p>
 <p>
 It's a fulltext indexing and search app for plaintext files, but apparently it even supports EPUBs and PDFs.
@@ -1713,7 +1713,7 @@ Even though fd is already ridiculously <a href="https://github.com/sharkdp/fd#be
 So, literally running grep against my code turned out to be a pretty good solution. I've got about 350 repositories and it works in a blink. Note, however, that I'm using SSD.
 </p>
 <p>
-Ripgrep searches in real files on my disk, so any changes are reflected <b>immediately</b>, which removes the need for indexing (apart from performance concerns).
+Ripgrep searches in real files on my disk, so any changes are reflected <b>immediately</b>, which removes the need for indexing (apart from performance concerns if you've got too many files to search in).
 It would still be nice to avoid unnecessary disk operations, and of course, semantic search would be great, and that is definitely going to require some sort of indexer.
 </p>
 <p>
@@ -1945,8 +1945,8 @@ Seconds wasted on waiting break your flow. Better spend time on setting it up on
 give Emacs a try
 </p>
 <p>
-I feel almost sorry advocating Emacs for everything, but despite my disgust at Elisp and occasional frustration, 
-it just happens to be superior in terms of bending it to do what you want it.
+I feel almost sorry advocating Emacs for everything, but despite my disgust at Elisp and frequent frustration, 
+it just happens to be superior in terms of bending it to do what you want it to.
 </p></li>
 </ul>
 <p>
@@ -4140,7 +4140,7 @@ I'll give some I've personally been overcoming as examples:
 <li>convenience of access, e.g.:
 <ul class="org-ul">
 <li>to access highlights and notes on my Kobo ebook I need to actually reach my reader and tap through e-ink touch screen. Not much fun!</li>
-<li>if you want to search over annotations in your PDF collections… well good luck, I'm just not aware of such a tool. Let alone the fact that many pdf viewers wouldn't even let you search through highlights within a single opened PDF file. TODO link annotations</li>
+<li><div><span class="before-aside">if you want to search over annotations in your PDF collections… well good luck, I'm just not aware of such a tool. It's actually way worse: many PDF viewers wouldn't even let you search through highlights within the file you're currently viewing. </span><aside class="sidenote">see PDF readers <a href="./annotating.html#pdfs">overview</a></aside></div></li>
 <li>there is no easy way to access all of your twitter favorites, people suggest using hacks like <a href="https://webapps.stackexchange.com/a/131374/68104">autoscroll extension</a>.</li>
 </ul></li>
 <li>searching data, e.g.:
@@ -4154,7 +4154,7 @@ I'll give some I've personally been overcoming as examples:
 <li>what happens if data disappears or service is down (temporary/permanently) or banned by your government?</li>
 <li><div><span class="before-aside">99% of services don't have support for offline mode. This may be just a small inconvenience if you're on a train or something, but there is more to it.
 What if some sort of apocalypse happens and you lose all access to data? 
-That depends on your paranoia level of course, and apocalypse is bad enough, but my take on it is that at least I'd have my data :) </span><aside class="sidenote">see <a class="post-tag" href="./tags.html#offline">#offline</a></aside></div></li>
+That depends on your paranoia level of course, and apocalypse is bad enough as it is, but my take on it is that at least I'd have my data :) </span><aside class="sidenote">see <a class="post-tag" href="./tags.html#offline">#offline</a></aside></div></li>
 <li>if you delete a book on Kobo, not only you can't access its annotations, but they seem to get <b>wiped</b> from the database.</li>
 <li>in 2018, instapaper was unavailable in Europe for several months (!) due to missing the GDPR deadline</li>
 </ul></li>
@@ -5507,7 +5507,7 @@ WARNING:workout-provider:Unhandled: Cycling
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Regression coefficient: 0.093
-Free term: -9.674
+Free term: -9.713
 </pre>
 </div>
 </div>
@@ -5562,7 +5562,7 @@ Free term: -9.674
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>8070.460
+<pre>8072.442
 </pre>
 </div>
 </div>
@@ -5729,7 +5729,7 @@ Free term: -9.674
 <li><a href="#org000000b">Summary</a></li>
 </ul>
 </li>
-<li><a href="#org0000019">3. Annotating PDFs</a>
+<li><a href="#pdfs">3. Annotating PDFs</a>
 <ul>
 <li><a href="#org0000010">Okular, Evince, Atril</a></li>
 <li><a href="#pdftools">Emacs: pdf-tools</a></li>
@@ -5956,8 +5956,8 @@ Not available for <a href="https://github.com/karlicoss/grasp/issues/15">mobile 
 </div>
 </div>
 <div class="outline-2" id="outline-container-org0000019">
-<h2 id="org0000019"><a class="headerlink" href="#org0000019">¶</a><span class="section-number-2">3</span> Annotating PDFs</h2>
-<div class="outline-text-2" id="text-3">
+<h2 id="pdfs"><a class="headerlink" href="#pdfs">¶</a><span class="section-number-2">3</span> Annotating PDFs</h2>
+<div class="outline-text-2" id="text-pdfs">
 <p>
 Small disclaimer: I don't own a Mac so have no idea what's going on in their world. Sorry!  (UPD: I got <a href="https://twitter.com/i/web/status/1147473985514459137">few recommendations</a> from a follower, perhaps they would be helpful).
 </p>
@@ -8524,7 +8524,7 @@ the two grids are identical.</code></pre>
 <p>So, let’s talk about browser bookmarks.</p>
 <h1 id="history">History</h1>
 <p>I’ve always loved my bookmarks and been keeping, rereading and moving them around since high school. I also tend to be very organized in terms of meta information, so every bookmark would eventually end up in a category/folder. Of course there are obstacles.</p>
-<p>First of all, Chromium bookmark adding menu was a bit shit and <a href="http://www.rawinfopages.com/tips/wp-content/uploads/2017/08/chrome-bookmarks1.png">still</a> is. You get to choose among the five most recently used folders only; if you want anything specific, you have to click all the way through (Tab with my 100+ folders was just not doable). You can’t search when you add bookmark either. Yes, I know, it’s not meant for geeks, it’s for normal people who love mouseclicks. I’m still puzzled by how people who develop that stuff use their own product though.</p>
+<p>First of all, Chromium bookmark adding menu was a bit shit and <a href="http://www.rawinfopages.com/tips/wp-content/uploads/2017/08/chrome-bookmarks1.png">still</a> is. You get to choose among the five most recently used folders only; if you want anything specific, you have to mouse click all the way through (using Tab on keyboard with my 100+ folders was just not doable). You can’t search when you add bookmark either. Yes, I know, it’s not meant for geeks, it’s for normal people who love mouseclicks. I’m still puzzled by how people who develop that stuff use their own product though.</p>
 <p>These days Chrome has got <code>chrome.bookmarks</code> api, which I’d imagine allows you to implement your own bookmark manager. Back in 2012, it didn’t exist though.</p>
 <p>I was a bit less fussy back then so I was kind of okay with that. Until one day the disaster appended. I realized I couldn’t decide which folder did the bookmark belong to. That was pretty disturbing, so I started looking for alternatives. I realized I needed something like tags and turned out Firefox had that feature for ages. So I switched the browser.</p>
 <p>Firefox was noticeably slower and greedier in terms of RAM (no Rust in Firefox in 2012!). And few months later I got my first Android phone and realized that Firefox didn’t support syncing tags with Android (it still <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=775672">doesn’t</a>).</p>
@@ -8534,7 +8534,8 @@ the two grids are identical.</code></pre>
 <li>you can mark them private and public, and search in other people’s bookmarks</li>
 <li>what is more, you can add notes for some context about your bookmarks!</li>
 </ul>
-<p>I’ve had few happy years with Pinboard. Until I started getting more serious about information processing and my knowledge management. I’ll tell about that one day, but long story short, I found out that I spend a lot of time moving bookmarks scattered across pinboard into my personal plaintext wiki to give it a bit more structure, fulltext search and easier access. I’ve also started using Org mode and in particular, <a href="https://orgmode.org/manual/Capture-Refile-Archive.html#Capture-Refile-Archive">capture and refile</a>. Once you are used to that, moving information manually by copy-pasting is just plain torture. You know, life is too short for that shit.</p>
+<p>I’ve had few happy years with Pinboard. Until I started getting more serious about information processing and my <a href="./tags.html#pkm">knowledge management</a>.</p>
+<p>Long story short, I found out that I spend a lot of time moving bookmarks scattered across pinboard into my personal plaintext wiki to give it a bit more structure, fulltext search and easier access. I’ve also started using Org mode and in particular, <a href="https://orgmode.org/manual/Capture-Refile-Archive.html#Capture-Refile-Archive">capture and refile</a>. Once you are used to that, moving information manually by copy-pasting is just plain torture. You know, life is too short for that shit.</p>
 <h1 id="eh-capture-refile">Eh? Capture? Refile?</h1>
 <p>It’s hard to explain, for me it took several iterations to adopt these. In essence, you can ‘capture’, that is, copy/create piece of information like a url, quote, your thought or anything else and store in a text file for further processing which you can do it later. It’s meant to be with as little interruptions as possible, merely to persist the information. Typically, in emacs it’s a matter of pressing a keystroke, making you note and pressing a keystroke to finalize. You can do it as fast as you think/type and then immediately get back to what you were working on.</p>
 <p>You can look up quite a few different setups online: <a href="https://youtu.be/fgizHHd7nOo?t=207">typical demo (till 4:10)</a>. The concept doesn’t really have to be restricted to org mode, though. Funny enough, before I ran into org-capture, I had a keybinding to open Vim in the insert mode against my <code>notes.txt</code> file.</p>
@@ -8587,14 +8588,15 @@ Why do they always mention that? Is that important?</code></pre>
 </ul>
 <p>I guess I should just use the <a href="https://developer.chrome.com/webstore/using_webstore_api">API</a> for publishing.</p></li>
 <li><p>publishing to <a href>addons.mozilla.org</a> is super fast and easy</p></li>
-<li><p><a href="https://github.com/karlicoss/grasp/issues/7">firefox hotkeys are not configurable</a></p>
-<p>I still find it very hard to believe. Has it always been like that? How do people cope with it?</p></li>
+<li><p><del><a href="https://github.com/karlicoss/grasp/issues/7">firefox hotkeys are not configurable</a></del></p>
+<p><del>I still find it very hard to believe. Has it always been like that? How do people cope with it?</del></p>
+<p>UPD: it’s <a href="https://support.mozilla.org/en-US/kb/manage-extension-shortcuts-firefox">possible</a> to configure them now!</p></li>
 <li><p>CI is a bit tedious</p>
 <a href="https://github.com/karlicoss/grasp/blob/master/.circleci/config.yml">My pretty minimal config</a>, is quite long. I’m quite used to to CIs, but I wonder how often are people discouraged by that, it’s got to be easier. Perhaps <a href="https://docs.gitlab.com/ee/topics/autodevops/">Auto DevOps</a> from gitlab solves it?</li>
 <li><p>communicating with <code>localhost</code> made everything so much simpler. I’ve already converted another <a href="https://github.com/karlicoss/were-you-here">thing</a> I am working on to use that instead of trying to utilize local storage/internal database and it works flawlessly!</p></li>
 </ul>
 <h1 id="feedback">Feedback</h1>
-<p>I actually think it’s the first thing I solely implemented and prepared something and <a href="https://www.reddit.com/r/orgmode/comments/akazos/orggrasp_browser_extension_for_orgcapture/">shared</a> for other people to use. As expected, it actually took more time than sketching a prototype that worked for me. But it feels so great when people DM you on reddit and say that they managed to run it even on Windows without any issues when no other existing methods could do that.</p>
+<p>I actually think it’s the first thing I solely implemented, prepared and <a href="https://www.reddit.com/r/orgmode/comments/akazos/orggrasp_browser_extension_for_orgcapture/">shared</a> for other people to use. As expected, it actually took more time than sketching a prototype that worked for me. But it feels so great when people reach you and say that they managed to run it even on Windows without any issues when no other existing methods could do that.</p>
 <h1 id="whats-next">What’s next?</h1>
 <p>I’m gonna look up what are Markdown people using for capturing information, add few templates and spread the good stuff. I’m excited!</p>
     </section>

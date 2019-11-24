@@ -78,7 +78,7 @@
 <p>For elliptical machine or rowing machine it would be even more complicated!</p>
 <p>With stationary bike, there are two variables that potentially impact power you need to exert:</p>
 <ul>
-<li>revolitions per minute, or angular velocity, that has linear effect on power (no air resistance as it's stationary!)</li>
+<li>revolutions per minute, or angular velocity, that has linear effect on power (no air resistance as it's stationary!)</li>
 <li>resistance, which isn't exactly specified, but one would expect it to be proportional to the force you have to apply (i.e. <a href="https://en.wikipedia.org/wiki/Torque">torque</a>)</li>
 </ul>
 <p>The <a href="https://www.technogym.com/gb/indoor-cycling-live-bike.html">spinning machine</a> I was using displays the pace (i.e. revolutions per minute), so all you have to do is maintain it. In addition it's displaying current resistance level and reports power in watts.</p>
@@ -101,7 +101,7 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Throughout different exercivse sessions, I've taken bunch of measurements of RPM, resistance and power:</p>
+<h2 id="Initial-measurements-(2019-11-09)">Initial measurements (2019-11-09)<a class="anchor-link" href="#Initial-measurements-(2019-11-09)">¶</a></h2><p>Throughout different exercise sessions, I've taken bunch of measurements of RPM, resistance and power:</p>
 
 </div>
 </div>
@@ -113,7 +113,7 @@
 
    
    <details class="cell-collapsed">
-   <summary>Collapsed IPython cell <span class="cell-collapsed-expand">(click to expand)</span></summary>
+   <summary>Measurements <span class="cell-collapsed-expand">(click to expand)</span></summary>
        
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -169,14 +169,16 @@
 
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="k">def</span> <span class="nf">make_df</span><span class="p">(</span><span class="n">datas</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
         <span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">datas</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span>
         <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'rpm'</span><span class="p">,</span> <span class="s1">'resistance'</span><span class="p">,</span> <span class="s1">'watts'</span><span class="p">],</span>
-    <span class="p">)</span>    
+    <span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">f</span><span class="s2">&quot;</span><span class="si">{row['rpm']}</span><span class="s2">_</span><span class="si">{row['resistance']}</span><span class="s2">_</span><span class="si">{row['watts']}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">'columns'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">make_df</span><span class="p">(</span><span class="n">datas</span><span class="p">)</span>
-
-<span class="c1"># btw, if anyone knows a more elegant way of conveting such a table in dataframe, I'd be happy to know!</span>
+<span class="n">old_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="c1"># btw, if anyone knows a more elegant way of converting such a table in dataframe, I'd be happy to know!</span>
 </pre></div>
 
     </div>
@@ -239,61 +241,61 @@
   </thead>
   <tbody>
     <tr>
-      <th>25</th>
+      <th>95_8_227</th>
       <td>95</td>
       <td>8</td>
       <td>227</td>
     </tr>
     <tr>
-      <th>35</th>
+      <th>56_8_87</th>
       <td>56</td>
       <td>8</td>
       <td>87</td>
     </tr>
     <tr>
-      <th>29</th>
+      <th>61_10_154</th>
       <td>61</td>
       <td>10</td>
       <td>154</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>57_8_98</th>
       <td>57</td>
       <td>8</td>
       <td>98</td>
     </tr>
     <tr>
-      <th>10</th>
+      <th>56_8_94</th>
       <td>56</td>
       <td>8</td>
       <td>94</td>
     </tr>
     <tr>
-      <th>31</th>
+      <th>61_10_156</th>
       <td>61</td>
       <td>10</td>
       <td>156</td>
     </tr>
     <tr>
-      <th>27</th>
+      <th>95_8_230</th>
       <td>95</td>
       <td>8</td>
       <td>230</td>
     </tr>
     <tr>
-      <th>11</th>
+      <th>56_10_128</th>
       <td>56</td>
       <td>10</td>
       <td>128</td>
     </tr>
     <tr>
-      <th>36</th>
+      <th>57_8_90</th>
       <td>57</td>
       <td>8</td>
       <td>90</td>
     </tr>
     <tr>
-      <th>30</th>
+      <th>62_10_162</th>
       <td>62</td>
       <td>10</td>
       <td>162</td>
@@ -318,7 +320,7 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>I't reasonable to assume that power depends linearly both on RPM and resistance, so we conjecture <code>watts = rpm x resistance</code>. Let's see if it holds against what the spinning machine reports:</p>
+<p>It's reasonable to assume that power depends linearly both on RPM and resistance, so we conjecture <code>watts = rpm x resistance</code>. Let's see if it holds against what the spinning machine reports:</p>
 
 </div>
 </div>
@@ -359,7 +361,7 @@
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Power, watts as reported by the machine'</span><span class="p">)</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-    
+
 <span class="n">plot_df</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 
@@ -406,7 +408,7 @@
     <span class="n">X</span> <span class="o">=</span> <span class="n">dff</span><span class="p">[[</span><span class="s1">'rpm x resistance'</span><span class="p">]]</span>
     <span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
     <span class="n">res</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">dff</span><span class="p">[</span><span class="s1">'watts'</span><span class="p">],</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-    <span class="c1"># TODO ugh. remove Date/Time from summary... </span>
+    <span class="c1"># TODO ugh. remove Date/Time from summary...</span>
     <span class="c1"># https://www.statsmodels.org/stable/_modules/statsmodels/iolib/summary.html#Summary</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 <span class="n">print_stats</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
@@ -431,8 +433,8 @@
 Dep. Variable:                  watts   R-squared:                       0.982
 Model:                            OLS   Adj. R-squared:                  0.981
 Method:                 Least Squares   F-statistic:                     2109.
-Date:                Wed, 20 Nov 2019   Prob (F-statistic):           1.43e-35
-Time:                        20:54:14   Log-Likelihood:                -138.70
+Date:                Sun, 24 Nov 2019   Prob (F-statistic):           1.43e-35
+Time:                        20:54:51   Log-Likelihood:                -138.70
 No. Observations:                  41   AIC:                             281.4
 Df Residuals:                      39   BIC:                             284.8
 Df Model:                           1                                         
@@ -483,8 +485,8 @@ strong multicollinearity or other numerical problems.
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Wow, that doesn't look so well.</p>
-<p>Free parameter is about <code>-100</code> watts, which is quite a lot considering my high internsity intervals are <code>250</code> watts. 
-I don't think it can be explained by friction either: if anything, friction would shift the plot up and make the free coeffecient positive.</p>
+<p>Free parameter is about <code>-100</code> watts, which is quite a lot considering my high intensity intervals are <code>250</code> watts. 
+I don't think it can be explained by friction either: if anything, friction would shift the plot up and make the free coefficient positive.</p>
 <p>At this point, I'm not sure what it means. I guess I'll try to make more measurements at really low resistances and speeds to make the model more complete, but I would be too surprised if either watts or resistance reported by the machine are just made up.</p>
 
 </div>
@@ -499,7 +501,7 @@ I don't think it can be explained by friction either: if anything, friction woul
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>UPD from 2019-11-14: I collected more data corresponding to different resistances/velocities. It's actually quite hard to consisntently spin very slowly, so I think I might need one more round of data collection to complete the picture!</p>
+<h2 id="More-data-(2019-11-14)">More data (2019-11-14)<a class="anchor-link" href="#More-data-(2019-11-14)">¶</a></h2><p>I collected more data corresponding to different resistances/velocities. It's actually quite hard to consistently spin under low resistance setting, so I think I might need one more round of data collection to complete the picture!</p>
 
 </div>
 </div>
@@ -509,7 +511,10 @@ I don't think it can be explained by friction either: if anything, friction woul
 
 
 
-    
+   
+   <details class="cell-collapsed">
+   <summary>More measurements <span class="cell-collapsed-expand">(click to expand)</span></summary>
+       
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[5]:</div>
@@ -563,6 +568,7 @@ I don't think it can be explained by friction either: if anything, friction woul
 </div>
 
 </div>
+   </details>
 
 
 
@@ -574,7 +580,7 @@ I don't think it can be explained by friction either: if anything, friction woul
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">new_df</span><span class="p">])</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">old_df</span><span class="p">,</span> <span class="n">new_df</span><span class="p">])</span>
 <span class="n">plot_df</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 <span class="n">print_stats</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
@@ -611,8 +617,8 @@ I don't think it can be explained by friction either: if anything, friction woul
 Dep. Variable:                  watts   R-squared:                       0.924
 Model:                            OLS   Adj. R-squared:                  0.923
 Method:                 Least Squares   F-statistic:                     952.2
-Date:                Wed, 20 Nov 2019   Prob (F-statistic):           1.82e-45
-Time:                        20:54:15   Log-Likelihood:                -352.79
+Date:                Sun, 24 Nov 2019   Prob (F-statistic):           1.82e-45
+Time:                        20:54:51   Log-Likelihood:                -352.79
 No. Observations:                  80   AIC:                             709.6
 Df Residuals:                      78   BIC:                             714.3
 Df Model:                           1                                         
@@ -650,7 +656,244 @@ strong multicollinearity or other numerical problems.
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>WIP: Ok, it clearly started diverging from the nice linear dependency, especially at lower values of theoretical power. It's time to try to break it down and see which of the components is to blame: resistance or speed.</p>
+<p>Ok, it clearly started diverging from the nice linear dependency, especially at lower values of theoretical power. It's time to try to break it down and see what is to blame: e.g., resistance or speed component, or perhaps some individual measurements.</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Analysing-data-and-looking-at-outliers-(2019-11-24)">Analysing data and looking at outliers (2019-11-24)<a class="anchor-link" href="#Analysing-data-and-looking-at-outliers-(2019-11-24)">¶</a></h2>
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="k">def</span> <span class="nf">plot_influence</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="c1"># TODO FIXME use it in prev section</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">formula</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s2">&quot;watts ~ rpm * resistance - resistance - rpm&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">sm</span><span class="o">.</span><span class="n">graphics</span><span class="o">.</span><span class="n">influence_plot</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s2">&quot;cooks&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plot_influence</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="c1"># sm.graphics.plot_partregress_grid(res, fig=fig)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="spinning-hr-analysis_files/spinning-hr-analysis_13_0.png">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>TODO hmm, 0.10 is not <em>that</em> high leverage right?
+Although depends on residual too, and here the residual is very high, so it would have high influence..
+<a href="https://www.statsmodels.org/dev/examples/notebooks/generated/regression_plots.html">https://www.statsmodels.org/dev/examples/notebooks/generated/regression_plots.html</a></p>
+<p>'27_1_50' seems like a typo that should have been '27 12 50', let's drop it and ignore. 
+We also ignore few other points that seem to be outliers.</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fdf</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># TODO Do i really need to copy?</span>
+<span class="n">fdf</span> <span class="o">=</span> <span class="n">fdf</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span>
+    <span class="s1">'27_1_50'</span><span class="p">,</span>
+    <span class="s1">'86_2_40'</span><span class="p">,</span>
+    <span class="s1">'59_2_23'</span><span class="p">,</span>
+    <span class="s1">'60_2_24'</span><span class="p">,</span>
+    <span class="s1">'116_8_322'</span><span class="p">,</span>
+    <span class="s1">'116_8_320'</span><span class="p">,</span>
+    <span class="s1">'117_8_323'</span><span class="p">,</span>
+    <span class="s1">'106_2_48'</span><span class="p">,</span>
+    <span class="s1">'95_8_240'</span><span class="p">,</span>
+<span class="p">])</span>
+<span class="c1"># TODO I wonder what does it do to multiple observations with exactly same input/output params? Is it a set or multiset?</span>
+<span class="n">plot_influence</span><span class="p">(</span><span class="n">fdf</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="spinning-hr-analysis_files/spinning-hr-analysis_15_0.png">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ok, that's somewhat better at least in terms of outliers. Let's see if that helps:</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot_df</span><span class="p">(</span><span class="n">fdf</span><span class="p">)</span>
+<span class="n">print_stats</span><span class="p">(</span><span class="n">fdf</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="spinning-hr-analysis_files/spinning-hr-analysis_17_0.png">
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  watts   R-squared:                       0.976
+Model:                            OLS   Adj. R-squared:                  0.975
+Method:                 Least Squares   F-statistic:                     2773.
+Date:                Sun, 24 Nov 2019   Prob (F-statistic):           1.90e-57
+Time:                        20:54:52   Log-Likelihood:                -257.57
+No. Observations:                  71   AIC:                             519.1
+Df Residuals:                      69   BIC:                             523.7
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+====================================================================================
+                       coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------------
+const              -75.1847      3.695    -20.348      0.000     -82.556     -67.813
+rpm x resistance     0.3798      0.007     52.655      0.000       0.365       0.394
+==============================================================================
+Omnibus:                       15.050   Durbin-Watson:                   0.523
+Prob(Omnibus):                  0.001   Jarque-Bera (JB):                4.881
+Skew:                           0.325   Prob(JB):                       0.0871
+Kurtosis:                       1.892   Cond. No.                     1.73e+03
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.73e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So, on one hand that did make fit look more linear. On the other hand we've had to filter out all the low-resistance observations to achieve that.</p>
+<p>I guess I'll collect more observations to be absolutely sure.</p>
+<p>TODO add TOC or something?</p>
 
 </div>
 </div>
