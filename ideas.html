@@ -79,12 +79,13 @@
 <li><a href="#programming_physical_states"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> programming language in which correct programs are feasible physical states   <span class="tag"><span class="plt">plt</span> <span class="physics">physics</span></span></a></li>
 <li><a href="#phone_sensitive_data"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> phone app for keeping sensitive data   <span class="tag"><span class="privacy">privacy</span></span></a></li>
 <li><a href="#os_hotkeys"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> OS should have better macro/keybindings capabilities   <span class="tag"><span class="hotkeys">hotkeys</span> <span class="setup">setup</span> <span class="think">think</span></span></a></li>
-<li><a href="#type_theory_manifolds"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> can we extend type theory derivatives to partial derivateives and manifolds?   <span class="tag"><span class="typetheory">typetheory</span></span></a></li>
+<li><a href="#type_theory_manifolds"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> can we extend type theory derivatives to partial derivatives and manifolds?   <span class="tag"><span class="typetheory">typetheory</span></span></a></li>
+<li><a href="#org0000009"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> dependent type checker tool, similar to mypy   <span class="tag"><span class="typetheory">typetheory</span> <span class="mypy">mypy</span></span></a></li>
 <li><a href="#kobo2goodreads"><span class="todo STRT">STRT</span> <span class="priority">[D]</span> share highlights from Kobo to Goodreads   <span class="tag"><span class="kobo">kobo</span> <span class="pkm">pkm</span> <span class="reading">reading</span></span></a></li>
 <li><a href="#continuous_piano"><span class="todo TODO">TODO</span> <span class="priority">[D]</span> continuous piano keyboard. When you press a 'key', the harmonics are highlighted as well as octaves   <span class="tag"><span class="music">music</span></span></a></li>
 <li><a href="#coffee_simulator"><span class="todo TODO">TODO</span> <span class="priority">[D]</span> coffee brew simulation   <span class="tag"><span class="coffee">coffee</span> <span class="simulation">simulation</span></span></a></li>
 <li><a href="#anatomy_overlay"><span class="todo TODO">TODO</span> <span class="priority">[D]</span> machine learning tool, showing muscles and bones on athlete in real time (e.g. as an overlay)   <span class="tag"><span class="humanbody">humanbody</span> <span class="ml">ml</span> <span class="ar">ar</span></span></a></li>
-<li><a href="#org0000018">Questions and shower thoughts   <span class="tag"><span class="think">think</span></span></a></li>
+<li><a href="#org000001a">Questions and shower thoughts   <span class="tag"><span class="think">think</span></span></a></li>
 </ul>
 </div>
 </div>
@@ -241,7 +242,7 @@ I sometimes find myself making a note or taking a picture or a voice recording w
 Relying on locking your phone is not really enough as it's easy to hack, or fail to lock, or reveal content by accident. What is worse, locking doesn't save you if if you're using some sort of cloud sync.
 </p>
 <p>
-Of course, you can try and make sure you only keep it locally on phone, but you do need some means of syncing and arguably, waiting till you got a moment to tranfer it via the cable bypassing network is even more insecure.
+Of course, you can try and make sure you only keep it locally on phone, but you do need some means of syncing and arguably, waiting till you got a moment to transfer it via the cable bypassing network is even more insecure.
 Even if you're willing to do that, it turns out to be notoriously hard not to sync to the cloud by accident. Examples straight out of my head:
 </p>
 <ul class="org-ul">
@@ -269,7 +270,7 @@ Asymmetric is fairly important here, that allows to put data in container withou
 backed by filesystem
 </p>
 <p>
-That would allow actually synchronising encrypted container through normal and less secure channels as long as you keep your private key safe.
+That would allow actually synchronizing encrypted container through normal and less secure channels as long as you keep your private key safe.
 Not sure what to do with metadata though, but perhaps encrypting filenames with same key (with padding etc.) is not too bad.
 </p></li>
 </ul>
@@ -279,7 +280,7 @@ So far I don't know any applications that match most of these criteria. Closest 
 <ul class="org-ul">
 <li><a href="https://github.com/open-keychain/open-keychain">open-keychain</a>: you can share files so it encrypts them via PGP. That's the only thing that it does though, afaiu, it's more meant for integrating with other apps.
 It's open source though so would be good to use it as a library/intermediate.</li>
-<li>I'm personally using an Encfs container via <a href="https://github.com/sovworks/edslite">EDS Lite</a> and just use separate apps for secure photo taking and audio recording which don't have their containt saved to cloud synced location.</li>
+<li>I'm personally using an Encfs container via <a href="https://github.com/sovworks/edslite">EDS Lite</a> and just use separate apps for secure photo taking and audio recording which don't have their content saved to cloud synced location.</li>
 </ul>
 <p>
 If you know of something better, please let me know!
@@ -306,7 +307,7 @@ define arbitrary bindings or macros.
 </div>
 </div>
 <div class="outline-2" id="outline-container-org0000008">
-<h2 id="type_theory_manifolds"><a class="headerlink" href="#type_theory_manifolds">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> can we extend type theory derivatives to partial derivateives and manifolds?   <span class="tag"><span class="typetheory">typetheory</span></span></h2>
+<h2 id="type_theory_manifolds"><a class="headerlink" href="#type_theory_manifolds">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> can we extend type theory derivatives to partial derivatives and manifolds?   <span class="tag"><span class="typetheory">typetheory</span></span></h2>
 <div class="outline-text-2" id="text-type_theory_manifolds">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2018-11-24 13:46]</span></div>
@@ -325,14 +326,52 @@ Haven't thought about that seriously yet, so not sure how much sense it makes to
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000000a">
+<div class="outline-2" id="outline-container-org0000009">
+<h2 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> dependent type checker tool, similar to <a href="http://mypy-lang.org">mypy</a>   <span class="tag"><span class="typetheory">typetheory</span> <span class="mypy">mypy</span></span></h2>
+<div class="outline-text-2" id="text-org0000009">
+<div class="properties">
+<div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-07-22 21:02]</span></div>
+</div>
+<p>
+Over the past few years there were few <b>very</b> successful examples of type checking implementations for languages without static types:
+</p>
+<ul class="org-ul">
+<li><a href="http://mypy-lang.org">mypy</a> for Python</li>
+<li><a href="https://flow.org">Flow</a> for Javascript</li>
+<li><a href="https://hacklang.org">Hack (compat mode)</a> for PHP</li>
+</ul>
+<p>
+In some ways, these tools provide <b>superior</b> type systems (e.g. optionals/sum types) to many 'classical' statically typed languages like Java or C++.
+</p>
+<p>
+One reason for success as I see it is that typing is optional and can be used where/when the programmer feel necessary.
+You get benefits of dynamic languages for fast prototyping and benefits of type checking when it's time to harden your program.
+</p>
+<p>
+I wonder if <a href="https://en.wikipedia.org/wiki/Dependent_type">dependent types</a> will take over the world through some similar tooling.
+</p>
+<p>
+Related:
+</p>
+<ul class="org-ul">
+<li><a href="https://en.wikipedia.org/wiki/Gradual_typing">Gradual typing</a></li>
+<li><a href="https://sobolevn.me/2019/01/simple-dependent-types-in-python">Simple dependent types in Python</a></li>
+</ul>
+</div>
+<div class="outline-3" id="outline-container-org000000a">
+<h3 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-26 00:20]</span></span> tweet about it?   <span class="tag"><span class="tweet">tweet</span></span></h3>
+<div class="outline-text-3" id="text-org000000a">
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000000c">
 <h2 id="kobo2goodreads"><a class="headerlink" href="#kobo2goodreads">¶</a><span class="todo STRT">STRT</span> <span class="priority">[D]</span> share highlights from Kobo to Goodreads   <span class="tag"><span class="kobo">kobo</span> <span class="pkm">pkm</span> <span class="reading">reading</span></span></h2>
 <div class="outline-text-2" id="text-kobo2goodreads">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-04-01 13:50]</span></div>
 </div>
 <p>
-Kobo doesn't have Goodreads integration like Kindle does. However sharing hightlights is a great way to engage other people in the book you really like and want them to read. This can relatively easily be achieved via a script:
+Kobo doesn't have Goodreads integration like Kindle does. However sharing highlights is a great way to engage other people in the book you really like and want them to read. This can relatively easily be achieved via a script:
 </p>
 <ol class="org-ol">
 <li>run the script in kron or via udev rule configured to trigger on your Kobo device</li>
@@ -363,30 +402,30 @@ Fun: use some elaborate comparison/hashing to match kobo annotations and goodrea
 Actually, this could even be useful for Kindle if you have a DRM free copy from elsewhere. Or for other ebook devices.
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000009">
-<h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-05-19 00:13]</span></span> reverse engineered 'started reading' and 'finished reading' events, so at least it's possible to mark them manually on goodreads now</h3>
-<div class="outline-text-3" id="text-org0000009">
+<div class="outline-3" id="outline-container-org000000b">
+<h3 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-05-19 00:13]</span></span> reverse engineered 'started reading' and 'finished reading' events, so at least it's possible to mark them manually on goodreads now</h3>
+<div class="outline-text-3" id="text-org000000b">
 <p>
 See <a href="https://github.com/karlicoss/kobuddy#as-a-standalone-app">kobuddy</a>.
 </p>
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000000d">
+<div class="outline-2" id="outline-container-org000000f">
 <h2 id="continuous_piano"><a class="headerlink" href="#continuous_piano">¶</a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> continuous piano keyboard. When you press a 'key', the harmonics are highlighted as well as octaves   <span class="tag"><span class="music">music</span></span></h2>
 <div class="outline-text-2" id="text-continuous_piano">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-01-30 17:40]</span></div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000b">
-<h3 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2019-05-07 20:32]</span></span> ableton push kinda does that</h3>
+<div class="outline-3" id="outline-container-org000000d">
+<h3 id="org000000d"><a class="headerlink" href="#org000000d">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2019-05-07 20:32]</span></span> ableton push kinda does that</h3>
 </div>
-<div class="outline-3" id="outline-container-org000000c">
-<h3 id="org000000c"><a class="headerlink" href="#org000000c">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2019-06-01 15:26]</span></span> not sure if it would be really beneficial for proper musicians, perhaps as a learning tool only?</h3>
+<div class="outline-3" id="outline-container-org000000e">
+<h3 id="org000000e"><a class="headerlink" href="#org000000e">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2019-06-01 15:26]</span></span> not sure if it would be really beneficial for proper musicians, perhaps as a learning tool only?</h3>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000000e">
+<div class="outline-2" id="outline-container-org0000010">
 <h2 id="coffee_simulator"><a class="headerlink" href="#coffee_simulator">¶</a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> coffee brew simulation   <span class="tag"><span class="coffee">coffee</span> <span class="simulation">simulation</span></span></h2>
 <div class="outline-text-2" id="text-coffee_simulator">
 <div class="properties">
@@ -423,7 +462,7 @@ I also can't really understand how is one capable of estimating coffee on the sc
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000000f">
+<div class="outline-2" id="outline-container-org0000011">
 <h2 id="anatomy_overlay"><a class="headerlink" href="#anatomy_overlay">¶</a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> machine learning tool, showing muscles and bones on athlete in real time (e.g. as an overlay)   <span class="tag"><span class="humanbody">humanbody</span> <span class="ml">ml</span> <span class="ar">ar</span></span></h2>
 <div class="outline-text-2" id="text-anatomy_overlay">
 <div class="properties">
@@ -431,11 +470,11 @@ I also can't really understand how is one capable of estimating coffee on the sc
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000018">
-<h2 id="org0000018"><a class="headerlink" href="#org0000018">¶</a>Questions and shower thoughts   <span class="tag"><span class="think">think</span></span></h2>
-<div class="outline-text-2" id="text-org0000018">
+<div class="outline-2" id="outline-container-org000001a">
+<h2 id="org000001a"><a class="headerlink" href="#org000001a">¶</a>Questions and shower thoughts   <span class="tag"><span class="think">think</span></span></h2>
+<div class="outline-text-2" id="text-org000001a">
 </div>
-<div class="outline-3" id="outline-container-org0000010">
+<div class="outline-3" id="outline-container-org0000012">
 <h3 id="zombie"><a class="headerlink" href="#zombie">¶</a><span class="todo STRT">STRT</span> <span class="priority">[C]</span> how to spot a p-zombie   <span class="tag"><span class="solipsism">solipsism</span> <span class="ai">ai</span></span></h3>
 <div class="outline-text-3" id="text-zombie">
 <div class="properties">
@@ -461,27 +500,27 @@ What if it's similar with other minds: you (I mean, I, duh) grow up, learn more,
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000011">
-<h3 id="org0000011"><a class="headerlink" href="#org0000011">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> wonder if with proper mypy stubs we can make datetime tz aware/unaware   <span class="tag"><span class="mypy">mypy</span></span></h3>
-<div class="outline-text-3" id="text-org0000011">
+<div class="outline-3" id="outline-container-org0000013">
+<h3 id="org0000013"><a class="headerlink" href="#org0000013">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> wonder if with proper mypy stubs we can make datetime tz aware/unaware   <span class="tag"><span class="mypy">mypy</span></span></h3>
+<div class="outline-text-3" id="text-org0000013">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-08-02 21:33]</span></div>
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000012">
-<h3 id="org0000012"><a class="headerlink" href="#org0000012">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> why most popular music has such regular structure?   <span class="tag"><span class="music">music</span></span></h3>
-<div class="outline-text-3" id="text-org0000012">
+<div class="outline-3" id="outline-container-org0000014">
+<h3 id="org0000014"><a class="headerlink" href="#org0000014">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> why most popular music has such regular structure?   <span class="tag"><span class="music">music</span></span></h3>
+<div class="outline-text-3" id="text-org0000014">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-02-03 15:00]</span></div>
 </div>
 <p>
-Most popular music (from traditional to classical to modern pop/eletronic) seems to have regular beats, verse structure etc.
+Most popular music (from traditional to classical to modern pop/electronic) seems to have regular beats, verse structure etc.
 What's about it that human brains like? Can someone write a very irregular but yet enjoyable piece?
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000013">
+<div class="outline-3" id="outline-container-org0000015">
 <h3 id="mind_mixing"><a class="headerlink" href="#mind_mixing">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> mind-melding and death   <span class="tag"><span class="mind">mind</span> <span class="death">death</span> <span class="bci">bci</span></span></h3>
 <div class="outline-text-3" id="text-mind_mixing">
 <div class="properties">
@@ -494,7 +533,7 @@ Imagine that we achieved high level of mind-melding technology (e.g. through bra
 The experiment: mind-meld younger brain (e.g. 30 years) and older brain (e.g. 90 years).
 Presumably, if they spend enough time like that, the brains end up with common memories and perception of self that would be preserved after brains are separated.
 Then after a while, the older body dies. 
-In a sense though, both minds are still alive? Could it be used as a life extension tecnhology?
+In a sense though, both minds are still alive? Could it be used as a life extension technology?
 </p>
 <p>
 Of course, minds wouldn't be quite the same after such a massive intervention.
@@ -506,7 +545,7 @@ Isn't it kind of a massive sacrifice for the younger/healthier body?
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000014">
+<div class="outline-3" id="outline-container-org0000016">
 <h3 id="blind_prep"><a class="headerlink" href="#blind_prep">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> what if I suddenly go blind one day?   <span class="tag"><span class="prepping">prepping</span></span></h3>
 <div class="outline-text-3" id="text-blind_prep">
 <div class="properties">
@@ -517,15 +556,15 @@ Can I prepare for it in terms of computer interfaces or something? Should I even
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000015">
-<h3 id="org0000015"><a class="headerlink" href="#org0000015">¶</a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> why are avocados fatty? They are literally the only fatty fruit I can think of.   <span class="tag"><span class="food">food</span></span></h3>
-<div class="outline-text-3" id="text-org0000015">
+<div class="outline-3" id="outline-container-org0000017">
+<h3 id="org0000017"><a class="headerlink" href="#org0000017">¶</a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> why are avocados fatty? They are literally the only fatty fruit I can think of.   <span class="tag"><span class="food">food</span></span></h3>
+<div class="outline-text-3" id="text-org0000017">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-01-11 15:26]</span></div>
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000016">
+<div class="outline-3" id="outline-container-org0000018">
 <h3 id="amino_acids"><a class="headerlink" href="#amino_acids">¶</a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> do different amino acids matter for human body?   <span class="tag"><span class="nutrition">nutrition</span> <span class="diet">diet</span></span></h3>
 <div class="outline-text-3" id="text-amino_acids">
 <div class="properties">
@@ -543,9 +582,9 @@ Wonder if that matters if you follow a vegetarian/vegan diets?
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000017">
-<h3 id="org0000017"><a class="headerlink" href="#org0000017">¶</a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> eating organ meat is more respectful for the slaughtered animals?   <span class="tag"><span class="food">food</span></span></h3>
-<div class="outline-text-3" id="text-org0000017">
+<div class="outline-3" id="outline-container-org0000019">
+<h3 id="org0000019"><a class="headerlink" href="#org0000019">¶</a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> eating organ meat is more respectful for the slaughtered animals?   <span class="tag"><span class="food">food</span></span></h3>
+<div class="outline-text-3" id="text-org0000019">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2018-06-25 21:48]</span></div>
 </div>
