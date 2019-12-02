@@ -79,7 +79,7 @@
 <li><a href="#scrapyroo">5. Scrapy<font color="#b7410e">r</font><font color="#00ccbc">oo</font></a></li>
 <li><a href="#org000000e">6. Why Tantivy?</a></li>
 <li><a href="#org0000010">7. Tantivy: good</a></li>
-<li><a href="#org0000011">8. Tantivy: bad</a></li>
+<li><a href="#tantivy_bad">8. Tantivy: bad</a></li>
 <li><a href="#org0000014">9. Enhancing Tantivy</a></li>
 <li><a href="#org0000015">10. Contributions back</a></li>
 <li><a href="#org0000016">11. Outtakes</a></li>
@@ -90,6 +90,7 @@
 </ul>
 </div>
 </div>
+<style>.NOTES {background-color: lightgray;}</style>
 <div class="NOTES">
 <p>
 These are my slides + speaker notes from <a href="https://www.meetup.com/Rust-London-User-Group/events/266262531">November Rust London User Group meetup</a>. 
@@ -409,7 +410,7 @@ Type: 'halloumi AND vegetables'. Whoa, vegetable smoothie in results? No, thank 
 So we can use phrase query (quotes) and exclusive query (-): add 'AND -"vegetable smoothie"'. Ah, that's better now!
 </p>
 <p>
-Say you also want some desert. add 'AND cheesecake' or 'AND "ice cream"'. Nice, few places actually serve this combination!
+Say you also want some desert. Add 'AND cheesecake' or 'AND "ice cream"'. Nice, few places actually serve this combination!
 </p>
 </div>
 <div class="NOTES">
@@ -417,13 +418,13 @@ Say you also want some desert. add 'AND cheesecake' or 'AND "ice cream"'. Nice, 
 Or you're ordering with two other friends. 
 </p>
 <p>
-One you want prawns, another one chicken salad, and the third wants some feta.
+You want prawns, another one wants chicken salad, and the third wants some feta.
 </p>
 <p>
 'prawns AND "chicken salad" AND "feta"' – and we instantly find few matches!
 </p>
 <p>
-Without full text search there is no way you would ever find it.
+Without full text search there is no way you would ever find it, and someone would be unsatisfied about collective choice.
 </p>
 </div></li>
 <li><p>
@@ -562,8 +563,8 @@ I spent most time on scraping and frontend.
 </div>
 </div>
 <div class="outline-2" id="outline-container-org0000011">
-<h2 id="org0000011"><a class="headerlink" href="#org0000011">¶</a><span class="section-number-2">8</span> Tantivy: bad</h2>
-<div class="outline-text-2" id="text-8">
+<h2 id="tantivy_bad"><a class="headerlink" href="#tantivy_bad">¶</a><span class="section-number-2">8</span> Tantivy: bad</h2>
+<div class="outline-text-2" id="text-tantivy_bad">
 <ul class="org-ul">
 <li><p>
 no nested document support (<a href="https://github.com/tantivy-search/tantivy/issues/617">yet</a>)

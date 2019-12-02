@@ -16,7 +16,7 @@
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
-        <title>Cloudmacs and getting to know Docker | Mildly entertainingᵝ</title>
+        <title>Cloudmacs: Emacs in your web browser | Mildly entertainingᵝ</title>
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
@@ -62,8 +62,8 @@
 <article>
     
     <section class="post-title">
-    <h1>Cloudmacs and getting to know Docker</h1>
-    <div class="summary">How I really wanted Spacemacs in web browser and my wish came true</h2>
+    <h1>Cloudmacs: Emacs in your web browser</h1>
+    <div class="summary">How I really wanted Spacemacs everywhere and my wish came true thanks to Docker</h2>
     </section>
     <!-- are sections appropriate for that? -->
 
@@ -78,14 +78,16 @@ Sometimes you have to use non-personal computers where it's not possible/undesir
 So I've been looking for some cloud solution since I've got a VPS.
 </p>
 <p>
-The closest tool to what I wanted was <a href="https://github.com/mickael-kerjean/filestash">Filestash</a>: it suports vim/emacs bindings and some <a href="https://www.filestash.app/2018/05/31/release-note-v0.1">org-mode goodies</a>.
-However, it wasn't anywhere as convenient as emacs. Also after an update it somehow broke my Dropbox connection to the directory with org-mode notes, which rendered it useless for me. I'm also moving from Dropbox to Syncthing, so was planning to abandon Filestash anyway as it doesn't allow local files, only ftp or git.
+The closest tool to what I wanted was <a href="https://github.com/mickael-kerjean/filestash">Filestash</a>: it supports vim/emacs bindings and some <a href="https://www.filestash.app/2018/05/31/release-note-v0.1">org-mode goodies</a>.
+However, it wasn't anywhere as convenient as  Emacs.
+I'm also moving from Dropbox to Syncthing, so was planning to abandon Filestash anyway as it doesn't allow local files, only ftp or git.
+(<b>UPD</b>: <a href="./cloudmacs.html#isso-36">author</a> mentions some planned support for Syncthing)
 </p>
 <p>
 Dropbox is not capable of previewing arbitrary text files let alone edit; and even if it could you obviously wouldn't get anything close to your usual emacs workflow.
 </p>
 <p>
-And you could imagine that while Emacs/Vim style editing is fairly application <a href="https://github.com/brookhong/Surfingkeys#vim-editor-and-emacs-editor">agnostic</a>, it's a thankless job to rewrire/port all the amazing emacs packages and features I'm used to like neotree, helm, refile, swoop, agenda, projectile, org-drill etc.
+And you could imagine that while Emacs/Vim style editing is fairly application <a href="https://github.com/brookhong/Surfingkeys#vim-editor-and-emacs-editor">agnostic</a>, it's a thankless job to rewrite/port all the amazing emacs packages and features I'm used to like neotree, helm, refile, swoop, agenda, projectile, org-drill etc.
 </p>
 <p>
 So I figured the only thing that would keep me happy is to run emacs itself over the web! Thankfully, due to its TUI interface that works surprisingly well.
@@ -121,6 +123,10 @@ To get around that there is a somewhat hacky <a href="https://github.com/karlico
     <br>
     <div>Discussion:</div>
     <ul>
+    
+        <li><a href="https://news.ycombinator.com/item?id=21633149">hackernews</a></li>
+    
+        <li><a href="https://www.reddit.com/r/emacs/comments/e1o6dz/cloudmacs_emacs_in_your_web_browser">/r/emacs</a></li>
     
         <li><a href="https://www.reddit.com/r/selfhosted/comments/d38utu/cloudmacs_make_your_lovely_emacs_setup_accessible">/r/selfhosted</a></li>
     
