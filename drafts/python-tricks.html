@@ -93,6 +93,24 @@
 <li><a href="#org000000c">5. <span class="todo TODO">TODO</span> Context manager and wrapping pid?   <span class="tag"><span class="python">python</span> <span class="blog">blog</span></span></a></li>
 <li><a href="#org000000d">6. <span class="todo TODO">TODO</span> another usecase for LRU cache thing – merging multiple files   <span class="tag"><span class="blog">blog</span> <span class="python">python</span></span></a></li>
 <li><a href="#org000000e">7. <span class="todo TODO">TODO</span> Monadic parsing with decorators?   <span class="tag"><span class="blog">blog</span> <span class="python">python</span></span></a></li>
+<li><a href="#org0000017">8. Why Python is good</a>
+<ul>
+<li><a href="#org0000010">8.1. <span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-07-21 21:37]</span></span> hacked seaborn to display vs on pairplots   <span class="tag"><span class="python">python</span></span></a>
+<ul>
+<li><a href="#org000000f">8.1.1. <span class="todo STRT">STRT</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-07-21 21:38]</span></span> could even blog   <span class="tag"><span class="blog">blog</span></span></a></li>
+</ul>
+</li>
+<li><a href="#org0000013">8.2. <span class="todo TODO">TODO</span> hacking logging.Logger to do basicConfig   <span class="tag"><span class="python">python</span> <span class="logging">logging</span> <span class="decorators">decorators</span> <span class="publish">publish</span></span></a>
+<ul>
+<li><a href="#org0000011">8.2.1. <span class="timestamp-wrapper"><span class="timestamp">[2019-09-17 01:42]</span></span> could publish in r/python?</a></li>
+<li><a href="#org0000012">8.2.2. <span class="timestamp-wrapper"><span class="timestamp">[2019-09-17 01:45]</span></span> sometimes it makes sense for your library to configure other loggers (e.g. requests)</a></li>
+</ul>
+</li>
+<li><a href="#org0000014">8.3. <span class="todo TODO">TODO</span> why generators are good: fbchat export example   <span class="tag"><span class="python">python</span> <span class="blog">blog</span></span></a></li>
+<li><a href="#org0000015">8.4. <span class="todo TODO">TODO</span> another example of cool generator use in fbchat   <span class="tag"><span class="python">python</span> <span class="blog">blog</span></span></a></li>
+<li><a href="#org0000016">8.5. <span class="todo TODO">TODO</span> example of hacky setup<sub>logger</sub>   <span class="tag"><span class="python">python</span></span></a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -183,6 +201,81 @@ I often write python scripts instead of shell
 <p>
 Write about problems with left recursion?
 </p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000017">
+<h2 id="org0000017"><a class="headerlink" href="#org0000017">¶</a><span class="section-number-2">8</span> Why Python is good</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div class="outline-3" id="outline-container-org0000010">
+<h3 id="org0000010"><a class="headerlink" href="#org0000010">¶</a><span class="section-number-3">8.1</span> <span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-07-21 21:37]</span></span> hacked seaborn to display vs on pairplots   <span class="tag"><span class="python">python</span></span></h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+used inspect to extract directly from local variables, lol
+<a href="https://github.com/mwaskom/seaborn/blob/master/seaborn/axisgrid.py#L1340-L1341">https://github.com/mwaskom/seaborn/blob/master/seaborn/axisgrid.py#L1340-L1341</a>
+</p>
+</div>
+<div class="outline-4" id="outline-container-org000000f">
+<h4 id="org000000f"><span class="section-number-4">8.1.1</span> <span class="todo STRT">STRT</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-07-21 21:38]</span></span> could even blog   <span class="tag"><span class="blog">blog</span></span></h4>
+<div class="outline-text-4" id="text-8-1-1">
+</div>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000013">
+<h3 id="org0000013"><a class="headerlink" href="#org0000013">¶</a><span class="section-number-3">8.2</span> <span class="todo TODO">TODO</span> hacking logging.Logger to do basicConfig   <span class="tag"><span class="python">python</span> <span class="logging">logging</span> <span class="decorators">decorators</span> <span class="publish">publish</span></span></h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+logging.basicConfig(
+    format='%(asctime)s %(levelname)-8s %(message)s',
+    level=logging.INFO,
+    datefmt='%Y-%m-%d %H:%M:%S')
+</p>
+<p>
+However if you are a well-mannered person, you don't want to mess with other loggers and you're probably providing your own logger method
+</p>
+<p>
+This is a bit horrible
+<a href="https://stackoverflow.com/a/28330410/706389">https://stackoverflow.com/a/28330410/706389</a>
+</p>
+<p>
+For my personal projects I'm using logzero which has got a single line setup method. However, for code I'm sharing with other people I prefer to have as little external dependencies as you can
+</p>
+<p>
+e.g. libraries should never configure logging
+<a href="https://www.reddit.com/r/learnpython/comments/69grzn/logging_confuses_me/dh6ngvo/">https://www.reddit.com/r/learnpython/comments/69grzn/logging_confuses_me/dh6ngvo/</a>
+</p>
+</div>
+<div class="outline-4" id="outline-container-org0000011">
+<h4 id="org0000011"><span class="section-number-4">8.2.1</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-17 01:42]</span></span> could publish in r/python?</h4>
+</div>
+<div class="outline-4" id="outline-container-org0000012">
+<h4 id="org0000012"><span class="section-number-4">8.2.2</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-17 01:45]</span></span> sometimes it makes sense for your library to configure other loggers (e.g. requests)</h4>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000014">
+<h3 id="org0000014"><a class="headerlink" href="#org0000014">¶</a><span class="section-number-3">8.3</span> <span class="todo TODO">TODO</span> why generators are good: fbchat export example   <span class="tag"><span class="python">python</span> <span class="blog">blog</span></span></h3>
+<div class="outline-text-3" id="text-8-3">
+<p>
+separating network retrieval and storing in database. with generators can do it simultaneously
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000015">
+<h3 id="org0000015"><a class="headerlink" href="#org0000015">¶</a><span class="section-number-3">8.4</span> <span class="todo TODO">TODO</span> another example of cool generator use in fbchat   <span class="tag"><span class="python">python</span> <span class="blog">blog</span></span></h3>
+<div class="outline-text-3" id="text-8-4">
+<p>
+mts = int(r.timestamp)
+if newest is not None and oldest is not None and newest &gt; mts &gt; oldest:
+    logger.info('Fetched everything for %s', thread.name)
+    break # interrupt, thus interrupting fetching data
+db.insert<sub>message</sub>(thread, r)
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000016">
+<h3 id="org0000016"><a class="headerlink" href="#org0000016">¶</a><span class="section-number-3">8.5</span> <span class="todo TODO">TODO</span> example of hacky setup<sub>logger</sub>   <span class="tag"><span class="python">python</span></span></h3>
+<div class="outline-text-3" id="text-8-5">
+</div>
 </div>
 </div>
 
