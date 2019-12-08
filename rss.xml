@@ -7,8 +7,1211 @@
         <description><![CDATA[feed]]></description>
         <atom:link href="https://beepb00p.xyz/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Tue, 19 Nov 2019 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Sun, 08 Dec 2019 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Analyzing accuracy of power reported by stationary bike</title>
+    <link>https://beepb00p.xyz/exercise-bike-model.html</link>
+    <description><![CDATA[<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="exercise quantified-self ipython">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>Analyzing accuracy of power reported by stationary bike | Mildly entertainingᵝ</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=4" />
+
+        
+        <script type="text/javascript">
+ window.MathJax = {
+     tex2jax: {
+         // note that hakyll source has got double dollar signs due to special meaning in templates
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+     }
+ };
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    <!-- TODO eh, not sure if this symbol is good for that... -->
+                    ·
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                    ·
+                    <a class="fat" href="./notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
+                </span>
+                <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+            </nav>
+        </header>
+
+        <main>
+            
+<link rel="stylesheet" href="./css/ipynb.css" />
+<link rel="stylesheet" href="./css/ipynb-syntax.css" />
+
+
+
+
+<article>
+    
+    <section class="post-title">
+    <h1>Analyzing accuracy of power reported by stationary bike</h1>
+    <div class="summary">How I found my exercise machine to violate laws of physics</h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I was curious how effort exerted during the exercise impacts heart rate and whether that correlates strongly with subjective fatigue and exhaustion.</p>
+<p>It seemed that easiest way to experiment would be stationary bike. Running only has single variable, speed. One could of course change incline, but that would be harder to predict.</p>
+<p>For elliptical machine or rowing machine it would be even more complicated!</p>
+<p>With stationary bike, there are two variables that potentially impact power you need to exert:</p>
+<ul>
+<li>RPM (revolutions per minute), or angular velocity, that should have linear effect on power (no air resistance as it's stationary!)</li>
+<li>resistance, which isn't exactly specified, but one would expect it to be proportional to the force you have to apply (i.e. <a href="https://en.wikipedia.org/wiki/Torque">torque</a>)</li>
+</ul>
+<p>Or, simply put, $P = \tau \omega$ (<a href="https://en.wikipedia.org/wiki/Power_%28physics%29#Mechanical_power">wiki</a> )</p>
+<p>The <a href="https://www.technogym.com/gb/indoor-cycling-live-bike.html">indoor exercise bike</a> displays the pace (i.e. revolutions per minute), so all you have to do is maintain it.
+In addition it's displaying current resistance level (you can set it by adjusting a mechanical knob) and reports power in watts.</p>
+<p>During exercise, I'm using a chest HR tracker, so simplest thing to do would be take whatever power the machine reports and try to find correlation with moving total/average of HR.</p>
+<p>However, being paranoid and lacking any documentation for the machine, I decided no to trust its numbers blindly and check them instead. Technogym's website doesn't help in clarifying how power is computed. They have some sensible information <a href="https://www.technogym.com/gb/newsroom/power-meter-what-is-how-it-works">like</a>:</p>
+<blockquote><p>The power meter must be accurate.</p>
+<p>The power measurement must be precise and repeatable. A 3-5 watt error is not significant, but if a system is not reliable there may be deviations of many tens of watts, i.e. equal to or greater than the amount of power that is gained from one year's training.</p>
+</blockquote>
+<p>Let's see how accurate is their power meter!</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Initial-measurements-(2019-11-09)">Initial measurements (2019-11-09)<a class="anchor-link" href="#Initial-measurements-(2019-11-09)">¶</a></h2><p>Throughout different exercise sessions, I've taken bunch of measurements of RPM, resistance and power:</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+   
+   <details class="cell-collapsed">
+   <summary>Measurements <span class="cell-collapsed-expand">(click to expand)</span></summary>
+       
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO could only collapse inputs?</span>
+<span class="n">datas</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">58 10 129</span>
+<span class="s2">56 10 127</span>
+<span class="s2">56 10 127</span>
+<span class="s2">56 8  94</span>
+<span class="s2">57 8  98</span>
+<span class="s2">56 8  94</span>
+<span class="s2">58 10 133</span>
+<span class="s2">56 10 126</span>
+<span class="s2">56 8  93</span>
+<span class="s2">55 8  91</span>
+<span class="s2">56 8  94</span>
+<span class="s2">56 10 128</span>
+<span class="s2">55 10 124</span>
+<span class="s2">54 10 119</span>
+<span class="s2">53 8  87</span>
+<span class="s2">55 8  93</span>
+<span class="s2">55 8  90</span>
+<span class="s2">95 8  240</span>
+
+<span class="s2">70 10 198</span>
+<span class="s2">55 8  85</span>
+<span class="s2">95 8  226</span>
+<span class="s2">95 8  229</span>
+<span class="s2">95 8  228</span>
+<span class="s2">95 8  227</span>
+
+<span class="s2">97 8  236</span>
+<span class="s2">95 8  227</span>
+<span class="s2">95 8  227</span>
+<span class="s2">95 8  230</span>
+<span class="s2">60 10 156</span>
+<span class="s2">61 10 154</span>
+<span class="s2">62 10 162</span>
+<span class="s2">61 10 156</span>
+<span class="s2">55 10 125</span>
+<span class="s2">56 10 128</span>
+<span class="s2">57 8  89</span>
+<span class="s2">56 8  87</span>
+<span class="s2">57 8  90</span>
+<span class="s2">57 8  91</span>
+<span class="s2">60 8  101</span>
+<span class="s2">56 10 129</span>
+<span class="s2">57 10 131</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="k">def</span> <span class="nf">make_df</span><span class="p">(</span><span class="n">datas</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">datas</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span>
+        <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'rpm'</span><span class="p">,</span> <span class="s1">'resistance'</span><span class="p">,</span> <span class="s1">'watts'</span><span class="p">],</span>
+    <span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">f</span><span class="s2">&quot;</span><span class="si">{row['rpm']}</span><span class="s2">_</span><span class="si">{row['resistance']}</span><span class="s2">_</span><span class="si">{row['watts']}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">'columns'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">make_df</span><span class="p">(</span><span class="n">datas</span><span class="p">)</span>
+<span class="n">old_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="c1"># btw, if anyone knows a more elegant way of converting such a table in dataframe, I'd be happy to know!</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+   </details>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>rpm</th>
+      <th>resistance</th>
+      <th>watts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>95_8_227</th>
+      <td>95</td>
+      <td>8</td>
+      <td>227</td>
+    </tr>
+    <tr>
+      <th>56_8_87</th>
+      <td>56</td>
+      <td>8</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <th>61_10_154</th>
+      <td>61</td>
+      <td>10</td>
+      <td>154</td>
+    </tr>
+    <tr>
+      <th>57_8_98</th>
+      <td>57</td>
+      <td>8</td>
+      <td>98</td>
+    </tr>
+    <tr>
+      <th>56_8_94</th>
+      <td>56</td>
+      <td>8</td>
+      <td>94</td>
+    </tr>
+    <tr>
+      <th>61_10_156</th>
+      <td>61</td>
+      <td>10</td>
+      <td>156</td>
+    </tr>
+    <tr>
+      <th>95_8_230</th>
+      <td>95</td>
+      <td>8</td>
+      <td>230</td>
+    </tr>
+    <tr>
+      <th>56_10_128</th>
+      <td>56</td>
+      <td>10</td>
+      <td>128</td>
+    </tr>
+    <tr>
+      <th>57_8_90</th>
+      <td>57</td>
+      <td>8</td>
+      <td>90</td>
+    </tr>
+    <tr>
+      <th>62_10_162</th>
+      <td>62</td>
+      <td>10</td>
+      <td>162</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It's reasonable to assume that power depends linearly both on RPM and resistance, so we conjecture <code>watts = rpm x resistance</code>. Let's see if it holds against what the exercise bike reports:</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">'font'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">'regular'</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_df</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">dff</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">dff</span><span class="p">[</span><span class="s1">'rpm x resistance'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'rpm'</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">'resistance'</span><span class="p">]</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">dff</span><span class="p">[</span><span class="s1">'rpm x resistance'</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">dff</span><span class="p">[</span><span class="s1">'watts'</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
+        <span class="n">data</span><span class="o">=</span><span class="n">dff</span><span class="p">,</span>
+        <span class="n">x</span><span class="o">=</span><span class="s1">'rpm x resistance'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'watts'</span><span class="p">,</span>
+        <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Power, theoretical, angular velocity multiplied by resistance'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Power, watts as reported by the machine'</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plot_df</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="exercise-bike-model_files/exercise-bike-model_5_0.png">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Wow, that doesn't look so well, I'd expect the regression line to intersect (0, 0). Let's double check this:</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="k">def</span> <span class="nf">print_stats</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">dff</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">dff</span><span class="p">[</span><span class="s1">'rpm x resistance'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'rpm'</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">'resistance'</span><span class="p">]</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">dff</span><span class="p">[[</span><span class="s1">'rpm x resistance'</span><span class="p">]]</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">dff</span><span class="p">[</span><span class="s1">'watts'</span><span class="p">],</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+<span class="n">print_stats</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  watts   R-squared:                       0.982
+Model:                            OLS   Adj. R-squared:                  0.981
+Method:                 Least Squares   F-statistic:                     2109.
+Date:                Sun, 08 Dec 2019   Prob (F-statistic):           1.43e-35
+Time:                        22:19:34   Log-Likelihood:                -138.70
+No. Observations:                  41   AIC:                             281.4
+Df Residuals:                      39   BIC:                             284.8
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+====================================================================================
+                       coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------------
+const             -110.6016      5.605    -19.732      0.000    -121.939     -99.264
+rpm x resistance     0.4406      0.010     45.929      0.000       0.421       0.460
+==============================================================================
+Omnibus:                        1.196   Durbin-Watson:                   1.017
+Prob(Omnibus):                  0.550   Jarque-Bera (JB):                1.049
+Skew:                          -0.190   Prob(JB):                        0.592
+Kurtosis:                       2.315   Cond. No.                     2.87e+03
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 2.87e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/home/karlicos/.local/lib/python3.7/site-packages/numpy/core/fromnumeric.py:2389: FutureWarning: Method .ptp is deprecated and will be removed in a future version. Use numpy.ptp instead.
+  return ptp(axis=axis, out=out, **kwargs)
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Free parameter is about <code>-100</code> watts, which is quite a lot considering my high intensity intervals are <code>250</code> watts (so it means <strong>about 40% error</strong>!). 
+I don't think it can be explained by friction either: if anything, friction would shift the plot up and make the free coefficient positive.</p>
+<p>At this point, I'm not sure what it means. I guess I'll try to make more measurements at really low resistances and speeds to make the model more complete, but I would be too surprised if either watts or resistance reported by the machine are just made up.</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="More-data-(2019-11-14)">More data (2019-11-14)<a class="anchor-link" href="#More-data-(2019-11-14)">¶</a></h2><p>I collected more data corresponding to different resistances/velocities. It's actually quite hard to consistently spin under low resistance setting, so I think I might need one more round of data collection to complete the picture!</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+   
+   <details class="cell-collapsed">
+   <summary>More measurements <span class="cell-collapsed-expand">(click to expand)</span></summary>
+       
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">new_df</span> <span class="o">=</span> <span class="n">make_df</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">96  4  66</span>
+<span class="s2">99  4  69</span>
+<span class="s2">101 6  146</span>
+<span class="s2">103 6  149</span>
+<span class="s2">110 6  166</span>
+<span class="s2">111 6  170</span>
+<span class="s2">50  13 186</span>
+<span class="s2">36  13 107</span>
+<span class="s2">36  13 105</span>
+<span class="s2">31  10 41</span>
+<span class="s2">30  10 44</span>
+<span class="s2">28  10 39</span>
+<span class="s2">117 8  323</span>
+<span class="s2">116 8  320</span>
+<span class="s2">116 8  322</span>
+<span class="s2">48  6  40</span>
+<span class="s2">49  6  37</span>
+<span class="s2">60  2  24</span>
+<span class="s2">59  2  23</span>
+<span class="s2">86  2  40</span>
+<span class="s2">106 2  48</span>
+<span class="s2">62  5  44</span>
+<span class="s2">61  5  44</span>
+<span class="s2">81  5  70</span>
+<span class="s2">81  5  70</span>
+<span class="s2">93  5  90</span>
+<span class="s2">97  5  97</span>
+<span class="s2">35  12 87</span>
+<span class="s2">33  12 81</span>
+<span class="s2">25  12 51</span>
+<span class="s2">26  12 55</span>
+<span class="s2">27  1  50</span>
+<span class="s2">39  8  46</span>
+<span class="s2">39  8  44</span>
+<span class="s2">30  8  29</span>
+<span class="s2">30  8  31</span>
+<span class="s2">32  8  31</span>
+<span class="s2">32  8  31</span>
+<span class="s2">29  8  29</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+   </details>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">old_df</span><span class="p">,</span> <span class="n">new_df</span><span class="p">])</span>
+<span class="n">plot_df</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">print_stats</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="exercise-bike-model_files/exercise-bike-model_11_0.png">
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  watts   R-squared:                       0.924
+Model:                            OLS   Adj. R-squared:                  0.923
+Method:                 Least Squares   F-statistic:                     952.2
+Date:                Sun, 08 Dec 2019   Prob (F-statistic):           1.82e-45
+Time:                        22:19:35   Log-Likelihood:                -352.79
+No. Observations:                  80   AIC:                             709.6
+Df Residuals:                      78   BIC:                             714.3
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+====================================================================================
+                       coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------------
+const              -60.3329      6.129     -9.843      0.000     -72.535     -48.130
+rpm x resistance     0.3614      0.012     30.857      0.000       0.338       0.385
+==============================================================================
+Omnibus:                       57.648   Durbin-Watson:                   1.094
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):              238.330
+Skew:                           2.326   Prob(JB):                     1.77e-52
+Kurtosis:                      10.062   Cond. No.                     1.42e+03
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.42e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ok, it clearly started diverging from the nice linear dependency, especially at lower values of theoretical power. It's time to try to break it down and see what is to blame: e.g., resistance or speed component, or perhaps some individual measurements.</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Analyzing-data-and-looking-at-outliers-(2019-11-24)">Analyzing data and looking at outliers (2019-11-24)<a class="anchor-link" href="#Analyzing-data-and-looking-at-outliers-(2019-11-24)">¶</a></h2>
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="k">def</span> <span class="nf">plot_influence</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="c1"># TODO FIXME use it in prev section</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">formula</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s2">&quot;watts ~ rpm * resistance - resistance - rpm&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">sm</span><span class="o">.</span><span class="n">graphics</span><span class="o">.</span><span class="n">influence_plot</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s2">&quot;cooks&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plot_influence</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="c1"># sm.graphics.plot_partregress_grid(res, fig=fig)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="exercise-bike-model_files/exercise-bike-model_14_0.png">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>TODO hmm, 0.10 is not <em>that</em> high leverage right?
+Although depends on residual too, and here the residual is very high, so it would have high influence..
+<a href="https://www.statsmodels.org/dev/examples/notebooks/generated/regression_plots.html">https://www.statsmodels.org/dev/examples/notebooks/generated/regression_plots.html</a></p>
+<p>'27_1_50' seems like a typo. Let's drop it and ignore.</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fdf</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># TODO Do i really need to copy?</span>
+<span class="n">fdf</span> <span class="o">=</span> <span class="n">fdf</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span>
+    <span class="s1">'27_1_50'</span><span class="p">,</span>
+    <span class="c1"># '86_2_40',</span>
+    <span class="c1"># '59_2_23',</span>
+    <span class="c1"># '60_2_24',</span>
+    <span class="c1"># '116_8_322',</span>
+    <span class="c1"># '116_8_320',</span>
+    <span class="c1"># '117_8_323',</span>
+    <span class="c1"># '106_2_48',</span>
+    <span class="c1"># '95_8_240',</span>
+<span class="p">])</span>
+<span class="c1"># TODO I wonder what does it do to multiple observations with exactly same input/output params? Is it a set or multiset?</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Ok, that's somewhat better at least in terms of outliers. Let's see if that helps:</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot_df</span><span class="p">(</span><span class="n">fdf</span><span class="p">)</span>
+<span class="n">print_stats</span><span class="p">(</span><span class="n">fdf</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="exercise-bike-model_files/exercise-bike-model_18_0.png">
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  watts   R-squared:                       0.950
+Model:                            OLS   Adj. R-squared:                  0.949
+Method:                 Least Squares   F-statistic:                     1467.
+Date:                Sun, 08 Dec 2019   Prob (F-statistic):           6.77e-52
+Time:                        22:19:35   Log-Likelihood:                -331.96
+No. Observations:                  79   AIC:                             667.9
+Df Residuals:                      77   BIC:                             672.7
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+====================================================================================
+                       coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------------
+const              -69.9960      5.203    -13.454      0.000     -80.356     -59.636
+rpm x resistance     0.3784      0.010     38.307      0.000       0.359       0.398
+==============================================================================
+Omnibus:                       27.329   Durbin-Watson:                   0.562
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               40.545
+Skew:                           1.500   Prob(JB):                     1.57e-09
+Kurtosis:                       4.823   Cond. No.                     1.49e+03
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.49e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So, on one hand that did make fit look more linear. On the other hand we've had to filter out all the low-resistance observations to achieve that.</p>
+<p>I guess I'll collect more observations to be absolutely sure.</p>
+<p>TODO add TOC or something?</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Even-more-data-(2019-11-25)">Even more data (2019-11-25)<a class="anchor-link" href="#Even-more-data-(2019-11-25)">¶</a></h2><p>I've collected a bit more data, especially at lower velocities and resistance:</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+   
+   <details class="cell-collapsed">
+   <summary>More measurements <span class="cell-collapsed-expand">(click to expand)</span></summary>
+       
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">new_df_2</span> <span class="o">=</span> <span class="n">make_df</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">113 2  50</span>
+<span class="s2">73  2  32</span>
+<span class="s2">71  2  30</span>
+<span class="s2">70  2  29</span>
+<span class="s2">107 3  64</span>
+<span class="s2">108 3  65</span>
+<span class="s2">114 4  103</span>
+<span class="s2">48  4  25</span>
+<span class="s2">40  4  20</span>
+<span class="s2">31  13 81</span>
+<span class="s2">36  16 163</span>
+<span class="s2">40  5  24</span>
+<span class="s2">35  6  23</span>
+<span class="s2">31  7  23</span>
+<span class="s2">31  9  40</span>
+<span class="s2">40  9  64</span>
+<span class="s2">115 6  175</span>
+<span class="s2">109 6  163</span>
+<span class="s2">31  12 72</span>
+<span class="s2">30  13 76</span>
+<span class="s2">54  4  33</span>
+<span class="s2">38  4  19</span>
+<span class="s2">75  4  55</span>
+<span class="s2">36  8  40</span>
+<span class="s2">39  8  46</span>
+<span class="s2">32  8  34</span>
+<span class="s2">70  3  39</span>
+<span class="s2">49  3  22</span>
+<span class="s2">37  3  14</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="n">ndf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">fdf</span><span class="p">,</span> <span class="n">new_df_2</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+   </details>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's check for outliers first:</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot_influence</span><span class="p">(</span><span class="n">ndf</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="exercise-bike-model_files/exercise-bike-model_23_0.png">
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Residuals of 3 are borderline, but don't immediately mean outliers. Let's plot and analyze:</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot_df</span><span class="p">(</span><span class="n">ndf</span><span class="p">)</span>
+<span class="n">print_stats</span><span class="p">(</span><span class="n">ndf</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_png output_subarea ">
+<img src="exercise-bike-model_files/exercise-bike-model_25_0.png">
+</div>
+
+</div>
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                  watts   R-squared:                       0.943
+Model:                            OLS   Adj. R-squared:                  0.942
+Method:                 Least Squares   F-statistic:                     1754.
+Date:                Sun, 08 Dec 2019   Prob (F-statistic):           9.08e-68
+Time:                        22:19:36   Log-Likelihood:                -459.07
+No. Observations:                 108   AIC:                             922.1
+Df Residuals:                     106   BIC:                             927.5
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+====================================================================================
+                       coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------------
+const              -52.5400      4.002    -13.130      0.000     -60.474     -44.606
+rpm x resistance     0.3483      0.008     41.880      0.000       0.332       0.365
+==============================================================================
+Omnibus:                       20.686   Durbin-Watson:                   0.646
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               25.653
+Skew:                           1.159   Prob(JB):                     2.69e-06
+Kurtosis:                       3.574   Cond. No.                     1.17e+03
+==============================================================================
+
+Warnings:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.17e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So, there is a clear trend of points clumping towards 0, which that the model ceases to be linear.</p>
+<p>If we try to fit the line to the points in a more reasonable exercise range (e.g. at least 50 RPM and resistance of 6, which would mean Power &gt;= 300), that would skew the plot even more to the right and move the coefficient even further from zero.</p>
+<p>So either:</p>
+<ul>
+<li>the assumption of linear dependency on resistance and velocity is wrong, but then it's completely unclear how the power is estimated</li>
+<li>I wasn't accurate during measurements on lower intensities, but I think it's pretty unlikely as I did multiple measurement sessions and even if you ignore the higher variance, mean is still way above the regression line </li>
+<li>the velocity/resistance reported by the machine are wrong or misleading. It's possible that the number machine assigns to 'resistance' doesn't really mean anything.</li>
+</ul>
+<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">¶</a></h2><p>¯\<em>(ツ)</em>/¯</p>
+<p>I guess be careful about trusting the equipment and do your own experiments.</p>
+<p>As you can see, my initial project of finding some correlation with my HR turned out in a completely different direction.</p>
+<h3 id="Next-steps">Next steps<a class="anchor-link" href="#Next-steps">¶</a></h3><p>Would be interesting to at least compare watts (theoretical and reported by the machine) versus calories estimated by Endomondo (which takes heart rate into account).</p>
+
+</div>
+</div>
+</div>
+
+
+
+ 
+
+
+    </section>
+
+    
+    <section class="footer">
+        <div class="post-tags"><a class="post-tag" href="./tags.html#exercise">#exercise</a> <a class="post-tag" href="./tags.html#quantified-self">#quantified-self</a> <a class="post-tag" href="./tags.html#ipython">#ipython</a></div>
+        <!-- TODO post-date? -->
+        <div class="date">08 December 2019</div>
+    </section>
+    
+
+    
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_exercise_bike_model"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
+        
+        <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
+            
+            
+        </footer>
+    </body>
+</html>
+]]></description>
+    <pubDate>Sun, 08 Dec 2019 00:00:00 UT</pubDate>
+    <guid>https://beepb00p.xyz/exercise-bike-model.html</guid>
+    <dc:creator>karlicoss</dc:creator>
+</item>
+<item>
     <title>Scrapyroo</title>
     <link>https://beepb00p.xyz/scrapyroo.html</link>
     <description><![CDATA[<!doctype html>
@@ -5512,7 +6715,7 @@ WARNING:workout-provider:Unhandled: Cycling
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Regression coefficient: 0.093
-Free term: -9.171
+Free term: -9.332
 </pre>
 </div>
 </div>
@@ -5567,7 +6770,7 @@ Free term: -9.171
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>8058.152
+<pre>8063.675
 </pre>
 </div>
 </div>
