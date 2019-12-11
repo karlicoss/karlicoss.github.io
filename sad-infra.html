@@ -1,0 +1,964 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="pkm dataliberation">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>The sad state of personal infrastructure | Mildly entertainingᵝ</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=4" />
+
+        
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    <!-- TODO eh, not sure if this symbol is good for that... -->
+                    ·
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                    ·
+                    <a class="fat" href="./notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
+                </span>
+                <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<!-- <link rel="stylesheet" href="/css/org.css" /> -->
+
+<link rel="stylesheet" href="./css/htmlize.css" />
+<link rel="stylesheet" href="./css/org-default.css" />
+
+<link rel="stylesheet" href="./css/org-extra.css?v=3" />
+
+
+
+<article>
+    
+    <div>THIS IS A DRAFT! It will appear on the main page once finished!</div>
+    
+    <section class="post-title">
+    <h1>The sad state of personal infrastructure</h1>
+    
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <p>
+<b>Draft stage</b>: mostly ready in terms of content and what I want to say, writing needs to be improved.
+</p>
+<p>
+<b>TLDR</b>: in this post I'm going to be looking at missed opportunities TODO engaging and interacting with your personal data and digital trace.
+</p>
+<p>
+It might seem like a long rant, but I promise you I am not a kind of person who whines and vents just for the sake of it!
+I'm just building up TODO pressure? and engaging you, and I do have some specific workarounds and suggestions. (TODO link to some existing tools?)
+This article got long enough, so I will I will explain them in the second part.
+(TODO also discussions could target different points)
+</p>
+<p>
+TODO that's for second part?
+I've exported/scraped/reverse engineered data from various sources and figured out the automation routine/infrastructure that works for me.
+Some of the data I got proved to be more useful, some less useful, but nevertheless I decided to share my TODO findings??. Hopefully that would help someone else.
+</p>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org0000000">1. Intro</a></li>
+<li><a href="#why">2. Why does that bother you?</a>
+<ul>
+<li><a href="#org0000001">Search and information access</a></li>
+<li><a href="#org0000002">Productivity</a></li>
+<li><a href="#org0000003">Journalling and history</a></li>
+<li><a href="#org0000004">Consuming digital content</a></li>
+<li><a href="#org0000005">Health and body maintenance</a></li>
+<li><a href="#org0000006">Personal finance</a></li>
+<li><a href="#org0000007">Why I can't do <b>barely</b> anything when I'm offline or have a wonky connection?</a></li>
+<li><a href="#org0000008">Mediocre interfaces</a></li>
+<li><a href="#org0000009">Tools for thinking and learning</a></li>
+<li><a href="#org000000a">Backups</a></li>
+<li><a href="#org000000b">--</a></li>
+</ul>
+</li>
+<li><a href="#org000000c">3. Your data is disappearing</a></li>
+<li><a href="#org000000d">4. What do I want?</a></li>
+<li><a href="#org000000e">5. Why don't you just do it yourself?</a>
+<ul>
+<li><a href="#org000000f"><span class="priority">[C]</span> why it's hard: e.g. database contains too much stuff and you have to spend time filtering out actual books from promo books on device   <span class="tag"><span class="dataliberation">dataliberation</span> <span class="kobuddy">kobuddy</span></span></a></li>
+<li><a href="#org0000010"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> why it's hard: datetime parsing, dealing with timezones   <span class="tag"><span class="backup">backup</span> <span class="motivation">motivation</span></span></a></li>
+<li><a href="#org0000011"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-30 21:41]</span></span> liberating phone data?</a></li>
+<li><a href="#org0000012"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> right, facebooks gives away chat messages as fucking html pages   <span class="tag"><span class="blog">blog</span> <span class="exports">exports</span></span></a></li>
+<li><a href="#org0000013"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> Tweet from Русские Народные Мемы (@l0ldbl00d)</a></li>
+<li><a href="#org0000014"><span class="todo TODO">TODO</span> error handling: you want to be somewhat semi-defensive   <span class="tag"><span class="blog">blog</span> <span class="data">data</span> <span class="dataliberation">dataliberation</span></span></a></li>
+<li><a href="#org0000015"><span class="todo TODO">TODO</span> space/bandwidth?</a></li>
+<li><a href="#org0000016"><span class="todo TODO">TODO</span> android apps: example – bluemaestro?</a></li>
+<li><a href="#org0000017">boilerplate, boilerplate, boilerplate. features all the worst things in the programmer's world: shitty APIs, latency, flakiness, error handling, authorisation TODO</a></li>
+<li><a href="#org0000018">Sometimes you can't rely on the service</a></li>
+<li><a href="#org0000019"><span class="todo TODO">TODO</span> big problem is lack of 'standard' representation   <span class="tag"><span class="backup">backup</span></span></a></li>
+</ul>
+</li>
+<li><a href="#org000001a">6. What do I want [2]?</a>
+<ul>
+<li><a href="#org000001b"><span class="todo TODO">TODO</span> ideally it'd be subscribed and recieve data continuously.</a></li>
+<li><a href="#org000001c"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> speculate about potential solution?</a></li>
+</ul>
+</li>
+<li><a href="#org000001d">7. <span class="todo TODO">TODO</span> integrate in the post?</a>
+<ul>
+<li><a href="#org000001e"><span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-02 11:26]</span></span> APIs are key to Quantified Self | SINGLY » Blog   <span class="tag"><span class="blog">blog</span> <span class="exports">exports</span></span></a></li>
+<li><a href="#org000001f"><span class="timestamp-wrapper"><span class="timestamp">[2019-12-07 21:30]</span></span> https://www.dougengelbart.org/content/view/374/464/</a></li>
+<li><a href="#org0000020"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-21 19:02]</span></span> Vendor lock-in - Wikipedia   <span class="tag"><span class="gr">gr</span></span></a></li>
+<li><a href="#org0000021"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> from annotations post</a></li>
+<li><a href="#org0000022"><span class="todo TODO">TODO</span> <span class="priority">[A]</span> Kobo as example of something that you can't even properly sync   <span class="tag"><span class="blog">blog</span> <span class="exports">exports</span></span></a></li>
+<li><a href="#org0000023"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> Every bookmark manager ever made   <span class="tag"><span class="exports">exports</span> <span class="blog">blog</span></span></a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000000">
+<h2 id="org0000000"><a class="headerlink" href="#org0000000">¶</a><span class="section-number-2">1</span> Intro</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+On one hand, in 2019 things are pretty great. 
+For almost anything you wish to do on your computer/phone (TODO examples?) you'd find several apps, platforms and ecosystems that would handle your task in one way or another.
+</p>
+<p>
+On the other hand, typically, once the service has your data, it's <b>siloed and trapped</b>.
+You are completely at the mercy of service developers and management. 
+</p>
+<p>
+Within the same ecosystem (e.g. Google/Apple/Microsoft) you <b>might</b> get some integrations and interactions if the company spares them.
+Apart from it, it's virtually non-existent.
+We have TODO much data as ever, and it just sits there helpless.
+</p>
+<p>
+Often UIs suck or have some inconveniences TODO, and don't TODO average, but leaves number of users who would be dissatisfied (and often these are power users).
+</p>
+<p>
+Switching to new and unfamiliar tools is hard enough cognitively as it is.
+In addition, in most cases you have to <b>leave behind</b> all your old data. 
+You're lucky if you can do some sort of data import/export and if it works properly.
+</p>
+<p>
+TODO ifttt which is a mediocre experience, capable of TODO very simple things and also requires cooperation with the service in the first place (TODO pinboard story <a href="https://blog.pinboard.in/2016/03/my_heroic_and_lazy_stand_against_ifttt">https://blog.pinboard.in/2016/03/my_heroic_and_lazy_stand_against_ifttt</a> )
+</p>
+<p>
+Personal data in in a sad state these days. (TODO I won't be talking about privacy concerns here).
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000043">
+<h2 id="why"><a class="headerlink" href="#why">¶</a><span class="section-number-2">2</span> Why does that bother you?</h2>
+<div class="outline-text-2" id="text-why">
+<p>
+To be fair, I don't understand how does that <b>not</b> bother you!
+</p>
+<p>
+To start with, allow me to quote <a href="orger.html#intro">myself</a> here:
+</p>
+<blockquote>
+<p>
+I consume lots of digital content (books, articles, reddit, youtube, twitter, etc.) and most of it I find somewhat useful and insightful.
+I want to use that knowledge later, act and build on it. But there's an obstacle: human brain.
+</p>
+<p>
+It would be cool to be capable of always remembering and instantly recalling information you've interacted with, metadata and your thoughts on it.
+Until we get augmented though, there are two options: first is just to suck it up and live with it. You might have guessed this is not the option I'm comfortable to take.
+</p>
+<div><span class="before-aside">
+Second option is compensating for your sloppy meaty memory and having information you've read at hand and a quick way of searching over it. 
+
+</span><aside class="sidenote">see <a class="post-tag" href="./tags.html#extendedmind">#extendedmind</a></aside></div>
+<p>
+<a id="org0000024"></a>
+That sounds simple enough but as with many simple things, on practice you run into obstacles. 
+I'll give some I've personally been overcoming as examples:
+</p>
+<ul class="org-ul">
+<li>convenience of access, e.g.:
+<ul class="org-ul">
+<li>to access highlights and notes on my Kobo ebook I need to actually <b>reach my reader and tap through e-ink</b> touch screen. Not much fun!</li>
+<li><div><span class="before-aside">if you want to search over annotations in your PDF collections… well good luck, I'm just not aware of such a tool. It's actually way worse: many PDF viewers <b>wouldn't even let you search in highlights</b> within the file you're currently viewing. </span><aside class="sidenote">see PDF readers <a href="./annotating.html#pdfs">overview</a></aside></div></li>
+<li>there is no easy way to quickly access all of your twitter favorites, people suggest using hacks like <a href="https://webapps.stackexchange.com/a/131374/68104">autoscroll extension</a>.</li>
+</ul></li>
+<li>searching data, e.g.:
+<ul class="org-ul">
+<li>search function often just isn't available at all, e.g. on Instapaper, you can't restrict search to highlights. If it is available, it's <b>almost never incremental</b>.</li>
+<li>builtin browser search (<code class="inline">Ctrl-F</code>) sucks for the most part: it's not very easy to navigate as you don't get previews and you have to look through every match</li>
+<li>sometimes you vaguely recall reading about something or seeing a link, but <b>don't remember where exactly</b>. Was it on stackoverflow? Or in some github issue? Or in a conversation with friend?</li>
+</ul></li>
+<li>data ownership and liberation, e.g.
+<ul class="org-ul">
+<li><p>
+what happens if data disappears or service is down (temporary/permanently) or banned by your government?
+</p>
+<p>
+You may think you live in a civilized country and that would never affect you. Well, <a href="https://www.theverge.com/2018/5/23/17387146/instapaper-gdpr-europe-access-shut-down-privacy-changes">in 2018</a>, Instapaper was unavailable in Europe for several months (!) due to missing the GDPR deadline.
+</p></li>
+<li><div><span class="before-aside">99% of services <b>don't have support for offline mode</b>. This may be just a small inconvenience if you're on a train or something, but there is more to it.
+What if some sort of apocalypse happens and you lose all access to data? 
+That depends on your paranoia level of course, and apocalypse is bad enough as it is, but my take on it is that at least I'd have my data :) </span><aside class="sidenote">see <a class="post-tag" href="./tags.html#offline">#offline</a></aside></div></li>
+<li>if you delete a book on Kobo, not only you can't access its annotations anymore, but they seem to get <b>wiped</b> from the database.</li>
+</ul></li>
+</ul>
+</blockquote>
+<p>
+So as you can see, my main frustrations are around the lack of the very basic things that computers can do <b>extremely</b> well: data retrieval and search.
+</p>
+<p>
+I'll carry on, just listing some examples. Let's see if any of them resonate with you:
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000001">
+<h3 id="org0000001"><a class="headerlink" href="#org0000001">¶</a>Search and information access</h3>
+<div class="outline-text-3" id="text-org0000001">
+</div>
+<div class="outline-4" id="outline-container-org0000025">
+<h4 id="org0000025">Why can't I search over all of my personal chat history with a friend, whether it's ICQ logs from 2005 or Whatsapp logs from 2019?</h4>
+</div>
+<div class="outline-4" id="outline-container-org0000026">
+<h4 id="org0000026">Why can't I have incremental search over my tweets? Or browser bookmarks?</h4>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000002">
+<h3 id="org0000002"><a class="headerlink" href="#org0000002">¶</a>Productivity</h3>
+<div class="outline-text-3" id="text-org0000002">
+</div>
+<div class="outline-4" id="outline-container-org0000027">
+<h4 id="org0000027">Why can't my Google Home add shopping list items to Google Keep?</h4>
+<div class="outline-text-4" id="text-org0000027">
+<p>
+Instead, it adds to a completely separate product, <a href="https://shoppinglist.google.com">Shopping list</a>.
+If any of these had an API, <b>any programmer</b> could write a script to synchronise them in few hours.
+</p>
+</div>
+</div>
+<div class="outline-4" id="outline-container-org0000028">
+<h4 id="org0000028">Why can't I add a task to my todo list/reading list/watch list from a conversation on Facebook Messenger?</h4>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000003">
+<h3 id="org0000003"><a class="headerlink" href="#org0000003">¶</a>Journalling and history</h3>
+<div class="outline-text-3" id="text-org0000003">
+</div>
+<div class="outline-4" id="outline-container-org0000029">
+<h4 id="org0000029">Why do I have to lose all my browser history if I decide to switch browsers?</h4>
+<div class="outline-text-4" id="text-org0000029">
+<p>
+Even when you switch between major ones like Chrome/Firefox. Let alone for less common alternatives.
+</p>
+</div>
+</div>
+<div class="outline-4" id="outline-container-org000002a">
+<h4 id="org000002a">Why can't I see all the places I travelled to on a single map and photos alongside?</h4>
+<div class="outline-text-4" id="text-org000002a">
+<p>
+I have location tracking and my photos have GPS and timestamps. 
+</p>
+</div>
+</div>
+<div class="outline-4" id="outline-container-org000002b">
+<h4 id="org000002b">Why can't I see what was my heart rate (i.e. excitement) and speed side by side with the video I recorded on GoPro while skiing?</h4>
+<div class="outline-text-4" id="text-org000002b">
+<p>
+I've used HR trackign and location tracking, surely that's possible?
+</p>
+</div>
+</div>
+<div class="outline-4" id="outline-container-org000002c">
+<h4 id="org000002c">Why can't I easily transfer all my books and metadata if I decide to switch from Kindle to PocketBook or vice versa?</h4>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000004">
+<h3 id="org0000004"><a class="headerlink" href="#org0000004">¶</a>Consuming digital content</h3>
+<div class="outline-text-3" id="text-org0000004">
+</div>
+<div class="outline-4" id="outline-container-org000002d">
+<h4 id="org000002d">Why can't I see stuff I highlighted on Instapaper as an overlay on top of web page?</h4>
+<div class="outline-text-4" id="text-org000002d">
+<p>
+Hypothes.is does it, so it's totally possible, right?
+</p>
+</div>
+</div>
+<div class="outline-4" id="outline-container-org000002e">
+<h4 id="org000002e">Why can't I see if I've already ran across a Youtube video because my friend sent me a link months ago?</h4>
+</div>
+<div class="outline-4" id="outline-container-org000002f">
+<h4 id="org000002f">Why can't I have uniform music listening stats based on my Last.fm/iTunes/Bandcamp/Spotify/Youtube?</h4>
+</div>
+<div class="outline-4" id="outline-container-org0000030">
+<h4 id="org0000030">Why am I forced to use Spotify's music recommendation algorithm and don't have an option to try something else?</h4>
+</div>
+<div class="outline-4" id="outline-container-org0000031">
+<h4 id="org0000031">Why can't easily see what were the books/music/art recommended by people I follow on Twitter, or some specific Reddit/Hackernews users?</h4>
+</div>
+<div class="outline-4" id="outline-container-org0000032">
+<h4 id="org0000032">Why can't I see videos/movies recommended by my friends on Netflix/Youtube?</h4>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000005">
+<h3 id="org0000005"><a class="headerlink" href="#org0000005">¶</a>Health and body maintenance</h3>
+<div class="outline-text-3" id="text-org0000005">
+<p>
+(TODO aka quantified self)
+</p>
+</div>
+<div class="outline-4" id="outline-container-org0000033">
+<h4 id="org0000033">Why can't I tell if I was more sedentary than usual during the past week and whether I need to compensate by doing a bit more more exercise?</h4>
+<div class="outline-text-4" id="text-org0000033">
+<p>
+I have all my location (hence step data), so what's the issue?
+</p>
+</div>
+</div>
+<div class="outline-4" id="outline-container-org0000034">
+<h4 id="org0000034">Why can't I see what's the impact of aerobic exercise on my resting HR even though I use HR tracker and sleep tracker?</h4>
+</div>
+<div class="outline-4" id="outline-container-org0000035">
+<h4 id="org0000035">Why can't I have a dashboard for all of my health: food, exercise and sleep and see what are the baselines and trends?</h4>
+<div class="outline-text-4" id="text-org0000035">
+<p>
+Why do I need to rely on some startup to implement this and trust them with my data?
+</p>
+</div>
+</div>
+<div class="outline-4" id="outline-container-org0000036">
+<h4 id="org0000036">Why can't I see the impact of temperature or CO2 concentration in room on my sleep?</h4>
+</div>
+<div class="outline-4" id="outline-container-org0000037">
+<h4 id="org0000037">Why can't I see how holidays (as in, not going to work) impact my stress levels?</h4>
+</div>
+<div class="outline-4" id="outline-container-org0000038">
+<h4 id="org0000038">Why can't I take my Headspace app data and see how meditation impacts my sleep?</h4>
+</div>
+<div class="outline-4" id="outline-container-org0000039">
+<h4 id="org0000039">Why can't I run a short snippet of code and check some random health advice on the Internet against <b>my</b> data</h4>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000006">
+<h3 id="org0000006"><a class="headerlink" href="#org0000006">¶</a>Personal finance</h3>
+<div class="outline-text-3" id="text-org0000006">
+</div>
+<div class="outline-4" id="outline-container-org000003a">
+<h4 id="org000003a">Why am I forced to manually copy transactions from different banking apps into a spreadsheet?</h4>
+</div>
+<div class="outline-4" id="outline-container-org000003b">
+<h4 id="org000003b">Why can't I easily match my Amazon orders with my bank transactions?</h4>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000007">
+<h3 id="org0000007"><a class="headerlink" href="#org0000007">¶</a>Why I can't do <b>barely</b> anything when I'm offline or have a wonky connection?</h3>
+<div class="outline-text-3" id="text-org0000007">
+<p>
+This might go away with TODO universally Internet connection.
+On the other hand, we are too reliant on it TODO
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000008">
+<h3 id="org0000008"><a class="headerlink" href="#org0000008">¶</a>Mediocre interfaces</h3>
+<div class="outline-text-3" id="text-org0000008">
+<p>
+Why do I have to suffer from poor management and designers' decisions TODO application updates?
+</p>
+</div>
+<div class="outline-4" id="outline-container-org000003c">
+<h4 id="org000003c">Why can't I leave private notes on Deliveroo restaurants/dishes, so I'd remember what to order/not to order next time?</h4>
+</div>
+<div class="outline-4" id="outline-container-org000003d">
+<h4 id="org000003d">Why do people have to suffer from Google Inbox shutdown?</h4>
+<div class="outline-text-4" id="text-org000003d">
+<p>
+Not to undervalue Inbox developers, but fundamentally it's <b>just</b> a different interface.
+I'm sure there are plenty of engineers who would happily support it in their spare time if only they had access to the APIs.
+</p>
+</div>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000009">
+<h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a>Tools for thinking and learning</h3>
+<div class="outline-text-3" id="text-org0000009">
+</div>
+<div class="outline-4" id="outline-container-org000003e">
+<h4 id="org000003e">Why when 'mind palace' is <b>literally possible</b> with VR tecnhology, we don't see it in any use?</h4>
+</div>
+<div class="outline-4" id="outline-container-org000003f">
+<h4 id="org000003f">Why can't I easily convert select Instapaper highlights or new foreign words I encountered on my Kindle into Anki flashcards?</h4>
+</div>
+<div class="outline-4" id="outline-container-org0000040">
+<h4 id="org0000040"><span class="todo TODO">TODO</span> Many ideas about potential ways</h4>
+<div class="outline-text-4" id="text-org0000040">
+<p>
+instead of trying them out, I have to deal with boring stuff like exporting data TODO
+most of them are blocked because people have to go through TODO?
+</p>
+</div>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000a">
+<h3 id="org000000a"><a class="headerlink" href="#org000000a">¶</a>Backups</h3>
+<div class="outline-text-3" id="text-org000000a">
+</div>
+<div class="outline-4" id="outline-container-org0000041">
+<h4 id="org0000041">Why do I have to think about it and actively invest time and effort?</h4>
+<div class="outline-text-4" id="text-org0000041">
+<p>
+What about people who <b>have no idea</b> how unreliable computers can be and might discover find that the hard way?
+</p>
+</div>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000b">
+<h3 id="org000000b"><a class="headerlink" href="#org000000b">¶</a>--</h3>
+<div class="outline-text-3" id="text-org000000b">
+<p>
+I wonder what computing pioneers like Engelbart (TODO link to mother of demos) or Alan Kay thought/think about it.
+TODO  50 years passed… and we're still not quite there. And companies are <b>actively</b> (TODO link) promoting these siloes.
+</p>
+</div>
+<div class="outline-4" id="outline-container-org0000042">
+<h4 id="org0000042"><span class="todo TODO">TODO</span> imagine if all of that was on your fingertips, if you didn't have to think about these things at all</h4>
+<div class="outline-text-4" id="text-org0000042">
+<p>
+If you could let computers handle the boring bits of your life and concentrate on fun and creative activities.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000000c">
+<h2 id="org000000c"><a class="headerlink" href="#org000000c">¶</a><span class="section-number-2">3</span> Your data is disappearing</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Things are listed are frustrating enough. There is another TODO : your data is <b>slipping away</b>.
+</p>
+<p>
+TODO I feel especially strong about it as I consider part of me TODO extended mind?
+</p>
+<p>
+Privacy concerns are important and it's understandable when people are pissed about services keeping hold of their data instead of properly deleting TODO examples?
+</p>
+<p>
+However, often opposite is the case and you find that your data is gone or very hard to access:
+</p>
+<ul class="org-ul">
+<li>Google Takout data, that is, all your browser activity, Youtube watch history, etc., are only kept by Google for <a href="./takeout-data-gone.html">few years</a></li>
+<li>Chrome browser deletes history older than <a href="https://superuser.com/a/364475/300795">90 days</a></li>
+<li>Firefox browser expires history based on some <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Tech/Places/Places_Expiration">magic algorithm</a></li>
+<li><a href="https://github.com/karlicoss/rexport#limitations">Reddit API</a> limits your requests to 1000 results only</li>
+<li><a href="https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline">Twitter API</a> would only give you 3200 latest tweets (although you can get rest via manual export).</li>
+</ul>
+<p>
+The problems above are sort of technical and in theory, can be solved by the companies that hold the data. There is another side to vanishing data:
+</p>
+<ul class="org-ul">
+<li>information is generally <a href="https://www.gwern.net/Archiving-URLs#link-rot">disappearing</a> from the Internet</li>
+<li><p>
+comments/posts/tweets you've interacted with get deleted.
+</p>
+<p>
+While people have right to delete their data from the Internet, arguably it doesn't extend to derived content or thoughts that you had on it.
+</p></li>
+</ul>
+<p>
+And a bit more:
+</p>
+<ul class="org-ul">
+<li><p>
+<a href="https://en.wikipedia.org/wiki/Jawbone_(company)#2014_to_2017">Jawbone UP</a> has gone bust
+</p>
+<blockquote>
+<p>
+In July 2017 Jawbone announced[73] it would liquidate its assets. Since the app is still available for at least some phones (Android) and the servers seem to be running, <b>it is unclear who has access to collected personal data</b>. 
+</p>
+</blockquote>
+<p>
+sweet…
+</p></li>
+<li><a href="https://lobste.rs/s/dwjdml/my_github_account_has_been_restricted_due">My GitHub account has been restricted due to US sanctions as I live in Crimea</a></li>
+<li><p>
+<a href="https://news.ycombinator.com/item?id=21737696">Verizon/Yahoo Blocking Attempts to Archive Yahoo Groups</a>
+</p>
+<p>
+This one is particularly bad.
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000000d">
+<h2 id="org000000d"><a class="headerlink" href="#org000000d">¶</a><span class="section-number-2">4</span> What do I want?</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+I want all my problems and inconveniences magically solved, but I live in real world that's not gonna happen.
+So let me be morespecific: I argue that one <b>major</b> obstacle is that people don't have easy (in both senses, TODO and while running programs) access to their data in the first place.
+</p>
+<p>
+TODO Playing with data is fun. Getting it there isn't. (elaborate on it?)
+</p>
+<p>
+So let's concentrate on 'easy access to data' part for now.
+How would it look in ideal world?
+</p>
+<p>
+My speculation on it, which I would be happy to hear your opinion on!
+</p>
+<p>
+TODO arguably, easiest way to access data (as of today?) is when it's already on your filesystem.
+TODO even easier when it's already in your interpreter in abstract form, but it's a bit too much.
+</p>
+<p>
+Whether it's plaintext, sqlite or some sort of binary data – doesn't matter, already having it locally saves you from the whole class of problems (TODO link to later section).
+</p>
+<p>
+So, ideally the online service you're using provides you with a client app that runs in background and continuously or at least regularly sucks in and synchronises your data to the latest state (ideally, identical to the one that backend uses).
+It also provides client binding(s) in some reasonable programming language that represent all of this data.
+Specific programming language doesn't matter, it's a trivial (almost automatic) task to map PODs from one language to another.
+</p>
+<p>
+TODO list which problems it solves?
+TODO FIXME actually summarise more specific problems I'm targeting, I only listed examples
+</p>
+<p>
+Some caveats with these suggestions:
+</p>
+<ul class="org-ul">
+<li><p>
+this particular suggestion might be harder to implement for <b>every user</b> than I thought.
+</p>
+<p>
+On the other hand, service developers would have more control on data access patterns, so in a way it might work better.
+</p>
+<p>
+It would definitely be more effecient than other people writing cludgy tools to export and backup data.  
+</p>
+<p>
+TODO better locality?
+</p></li>
+<li>'Normal' users often are not motivated enough</li>
+<li><p>
+Services have little motivation to promote this, as siloing and having monopoly on the client apps (e.g. web UI) keeps users on your platform even if you suck
+</p>
+<p>
+TODO with the rise of distributed/federated services that would improve?
+</p></li>
+<li><p>
+Ideally requires a VPS?
+</p>
+<p>
+Although I don't see much problem running it on your personal computer if it's resilient enough. 
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000000e">
+<h2 id="org000000e"><a class="headerlink" href="#org000000e">¶</a><span class="section-number-2">5</span> Why don't you just do it yourself?</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+TODO spoiler: I do  
+</p>
+<p>
+Okay, so hopefully we can agree that the current situation isn't so great.
+But I am a software enginner. And chances that if you're reading it, you're very likely a programmer as well. Surely we can deal with that, right?
+</p>
+<blockquote>
+<p>
+Recommended soundtrack for rest of the section: <a href="https://www.youtube.com/watch?v=HFepeMG4-6A">The World's Smallest Violin</a>, playing for us software engineers.
+</p>
+</blockquote>
+<p>
+TODO Your data is very hard to retrieve  
+</p>
+<p>
+By 'liberating' in this context I mean retreiving your personal data to your local storage, hopefully in automated way.
+</p>
+<p>
+On the first glance it doesn't look like a big deal. It's just data, right? Every programmer should be capable of extrating it, right?
+</p>
+<p>
+This is until you realise you're probably using at least ten different online services and they all have different purposes, access patterns and TODO.
+</p>
+<p>
+Even if you are willing to do it and you have the capacity (e.g. you are a programmer like me), it's still damn hard:
+</p>
+<p>
+Let's assume an <b>optimistic</b> scenario, when the service has a public API. You're gonna have to deal with the following problems:
+</p>
+<ul class="org-ul">
+<li><p>
+authorisation
+</p>
+<p>
+That's where it all starts with. TODO
+</p>
+<p>
+TODO some services don't have it, and you don't have much choice but to keep your password in plaintext somewhere. (TODO example?)
+</p></li>
+<li><p>
+documentation and discovery
+</p>
+<p>
+If you want <b>all</b> your data, you have to look carefully though the whole documentation and make sure you've got it all covered.
+</p>
+<p>
+If the service adds some new endpoints, you might never find that out.
+</p></li>
+<li><p>
+rate limiting TODO link?
+</p>
+<p>
+No one likes their API hammered, fair enough.
+However, rate limiting often varies from API endpoint to endpoint and inherently tedious to get right.
+</p></li>
+<li><p>
+pagination TODO link?
+</p>
+<p>
+Just like rate limiting: not hard to implement in principle, on one off basis, tedious to do in some universal way because there is no common standard.
+Pages might be retrieved as page numbers and counts on each page, offsets from start/end of data, before/after (ideal scenario), timestamps TODO
+</p>
+<p>
+Content might change under your feet, and if the API developers or you are not careful, you might end up with missing data or even some logical corruption.
+</p></li>
+<li><p>
+error handling
+</p>
+<p>
+Authorisation, network, serializing, parsing, storing, synchronizing. 
+There are among the most common error sources (as in, actual unrecoverable errors, not necessarily bugs) in software engineering generally and getting it right required for exporting your data.
+TODO link to error handling post
+</p></li>
+</ul>
+<p>
+Now, some examples of more messed up scenarios:
+</p>
+<ul class="org-ul">
+<li><p>
+lack of API. Main issue with that is it becomes way harder to .
+</p>
+<p>
+Missing API typically means that you need to do web scraping, which is orders of magnitude flakier, involves nasty parsing and generally fragile.
+</p>
+<p>
+Some services might even actively prevent you from doing so by banning unusual user agents.
+</p>
+<p>
+Potentially you're going to store your password somewhere which is way less secure than using a token.
+</p>
+<p>
+Examples of such services:
+</p>
+<ul class="org-ul">
+<li>most (if not all?) of Facebook stuff: Facebook, Instagram, Messenger, Whatsapp</li>
+<li>some APIs are incomplete. E.g. Pocket API doesn't give you away highlights unless you <a href="https://github.com/karlicoss/pockexport#setting-up">mess with it</a></li>
+<li>TODO private APIs (e.g. blinkist)</li>
+</ul></li>
+<li><p>
+app data on your phone: often kept
+</p>
+<p>
+E.g. on android apps keep their data in <code class="inline">/data/data/</code> directory, by default which isn't accessible without root. 
+</p>
+<p>
+Very few apps support automatic data exports, 
+</p>
+<p>
+TODO e.g. temp. sensor as example? I had something else?
+TODO e.g. headspace data
+</p></li>
+</ul>
+<p>
+There are more difficulties:
+</p>
+<ul class="org-ul">
+<li>vendor lock TODO</li>
+<li><p>
+abstract representation
+</p>
+<p>
+Having raw export data (e.g. sqlite database/json file/etc) is nice, but to actually use it you need an abstract representation.
+</p>
+<p>
+You basically have to reinvent whatever the service developer does already. Again, many edge cases: unclear which data types to choose (nullable/non-nullable), 
+which situations are invalid etc.
+</p>
+<p>
+You need to figure out proper timestamps, whether it was UTC or not, parse it (I had to do it so often that I even memorized the wrong argument order in <code class="inline">datetime.strptime</code>)
+</p></li>
+<li><p>
+lack of infrastructure
+</p>
+<p>
+Some of us can afford keeping a VPS or TODO computer??
+</p></li>
+</ul>
+<p>
+<a href="https://github.com/search?utf8=%E2%9C%93&amp;q=topic%3Aexport+++user%3Akarlicoss&amp;type=Repositories">https://github.com/search?utf8=%E2%9C%93&amp;q=topic%3Aexport+++user%3Akarlicoss&amp;type=Repositories</a>
+</p>
+<p>
+Now, remember when I said it was tedious for programmers? Now think about ordinary people who have no clue what 'API' is.
+They deserve to use their data too.
+</p>
+</div>
+<div class="outline-3" id="outline-container-org000000f">
+<h3 id="org000000f"><a class="headerlink" href="#org000000f">¶</a><span class="priority">[C]</span> why it's hard: e.g. database contains too much stuff and you have to spend time filtering out actual books from promo books on device   <span class="tag"><span class="dataliberation">dataliberation</span> <span class="kobuddy">kobuddy</span></span></h3>
+<div class="outline-text-3" id="text-org000000f">
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000010">
+<h3 id="org0000010"><a class="headerlink" href="#org0000010">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> why it's hard: datetime parsing, dealing with timezones   <span class="tag"><span class="backup">backup</span> <span class="motivation">motivation</span></span></h3>
+<div class="outline-text-3" id="text-org0000010">
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000011">
+<h3 id="org0000011"><a class="headerlink" href="#org0000011">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-30 21:41]</span></span> liberating phone data?</h3>
+</div>
+<div class="outline-3" id="outline-container-org0000012">
+<h3 id="org0000012"><a class="headerlink" href="#org0000012">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> right, facebooks gives away chat messages as fucking html pages   <span class="tag"><span class="blog">blog</span> <span class="exports">exports</span></span></h3>
+<div class="outline-text-3" id="text-org0000012">
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000013">
+<h3 id="org0000013"><a class="headerlink" href="#org0000013">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> Tweet from Русские Народные Мемы (@l0ldbl00d)</h3>
+<div class="outline-text-3" id="text-org0000013">
+<p>
+Русские Народные Мемы (@l0ldbl00d) Tweeted:
+@syncromechanica А вообще WhatsApp ссанина блядская. Зачем десктопному клиенту нужен постоянно работающий клиент на телефоне - загадка. Телеграмы-вайберы без этого могут обходиться. <a href="https://twitter.com/l0ldbl00d/status/1171351939294093314?s=17">https://twitter.com/l0ldbl00d/status/1171351939294093314?s=17</a>
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000014">
+<h3 id="org0000014"><a class="headerlink" href="#org0000014">¶</a><span class="todo TODO">TODO</span> error handling: you want to be somewhat semi-defensive   <span class="tag"><span class="blog">blog</span> <span class="data">data</span> <span class="dataliberation">dataliberation</span></span></h3>
+<div class="outline-text-3" id="text-org0000014">
+<p>
+on one hand, you don't want to overwrite or use some complete garbage
+on the other hand, your don't want to be fully defensive and somehow let user know of problems/suspicious data
+</p>
+</div>
+<div class="outline-4" id="outline-container-org0000044">
+<h4 id="org0000044"><span class="timestamp-wrapper"><span class="timestamp">[2019-09-30 21:58]</span></span> maybe that belongs to info on my. package</h4>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000015">
+<h3 id="org0000015"><a class="headerlink" href="#org0000015">¶</a><span class="todo TODO">TODO</span> space/bandwidth?</h3>
+</div>
+<div class="outline-3" id="outline-container-org0000016">
+<h3 id="org0000016"><a class="headerlink" href="#org0000016">¶</a><span class="todo TODO">TODO</span> android apps: example – bluemaestro?</h3>
+</div>
+<div class="outline-3" id="outline-container-org0000017">
+<h3 id="org0000017"><a class="headerlink" href="#org0000017">¶</a>boilerplate, boilerplate, boilerplate. features all the worst things in the programmer's world: shitty APIs, latency, flakiness, error handling, authorisation TODO</h3>
+</div>
+<div class="outline-3" id="outline-container-org0000018">
+<h3 id="org0000018"><a class="headerlink" href="#org0000018">¶</a>Sometimes you can't rely on the service</h3>
+<div class="outline-text-3" id="text-org0000018">
+</div>
+<div class="outline-4" id="outline-container-org0000045">
+<h4 id="org0000045"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> disappearing pinboard bookmarks   <span class="tag"><span class="backup">backup</span> <span class="motivation">motivation</span> <span class="blog">blog</span></span></h4>
+<div class="outline-text-4" id="text-org0000045">
+<p>
+in /L/zzz<sub>syncthing</sub>/TODO/sort/pinboard-disappearing.txt
+</p>
+</div>
+</div>
+<div class="outline-4" id="outline-container-org0000046">
+<h4 id="org0000046"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> reddit – upvotes are just gone from 'upvoted'???   <span class="tag"><span class="backup">backup</span> <span class="motivation">motivation</span> <span class="blog">blog</span></span></h4>
+<div class="outline-text-4" id="text-org0000046">
+<p>
+E.g. 
+('20190922121312:promnesia', DbVisit(norm<sub>url</sub>='reddit.com/r/deepweb/comments/bwtame/my<sub>pc</sub><sub>is</sub><sub>a</sub><sub>little</sub><sub>bugged</sub>', orig<sub>url</sub>='https://reddit.com/r/deepweb/comments/bwtame/my<sub>pc</sub><sub>is</sub><sub>a</sub><sub>little</sub><sub>bugged</sub>/', dt=datetime.datetime(2019, 6, 4, 20, 0, 21, tzinfo=datetime.timezone.utc), locator=Loc(title='upvoted My PC is a little bugged.', href='https://reddit.com/r/deepweb/comments/bwtame/my<sub>pc</sub><sub>is</sub><sub>a</sub><sub>little</sub><sub>bugged</sub>/'), src='red', context='My PC is a little bugged.', duration=None))
+('20190922121312:promnesia', DbVisit(norm<sub>url</sub>='i.redd.it/rgok8se40c231.jpg', orig<sub>url</sub>='https://i.redd.it/rgok8se40c231.jpg', dt=datetime.datetime(2019, 6, 4, 20, 0, 21, tzinfo=datetime.timezone.utc), locator=Loc(title='upvoted My PC is a little bugged.', href='https://reddit.com/r/deepweb/comments/bwtame/my<sub>pc</sub><sub>is</sub><sub>a</sub><sub>little</sub><sub>bugged</sub>/'), src='red', context='My PC is a little bugged.', duration=None))
+</p>
+<p>
+there aren't even that many saved… the fuck??
+xzcat /L/backups/reddit/reddit-20190602144048.json.xz | jq '.upvoted | length'
+</p>
+</div>
+</div>
+<div class="outline-4" id="outline-container-org0000047">
+<h4 id="org0000047"><span class="timestamp-wrapper"><span class="timestamp">[2019-10-27 21:33]</span></span> def need to merge..</h4>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000019">
+<h3 id="org0000019"><a class="headerlink" href="#org0000019">¶</a><span class="todo TODO">TODO</span> big problem is lack of 'standard' representation   <span class="tag"><span class="backup">backup</span></span></h3>
+<div class="outline-text-3" id="text-org0000019">
+</div>
+<div class="outline-4" id="outline-container-org0000048">
+<h4 id="org0000048"><span class="timestamp-wrapper"><span class="timestamp">[2019-09-30 22:02]</span></span> timestamps</h4>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000001a">
+<h2 id="org000001a"><a class="headerlink" href="#org000001a">¶</a><span class="section-number-2">6</span> What do I want [2]?</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Ideally, I'd just magically somehow have a programming interface to my data and use it in whatever way I want.
+I don't live in TODO however, so I've been thinking about more realistic ways that are possible with current technology.
+</p>
+<p>
+TODO ??? suggest?
+TODO I have this section about unfeasibility of keeping it on your machine
+</p>
+<p>
+Client application that runs regularly/keeps connection with the backend and sucks in new data.
+Simple programming bindings that 
+TODO how would bindings play along with atomicity?
+</p>
+<p>
+TODO link to original problems
+TODO would be nice to have arrows for intrapage links?
+</p>
+<ul class="org-ul">
+<li>authorisation: however tedious it's to implement, can be handled by the service developers. They can make it as secure as necessary (e.g. 2FA/etc).</li>
+<li>documentation and discovery: hopefully developers are better suited to keep their internal representations and exports consistent (even incentivised as it allows to write less code)</li>
+<li>rate limiting/pagination: non-problems essentially, especially considering that it's easier for developers to write incremental version?</li>
+<li>error handling: also developer's responsibility, and they would know better which situations are programming bugs and which have to be handled defensively</li>
+<li>abstract representation: minimal programming language bindings, providing some basic TODO understanding? types, sanity</li>
+</ul>
+<p>
+TODO not sure what to do about auth?
+</p>
+<p>
+TODO unsolved issue: deleted content?
+TODO lack of infrastructure: it feels that if we want to make it available to 'normal' endusers, that needs to be handled by some special client app
+</p>
+</div>
+<div class="outline-3" id="outline-container-org000001b">
+<h3 id="org000001b"><a class="headerlink" href="#org000001b">¶</a><span class="todo TODO">TODO</span> ideally it'd be subscribed and recieve data continuously.</h3>
+<div class="outline-text-3" id="text-org000001b">
+<p>
+Shouldn't be too computationally demanding, e.g. push notifications basically already do that, but in a less effecient way.
+</p>
+</div>
+<div class="outline-4" id="outline-container-org0000049">
+<h4 id="org0000049"><span class="timestamp-wrapper"><span class="timestamp">[2019-12-11 00:43]</span></span> to be honest we're so far away from that, that even some steps towards it would be a massive progress</h4>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001c">
+<h3 id="org000001c"><a class="headerlink" href="#org000001c">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> speculate about potential solution?</h3>
+<div class="outline-text-3" id="text-org000001c">
+<p>
+Ideally, you'd be able to buy some sort of 'VPS' that acts as a hub for your personal data.
+However, for anyone familiar with backend development it's clear that it's a nightmare for the developers from all CAP perspectives, and in addition very resource demanding.
+</p>
+<p>
+Services need to provide endpoints and client tools so you could 'synchronise' your digital projection (TODO sounds odd)
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000001d">
+<h2 id="org000001d"><a class="headerlink" href="#org000001d">¶</a><span class="section-number-2">7</span> <span class="todo TODO">TODO</span> integrate in the post?</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div class="outline-3" id="outline-container-org000001e">
+<h3 id="org000001e"><a class="headerlink" href="#org000001e">¶</a><span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-02 11:26]</span></span> APIs are key to Quantified Self | SINGLY » Blog   <span class="tag"><span class="blog">blog</span> <span class="exports">exports</span></span></h3>
+<div class="outline-text-3" id="text-org000001e">
+<p>
+<a href="https://web.archive.org/web/20121018030820/http://blog.singly.com/2012/08/09/apis-are-key-to-quantified-self/">https://web.archive.org/web/20121018030820/http://blog.singly.com/2012/08/09/apis-are-key-to-quantified-self/</a>
+Selection:
+APIs are key to Quantified Self
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001f">
+<h3 id="org000001f"><a class="headerlink" href="#org000001f">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2019-12-07 21:30]</span></span> <a href="https://www.dougengelbart.org/content/view/374/464/">https://www.dougengelbart.org/content/view/374/464/</a></h3>
+</div>
+<div class="outline-3" id="outline-container-org0000020">
+<h3 id="org0000020"><a class="headerlink" href="#org0000020">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-21 19:02]</span></span> Vendor lock-in - Wikipedia   <span class="tag"><span class="gr">gr</span></span></h3>
+<div class="outline-text-3" id="text-org0000020">
+<p>
+<a href="https://en.wikipedia.org/wiki/Vendor_lock-in">https://en.wikipedia.org/wiki/Vendor_lock-in</a>
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000021">
+<h3 id="org0000021"><a class="headerlink" href="#org0000021">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> from annotations post</h3>
+<div class="outline-text-3" id="text-org0000021">
+<p>
+to be honest, the fact that it's fairly tedious to interact with your data is very sad, and ideally should be solved in some generic, API independent way, but I haven't had time to think much about it yet. Retrying and backoff, handling random API failures, etc.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000022">
+<h3 id="org0000022"><a class="headerlink" href="#org0000022">¶</a><span class="todo TODO">TODO</span> <span class="priority">[A]</span> Kobo as example of something that you can't even properly sync   <span class="tag"><span class="blog">blog</span> <span class="exports">exports</span></span></h3>
+<div class="outline-text-3" id="text-org0000022">
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000023">
+<h3 id="org0000023"><a class="headerlink" href="#org0000023">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> Every bookmark manager ever made   <span class="tag"><span class="exports">exports</span> <span class="blog">blog</span></span></h3>
+<div class="outline-text-3" id="text-org0000023">
+<p>
+Every bookmark manager ever made - <a href="https://news.ycombinator.com/item?id=21744774">https://news.ycombinator.com/item?id=21744774</a>
+</p>
+<p>
+People wonder why are bookmarks so hard
+</p>
+</div>
+</div>
+</div>
+
+    </section>
+
+    
+    <section class="footer">
+        <div class="post-tags"><a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#dataliberation">#dataliberation</a></div>
+        <!-- TODO post-date? -->
+        <div class="date">29 September 2019</div>
+    </section>
+    
+
+    
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_sad_infra"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
+        
+        <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
+            
+            
+        </footer>
+    </body>
+</html>
