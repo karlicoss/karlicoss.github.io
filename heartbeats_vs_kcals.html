@@ -422,10 +422,10 @@ WARNING:workout-provider:Unhandled: Cycling
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">'seaborn'</span><span class="p">)</span>
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-
-<span class="n">matplotlib</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">'font'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">'regular'</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
 
 <span class="n">sports</span> <span class="o">=</span> <span class="p">{</span>
     <span class="n">g</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span><span class="p">,</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'sport'</span><span class="p">])</span>
@@ -450,7 +450,6 @@ WARNING:workout-provider:Unhandled: Cycling
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Kcal,</span><span class="se">\n</span><span class="s1">Endomondo</span><span class="se">\n</span><span class="s1">estimate'</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="c1"># https://stackoverflow.com/a/55108651/706389</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span>
     <span class="n">title</span><span class="o">=</span><span class="s1">'Sport'</span><span class="p">,</span>
@@ -494,7 +493,7 @@ WARNING:workout-provider:Unhandled: Cycling
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Unsurprising, it looks like a simple linear model (considering my weight and age barely changed).</p>
+<p>Unsurprisingly, it looks like a simple linear model (considering my weight and age barely changed).</p>
 <p>What I find interesting is that for instance for me, running feels way more intense than any of other cardio I'm doing, definitely way harder than skiing!</p>
 <p>However the regression coeffecient (basically, calories burnt per 'unit of heart activity') is more or less same. I guess that could potentially be explained by the fact that running involves more muscle activity, which Endomondo can't capture and doesn't try to infer from the exercise type (which you enter manually when you start logging the exercise).</p>
 <p>With regards to the actual regression coefficient: seaborn wouldn't let you display them on the regplot (the author has a very strong opition about that, <a href="https://github.com/mwaskom/seaborn/issues/655#issuecomment-370079702">apparently</a>), so we use <code>sklearn</code> to do that for us:</p>
@@ -559,7 +558,7 @@ Free term: -9.332
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Basically, that means I get about <code>0.1</code> Kcal for each heartbeat during exercise. Free term ideally should be equal to <code>0</code> (i.e. just as a sanity sort of thing: not having heartbeat shouldn't result in calorie loss), and <code>-10</code> is close enough.</p>
-<p>Also, fun calculation:</p>
+<p>Also, fun calculation: what if we fit the model we got to normal, resting heard rate?</p>
 
 </div>
 </div>

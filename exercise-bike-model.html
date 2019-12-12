@@ -349,24 +349,27 @@ In addition it's displaying current resistance level (you can set it by adjustin
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="n">matplotlib</span><span class="o">.</span><span class="n">rc</span><span class="p">(</span><span class="s1">'font'</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">'regular'</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">'seaborn'</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mf">1.25</span><span class="p">)</span> <span class="c1"># TODO not sure?</span>
 
 <span class="k">def</span> <span class="nf">plot_df</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
     <span class="n">dff</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">dff</span><span class="p">[</span><span class="s1">'rpm x resistance'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'rpm'</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">'resistance'</span><span class="p">]</span>
+    <span class="k">if</span> <span class="s1">'color'</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">dff</span><span class="p">:</span>
+        <span class="n">dff</span><span class="p">[</span><span class="s1">'color'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'blue'</span>
 
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">dff</span><span class="p">[</span><span class="s1">'rpm x resistance'</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">))</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">dff</span><span class="p">[</span><span class="s1">'watts'</span><span class="p">])</span> <span class="o">*</span> <span class="mf">1.1</span><span class="p">))</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span>
         <span class="n">data</span><span class="o">=</span><span class="n">dff</span><span class="p">,</span>
         <span class="n">x</span><span class="o">=</span><span class="s1">'rpm x resistance'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'watts'</span><span class="p">,</span>
         <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
+        <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">'facecolors'</span><span class="p">:</span><span class="n">dff</span><span class="p">[</span><span class="s1">'color'</span><span class="p">]}</span>
     <span class="p">)</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Power, theoretical, angular velocity multiplied by resistance'</span><span class="p">)</span>
@@ -434,7 +437,11 @@ In addition it's displaying current resistance level (you can set it by adjustin
     <span class="n">X</span> <span class="o">=</span> <span class="n">dff</span><span class="p">[[</span><span class="s1">'rpm x resistance'</span><span class="p">]]</span>
     <span class="n">X</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
     <span class="n">res</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">dff</span><span class="p">[</span><span class="s1">'watts'</span><span class="p">],</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+    <span class="n">summary</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+    <span class="kn">import</span> <span class="nn">re</span>
+    <span class="n">summary</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">'Date:.*\d</span><span class="si">{4}</span><span class="s1">.*</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">summary</span><span class="p">))</span>
+    <span class="n">summary</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">'Time:.*\d</span><span class="si">{2}</span><span class="s1">:\d</span><span class="si">{2}</span><span class="s1">:\d</span><span class="si">{2}</span><span class="s1">.*</span><span class="se">\n</span><span class="s1">'</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">summary</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">summary</span><span class="p">)</span>
 <span class="n">print_stats</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 
@@ -457,8 +464,6 @@ In addition it's displaying current resistance level (you can set it by adjustin
 Dep. Variable:                  watts   R-squared:                       0.982
 Model:                            OLS   Adj. R-squared:                  0.981
 Method:                 Least Squares   F-statistic:                     2109.
-Date:                Wed, 11 Dec 2019   Prob (F-statistic):           1.43e-35
-Time:                        01:14:15   Log-Likelihood:                -138.70
 No. Observations:                  41   AIC:                             281.4
 Df Residuals:                      39   BIC:                             284.8
 Df Model:                           1                                         
@@ -640,8 +645,6 @@ I don't think it can be explained by friction either: if anything, friction woul
 Dep. Variable:                  watts   R-squared:                       0.924
 Model:                            OLS   Adj. R-squared:                  0.923
 Method:                 Least Squares   F-statistic:                     952.2
-Date:                Wed, 11 Dec 2019   Prob (F-statistic):           1.82e-45
-Time:                        01:14:15   Log-Likelihood:                -352.79
 No. Observations:                  80   AIC:                             709.6
 Df Residuals:                      78   BIC:                             714.3
 Df Model:                           1                                         
@@ -772,19 +775,9 @@ Although depends on residual too, and here the residual is very high, so it woul
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fdf</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># TODO Do i really need to copy?</span>
-<span class="n">fdf</span> <span class="o">=</span> <span class="n">fdf</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fdf</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span>
     <span class="s1">'27_1_50'</span><span class="p">,</span>
-    <span class="c1"># '86_2_40',</span>
-    <span class="c1"># '59_2_23',</span>
-    <span class="c1"># '60_2_24',</span>
-    <span class="c1"># '116_8_322',</span>
-    <span class="c1"># '116_8_320',</span>
-    <span class="c1"># '117_8_323',</span>
-    <span class="c1"># '106_2_48',</span>
-    <span class="c1"># '95_8_240',</span>
 <span class="p">])</span>
-<span class="c1"># TODO I wonder what does it do to multiple observations with exactly same input/output params? Is it a set or multiset?</span>
 </pre></div>
 
     </div>
@@ -853,8 +846,6 @@ Although depends on residual too, and here the residual is very high, so it woul
 Dep. Variable:                  watts   R-squared:                       0.950
 Model:                            OLS   Adj. R-squared:                  0.949
 Method:                 Least Squares   F-statistic:                     1467.
-Date:                Wed, 11 Dec 2019   Prob (F-statistic):           6.77e-52
-Time:                        01:14:16   Log-Likelihood:                -331.96
 No. Observations:                  79   AIC:                             667.9
 Df Residuals:                      77   BIC:                             672.7
 Df Model:                           1                                         
@@ -1030,7 +1021,8 @@ strong multicollinearity or other numerical problems.
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Residuals of 3 are borderline, but don't immediately mean outliers. Let's plot and analyze:</p>
+<p>Residuals of 3 are borderline, but don't immediately mean outliers.</p>
+<p>Let's plot and analyze! Just out of curiosity, in addition we'll color values corresponding to different resistances (the darker, the more resistance):</p>
 
 </div>
 </div>
@@ -1046,7 +1038,11 @@ strong multicollinearity or other numerical problems.
 <div class="prompt input_prompt">In&nbsp;[12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot_df</span><span class="p">(</span><span class="n">ndf</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ress</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">ndf</span><span class="p">[</span><span class="s1">'resistance'</span><span class="p">])))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">ress</span><span class="p">,</span> <span class="n">sns</span><span class="o">.</span><span class="n">light_palette</span><span class="p">(</span><span class="s1">'navy'</span><span class="p">,</span> <span class="n">n_colors</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">ress</span><span class="p">))))</span>
+<span class="n">ndf</span><span class="p">[</span><span class="s1">'color'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">colors</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">ndf</span><span class="p">[</span><span class="s1">'resistance'</span><span class="p">]]</span>
+<span class="c1"># if you know of an easier way to use column value as a color in seaborn, please let me know!</span>
+<span class="n">plot_df</span><span class="p">(</span><span class="n">ndf</span><span class="p">)</span>
 <span class="n">print_stats</span><span class="p">(</span><span class="n">ndf</span><span class="p">)</span>
 </pre></div>
 
@@ -1082,8 +1078,6 @@ strong multicollinearity or other numerical problems.
 Dep. Variable:                  watts   R-squared:                       0.943
 Model:                            OLS   Adj. R-squared:                  0.942
 Method:                 Least Squares   F-statistic:                     1754.
-Date:                Wed, 11 Dec 2019   Prob (F-statistic):           9.08e-68
-Time:                        01:14:16   Log-Likelihood:                -459.07
 No. Observations:                 108   AIC:                             922.1
 Df Residuals:                     106   BIC:                             927.5
 Df Model:                           1                                         
@@ -1121,22 +1115,9 @@ strong multicollinearity or other numerical problems.
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-
-</div>
-</div>
-</div>
-
-
-
-
-
-    
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>So, there is a clear trend of points clumping towards 0, which that the model ceases to be linear.</p>
-<p>If we try to fit the line to the points in a more reasonable exercise range (e.g. at least 50 RPM and resistance of 6, which would mean Power &gt;= 300), that would skew the plot even more to the right and move the coefficient even further from zero.</p>
-<p>So either:</p>
+<p>So, there is a clear trend of points clumping towards 0, which means that the model ceases to be linear.</p>
+<p>If we try to fit the line to the points in a more reasonable exercise range (e.g. at least 50 RPM and resistance of 6, which would mean Power &gt;= 300), that would skew the regression line even more to the right and move the coefficient even further away from zero.</p>
+<p>So overall it means that either:</p>
 <ul>
 <li>the assumption of linear dependency on resistance and velocity is wrong, but then it's completely unclear how the power is estimated</li>
 <li>I wasn't accurate during measurements on lower intensities, but I think it's pretty unlikely as I did multiple measurement sessions and even if you ignore the higher variance, mean is still way above the regression line </li>
