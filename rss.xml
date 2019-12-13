@@ -6703,7 +6703,7 @@ WARNING:workout-provider:Unhandled: Cycling
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Regression coefficient: 0.093
-Free term: -9.332
+Free term: -9.164
 </pre>
 </div>
 </div>
@@ -6758,7 +6758,7 @@ Free term: -9.332
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>8063.675
+<pre>8059.022
 </pre>
 </div>
 </div>
