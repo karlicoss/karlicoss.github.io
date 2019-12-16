@@ -558,8 +558,13 @@ Stores all of it's stuff in <code class="inline">.kobo/KoboReader.sqlite</code> 
 <a id="org000001c"></a>The database has got lots of cool stuff: in addition to highlights and notes you can also access reading progress, time spend reading and possibly some other interesting data I didn't manage to reverse engineer yet.
 You can check out <a href="https://github.com/karlicoss/kobuddy">kobuddy</a>, which is my attempt to extract useful data from the database and provide nicer high level Python interface. It's also fairly straightforward to open it in <code class="inline">sqlitebrowser</code> and play with your own queries.
 </p>
+<div class="noop" id="kobo_sync_for_sadinfra">
 <p>
-<a id="org0000018"></a>Kobo <b><b>doesn't seem to support cloud sync for annotations</b></b>. I was considering syncing the database wirelessly, as <a href="https://github.com/dropmeaword/kobo-aura-remote">there are</a> some SSH modules for its firmware, but people report it <a href="https://github.com/dropmeaword/kobo-aura-remote/issues/1">may break wifi</a> on it. I'm using <a href="https://github.com/karlicoss/kobuddy#as-a-backup-tool">kobuddy</a> as well to work around it.
+<a id="org0000018"></a>Kobo <b><b>doesn't seem to support cloud sync for annotations</b></b>. I was considering syncing the database wirelessly, as <a href="https://github.com/dropmeaword/kobo-aura-remote">there are</a> some SSH modules for its firmware, but people report it <a href="https://github.com/dropmeaword/kobo-aura-remote/issues/1">may break wifi</a> on it.
+</p>
+</div>
+<p>
+I'm using <a href="https://github.com/karlicoss/kobuddy#as-a-backup-tool">kobuddy</a> as well to work around it.
 </p>
 <p>
 <a id="org000001d"></a>There is an official <a href="https://play.google.com/store/apps/details?id=com.kobobooks.android">Android app</a> which lets you manage and annotate books from Kobo store and seems to be syncing progress between eink and phone.
@@ -1161,7 +1166,7 @@ I'd be interested to know what do you think, and how are you managing your annot
     <div>Discussion:</div>
     <ul>
     
-        <li><a href="https://news.ycombinator.com/item?id=21635012">hackernews</a></li>
+        <li><a href="https://news.ycombinator.com/item?id=21635012"><b>hackernews</b></a></li>
     
         <li><a href="https://www.reddit.com/r/opensource/comments/cazgsa/annotating_everything_overview_of_linuxandroid">/r/opensource</a></li>
     

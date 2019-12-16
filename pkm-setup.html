@@ -80,16 +80,16 @@
 <li><a href="#org0000005">6. Annotating information</a></li>
 <li><a href="#org0000006">7. <span class="todo TODO">TODO</span> discovering new information</a></li>
 <li><a href="#org0000007">8. <span class="todo STRT">STRT</span> spaced repetition and habits</a></li>
-<li><a href="#org0000008">9. <span class="todo TODO">TODO</span> syncing</a></li>
-<li><a href="#org0000009">10. <span class="todo STRT">STRT</span> regular backups</a></li>
+<li><a href="#org0000008">9. <span class="todo STRT">STRT</span> syncing</a></li>
+<li><a href="#org0000009">10. <span class="todo STRT">STRT</span> tools and infrastructure</a></li>
 <li><a href="#org000000a">11. <span class="todo TODO">TODO</span> timeline</a></li>
-<li><a href="#org000000b">12. <span class="todo STRT">STRT</span> tools and infrastructure</a></li>
+<li><a href="#org000000b">12. <span class="todo STRT">STRT</span> regular backups</a></li>
 <li><a href="#org000000c">13. <span class="todo TODO">TODO</span> future</a></li>
 </ul>
 </div>
 </div>
 <p>
-So, what is <a href="https://en.wikipedia.org/wiki/Personal_knowledge_management">personal knowledge management</a>? TLDR, it's a name for the process of organizing your tasks, thoughts, information you know, so a fairly useful concept.
+So, what is <a href="https://en.wikipedia.org/wiki/Personal_knowledge_management">personal knowledge management</a>? TLDR, it's a process of organizing your tasks, thoughts, information you know, so a fairly useful concept.
 </p>
 <p>
 I guess almost everyone at least at some point of their life tried to bring more organization: used a calendar, checklists, notebook etc.
@@ -104,7 +104,7 @@ Some of the reasons what I'm going to write about might be useful to you:
 <ul class="org-ul">
 <li>you generally want to be more organized in your life but not sure how</li>
 <li>you are reading lots of stuff, but then you feel like you quickly forget it (especially on the Internet, where information is denser than in books)</li>
-<li>you think that flesh is weak and want to offload remembering things to external persistent medium</li>
+<li><div><span class="before-aside">you think that flesh is weak and want to offload remembering things to external persistent medium  </span><aside class="sidenote"><a class="post-tag" href="./tags.html#extendedmind">#extendedmind</a></aside></div></li>
 </ul>
 <p>
 I'm writing that because my 'system' has more or less settled and stabilized, and I feel that I could be useful by helping out other people and sharing the ideas.
@@ -233,14 +233,14 @@ I'll release it sometime soon!
 </div>
 </div>
 <div class="outline-2" id="outline-container-org0000008">
-<h2 id="org0000008"><a class="headerlink" href="#org0000008">¶</a><span class="section-number-2">9</span> <span class="todo TODO">TODO</span> syncing</h2>
+<h2 id="org0000008"><a class="headerlink" href="#org0000008">¶</a><span class="section-number-2">9</span> <span class="todo STRT">STRT</span> syncing</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 Continuous sync of my data and information is a biggie for me.
 </p>
 <ul class="org-ul">
 <li>first, I've always had one desktop/big sturdy laptop and one small portable for travel/coffee shops/etc</li>
-<li>second, I need to be able to access information on my phone, when I may not have good network (or any)</li>
+<li>second, I need to be able to access information on my phone, when I may not have good network (or any) <a class="post-tag" href="./tags.html#offline">#offline</a></li>
 </ul>
 <p>
 Eventual sync (e.g. via Git) might be fine for personal wiki. 
@@ -252,28 +252,35 @@ I'm using Dropbox and Syncthing to access my data and information from every dev
 </div>
 </div>
 <div class="outline-2" id="outline-container-org0000009">
-<h2 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><span class="section-number-2">10</span> <span class="todo STRT">STRT</span> regular backups</h2>
+<h2 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><span class="section-number-2">10</span> <span class="todo STRT">STRT</span> tools and infrastructure</h2>
 <div class="outline-text-2" id="text-10">
 <p>
-I export most of my digital trace and regularly back up pretty much everything.
-I'm using <a href="https://borgbackup.readthedocs.io/en/stable">borg backup</a> for it.
+See <a class="post-tag" href="./tags.html#infra">#infra</a>
 </p>
+<ul class="org-ul">
+<li>Some motivation behind integrating my personal data: <a href="sad-infra.html">the sad state of personal infrastructure</a>.</li>
+<li>I'm using special <a href="mypkg.html">my.</a> Python package to access all of my personal information and interact with it.</li>
+</ul>
 </div>
 </div>
 <div class="outline-2" id="outline-container-org000000a">
 <h2 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><span class="section-number-2">11</span> <span class="todo TODO">TODO</span> timeline</h2>
 <div class="outline-text-2" id="text-11">
 <p>
+See <a class="post-tag" href="./tags.html#lifelogging">#lifelogging</a>
+</p>
+<p>
 I've got a personal timeline of all my events, e.g. reading/watching/sleeping/exercising/etc.
 </p>
 </div>
 </div>
 <div class="outline-2" id="outline-container-org000000b">
-<h2 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><span class="section-number-2">12</span> <span class="todo STRT">STRT</span> tools and infrastructure</h2>
+<h2 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><span class="section-number-2">12</span> <span class="todo STRT">STRT</span> regular backups</h2>
 <div class="outline-text-2" id="text-12">
-<ul class="org-ul">
-<li>I'm using special <a href="./mypkg.html">my.</a> Python package to access all of my personal information and interact with it.</li>
-</ul>
+<p>
+I export most of my digital trace and regularly back up pretty much everything.
+I'm using <a href="https://borgbackup.readthedocs.io/en/stable">borg backup</a> for it.
+</p>
 </div>
 </div>
 <div class="outline-2" id="outline-container-org000000c">

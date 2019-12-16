@@ -4743,6 +4743,8 @@ Let me know what you think! I'm open to all feedback.
     <div>Discussion:</div>
     <ul>
     
+        <li><a href="https://news.ycombinator.com/item?id=21736620"><b>hackernews</b></a></li>
+    
         <li><a href="https://lobste.rs/s/xxzwij/python_is_better_typed_than_you_think">lobste.rs</a></li>
     
         <li><a href="https://www.reddit.com/r/Python/comments/dplkz6/python_safer_typed_than_you_think">reddit</a></li>
@@ -5306,7 +5308,7 @@ If you're impatient, you can jump straight to a <a href="#demo">demo</a>.
 <p>
 </p>
 <p>
-I consume lots of digital content (books, articles, reddit, youtube, twitter, etc.) and most of it I find somewhat useful and insightful.
+I consume lots of digital content (books, articles, Reddit, Youtube, Twitter, etc.) and most of it I find somewhat useful and insightful.
 I want to use that knowledge later, act and build on it. But there's an obstacle: human brain.
 </p>
 <p>
@@ -5640,7 +5642,7 @@ That makes everything less messy, separates data and rendering and lets me reuse
 Also that lets me access my data from any python code, which makes it way easier to use and interact with data.
 </p>
 <p>
-Some of these are still private so if you're interested in something not present in the github repo, please don't be shy and open an issue so I can prioritize.
+Some of these are still private so if you're interested in something not present in the github repo, please don't be shy and open an issue, so I can prioritize.
 </p>
 <p>
 Hopefully the code is readable enough and will give you some inspiration. 
@@ -5757,7 +5759,7 @@ That's how <a href="https://github.com/karlicoss/inorganic">inorganic</a> librar
 This is probably where most of effort was spent. All sorts of stupid APIs, tedious parsing, you can imagine.
 </p>
 <p>
-I'll write separately about it sometime, for now you can see some of the code I prettified and shared in my github <a href="https://github.com/search?q=topic:export+user:karlicoss&amp;type=Repositories">'export'</a> and <a href="https://github.com/karlicoss/my">my</a> packages.
+I'll write separately about it sometime, for now you can see some code I prettified and shared in my github <a href="https://github.com/search?q=topic:export+user:karlicoss&amp;type=Repositories">'export'</a> and <a href="https://github.com/karlicoss/my">my</a> packages.
 I tried to make sure they are easy to use for other people and not specific to my use cases.
 </p></li>
 <li><p>
@@ -5858,7 +5860,7 @@ Recommending books
 </p>
 <p>
 I often struggle to recall the details why I liked a particular book, especially fiction.
-Having all annotations in my <samp class="inline">kobo.org</samp> file lets me quickly look up and skim through highlighted bits so I can freshen up my memory.
+Having all annotations in my <samp class="inline">kobo.org</samp> file lets me quickly look up and skim through highlighted bits, so I can freshen up my memory.
 </p></li>
 </ul>
 </div>
@@ -5901,7 +5903,7 @@ Orger tries to detect emacs and vim swap/lock files, but it's if you're very unl
 Hopefully your text editor warns you when the file had been overwritten while you were editing it (e.g. as emacs does).
 </p>
 <p>
-Also I run Orger jobs at night (via cron) so it's quite unlikely to overlap with editing anything.
+Also, I run Orger jobs at night (via cron) so it's quite unlikely to overlap with editing anything.
 </p>
 </div>
 </div>
@@ -5929,7 +5931,7 @@ If someone compares Memacs and Orger please let me know, I'd be happy to link it
 <h2 id="org0000019"><a class="headerlink" href="#org0000019">¶</a><span class="section-number-2">10</span> ----</h2>
 <div class="outline-text-2" id="text-10">
 <p>
-I'd be interesting in hearing your thoughts or feature requests.
+I'd be interested in hearing your thoughts or feature requests.
 </p>
 <p>
 This post ended up longer that I expected so in the next part I will tell about more use cases, in particular how I'm using Orger to process Reddit.
@@ -6118,7 +6120,7 @@ To get around that there is a somewhat hacky <a href="https://github.com/karlico
     <div>Discussion:</div>
     <ul>
     
-        <li><a href="https://news.ycombinator.com/item?id=21633149">hackernews</a></li>
+        <li><a href="https://news.ycombinator.com/item?id=21633149"><b>hackernews</b></a></li>
     
         <li><a href="https://www.reddit.com/r/emacs/comments/e1o6dz/cloudmacs_emacs_in_your_web_browser">/r/emacs</a></li>
     
@@ -6703,7 +6705,7 @@ WARNING:workout-provider:Unhandled: Cycling
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Regression coefficient: 0.093
-Free term: -9.164
+Free term: -9.043
 </pre>
 </div>
 </div>
@@ -6758,7 +6760,7 @@ Free term: -9.164
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>8059.022
+<pre>8055.724
 </pre>
 </div>
 </div>
@@ -7400,8 +7402,13 @@ Stores all of it's stuff in <code class="inline">.kobo/KoboReader.sqlite</code> 
 <a id="org000001c"></a>The database has got lots of cool stuff: in addition to highlights and notes you can also access reading progress, time spend reading and possibly some other interesting data I didn't manage to reverse engineer yet.
 You can check out <a href="https://github.com/karlicoss/kobuddy">kobuddy</a>, which is my attempt to extract useful data from the database and provide nicer high level Python interface. It's also fairly straightforward to open it in <code class="inline">sqlitebrowser</code> and play with your own queries.
 </p>
+<div class="noop" id="kobo_sync_for_sadinfra">
 <p>
-<a id="org0000018"></a>Kobo <b><b>doesn't seem to support cloud sync for annotations</b></b>. I was considering syncing the database wirelessly, as <a href="https://github.com/dropmeaword/kobo-aura-remote">there are</a> some SSH modules for its firmware, but people report it <a href="https://github.com/dropmeaword/kobo-aura-remote/issues/1">may break wifi</a> on it. I'm using <a href="https://github.com/karlicoss/kobuddy#as-a-backup-tool">kobuddy</a> as well to work around it.
+<a id="org0000018"></a>Kobo <b><b>doesn't seem to support cloud sync for annotations</b></b>. I was considering syncing the database wirelessly, as <a href="https://github.com/dropmeaword/kobo-aura-remote">there are</a> some SSH modules for its firmware, but people report it <a href="https://github.com/dropmeaword/kobo-aura-remote/issues/1">may break wifi</a> on it.
+</p>
+</div>
+<p>
+I'm using <a href="https://github.com/karlicoss/kobuddy#as-a-backup-tool">kobuddy</a> as well to work around it.
 </p>
 <p>
 <a id="org000001d"></a>There is an official <a href="https://play.google.com/store/apps/details?id=com.kobobooks.android">Android app</a> which lets you manage and annotate books from Kobo store and seems to be syncing progress between eink and phone.
@@ -8003,7 +8010,7 @@ I'd be interested to know what do you think, and how are you managing your annot
     <div>Discussion:</div>
     <ul>
     
-        <li><a href="https://news.ycombinator.com/item?id=21635012">hackernews</a></li>
+        <li><a href="https://news.ycombinator.com/item?id=21635012"><b>hackernews</b></a></li>
     
         <li><a href="https://www.reddit.com/r/opensource/comments/cazgsa/annotating_everything_overview_of_linuxandroid">/r/opensource</a></li>
     
@@ -8127,16 +8134,16 @@ I'd be interested to know what do you think, and how are you managing your annot
 <li><a href="#org0000005">6. Annotating information</a></li>
 <li><a href="#org0000006">7. <span class="todo TODO">TODO</span> discovering new information</a></li>
 <li><a href="#org0000007">8. <span class="todo STRT">STRT</span> spaced repetition and habits</a></li>
-<li><a href="#org0000008">9. <span class="todo TODO">TODO</span> syncing</a></li>
-<li><a href="#org0000009">10. <span class="todo STRT">STRT</span> regular backups</a></li>
+<li><a href="#org0000008">9. <span class="todo STRT">STRT</span> syncing</a></li>
+<li><a href="#org0000009">10. <span class="todo STRT">STRT</span> tools and infrastructure</a></li>
 <li><a href="#org000000a">11. <span class="todo TODO">TODO</span> timeline</a></li>
-<li><a href="#org000000b">12. <span class="todo STRT">STRT</span> tools and infrastructure</a></li>
+<li><a href="#org000000b">12. <span class="todo STRT">STRT</span> regular backups</a></li>
 <li><a href="#org000000c">13. <span class="todo TODO">TODO</span> future</a></li>
 </ul>
 </div>
 </div>
 <p>
-So, what is <a href="https://en.wikipedia.org/wiki/Personal_knowledge_management">personal knowledge management</a>? TLDR, it's a name for the process of organizing your tasks, thoughts, information you know, so a fairly useful concept.
+So, what is <a href="https://en.wikipedia.org/wiki/Personal_knowledge_management">personal knowledge management</a>? TLDR, it's a process of organizing your tasks, thoughts, information you know, so a fairly useful concept.
 </p>
 <p>
 I guess almost everyone at least at some point of their life tried to bring more organization: used a calendar, checklists, notebook etc.
@@ -8151,7 +8158,7 @@ Some of the reasons what I'm going to write about might be useful to you:
 <ul class="org-ul">
 <li>you generally want to be more organized in your life but not sure how</li>
 <li>you are reading lots of stuff, but then you feel like you quickly forget it (especially on the Internet, where information is denser than in books)</li>
-<li>you think that flesh is weak and want to offload remembering things to external persistent medium</li>
+<li><div><span class="before-aside">you think that flesh is weak and want to offload remembering things to external persistent medium  </span><aside class="sidenote"><a class="post-tag" href="./tags.html#extendedmind">#extendedmind</a></aside></div></li>
 </ul>
 <p>
 I'm writing that because my 'system' has more or less settled and stabilized, and I feel that I could be useful by helping out other people and sharing the ideas.
@@ -8280,14 +8287,14 @@ I'll release it sometime soon!
 </div>
 </div>
 <div class="outline-2" id="outline-container-org0000008">
-<h2 id="org0000008"><a class="headerlink" href="#org0000008">¶</a><span class="section-number-2">9</span> <span class="todo TODO">TODO</span> syncing</h2>
+<h2 id="org0000008"><a class="headerlink" href="#org0000008">¶</a><span class="section-number-2">9</span> <span class="todo STRT">STRT</span> syncing</h2>
 <div class="outline-text-2" id="text-9">
 <p>
 Continuous sync of my data and information is a biggie for me.
 </p>
 <ul class="org-ul">
 <li>first, I've always had one desktop/big sturdy laptop and one small portable for travel/coffee shops/etc</li>
-<li>second, I need to be able to access information on my phone, when I may not have good network (or any)</li>
+<li>second, I need to be able to access information on my phone, when I may not have good network (or any) <a class="post-tag" href="./tags.html#offline">#offline</a></li>
 </ul>
 <p>
 Eventual sync (e.g. via Git) might be fine for personal wiki. 
@@ -8299,28 +8306,35 @@ I'm using Dropbox and Syncthing to access my data and information from every dev
 </div>
 </div>
 <div class="outline-2" id="outline-container-org0000009">
-<h2 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><span class="section-number-2">10</span> <span class="todo STRT">STRT</span> regular backups</h2>
+<h2 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><span class="section-number-2">10</span> <span class="todo STRT">STRT</span> tools and infrastructure</h2>
 <div class="outline-text-2" id="text-10">
 <p>
-I export most of my digital trace and regularly back up pretty much everything.
-I'm using <a href="https://borgbackup.readthedocs.io/en/stable">borg backup</a> for it.
+See <a class="post-tag" href="./tags.html#infra">#infra</a>
 </p>
+<ul class="org-ul">
+<li>Some motivation behind integrating my personal data: <a href="sad-infra.html">the sad state of personal infrastructure</a>.</li>
+<li>I'm using special <a href="mypkg.html">my.</a> Python package to access all of my personal information and interact with it.</li>
+</ul>
 </div>
 </div>
 <div class="outline-2" id="outline-container-org000000a">
 <h2 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><span class="section-number-2">11</span> <span class="todo TODO">TODO</span> timeline</h2>
 <div class="outline-text-2" id="text-11">
 <p>
+See <a class="post-tag" href="./tags.html#lifelogging">#lifelogging</a>
+</p>
+<p>
 I've got a personal timeline of all my events, e.g. reading/watching/sleeping/exercising/etc.
 </p>
 </div>
 </div>
 <div class="outline-2" id="outline-container-org000000b">
-<h2 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><span class="section-number-2">12</span> <span class="todo STRT">STRT</span> tools and infrastructure</h2>
+<h2 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><span class="section-number-2">12</span> <span class="todo STRT">STRT</span> regular backups</h2>
 <div class="outline-text-2" id="text-12">
-<ul class="org-ul">
-<li>I'm using special <a href="./mypkg.html">my.</a> Python package to access all of my personal information and interact with it.</li>
-</ul>
+<p>
+I export most of my digital trace and regularly back up pretty much everything.
+I'm using <a href="https://borgbackup.readthedocs.io/en/stable">borg backup</a> for it.
+</p>
 </div>
 </div>
 <div class="outline-2" id="outline-container-org000000c">
