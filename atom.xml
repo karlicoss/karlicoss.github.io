@@ -4736,7 +4736,7 @@ Let me know what you think! I'm open to all feedback.
 
     
     <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#mypy python">#mypy python</a></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#mypy">#mypy</a> <a class="post-tag" href="./tags.html#python">#python</a></div>
         <!-- TODO post-date? -->
         <div class="date">26 October 2019</div>
     </section>

@@ -61,11 +61,9 @@
 
 <article>
     
-    <div>THIS IS A DRAFT! It will appear on the main page once finished!</div>
-    
     <section class="post-title">
     <h1>The sad state of personal data and infrastructure</h1>
-    <div class="summary">Why can't we have nice things?</h2>
+    <div class="summary">Why can't we have nice digital things?</h2>
     </section>
     <!-- are sections appropriate for that? -->
 
@@ -105,7 +103,7 @@ I also didn't want to mix discussions on motivation (this one) and my take on im
 <li><a href="#org000000b">--</a></li>
 </ul>
 </li>
-<li><a href="#disappearing">3. Your data is disappearing</a></li>
+<li><a href="#data_is_vanishing">3. Your data is vanishing</a></li>
 <li><a href="#what_do_i_want">4. What do I want?</a></li>
 <li><a href="#exports_are_hard">5. So what's the problem?</a>
 <ul>
@@ -158,19 +156,32 @@ You are completely at the mercy of service's developers and management.
 <ul class="org-ul">
 <li><p>
 Within the same ecosystem (e.g. Google/Apple/Microsoft) you might get some integrations and interactions if the company spares them.
-Apart from it, it's virtually <b>non-existent</b>.
+Apart from these, <b>integrations are virtually non-existent</b>.
+</p>
+<p>
 We have so much data, yet it just sits there doing nothing.
 </p>
 <p>
 Now and then <a href="https://github.com/woop/awesome-quantified-self#applications-and-platforms">some startup</a> pops up that connects together couple of APIs for a fee.
-I don't want to pick on startups but typically it's something trivial like correlating your workout performance to amount of sleep you had last night.
-Trivial is okay, and I do acknowledge it's way harder to implement than it looks (I even <a href="#exports_are_hard">explore why later</a>). The actually sad thing is as a user, you're lucky if you use the right kind of sleep tracker that the service supports, or if you agree with their analysis methodology. Otherwise, sorry!
-</p></li>
+I don't want to pick on startups but typically it's something trivial like displaying calories consumed from your food tracker app on the same plot with calories burnt from your fitness tracker.
+Trivial is okay, and I do acknowledge it's way harder to implement than it looks (I even <a href="#exports_are_hard">explore why later</a>).
+The actually sad thing is that as a user, you're lucky if you use the right kind of fitness tracker that the service supports, or if you agree with their analysis methodology. Otherwise, sorry!
+</p>
+<p>
+There are also services like <a href="https://ifttt.com">IFTTT</a> which offer pretty primitive integrations and also require cooperation from all parties:
+</p>
+<ul class="org-ul">
+<li><a href="https://news.ycombinator.com/item?id=11378278">My Heroic and Lazy Stand Against IFTTT (Pinboard)</a></li>
+<li><a href="https://news.ycombinator.com/item?id=19458172">Google removing Gmail access from IFTTT</a></li>
+</ul></li>
 </ul>
 <ul class="org-ul">
 <li><p>
-Often UIs have some inconveniences (or just suck), which are often fine for an average user (more often, for KPIs),
-but leaves number of users who would be dissatisfied (and often these are power users).
+Often UIs have some inconveniences (or just plain suck), which are often fine for an average user (aka KPIs),
+but leaves number of users who are dissatisfied (and often these are power users).
+</p>
+<p>
+In essence, services fully control the way they present you information.
 </p>
 <p>
 Sure, it's a free market, just switch to other/better service, right? 
@@ -241,7 +252,7 @@ That depends on your paranoia level of course, and apocalypse is bad enough as i
 </ul>
 </blockquote>
 <p>
-So as you can see, my main frustrations are around the lack of the very basic things that computers can do <b>extremely</b> well: data retrieval and search.
+So as you can see, my main frustrations are around the lack of the very basic things that computers can do <b>extremely well</b>: data retrieval and search.
 </p>
 <p>
 I'll carry on, just listing some examples. Let's see if any of them resonate with you:
@@ -507,26 +518,26 @@ I think all of this is pretty sad. Note that I haven't mentioned any science fic
 All these things are totally doable with the <b>technology we already possess</b>.
 </p>
 <p>
-I wonder what computing pioneers like <a href="https://www.dougengelbart.org/content/view/374/464">Engelbart</a> or 
+I wonder what computing pioneers like <a href="https://en.wikipedia.org/wiki/Douglas_Engelbart#Career_and_accomplishments">Douglas Engelbart</a>
+(e.g. see <a href="https://mnielsen.github.io/notes/engelbart/engelbart.html">Augmenting Human Intellect</a>) or 
 <a href="https://en.wikipedia.org/wiki/Alan_Kay#Early_life_and_work">Alan Kay</a> thought/think about it and if they'd share my disappointment.
 So many years have passed since the computing (and personal computers) spread, and we're still not quite there.
 And companies are <b>actively</b> promoting these silos.
 </p>
 <p>
-Imagine if all of this was on your fingertips? If you didn't have to think about <b>how and where</b> to find information and just access it?
-If you could let computers handle the boring bits of your life and concentrate on fun and creative activities?
+Imagine if all of this was on your fingertips? If you didn't have to think about <b>how and where</b> to find information and could just access it and play with it?
+If you could let computers handle the boring bits of your life and spend time on fun and creative things?
 </p>
 </div>
 </div>
 </div>
 <div class="outline-2" id="outline-container-org0000043">
-<h2 id="disappearing"><a class="headerlink" href="#disappearing">¶</a><span class="section-number-2">3</span> Your data is disappearing</h2>
-<div class="outline-text-2" id="text-disappearing">
-<div><span class="before-aside">
-Things are listed are frustrating enough.
+<h2 id="data_is_vanishing"><a class="headerlink" href="#data_is_vanishing">¶</a><span class="section-number-2">3</span> Your data is vanishing</h2>
+<div class="outline-text-2" id="text-data_is_vanishing">
+<p>
+Things I listed above are frustrating enough as they are.
 There is another aspect to this: your data is <b>slipping away</b>.
-
-</span><aside class="sidenote">see <a class="post-tag" href="./tags.html#extendedmind">#extendedmind</a></aside></div>
+</p>
 <p>
 Privacy concerns are important and it's understandable when people are pissed about services keeping hold of their data instead of properly wiping it.
 </p>
@@ -534,7 +545,12 @@ Privacy concerns are important and it's understandable when people are pissed ab
 However, often opposite is the case and you find that your data is gone or very hard to access:
 </p>
 <ul class="org-ul">
-<li>Google Takeout data, that is, all your browser activity, Youtube watch history, etc., are only kept by Google for <a href="./takeout-data-gone.html">few years</a></li>
+<li><p>
+Google Takeout data, that is, all your browser activity, Youtube watch history, etc., are only kept by Google for <a href="./takeout-data-gone.html">few years</a>
+</p>
+<p>
+If you were only exporting it now and then and haven't kept old archive, chances are you've lost some of your history.
+</p></li>
 <li>Chrome browser deletes history older than <a href="https://superuser.com/a/364475/300795">90 days</a></li>
 <li>Firefox browser expires history based on some <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Tech/Places/Places_Expiration">magic algorithm</a></li>
 <li><a href="https://github.com/karlicoss/rexport#limitations">Reddit API</a> limits your requests to 1000 results only</li>
@@ -557,10 +573,10 @@ The problems above are sort of technical and in theory, can be solved by some en
 <ul class="org-ul">
 <li>information is generally <a href="https://www.gwern.net/Archiving-URLs#link-rot">rotting away</a> from the Internet</li>
 <li><p>
-comments/posts/tweets you've interacted with get deleted.
+comments/posts/tweets you've interacted with get deleted by their authors
 </p>
 <p>
-While people have right to delete their data from the Internet, arguably it doesn't extend to derived content or thoughts that you had on it.
+While people have right to delete their data from the Internet, arguably it doesn't extend to derived content like comments or thoughts that you had on it.
 </p></li>
 </ul>
 <p>
@@ -586,6 +602,10 @@ sweet. In addition, <a href="https://www.jawbone.com/nudge/api">the API</a> does
 This one is particularly bad.
 </p></li>
 </ul>
+<p>
+If you consider your digital trace <a href="./tags.html#extendedmind">part of yourself</a>, this is completely unacceptable. But sadly it's happening all the time.
+You <b>can't rely on third parties</b> to keep it safe.
+</p>
 </div>
 </div>
 <div class="outline-2" id="outline-container-org0000044">
@@ -600,13 +620,13 @@ So let me be more specific: I argue that one <b>major</b> reason these tools and
 </p>
 <ul class="org-ul">
 <li><p>
-easy for humans to look at and browse through
+<b>easy for humans</b> to look at and browse through
 </p>
 <p>
 This bit is hard in practice as (typically) the more something machine friendly the less it's human friendly.
 </p></li>
 <li><p>
-easy for programmers to manipulate, analyze and interact with
+<b>easy for programmers</b> to manipulate, analyze and interact with
 </p>
 <p>
 Let's concentrate on this part for now. If this is solved, it automatically enables programmers to develop human-friendly tools.
@@ -626,7 +646,7 @@ However, realistically, as of today, easiest way to quickly access your data and
 <div><span class="before-aside">
 Whether it's plaintext, sqlite or some sort of binary data – doesn't matter, already having it locally saves you from the whole class of problems (which I'm about to pinpoint in the following section).
 
-</span><aside class="sidenote">even better if it's already in your RAM and interpreter in abstract form, but that's a bit too much to wish at this point.</aside></div>
+</span><aside class="sidenote">even better if it's already in your RAM and interpreter, but that's a bit too much to wish at this point.</aside></div>
 </div>
 </div>
 <div class="outline-2" id="outline-container-org0000046">
@@ -671,7 +691,7 @@ typical scenario: you need to do the whole <a href="https://aaronparecki.com/oau
 </p>
 <p>
 That involves creating a client app, getting client id, dealing with scopes and redirect urls, etc.
-Pretty tedious, and you certainly don't expect a <b>nonprogrammer</b> to be able to do these steps.
+Pretty tedious, and you certainly don't expect a <b>nonprogrammer</b> to be able to follow these steps.
 </p>
 <p>
 Examples: almost every service with an API out there: Twitter/Instapaper/Pocket/Github/etc.
@@ -771,10 +791,10 @@ Authorization, network, serializing, parsing, storing, synchronizing.
 There are among the most common error sources (as in, actual unrecoverable errors, not necessarily bugs) in software engineering generally, and getting it right is required for reliably retrieving your data.
 </p>
 <p>
-In addition, you want to be somewhat semi-defensive, and this is the hardest kind of error handling:
+In addition, you want to be somewhat <b>semi-defensive</b>, and this is the hardest kind of error handling:
 </p>
 <ul class="org-ul">
-<li>you want to progress eventually while running your data export</li>
+<li>you want to progress slowly but surely</li>
 <li>you want to make sure it only fails in completely unrecoverable scenarios, otherwise it's going to require constant tending</li>
 <li>and you want to somehow let user know of problems/suspicious data</li>
 </ul>
@@ -826,7 +846,7 @@ Notable examples:
 Sometimes you have no way to access your data at all:
 </p>
 <ul class="org-ul">
-<li>offline: duh</li>
+<li>you are offline: nuff said</li>
 <li><p>
 app data on your phone
 </p>
@@ -870,7 +890,7 @@ Ideally, I'd just magically somehow have a programming interface to my data and 
 I don't live in a fairy tale however, so I've been thinking about more realistic ways that are possible with current technology.
 </p>
 <p>
-The way I see it, ideally the online service you're using provides you with:
+The way I see it, ideally the service you're using provides you with:
 </p>
 <ul class="org-ul">
 <li><p>
@@ -920,13 +940,16 @@ This solves:
 That's perhaps a naive and oversimplified view.
 But to be honest we're so far away from that, that even some small steps towards would be quite a progress.
 </p>
+<p>
+These suggestions would <b>decouple UI from data</b> and let the community develop better tools for consuming it.
+</p>
 </div>
 <div class="outline-3" id="outline-container-org0000016">
 <h3 id="org0000016"><a class="headerlink" href="#org0000016">¶</a>potential caveats</h3>
 <div class="outline-text-3" id="text-org0000016">
 <ul class="org-ul">
 <li><p>
-this particular suggestion might be hard to support for <b>every user</b>
+this might be <b>hard to support</b> for everyone
 </p>
 <p>
 On the other hand, service developers would have more control on data access patterns, so in a way it might work better.
@@ -945,6 +968,7 @@ In particular, not everyone has or willing to set up necessary infrastructure to
 </p>
 <p>
 However, if implemented properly, there is absolutely nothing preventing running data mirror on your laptop or even phone.
+It really doesn't require much CPU or bandwidth if you support incremental updates.
 </p></li>
 <li><p>
 services have little motivation to promote this, <b>silos benefit them</b>
@@ -1013,9 +1037,11 @@ From user's perspective not everyone wants the hassle of running things locally 
 <h2 id="what_do_i_do"><a class="headerlink" href="#what_do_i_do">¶</a><span class="section-number-2">7</span> What do I do?</h2>
 <div class="outline-text-2" id="text-what_do_i_do">
 <p>
-Of course, I'm not expecting someone would come and implements all of this for me, so I've done spent effort into integrating and utilizing my data on my own according to the suggestions I formulated.
+Of course, I'm not expecting someone going to come and implement all of this for me.
+I could start some sort of movement to demand it from services, but I hardly see it working.
 </p>
 <p>
+So I've spent effort into integrating and utilizing my data on my own according to the suggestions I formulated.
 Putting this in writing helped me motivate and summarize many technical and infrastructural decisions.
 </p>
 <p>
@@ -1052,7 +1078,7 @@ Each data exporter comes with minimal bindings that merely map json/sqlite expor
 That way anyone who wishes to use data can kick off some reasonable representation, which is not overfitted to my specific needs.
 </p>
 <p>
-Higher level querying and access, specific to myself is implemented in <a href="mypkg.org#examples">my.</a> package (note that this post is still in draft stage).
+Higher level querying and access, specific to myself is implemented in <a href="./mypkg.html#examples">my.</a> package (note that this post is still in draft stage).
 </p>
 <p>
 <a href="https://github.com/karlicoss/my"><code class="inline">my.</code></a> package allows me to query my data from anywhere, enabling me to use familiar data processing, analysis and visualization tools, and enabling various integrations.
@@ -1072,13 +1098,13 @@ Finally, some tools and scripts I've implemented to bring closer interactions <a
 <li><a href="pkm-search.html">personal search engine</a> for quick incremental search in my data and digital trace</li>
 <li><a href="orger.html">orger</a>: tool to convert data into org-mode views for quick search and overview
 <ul class="org-ul">
-<li><a href="orger-todos.org#reddit">also</a> for prioritizing content consumption (e.g. processing Reddit saves)</li>
-<li><a href="orger-todos.org#krill">also</a> for populating my spaced repetition queue</li>
-<li><a href="orger-todos.org#telegram2org">also</a> for creating TODOs straight from Telegram messages</li>
+<li><a href="./orger-todos.html#reddit">also</a> for prioritizing content consumption (e.g. processing Reddit saves)</li>
+<li><a href="./orger-todos.html#krill">also</a> for populating my spaced repetition queue</li>
+<li><a href="./orger-todos.html#telegram2org">also</a> for creating TODOs straight from Telegram messages</li>
 </ul></li>
 <li><a href="./grasp.html">grasp</a>, browser extension to clip links straight into my org-mode notes</li>
-<li><a href="https://github.com/karlicoss/promnesia">promnesia</a>, browser extension to escape silos, unify annotations and browsing history from different data sources (still WIP, but planning to release soon)</li>
-<li>personal sleep and exercise dashboard. I'm in progress of making it public, you can see some screenshots <a href="https://www.reddit.com/r/QuantifiedSelf/comments/cokt4f/what_do_you_all_do_with_your_data/ewmucgk">here</a></li>
+<li><a href="https://github.com/karlicoss/promnesia">promnesia</a>, browser extension to escape silos, unify annotations and browsing history from different data sources (still somewhat WIP and needs final touches, but planning to release soon)</li>
+<li>personal sleep and exercise dashboard, taking into account all possible data sources. I'm in progress of making it public, you can see some screenshots <a href="https://www.reddit.com/r/QuantifiedSelf/comments/cokt4f/what_do_you_all_do_with_your_data/ewmucgk">here</a></li>
 </ul>
 </div>
 </div>
@@ -1094,7 +1120,7 @@ I'm synchronizing everything across my computers with <a href="https://syncthing
 <h3 id="org000001c"><a class="headerlink" href="#org000001c">¶</a>backups</h3>
 <div class="outline-text-3" id="text-org000001c">
 <p>
-I'm simply using <a href="https://borgbackup.readthedocs.io/en/stable">borg backup</a> against exported files, whether it's jsons or sqlite databases.
+I'm simply using <a href="https://borgbackup.readthedocs.io/en/stable">borg backup</a> against exported data, whether it's kept in json files or sqlite databases.
 </p>
 </div>
 </div>
