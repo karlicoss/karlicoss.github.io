@@ -8378,7 +8378,7 @@ Not available for <a href="https://github.com/karlicoss/grasp/issues/15">mobile 
 <h2 id="pdfs"><a class="headerlink" href="#pdfs">¶</a><span class="section-number-2">3</span> Annotating PDFs</h2>
 <div class="outline-text-2" id="text-pdfs">
 <p>
-Small disclaimer: I don't own Mac/Windows so have very little idea what's going on in their world. Sorry! You can take a look at a section I added with <a class="link-down" href="#other_tools">other people's suggestions</a>.
+Small disclaimer: I don't own Mac/Windows/iPhone so have very little idea what's going on in their world. Sorry! You can take a look at a section I added with <a class="link-down" href="#other_tools">other people's suggestions</a>.
 </p>
 <p>
 PDF format is a complicated beast, and its native annotations are a whole different story to annotating web.
@@ -8789,6 +8789,10 @@ They've got a nice <a href="https://blog.readwise.io">blog</a> where they are de
 </p>
 <p>
 Suggested by few people, in particular <a href="https://twitter.com/deadly_onion">Daniel</a>, one of cofounders.
+</p>
+<p>
+UPD from <span class="timestamp-wrapper"><span class="timestamp">[2019-12-21]</span></span>: I gave it a try and it's actually pretty neat. They send you an email daily so you can practice spaced repetition with a single link click.
+Personally I'm too invested in all of my own infrastructure, but if you want to try out spaced repetition without extra hassle, I highly recommend checking it out!
 </p></li>
 <li><p>
 <a href="https://skim-app.sourceforge.io">Skim</a>: open source PDF reader and note-taker for OS X. Uses xattrs and a separate <samp class="inline">.skim</samp> file to keep annotations.
@@ -8981,14 +8985,14 @@ I'm only listing tools that support proper highlighting and commenting.
 <td class="org-left"><a class="link-up" href="#instapaper">Instapaper</a></td>
 <td class="org-left"><span style="color:green">Y</span>, offline</td>
 <td class="org-left">n/a</td>
-<td class="org-left"><span style="color:red">N</span><a class="link-up" href="#org0000003">↑</a></td>
+<td class="org-left"><a class="link-up" href="#org0000003"><span style="color:red">N</span></a></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:red">N</span></td>
 </tr>
 <tr>
 <td class="org-left"><a class="link-up" href="#wallabag">Wallabag</a></td>
-<td class="org-left"><span style="color:red">N</span><a class="link-up" href="#org0000005">↑</a></td>
+<td class="org-left"><a class="link-up" href="#org0000005"><span style="color:red">N</span></a></td>
 <td class="org-left">n/a</td>
 <td class="org-left"><a href="https://github.com/wallabag/wallabag/issues/3635"><span style="color:red">N</span></a></td>
 <td class="org-left"><span style="color:red">N</span></td>
@@ -9019,8 +9023,8 @@ I'm only listing tools that support proper highlighting and commenting.
 <td class="org-left"><a class="link-up" href="#org000000b">Okular</a></td>
 <td class="org-left">n/a</td>
 <td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><span style="color:#ff9933">limited</span><a class="link-up" href="#org000000d">↑</a></td>
-<td class="org-left"><span style="color:#ff9933">limited</span><a class="link-up" href="#org000000c">↑</a></td>
+<td class="org-left"><a class="link-up" href="#org000000d"><span style="color:#ff9933">limited</span></a></td>
+<td class="org-left"><a class="link-up" href="#org000000c"><span style="color:#ff9933">limited</span></a></td>
 <td class="org-left"><span style="color:green">Y</span>, file sync</td>
 <td class="org-left"><span style="color:green">Y</span></td>
 </tr>
@@ -9084,19 +9088,19 @@ I'm only listing tools that support proper highlighting and commenting.
 <td class="org-left"><a class="link-up" href="#kindle">Kindle</a></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><span style="color:#ff9933">limited</span><a class="link-up" href="#org000001a">↑</a></td>
+<td class="org-left"><a class="link-up" href="#org000001a"><span style="color:#ff9933">limited</span></a></td>
 <td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><span style="color:#ff9933">limited</span><a class="link-up" href="#org0000019">↑</a></td>
-<td class="org-left"><span style="color:red">N</span>, <a class="link-up" href="#koreader">but koreader ↑</a></td>
+<td class="org-left"><a class="link-up" href="#org0000019"><span style="color:#ff9933">limited</span></a></td>
+<td class="org-left"><span style="color:red">N</span>, <a class="link-up" href="#koreader">but koreader</a></td>
 </tr>
 <tr>
 <td class="org-left"><a class="link-up" href="#kobo"><b><b>Kobo</b></b></a></td>
-<td class="org-left"><span style="color:red">N</span>, <a class="link-up" href="#org000001d">broken↑</a></td>
+<td class="org-left"><span style="color:red">N</span>, <a class="link-up" href="#org000001d">broken</a></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:green">Y</span></td>
 <td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><span style="color:red">N</span>, <a class="link-up" href="#org0000018">but possible↑</a></td>
-<td class="org-left"><span style="color:red">N</span>, <a class="link-up" href="#koreader">but koreader↑</a></td>
+<td class="org-left"><span style="color:red">N</span>, <a class="link-up" href="#org0000018">but possible</a></td>
+<td class="org-left"><span style="color:red">N</span>, <a class="link-up" href="#koreader">but koreader</a></td>
 </tr>
 </tbody>
 </table>
@@ -9117,7 +9121,10 @@ For that I've got some infrastructure set up.
 That serves not just as data backup, but also as <b><b>data providers</b></b> for my tools. I only interact with these daily snapshots on filesystem rather than directly with API. That helps to avoid dealing with rate limiting, flakiness in network connection or API itself, and makes it way faster to iterate and develop. The only downside is that the data is not necessarily up to date, but perhaps you can dump data more often to get around this; I would still highly recommend you to prefer that to interacting with API directly. 
 </p>
 <p>
-I'm using a <b><b>special Python package to access the data</b></b>, which I called <a href="https://github.com/karlicoss/my"><code class="inline">my</code></a>. It's always in my <code class="inline">PYTHONPATH</code> so I can use it from any script/tool or REPL. It's got bunch of different submodules, e.g. <code class="inline">my.reading.instapaper</code>, <code class="inline">my.reading.kobo</code>, <code class="inline">my.reading.polar</code> (there are other modules than <code class="inline">my.reading</code>, but that material for a whole separate post). The package itself is not public since it happens to have some personal data in it, at some point I'll try to strip it off and release it (not sure if it would be really relevant for other people anyway).
+I'm using a <b><b>special Python package to access the data</b></b>, which I called <a href="https://github.com/karlicoss/my"><code class="inline">my</code></a>. It's always in my <code class="inline">PYTHONPATH</code> so I can use it from any script/tool or REPL. It's got bunch of different submodules, e.g. <code class="inline">my.instapaper</code>, <code class="inline">my.kobo</code>, <code class="inline">my.polar</code> (and there are other modules as well). 
+</p>
+<p>
+I'm in progress of cleaning it up and documenting, you can read a draft <a href="mypkg.html">here</a>.
 </p>
 </div>
 <div class="outline-3" id="outline-container-org000002a">
@@ -9127,12 +9134,60 @@ I'm using a <b><b>special Python package to access the data</b></b>, which I cal
 As a specific example how I do it: recently my friend asked me if I could recommend them posts I found interesting on <a href="https://slatestarcodex.com/">Slate Star Codex</a>. With a tiny python script I was quickly able to give them some stats on posts I read, so they could choose among them.
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-keyword">import</span> my.reading.hypothesis
-<span class="org-keyword">for</span> p <span class="org-keyword">in</span> my.reading.hypothesis.get_pages():
-    <span class="org-keyword">if</span> <span class="org-string">'slatestarcodex'</span> <span class="org-keyword">in</span> p.link: 
-        <span class="org-keyword">print</span>(f<span class="org-string">'{p.link} {len(p.highlights)}'</span>)
+<pre class="src src-python"><span class="org-keyword">import</span> my.hypothesis
+<span class="org-keyword">from</span> collections <span class="org-keyword">import</span> Counter
+<span class="org-variable-name">SSC</span> = (p <span class="org-keyword">for</span> p <span class="org-keyword">in</span> my.hypothesis.get_pages() <span class="org-keyword">if</span> <span class="org-string">'slatestarcodex'</span> <span class="org-keyword">in</span> p.link)
+<span class="org-keyword">return</span> Counter({p.link: <span class="org-builtin">len</span>(p.highlights) <span class="org-keyword">for</span> p <span class="org-keyword">in</span> SSC}).most_common(10)
 </pre>
 </div>
+<table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
+<colgroup>
+<col class="org-left" />
+<col class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left"><a href="http://slatestarcodex.com/2013/10/20/the-anti-reactionary-faq/">http://slatestarcodex.com/2013/10/20/the-anti-reactionary-faq/</a></td>
+<td class="org-right">32</td>
+</tr>
+<tr>
+<td class="org-left"><a href="https://slatestarcodex.com/2013/03/03/reactionary-philosophy-in-an-enormous-planet-sized-nutshell/">https://slatestarcodex.com/2013/03/03/reactionary-philosophy-in-an-enormous-planet-sized-nutshell/</a></td>
+<td class="org-right">17</td>
+</tr>
+<tr>
+<td class="org-left"><a href="http://slatestarcodex.com/2014/12/17/the-toxoplasma-of-rage/">http://slatestarcodex.com/2014/12/17/the-toxoplasma-of-rage/</a></td>
+<td class="org-right">16</td>
+</tr>
+<tr>
+<td class="org-left"><a href="https://slatestarcodex.com/2014/03/17/what-universal-human-experiences-are-you-missing-without-realizing-it/">https://slatestarcodex.com/2014/03/17/what-universal-human-experiences-are-you-missing-without-realizing-it/</a></td>
+<td class="org-right">16</td>
+</tr>
+<tr>
+<td class="org-left"><a href="http://slatestarcodex.com/2014/07/30/meditations-on-moloch/">http://slatestarcodex.com/2014/07/30/meditations-on-moloch/</a></td>
+<td class="org-right">12</td>
+</tr>
+<tr>
+<td class="org-left"><a href="http://slatestarcodex.com/2015/04/21/universal-love-said-the-cactus-person/">http://slatestarcodex.com/2015/04/21/universal-love-said-the-cactus-person/</a></td>
+<td class="org-right">11</td>
+</tr>
+<tr>
+<td class="org-left"><a href="http://slatestarcodex.com/2015/01/01/untitled/">http://slatestarcodex.com/2015/01/01/untitled/</a></td>
+<td class="org-right">11</td>
+</tr>
+<tr>
+<td class="org-left"><a href="https://slatestarcodex.com/2017/02/09/considerations-on-cost-disease/">https://slatestarcodex.com/2017/02/09/considerations-on-cost-disease/</a></td>
+<td class="org-right">10</td>
+</tr>
+<tr>
+<td class="org-left"><a href="http://slatestarcodex.com/2013/04/25/in-defense-of-psych-treatment-for-attempted-suicide/">http://slatestarcodex.com/2013/04/25/in-defense-of-psych-treatment-for-attempted-suicide/</a></td>
+<td class="org-right">9</td>
+</tr>
+<tr>
+<td class="org-left"><a href="https://slatestarcodex.com/2014/09/30/i-can-tolerate-anything-except-the-outgroup/">https://slatestarcodex.com/2014/09/30/i-can-tolerate-anything-except-the-outgroup/</a></td>
+<td class="org-right">9</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="outline-3" id="outline-container-org000002b">
@@ -9165,6 +9220,9 @@ So, as a workaround, I have programmed rules that pick out notes that start with
 </p>
 <p>
 <a href="https://github.com/karlicoss/orger/blob/350e76000e34db49cf6b574041b98bd813040851/ip2org.py#L16">Here's</a> an example of me using using <code class="inline">my.instapaper</code> module for that.
+</p>
+<p>
+I'm writing about it in more detail in post about <a href="orger-todos.html">Orger</a>.
 </p>
 </div>
 </div>
