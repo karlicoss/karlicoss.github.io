@@ -188,7 +188,7 @@ By personal information I refer to things like todo list, personal wiki or whate
 <h3 id="org_mode"><a class="headerlink" href="#org_mode">¶</a>Org mode notes</h3>
 <div class="outline-text-3" id="text-org_mode">
 <p>
-For the most part, I keep things in Org mode, and I use Emacs to work with it. Apart from regular means of plaintext search (I'll write about it <a href="#other">later</a>), for me it's important to search over tags:
+For the most part, I keep things in Org mode, and I use Emacs to work with it. Apart from regular means of plaintext search (I'll write about it <a class="link-down" href="#other">later</a>), for me it's important to search over tags:
 </p>
 <ul class="org-ul">
 <li><a href="https://orgmode.org/manual/Matching-tags-and-properties.html"><code class="inline">org-tags-view</code></a> is available by default and an easy way to run simple tag searches</li>
@@ -221,7 +221,7 @@ Here are some typical workflows with my org-mode:
 I see an interesting article or think of something which would be good to share with a friend, but at the moment it's not quite a good time to send it.  I can just capture it and attach a tag (e.g. <samp class="inline">ann</samp> or <samp class="inline">jeremy</samp>). That way next time we chat I can just look up things under their tag and send them.
 </p>
 <p>
-It works the other way around as well: imagine they sent me a link or asked me to do something, but I can't do it immediately. I have a special script that converts chat messages into todo items and automatically attaches the corresponding tag. I write more about it <a href="./orger-todos.html#telegram2org">here</a>.
+It works the other way around as well: imagine they sent me a link or asked me to do something, but I can't do it immediately. I have a special script that converts chat messages into todo items and automatically attaches the corresponding tag. I write more about it <a href="orger-todos.html#telegram2org">here</a>.
 </p></li>
 <li><p>
 assembling blog posts
@@ -254,7 +254,7 @@ Sadly export tool stopped working because of API restrictions, but I'm not using
 </ul>
 <p>
 Most services where I can comment, write or leave annotation, I'm mirroring as org-mode.
-I write about it in detail here: <a href="./orger.html">part I</a>, <a href="./orger-todos.html">part II</a>.
+I write about it in detail here: <a href="orger.html">part I</a>, <a href="orger-todos.html">part II</a>.
 </p>
 <p>
 That gives me source data for a search engine over anything I've ever:
@@ -270,7 +270,7 @@ That gives me source data for a search engine over anything I've ever:
 All these files are either non-Org or somewhat heavy for structured Org-mode search. In addition, I have many old files from my pre-orgmode era when I was using Gitit or Zim.
 </p>
 <p>
-To search over them, I'm using Emacs and Ripgrep (you can read why <a href="#org0000004">later</a>):
+To search over them, I'm using Emacs and Ripgrep (you can read why <a class="link-down" href="#org0000004">later</a>):
 </p>
 <p>
 <a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L130-L134"><code class="inline">my/search</code></a>
@@ -280,7 +280,7 @@ runs ripgrep against <code class="inline">my/search-targets</code> variable cont
 The interesting bit about <code class="inline">my/search</code> is <a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L87-L127"><code class="inline">--my/one-off-helm-follow-mode</code></a> call. It's a somewhat horrible hack that  automatically enables helm-follow mode so you don't have to press <code class="inline">C-c C-f</code> every time you invoke helm.
 </p>
 <p>
-Finally, to make sure I can invoke search in an instance, I'm using a <a href="#org0000005">global keybinding</a>.
+Finally, to make sure I can invoke search in an instance, I'm using a <a class="link-down" href="#org0000005">global keybinding</a>.
 </p>
 <p>
 Here's a <b>demo</b> <a href="https://file.globalupload.io/wu7HYYyJaY.gif">gif (5Mb)</a> of using this to search 'greg egan' in my knowledge repository.
@@ -344,7 +344,7 @@ You can save <a href="https://lh3.googleusercontent.com/FweBE2T3T3wZwJC64DQgtGj8
 Searches can be displayed as persistent widgets, e.g. I find convenient to have a phone screen dedicated to 'Buy' search (<code class="inline">t.buy</code> query) or 'Do at work' search (<code class="inline">t.@work</code> query).
 </p>
 <p>
-As I described <a href="#org0000002">above</a>, I keep few saved search queries for some friends so I can recall what I wanted to discuss with them.
+As I described <a class="link-up" href="#org0000002">above</a>, I keep few saved search queries for some friends so I can recall what I wanted to discuss with them.
 </p>
 </div>
 </div>
@@ -360,7 +360,7 @@ It's a fulltext indexing and search app for plaintext files, but apparently it e
 </p>
 <p>
 I find it convenient for quick search over things that are not imported in Orgzly, e.g. <samp class="inline">.txt</samp> chat logs (Telegram, VK) and huge org-mode files
-I described <a href="#other">above</a>.
+I described <a class="link-up" href="#other">above</a>.
 </p>
 <p>
 It's a bit backwards in terms of UI (even though I like that it's compact and functional), but main downside is it's not opensource.
@@ -742,7 +742,7 @@ Ripgrep searches in real files on my disk, so any changes are reflected <b>immed
 It would still be nice to avoid unnecessary disk operations, and of course, semantic search would be great, and that is definitely going to require some sort of indexer.
 </p>
 <p>
-I've got a <a href="#org0000013">global keybinding</a> to invoke Emacs with a prompt to search in code, so I can do in in a blink.
+I've got a <a class="link-down" href="#org0000013">global keybinding</a> to invoke Emacs with a prompt to search in code, so I can do in in a blink.
 </p>
 <p>
 Here's a <a href="https://file.globalupload.io/onCac7sh9M.gif">gif (3.5 Mb)</a> showing it <b>in action</b>: say, I am working on testing a browser extension, and need to interact with in via hotkeys. I remember using <code class="inline">pyautogui</code> for automating <a href="https://github.com/karlicoss/grasp">Grasp</a> tests, but I forgot which function I actually need to use. Searching for 'pyautogui' brings me all the repositories where I'm using it and lets me quickly find out the command I need without having to read the documentation all over again.
@@ -754,7 +754,7 @@ Here's a <a href="https://file.globalupload.io/onCac7sh9M.gif">gif (3.5 Mb)</a> 
 <h2 id="appendix_cloudmacs"><a class="headerlink" href="#appendix_cloudmacs">¶</a><span class="section-number-2">8</span> Appendix: searching away from computer</h2>
 <div class="outline-text-2" id="text-appendix_cloudmacs">
 <p>
-I'm running Spacemacs on my VPS, so if I'm not near my computer and <a href="#android">phone search</a> doesn't help for some reason, I can still access and search my data. You can read about it <a href="./cloudmacs.html">here</a>.
+I'm running Spacemacs on my VPS, so if I'm not near my computer and <a class="link-up" href="#android">phone search</a> doesn't help for some reason, I can still access and search my data. You can read about it <a href="cloudmacs.html">here</a>.
 </p>
 </div>
 </div>
@@ -804,7 +804,7 @@ Most of the time I've got Emacs window open on one of my desktops anyway, but so
 I've got a global keybinding (<code class="inline">Win+m</code>) that invokes this script. In addition the script accepts a function to call so you can open Emacs with a search prompt, so I have few more handy keybindings:
 </p>
 <ul class="org-ul">
-<li><a id="org0000005"></a> <code class="inline">Win+F1</code> for searching in my <a href="#other">notes and knowledge repository</a></li>
+<li><a id="org0000005"></a> <code class="inline">Win+F1</code> for searching in my <a class="link-up" href="#other">notes and knowledge repository</a></li>
 </ul>
 <div class="org-src-container">
 <pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment"> -eux</span>
@@ -873,7 +873,7 @@ These tips might be pretty obvious, but they belong to this post, so here you go
 <ul class="org-ul">
 <li>if you're on Spacemacs, use <a href="https://github.com/syl20bnr/spacemacs/tree/develop"><code class="inline">develop</code></a> branch. Master is pretty backwards.</li>
 <li><p>
-search with <code class="inline">ripgrep</code> instead of <code class="inline">grep</code> (not only in Emacs!). It's just <a href="#org0000004">better</a>.
+search with <code class="inline">ripgrep</code> instead of <code class="inline">grep</code> (not only in Emacs!). It's just <a class="link-up" href="#org0000004">better</a>.
 </p>
 <p>
 In Spacemacs, set up your <code class="inline">init.el</code>:

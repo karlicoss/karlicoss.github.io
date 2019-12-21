@@ -69,14 +69,14 @@
 
     <section class="content">
     <p>
-<b>TLDR</b>: in this post I'm going to be exploring <a href="#why">missed opportunities</a> at engaging and interacting with your personal data and digital trace,
-and speculating on <a href="#exports_are_hard">why is it that way</a> and <a href="#data_mirror">how to make it easier</a>.
+<b>TLDR</b>: in this post I'm going to be exploring <a class="link-down" href="#why">missed opportunities</a> at engaging and interacting with your personal data and digital trace,
+and speculating on <a class="link-down" href="#exports_are_hard">why is it that way</a> and <a class="link-down" href="#data_mirror">how to make it easier</a>.
 </p>
 <p>
 It might seem like a long rant, but I promise you I am not a kind of person who whines and vents just for the sake of it!
 </p>
 <p>
-In this particular post I'm just building up motivation and engaging you, and I <a href="#what_do_i_do">do have</a> some workarounds and suggestions.
+In this particular post I'm just building up motivation and engaging you, and I <a class="link-down" href="#what_do_i_do">do have</a> some workarounds and suggestions.
 This article got long enough, so I will explain them in detail in the second part.
 </p>
 <p>
@@ -164,7 +164,7 @@ We have so much data, yet it just sits there doing nothing.
 <p>
 Now and then <a href="https://github.com/woop/awesome-quantified-self#applications-and-platforms">some startup</a> pops up that connects together couple of APIs for a fee.
 I don't want to pick on startups but typically it's something trivial like displaying calories consumed from your food tracker app on the same plot with calories burnt from your fitness tracker.
-Trivial is okay, and I do acknowledge it's way harder to implement than it looks (I even <a href="#exports_are_hard">explore why later</a>).
+Trivial is okay, and I do acknowledge it's way harder to implement than it looks (I even <a class="link-down" href="#exports_are_hard">explore why later</a>).
 The actually sad thing is that as a user, you're lucky if you use the right kind of fitness tracker that the service supports, or if you agree with their analysis methodology. Otherwise, sorry!
 </p>
 <p>
@@ -1093,7 +1093,7 @@ Each data exporter comes with minimal bindings that merely map json/sqlite expor
 That way anyone who wishes to use data can kick off some reasonable representation, which is not overfitted to my specific needs.
 </p>
 <p>
-Higher level querying and access, specific to myself is implemented in <a href="./mypkg.html#examples">my.</a> package (note that this post is still in draft stage).
+Higher level querying and access, specific to myself is implemented in <a href="mypkg.html#examples">my.</a> package (note that this post is still in draft stage).
 </p>
 <p>
 <a href="https://github.com/karlicoss/my"><code class="inline">my.</code></a> package allows me to query my data from anywhere, enabling me to use familiar data processing, analysis and visualization tools, and enabling various integrations.
@@ -1107,15 +1107,15 @@ As a nice byproduct I've also finally figured out a reliable way to deal with <a
 <h3 id="org000001a"><a class="headerlink" href="#org000001a">¶</a>how do I use the data?</h3>
 <div class="outline-text-3" id="text-org000001a">
 <p>
-Finally, some tools and scripts I've implemented to bring closer interactions <a href="#why">that I want</a>:
+Finally, some tools and scripts I've implemented to bring closer interactions <a class="link-up" href="#why">that I want</a>:
 </p>
 <ul class="org-ul">
 <li><a href="pkm-search.html">personal search engine</a> for quick incremental search in my data and digital trace</li>
 <li><a href="orger.html">orger</a>: tool to convert data into org-mode views for quick search and overview
 <ul class="org-ul">
-<li><a href="./orger-todos.html#reddit">also</a> for prioritizing content consumption (e.g. processing Reddit saves)</li>
-<li><a href="./orger-todos.html#krill">also</a> for populating my spaced repetition queue</li>
-<li><a href="./orger-todos.html#telegram2org">also</a> for creating TODOs straight from Telegram messages</li>
+<li><a href="orger-todos.html#reddit">also</a> for prioritizing content consumption (e.g. processing Reddit saves)</li>
+<li><a href="orger-todos.html#krill">also</a> for populating my spaced repetition queue</li>
+<li><a href="orger-todos.html#telegram2org">also</a> for creating TODOs straight from Telegram messages</li>
 </ul></li>
 <li><a href="./grasp.html">grasp</a>, browser extension to clip links straight into my org-mode notes</li>
 <li><a href="https://github.com/karlicoss/promnesia">promnesia</a>, browser extension to escape silos, unify annotations and browsing history from different data sources (still somewhat WIP and needs final touches, but planning to release soon)</li>
@@ -1175,6 +1175,8 @@ Let me know if you can think of any other data integrations you are missing and 
     <br>
     <div>Discussion:</div>
     <ul>
+    
+        <li><a href="https://news.ycombinator.com/item?id=21844105"><b>hackernews</b></a></li>
     
         <li><a href="https://lobste.rs/s/ztwbh4/sad_state_personal_data_infrastructure">lobste.rs</a></li>
     

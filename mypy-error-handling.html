@@ -159,7 +159,7 @@ and introduce a motivating <b>real life problem</b> that I actually had to solve
 <p>
 Say, you own a Kindle book. Electronic books are great. Yeah okay they don't smell like the real thing, but the possibility of highlighting bits of text and typing your comment without distracting on external means of annotation is incredibly helpful.
 However, then when you want to go through your highlights after reading to refresh your memory or perhaps to share with a friend,
-you find out it's <a href="./annotating.html#kindle">not so convenient</a> to actually quickly access them.
+you find out it's <a href="annotating.html#kindle">not so convenient</a> to actually quickly access them.
 </p>
 <p>
 So you decide to write a script that would process the highlights, perhaps group them by book, displays timestamps and render a nice HTML page
@@ -266,7 +266,7 @@ Yes, it's a messy format and not very machine friendly. But oh well it's a file,
 For the purposes of this post, to keep the example output clean, I am just using plain text.
 Even though it's not quite HTML with CSS, it still looks kinda nice, doesn't it?
 
-</span><aside class="sidenote">if you're wondering why <code class="inline">yield</code> I'll explain it <a href="#iterator">further down</a></aside></div>
+</span><aside class="sidenote">if you're wondering why <code class="inline">yield</code> I'll explain it <a class="link-down" href="#iterator">further down</a></aside></div>
 <p>
 Now:
 </p>
@@ -402,7 +402,7 @@ One obvious problem is that it's very nontransparent and <b>relies on implicit c
 E.g. if your <code class="inline">Highlight</code> object also returned book's ISBN and you filled it with some arbitrary text, it would almost surely not be a valid ISBN, that might cause failures down the pipeline.
 </p>
 <p>
-Sometimes it's inevitable though, e.g. I'm giving an example <a href="#dataframe">later</a>.
+Sometimes it's inevitable though, e.g. I'm giving an example <a class="link-down" href="#dataframe">later</a>.
 </p>
 </div>
 </div>
@@ -463,7 +463,7 @@ Well, some people tried! So I'll review a python library that does that: <a href
 </p>
 <p>
 Let's try it on our program and see how it works.
-To make it easier to compare to <a href="#org0000002">the original code</a> I suggest duplicating the tab in a separate window and tiling them side by side.
+To make it easier to compare to <a class="link-up" href="#org0000002">the original code</a> I suggest duplicating the tab in a separate window and tiling them side by side.
 </p>
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr">33: </span><span class="org-keyword">from</span> result <span class="org-keyword">import</span> Ok, Err
@@ -531,7 +531,7 @@ We use <a href="https://docs.python.org/3/library/itertools.html#itertools.tee">
 </p>
 <p>
 Cool, we rendered as much as we can, and we get the error displayed as well, so nothing crashes and the users are not as unhappy.
-The error looks a bit out of nowhere, but at least it's there. We will address how we can improve it <a href="#error_context">later</a>.
+The error looks a bit out of nowhere, but at least it's there. We will address how we can improve it <a class="link-down" href="#error_context">later</a>.
 </p>
 <p>
 Sadly, for someone else who looks at <code class="inline">iter_highlights</code> or <code class="inline">iter_books</code> signatures, it's not obvious that it yields <code class="inline">Result</code> objects, not <code class="inline">Book/Highlight</code> objects without reading the code.
@@ -653,7 +653,7 @@ Glad you asked! Several reasons I'm using generators here:
 <ul class="org-ul">
 <li>it makes code cleaner because there is <b>no need for temporary lists</b>, calling <code class="inline">.append</code> and then returning them in the end.</li>
 <li>it makes code faster (again, no temporary lists), and also it <b>feels faster</b> because you print items as soon as you process</li>
-<li><code class="inline">Iterator</code> type is <b>covariant</b>, whereas <code class="inline">List</code> is not. I'm elaborating on it <a href="#org000000a">later</a>. I'm also using <a href="https://docs.python.org/3/library/typing.html#typing.Sequence"><code class="inline">Sequence</code></a> for the same reason.</li>
+<li><code class="inline">Iterator</code> type is <b>covariant</b>, whereas <code class="inline">List</code> is not. I'm elaborating on it <a class="link-down" href="#org000000a">later</a>. I'm also using <a href="https://docs.python.org/3/library/typing.html#typing.Sequence"><code class="inline">Sequence</code></a> for the same reason.</li>
 </ul>
 </div>
 </div>
@@ -696,10 +696,10 @@ So, let's try and rewrite the code using <code class="inline">returns.result.Res
 </pre>
 </div>
 <p>
-So far the only difference from <a href="#org0000002">the original code</a> is <a href="https://returns.readthedocs.io/en/latest/pages/result.html#safe"><code class="inline">@safe</code></a> decorator on <code class="inline">parse_entry</code>, which basically deals with catching all exceptions and wrapping into <code class="inline">Result</code>.
+So far the only difference from <a class="link-up" href="#org0000002">the original code</a> is <a href="https://returns.readthedocs.io/en/latest/pages/result.html#safe"><code class="inline">@safe</code></a> decorator on <code class="inline">parse_entry</code>, which basically deals with catching all exceptions and wrapping into <code class="inline">Result</code>.
 </p>
 <p>
-As a consequence, <code class="inline">iter_highlights</code> required no changes in its body. (which may not be a desirable thing as we'll see <a href="#error_context">later</a>)
+As a consequence, <code class="inline">iter_highlights</code> required no changes in its body. (which may not be a desirable thing as we'll see <a class="link-down" href="#error_context">later</a>)
 </p>
 <div class="org-src-container">
 <pre class="src src-mypy" id="org000000e"><span class="linenr">43: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> cast
@@ -725,7 +725,7 @@ Ok, that definitely requires some explanation…
 <code class="inline">returns</code> library public API doesn't provide any way to tell between success and failure (<a href="https://returns.readthedocs.io/en/latest/pages/result.html#what-is-the-difference-between-success-and-success">kind of deliberately</a>). The types <code class="inline">_Success</code> and <code class="inline">_Failure</code> are private, and the only method that we can use seems to be <a href="https://returns.readthedocs.io/en/latest/pages/result.html#returns.result.Result.value_or"><code class="inline">result.value_or(default)</code></a>. This method returns the success value if <code class="inline">result</code> is <code class="inline">Success</code> and falls back to <code class="inline">default</code> if <code class="inline">result</code> is a <code class="inline">Failure</code>. So we use a <b>sentinel object to distinguish</b> between actual success values and <code class="inline">default</code> ones, and also have to trick mypy with a <code class="inline">cast</code>.
 </p>
 <p>
-Apart from this obscurity, the function suffers from exactly the same issues as the <code class="inline">iter_books</code> implementation from <a href="#org0000008">the previous section</a>, and for the same reason: contract is too complicated to be expressed in mypy.
+Apart from this obscurity, the function suffers from exactly the same issues as the <code class="inline">iter_books</code> implementation from <a class="link-up" href="#org0000008">the previous section</a>, and for the same reason: contract is too complicated to be expressed in mypy.
 </p>
 <p>
 One could argue that this function is going to look awkward anyway since we need to separate list of results into successes and errors. Let's see the function that should be more straightforward:
@@ -859,7 +859,7 @@ If we use it we would have to pay with sacrificing type safety or <b>extra code 
 <h2 id="kiss"><a class="headerlink" href="#kiss">¶</a><span class="section-number-2">8</span> Solution: keep it simple</h2>
 <div class="outline-text-2" id="text-kiss">
 <p>
-It seems that we were on the right track with the <a href="#container">container type</a> and <a href="#combinators">combinators</a>, but never completely satisfied.
+It seems that we were on the right track with the <a class="link-up" href="#container">container type</a> and <a class="link-up" href="#combinators">combinators</a>, but never completely satisfied.
 Let's recall the problems we had again:
 </p>
 <ul class="org-ul">
@@ -1002,7 +1002,7 @@ Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
 <p>
-Yay, it works and typechecks. Now you can decide for yourself how clean it is by comparing it side by side with <a href="#org0000002">the original code</a> without error handling. You'd see that the only differences (apart from indentation) is code for error handling.
+Yay, it works and typechecks. Now you can decide for yourself how clean it is by comparing it side by side with <a class="link-up" href="#org0000002">the original code</a> without error handling. You'd see that the only differences (apart from indentation) is code for error handling.
 </p>
 <p>
 <a name="upsides"></a>
@@ -1040,7 +1040,7 @@ But these numbers might not make sense under a realistic data flow.
 <p>
 If you don't need to handle the error, you can just yield it up the call stack as we do in <code class="inline">iter_books</code>.
 </p></li>
-<li><b>doesn't require modifying existing types</b>, and introducing invalid states that signal errors (mentioned <a href="#error_object">here</a>)</li>
+<li><b>doesn't require modifying existing types</b>, and introducing invalid states that signal errors (mentioned <a class="link-up" href="#error_object">here</a>)</li>
 <li><p>
 <a id="org000000a"></a> <b>correct variance</b> for free
 </p>
@@ -1065,7 +1065,7 @@ Downsides:
 <code class="inline">isinstance</code> looks a bit verbose and might be frowned upon as it's <b>often considered as code smell</b>
 </p>
 <p>
-We can't get around this and hide in a helper function for the same reason mentioned <a href="#org0000009">above</a>, 
+We can't get around this and hide in a helper function for the same reason mentioned <a class="link-up" href="#org0000009">above</a>, 
 but it might be solved in mypy in <a href="https://github.com/python/mypy/issues/5206">some near future</a>, though.
 </p></li>
 </ul>
@@ -1087,7 +1087,7 @@ hopefully you'll figure out parts of your projects where it's applicable.
 <h3 id="api"><a class="headerlink" href="#api">¶</a>Custom error type</h3>
 <div class="outline-text-3" id="text-api">
 <p>
-While <a class="coderef" href="#coderef-simple_error_api" onmouseout="CodeHighlightOff(this, 'coderef-simple_error_api');" onmouseover="CodeHighlightOn(this, 'coderef-simple_error_api');">the three line API</a> is enough in most cases, you might want something more fancy.
+While <a class="coderef link-up" href="#coderef-simple_error_api" onmouseout="CodeHighlightOff(this, 'coderef-simple_error_api');" onmouseover="CodeHighlightOn(this, 'coderef-simple_error_api');">the three line API</a> is enough in most cases, you might want something more fancy.
 </p>
 <p>
 One improvement is allowing <b>arbitrary error type</b>.
@@ -1265,7 +1265,7 @@ Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
 <p>
-Even though you never actually return <code class="inline">Error</code> under the non-defensive policy, you <b>don't have to change any of the type signatures</b>: <code class="inline">Iterator[int]</code> is still a perfectly good <code class="inline">Iterator[Res[int]]</code>. Thanks, <a href="#org000000a">covariance</a>!
+Even though you never actually return <code class="inline">Error</code> under the non-defensive policy, you <b>don't have to change any of the type signatures</b>: <code class="inline">Iterator[int]</code> is still a perfectly good <code class="inline">Iterator[Res[int]]</code>. Thanks, <a class="link-up" href="#org000000a">covariance</a>!
 </p>
 <p>
 I'm using this technique in my <a href="https://github.com/karlicoss/kobuddy#as-a-standalone-app">Kobo parser</a> and control it via <samp class="inline">--errors</samp> argument.
@@ -1277,11 +1277,11 @@ On CI, it runs in non-defensive mode of course. However when other people use th
 <h3 id="error_context"><a class="headerlink" href="#error_context">¶</a>Improving error context</h3>
 <div class="outline-text-3" id="text-error_context">
 <p>
-If you remember <a href="#org0000006">the output</a>, we got a rather cryptic <samp class="inline">ERROR: Couldn't match regex!</samp>.
+If you remember <a class="link-up" href="#org0000006">the output</a>, we got a rather cryptic <samp class="inline">ERROR: Couldn't match regex!</samp>.
 That's of course not desirable because you can't easily tell what exactly is causing the error.
 </p>
 <p>
-Normally, you'd use  <a href="https://www.python.org/dev/peps/pep-3134/#explicit-exception-chaining">exception chaining</a>, i.e. <code class="inline">raise EXCEPTION from CAUSE</code> syntax <a class="coderef" href="#coderef-throw_exc" onmouseout="CodeHighlightOff(this, 'coderef-throw_exc');" onmouseover="CodeHighlightOn(this, 'coderef-throw_exc');">here</a>.
+Normally, you'd use  <a href="https://www.python.org/dev/peps/pep-3134/#explicit-exception-chaining">exception chaining</a>, i.e. <code class="inline">raise EXCEPTION from CAUSE</code> syntax <a class="coderef link-up" href="#coderef-throw_exc" onmouseout="CodeHighlightOff(this, 'coderef-throw_exc');" onmouseover="CodeHighlightOn(this, 'coderef-throw_exc');">here</a>.
 </p>
 <div><span class="before-aside">
 However the problem is that <code class="inline">raise ... from ...</code> is a compound statement, so you can't write <code class="inline">yield RuntimeError(entry) from e</code>.
@@ -1327,7 +1327,7 @@ Now that's better!
 <h3 id="warnings"><a class="headerlink" href="#warnings">¶</a>Fine grained defensiveness</h3>
 <div class="outline-text-3" id="text-warnings">
 <p>
-Remember <a href="#org0000001"><code class="inline">parse_entry</code></a>? Its return type is <code class="inline">Highlight</code>, so it can return a single highlight or throw a single error,
+Remember <a class="link-up" href="#org0000001"><code class="inline">parse_entry</code></a>? Its return type is <code class="inline">Highlight</code>, so it can return a single highlight or throw a single error,
 that will be handled by <code class="inline">iter_highlights</code>. 
 </p>
 <p>
@@ -1372,7 +1372,7 @@ Of course, this complicates code, and you can't predict all possible errors anyw
 <h3 id="dataframe"><a class="headerlink" href="#dataframe">¶</a>Error values, revisited</h3>
 <div class="outline-text-3" id="text-dataframe">
 <p>
-One case where I find <a href="#error_object">'special error value'</a> more or less appropriate is when your function returns a pandas <code class="inline">DataFrame</code>.
+One case where I find <a class="link-up" href="#error_object">'special error value'</a> more or less appropriate is when your function returns a pandas <code class="inline">DataFrame</code>.
 </p>
 <p>
 When manipulating dataframes, you typically don't iterate explicitly, but apply more idiomatic (and often efficient!) combinators like <code class="inline">merge</code>, <code class="inline">join</code>, <code class="inline">concat</code> etc,
@@ -1456,7 +1456,7 @@ Success: no issues found in 1 source file
 It certainly looks unconventional, and you can only use that as long as your object inherits from <code class="inline">Exception</code>.
 </p>
 <p>
-We can exploit this for our specific case on <code class="inline">Union[T, Exception]</code> by using <a href="#unwrap"><code class="inline">unwrap</code></a>:
+We can exploit this for our specific case on <code class="inline">Union[T, Exception]</code> by using <a class="link-up" href="#unwrap"><code class="inline">unwrap</code></a>:
 </p>
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">print_books</span>():

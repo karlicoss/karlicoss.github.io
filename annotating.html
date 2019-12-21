@@ -132,7 +132,7 @@
 </div>
 </div>
 <p>
-TLDR: when I read I try to read <a href="https://help.open.ac.uk/active-reading">actively</a>, which for me mainly involves using various tools to annotate content: highlight and leave notes as I read. I've programmed <a href="#infra">data providers</a> that parse them and provide nice interface to interact with this data from other tools. My <a href="#org0000000">automated scripts</a> use them to render these annotations in human readable and searchable plaintext and generate <a href="#todos">TODOs</a>/<a href="#spaced_repetition">spaced repetition</a> items.
+TLDR: when I read I try to read <a href="https://help.open.ac.uk/active-reading">actively</a>, which for me mainly involves using various tools to annotate content: highlight and leave notes as I read. I've programmed <a class="link-down" href="#infra">data providers</a> that parse them and provide nice interface to interact with this data from other tools. My <a class="link-down" href="#org0000000">automated scripts</a> use them to render these annotations in human readable and searchable plaintext and generate <a class="link-down" href="#todos">TODOs</a>/<a class="link-down" href="#spaced_repetition">spaced repetition</a> items.
 </p>
 <p>
 In this post I'm gonna elaborate on all of that and give some motivation, review of these tools (mainly with the focus on open source thus extendable software) and my vision on how they could work in an ideal world.
@@ -159,13 +159,13 @@ it's easier to recall the content I already read, I just skim through highlights
 In particular, often I'd run on something on the internet that I remember reading before. If I have annotations for that, I can quickly go through them and restore the context.
 </p></li>
 <li>it's easier to recommend content to other people because you can refer to specific moments or points you liked/disliked</li>
-<li>it's got social value if highlights are visible to other people (e.g. <a href="#hypothesis">Hypothesis</a>, Medium, Goodreads)</li>
+<li>it's got social value if highlights are visible to other people (e.g. <a class="link-down" href="#hypothesis">Hypothesis</a>, Medium, Goodreads)</li>
 <li>it helps with <a href="./notes.html#book_scoring">book scoring</a>. If I don't have any highlights, it probably means that the content was not interesting at all for me. Fiction books are not an exception: I tend to highlight use of language I liked, inspirational things, etc.</li>
 <li>it serves as activity log if you are into <a class="post-tag" href="./tags.html#lifelogging">#lifelogging</a>.</li>
-<li>you can <a href="#todos">populate your TODO list</a> and <a href="#spaced_repetition">step up your spaced repetition game</a>.</li>
+<li>you can <a class="link-down" href="#todos">populate your TODO list</a> and <a class="link-down" href="#spaced_repetition">step up your spaced repetition game</a>.</li>
 </ul>
 <p>
-I'm going to review some of the tools I tried using and still using and highlight their different positive and negative aspects. If you're getting impatient, you can skip straight to my <a href="#comparison">comparison table</a>.
+I'm going to review some of the tools I tried using and still using and highlight their different positive and negative aspects. If you're getting impatient, you can skip straight to my <a class="link-down" href="#comparison">comparison table</a>.
 </p>
 </div>
 </div>
@@ -183,7 +183,7 @@ I won't really write much about it for one reason which is a big deal: while you
 Pocket API doesn't support exporting highlights too, or to be precise it seems to be hidden. If you need it you can use <a href="https://github.com/karlicoss/pockexport">my script</a> where I hacked around it.
 </p>
 <p>
-Also, interesting enough, <a href="#kobo">Kobo reader</a> has got Pocket integration, but for some reason when you read Pocket articles on Kobo, you can't highlight at all (let alone syncing highlights with Pocket). Not sure what's the purpose of this integration.
+Also, interesting enough, <a class="link-down" href="#kobo">Kobo reader</a> has got Pocket integration, but for some reason when you read Pocket articles on Kobo, you can't highlight at all (let alone syncing highlights with Pocket). Not sure what's the purpose of this integration.
 </p>
 <p>
 Pocket was acquired by Mozilla in 2017, which might be a good thing, but so far their main focus seem to be readability features.
@@ -305,7 +305,7 @@ Not available for <a href="https://github.com/karlicoss/grasp/issues/15">mobile 
 <h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a>Summary</h3>
 <div class="outline-text-3" id="text-org0000009">
 <p>
-<a href="#hypothesis">Hypothes.is</a> is a clear winner for me on desktop and I'm using <a href="#instapaper">Instapaper</a> for offline reading on Android.
+<a class="link-up" href="#hypothesis">Hypothes.is</a> is a clear winner for me on desktop and I'm using <a class="link-up" href="#instapaper">Instapaper</a> for offline reading on Android.
 </p>
 </div>
 </div>
@@ -314,7 +314,7 @@ Not available for <a href="https://github.com/karlicoss/grasp/issues/15">mobile 
 <h2 id="pdfs"><a class="headerlink" href="#pdfs">¶</a><span class="section-number-2">3</span> Annotating PDFs</h2>
 <div class="outline-text-2" id="text-pdfs">
 <p>
-Small disclaimer: I don't own Mac/Windows so have very little idea what's going on in their world. Sorry! You can take a look at a section I added with <a href="#other_tools">other people's suggestions</a>.
+Small disclaimer: I don't own Mac/Windows so have very little idea what's going on in their world. Sorry! You can take a look at a section I added with <a class="link-down" href="#other_tools">other people's suggestions</a>.
 </p>
 <p>
 PDF format is a complicated beast, and its native annotations are a whole different story to annotating web.
@@ -422,7 +422,7 @@ Existing annotations in PDF can be imported via <a href="https://github.com/weir
 Xournal is different from the above PDF viewers, since it isn't using types of annotations described in the PDF standard and instead uses its own <a href="http://xournal.sourceforge.net/manual.html#tools">tools</a>.
 </p>
 <p>
-It doesn't modify the original files and instead keeps <samp class="inline">.xoj</samp> file containing the metadata and pointing at the original PDF, so in that sense it's pretty similar to <a href="#org000000c">okular</a>. Similarly, it's xournal-specific and can't be viewed anywhere else unless you export it in PDF before sharing (at which point your annotations wold basically become background images).
+It doesn't modify the original files and instead keeps <samp class="inline">.xoj</samp> file containing the metadata and pointing at the original PDF, so in that sense it's pretty similar to <a class="link-up" href="#org000000c">okular</a>. Similarly, it's xournal-specific and can't be viewed anywhere else unless you export it in PDF before sharing (at which point your annotations wold basically become background images).
 </p>
 </div>
 </div>
@@ -531,7 +531,7 @@ Perhaps the only differences are how you can search and access the annotations.
 Kindle stores bookmarks, notes and highlights in <code class="inline">My Clippings.txt</code> on the device.
 The good thing about the format is that it's already plaintext and fairly human readable, so you might be happy with that alone.
 The format is a bit nasty for parsing (as you would expect from something with <samp class="inline">.txt</samp> extension). Dates are locale dependent, document locators may or may not have roman numerals, separators are inconsistent at times, etc. 
-When I was using Kindle I was just copying the file from time to time, and you can set up some sort of automatic copying when your device is connected similarly to  what I'm doing with <a href="#org0000018">Kobo</a>.
+When I was using Kindle I was just copying the file from time to time, and you can set up some sort of automatic copying when your device is connected similarly to  what I'm doing with <a class="link-down" href="#org0000018">Kobo</a>.
 </p>
 <p>
 Kindle uploads your notes and highlights to <a href="https://read.amazon.com">Kindle Cloud Reader</a>
@@ -660,7 +660,7 @@ Often when I watch lectures or some talks on Youtube or in VLC, I want to leave 
 This is pretty much not possible apart from opening your text editor and manually recording the position in video. All the video annotation software I know of is more oriented towards video editing/effects etc.
 </p>
 <p>
-So, if I'm watching something in browser, I normally end up using <a href="#grasp">grasp</a> and manually type the timestamp.
+So, if I'm watching something in browser, I normally end up using <a class="link-up" href="#grasp">grasp</a> and manually type the timestamp.
 </p>
 <p>
 This is distracting, but even worse is that whatever you use have no means of quickly jumping to the timestamp you recorded; you'd have to move the slider to it manually. 
@@ -688,7 +688,7 @@ They don't tamper with browser selection, so you can still use external annotati
 </p></li>
 <li><p>
 <a href="https://genius.com/web-annotator">Genius</a>.
-Annotated lyrics on genius.com looks neat, however I'm not sure what are its benefits over <a href="#hypothesis">Hypothesis</a>.
+Annotated lyrics on genius.com looks neat, however I'm not sure what are its benefits over <a class="link-up" href="#hypothesis">Hypothesis</a>.
 </p>
 <p>
 Also, while I was looking up about Genius, I've stumbled upon an unusual opinion opposing web annotation: <a href="https://www.vijithassar.com/2641/how-to-block-genius-annotations">how to block Genius annotations</a>:
@@ -732,9 +732,9 @@ Suggested by few people, in particular <a href="https://twitter.com/deadly_onion
 <p>
 Recommendation <a href="https://twitter.com/i/web/status/1147473985514459137">from a follower</a>.
 </p></li>
-<li><a href="https://www.kontxt.io">Kontxt</a>: paid, looks very similar to <a href="#hypothesis">Hypothesis</a>, also offers some sort of CMS.
+<li><a href="https://www.kontxt.io">Kontxt</a>: paid, looks very similar to <a class="link-up" href="#hypothesis">Hypothesis</a>, also offers some sort of CMS.
 I couldn't find anything on it on Reddit/Hackernews, not sure if it's still under development.</li>
-<li><a href="https://histre.com">Histre</a>: also looks similar to <a href="#hypothesis">Hypothesis</a> in terms of web annotation, also enhances browser history.
+<li><a href="https://histre.com">Histre</a>: also looks similar to <a class="link-up" href="#hypothesis">Hypothesis</a> in terms of web annotation, also enhances browser history.
 Here's <a href="https://news.ycombinator.com/item?id=20133031">HN discussion</a>.</li>
 <li><p>
 <a href="https://hookproductivity.com/help/general/videos">Hook productivity</a>: paid MacOS tool that allows to interlink content between different apps.
@@ -752,7 +752,7 @@ Recommended by <a href="https://beepb00p.xyz/annotating.html#isso-11">Jay</a>.
 <li><a href="https://ant.umn.edu/documentation#%23section-annotating-and-commenting">VideoAnt</a>: looks like video annotation tool. Suggested by <a href="https://news.ycombinator.com/item?id=21653827">philyg</a>.</li>
 <li><p>
 <a href="https://products.office.com/en-gb/onenote/digital-note-taking-app">Microsoft OneNote</a>: can be used for PDF annotation, but it seems that you have to import PDF in OneNote first, so it'll become locked in the app.
-However that allows extra features like using pen to annotate on top of PDF. In that regard it's similar to <a href="#xournal">Xournal</a>.
+However that allows extra features like using pen to annotate on top of PDF. In that regard it's similar to <a class="link-up" href="#xournal">Xournal</a>.
 </p>
 <p>
 Suggested by <a href="https://news.ycombinator.com/user?id=daok">daok</a>.
@@ -802,7 +802,7 @@ Most current annotation engines are also somewhat tedious to interact with, add 
 Solving this requires the tools being <b><b>cross platform</b></b> and <b><b>cross format</b></b>.
 </p>
 <p>
-<a href="#hypothesis">Hypothes.is</a> is the move in the right direction, but there are plenty of other things starting from unsupported formats and working offline to paper books which are missed out.
+<a class="link-up" href="#hypothesis">Hypothes.is</a> is the move in the right direction, but there are plenty of other things starting from unsupported formats and working offline to paper books which are missed out.
 </p>
 <p>
 While current sad state of different tools/products for different forms of content is understandable, ideally it should be be <b><b>format agnostic</b></b> with some proper way of
@@ -827,7 +827,7 @@ While brain-computer interfaces are not quite there, even with existing technolo
 plaintext representations, indexing and incremental search.
 </p>
 <p>
-Personally, I'm solving this problem via <a href="#org0000000">orger</a>.
+Personally, I'm solving this problem via <a class="link-down" href="#org0000000">orger</a>.
 </p></li>
 <li><p>
 <b><b>Separate metadata</b></b>
@@ -839,7 +839,7 @@ Annotations layer should be loosely coupled to the underlying content. If it's n
 For physical sources of information it matters even more; although they might decline completely in few decades, who knows.
 </p>
 <p>
-Good examples of this approach are <a href="#polar">Polar</a> and <a href="#hypothesis">Hypothesis</a> which keep metadata in well defined format with locators.
+Good examples of this approach are <a class="link-up" href="#polar">Polar</a> and <a class="link-up" href="#hypothesis">Hypothesis</a> which keep metadata in well defined format with locators.
 </p></li>
 <li><p>
 <b><b>Data ownership and resilience</b></b>
@@ -866,7 +866,7 @@ and are not very friendly towards people who do want to comment anonymously.
 </p>
 <p>
 Perhaps in some near future we could <b><b>ditch all the internet commenting platforms</b></b> and rely on annotation layer instead.
-<a href="#hypothesis">Hypothesis</a> basically lets you do that already, perhaps with a little work on design (sidebar is not necessarily convenient for social commenting), it could serve that purpose.
+<a class="link-up" href="#hypothesis">Hypothesis</a> basically lets you do that already, perhaps with a little work on design (sidebar is not necessarily convenient for social commenting), it could serve that purpose.
 </p>
 <p>
 I also consider comments people write as projections of their minds and it would be great to give other people easier access to that to get to know each other better.
@@ -914,17 +914,17 @@ I'm only listing tools that support proper highlighting and commenting.
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><a href="#instapaper">Instapaper</a></td>
+<td class="org-left"><a class="link-up" href="#instapaper">Instapaper</a></td>
 <td class="org-left"><span style="color:green">Y</span>, offline</td>
 <td class="org-left">n/a</td>
-<td class="org-left"><span style="color:red">N</span><a href="#org0000003">↑</a></td>
+<td class="org-left"><span style="color:red">N</span><a class="link-up" href="#org0000003">↑</a></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:red">N</span></td>
 </tr>
 <tr>
-<td class="org-left"><a href="#wallabag">Wallabag</a></td>
-<td class="org-left"><span style="color:red">N</span><a href="#org0000005">↑</a></td>
+<td class="org-left"><a class="link-up" href="#wallabag">Wallabag</a></td>
+<td class="org-left"><span style="color:red">N</span><a class="link-up" href="#org0000005">↑</a></td>
 <td class="org-left">n/a</td>
 <td class="org-left"><a href="https://github.com/wallabag/wallabag/issues/3635"><span style="color:red">N</span></a></td>
 <td class="org-left"><span style="color:red">N</span></td>
@@ -932,7 +932,7 @@ I'm only listing tools that support proper highlighting and commenting.
 <td class="org-left"><span style="color:green">Y</span></td>
 </tr>
 <tr>
-<td class="org-left"><a href="#hypothesis"><b><b>Hypothesis</b></b></a></td>
+<td class="org-left"><a class="link-up" href="#hypothesis"><b><b>Hypothesis</b></b></a></td>
 <td class="org-left"><span style="color:green">Y</span></td>
 <td class="org-left"><span style="color:green">Y</span></td>
 <td class="org-left"><span style="color:green">Y</span></td>
@@ -941,7 +941,7 @@ I'm only listing tools that support proper highlighting and commenting.
 <td class="org-left"><span style="color:green">Y</span></td>
 </tr>
 <tr>
-<td class="org-left"><a href="#grasp">Copy-paste</a></td>
+<td class="org-left"><a class="link-up" href="#grasp">Copy-paste</a></td>
 <td class="org-left"><span style="color:green">Y</span>, offline</td>
 <td class="org-left"><span style="color:red">N</span> (manual)</td>
 <td class="org-left"><span style="color:green">Y</span></td>
@@ -952,16 +952,16 @@ I'm only listing tools that support proper highlighting and commenting.
 </tbody>
 <tbody>
 <tr>
-<td class="org-left"><a href="#org000000b">Okular</a></td>
+<td class="org-left"><a class="link-up" href="#org000000b">Okular</a></td>
 <td class="org-left">n/a</td>
 <td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><span style="color:#ff9933">limited</span><a href="#org000000d">↑</a></td>
-<td class="org-left"><span style="color:#ff9933">limited</span><a href="#org000000c">↑</a></td>
+<td class="org-left"><span style="color:#ff9933">limited</span><a class="link-up" href="#org000000d">↑</a></td>
+<td class="org-left"><span style="color:#ff9933">limited</span><a class="link-up" href="#org000000c">↑</a></td>
 <td class="org-left"><span style="color:green">Y</span>, file sync</td>
 <td class="org-left"><span style="color:green">Y</span></td>
 </tr>
 <tr>
-<td class="org-left"><a href="#pdftools">Emacs pdf-tools</a></td>
+<td class="org-left"><a class="link-up" href="#pdftools">Emacs pdf-tools</a></td>
 <td class="org-left">n/a</td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:red">N</span></td>
@@ -970,7 +970,7 @@ I'm only listing tools that support proper highlighting and commenting.
 <td class="org-left"><span style="color:green">Y</span></td>
 </tr>
 <tr>
-<td class="org-left"><a href="#orgnoter">Emacs org-noter</a></td>
+<td class="org-left"><a class="link-up" href="#orgnoter">Emacs org-noter</a></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:green">Y</span></td>
@@ -979,7 +979,7 @@ I'm only listing tools that support proper highlighting and commenting.
 <td class="org-left"><span style="color:green">Y</span></td>
 </tr>
 <tr>
-<td class="org-left"><a href="#hypothesis_pdf">Hypothesis (PDF)</a></td>
+<td class="org-left"><a class="link-up" href="#hypothesis_pdf">Hypothesis (PDF)</a></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:green">Y</span></td>
 <td class="org-left"><span style="color:green">Y</span></td>
@@ -988,7 +988,7 @@ I'm only listing tools that support proper highlighting and commenting.
 <td class="org-left"><span style="color:green">Y</span></td>
 </tr>
 <tr>
-<td class="org-left"><a href="#xournal">Xournal</a></td>
+<td class="org-left"><a class="link-up" href="#xournal">Xournal</a></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:red">N</span></td>
@@ -997,7 +997,7 @@ I'm only listing tools that support proper highlighting and commenting.
 <td class="org-left"><span style="color:green">Y</span></td>
 </tr>
 <tr>
-<td class="org-left"><a href="#polar"><b><b>Polar</b></b></a></td>
+<td class="org-left"><a class="link-up" href="#polar"><b><b>Polar</b></b></a></td>
 <td class="org-left"><span style="color:red">N</span>, <a href="https://github.com/burtonator/polar-bookshelf/issues/916">on roadmap</a></td>
 <td class="org-left"><span style="color:green">Y</span></td>
 <td class="org-left"><a href="https://github.com/burtonator/polar-bookshelf/issues/966"><span style="color:red">N</span></a></td>
@@ -1006,7 +1006,7 @@ I'm only listing tools that support proper highlighting and commenting.
 <td class="org-left"><span style="color:green">Y</span></td>
 </tr>
 <tr>
-<td class="org-left"><a href="#android_ann">Xodo/Adobe Reader</a></td>
+<td class="org-left"><a class="link-up" href="#android_ann">Xodo/Adobe Reader</a></td>
 <td class="org-left"><span style="color:green">Y</span>, offline</td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:red">N</span></td>
@@ -1017,22 +1017,22 @@ I'm only listing tools that support proper highlighting and commenting.
 </tbody>
 <tbody>
 <tr>
-<td class="org-left"><a href="#kindle">Kindle</a></td>
+<td class="org-left"><a class="link-up" href="#kindle">Kindle</a></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><span style="color:#ff9933">limited</span><a href="#org000001a">↑</a></td>
+<td class="org-left"><span style="color:#ff9933">limited</span><a class="link-up" href="#org000001a">↑</a></td>
 <td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><span style="color:#ff9933">limited</span><a href="#org0000019">↑</a></td>
-<td class="org-left"><span style="color:red">N</span>, <a href="#koreader">but koreader ↑</a></td>
+<td class="org-left"><span style="color:#ff9933">limited</span><a class="link-up" href="#org0000019">↑</a></td>
+<td class="org-left"><span style="color:red">N</span>, <a class="link-up" href="#koreader">but koreader ↑</a></td>
 </tr>
 <tr>
-<td class="org-left"><a href="#kobo"><b><b>Kobo</b></b></a></td>
-<td class="org-left"><span style="color:red">N</span>, <a href="#org000001d">broken↑</a></td>
+<td class="org-left"><a class="link-up" href="#kobo"><b><b>Kobo</b></b></a></td>
+<td class="org-left"><span style="color:red">N</span>, <a class="link-up" href="#org000001d">broken↑</a></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:green">Y</span></td>
 <td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><span style="color:red">N</span>, <a href="#org0000018">but possible↑</a></td>
-<td class="org-left"><span style="color:red">N</span>, <a href="#koreader">but koreader↑</a></td>
+<td class="org-left"><span style="color:red">N</span>, <a class="link-up" href="#org0000018">but possible↑</a></td>
+<td class="org-left"><span style="color:red">N</span>, <a class="link-up" href="#koreader">but koreader↑</a></td>
 </tr>
 </tbody>
 </table>
@@ -1043,7 +1043,7 @@ I'm only listing tools that support proper highlighting and commenting.
 <h2 id="infra"><a class="headerlink" href="#infra">¶</a><span class="section-number-2">7</span> Using annotation data</h2>
 <div class="outline-text-2" id="text-infra">
 <p>
-Considering there are multiple tools I have to use none of which is fully capable of doing everything I would ideally want from annotation system, I've developed my ways of getting closer to my <a href="#vision">ideal</a>.
+Considering there are multiple tools I have to use none of which is fully capable of doing everything I would ideally want from annotation system, I've developed my ways of getting closer to my <a class="link-up" href="#vision">ideal</a>.
 For that I've got some infrastructure set up.
 </p>
 <p>
@@ -1082,7 +1082,7 @@ Basically, these scripts take specific data source as input and produce org-mode
 I chose org-mode as I was already used to its features, keybindings and metadata. Also the hierarchy (e.g. book → highlight → comments) fits naturally into outline format. But not that it's a real necessity, I feel that as long as it's searchable plaintext, it's good enough.
 </p>
 <p>
-To search them, I've got a <b><b>global keybinding</b></b>, which invokes Emacs with incremental search prompt against the directory with rendered <samp class="inline">org</samp> files, which lets me interact with them in a blink on my computer. On Android I'm using <a href="https://play.google.com/store/apps/details?id=com.docsearch">DocSearch</a> indexer (sadly it's not incremental, and app is not open source, so I'm looking for alternative). I describe this extensively <a href="./pkm-search.html#personal_information">here</a>.
+To search them, I've got a <b><b>global keybinding</b></b>, which invokes Emacs with incremental search prompt against the directory with rendered <samp class="inline">org</samp> files, which lets me interact with them in a blink on my computer. On Android I'm using <a href="https://play.google.com/store/apps/details?id=com.docsearch">DocSearch</a> indexer (sadly it's not incremental, and app is not open source, so I'm looking for alternative). I describe this extensively <a href="pkm-search.html#personal_information">here</a>.
 </p>
 <p>
 Finally, I've got a <a href="https://www.lesbonscomptes.com/recoll">Recoll</a> indexer instance + web interface running on my VPS; so if necessary I can access and search annotations via the internet.
@@ -1126,7 +1126,7 @@ I've got two rules for that:
 <h3 id="org000002e"><a class="headerlink" href="#org000002e">¶</a>Life log</h3>
 <div class="outline-text-3" id="text-org000002e">
 <p>
-I'm a big fan of <a class="post-tag" href="./tags.html#lifelogging">#lifelogging</a> and all the timestamped highlights, comments and <a href="#org000001c">reading progress</a> from Kobo are an effortless (no manual logging!) contribution to my personal timeline, which I render and sync on my devices every few hours.
+I'm a big fan of <a class="post-tag" href="./tags.html#lifelogging">#lifelogging</a> and all the timestamped highlights, comments and <a class="link-up" href="#org000001c">reading progress</a> from Kobo are an effortless (no manual logging!) contribution to my personal timeline, which I render and sync on my devices every few hours.
 </p>
 <p>
 I sometimes use it when conversation with other people comes to awkward silence, so I can recall something I was reading recently and spark off an interesting (well at least for me) topic.
@@ -1145,7 +1145,7 @@ I'd be interested to know what do you think, and how are you managing your annot
 <h4 id="org0000030">updates</h4>
 <div class="outline-text-4" id="text-org0000030">
 <ul class="org-ul">
-<li><b>2019-12-02</b>: added <a href="#other_tools">section</a> with suggestions by other people.</li>
+<li><b>2019-12-02</b>: added <a class="link-up" href="#other_tools">section</a> with suggestions by other people.</li>
 </ul>
 </div>
 </div>

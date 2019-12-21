@@ -82,14 +82,14 @@
 
     <section class="content">
     <p>
-<b>TLDR</b>: in this post I'm going to be exploring <a href="#why">missed opportunities</a> at engaging and interacting with your personal data and digital trace,
-and speculating on <a href="#exports_are_hard">why is it that way</a> and <a href="#data_mirror">how to make it easier</a>.
+<b>TLDR</b>: in this post I'm going to be exploring <a class="link-down" href="#why">missed opportunities</a> at engaging and interacting with your personal data and digital trace,
+and speculating on <a class="link-down" href="#exports_are_hard">why is it that way</a> and <a class="link-down" href="#data_mirror">how to make it easier</a>.
 </p>
 <p>
 It might seem like a long rant, but I promise you I am not a kind of person who whines and vents just for the sake of it!
 </p>
 <p>
-In this particular post I'm just building up motivation and engaging you, and I <a href="#what_do_i_do">do have</a> some workarounds and suggestions.
+In this particular post I'm just building up motivation and engaging you, and I <a class="link-down" href="#what_do_i_do">do have</a> some workarounds and suggestions.
 This article got long enough, so I will explain them in detail in the second part.
 </p>
 <p>
@@ -177,7 +177,7 @@ We have so much data, yet it just sits there doing nothing.
 <p>
 Now and then <a href="https://github.com/woop/awesome-quantified-self#applications-and-platforms">some startup</a> pops up that connects together couple of APIs for a fee.
 I don't want to pick on startups but typically it's something trivial like displaying calories consumed from your food tracker app on the same plot with calories burnt from your fitness tracker.
-Trivial is okay, and I do acknowledge it's way harder to implement than it looks (I even <a href="#exports_are_hard">explore why later</a>).
+Trivial is okay, and I do acknowledge it's way harder to implement than it looks (I even <a class="link-down" href="#exports_are_hard">explore why later</a>).
 The actually sad thing is that as a user, you're lucky if you use the right kind of fitness tracker that the service supports, or if you agree with their analysis methodology. Otherwise, sorry!
 </p>
 <p>
@@ -1106,7 +1106,7 @@ Each data exporter comes with minimal bindings that merely map json/sqlite expor
 That way anyone who wishes to use data can kick off some reasonable representation, which is not overfitted to my specific needs.
 </p>
 <p>
-Higher level querying and access, specific to myself is implemented in <a href="./mypkg.html#examples">my.</a> package (note that this post is still in draft stage).
+Higher level querying and access, specific to myself is implemented in <a href="mypkg.html#examples">my.</a> package (note that this post is still in draft stage).
 </p>
 <p>
 <a href="https://github.com/karlicoss/my"><code class="inline">my.</code></a> package allows me to query my data from anywhere, enabling me to use familiar data processing, analysis and visualization tools, and enabling various integrations.
@@ -1120,15 +1120,15 @@ As a nice byproduct I've also finally figured out a reliable way to deal with <a
 <h3 id="org000001a"><a class="headerlink" href="#org000001a">¶</a>how do I use the data?</h3>
 <div class="outline-text-3" id="text-org000001a">
 <p>
-Finally, some tools and scripts I've implemented to bring closer interactions <a href="#why">that I want</a>:
+Finally, some tools and scripts I've implemented to bring closer interactions <a class="link-up" href="#why">that I want</a>:
 </p>
 <ul class="org-ul">
 <li><a href="pkm-search.html">personal search engine</a> for quick incremental search in my data and digital trace</li>
 <li><a href="orger.html">orger</a>: tool to convert data into org-mode views for quick search and overview
 <ul class="org-ul">
-<li><a href="./orger-todos.html#reddit">also</a> for prioritizing content consumption (e.g. processing Reddit saves)</li>
-<li><a href="./orger-todos.html#krill">also</a> for populating my spaced repetition queue</li>
-<li><a href="./orger-todos.html#telegram2org">also</a> for creating TODOs straight from Telegram messages</li>
+<li><a href="orger-todos.html#reddit">also</a> for prioritizing content consumption (e.g. processing Reddit saves)</li>
+<li><a href="orger-todos.html#krill">also</a> for populating my spaced repetition queue</li>
+<li><a href="orger-todos.html#telegram2org">also</a> for creating TODOs straight from Telegram messages</li>
 </ul></li>
 <li><a href="./grasp.html">grasp</a>, browser extension to clip links straight into my org-mode notes</li>
 <li><a href="https://github.com/karlicoss/promnesia">promnesia</a>, browser extension to escape silos, unify annotations and browsing history from different data sources (still somewhat WIP and needs final touches, but planning to release soon)</li>
@@ -1188,6 +1188,8 @@ Let me know if you can think of any other data integrations you are missing and 
     <br>
     <div>Discussion:</div>
     <ul>
+    
+        <li><a href="https://news.ycombinator.com/item?id=21844105"><b>hackernews</b></a></li>
     
         <li><a href="https://lobste.rs/s/ztwbh4/sad_state_personal_data_infrastructure">lobste.rs</a></li>
     
@@ -3562,7 +3564,7 @@ By personal information I refer to things like todo list, personal wiki or whate
 <h3 id="org_mode"><a class="headerlink" href="#org_mode">¶</a>Org mode notes</h3>
 <div class="outline-text-3" id="text-org_mode">
 <p>
-For the most part, I keep things in Org mode, and I use Emacs to work with it. Apart from regular means of plaintext search (I'll write about it <a href="#other">later</a>), for me it's important to search over tags:
+For the most part, I keep things in Org mode, and I use Emacs to work with it. Apart from regular means of plaintext search (I'll write about it <a class="link-down" href="#other">later</a>), for me it's important to search over tags:
 </p>
 <ul class="org-ul">
 <li><a href="https://orgmode.org/manual/Matching-tags-and-properties.html"><code class="inline">org-tags-view</code></a> is available by default and an easy way to run simple tag searches</li>
@@ -3595,7 +3597,7 @@ Here are some typical workflows with my org-mode:
 I see an interesting article or think of something which would be good to share with a friend, but at the moment it's not quite a good time to send it.  I can just capture it and attach a tag (e.g. <samp class="inline">ann</samp> or <samp class="inline">jeremy</samp>). That way next time we chat I can just look up things under their tag and send them.
 </p>
 <p>
-It works the other way around as well: imagine they sent me a link or asked me to do something, but I can't do it immediately. I have a special script that converts chat messages into todo items and automatically attaches the corresponding tag. I write more about it <a href="./orger-todos.html#telegram2org">here</a>.
+It works the other way around as well: imagine they sent me a link or asked me to do something, but I can't do it immediately. I have a special script that converts chat messages into todo items and automatically attaches the corresponding tag. I write more about it <a href="orger-todos.html#telegram2org">here</a>.
 </p></li>
 <li><p>
 assembling blog posts
@@ -3628,7 +3630,7 @@ Sadly export tool stopped working because of API restrictions, but I'm not using
 </ul>
 <p>
 Most services where I can comment, write or leave annotation, I'm mirroring as org-mode.
-I write about it in detail here: <a href="./orger.html">part I</a>, <a href="./orger-todos.html">part II</a>.
+I write about it in detail here: <a href="orger.html">part I</a>, <a href="orger-todos.html">part II</a>.
 </p>
 <p>
 That gives me source data for a search engine over anything I've ever:
@@ -3644,7 +3646,7 @@ That gives me source data for a search engine over anything I've ever:
 All these files are either non-Org or somewhat heavy for structured Org-mode search. In addition, I have many old files from my pre-orgmode era when I was using Gitit or Zim.
 </p>
 <p>
-To search over them, I'm using Emacs and Ripgrep (you can read why <a href="#org0000004">later</a>):
+To search over them, I'm using Emacs and Ripgrep (you can read why <a class="link-down" href="#org0000004">later</a>):
 </p>
 <p>
 <a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L130-L134"><code class="inline">my/search</code></a>
@@ -3654,7 +3656,7 @@ runs ripgrep against <code class="inline">my/search-targets</code> variable cont
 The interesting bit about <code class="inline">my/search</code> is <a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L87-L127"><code class="inline">--my/one-off-helm-follow-mode</code></a> call. It's a somewhat horrible hack that  automatically enables helm-follow mode so you don't have to press <code class="inline">C-c C-f</code> every time you invoke helm.
 </p>
 <p>
-Finally, to make sure I can invoke search in an instance, I'm using a <a href="#org0000005">global keybinding</a>.
+Finally, to make sure I can invoke search in an instance, I'm using a <a class="link-down" href="#org0000005">global keybinding</a>.
 </p>
 <p>
 Here's a <b>demo</b> <a href="https://file.globalupload.io/wu7HYYyJaY.gif">gif (5Mb)</a> of using this to search 'greg egan' in my knowledge repository.
@@ -3718,7 +3720,7 @@ You can save <a href="https://lh3.googleusercontent.com/FweBE2T3T3wZwJC64DQgtGj8
 Searches can be displayed as persistent widgets, e.g. I find convenient to have a phone screen dedicated to 'Buy' search (<code class="inline">t.buy</code> query) or 'Do at work' search (<code class="inline">t.@work</code> query).
 </p>
 <p>
-As I described <a href="#org0000002">above</a>, I keep few saved search queries for some friends so I can recall what I wanted to discuss with them.
+As I described <a class="link-up" href="#org0000002">above</a>, I keep few saved search queries for some friends so I can recall what I wanted to discuss with them.
 </p>
 </div>
 </div>
@@ -3734,7 +3736,7 @@ It's a fulltext indexing and search app for plaintext files, but apparently it e
 </p>
 <p>
 I find it convenient for quick search over things that are not imported in Orgzly, e.g. <samp class="inline">.txt</samp> chat logs (Telegram, VK) and huge org-mode files
-I described <a href="#other">above</a>.
+I described <a class="link-up" href="#other">above</a>.
 </p>
 <p>
 It's a bit backwards in terms of UI (even though I like that it's compact and functional), but main downside is it's not opensource.
@@ -4116,7 +4118,7 @@ Ripgrep searches in real files on my disk, so any changes are reflected <b>immed
 It would still be nice to avoid unnecessary disk operations, and of course, semantic search would be great, and that is definitely going to require some sort of indexer.
 </p>
 <p>
-I've got a <a href="#org0000013">global keybinding</a> to invoke Emacs with a prompt to search in code, so I can do in in a blink.
+I've got a <a class="link-down" href="#org0000013">global keybinding</a> to invoke Emacs with a prompt to search in code, so I can do in in a blink.
 </p>
 <p>
 Here's a <a href="https://file.globalupload.io/onCac7sh9M.gif">gif (3.5 Mb)</a> showing it <b>in action</b>: say, I am working on testing a browser extension, and need to interact with in via hotkeys. I remember using <code class="inline">pyautogui</code> for automating <a href="https://github.com/karlicoss/grasp">Grasp</a> tests, but I forgot which function I actually need to use. Searching for 'pyautogui' brings me all the repositories where I'm using it and lets me quickly find out the command I need without having to read the documentation all over again.
@@ -4128,7 +4130,7 @@ Here's a <a href="https://file.globalupload.io/onCac7sh9M.gif">gif (3.5 Mb)</a> 
 <h2 id="appendix_cloudmacs"><a class="headerlink" href="#appendix_cloudmacs">¶</a><span class="section-number-2">8</span> Appendix: searching away from computer</h2>
 <div class="outline-text-2" id="text-appendix_cloudmacs">
 <p>
-I'm running Spacemacs on my VPS, so if I'm not near my computer and <a href="#android">phone search</a> doesn't help for some reason, I can still access and search my data. You can read about it <a href="./cloudmacs.html">here</a>.
+I'm running Spacemacs on my VPS, so if I'm not near my computer and <a class="link-up" href="#android">phone search</a> doesn't help for some reason, I can still access and search my data. You can read about it <a href="cloudmacs.html">here</a>.
 </p>
 </div>
 </div>
@@ -4178,7 +4180,7 @@ Most of the time I've got Emacs window open on one of my desktops anyway, but so
 I've got a global keybinding (<code class="inline">Win+m</code>) that invokes this script. In addition the script accepts a function to call so you can open Emacs with a search prompt, so I have few more handy keybindings:
 </p>
 <ul class="org-ul">
-<li><a id="org0000005"></a> <code class="inline">Win+F1</code> for searching in my <a href="#other">notes and knowledge repository</a></li>
+<li><a id="org0000005"></a> <code class="inline">Win+F1</code> for searching in my <a class="link-up" href="#other">notes and knowledge repository</a></li>
 </ul>
 <div class="org-src-container">
 <pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment"> -eux</span>
@@ -4247,7 +4249,7 @@ These tips might be pretty obvious, but they belong to this post, so here you go
 <ul class="org-ul">
 <li>if you're on Spacemacs, use <a href="https://github.com/syl20bnr/spacemacs/tree/develop"><code class="inline">develop</code></a> branch. Master is pretty backwards.</li>
 <li><p>
-search with <code class="inline">ripgrep</code> instead of <code class="inline">grep</code> (not only in Emacs!). It's just <a href="#org0000004">better</a>.
+search with <code class="inline">ripgrep</code> instead of <code class="inline">grep</code> (not only in Emacs!). It's just <a class="link-up" href="#org0000004">better</a>.
 </p>
 <p>
 In Spacemacs, set up your <code class="inline">init.el</code>:
@@ -4572,7 +4574,7 @@ and introduce a motivating <b>real life problem</b> that I actually had to solve
 <p>
 Say, you own a Kindle book. Electronic books are great. Yeah okay they don't smell like the real thing, but the possibility of highlighting bits of text and typing your comment without distracting on external means of annotation is incredibly helpful.
 However, then when you want to go through your highlights after reading to refresh your memory or perhaps to share with a friend,
-you find out it's <a href="./annotating.html#kindle">not so convenient</a> to actually quickly access them.
+you find out it's <a href="annotating.html#kindle">not so convenient</a> to actually quickly access them.
 </p>
 <p>
 So you decide to write a script that would process the highlights, perhaps group them by book, displays timestamps and render a nice HTML page
@@ -4679,7 +4681,7 @@ Yes, it's a messy format and not very machine friendly. But oh well it's a file,
 For the purposes of this post, to keep the example output clean, I am just using plain text.
 Even though it's not quite HTML with CSS, it still looks kinda nice, doesn't it?
 
-</span><aside class="sidenote">if you're wondering why <code class="inline">yield</code> I'll explain it <a href="#iterator">further down</a></aside></div>
+</span><aside class="sidenote">if you're wondering why <code class="inline">yield</code> I'll explain it <a class="link-down" href="#iterator">further down</a></aside></div>
 <p>
 Now:
 </p>
@@ -4815,7 +4817,7 @@ One obvious problem is that it's very nontransparent and <b>relies on implicit c
 E.g. if your <code class="inline">Highlight</code> object also returned book's ISBN and you filled it with some arbitrary text, it would almost surely not be a valid ISBN, that might cause failures down the pipeline.
 </p>
 <p>
-Sometimes it's inevitable though, e.g. I'm giving an example <a href="#dataframe">later</a>.
+Sometimes it's inevitable though, e.g. I'm giving an example <a class="link-down" href="#dataframe">later</a>.
 </p>
 </div>
 </div>
@@ -4876,7 +4878,7 @@ Well, some people tried! So I'll review a python library that does that: <a href
 </p>
 <p>
 Let's try it on our program and see how it works.
-To make it easier to compare to <a href="#org0000002">the original code</a> I suggest duplicating the tab in a separate window and tiling them side by side.
+To make it easier to compare to <a class="link-up" href="#org0000002">the original code</a> I suggest duplicating the tab in a separate window and tiling them side by side.
 </p>
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr">33: </span><span class="org-keyword">from</span> result <span class="org-keyword">import</span> Ok, Err
@@ -4944,7 +4946,7 @@ We use <a href="https://docs.python.org/3/library/itertools.html#itertools.tee">
 </p>
 <p>
 Cool, we rendered as much as we can, and we get the error displayed as well, so nothing crashes and the users are not as unhappy.
-The error looks a bit out of nowhere, but at least it's there. We will address how we can improve it <a href="#error_context">later</a>.
+The error looks a bit out of nowhere, but at least it's there. We will address how we can improve it <a class="link-down" href="#error_context">later</a>.
 </p>
 <p>
 Sadly, for someone else who looks at <code class="inline">iter_highlights</code> or <code class="inline">iter_books</code> signatures, it's not obvious that it yields <code class="inline">Result</code> objects, not <code class="inline">Book/Highlight</code> objects without reading the code.
@@ -5066,7 +5068,7 @@ Glad you asked! Several reasons I'm using generators here:
 <ul class="org-ul">
 <li>it makes code cleaner because there is <b>no need for temporary lists</b>, calling <code class="inline">.append</code> and then returning them in the end.</li>
 <li>it makes code faster (again, no temporary lists), and also it <b>feels faster</b> because you print items as soon as you process</li>
-<li><code class="inline">Iterator</code> type is <b>covariant</b>, whereas <code class="inline">List</code> is not. I'm elaborating on it <a href="#org000000a">later</a>. I'm also using <a href="https://docs.python.org/3/library/typing.html#typing.Sequence"><code class="inline">Sequence</code></a> for the same reason.</li>
+<li><code class="inline">Iterator</code> type is <b>covariant</b>, whereas <code class="inline">List</code> is not. I'm elaborating on it <a class="link-down" href="#org000000a">later</a>. I'm also using <a href="https://docs.python.org/3/library/typing.html#typing.Sequence"><code class="inline">Sequence</code></a> for the same reason.</li>
 </ul>
 </div>
 </div>
@@ -5109,10 +5111,10 @@ So, let's try and rewrite the code using <code class="inline">returns.result.Res
 </pre>
 </div>
 <p>
-So far the only difference from <a href="#org0000002">the original code</a> is <a href="https://returns.readthedocs.io/en/latest/pages/result.html#safe"><code class="inline">@safe</code></a> decorator on <code class="inline">parse_entry</code>, which basically deals with catching all exceptions and wrapping into <code class="inline">Result</code>.
+So far the only difference from <a class="link-up" href="#org0000002">the original code</a> is <a href="https://returns.readthedocs.io/en/latest/pages/result.html#safe"><code class="inline">@safe</code></a> decorator on <code class="inline">parse_entry</code>, which basically deals with catching all exceptions and wrapping into <code class="inline">Result</code>.
 </p>
 <p>
-As a consequence, <code class="inline">iter_highlights</code> required no changes in its body. (which may not be a desirable thing as we'll see <a href="#error_context">later</a>)
+As a consequence, <code class="inline">iter_highlights</code> required no changes in its body. (which may not be a desirable thing as we'll see <a class="link-down" href="#error_context">later</a>)
 </p>
 <div class="org-src-container">
 <pre class="src src-mypy" id="org000000e"><span class="linenr">43: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> cast
@@ -5138,7 +5140,7 @@ Ok, that definitely requires some explanation…
 <code class="inline">returns</code> library public API doesn't provide any way to tell between success and failure (<a href="https://returns.readthedocs.io/en/latest/pages/result.html#what-is-the-difference-between-success-and-success">kind of deliberately</a>). The types <code class="inline">_Success</code> and <code class="inline">_Failure</code> are private, and the only method that we can use seems to be <a href="https://returns.readthedocs.io/en/latest/pages/result.html#returns.result.Result.value_or"><code class="inline">result.value_or(default)</code></a>. This method returns the success value if <code class="inline">result</code> is <code class="inline">Success</code> and falls back to <code class="inline">default</code> if <code class="inline">result</code> is a <code class="inline">Failure</code>. So we use a <b>sentinel object to distinguish</b> between actual success values and <code class="inline">default</code> ones, and also have to trick mypy with a <code class="inline">cast</code>.
 </p>
 <p>
-Apart from this obscurity, the function suffers from exactly the same issues as the <code class="inline">iter_books</code> implementation from <a href="#org0000008">the previous section</a>, and for the same reason: contract is too complicated to be expressed in mypy.
+Apart from this obscurity, the function suffers from exactly the same issues as the <code class="inline">iter_books</code> implementation from <a class="link-up" href="#org0000008">the previous section</a>, and for the same reason: contract is too complicated to be expressed in mypy.
 </p>
 <p>
 One could argue that this function is going to look awkward anyway since we need to separate list of results into successes and errors. Let's see the function that should be more straightforward:
@@ -5272,7 +5274,7 @@ If we use it we would have to pay with sacrificing type safety or <b>extra code 
 <h2 id="kiss"><a class="headerlink" href="#kiss">¶</a><span class="section-number-2">8</span> Solution: keep it simple</h2>
 <div class="outline-text-2" id="text-kiss">
 <p>
-It seems that we were on the right track with the <a href="#container">container type</a> and <a href="#combinators">combinators</a>, but never completely satisfied.
+It seems that we were on the right track with the <a class="link-up" href="#container">container type</a> and <a class="link-up" href="#combinators">combinators</a>, but never completely satisfied.
 Let's recall the problems we had again:
 </p>
 <ul class="org-ul">
@@ -5415,7 +5417,7 @@ Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
 <p>
-Yay, it works and typechecks. Now you can decide for yourself how clean it is by comparing it side by side with <a href="#org0000002">the original code</a> without error handling. You'd see that the only differences (apart from indentation) is code for error handling.
+Yay, it works and typechecks. Now you can decide for yourself how clean it is by comparing it side by side with <a class="link-up" href="#org0000002">the original code</a> without error handling. You'd see that the only differences (apart from indentation) is code for error handling.
 </p>
 <p>
 <a name="upsides"></a>
@@ -5453,7 +5455,7 @@ But these numbers might not make sense under a realistic data flow.
 <p>
 If you don't need to handle the error, you can just yield it up the call stack as we do in <code class="inline">iter_books</code>.
 </p></li>
-<li><b>doesn't require modifying existing types</b>, and introducing invalid states that signal errors (mentioned <a href="#error_object">here</a>)</li>
+<li><b>doesn't require modifying existing types</b>, and introducing invalid states that signal errors (mentioned <a class="link-up" href="#error_object">here</a>)</li>
 <li><p>
 <a id="org000000a"></a> <b>correct variance</b> for free
 </p>
@@ -5478,7 +5480,7 @@ Downsides:
 <code class="inline">isinstance</code> looks a bit verbose and might be frowned upon as it's <b>often considered as code smell</b>
 </p>
 <p>
-We can't get around this and hide in a helper function for the same reason mentioned <a href="#org0000009">above</a>, 
+We can't get around this and hide in a helper function for the same reason mentioned <a class="link-up" href="#org0000009">above</a>, 
 but it might be solved in mypy in <a href="https://github.com/python/mypy/issues/5206">some near future</a>, though.
 </p></li>
 </ul>
@@ -5500,7 +5502,7 @@ hopefully you'll figure out parts of your projects where it's applicable.
 <h3 id="api"><a class="headerlink" href="#api">¶</a>Custom error type</h3>
 <div class="outline-text-3" id="text-api">
 <p>
-While <a class="coderef" href="#coderef-simple_error_api" onmouseout="CodeHighlightOff(this, 'coderef-simple_error_api');" onmouseover="CodeHighlightOn(this, 'coderef-simple_error_api');">the three line API</a> is enough in most cases, you might want something more fancy.
+While <a class="coderef link-up" href="#coderef-simple_error_api" onmouseout="CodeHighlightOff(this, 'coderef-simple_error_api');" onmouseover="CodeHighlightOn(this, 'coderef-simple_error_api');">the three line API</a> is enough in most cases, you might want something more fancy.
 </p>
 <p>
 One improvement is allowing <b>arbitrary error type</b>.
@@ -5678,7 +5680,7 @@ Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
 <p>
-Even though you never actually return <code class="inline">Error</code> under the non-defensive policy, you <b>don't have to change any of the type signatures</b>: <code class="inline">Iterator[int]</code> is still a perfectly good <code class="inline">Iterator[Res[int]]</code>. Thanks, <a href="#org000000a">covariance</a>!
+Even though you never actually return <code class="inline">Error</code> under the non-defensive policy, you <b>don't have to change any of the type signatures</b>: <code class="inline">Iterator[int]</code> is still a perfectly good <code class="inline">Iterator[Res[int]]</code>. Thanks, <a class="link-up" href="#org000000a">covariance</a>!
 </p>
 <p>
 I'm using this technique in my <a href="https://github.com/karlicoss/kobuddy#as-a-standalone-app">Kobo parser</a> and control it via <samp class="inline">--errors</samp> argument.
@@ -5690,11 +5692,11 @@ On CI, it runs in non-defensive mode of course. However when other people use th
 <h3 id="error_context"><a class="headerlink" href="#error_context">¶</a>Improving error context</h3>
 <div class="outline-text-3" id="text-error_context">
 <p>
-If you remember <a href="#org0000006">the output</a>, we got a rather cryptic <samp class="inline">ERROR: Couldn't match regex!</samp>.
+If you remember <a class="link-up" href="#org0000006">the output</a>, we got a rather cryptic <samp class="inline">ERROR: Couldn't match regex!</samp>.
 That's of course not desirable because you can't easily tell what exactly is causing the error.
 </p>
 <p>
-Normally, you'd use  <a href="https://www.python.org/dev/peps/pep-3134/#explicit-exception-chaining">exception chaining</a>, i.e. <code class="inline">raise EXCEPTION from CAUSE</code> syntax <a class="coderef" href="#coderef-throw_exc" onmouseout="CodeHighlightOff(this, 'coderef-throw_exc');" onmouseover="CodeHighlightOn(this, 'coderef-throw_exc');">here</a>.
+Normally, you'd use  <a href="https://www.python.org/dev/peps/pep-3134/#explicit-exception-chaining">exception chaining</a>, i.e. <code class="inline">raise EXCEPTION from CAUSE</code> syntax <a class="coderef link-up" href="#coderef-throw_exc" onmouseout="CodeHighlightOff(this, 'coderef-throw_exc');" onmouseover="CodeHighlightOn(this, 'coderef-throw_exc');">here</a>.
 </p>
 <div><span class="before-aside">
 However the problem is that <code class="inline">raise ... from ...</code> is a compound statement, so you can't write <code class="inline">yield RuntimeError(entry) from e</code>.
@@ -5740,7 +5742,7 @@ Now that's better!
 <h3 id="warnings"><a class="headerlink" href="#warnings">¶</a>Fine grained defensiveness</h3>
 <div class="outline-text-3" id="text-warnings">
 <p>
-Remember <a href="#org0000001"><code class="inline">parse_entry</code></a>? Its return type is <code class="inline">Highlight</code>, so it can return a single highlight or throw a single error,
+Remember <a class="link-up" href="#org0000001"><code class="inline">parse_entry</code></a>? Its return type is <code class="inline">Highlight</code>, so it can return a single highlight or throw a single error,
 that will be handled by <code class="inline">iter_highlights</code>. 
 </p>
 <p>
@@ -5785,7 +5787,7 @@ Of course, this complicates code, and you can't predict all possible errors anyw
 <h3 id="dataframe"><a class="headerlink" href="#dataframe">¶</a>Error values, revisited</h3>
 <div class="outline-text-3" id="text-dataframe">
 <p>
-One case where I find <a href="#error_object">'special error value'</a> more or less appropriate is when your function returns a pandas <code class="inline">DataFrame</code>.
+One case where I find <a class="link-up" href="#error_object">'special error value'</a> more or less appropriate is when your function returns a pandas <code class="inline">DataFrame</code>.
 </p>
 <p>
 When manipulating dataframes, you typically don't iterate explicitly, but apply more idiomatic (and often efficient!) combinators like <code class="inline">merge</code>, <code class="inline">join</code>, <code class="inline">concat</code> etc,
@@ -5869,7 +5871,7 @@ Success: no issues found in 1 source file
 It certainly looks unconventional, and you can only use that as long as your object inherits from <code class="inline">Exception</code>.
 </p>
 <p>
-We can exploit this for our specific case on <code class="inline">Union[T, Exception]</code> by using <a href="#unwrap"><code class="inline">unwrap</code></a>:
+We can exploit this for our specific case on <code class="inline">Union[T, Exception]</code> by using <a class="link-up" href="#unwrap"><code class="inline">unwrap</code></a>:
 </p>
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">print_books</span>():
@@ -6517,7 +6519,7 @@ I'll present some examples and use cases, that will hopefully be helpful to you 
 </p>
 <p>
 There is also <a href="orger-todos.html">second part</a> where I'm explaining how it can be used to process Reddit, create quick tasks from Telegram messages and help with spaced repetition.
-If you're impatient, you can jump straight to a <a href="#demo">demo</a>.
+If you're impatient, you can jump straight to a <a class="link-down" href="#demo">demo</a>.
 </p>
 <div class="outline-2" id="outline-container-org0000001">
 <h2 id="intro"><a class="headerlink" href="#intro">¶</a><span class="section-number-2">1</span> Intro</h2>
@@ -6624,11 +6626,11 @@ Even with event summaries only it can already be very useful to search over. Wha
 <li>child nodes</li>
 </ul>
 <p>
-See <a href="#examples">'Examples'</a> section for more.
+See <a class="link-down" href="#examples">'Examples'</a> section for more.
 </p>
 <p>
 So as you can see orger itself is a really not sophisticated tool, at least until you spend time trying to reimplement the same.
-As always the devil is in the details (look at that cheeky <code class="inline">my.github_data</code> import), which I'll explain <a href="#org0000002">further</a>.
+As always the devil is in the details (look at that cheeky <code class="inline">my.github_data</code> import), which I'll explain <a class="link-down" href="#org0000002">further</a>.
 </p>
 </div>
 </div>
@@ -6871,7 +6873,7 @@ If you find something confusing or you write your own module and want to contrib
 <h3 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/instapaper.py">instapaper</a></h3>
 <div class="outline-text-3" id="text-org0000005">
 <p>
-Instapaper <a href="./annotating.html#instapaper">doesn't have search</a> over annotations, so I implemented my own!
+Instapaper <a href="annotating.html#instapaper">doesn't have search</a> over annotations, so I implemented my own!
 </p>
 </div>
 </div>
@@ -6934,7 +6936,7 @@ I stopped using Remember The Milk a while ago, but there are still some tasks an
 Lets me create todo tasks from Telegram messages in couple of taps (you can't use share function on them in Android).
 </p>
 <p>
-I write about it <a href="./orger-todos.html#telegram2org">in the second part</a>.
+I write about it <a href="orger-todos.html#telegram2org">in the second part</a>.
 </p>
 </div>
 </div>
@@ -6945,7 +6947,7 @@ I write about it <a href="./orger-todos.html#telegram2org">in the second part</a
 Displays and lets me search my Reddit saved posts/comments.
 </p>
 <p>
-I write about it <a href="./orger-todos.html#reddit">in the second part</a>.
+I write about it <a href="orger-todos.html#reddit">in the second part</a>.
 </p>
 </div>
 </div>
@@ -6998,7 +7000,7 @@ I figured it was worth extracting this 'pattern' in a separate <a href="https://
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li><p>
-it solves <a href="#org0000000">my problems</a>! 
+it solves <a class="link-up" href="#org0000000">my problems</a>! 
 </p>
 <p>
 I won't go long into Org-mode propaganda, there are people that do it better than me out there, but for me it's good because it's a decent balance between ease of use and ease of augmenting.
@@ -7032,7 +7034,7 @@ Also the fact that it's a real programming language rather than some YAML config
 Apart from, obviously, opening org mode file in your favorite text editor, one major strength of this system is being able to effortlessly search over them. 
 </p>
 <p>
-I'm writing extensively about my information search setup <a href="./pkm-search.html#personal_information">here</a>. In summary:
+I'm writing extensively about my information search setup <a href="pkm-search.html#personal_information">here</a>. In summary:
 </p>
 <ul class="org-ul">
 <li>on my desktop I'm just using spacemacs or <a href="https://github.com/karlicoss/cloudmacs">cloudmacs</a> from web browser</li>
@@ -8194,7 +8196,7 @@ Free term: -8.942
 </div>
 </div>
 <p>
-TLDR: when I read I try to read <a href="https://help.open.ac.uk/active-reading">actively</a>, which for me mainly involves using various tools to annotate content: highlight and leave notes as I read. I've programmed <a href="#infra">data providers</a> that parse them and provide nice interface to interact with this data from other tools. My <a href="#org0000000">automated scripts</a> use them to render these annotations in human readable and searchable plaintext and generate <a href="#todos">TODOs</a>/<a href="#spaced_repetition">spaced repetition</a> items.
+TLDR: when I read I try to read <a href="https://help.open.ac.uk/active-reading">actively</a>, which for me mainly involves using various tools to annotate content: highlight and leave notes as I read. I've programmed <a class="link-down" href="#infra">data providers</a> that parse them and provide nice interface to interact with this data from other tools. My <a class="link-down" href="#org0000000">automated scripts</a> use them to render these annotations in human readable and searchable plaintext and generate <a class="link-down" href="#todos">TODOs</a>/<a class="link-down" href="#spaced_repetition">spaced repetition</a> items.
 </p>
 <p>
 In this post I'm gonna elaborate on all of that and give some motivation, review of these tools (mainly with the focus on open source thus extendable software) and my vision on how they could work in an ideal world.
@@ -8221,13 +8223,13 @@ it's easier to recall the content I already read, I just skim through highlights
 In particular, often I'd run on something on the internet that I remember reading before. If I have annotations for that, I can quickly go through them and restore the context.
 </p></li>
 <li>it's easier to recommend content to other people because you can refer to specific moments or points you liked/disliked</li>
-<li>it's got social value if highlights are visible to other people (e.g. <a href="#hypothesis">Hypothesis</a>, Medium, Goodreads)</li>
+<li>it's got social value if highlights are visible to other people (e.g. <a class="link-down" href="#hypothesis">Hypothesis</a>, Medium, Goodreads)</li>
 <li>it helps with <a href="./notes.html#book_scoring">book scoring</a>. If I don't have any highlights, it probably means that the content was not interesting at all for me. Fiction books are not an exception: I tend to highlight use of language I liked, inspirational things, etc.</li>
 <li>it serves as activity log if you are into <a class="post-tag" href="./tags.html#lifelogging">#lifelogging</a>.</li>
-<li>you can <a href="#todos">populate your TODO list</a> and <a href="#spaced_repetition">step up your spaced repetition game</a>.</li>
+<li>you can <a class="link-down" href="#todos">populate your TODO list</a> and <a class="link-down" href="#spaced_repetition">step up your spaced repetition game</a>.</li>
 </ul>
 <p>
-I'm going to review some of the tools I tried using and still using and highlight their different positive and negative aspects. If you're getting impatient, you can skip straight to my <a href="#comparison">comparison table</a>.
+I'm going to review some of the tools I tried using and still using and highlight their different positive and negative aspects. If you're getting impatient, you can skip straight to my <a class="link-down" href="#comparison">comparison table</a>.
 </p>
 </div>
 </div>
@@ -8245,7 +8247,7 @@ I won't really write much about it for one reason which is a big deal: while you
 Pocket API doesn't support exporting highlights too, or to be precise it seems to be hidden. If you need it you can use <a href="https://github.com/karlicoss/pockexport">my script</a> where I hacked around it.
 </p>
 <p>
-Also, interesting enough, <a href="#kobo">Kobo reader</a> has got Pocket integration, but for some reason when you read Pocket articles on Kobo, you can't highlight at all (let alone syncing highlights with Pocket). Not sure what's the purpose of this integration.
+Also, interesting enough, <a class="link-down" href="#kobo">Kobo reader</a> has got Pocket integration, but for some reason when you read Pocket articles on Kobo, you can't highlight at all (let alone syncing highlights with Pocket). Not sure what's the purpose of this integration.
 </p>
 <p>
 Pocket was acquired by Mozilla in 2017, which might be a good thing, but so far their main focus seem to be readability features.
@@ -8367,7 +8369,7 @@ Not available for <a href="https://github.com/karlicoss/grasp/issues/15">mobile 
 <h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a>Summary</h3>
 <div class="outline-text-3" id="text-org0000009">
 <p>
-<a href="#hypothesis">Hypothes.is</a> is a clear winner for me on desktop and I'm using <a href="#instapaper">Instapaper</a> for offline reading on Android.
+<a class="link-up" href="#hypothesis">Hypothes.is</a> is a clear winner for me on desktop and I'm using <a class="link-up" href="#instapaper">Instapaper</a> for offline reading on Android.
 </p>
 </div>
 </div>
@@ -8376,7 +8378,7 @@ Not available for <a href="https://github.com/karlicoss/grasp/issues/15">mobile 
 <h2 id="pdfs"><a class="headerlink" href="#pdfs">¶</a><span class="section-number-2">3</span> Annotating PDFs</h2>
 <div class="outline-text-2" id="text-pdfs">
 <p>
-Small disclaimer: I don't own Mac/Windows so have very little idea what's going on in their world. Sorry! You can take a look at a section I added with <a href="#other_tools">other people's suggestions</a>.
+Small disclaimer: I don't own Mac/Windows so have very little idea what's going on in their world. Sorry! You can take a look at a section I added with <a class="link-down" href="#other_tools">other people's suggestions</a>.
 </p>
 <p>
 PDF format is a complicated beast, and its native annotations are a whole different story to annotating web.
@@ -8484,7 +8486,7 @@ Existing annotations in PDF can be imported via <a href="https://github.com/weir
 Xournal is different from the above PDF viewers, since it isn't using types of annotations described in the PDF standard and instead uses its own <a href="http://xournal.sourceforge.net/manual.html#tools">tools</a>.
 </p>
 <p>
-It doesn't modify the original files and instead keeps <samp class="inline">.xoj</samp> file containing the metadata and pointing at the original PDF, so in that sense it's pretty similar to <a href="#org000000c">okular</a>. Similarly, it's xournal-specific and can't be viewed anywhere else unless you export it in PDF before sharing (at which point your annotations wold basically become background images).
+It doesn't modify the original files and instead keeps <samp class="inline">.xoj</samp> file containing the metadata and pointing at the original PDF, so in that sense it's pretty similar to <a class="link-up" href="#org000000c">okular</a>. Similarly, it's xournal-specific and can't be viewed anywhere else unless you export it in PDF before sharing (at which point your annotations wold basically become background images).
 </p>
 </div>
 </div>
@@ -8593,7 +8595,7 @@ Perhaps the only differences are how you can search and access the annotations.
 Kindle stores bookmarks, notes and highlights in <code class="inline">My Clippings.txt</code> on the device.
 The good thing about the format is that it's already plaintext and fairly human readable, so you might be happy with that alone.
 The format is a bit nasty for parsing (as you would expect from something with <samp class="inline">.txt</samp> extension). Dates are locale dependent, document locators may or may not have roman numerals, separators are inconsistent at times, etc. 
-When I was using Kindle I was just copying the file from time to time, and you can set up some sort of automatic copying when your device is connected similarly to  what I'm doing with <a href="#org0000018">Kobo</a>.
+When I was using Kindle I was just copying the file from time to time, and you can set up some sort of automatic copying when your device is connected similarly to  what I'm doing with <a class="link-down" href="#org0000018">Kobo</a>.
 </p>
 <p>
 Kindle uploads your notes and highlights to <a href="https://read.amazon.com">Kindle Cloud Reader</a>
@@ -8722,7 +8724,7 @@ Often when I watch lectures or some talks on Youtube or in VLC, I want to leave 
 This is pretty much not possible apart from opening your text editor and manually recording the position in video. All the video annotation software I know of is more oriented towards video editing/effects etc.
 </p>
 <p>
-So, if I'm watching something in browser, I normally end up using <a href="#grasp">grasp</a> and manually type the timestamp.
+So, if I'm watching something in browser, I normally end up using <a class="link-up" href="#grasp">grasp</a> and manually type the timestamp.
 </p>
 <p>
 This is distracting, but even worse is that whatever you use have no means of quickly jumping to the timestamp you recorded; you'd have to move the slider to it manually. 
@@ -8750,7 +8752,7 @@ They don't tamper with browser selection, so you can still use external annotati
 </p></li>
 <li><p>
 <a href="https://genius.com/web-annotator">Genius</a>.
-Annotated lyrics on genius.com looks neat, however I'm not sure what are its benefits over <a href="#hypothesis">Hypothesis</a>.
+Annotated lyrics on genius.com looks neat, however I'm not sure what are its benefits over <a class="link-up" href="#hypothesis">Hypothesis</a>.
 </p>
 <p>
 Also, while I was looking up about Genius, I've stumbled upon an unusual opinion opposing web annotation: <a href="https://www.vijithassar.com/2641/how-to-block-genius-annotations">how to block Genius annotations</a>:
@@ -8794,9 +8796,9 @@ Suggested by few people, in particular <a href="https://twitter.com/deadly_onion
 <p>
 Recommendation <a href="https://twitter.com/i/web/status/1147473985514459137">from a follower</a>.
 </p></li>
-<li><a href="https://www.kontxt.io">Kontxt</a>: paid, looks very similar to <a href="#hypothesis">Hypothesis</a>, also offers some sort of CMS.
+<li><a href="https://www.kontxt.io">Kontxt</a>: paid, looks very similar to <a class="link-up" href="#hypothesis">Hypothesis</a>, also offers some sort of CMS.
 I couldn't find anything on it on Reddit/Hackernews, not sure if it's still under development.</li>
-<li><a href="https://histre.com">Histre</a>: also looks similar to <a href="#hypothesis">Hypothesis</a> in terms of web annotation, also enhances browser history.
+<li><a href="https://histre.com">Histre</a>: also looks similar to <a class="link-up" href="#hypothesis">Hypothesis</a> in terms of web annotation, also enhances browser history.
 Here's <a href="https://news.ycombinator.com/item?id=20133031">HN discussion</a>.</li>
 <li><p>
 <a href="https://hookproductivity.com/help/general/videos">Hook productivity</a>: paid MacOS tool that allows to interlink content between different apps.
@@ -8814,7 +8816,7 @@ Recommended by <a href="https://beepb00p.xyz/annotating.html#isso-11">Jay</a>.
 <li><a href="https://ant.umn.edu/documentation#%23section-annotating-and-commenting">VideoAnt</a>: looks like video annotation tool. Suggested by <a href="https://news.ycombinator.com/item?id=21653827">philyg</a>.</li>
 <li><p>
 <a href="https://products.office.com/en-gb/onenote/digital-note-taking-app">Microsoft OneNote</a>: can be used for PDF annotation, but it seems that you have to import PDF in OneNote first, so it'll become locked in the app.
-However that allows extra features like using pen to annotate on top of PDF. In that regard it's similar to <a href="#xournal">Xournal</a>.
+However that allows extra features like using pen to annotate on top of PDF. In that regard it's similar to <a class="link-up" href="#xournal">Xournal</a>.
 </p>
 <p>
 Suggested by <a href="https://news.ycombinator.com/user?id=daok">daok</a>.
@@ -8864,7 +8866,7 @@ Most current annotation engines are also somewhat tedious to interact with, add 
 Solving this requires the tools being <b><b>cross platform</b></b> and <b><b>cross format</b></b>.
 </p>
 <p>
-<a href="#hypothesis">Hypothes.is</a> is the move in the right direction, but there are plenty of other things starting from unsupported formats and working offline to paper books which are missed out.
+<a class="link-up" href="#hypothesis">Hypothes.is</a> is the move in the right direction, but there are plenty of other things starting from unsupported formats and working offline to paper books which are missed out.
 </p>
 <p>
 While current sad state of different tools/products for different forms of content is understandable, ideally it should be be <b><b>format agnostic</b></b> with some proper way of
@@ -8889,7 +8891,7 @@ While brain-computer interfaces are not quite there, even with existing technolo
 plaintext representations, indexing and incremental search.
 </p>
 <p>
-Personally, I'm solving this problem via <a href="#org0000000">orger</a>.
+Personally, I'm solving this problem via <a class="link-down" href="#org0000000">orger</a>.
 </p></li>
 <li><p>
 <b><b>Separate metadata</b></b>
@@ -8901,7 +8903,7 @@ Annotations layer should be loosely coupled to the underlying content. If it's n
 For physical sources of information it matters even more; although they might decline completely in few decades, who knows.
 </p>
 <p>
-Good examples of this approach are <a href="#polar">Polar</a> and <a href="#hypothesis">Hypothesis</a> which keep metadata in well defined format with locators.
+Good examples of this approach are <a class="link-up" href="#polar">Polar</a> and <a class="link-up" href="#hypothesis">Hypothesis</a> which keep metadata in well defined format with locators.
 </p></li>
 <li><p>
 <b><b>Data ownership and resilience</b></b>
@@ -8928,7 +8930,7 @@ and are not very friendly towards people who do want to comment anonymously.
 </p>
 <p>
 Perhaps in some near future we could <b><b>ditch all the internet commenting platforms</b></b> and rely on annotation layer instead.
-<a href="#hypothesis">Hypothesis</a> basically lets you do that already, perhaps with a little work on design (sidebar is not necessarily convenient for social commenting), it could serve that purpose.
+<a class="link-up" href="#hypothesis">Hypothesis</a> basically lets you do that already, perhaps with a little work on design (sidebar is not necessarily convenient for social commenting), it could serve that purpose.
 </p>
 <p>
 I also consider comments people write as projections of their minds and it would be great to give other people easier access to that to get to know each other better.
@@ -8976,17 +8978,17 @@ I'm only listing tools that support proper highlighting and commenting.
 </thead>
 <tbody>
 <tr>
-<td class="org-left"><a href="#instapaper">Instapaper</a></td>
+<td class="org-left"><a class="link-up" href="#instapaper">Instapaper</a></td>
 <td class="org-left"><span style="color:green">Y</span>, offline</td>
 <td class="org-left">n/a</td>
-<td class="org-left"><span style="color:red">N</span><a href="#org0000003">↑</a></td>
+<td class="org-left"><span style="color:red">N</span><a class="link-up" href="#org0000003">↑</a></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:red">N</span></td>
 </tr>
 <tr>
-<td class="org-left"><a href="#wallabag">Wallabag</a></td>
-<td class="org-left"><span style="color:red">N</span><a href="#org0000005">↑</a></td>
+<td class="org-left"><a class="link-up" href="#wallabag">Wallabag</a></td>
+<td class="org-left"><span style="color:red">N</span><a class="link-up" href="#org0000005">↑</a></td>
 <td class="org-left">n/a</td>
 <td class="org-left"><a href="https://github.com/wallabag/wallabag/issues/3635"><span style="color:red">N</span></a></td>
 <td class="org-left"><span style="color:red">N</span></td>
@@ -8994,7 +8996,7 @@ I'm only listing tools that support proper highlighting and commenting.
 <td class="org-left"><span style="color:green">Y</span></td>
 </tr>
 <tr>
-<td class="org-left"><a href="#hypothesis"><b><b>Hypothesis</b></b></a></td>
+<td class="org-left"><a class="link-up" href="#hypothesis"><b><b>Hypothesis</b></b></a></td>
 <td class="org-left"><span style="color:green">Y</span></td>
 <td class="org-left"><span style="color:green">Y</span></td>
 <td class="org-left"><span style="color:green">Y</span></td>
@@ -9003,7 +9005,7 @@ I'm only listing tools that support proper highlighting and commenting.
 <td class="org-left"><span style="color:green">Y</span></td>
 </tr>
 <tr>
-<td class="org-left"><a href="#grasp">Copy-paste</a></td>
+<td class="org-left"><a class="link-up" href="#grasp">Copy-paste</a></td>
 <td class="org-left"><span style="color:green">Y</span>, offline</td>
 <td class="org-left"><span style="color:red">N</span> (manual)</td>
 <td class="org-left"><span style="color:green">Y</span></td>
@@ -9014,16 +9016,16 @@ I'm only listing tools that support proper highlighting and commenting.
 </tbody>
 <tbody>
 <tr>
-<td class="org-left"><a href="#org000000b">Okular</a></td>
+<td class="org-left"><a class="link-up" href="#org000000b">Okular</a></td>
 <td class="org-left">n/a</td>
 <td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><span style="color:#ff9933">limited</span><a href="#org000000d">↑</a></td>
-<td class="org-left"><span style="color:#ff9933">limited</span><a href="#org000000c">↑</a></td>
+<td class="org-left"><span style="color:#ff9933">limited</span><a class="link-up" href="#org000000d">↑</a></td>
+<td class="org-left"><span style="color:#ff9933">limited</span><a class="link-up" href="#org000000c">↑</a></td>
 <td class="org-left"><span style="color:green">Y</span>, file sync</td>
 <td class="org-left"><span style="color:green">Y</span></td>
 </tr>
 <tr>
-<td class="org-left"><a href="#pdftools">Emacs pdf-tools</a></td>
+<td class="org-left"><a class="link-up" href="#pdftools">Emacs pdf-tools</a></td>
 <td class="org-left">n/a</td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:red">N</span></td>
@@ -9032,7 +9034,7 @@ I'm only listing tools that support proper highlighting and commenting.
 <td class="org-left"><span style="color:green">Y</span></td>
 </tr>
 <tr>
-<td class="org-left"><a href="#orgnoter">Emacs org-noter</a></td>
+<td class="org-left"><a class="link-up" href="#orgnoter">Emacs org-noter</a></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:green">Y</span></td>
@@ -9041,7 +9043,7 @@ I'm only listing tools that support proper highlighting and commenting.
 <td class="org-left"><span style="color:green">Y</span></td>
 </tr>
 <tr>
-<td class="org-left"><a href="#hypothesis_pdf">Hypothesis (PDF)</a></td>
+<td class="org-left"><a class="link-up" href="#hypothesis_pdf">Hypothesis (PDF)</a></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:green">Y</span></td>
 <td class="org-left"><span style="color:green">Y</span></td>
@@ -9050,7 +9052,7 @@ I'm only listing tools that support proper highlighting and commenting.
 <td class="org-left"><span style="color:green">Y</span></td>
 </tr>
 <tr>
-<td class="org-left"><a href="#xournal">Xournal</a></td>
+<td class="org-left"><a class="link-up" href="#xournal">Xournal</a></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:red">N</span></td>
@@ -9059,7 +9061,7 @@ I'm only listing tools that support proper highlighting and commenting.
 <td class="org-left"><span style="color:green">Y</span></td>
 </tr>
 <tr>
-<td class="org-left"><a href="#polar"><b><b>Polar</b></b></a></td>
+<td class="org-left"><a class="link-up" href="#polar"><b><b>Polar</b></b></a></td>
 <td class="org-left"><span style="color:red">N</span>, <a href="https://github.com/burtonator/polar-bookshelf/issues/916">on roadmap</a></td>
 <td class="org-left"><span style="color:green">Y</span></td>
 <td class="org-left"><a href="https://github.com/burtonator/polar-bookshelf/issues/966"><span style="color:red">N</span></a></td>
@@ -9068,7 +9070,7 @@ I'm only listing tools that support proper highlighting and commenting.
 <td class="org-left"><span style="color:green">Y</span></td>
 </tr>
 <tr>
-<td class="org-left"><a href="#android_ann">Xodo/Adobe Reader</a></td>
+<td class="org-left"><a class="link-up" href="#android_ann">Xodo/Adobe Reader</a></td>
 <td class="org-left"><span style="color:green">Y</span>, offline</td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:red">N</span></td>
@@ -9079,22 +9081,22 @@ I'm only listing tools that support proper highlighting and commenting.
 </tbody>
 <tbody>
 <tr>
-<td class="org-left"><a href="#kindle">Kindle</a></td>
+<td class="org-left"><a class="link-up" href="#kindle">Kindle</a></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><span style="color:#ff9933">limited</span><a href="#org000001a">↑</a></td>
+<td class="org-left"><span style="color:#ff9933">limited</span><a class="link-up" href="#org000001a">↑</a></td>
 <td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><span style="color:#ff9933">limited</span><a href="#org0000019">↑</a></td>
-<td class="org-left"><span style="color:red">N</span>, <a href="#koreader">but koreader ↑</a></td>
+<td class="org-left"><span style="color:#ff9933">limited</span><a class="link-up" href="#org0000019">↑</a></td>
+<td class="org-left"><span style="color:red">N</span>, <a class="link-up" href="#koreader">but koreader ↑</a></td>
 </tr>
 <tr>
-<td class="org-left"><a href="#kobo"><b><b>Kobo</b></b></a></td>
-<td class="org-left"><span style="color:red">N</span>, <a href="#org000001d">broken↑</a></td>
+<td class="org-left"><a class="link-up" href="#kobo"><b><b>Kobo</b></b></a></td>
+<td class="org-left"><span style="color:red">N</span>, <a class="link-up" href="#org000001d">broken↑</a></td>
 <td class="org-left"><span style="color:red">N</span></td>
 <td class="org-left"><span style="color:green">Y</span></td>
 <td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><span style="color:red">N</span>, <a href="#org0000018">but possible↑</a></td>
-<td class="org-left"><span style="color:red">N</span>, <a href="#koreader">but koreader↑</a></td>
+<td class="org-left"><span style="color:red">N</span>, <a class="link-up" href="#org0000018">but possible↑</a></td>
+<td class="org-left"><span style="color:red">N</span>, <a class="link-up" href="#koreader">but koreader↑</a></td>
 </tr>
 </tbody>
 </table>
@@ -9105,7 +9107,7 @@ I'm only listing tools that support proper highlighting and commenting.
 <h2 id="infra"><a class="headerlink" href="#infra">¶</a><span class="section-number-2">7</span> Using annotation data</h2>
 <div class="outline-text-2" id="text-infra">
 <p>
-Considering there are multiple tools I have to use none of which is fully capable of doing everything I would ideally want from annotation system, I've developed my ways of getting closer to my <a href="#vision">ideal</a>.
+Considering there are multiple tools I have to use none of which is fully capable of doing everything I would ideally want from annotation system, I've developed my ways of getting closer to my <a class="link-up" href="#vision">ideal</a>.
 For that I've got some infrastructure set up.
 </p>
 <p>
@@ -9144,7 +9146,7 @@ Basically, these scripts take specific data source as input and produce org-mode
 I chose org-mode as I was already used to its features, keybindings and metadata. Also the hierarchy (e.g. book → highlight → comments) fits naturally into outline format. But not that it's a real necessity, I feel that as long as it's searchable plaintext, it's good enough.
 </p>
 <p>
-To search them, I've got a <b><b>global keybinding</b></b>, which invokes Emacs with incremental search prompt against the directory with rendered <samp class="inline">org</samp> files, which lets me interact with them in a blink on my computer. On Android I'm using <a href="https://play.google.com/store/apps/details?id=com.docsearch">DocSearch</a> indexer (sadly it's not incremental, and app is not open source, so I'm looking for alternative). I describe this extensively <a href="./pkm-search.html#personal_information">here</a>.
+To search them, I've got a <b><b>global keybinding</b></b>, which invokes Emacs with incremental search prompt against the directory with rendered <samp class="inline">org</samp> files, which lets me interact with them in a blink on my computer. On Android I'm using <a href="https://play.google.com/store/apps/details?id=com.docsearch">DocSearch</a> indexer (sadly it's not incremental, and app is not open source, so I'm looking for alternative). I describe this extensively <a href="pkm-search.html#personal_information">here</a>.
 </p>
 <p>
 Finally, I've got a <a href="https://www.lesbonscomptes.com/recoll">Recoll</a> indexer instance + web interface running on my VPS; so if necessary I can access and search annotations via the internet.
@@ -9188,7 +9190,7 @@ I've got two rules for that:
 <h3 id="org000002e"><a class="headerlink" href="#org000002e">¶</a>Life log</h3>
 <div class="outline-text-3" id="text-org000002e">
 <p>
-I'm a big fan of <a class="post-tag" href="./tags.html#lifelogging">#lifelogging</a> and all the timestamped highlights, comments and <a href="#org000001c">reading progress</a> from Kobo are an effortless (no manual logging!) contribution to my personal timeline, which I render and sync on my devices every few hours.
+I'm a big fan of <a class="post-tag" href="./tags.html#lifelogging">#lifelogging</a> and all the timestamped highlights, comments and <a class="link-up" href="#org000001c">reading progress</a> from Kobo are an effortless (no manual logging!) contribution to my personal timeline, which I render and sync on my devices every few hours.
 </p>
 <p>
 I sometimes use it when conversation with other people comes to awkward silence, so I can recall something I was reading recently and spark off an interesting (well at least for me) topic.
@@ -9207,7 +9209,7 @@ I'd be interested to know what do you think, and how are you managing your annot
 <h4 id="org0000030">updates</h4>
 <div class="outline-text-4" id="text-org0000030">
 <ul class="org-ul">
-<li><b>2019-12-02</b>: added <a href="#other_tools">section</a> with suggestions by other people.</li>
+<li><b>2019-12-02</b>: added <a class="link-up" href="#other_tools">section</a> with suggestions by other people.</li>
 </ul>
 </div>
 </div>
@@ -9443,7 +9445,7 @@ That's just a fancy name for somewhere where you store your notes. Some of the t
 </div>
 </div>
 <div class="outline-2" id="outline-container-org0000002">
-<h2 id="org0000002"><a class="headerlink" href="#org0000002">¶</a><span class="section-number-2">3</span> <a href="./pkm-search.html">Searching information</a></h2>
+<h2 id="org0000002"><a class="headerlink" href="#org0000002">¶</a><span class="section-number-2">3</span> <a href="pkm-search.html">Searching information</a></h2>
 <div class="outline-text-2" id="text-3">
 </div>
 </div>
@@ -9452,11 +9454,11 @@ That's just a fancy name for somewhere where you store your notes. Some of the t
 <div class="outline-text-2" id="text-4">
 <p>
 Capturing or clipping is a way of getting pieces of information/links in your personal wiki. 
-It has to be seamless, requiring minimal effort. I'm using:
+It has to be seamless, requiring <b>minimal</b> cognitife effort. I'm using:
 </p>
 <ul class="org-ul">
 <li>on computer: <a href="https://orgmode.org/manual/Capture.html">org-capture</a></li>
-<li>in web browser: <a href="./grasp.html">grasp</a>, web extension I wrote</li>
+<li>in web browser: <a href="grasp.html">grasp</a>, web extension I wrote</li>
 <li>on Android: <a href="https://github.com/orgzly/orgzly-android">Orgzly</a></li>
 <li>whiteboards</li>
 </ul>
@@ -9466,12 +9468,12 @@ It has to be seamless, requiring minimal effort. I'm using:
 <h2 id="org0000004"><a class="headerlink" href="#org0000004">¶</a><span class="section-number-2">5</span> <span class="todo STRT">STRT</span> processing and organizing information</h2>
 <div class="outline-text-2" id="text-5">
 <ul class="org-ul">
-<li>see posts about Orger (<a href="./orger.html">1</a>, <a href="./orger-todos.html">2</a>), in particular, <a href="./orger-todos.html#reddit">reddit processing workflow</a></li>
+<li>see posts about Orger (<a href="orger.html">1</a>, <a href="orger-todos.html">2</a>), in particular, <a href="orger-todos.html#reddit">reddit processing workflow</a></li>
 </ul>
 </div>
 </div>
 <div class="outline-2" id="outline-container-org0000005">
-<h2 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><span class="section-number-2">6</span> <a href="./annotating.html">Annotating information</a></h2>
+<h2 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><span class="section-number-2">6</span> <a href="annotating.html">Annotating information</a></h2>
 <div class="outline-text-2" id="text-6">
 </div>
 </div>
@@ -9500,7 +9502,7 @@ I'll release it sometime soon!
 <ul class="org-ul">
 <li><a href="https://orgmode.org/worg/org-contrib/org-drill.html">org-drill</a> on my desktop</li>
 <li><a href="https://www.memrise.com">Memrise</a> to learn German on my phone</li>
-<li>example of using Orger <a href="./orger-todos.html#krill">to drill new words from my Kobo reader</a></li>
+<li>example of using Orger <a href="orger-todos.html#krill">to drill new words from my Kobo reader</a></li>
 </ul>
 </div>
 </div>
