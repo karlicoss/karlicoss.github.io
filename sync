@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eu
+set -eux
 DIR="$(dirname "$0")"
 cd "$DIR"
 
@@ -10,6 +10,12 @@ SELF='sync' # script name
 
 
 BEEPB00P_STABLE=yes "$HBLOG/rebuild"
+
+# some feed readers might not accept large RSS/atom feeds...
+# TODO that's also argument against inline images I suppose
+(( $(stat --printf="%s" $SRC/rss.xml ) < 512 * 1024 ))
+(( $(stat --printf="%s" $SRC/atom.xml) < 512 * 1024 ))
+
 rsync -av --delete --exclude "$SELF" --exclude ".git" "$SRC" .
 
 # meh
