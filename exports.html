@@ -137,7 +137,7 @@ It's quite possible that I'm slipping extra complexity somewhere and I would be 
 <li><a href="#org0000009">disk space concerns</a></li>
 </ul>
 </li>
-<li><a href="#exportwrapper">6. exportwrapper</a>
+<li><a href="#arctee">6. arctee</a>
 <ul>
 <li><a href="#org000000a"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-28 23:56]</span></span> I guess in 'DAL' mention that bwrapper is useful here too.</a></li>
 </ul>
@@ -918,8 +918,8 @@ I haven't personally tried it.
 </div>
 </div>
 <div class="outline-2" id="outline-container-org0000034">
-<h2 id="exportwrapper"><a class="headerlink" href="#exportwrapper">¶</a><span class="section-number-2">6</span> exportwrapper</h2>
-<div class="outline-text-2" id="text-exportwrapper">
+<h2 id="arctee"><a class="headerlink" href="#arctee">¶</a><span class="section-number-2">6</span> arctee</h2>
+<div class="outline-text-2" id="text-arctee">
 <p>
 TODO eh. still would be nice to have a better name…  
 </p>
@@ -928,7 +928,10 @@ This is a <a href="https://github.com/karlicoss/exportwrapper">script</a> I'm us
 </p>
 <p>
 Many things are very common to all data exports, regardless the source.
-This script aims to minimize common boilerplate during exporting plaintext data from APIs.
+In vast majority of cases you want to fetch some data, save it in a json file long with a timestamp and potentially compress.
+</p>
+<p>
+This script aims to minimize common boilerplate:
 </p>
 <ul class="org-ul">
 <li><samp class="inline">path</samp> argument allows easy ISO8601 timestamping and guarantees atomic writing, so you'd never end up with corrupted exports.</li>
@@ -939,7 +942,7 @@ This script aims to minimize common boilerplate during exporting plaintext data 
 Example:
 </p>
 <pre class="example">
-exportwrapper '/exports/rtm/{utcnow}.ical.xz' --compression xz --retries 3 -- /soft/export/rememberthemilk.py
+arctee '/exports/rtm/{utcnow}.ical.xz' --compression xz --retries 3 -- /soft/export/rememberthemilk.py
 </pre>
 <ol class="org-ol">
 <li><p>
