@@ -108,9 +108,10 @@ It's quite possible that I'm slipping extra complexity somewhere and I would be 
 <ul>
 <li><a href="#org0000000">public API</a></li>
 <li><a href="#org0000001">private API</a></li>
-<li><a href="#org0000002">scraping</a></li>
-<li><a href="#org0000003">manual export (GDPR/takeout)</a></li>
-<li><a href="#org0000004"><span class="todo TODO">TODO</span> phones and devices?</a></li>
+<li><a href="#export_scrape">scraping</a></li>
+<li><a href="#export_manual">manual export (GDPR/takeout)</a></li>
+<li><a href="#export_phone">phone apps</a></li>
+<li><a href="#export_devices"><span class="todo TODO">TODO</span> devices?</a></li>
 </ul>
 </li>
 <li><a href="#types">3. Types of exports</a>
@@ -123,55 +124,56 @@ It's quite possible that I'm slipping extra complexity somewhere and I would be 
 <li><a href="#export_layer">4. Export layer</a>
 <ul>
 <li><a href="#bindings">use existing bindings</a></li>
-<li><a href="#org0000005">do not mess with raw data</a></li>
-<li><a href="#org0000006">do not be too defensive</a></li>
+<li><a href="#org0000002">do not mess with raw data</a></li>
+<li><a href="#org0000003">do not be too defensive</a></li>
 <li><a href="#output_stdout">output to stdout</a></li>
-<li><a href="#org0000007"><span class="timestamp-wrapper"><span class="timestamp">[2019-12-26 23:22]</span></span> allow reading credentials from a file</a></li>
+<li><a href="#org0000004"><span class="timestamp-wrapper"><span class="timestamp">[2019-12-26 23:22]</span></span> allow reading credentials from a file</a></li>
 </ul>
 </li>
-<li><a href="#org0000008">5. Data organization: how to keep it</a>
+<li><a href="#org0000005">5. Data organization: how to keep it</a>
 <ul>
 <li><a href="#timestamps">naming and timestamping</a></li>
 <li><a href="#backups">backups</a></li>
 <li><a href="#sync">synchronizing</a></li>
-<li><a href="#org0000009">disk space concerns</a></li>
+<li><a href="#org0000006">disk space concerns</a></li>
 </ul>
 </li>
 <li><a href="#arctee">6. arctee</a>
 <ul>
-<li><a href="#org000000a"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-28 23:56]</span></span> I guess in 'DAL' mention that bwrapper is useful here too.</a></li>
+<li><a href="#org0000007"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-28 23:56]</span></span> I guess in 'DAL' mention that bwrapper is useful here too.</a></li>
 </ul>
 </li>
-<li><a href="#org000000b">7. <span class="todo TODO">TODO</span> Running/scheduling exports etc?</a>
+<li><a href="#org0000008">7. <span class="todo TODO">TODO</span> Running/scheduling exports etc?</a>
 <ul>
-<li><a href="#org000000c"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-30 00:59]</span></span> going to overlap with data organization bit?</a></li>
-<li><a href="#org000000d"><span class="todo TODO">TODO</span> suggest using fcron?   <span class="tag"><span class="exports">exports</span></span></a></li>
-<li><a href="#org000000e"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 22:26]</span></span> I feel a real lack of user-friendly job running software</a></li>
+<li><a href="#org0000009"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-30 00:59]</span></span> going to overlap with data organization bit?</a></li>
+<li><a href="#org000000a"><span class="todo TODO">TODO</span> suggest using fcron?   <span class="tag"><span class="exports">exports</span></span></a></li>
+<li><a href="#org000000b"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 22:26]</span></span> I feel a real lack of user-friendly job running software</a></li>
 </ul>
 </li>
 <li><a href="#dal">8. Data access layer (DAL)</a>
 <ul>
-<li><a href="#org000000f"><span class="todo TODO">TODO</span> normalization? E.g. new field was added, basically schema change. That means old data needs to be adapted</a></li>
-<li><a href="#org0000010"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> would be nice to have main for models?   <span class="tag"><span class="dataliberation">dataliberation</span></span></a></li>
-<li><a href="#org0000011"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> do simple html dashboards for each exporter?   <span class="tag"><span class="dataliberation">dataliberation</span></span></a></li>
-<li><a href="#org0000012"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> take single path as argument? or maybe glob=true?   <span class="tag"><span class="dataliberation">dataliberation</span></span></a></li>
-<li><a href="#org0000013"><span class="todo TODO">TODO</span> it's also an experiment in organizing code. demo etc, immediately visualize stuff with pandas   <span class="tag"><span class="exports">exports</span> <span class="blog">blog</span> <span class="dal">dal</span></span></a></li>
+<li><a href="#org000000c"><span class="todo TODO">TODO</span> normalization? E.g. new field was added, basically schema change. That means old data needs to be adapted</a></li>
+<li><a href="#org000000d"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> would be nice to have main for models?   <span class="tag"><span class="dataliberation">dataliberation</span></span></a></li>
+<li><a href="#org000000e"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> do simple html dashboards for each exporter?   <span class="tag"><span class="dataliberation">dataliberation</span></span></a></li>
+<li><a href="#org000000f"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> take single path as argument? or maybe glob=true?   <span class="tag"><span class="dataliberation">dataliberation</span></span></a></li>
+<li><a href="#org0000010"><span class="todo TODO">TODO</span> it's also an experiment in organizing code. demo etc, immediately visualize stuff with pandas   <span class="tag"><span class="exports">exports</span> <span class="blog">blog</span> <span class="dal">dal</span></span></a></li>
 </ul>
 </li>
-<li><a href="#org0000014">9. Similar projects and efforts</a>
+<li><a href="#org0000011">9. Similar projects and efforts</a>
 <ul>
-<li><a href="#org0000015">perkeep</a></li>
-<li><a href="#org0000016"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-09-18 02:13]</span></span> Perkeep lets you permanently keep your stuff, for life. /r/selfhosted   <span class="tag"><span class="pkm">pkm</span></span></a></li>
-<li><a href="#org0000017"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-23 16:21]</span></span> Perkeep: personal storage system for life | Hacker News   <span class="tag"><span class="graspw">graspw</span> <span class="pkm">pkm</span></span></a></li>
-<li><a href="#org0000018"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 16:19]</span></span> perkeep   <span class="tag"><span class="gr">gr</span></span></a></li>
-<li><a href="#org0000019"><span class="todo TODO">TODO</span> <span class="priority">[A]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-15 21:31]</span></span> Digital Tools I Wish Existed | Hacker News   <span class="tag"><span class="perkeep">perkeep</span></span></a></li>
-<li><a href="#org000001a"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-23 16:19]</span></span> Perkeep – Open-source data modeling, storing, search, sharing and synchronizing | Hacker News   <span class="tag"><span class="graspw">graspw</span> <span class="pkm">pkm</span></span></a></li>
+<li><a href="#org0000012">perkeep</a></li>
+<li><a href="#org0000013"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-09-18 02:13]</span></span> Perkeep lets you permanently keep your stuff, for life. /r/selfhosted   <span class="tag"><span class="pkm">pkm</span></span></a></li>
+<li><a href="#org0000014"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-23 16:21]</span></span> Perkeep: personal storage system for life | Hacker News   <span class="tag"><span class="graspw">graspw</span> <span class="pkm">pkm</span></span></a></li>
+<li><a href="#org0000015"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 16:19]</span></span> perkeep   <span class="tag"><span class="gr">gr</span></span></a></li>
+<li><a href="#org0000016"><span class="todo TODO">TODO</span> <span class="priority">[A]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-15 21:31]</span></span> Digital Tools I Wish Existed | Hacker News   <span class="tag"><span class="perkeep">perkeep</span></span></a></li>
+<li><a href="#org0000017"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-23 16:19]</span></span> Perkeep – Open-source data modeling, storing, search, sharing and synchronizing | Hacker News   <span class="tag"><span class="graspw">graspw</span> <span class="pkm">pkm</span></span></a></li>
 </ul>
 </li>
+<li><a href="#org0000018">10. --</a></li>
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000001b">
+<div class="outline-2" id="outline-container-org0000019">
 <h2 id="design"><a class="headerlink" href="#design">¶</a><span class="section-number-2">1</span> Design principles</h2>
 <div class="outline-text-2" id="text-design">
 <p>
@@ -179,16 +181,17 @@ So just as reminder, what is the goal of data mirror?
 Having personal data <b>continuously/periodically synchronized</b> to the file system; and having <b>programmatic access</b> to it.
 </p>
 <p>
-That may be not that hard to achieve for one particular data source, but when you want to use ten or more,
+That may be not that hard to achieve for one particular data source, but when you want to use ten or more (TODO link to what I export),
 each having its own quirks it becomes quite painful to write and support.
 So there is TODO are? lots of incentive to make is, simple, generic, reliable and flexible at the same time, which isn't an easy goal.
 </p>
-<p>
+<div><span class="before-aside">
 Cornerstone of my design is modularity and separation of concerns. Most of my pipelines for data liberation consist of the following layers:
-</p>
+
+</span><aside class="sidenote">please don't be terrified of the word 'layer', typically these are just single scripts</aside></div>
 <ul class="org-ul">
 <li><p>
-export layer TODO example and forward reference
+<a class="link-down" href="#export_layer">export layer</a>: knows how to get your data
 </p>
 <p>
 The purpose of export layer is to reliably fetch and serialize raw data on your disk.
@@ -198,26 +201,26 @@ Export script deals with dirty business of authorization, pagination, being tole
 </p>
 <p>
 Example: export layer for my <a href="https://github.com/karlicoss/endoexport/blob/e322b44ca1e6e5a779b4e7ea49564ba60d425bfe/export.py#L10-L15">Endomondo data</a> 
-is fetching workouts data from the API and prints the json out. That's all it does.
+is fetching workouts data from the API (using existing library bindings) and prints the json out. That's all it does.
 </p>
 <p>
-In theory, this layer is the only essential one; merely having raw json data on the filesystem enables you to use numerous tools to explore and analyze your data. However, long term you'll find yourself doing same manipulations all over again, and that's why we need:
+In theory, this layer is the only essential one; merely having raw json data on the filesystem enables you to use numerous tools to explore and analyze your data. However, long term you'll find yourself doing same manipulations all over again, and that's why we also need:
 </p></li>
 <li><p>
-data access layer (DAL)
+<a class="link-down" href="#dal">data access layer (DAL)</a>: knows how to read your data
 </p>
 <p>
-For brevity, I'll refer to it as <b>DAL</b> (Data Abstraction/Access Layer) TODO forward reference
+For brevity, I'll refer to it as <b>DAL</b> (Data Abstraction/Access Layer).
 </p>
 <p>
-Purpose of DAL is merely deserializing whatever export script dumped and providing minimalistic data bindings.
+Purpose of DAL is simply deserializing whatever export script dumped and providing minimalistic data bindings.
 It shouldn't worry about tokens, network errors, etc., once you have your data on the disk DAL should be able to handle it even when you're offline.
 </p>
 <p>
-TODO link to export?
+It's not meant to be too high level though TODO mypkg
 </p>
 <p>
-Example: DAL for Facebook <a href="https://github.com/karlicoss/fbmessengerexport/blob/a8f65a259dfa36ab6d175461994356947ded142a/model.py#L27-L47">Messenger</a> knows how to read messages from the database, access certain fields (e.g. message body) and handle obscure details like converting timestamps to <samp class="inline">datetime</samp> object. It's <b>not</b> trying to get messages from the API, which makes it way faster and reliable to interact with data.
+Example: <a href="https://github.com/karlicoss/fbmessengerexport/blob/a8f65a259dfa36ab6d175461994356947ded142a/model.py#L27-L47">DAL for Facebook Messenger</a> knows how to read messages from the database, access certain fields (e.g. message body) and handle obscure details like converting timestamps to <samp class="inline">datetime</samp> object. It's <b>not</b> trying to get messages from Facebook, which makes it way faster and more reliable to interact with data.
 </p></li>
 </ul>
 <p>
@@ -228,13 +231,16 @@ There is also what you could call the third layer which consists of downstream c
 These are the actually interesting bits of TODO that contain visualizations, interactions across different data sources etc. 
 I mention some of them <a href="sad-infra.html#mypkg">here</a>.
 </p>
+<p>
+Now I'm going to elaborate on implementing export layer.
+</p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000001f">
+<div class="outline-2" id="outline-container-org000001e">
 <h2 id="retrieve"><a class="headerlink" href="#retrieve">¶</a><span class="section-number-2">2</span> Retrieving data</h2>
 <div class="outline-text-2" id="text-retrieve">
 <p>
-First step in data liberation is to figure out how are you actually supposed to fetch your data?
+First step in exporting and liberating your data is to figure out how are you actually supposed to fetch it?
 </p>
 <p>
 This addresses the authorization problem. TODO?
@@ -255,7 +261,7 @@ That's the beauty of decoupling.
 <h3 id="org0000000"><a class="headerlink" href="#org0000000">¶</a>public API</h3>
 <div class="outline-text-3" id="text-org0000000">
 <p>
-You register your app, authorize it, get a token, and you free to call various endpoints and fetch whatever you want.   
+You register your app, authorize it, get a token, and you are free to call various endpoints and fetch whatever you want.   
 </p>
 <p>
 I won't really elaborate on it TODO, if you're reading this you probably have some idea how to use it.
@@ -264,6 +270,9 @@ Otherwise, I'm sure there are tutorials out there that would help you.
 <p>
 (if anyone knows decent ones, please let me know, I'll add links!)
 </p>
+<p>
+Examples: thankfully, most services out there offer public API to some extent
+</p>
 </div>
 </div>
 <div class="outline-3" id="outline-container-org0000001">
@@ -271,113 +280,187 @@ Otherwise, I'm sure there are tutorials out there that would help you.
 <div class="outline-text-3" id="text-org0000001">
 <p>
 Sometimes service doesn't offer an API. 
-But it's still very reasonable to use one when you've got backend and frontend that needs to communicate with it.
+But from the developer's perspective, it's still very reasonable to use one when you've got backend/frontend communication.
 </p>
 <p>
 So chances are, the service just isn't exposing it, but you can spy on the token/cookies in your browser devtools and use them to access the API.
 </p>
 <p>
-<a href="https://willschenk.com/articles/2019/reverse_engineering_apis_using_chrome/">https://willschenk.com/articles/2019/reverse_engineering_apis_using_chrome/</a> Reverse engineering APIs using Chrome Developer Tools – 
-awesome comprehensive tutorial on why, how and TODO resource for beginners
+You can read more about handling such data sources here:
 </p>
+<ul class="org-ul">
+<li><a href="https://willschenk.com/articles/2019/reverse_engineering_apis_using_chrome">Reverse engineering APIs using Chrome Developer Tools</a>: an extremely comprehensive and beginner-friendly tutorial</li>
+<li><a href="https://blog.tendigi.com/starbucks-should-really-make-their-apis-public-6b64a1c2e923">Starbucks should really make their API public</a>: demo of reverse engineering Starbucks Android app, featuring using proxy and ??? fingerprint</li>
+</ul>
 <p>
-<a href="https://blog.tendigi.com/starbucks-should-really-make-their-apis-public-6b64a1c2e923">https://blog.tendigi.com/starbucks-should-really-make-their-apis-public-6b64a1c2e923</a> huh, awesome, even some encryption…
+Some examples:
 </p>
+<ul class="org-ul">
+<li>for <a href="https://github.com/karlicoss/fbmessengerexport">exporting Messenger data</a>, I'm using <a href="https://fbchat.readthedocs.io/en/stable">fbchat</a> library. It works by tricking Facebook into believing it's a browser and interacting with private API.</li>
+<li>even though Pocket has API, to get highlights from it, you need to <a href="https://github.com/karlicoss/pockexport#setting-up">spy on API key</a> they use in browser</li>
+</ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000002">
-<h3 id="org0000002"><a class="headerlink" href="#org0000002">¶</a>scraping</h3>
-<div class="outline-text-3" id="text-org0000002">
+<div class="outline-3" id="outline-container-org000001a">
+<h3 id="export_scrape"><a class="headerlink" href="#export_scrape">¶</a>scraping</h3>
+<div class="outline-text-3" id="text-export_scrape">
 <p>
-Sometimes service doesn't even use API, e.g. serving HTML pages directly. (TODO hackernews?)
-Difficulties: DDOS protection, e.g. cloudflare.
-TODO keep browser profile or something?
+Sometimes service doesn't offer an API, doesn't use it even internally and serves HTML pages directly instead.
+Or, reverse engineering API is so painful that scraping becomes a more feasible option.
 </p>
 <p>
-<a href="https://news.ycombinator.com/item?id=15694118">https://news.ycombinator.com/item?id=15694118</a> Ask HN: What are best tools for web scraping?
+Apart from TODO link? difficulties, there are extras here:
+</p>
+<ul class="org-ul">
+<li>authorization is harder: you definitely need username/password and potentially even 2FA token</li>
+<li>DDOS protection: captchas, Cloudflare, etc.</li>
+<li>or even deliberate anti-scraping measures</li>
+</ul>
+<p>
+For Python the holy grail of scraping is <a href="https://scrapy.org">scrapy</a>:
+</p>
+<ul class="org-ul">
+<li><a href="http://sangaline.com/post/advanced-web-scraping-tutorial">Advanced Web Scraping Tutorial</a>: bypassing "403 Forbidden", captchas, and more</li>
+<li><a href="https://gist.github.com/alecxe/fc1527d6d9492b59c610">self-contained minimum example script to run scrapy</a></li>
+</ul>
+<p>
+I'm pretty sure there are similar libraries for other languages, perhaps you could start with <a href="https://github.com/lorien/awesome-web-scraping">awesome-web-scraping repo</a> or <a href="https://news.ycombinator.com/item?id=15694118">Ask HN: What are best tools for web scraping?</a>.
 </p>
 <p>
-Self-contained minimum example script to run scrapy
-<a href="https://gist.github.com/alecxe/fc1527d6d9492b59c610">https://gist.github.com/alecxe/fc1527d6d9492b59c610</a>
+For dealing with authorization, my personal experience is that using persistent <a href="https://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.firefox.firefox_profile">profile directory</a> in Selenium is sufficient in most cases: you can login once manually and after that, reuse the profile in your scripts.
 </p>
 <p>
-<a href="http://sangaline.com/post/advanced-web-scraping-tutorial">http://sangaline.com/post/advanced-web-scraping-tutorial</a>: Advanced Web Scraping: Bypassing "403 Forbidden", captchas, and more
+Examples:
 </p>
-<p>
-In terms of auth, scraping will typically require entering your password.
-TODO 2FA
-TODO keep separate browser profile in selenium
-</p>
+<ul class="org-ul">
+<li>even though Hackernews has <a href="https://github.com/HackerNews/API">API for public data</a>, there is no way of getting your upvotes/saves without scraping HTML.</li>
+<li>Amazon or Paypal have to be <a href="https://github.com/jbms/finance-dl#supported-data-sources">scraped</a> if you want your data.</li>
+<li>my bank, HSBC doesn't have an API. Not that I expected it from HSBC, I don't live in a fairy tail, but even their manual transactions exports are in PDF which I have to <a href="https://github.com/karlicoss/hsbc-parser">parse</a>.</li>
+</ul>
 </div>
-<div class="outline-4" id="outline-container-org000001c">
-<h4 id="org000001c"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-30 21:31]</span></span> scraping; give amazon as example?</h4>
 </div>
-</div>
-<div class="outline-3" id="outline-container-org0000003">
-<h3 id="org0000003"><a class="headerlink" href="#org0000003">¶</a>manual export (GDPR/takeout)</h3>
-<div class="outline-text-3" id="text-org0000003">
+<div class="outline-3" id="outline-container-org000001b">
+<h3 id="export_manual"><a class="headerlink" href="#export_manual">¶</a>manual export (GDPR/takeout)</h3>
+<div class="outline-text-3" id="text-export_manual">
 <p>
-On one hand it great they exist, and it is the easiest way to get your data if you don't want to mess with scripts.   
-</p>
-<p>
-That doesn't help in the log run:
+It's great they exist, and it is the easiest way to get your data if you just want a backup.
+That doesn't really help in the log run though:
 </p>
 <ul class="org-ul">
 <li>you can only do it now and then</li>
-<li>it's manual (typically requires requesting and clicking on email link)</li>
-<li>it's slow (takes few days)</li>
-<li>it's in different format than API data (TODO also motivation for normalizing) (TODO mypkg job?)</li>
+<li>it's manual: typically requires requesting and clicking on email link.</li>
+</ul>
+<ul class="org-ul">
+<li>it's slow and asynchronous: normally takes few days</li>
+<li>format differs from API format, often ends up as something neither machine friendly nor human friendly</li>
 </ul>
 <p>
-That said, with certain effort it can be automated too.   
+That said, with certain effort it can potentially be automated too.
 </p>
 <p>
-TODO initial data?
+They can be useful to get 'initial' bit of your data, past the <a href="sad-infra.html#data_is_vanishing">API limits</a>.
 </p>
-</div>
-<div class="outline-4" id="outline-container-org000001d">
-<h4 id="org000001d"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> github can be requested an export? After that just use scripts   <span class="tag"><span class="backup">backup</span> <span class="blog">blog</span></span></h4>
-<div class="outline-text-4" id="text-org000001d">
 <p>
-exports are asynchronous and not incremental
-that's understandable from the backend implementation perspective
+Examples:
 </p>
+<ul class="org-ul">
+<li><a href="https://takeout.google.com">Google Takeout</a></li>
+<li><a href="https://help.twitter.com/en/managing-your-account/how-to-download-your-twitter-archive">Twitter Archive</a></li>
+<li><a href="https://github.blog/2018-12-19-download-your-data">Github</a> data export</li>
+</ul>
 </div>
 </div>
-</div>
-<div class="outline-3" id="outline-container-org0000004">
-<h3 id="org0000004"><a class="headerlink" href="#org0000004">¶</a><span class="todo TODO">TODO</span> phones and devices?</h3>
-<div class="outline-text-3" id="text-org0000004">
+<div class="outline-3" id="outline-container-org000001c">
+<h3 id="export_phone"><a class="headerlink" href="#export_phone">¶</a>phone apps</h3>
+<div class="outline-text-3" id="text-export_phone">
 <p>
-udev, regular cron script?
-ssh?
-rooting phone? how to run scripts regularly?
+I don't have iPhone, so will only be referring to Android in this section, but I'd imagine the situation is similar.
 </p>
-</div>
-<div class="outline-4" id="outline-container-org000001e">
-<h4 id="org000001e"><span class="todo TODO">TODO</span> </h4>
-<div class="outline-text-4" id="text-org000001e">
 <p>
-handling phone/devices etc
-It's more of a bag of tricks and patterns
-I'd be very glad to find out if some of these things are solved in a more generic way, so please throw in your ideas.
+These days, service might not even offer desktop version at all, and considering that scraping data off mobile apps is way harder, getting it from the phone directly might be an easier option. In addition, the data is often kept as an sqlite database, which is in many ways even better than using API!
 </p>
+<p>
+On Android the story is simple: apps keep their data in <samp class="inline">/data/data/</samp> directory, which is not accessible unless you <b>root</b> your phone.
+These days, with <a href="https://magiskmanager.com">magisk</a> it's considerably easier, however it's still definitely not something a typical Android user would be able to do. Also rooting your phone can bring all sorts of trouble by triggering root detection (e.g. common in banking apps), so be careful.
+</p>
+<p>
+Once you have root, you can write a script to copy necessary files from <samp class="inline">/data/data/</samp> to your target directory, synchronized with your computer (e.g. via <a href="https://play.google.com/store/apps/details?id=com.ttxapps.dropsync&amp;hl=en_GB">dropbox</a> or <a href="https://play.google.com/store/apps/details?id=com.github.catfriend1.syncthingandroid&amp;hl=en_GB">syncthing</a>).
+</p>
+<p>
+I'm using <a href="https://play.google.com/store/apps/details?id=com.llamalab.automate&amp;hl=en">Automate app</a> to run export scripts on the phone, but that feels like something that should be solved by a cron-like tool, so please let me know if you know one!
+</p>
+<p>
+Examples:
+</p>
+<ul class="org-ul">
+<li>you can export Whatsapp data by copying <samp class="inline">/data/data/com.whatsapp/databases/msgstore.db</samp></li>
+<li><a href="https://github.com/karlicoss/promnesia/blob/master/scripts/backup-phone-history.sh">scripts</a> for exporting mobile Chrome/Firefox browsing history</li>
+<li>exporting <a href="https://bluemaestro.com">Bluemaestro</a> environment sensor data</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001d">
+<h3 id="export_devices"><a class="headerlink" href="#export_devices">¶</a><span class="todo TODO">TODO</span> devices?</h3>
+<div class="outline-text-3" id="text-export_devices">
+<p>
+TODO better name?
+</p>
+<p>
+Finally, the nastiest TODO???
+</p>
+<p>
+Here I'm referring to standalone specific-purpose devices like sleep trackers, e-ink readers, etc, TODO ?? when device doesn't have Interenet access or doesn't talk to any API.
+</p>
+<p>
+You've got several options here:
+</p>
+<ul class="org-ul">
+<li><p>
+device is capable of synchronizing with your phone (e.g. via Bluetooth)
+</p>
+<p>
+It's probably easiest to rely on <a class="link-up" href="#export_phone">phone app exports</a> here.
+If sync has to be triggered manually, you can use some <a href="https://play.google.com/store/apps/details?id=com.llamalab.automate&amp;hl=en">UI automation</a> to TODO burden of .
+</p></li>
+<li><p>
+device is running Linux and has Internet access
+</p>
+<p>
+You can potentially run export script on the device itself and send the data somewhere else.
+Another option is running SSH server on the device and pulling data from it, but it's quite extreme.
+</p></li>
+<li><p>
+device can mount to a computer
+</p>
+<p>
+Then, you can use <a href="https://en.wikipedia.org/wiki/Udev">udev</a> to trigger export when device is plugged in.
+If udev feels too complicated to you, even a cron script running every minute might be enough.
+</p></li>
+</ul>
+<p>
+Examples:
+</p>
+<ul class="org-ul">
+<li>using <a href="https://github.com/karlicoss/kobuddy#as-a-backup-tool">kobuddy</a> for semiautomatic exports from Kobo e-ink reader</li>
+</ul>
 </div>
 </div>
 </div>
-</div>
-<div class="outline-2" id="outline-container-org0000023">
+<div class="outline-2" id="outline-container-org0000022">
 <h2 id="types"><a class="headerlink" href="#types">¶</a><span class="section-number-2">3</span> Types of exports</h2>
 <div class="outline-text-2" id="text-types">
 <p>
-First, it would be easier if we establish a bit of vocabulary here.
+Hopefully the previous section answers your questions on 'where do I get my data from'.
+</p>
+<p>
+Now, let's establish a bit of vocabulary here.
 Since data exports by their nature are somewhat similar to <a href="https://en.wikipedia.org/wiki/Backup#Backup_methods">backups</a>, I'm borrowing some terminology.
 </p>
 <p>
 The way I see it, there are three styles of data exports:
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000020">
+<div class="outline-3" id="outline-container-org000001f">
 <h3 id="full"><a class="headerlink" href="#full">¶</a>full export</h3>
 <div class="outline-text-3" id="text-full">
 <p>
@@ -395,27 +478,39 @@ However I wouldn't recommend it (TODO backups and also atomic stuff?)
 </ul></li>
 <li>disadvantages
 <ul class="org-ul">
-<li><b>might be impossible</b> due to API restrictions</li>
+<li><b>might be impossible</b> due to <a href="sad-infra.html#data_is_vanishing">API restrictions</a></li>
 <li>takes more resources, i.e. time/bandwith/cpu/memory</li>
 <li>takes more space if you're keeping old versions</li>
-<li>might be flaky due to too many network requests</li>
+<li>might be flaky due to excessive network requests</li>
 </ul></li>
 </ul>
+<p>
+TODO when to use full export? not much data, e.g. TODO
+TODO link to examples      
+</p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000021">
+<div class="outline-3" id="outline-container-org0000020">
 <h3 id="incremental"><a class="headerlink" href="#incremental">¶</a>incremental export</h3>
 <div class="outline-text-3" id="text-incremental">
 <p>
-Incremental means that export kicks off latest state and only fetches missing data.
-Typically that means that you need some extra logic to determine the point (e.g. timestamp/message id) to continue from, which introduces opportunity for errors and inconsistencies. 
-If you're not careful or misinterpret documentation you might never request some data. If you're not careful (TODO atomic), you might leave your export in an inconsistent state.
+'Incremental' means that rerunning export starts off latest persisted state and only fetches missing data.
 </p>
 <p>
-Incremental exports are <b>always</b> harder to program. Indeed, full backup is just an edge case of incremental backup when you had no prior data.
+Implementation-wise, that means that you need some extra logic to determine the point (e.g. timestamp/message id) to continue from, fetch missing data and persist it back on disk. 
 </p>
 <p>
-Why would you bother with exporting data incrementally?
+That introduces significant opportunities for errors:
+</p>
+<ul class="org-ul">
+<li>if you're not careful with pagination (TODO link) misinterpret documentation you might never request some data</li>
+<li>If you're not careful with transactional logic (TODO link), you might leave your export in an inconsistent state.</li>
+</ul>
+<p>
+Incremental exports are <b>always</b> harder to program. Indeed, full backup is just an edge case of incremental one.
+</p>
+<p>
+So why would you bother with exporting data incrementally?
 </p>
 <ul class="org-ul">
 <li><p>
@@ -425,28 +520,28 @@ too much data
 This doesn't even mean too much in terms of bandwidth/storage, more of 'too many entities'.
 </p>
 <p>
-E.g. imagine you want fetch to 10000 tweets, that's about 1Mb of raw text data.
+E.g. imagine you want to export your Twitter timeline of 10000 tweets, that's about 1Mb of raw text data.
 Even if you account for extra garbage and assume 10 Mb or even 100 Mb of data, it's basically nothing if you're running it once a day.
 </p>
 <p>
-However, APIs usually impose pagination, so to get these 10000 tweets you might have to do <code class="inline">10000 / 200 = 50</code> API calls. 
+However, APIs usually impose pagination (e.g. 200 tweets per call), so to get these 10000 tweets you might have to do <code class="inline">10000 / 200 = 50</code> API calls. 
 Suddenly the whole thing feels much less reliable, so you might want to make it incremental in order to minimize number of network calls.
 </p>
 <p>
 Examples:
 </p>
 <ul class="org-ul">
-<li>Telegram/Messenger/Whatsapp – basically IM always means you're dealing with lots of data</li>
+<li>Telegram/Messenger/Whatsapp – basically IM always means you're dealing with lots of data (TODO link)</li>
 <li>emfit sleep data (API is a bit flaky)</li>
 </ul></li>
 <li><p>
 data is too slow to retrieve
 </p>
 <p>
-For instance, web scraping is always somewhat slower; in addition you might have to rate limit yourself so you don't get banned by DDOS prevention.
+For instance, <a class="link-up" href="#export_scrape">web scraping</a> is always somewhat slow; in addition you might have to rate limit yourself so you don't get banned by DDOS prevention.
 </p>
 <p>
-Also web scraping is even flakier than using APIs, so you want to avoid it if possible
+Also web scraping is even flakier than using APIs, so you might want to avoid extra work if possible
 </p></li>
 </ul>
 <p>
@@ -465,21 +560,22 @@ XXX TODO
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000022">
+<div class="outline-3" id="outline-container-org0000021">
 <h3 id="synthetic"><a class="headerlink" href="#synthetic">¶</a>synthetic export</h3>
 <div class="outline-text-3" id="text-synthetic">
-<p>
-This is kind of a blend between the full export and incremental export.   
-</p>
+<div><span class="before-aside">
+This is kind of a blend between full export and incremental export.   
+
+</span><aside class="sidenote">if someone can think of a better term for describing this concept, please let me know!</aside></div>
 <p>
 It's similar to full export in the sense that there isn't that much data to retrieve and if you could, you would just fetch it in one go.
 </p>
 <p>
-However the difference that makes it similar to incremental exports is that you don't have all data available at once, only some latest slice (TODO).
+However the difference that makes it similar to incremental exports is that you don't have all data available at once, only latest chunk.
 The fundamental issue with synthetic exports is that no single export file will give you all of the data.
 </p>
 <p>
-The reasons for that vary:
+There are various reasons for that:
 </p>
 <ul class="org-ul">
 <li><p>
@@ -487,9 +583,6 @@ API restrictions
 </p>
 <p>
 Example: <a href="https://github.com/karlicoss/rexport#limitations">Reddit</a> limits your API queries to 1000 entries.
-</p>
-<p>
-Presumably, has some infrastructural TODO roots?
 </p></li>
 <li><p>
 Limited memory
@@ -532,7 +625,7 @@ But that's the only example of such behavior I've seen so far.
 </ul>
 <p>
 One important difference from other types of exports is that you <b>have to</b> do them regularly/often enough.
-Otherwise, you inevitably miss some data and in best case, go through pain of retrieving it TODO alternative ways, or worst case, lose it forever.
+Otherwise, you inevitably miss some data and in best case, have go through <a class="link-up" href="#export_manual">alternative ways</a> of retrieving it, or worst case, <a href="./takeout-data-gone.html">lose it forever</a>.
 </p>
 <p>
 Now, you could deal with these same way you would with incremental exports, by pulling missing data only.
@@ -540,28 +633,29 @@ However, if you do make a mistake in your merging logic (TODO mention merging ab
 Some of the data might be gone <b>forever</b>.
 </p>
 <p>
-TODO that can be TODO via backups?
-</p>
-<p>
 So I take a hybrid approach instead:
 </p>
 <ul class="org-ul">
 <li><p>
-at export time, we retrieve whatever data we can and keep it along with a timestamp, like full export.
+at export time, we retrieve all the data we can and keep it along with a timestamp, like full export.
 </p>
 <p>
 Basically, it makes it 'append-only system', so there is no opportunity for losing data.
 </p></li>
 <li><p>
-at data access time, we dynamically synthesize full export by going through all slices and reconstructing full state, similarly to incremental export
+at <a class="link-down" href="#dal">data access time</a>, we dynamically synthesize full export
 </p>
 <p>
+We go through through all chunks and reconstruct full state, similarly to incremental export.
 That's where 'synthetic' comes from.
 </p>
 <p>
 The full export only exists at runtime, and errors in merging logic are not problematic as you never overwrite data.
 </p></li>
 </ul>
+<p>
+Summary of the method:
+</p>
 <ul class="org-ul">
 <li>advantages
 <ul class="org-ul">
@@ -576,7 +670,7 @@ takes extra space
 </p>
 <p>
 That said, storage shouldn't be that much of a concert unless you export <b>very</b> often.
-With time, storage available grows exponentially and get cheaper, whereas amount of data you generate grows linearly, hence regular exports take 'quadratic' space.
+With time, storage available grows exponentially and get cheaper, whereas amount of data you generate grows linearly, hence running exports periodically would only take 'quadratic' space.
 </p>
 <p>
 If this is an issue, it can also be addressed with compression or even using deduplicating backup software like <a href="https://borgbackup.readthedocs.io/en/stable">borg</a> for storage. However, that would come at the cost of slowing down access.
@@ -595,12 +689,9 @@ That can be addressed with TODO using iterators? (so access time is amortized)
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000002f">
+<div class="outline-2" id="outline-container-org000002e">
 <h2 id="export_layer"><a class="headerlink" href="#export_layer">¶</a><span class="section-number-2">4</span> Export layer</h2>
 <div class="outline-text-2" id="text-export_layer">
-<p>
-TODO not sure if 'exporting layer' would be better?  
-</p>
 <p>
 No matter which way you have to use to export your data, there are some common difficulties, hence patterns which I'm going to explore in this section.
 </p>
@@ -611,7 +702,7 @@ Do the <b>absolute minimum</b> work required to get raw data. This is kind of va
 This section doesn't cover the TODO exact specifics, but it's more of collection of tips of minimizing work necessary:
 </p>
 </div>
-<div class="outline-3" id="outline-container-org000002a">
+<div class="outline-3" id="outline-container-org0000029">
 <h3 id="bindings"><a class="headerlink" href="#bindings">¶</a>use existing bindings</h3>
 <div class="outline-text-3" id="text-bindings">
 <p>
@@ -626,28 +717,28 @@ If there is something in bindings you don't like or lack, it's still easier to m
 Also if you're the author of bindings, I have few requests. Please:
 </p>
 </div>
-<div class="outline-4" id="outline-container-org0000024">
-<h4 id="org0000024">Please never print in stdout. It's a pain to filter out and suppress</h4>
+<div class="outline-4" id="outline-container-org0000023">
+<h4 id="org0000023">Please never print in stdout. It's a pain to filter out and suppress</h4>
 </div>
-<div class="outline-4" id="outline-container-org0000025">
-<h4 id="org0000025"><span class="todo TODO">TODO</span> Please add debug logging. It's pretty sad to</h4>
-<div class="outline-text-4" id="text-org0000025">
+<div class="outline-4" id="outline-container-org0000024">
+<h4 id="org0000024"><span class="todo TODO">TODO</span> Please add debug logging. It's pretty sad to</h4>
+<div class="outline-text-4" id="text-org0000024">
 <p>
 TODO write about requests logging?
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000026">
-<h4 id="org0000026">Please don't be overly defensive, or allow for non-defensive behavior.</h4>
-<div class="outline-text-4" id="text-org0000026">
+<div class="outline-4" id="outline-container-org0000025">
+<h4 id="org0000025">Please don't be overly defensive, or allow for non-defensive behavior.</h4>
+<div class="outline-text-4" id="text-org0000025">
 <p>
 It's quite sad when library silently catches all exception and replaces with empty strings/nulls/etc without you knowing it.
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000027">
-<h4 id="org0000027">Please expose raw underlying data (typically, json)</h4>
-<div class="outline-text-4" id="text-org0000027">
+<div class="outline-4" id="outline-container-org0000026">
+<h4 id="org0000026">Please expose raw underlying data (typically, json)</h4>
+<div class="outline-text-4" id="text-org0000026">
 <p>
 If you forget to handle something or the user disagrees how to interpret data they can hack it with accessing raw underlying TODO chunk??
 </p>
@@ -658,12 +749,12 @@ If you forget to handle something or the user disagrees how to interpret data th
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000028">
-<h4 id="org0000028">Please expose generic methods for handling API calls to make it easy to add new endpoints</h4>
+<div class="outline-4" id="outline-container-org0000027">
+<h4 id="org0000027">Please expose generic methods for handling API calls to make it easy to add new endpoints</h4>
 </div>
-<div class="outline-4" id="outline-container-org0000029">
-<h4 id="org0000029"><span class="todo TODO">TODO</span> examples of employing these principles</h4>
-<div class="outline-text-4" id="text-org0000029">
+<div class="outline-4" id="outline-container-org0000028">
+<h4 id="org0000028"><span class="todo TODO">TODO</span> examples of employing these principles</h4>
+<div class="outline-text-4" id="text-org0000028">
 <p>
 To export <a href="https://github.com/karlicoss/hypexport">Hypothes.is</a> data I'm using existing <a href="https://github.com/judell/Hypothesis">python bindings</a>.
 </p>
@@ -687,9 +778,9 @@ Another example: to export <a href="https://github.com/karlicoss/rexport/blob/ma
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000005">
-<h3 id="org0000005"><a class="headerlink" href="#org0000005">¶</a>do not mess with raw data</h3>
-<div class="outline-text-3" id="text-org0000005">
+<div class="outline-3" id="outline-container-org0000002">
+<h3 id="org0000002"><a class="headerlink" href="#org0000002">¶</a>do not mess with raw data</h3>
+<div class="outline-text-3" id="text-org0000002">
 <p>
 Keep the data you retrieved as intact as possible.
 </p>
@@ -714,9 +805,9 @@ Even in that case it might be a good idea to be extra safe and keep data as stri
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000006">
-<h3 id="org0000006"><a class="headerlink" href="#org0000006">¶</a>do not be too defensive</h3>
-<div class="outline-text-3" id="text-org0000006">
+<div class="outline-3" id="outline-container-org0000003">
+<h3 id="org0000003"><a class="headerlink" href="#org0000003">¶</a>do not be too defensive</h3>
+<div class="outline-text-3" id="text-org0000003">
 <p>
 <b>Never</b> fallback on some wort of default values TODO
 TODO generic requests module hook?? dunno.
@@ -736,7 +827,7 @@ I'd only recommend doing it if you know for sure that certain error
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000002c">
+<div class="outline-3" id="outline-container-org000002b">
 <h3 id="output_stdout"><a class="headerlink" href="#output_stdout">¶</a>output to stdout</h3>
 <div class="outline-text-3" id="text-output_stdout">
 <p>
@@ -765,13 +856,16 @@ If you want to be portable (e.g. <a href="https://stackoverflow.com/a/167555/706
 You really don't want to remember to copy paste it or reimplement every time.
 </p>
 </div>
-<div class="outline-4" id="outline-container-org000002b">
-<h4 id="org000002b"><span class="todo TODO">TODO</span> not sure how to integrate timestamps here? maybe separate export wrapper in a separate file?</h4>
+<div class="outline-4" id="outline-container-org000002a">
+<h4 id="org000002a"><span class="todo TODO">TODO</span> not sure how to integrate timestamps here? maybe separate export wrapper in a separate file?</h4>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000007">
-<h3 id="org0000007"><a class="headerlink" href="#org0000007">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2019-12-26 23:22]</span></span> allow reading credentials from a file</h3>
-<div class="outline-text-3" id="text-org0000007">
+<div class="outline-3" id="outline-container-org0000004">
+<h3 id="org0000004"><a class="headerlink" href="#org0000004">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2019-12-26 23:22]</span></span> allow reading credentials from a file</h3>
+<div class="outline-text-3" id="text-org0000004">
+<p>
+TODO link to export<sub>helper</sub> here
+</p>
 <ul class="org-ul">
 <li>you don't want them in your shell history or in crontabs</li>
 <li><p>
@@ -785,17 +879,17 @@ E.g. with Unix permissions you could only allow certain scripts to read secrets.
 Note that I'm not a security expert, so would be interested to know if there are better solutions to that
 </p>
 </div>
-<div class="outline-4" id="outline-container-org000002d">
-<h4 id="org000002d"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-26 23:23]</span></span> even better, python script, e.g. potentially it makes it easier to put auth code close etc</h4>
-<div class="outline-text-4" id="text-org000002d">
+<div class="outline-4" id="outline-container-org000002c">
+<h4 id="org000002c"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-26 23:23]</span></span> even better, python script, e.g. potentially it makes it easier to put auth code close etc</h4>
+<div class="outline-text-4" id="text-org000002c">
 <p>
 TODO also link to post that python is a good format for configs?
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org000002e">
-<h4 id="org000002e"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> benefits of having secrets in python file: you can keep auth code close to the secrets   <span class="tag"><span class="blog">blog</span> <span class="python">python</span></span></h4>
-<div class="outline-text-4" id="text-org000002e">
+<div class="outline-4" id="outline-container-org000002d">
+<h4 id="org000002d"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> benefits of having secrets in python file: you can keep auth code close to the secrets   <span class="tag"><span class="blog">blog</span> <span class="python">python</span></span></h4>
+<div class="outline-text-4" id="text-org000002d">
 <p>
 e.g. getting new secrets – rerun the secrets.py file
 can leave comments (e.g. unlike json)
@@ -804,8 +898,8 @@ can leave comments (e.g. unlike json)
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000008">
-<h2 id="org0000008"><a class="headerlink" href="#org0000008">¶</a><span class="section-number-2">5</span> Data organization: how to keep it</h2>
+<div class="outline-2" id="outline-container-org0000005">
+<h2 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><span class="section-number-2">5</span> Data organization: how to keep it</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 TODO not sure if I like the name?  
@@ -828,7 +922,7 @@ For storage I'm just using filesystem; all exports are kept or symlinked in the 
 /exports/goodreads
 </pre>
 </div>
-<div class="outline-3" id="outline-container-org0000030">
+<div class="outline-3" id="outline-container-org000002f">
 <h3 id="timestamps"><a class="headerlink" href="#timestamps">¶</a>naming and timestamping</h3>
 <div class="outline-text-3" id="text-timestamps">
 <p>
@@ -842,7 +936,7 @@ Feel free to sprinkle it with any separators you like, or use milliseconds if yo
 E.g.:
 </p>
 <div class="org-src-container">
-<pre class="src src-bash">ls -a /exports/instapaper/ | tail -n 5
+<pre class="src src-bash">ls /exports/instapaper/ | tail -n 5
 </pre>
 </div>
 <pre class="example">
@@ -860,7 +954,7 @@ To make timestamping automatic and less boilerplaty, I'm using a wrapper script.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000031">
+<div class="outline-3" id="outline-container-org0000030">
 <h3 id="backups"><a class="headerlink" href="#backups">¶</a>backups</h3>
 <div class="outline-text-3" id="text-backups">
 <p>
@@ -869,7 +963,7 @@ What is more, borg is deduplicating, so it's quite friendly to synthetic exports
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000032">
+<div class="outline-3" id="outline-container-org0000031">
 <h3 id="sync"><a class="headerlink" href="#sync">¶</a>synchronizing</h3>
 <div class="outline-text-3" id="text-sync">
 <p>
@@ -877,10 +971,11 @@ I synchronize/replicate it across my computers with Syncthing, also used Dropbox
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000009">
-<h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a>disk space concerns</h3>
-<div class="outline-text-3" id="text-org0000009">
+<div class="outline-3" id="outline-container-org0000006">
+<h3 id="org0000006"><a class="headerlink" href="#org0000006">¶</a>disk space concerns</h3>
+<div class="outline-text-3" id="text-org0000006">
 <p>
+ TODO move stuff from synthetic exports here and interlink
  TODO better heading?
 As I mentioned, storage grows exponentially, whereas your exports grow linearly or quadratically depending on how to think about it.
 </p>
@@ -910,14 +1005,14 @@ I haven't personally tried it.
 </p></li>
 </ul>
 </div>
-<div class="outline-4" id="outline-container-org0000033">
-<h4 id="org0000033"><span class="todo STRT">STRT</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-26 23:57]</span></span> compression – bwrapper</h4>
-<div class="outline-text-4" id="text-org0000033">
+<div class="outline-4" id="outline-container-org0000032">
+<h4 id="org0000032"><span class="todo STRT">STRT</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-26 23:57]</span></span> compression – bwrapper</h4>
+<div class="outline-text-4" id="text-org0000032">
 </div>
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000034">
+<div class="outline-2" id="outline-container-org0000033">
 <h2 id="arctee"><a class="headerlink" href="#arctee">¶</a><span class="section-number-2">6</span> arctee</h2>
 <div class="outline-text-2" id="text-arctee">
 <p>
@@ -971,12 +1066,12 @@ In addition, wrapper script is programming language agnostic, as long as you exp
 That said, it feels kind of wrong to have an extra script for all these things since they are not hard in principle, just tedious and boring to do all over again. If anyone has bright ideas on simplifying parts of this, I'd be happy to know!
 </p>
 </div>
-<div class="outline-3" id="outline-container-org000000a">
-<h3 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-28 23:56]</span></span> I guess in 'DAL' mention that bwrapper is useful here too.</h3>
+<div class="outline-3" id="outline-container-org0000007">
+<h3 id="org0000007"><a class="headerlink" href="#org0000007">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-28 23:56]</span></span> I guess in 'DAL' mention that bwrapper is useful here too.</h3>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000000b">
-<h2 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><span class="section-number-2">7</span> <span class="todo TODO">TODO</span> Running/scheduling exports etc?</h2>
+<div class="outline-2" id="outline-container-org0000008">
+<h2 id="org0000008"><a class="headerlink" href="#org0000008">¶</a><span class="section-number-2">7</span> <span class="todo TODO">TODO</span> Running/scheduling exports etc?</h2>
 <div class="outline-text-2" id="text-7">
 <p>
 TODO Infrastructure? 
@@ -999,17 +1094,17 @@ TODO make sure to mention how to configure local mail on errors?
 TODO yeah, kron isn't worth mentioning here…
 </p>
 </div>
-<div class="outline-3" id="outline-container-org000000c">
-<h3 id="org000000c"><a class="headerlink" href="#org000000c">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-30 00:59]</span></span> going to overlap with data organization bit?</h3>
+<div class="outline-3" id="outline-container-org0000009">
+<h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-30 00:59]</span></span> going to overlap with data organization bit?</h3>
 </div>
-<div class="outline-3" id="outline-container-org000000d">
-<h3 id="org000000d"><a class="headerlink" href="#org000000d">¶</a><span class="todo TODO">TODO</span> suggest using fcron?   <span class="tag"><span class="exports">exports</span></span></h3>
-<div class="outline-text-3" id="text-org000000d">
+<div class="outline-3" id="outline-container-org000000a">
+<h3 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><span class="todo TODO">TODO</span> suggest using fcron?   <span class="tag"><span class="exports">exports</span></span></h3>
+<div class="outline-text-3" id="text-org000000a">
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000e">
-<h3 id="org000000e"><a class="headerlink" href="#org000000e">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 22:26]</span></span> I feel a real lack of user-friendly job running software</h3>
-<div class="outline-text-3" id="text-org000000e">
+<div class="outline-3" id="outline-container-org000000b">
+<h3 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 22:26]</span></span> I feel a real lack of user-friendly job running software</h3>
+<div class="outline-text-3" id="text-org000000b">
 <p>
 Ideally I want something
 </p>
@@ -1045,13 +1140,13 @@ Systemd – too verbose (e.g. you need to install service/restart etc)
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000035">
+<div class="outline-2" id="outline-container-org0000034">
 <h2 id="dal"><a class="headerlink" href="#dal">¶</a><span class="section-number-2">8</span> Data access layer (DAL)</h2>
 <div class="outline-text-2" id="text-dal">
 </div>
-<div class="outline-3" id="outline-container-org000000f">
-<h3 id="org000000f"><a class="headerlink" href="#org000000f">¶</a><span class="todo TODO">TODO</span> normalization? E.g. new field was added, basically schema change. That means old data needs to be adapted</h3>
-<div class="outline-text-3" id="text-org000000f">
+<div class="outline-3" id="outline-container-org000000c">
+<h3 id="org000000c"><a class="headerlink" href="#org000000c">¶</a><span class="todo TODO">TODO</span> normalization? E.g. new field was added, basically schema change. That means old data needs to be adapted</h3>
+<div class="outline-text-3" id="text-org000000c">
 <p>
 Example: your banking app used to only support single account, so it was kind of reasonable to keep data as a `List[Transaction]`.
 </p>
@@ -1063,34 +1158,34 @@ Than would mean adapting old data to the new format, e.g. you could extract acco
 </p>
 </div>
 </div>
+<div class="outline-3" id="outline-container-org000000d">
+<h3 id="org000000d"><a class="headerlink" href="#org000000d">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> would be nice to have main for models?   <span class="tag"><span class="dataliberation">dataliberation</span></span></h3>
+<div class="outline-text-3" id="text-org000000d">
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000e">
+<h3 id="org000000e"><a class="headerlink" href="#org000000e">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> do simple html dashboards for each exporter?   <span class="tag"><span class="dataliberation">dataliberation</span></span></h3>
+<div class="outline-text-3" id="text-org000000e">
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000f">
+<h3 id="org000000f"><a class="headerlink" href="#org000000f">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> take single path as argument? or maybe glob=true?   <span class="tag"><span class="dataliberation">dataliberation</span></span></h3>
+<div class="outline-text-3" id="text-org000000f">
+</div>
+</div>
 <div class="outline-3" id="outline-container-org0000010">
-<h3 id="org0000010"><a class="headerlink" href="#org0000010">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> would be nice to have main for models?   <span class="tag"><span class="dataliberation">dataliberation</span></span></h3>
+<h3 id="org0000010"><a class="headerlink" href="#org0000010">¶</a><span class="todo TODO">TODO</span> it's also an experiment in organizing code. demo etc, immediately visualize stuff with pandas   <span class="tag"><span class="exports">exports</span> <span class="blog">blog</span> <span class="dal">dal</span></span></h3>
 <div class="outline-text-3" id="text-org0000010">
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000011">
-<h3 id="org0000011"><a class="headerlink" href="#org0000011">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> do simple html dashboards for each exporter?   <span class="tag"><span class="dataliberation">dataliberation</span></span></h3>
-<div class="outline-text-3" id="text-org0000011">
 </div>
-</div>
-<div class="outline-3" id="outline-container-org0000012">
-<h3 id="org0000012"><a class="headerlink" href="#org0000012">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> take single path as argument? or maybe glob=true?   <span class="tag"><span class="dataliberation">dataliberation</span></span></h3>
-<div class="outline-text-3" id="text-org0000012">
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000013">
-<h3 id="org0000013"><a class="headerlink" href="#org0000013">¶</a><span class="todo TODO">TODO</span> it's also an experiment in organizing code. demo etc, immediately visualize stuff with pandas   <span class="tag"><span class="exports">exports</span> <span class="blog">blog</span> <span class="dal">dal</span></span></h3>
-<div class="outline-text-3" id="text-org0000013">
-</div>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000014">
-<h2 id="org0000014"><a class="headerlink" href="#org0000014">¶</a><span class="section-number-2">9</span> Similar projects and efforts</h2>
+<div class="outline-2" id="outline-container-org0000011">
+<h2 id="org0000011"><a class="headerlink" href="#org0000011">¶</a><span class="section-number-2">9</span> Similar projects and efforts</h2>
 <div class="outline-text-2" id="text-9">
 </div>
-<div class="outline-3" id="outline-container-org0000015">
-<h3 id="org0000015"><a class="headerlink" href="#org0000015">¶</a>perkeep</h3>
-<div class="outline-text-3" id="text-org0000015">
+<div class="outline-3" id="outline-container-org0000012">
+<h3 id="org0000012"><a class="headerlink" href="#org0000012">¶</a>perkeep</h3>
+<div class="outline-text-3" id="text-org0000012">
 <p>
 Seems to be object-centric, so I'd imagine I would need to communicate with perkeep server to get my stuff?
 <a href="https://perkeep.org/doc/compare#objects-not-files">https://perkeep.org/doc/compare#objects-not-files</a>
@@ -1116,41 +1211,41 @@ Ok, it's a bit unclear what it can be used for?
 <a href="https://news.ycombinator.com/item?id=17615696">https://news.ycombinator.com/item?id=17615696</a>
 </p>
 </div>
-<div class="outline-4" id="outline-container-org000003f">
-<h4 id="org000003f">trying out</h4>
-<div class="outline-text-4" id="text-org000003f">
+<div class="outline-4" id="outline-container-org000003e">
+<h4 id="org000003e">trying out</h4>
+<div class="outline-text-4" id="text-org000003e">
 </div>
 <ul class="org-ul">
-<li><a id="org0000036"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:00]</span></span> pinboard importer failed (json parsing)<br /></li>
-<li><a id="org0000037"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:01]</span></span> instapaper – couldn't authorize?<br /></li>
-<li><a id="org0000038"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:11]</span></span> twitter – some crap about 'switching to developer account'<br /></li>
-<li><a id="org0000039"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:11]</span></span> mastodon – success<br /></li>
-<li><a id="org000003a"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:12]</span></span> couldn't search for text in UI<br />
-<div class="outline-text-5" id="text-org000003a">
+<li><a id="org0000035"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:00]</span></span> pinboard importer failed (json parsing)<br /></li>
+<li><a id="org0000036"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:01]</span></span> instapaper – couldn't authorize?<br /></li>
+<li><a id="org0000037"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:11]</span></span> twitter – some crap about 'switching to developer account'<br /></li>
+<li><a id="org0000038"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:11]</span></span> mastodon – success<br /></li>
+<li><a id="org0000039"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:12]</span></span> couldn't search for text in UI<br />
+<div class="outline-text-5" id="text-org0000039">
 <p>
 Invalid SearchQuery: Error parsing search expression "whatever": No support for literals yet at position 0, token: "whatever" See: <a href="https://perkeep.org/doc/search-ui">https://perkeep.org/doc/search-ui</a>
 </p>
 </div>
 </li>
-<li><a id="org000003b"></a>couldn't see imported data in the fuse mount<br />
-<div class="outline-text-5" id="text-org000003b">
+<li><a id="org000003a"></a>couldn't see imported data in the fuse mount<br />
+<div class="outline-text-5" id="text-org000003a">
 <p>
 <a href="https://perkeep.org/cmd/pk-mount">https://perkeep.org/cmd/pk-mount</a>, couldn't figure out what's root-blobref
 </p>
 </div>
 </li>
-<li><a id="org000003c"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:33]</span></span> couldn't figure out how to request stuff from my importer either via API or HTTP<br /></li>
-<li><a id="org000003d"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:33]</span></span> happy if someone using Perkeep points me at the right direction!<br /></li>
-<li><a id="org000003e"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:55]</span></span> apparently not very TODO developed? <a href="https://github.com/perkeep/perkeep/releases">https://github.com/perkeep/perkeep/releases</a><br /></li>
+<li><a id="org000003b"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:33]</span></span> couldn't figure out how to request stuff from my importer either via API or HTTP<br /></li>
+<li><a id="org000003c"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:33]</span></span> happy if someone using Perkeep points me at the right direction!<br /></li>
+<li><a id="org000003d"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:55]</span></span> apparently not very TODO developed? <a href="https://github.com/perkeep/perkeep/releases">https://github.com/perkeep/perkeep/releases</a><br /></li>
 </ul>
 </div>
-<div class="outline-4" id="outline-container-org0000040">
-<h4 id="org0000040"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:29]</span></span> could extract in a separate file perhaps?</h4>
+<div class="outline-4" id="outline-container-org000003f">
+<h4 id="org000003f"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:29]</span></span> could extract in a separate file perhaps?</h4>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000016">
-<h3 id="org0000016"><a class="headerlink" href="#org0000016">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-09-18 02:13]</span></span> <a href="https://reddit.com/r/selfhosted/comments/9go5if/perkeep_lets_you_permanently_keep_your_stuff_for/e665vi6/">Perkeep lets you permanently keep your stuff, for life.</a> /r/selfhosted   <span class="tag"><span class="pkm">pkm</span></span></h3>
-<div class="outline-text-3" id="text-org0000016">
+<div class="outline-3" id="outline-container-org0000013">
+<h3 id="org0000013"><a class="headerlink" href="#org0000013">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-09-18 02:13]</span></span> <a href="https://reddit.com/r/selfhosted/comments/9go5if/perkeep_lets_you_permanently_keep_your_stuff_for/e665vi6/">Perkeep lets you permanently keep your stuff, for life.</a> /r/selfhosted   <span class="tag"><span class="pkm">pkm</span></span></h3>
+<div class="outline-text-3" id="text-org0000013">
 <p>
 The landing page is too light on details, imho. I get that there's a 'docs' section but at least put something on the opening page more concrete than "if you're technical, you can probably get it up and running" that lets me know what the software actually does.
 </p>
@@ -1159,9 +1254,9 @@ Also, how is this better or worse than any of the other options that are current
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000017">
-<h3 id="org0000017"><a class="headerlink" href="#org0000017">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-23 16:21]</span></span> Perkeep: personal storage system for life | Hacker News   <span class="tag"><span class="graspw">graspw</span> <span class="pkm">pkm</span></span></h3>
-<div class="outline-text-3" id="text-org0000017">
+<div class="outline-3" id="outline-container-org0000014">
+<h3 id="org0000014"><a class="headerlink" href="#org0000014">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-23 16:21]</span></span> Perkeep: personal storage system for life | Hacker News   <span class="tag"><span class="graspw">graspw</span> <span class="pkm">pkm</span></span></h3>
+<div class="outline-text-3" id="text-org0000014">
 <p>
 <a href="https://news.ycombinator.com/item?id=18008240">https://news.ycombinator.com/item?id=18008240</a>
 Selection:
@@ -1174,9 +1269,9 @@ TDLR: This is a content addressed data store similar to IPFS (although this proj
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000018">
-<h3 id="org0000018"><a class="headerlink" href="#org0000018">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 16:19]</span></span> perkeep   <span class="tag"><span class="gr">gr</span></span></h3>
-<div class="outline-text-3" id="text-org0000018">
+<div class="outline-3" id="outline-container-org0000015">
+<h3 id="org0000015"><a class="headerlink" href="#org0000015">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-22 16:19]</span></span> perkeep   <span class="tag"><span class="gr">gr</span></span></h3>
+<div class="outline-text-3" id="text-org0000015">
 <p>
 <a href="https://news.ycombinator.com/item?id=21844105">https://news.ycombinator.com/item?id=21844105</a>
 Selection:
@@ -1187,9 +1282,9 @@ I think that Perkeep <a href="https://perkeep.org">https://perkeep.org</a> is al
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000019">
-<h3 id="org0000019"><a class="headerlink" href="#org0000019">¶</a><span class="todo TODO">TODO</span> <span class="priority">[A]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-15 21:31]</span></span> Digital Tools I Wish Existed | Hacker News   <span class="tag"><span class="perkeep">perkeep</span></span></h3>
-<div class="outline-text-3" id="text-org0000019">
+<div class="outline-3" id="outline-container-org0000016">
+<h3 id="org0000016"><a class="headerlink" href="#org0000016">¶</a><span class="todo TODO">TODO</span> <span class="priority">[A]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-15 21:31]</span></span> Digital Tools I Wish Existed | Hacker News   <span class="tag"><span class="perkeep">perkeep</span></span></h3>
+<div class="outline-text-3" id="text-org0000016">
 <p>
 <a href="https://news.ycombinator.com/item?id=21659876">https://news.ycombinator.com/item?id=21659876</a>
 Selection:
@@ -1203,9 +1298,9 @@ Huh. This is fascinating project, this does tick some of the boxes for me. Thank
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001a">
-<h3 id="org000001a"><a class="headerlink" href="#org000001a">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-23 16:19]</span></span> Perkeep – Open-source data modeling, storing, search, sharing and synchronizing | Hacker News   <span class="tag"><span class="graspw">graspw</span> <span class="pkm">pkm</span></span></h3>
-<div class="outline-text-3" id="text-org000001a">
+<div class="outline-3" id="outline-container-org0000017">
+<h3 id="org0000017"><a class="headerlink" href="#org0000017">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-23 16:19]</span></span> Perkeep – Open-source data modeling, storing, search, sharing and synchronizing | Hacker News   <span class="tag"><span class="graspw">graspw</span> <span class="pkm">pkm</span></span></h3>
+<div class="outline-text-3" id="text-org0000017">
 <p>
 <a href="https://news.ycombinator.com/item?id=15928685">https://news.ycombinator.com/item?id=15928685</a>
 Selection:
@@ -1233,6 +1328,17 @@ The intent is to be a personal data dumpster that you can throw all of your file
 The website could be better organized to convey this information quickly.
 </p>
 </div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000018">
+<h2 id="org0000018"><a class="headerlink" href="#org0000018">¶</a><span class="section-number-2">10</span> --</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+TODO Approaches I describe works well for me so far. It feels like it's fairly composable, allows for injection TODO and TODO
+</p>
+<p>
+However, it still feels like something that shouldn't have been so hard in the first place and ??? to be solved in a more generic way.
+</p>
 </div>
 </div>
 
@@ -1268,6 +1374,8 @@ The website could be better organized to convey this information quickly.
             ·
             <a href="https://github.com/karlicoss">💻 me @github</a>
             </span>
+
+            <a href="http://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>
             
             
         </footer>
