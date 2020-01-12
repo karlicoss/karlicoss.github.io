@@ -352,6 +352,11 @@
 </li>
 <li><a href="#org00000c7">113. <span class="todo TODO">TODO</span> why it's hard: proper search (e.g. stemming)   <span class="tag"><span class="blog">blog</span></span></a></li>
 <li><a href="#org00000c8">114. <span class="todo TODO">TODO</span> <span class="priority">[C]</span> endomondo post   <span class="tag"><span class="amend">amend</span></span></a></li>
+<li><a href="#org00000c9">115. <span class="todo TODO">TODO</span> specify export formats in dostrings and autogenerate?   <span class="tag"><span class="mypkg">mypkg</span></span></a></li>
+<li><a href="#org00000ca">116. some thoughts on before= API vs after= API   <span class="tag"><span class="api">api</span> <span class="social">social</span> <span class="exports">exports</span></span></a></li>
+<li><a href="#org00000cb">117. <span class="todo TODO">TODO</span> arctee motivation of treating all errors as api flickering/network   <span class="tag"><span class="blog">blog</span> <span class="exports">exports</span></span></a></li>
+<li><a href="#org00000cc">118. <span class="todo TODO">TODO</span> diagram: I'm kind of covering different clusters   <span class="tag"><span class="blog">blog</span> <span class="infra">infra</span></span></a></li>
+<li><a href="#org00000cd">119. <span class="todo TODO">TODO</span> example of not keeping raw data: praw   <span class="tag"><span class="exports">exports</span> <span class="blog">blog</span> <span class="reddit">reddit</span></span></a></li>
 </ul>
 </div>
 </div>
@@ -1651,6 +1656,106 @@ However the regression coeffecient (basically, calories burnt per 'unit of heart
 </p>
 <p>
 Rewrite this section, little confusing…
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org00000c9">
+<h2 id="org00000c9"><a class="headerlink" href="#org00000c9">¶</a><span class="section-number-2">115</span> <span class="todo TODO">TODO</span> specify export formats in dostrings and autogenerate?   <span class="tag"><span class="mypkg">mypkg</span></span></h2>
+<div class="outline-text-2" id="text-115">
+</div>
+</div>
+<div class="outline-2" id="outline-container-org00000ca">
+<h2 id="org00000ca"><a class="headerlink" href="#org00000ca">¶</a><span class="section-number-2">116</span> some thoughts on before= API vs after= API   <span class="tag"><span class="api">api</span> <span class="social">social</span> <span class="exports">exports</span></span></h2>
+<div class="outline-text-2" id="text-116">
+<p>
+I'd never imagine I'd be coming up with theoretical puzzles involving APIs… but here I am.
+</p>
+<p>
+Say you've got an API serving messages (say, &lt;= 10 at a time) from newest to oldest.
+</p>
+<p>
+In addition you've got optional 'before' parameter:
+</p>
+<ul class="org-ul">
+<li>fetch() – gives 10 latest messages (TODO this one isn't even necessary?)</li>
+<li>fetch(before='31 Dec 2019 23:59:59') – gives 10 latest (ish) messages in 2019</li>
+</ul>
+<p>
+Now imagine you want to persist all messages in the database and TODO properties
+</p>
+<ul class="org-ul">
+<li>assumptions on resiliency – say you experience cosmic particles every minute that reboots your computer. So you can't keep messages in RAM/database journal for too long</li>
+<li>assumptions on data transfer?</li>
+<li>assumptions on RAM – not sure if necessary, basically bounded by ram/s ans seconds of uptimes?</li>
+<li>assumptions on catching up – i.e. you want to progress in terms of ??? e.g. for each n, amount of messages &lt;n unavailable decreases with time?</li>
+</ul>
+<p>
+If API was different (TODO maybe even mentioning newet to oldest isn't important). can always sort.
+</p>
+<ul class="org-ul">
+<li>fetch(after=XXX)</li>
+<li>fetch(before=XXX)</li>
+</ul>
+<p>
+allows for fairly easy 
+</p>
+<p>
+[oldest … newest] – persistent in db
+</p>
+<p>
+loop:
+   oldest, newest = query<sub>db</sub>()
+   extra<sub>old</sub> = fetch(before=oldest)
+   with db.transaction():
+       db.insert(extra<sub>old</sub>)
+   extra<sub>new</sub> = fetch(after=newest)
+   with db.transaction():
+       db.insert(extra<sub>new</sub>)
+</p>
+<p>
+TODO in fact, even easier. if we only had after (assuming we could use 0 timestamp),  then
+</p>
+<p>
+loop:
+    newest = query<sub>db</sub>() # always assumes 
+    if newest is None:
+	newest = 0
+    extra<sub>new</sub> = fetch(after=newest)
+    with db.transaction():
+	db.insert(extra<sub>new</sub>)
+</p>
+<p>
+the question is – what's fundamentally wrong with 'before' api that makes it so hard? am I onto something deeper?
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org00000cb">
+<h2 id="org00000cb"><a class="headerlink" href="#org00000cb">¶</a><span class="section-number-2">117</span> <span class="todo TODO">TODO</span> arctee motivation of treating all errors as api flickering/network   <span class="tag"><span class="blog">blog</span> <span class="exports">exports</span></span></h2>
+<div class="outline-text-2" id="text-117">
+<p>
+'better ask for forgiveness than permission' is a questionable practice in many cases, but it feels like the right one
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org00000cc">
+<h2 id="org00000cc"><a class="headerlink" href="#org00000cc">¶</a><span class="section-number-2">118</span> <span class="todo TODO">TODO</span> diagram: I'm kind of covering different clusters   <span class="tag"><span class="blog">blog</span> <span class="infra">infra</span></span></h2>
+<div class="outline-text-2" id="text-118">
+<p>
+E.g. orger 
+</p>
+<p>
+sad state was covering top part of the diagram
+</p>
+<p>
+this post will be covering the heart of the diagram
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org00000cd">
+<h2 id="org00000cd"><a class="headerlink" href="#org00000cd">¶</a><span class="section-number-2">119</span> <span class="todo TODO">TODO</span> example of not keeping raw data: praw   <span class="tag"><span class="exports">exports</span> <span class="blog">blog</span> <span class="reddit">reddit</span></span></h2>
+<div class="outline-text-2" id="text-119">
+<p>
+sadly praw doesn't keep raw json data :( <a href="https://github.com/praw-dev/praw/issues/830">https://github.com/praw-dev/praw/issues/830</a>
 </p>
 </div>
 </div>

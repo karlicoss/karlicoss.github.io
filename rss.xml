@@ -113,6 +113,7 @@ If you're terrified by the long list, you can jump straight into <a class="link-
 <li><a href="#arbtt">Arbtt (desktop time tracker)</a></li>
 <li><a href="#bitbucket">Bitbucket (repositories)</a></li>
 <li><a href="#bluemaestro">Bluemaestro (environment sensor)</a></li>
+<li><a href="#blood">Blood</a></li>
 <li><a href="#browser_history">Browser history (Firefox/Chrome)</a></li>
 <li><a href="#emfit">Emfit QS (sleep tracker)</a></li>
 <li><a href="#endomondo">Endomondo</a></li>
@@ -137,7 +138,10 @@ If you're terrified by the long list, you can jump straight into <a class="link-
 <li><a href="#lastfm">Last.fm</a></li>
 <li><a href="#monzo">Monzo bank</a></li>
 <li><a href="#nomie">Nomie</a></li>
+<li><a href="#photos">Photos</a></li>
+<li><a href="#pdfs">PDF annotations</a></li>
 <li><a href="#pinboard">Pinboard</a></li>
+<li><a href="#notes">Plaintext notes</a></li>
 <li><a href="#pocket">Pocket</a></li>
 <li><a href="#reddit">Reddit</a></li>
 <li><a href="#rtm">Remember the Milk</a></li>
@@ -149,7 +153,9 @@ If you're terrified by the long list, you can jump straight into <a class="link-
 <li><a href="#telegram">Telegram</a></li>
 <li><a href="#twitter">Twitter</a></li>
 <li><a href="#vk">VK.com</a></li>
+<li><a href="#weight">Weight</a></li>
 <li><a href="#whatsapp"><span class="todo TODO">TODO</span> Whatsapp</a></li>
+<li><a href="#23andme">23andme</a></li>
 </ul>
 </li>
 <li><a href="#consumers">3. Data consumers</a>
@@ -180,7 +186,7 @@ In the next section, I will elaborate on each specific data source, but to start
 <h3 id="backup"><a class="headerlink" href="#backup">¶</a>backup</h3>
 <div class="outline-text-3" id="text-backup">
 <p>
-It may feel unnecessary, but shit happens. What if your account gets suspended for some reason or the company goes bust?
+It may feel unnecessary, but shit happens. What if your device dies, account gets suspended for some reason or the company goes bust?
 </p>
 </div>
 </div>
@@ -209,11 +215,11 @@ Most collected digital data is somewhat quantitative and can be used to analyze 
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000002e">
+<div class="outline-2" id="outline-container-org0000034">
 <h2 id="what"><a class="headerlink" href="#what">¶</a><span class="section-number-2">2</span> What do I collect/want to collect?</h2>
 <div class="outline-text-2" id="text-what">
 <p>
-As I mentioned, most of the collected data serve as a means of backup/lifelogging/quantified self, so I won't mention them again in the 'Why' section.
+As I mentioned, most of the collected data serve as a means of backup/lifelogging/quantified self, so I won't mention them again in the 'Why' sections.
 </p>
 <p>
 All my data collection pipelines are <b>automatic unless mentioned otherwise</b>.
@@ -264,7 +270,7 @@ Why:
 proved especially useful considering Atlassian is going to <a href="https://bitbucket.org/blog/sunsetting-mercurial-support-in-bitbucket"><b>wipe</b></a> mercurial repositories
 </p>
 <p>
-I've got lots of private mercurial repositories with university homework, and it's sad to think of people who will lose theirs during this wipe.
+I've got lots of private mercurial repositories with university homework and other early projects, and it's sad to think of people who will lose theirs during this wipe.
 </p></li>
 </ul>
 </div>
@@ -290,6 +296,23 @@ E.g. I can potentially see temperature/humidity readings along with my photos fr
 </div>
 </div>
 <div class="outline-3" id="outline-container-org0000009">
+<h3 id="blood"><a class="headerlink" href="#blood">¶</a>Blood</h3>
+<div class="outline-text-3" id="text-blood">
+<p>
+How: via <a href="https://thriva.co">thriva</a>, data imported manually into an org-mode table (not doing too frequently so wasn't worth automated scraping)
+</p>
+<p>
+Also tracked glucose and ketones (with <a href="https://freestylediabetes.co.uk/freestyle-libre">freestyle libre</a>) for a few days out of curiosity, also didn't bother automating it.
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>contributes to the <a class="link-down" href="#dashboard">dashboard</a>, could be a good way of establishing your baselines</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000a">
 <h3 id="browser_history"><a class="headerlink" href="#browser_history">¶</a>Browser history (Firefox/Chrome)</h3>
 <div class="outline-text-3" id="text-browser_history">
 <p>
@@ -303,7 +326,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000a">
+<div class="outline-3" id="outline-container-org000000b">
 <h3 id="emfit"><a class="headerlink" href="#emfit">¶</a><a href="https://shop-eu.emfit.com/products/emfit-qs">Emfit QS</a> (sleep tracker)</h3>
 <div class="outline-text-3" id="text-emfit">
 <p>
@@ -317,7 +340,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000b">
+<div class="outline-3" id="outline-container-org000000c">
 <h3 id="endomondo"><a class="headerlink" href="#endomondo">¶</a>Endomondo</h3>
 <div class="outline-text-3" id="text-endomondo">
 <p>
@@ -331,7 +354,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000c">
+<div class="outline-3" id="outline-container-org000000d">
 <h3 id="facebook"><a class="headerlink" href="#facebook">¶</a>Facebook</h3>
 <div class="outline-text-3" id="text-facebook">
 <p>
@@ -342,7 +365,7 @@ I barely use Facebook, so don't even bother doing it regularly.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000d">
+<div class="outline-3" id="outline-container-org000000e">
 <h3 id="messenger"><a class="headerlink" href="#messenger">¶</a>Facebook Messenger</h3>
 <div class="outline-text-3" id="text-messenger">
 <p>
@@ -357,7 +380,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000e">
+<div class="outline-3" id="outline-container-org000000f">
 <h3 id="feedbin"><a class="headerlink" href="#feedbin">¶</a>Feedbin</h3>
 <div class="outline-text-3" id="text-feedbin">
 <p>
@@ -371,7 +394,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000f">
+<div class="outline-3" id="outline-container-org0000010">
 <h3 id="feedly"><a class="headerlink" href="#feedly">¶</a>Feedly</h3>
 <div class="outline-text-3" id="text-feedly">
 <p>
@@ -385,11 +408,12 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000010">
+<div class="outline-3" id="outline-container-org0000011">
 <h3 id="fitbit"><a class="headerlink" href="#fitbit">¶</a>Fitbit</h3>
 <div class="outline-text-3" id="text-fitbit">
 <p>
-How: manual CSV export, as I only used it for a week. However, it seems <a href="https://dev.fitbit.com/build/reference/web-api/intraday-requests">possible</a> via API.
+How: manual CSV export, as I only used it for few weeks. Then the sync stopped working and I had to return it.
+However, it seems <a href="https://dev.fitbit.com/build/reference/web-api/intraday-requests">possible</a> via API.
 </p>
 <p>
 Why:
@@ -399,7 +423,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000011">
+<div class="outline-3" id="outline-container-org0000012">
 <h3 id="foursquare"><a class="headerlink" href="#foursquare">¶</a>Foursquare/Swarm</h3>
 <div class="outline-text-3" id="text-foursquare">
 <p>
@@ -407,7 +431,7 @@ How: via API
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000012">
+<div class="outline-3" id="outline-container-org0000013">
 <h3 id="github_repos"><a class="headerlink" href="#github_repos">¶</a>Github (repositories)</h3>
 <div class="outline-text-3" id="text-github_repos">
 <p>
@@ -421,7 +445,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000013">
+<div class="outline-3" id="outline-container-org0000014">
 <h3 id="github_events"><a class="headerlink" href="#github_events">¶</a>Github (events)</h3>
 <div class="outline-text-3" id="text-github_events">
 <p>
@@ -432,10 +456,11 @@ Why:
 </p>
 <ul class="org-ul">
 <li><a class="link-down" href="#promnesia">better browsing history</a></li>
+<li><a class="link-down" href="#search">better search</a> in comments/open issues, etc.</li>
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000014">
+<div class="outline-3" id="outline-container-org0000015">
 <h3 id="gmail"><a class="headerlink" href="#gmail">¶</a>Gmail</h3>
 <div class="outline-text-3" id="text-gmail">
 <p>
@@ -446,11 +471,12 @@ Why:
 </p>
 <ul class="org-ul">
 <li>this is arguably <b>the most important</b> thing you should export considering how heavily everything relies on email</li>
+<li><a class="link-down" href="#search">better search</a></li>
 <li><a class="link-down" href="#promnesia">better browsing history</a></li>
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000015">
+<div class="outline-3" id="outline-container-org0000016">
 <h3 id="goodreads"><a class="headerlink" href="#goodreads">¶</a>Goodreads</h3>
 <div class="outline-text-3" id="text-goodreads">
 <p>
@@ -458,7 +484,7 @@ How: <a href="https://github.com/karlicoss/goodrexport">karlicoss/goodrexport</a
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000016">
+<div class="outline-3" id="outline-container-org0000017">
 <h3 id="takeout"><a class="headerlink" href="#takeout">¶</a>Google takeout</h3>
 <div class="outline-text-3" id="text-takeout">
 <p>
@@ -467,7 +493,7 @@ How: semi-automatic.
 <ul class="org-ul">
 <li>only manual step: enable scheduled exports (you can schedule 6 per year at a time), and choose to keep it on Google Drive in export settings</li>
 <li>mount your Google Drive (e.g. via <a href="https://github.com/astrada/google-drive-ocamlfuse">google-drive-ocamlfuse</a>)</li>
-<li>keep a script that checks mounted Google Drive for fresh takeouts and move them somewhere safe</li>
+<li>keep a script that checks mounted Google Drive for fresh takeout and moves it somewhere safe</li>
 </ul>
 <p>
 Why:
@@ -481,7 +507,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000017">
+<div class="outline-3" id="outline-container-org0000018">
 <h3 id="hackernews"><a class="headerlink" href="#hackernews">¶</a><span class="todo TODO">TODO</span> Hackernews</h3>
 <div class="outline-text-3" id="text-hackernews">
 <p>
@@ -501,11 +527,11 @@ Why: same reasons as <a class="link-down" href="#reddit">Reddit</a>.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000018">
+<div class="outline-3" id="outline-container-org0000019">
 <h3 id="hsbc"><a class="headerlink" href="#hsbc">¶</a>HSBC bank</h3>
 <div class="outline-text-3" id="text-hsbc">
 <p>
-How: manual exports of monthly PDFs with transactions. They don't really offer API, so unless you want to scrape it seems it's the best you can do.
+How: manual exports of monthly PDFs with transactions. They don't really offer API, so unless you want to web scrape and deal with 2FA, it seems it's the best you can do.
 </p>
 <p>
 Why
@@ -515,7 +541,7 @@ Why
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000019">
+<div class="outline-3" id="outline-container-org000001a">
 <h3 id="hypothesis"><a class="headerlink" href="#hypothesis">¶</a><a href="https://hypothes.is">Hypothesis</a></h3>
 <div class="outline-text-3" id="text-hypothesis">
 <p>
@@ -531,7 +557,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001a">
+<div class="outline-3" id="outline-container-org000001b">
 <h3 id="instapaper"><a class="headerlink" href="#instapaper">¶</a>Instapaper</h3>
 <div class="outline-text-3" id="text-instapaper">
 <p>
@@ -542,12 +568,12 @@ Why:
 </p>
 <ul class="org-ul">
 <li><a class="link-down" href="#search">better search</a></li>
-<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+<li><a class="link-down" href="#promnesia">better browsing history</a>, in particular implementing overlay with highlights</li>
 <li>quick todos via <a class="link-down" href="#orger">orger</a></li>
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001b">
+<div class="outline-3" id="outline-container-org000001c">
 <h3 id="jawbone"><a class="headerlink" href="#jawbone">¶</a>Jawbone</h3>
 <div class="outline-text-3" id="text-jawbone">
 <p>
@@ -562,7 +588,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001c">
+<div class="outline-3" id="outline-container-org000001d">
 <h3 id="kindle"><a class="headerlink" href="#kindle">¶</a>Kindle</h3>
 <div class="outline-text-3" id="text-kindle">
 <p>
@@ -576,7 +602,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001d">
+<div class="outline-3" id="outline-container-org000001e">
 <h3 id="kobo"><a class="headerlink" href="#kobo">¶</a><a href="https://www.kobo.com">Kobo</a> reader</h3>
 <div class="outline-text-3" id="text-kobo">
 <p>
@@ -591,7 +617,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001e">
+<div class="outline-3" id="outline-container-org000001f">
 <h3 id="lastfm"><a class="headerlink" href="#lastfm">¶</a>Last.fm</h3>
 <div class="outline-text-3" id="text-lastfm">
 <p>
@@ -599,7 +625,7 @@ How: <a href="https://github.com/karlicoss/lastfm-backup">karlicoss/lastfm-backu
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001f">
+<div class="outline-3" id="outline-container-org0000020">
 <h3 id="monzo"><a class="headerlink" href="#monzo">¶</a>Monzo bank</h3>
 <div class="outline-text-3" id="text-monzo">
 <p>
@@ -613,7 +639,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000020">
+<div class="outline-3" id="outline-container-org0000021">
 <h3 id="nomie"><a class="headerlink" href="#nomie">¶</a><a href="https://nomie.app">Nomie</a></h3>
 <div class="outline-text-3" id="text-nomie">
 <p>
@@ -627,7 +653,43 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000021">
+<div class="outline-3" id="outline-container-org0000022">
+<h3 id="photos"><a class="headerlink" href="#photos">¶</a>Photos</h3>
+<div class="outline-text-3" id="text-photos">
+<p>
+How: no extra effort required if you sync/organize your photos and videos now and then.
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>obvious source of lifelogging, in addition comes with GPS data</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000023">
+<h3 id="pdfs"><a class="headerlink" href="#pdfs">¶</a>PDF annotations</h3>
+<div class="outline-text-3" id="text-pdfs">
+<p>
+As in, <a href="annotating.html#pdfs">native PDF annotations</a>. 
+</p>
+<p>
+How: nothing needs to be done, PDFs are local to your computer. You do need <a href="https://github.com/karlicoss/my/blob/master/my/pdfs.py">some tools</a> to crawl your filesystem and extract the annotations.
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><p>
+experience of using your PDF annotations (e.g. searching) is <a href="annotating.html#comparison"><b>extremely poor</b></a>
+</p>
+<p>
+I'm improving this by using <a class="link-down" href="#orger">orger</a>.
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000024">
 <h3 id="pinboard"><a class="headerlink" href="#pinboard">¶</a>Pinboard</h3>
 <div class="outline-text-3" id="text-pinboard">
 <p>
@@ -642,7 +704,25 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000022">
+<div class="outline-3" id="outline-container-org0000025">
+<h3 id="notes"><a class="headerlink" href="#notes">¶</a>Plaintext notes</h3>
+<div class="outline-text-3" id="text-notes">
+<p>
+Mostly this refers to org-mode files, which I use for notekeeping and logging.
+</p>
+<p>
+How: nothing needs to be done, they are local. 
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">search</a> comes for free, it's already local</li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000026">
 <h3 id="pocket"><a class="headerlink" href="#pocket">¶</a>Pocket</h3>
 <div class="outline-text-3" id="text-pocket">
 <p>
@@ -653,11 +733,11 @@ Why:
 </p>
 <ul class="org-ul">
 <li><a class="link-down" href="#search">better search</a></li>
-<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+<li><a class="link-down" href="#promnesia">better browsing history</a>, in particular implementing overlay with highlights</li>
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000023">
+<div class="outline-3" id="outline-container-org0000027">
 <h3 id="reddit"><a class="headerlink" href="#reddit">¶</a>Reddit</h3>
 <div class="outline-text-3" id="text-reddit">
 <p>
@@ -673,7 +753,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000024">
+<div class="outline-3" id="outline-container-org0000028">
 <h3 id="rtm"><a class="headerlink" href="#rtm">¶</a>Remember the Milk</h3>
 <div class="outline-text-3" id="text-rtm">
 <p>
@@ -692,7 +772,7 @@ I stopped using RTM in favor of org-mode, but I can still easily find my old tas
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000025">
+<div class="outline-3" id="outline-container-org0000029">
 <h3 id="rescuetime"><a class="headerlink" href="#rescuetime">¶</a>Rescuetime</h3>
 <div class="outline-text-3" id="text-rescuetime">
 <p>
@@ -706,7 +786,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000026">
+<div class="outline-3" id="outline-container-org000002a">
 <h3 id="sms_calls"><a class="headerlink" href="#sms_calls">¶</a>Sms/calls</h3>
 <div class="outline-text-3" id="text-sms_calls">
 <p>
@@ -714,7 +794,7 @@ How: <a href="https://play.google.com/store/apps/details?id=com.riteshsahu.SMSBa
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000027">
+<div class="outline-3" id="outline-container-org000002b">
 <h3 id="spotify"><a class="headerlink" href="#spotify">¶</a>Spotify</h3>
 <div class="outline-text-3" id="text-spotify">
 <p>
@@ -722,7 +802,7 @@ How: export script, using <a href="https://github.com/plamere/spotipy">plamere/s
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000028">
+<div class="outline-3" id="outline-container-org000002c">
 <h3 id="stackexchange"><a class="headerlink" href="#stackexchange">¶</a>Stackexchange</h3>
 <div class="outline-text-3" id="text-stackexchange">
 <p>
@@ -737,7 +817,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000029">
+<div class="outline-3" id="outline-container-org000002d">
 <h3 id="taplog"><a class="headerlink" href="#taplog">¶</a><a href="https://play.google.com/store/apps/details?id=com.waterbear.taglog">Taplog</a></h3>
 <div class="outline-text-3" id="text-taplog">
 <p>
@@ -754,7 +834,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000002a">
+<div class="outline-3" id="outline-container-org000002e">
 <h3 id="telegram"><a class="headerlink" href="#telegram">¶</a>Telegram</h3>
 <div class="outline-text-3" id="text-telegram">
 <p>
@@ -769,7 +849,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000002b">
+<div class="outline-3" id="outline-container-org000002f">
 <h3 id="twitter"><a class="headerlink" href="#twitter">¶</a>Twitter</h3>
 <div class="outline-text-3" id="text-twitter">
 <p>
@@ -784,7 +864,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000002c">
+<div class="outline-3" id="outline-container-org0000030">
 <h3 id="vk"><a class="headerlink" href="#vk">¶</a>VK.com</h3>
 <div class="outline-text-3" id="text-vk">
 <p>
@@ -802,7 +882,22 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000002d">
+<div class="outline-3" id="outline-container-org0000031">
+<h3 id="weight"><a class="headerlink" href="#weight">¶</a>Weight</h3>
+<div class="outline-text-3" id="text-weight">
+<p>
+How: manually, used <a class="link-up" href="#nomie">Nomie</a> and <a class="link-up" href="#taplog">Taplog</a>, but now just using org-mode and extracting data with <a href="https://github.com/karlicoss/orgparse">orgparse</a>.
+Could be potentially automated via wireless scales, but not much of a priority for me.
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>obvious data source for the <a class="link-down" href="#dashboard">dashboard</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000032">
 <h3 id="whatsapp"><a class="headerlink" href="#whatsapp">¶</a><span class="todo TODO">TODO</span> Whatsapp</h3>
 <div class="outline-text-3" id="text-whatsapp">
 <p>
@@ -820,12 +915,31 @@ Why:
 </ul>
 </div>
 </div>
+<div class="outline-3" id="outline-container-org0000033">
+<h3 id="23andme"><a class="headerlink" href="#23andme">¶</a><a href="https://www.23andme.com">23andme</a></h3>
+<div class="outline-text-3" id="text-23andme">
+<p>
+How: manual <a href="https://customercare.23andme.com/hc/en-us/articles/212196868-Accessing-Your-Raw-Genetic-Data">raw data export</a> from 23andme website. I hope your genome doesn't change so often to bother with automatic exports!
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><p>
+was planning to setup some sort of automatic search of new genome insights against open source analysis tools
+</p>
+<p>
+Haven't really had time to think about it yet, and it feels like a hard project out of my realm of competence.
+</p></li>
+</ul>
 </div>
-<div class="outline-2" id="outline-container-org0000034">
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000003a">
 <h2 id="consumers"><a class="headerlink" href="#consumers">¶</a><span class="section-number-2">3</span> Data consumers</h2>
 <div class="outline-text-2" id="text-consumers">
 </div>
-<div class="outline-3" id="outline-container-org000002f">
+<div class="outline-3" id="outline-container-org0000035">
 <h3 id="search"><a class="headerlink" href="#search">¶</a>search</h3>
 <div class="outline-text-3" id="text-search">
 <p>
@@ -834,7 +948,7 @@ So I built my own ways around it! I write about it in detail <a href="pkm-search
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000030">
+<div class="outline-3" id="outline-container-org0000036">
 <h3 id="promnesia"><a class="headerlink" href="#promnesia">¶</a>promnesia</h3>
 <div class="outline-text-3" id="text-promnesia">
 <p>
@@ -845,7 +959,7 @@ I've been using it for more than a year now and working on final touches to make
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000031">
+<div class="outline-3" id="outline-container-org0000037">
 <h3 id="orger"><a class="headerlink" href="#orger">¶</a>orger</h3>
 <div class="outline-text-3" id="text-orger">
 <p>
@@ -859,7 +973,7 @@ I write about it in detail <a href="orger.html">here</a> and <a href="orger-todo
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000032">
+<div class="outline-3" id="outline-container-org0000038">
 <h3 id="dashboard"><a class="headerlink" href="#dashboard">¶</a>dashboard</h3>
 <div class="outline-text-3" id="text-dashboard">
 <p>
@@ -870,7 +984,7 @@ I'm working on making it public, you can see some screenshots <a href="https://w
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000033">
+<div class="outline-3" id="outline-container-org0000039">
 <h3 id="mypkg"><a class="headerlink" href="#mypkg">¶</a><a href="https://github.com/karlicoss/my"><code class="inline">my.</code></a> python package</h3>
 <div class="outline-text-3" id="text-mypkg">
 <p>
@@ -2015,7 +2129,7 @@ I'll be describing my setup in more detail in future posts, however here are som
 This corresponds to the 'data mirror' bit.
 </p>
 <p>
-I exported/scraped/reverse engineered pretty much my entire digital trace and figured out automation and infrastructure which works for me.
+I <a href="my-data.html">exported/scraped/reverse engineered</a> pretty much my entire digital trace and figured out automation and infrastructure which works for me.
 </p>
 <p>
 I've shared <a href="https://github.com/search?utf8=%E2%9C%93&amp;q=topic%3Aexport+++user%3Akarlicoss&amp;type=Repositories">some</a> of my personal export scripts and tools.
@@ -2044,7 +2158,7 @@ Higher level querying and access, specific to myself is implemented in <a href="
 <a href="https://github.com/karlicoss/my"><code class="inline">my.</code></a> package allows me to query my data from anywhere, enabling me to use familiar data processing, analysis and visualization tools, and various integrations.
 </p>
 <p>
-As a nice byproduct I've also finally figured out a reliable way to deal with <a href="mypy-error-handling.html">error handling in Python</a>.
+As a nice byproduct I've also finally figured out a reliable and elegant way to deal with <a href="mypy-error-handling.html">error handling in Python</a>.
 </p>
 </div>
 </div>
@@ -2105,6 +2219,9 @@ I'd be interested to know your opinion or questions, whether on my motivation, o
 <p>
 Let me know if you can think of any other data integrations you are missing and perhaps we can think of something together!
 </p>
+<ul class="org-ul">
+<li><b><span class="timestamp-wrapper"><span class="timestamp">[2020-01-12]</span></span></b> followup: <a href="my-data">What data on myself I collect and why?</a></li>
+</ul>
 </div>
 </div>
 
