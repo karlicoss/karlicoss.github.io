@@ -8,8 +8,938 @@
         <name>karlicoss</name>
         <email>karlicoss@gmail.com</email>
     </author>
-    <updated>2019-12-15T00:00:00Z</updated>
+    <updated>2020-01-12T00:00:00Z</updated>
     <entry>
+    <title>What data on myself I collect and why?</title>
+    <link href="https://beepb00p.xyz/my-data.html" />
+    <id>https://beepb00p.xyz/my-data.html</id>
+    <published>2020-01-12T00:00:00Z</published>
+    <updated>2020-01-12T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="dataliberation pkm quantified-self">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>What data on myself I collect and why? | Mildly entertainingᵝ</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=4" />
+
+        
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    <!-- TODO eh, not sure if this symbol is good for that... -->
+                    ·
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                    ·
+                    <a class="fat" href="./notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
+                </span>
+                <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<!-- <link rel="stylesheet" href="/css/org.css" /> -->
+
+<link rel="stylesheet" href="./css/htmlize.css" />
+<link rel="stylesheet" href="./css/org-default.css" />
+
+<link rel="stylesheet" href="./css/org-extra.css?v=3" />
+
+
+
+<article>
+    
+    <section class="post-title">
+    <h1>What data on myself I collect and why?</h1>
+    
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <p>
+This is the list of personal data sources I use or planning to use with rough guides on how to get your hands on that data if you want it as well.
+</p>
+<p>
+It's still incomplete and I'm going to update it regularly.
+</p>
+<p>
+My goal is <b>automating data collection to the maximum extent possible</b> and making it work in the background, so one can set up pipelines once and hopefully never think about it again.
+</p>
+<p>
+This is kind of a follow-up on my previous post on the <a href="sad-infra.html">sad state of personal data</a>, and part of my personal way of getting around this sad state.
+</p>
+<p>
+If you're terrified by the long list, you can jump straight into <a class="link-down" href="#consumers">"Data consumers"</a> section to find out how I use it.
+</p>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#why">1. Why do you collect X? How do you use your data?</a>
+<ul>
+<li><a href="#backup">backup</a></li>
+<li><a href="#lifelogging">lifelogging</a></li>
+<li><a href="#qs">quantified self</a></li>
+</ul>
+</li>
+<li><a href="#what">2. What do I collect/want to collect?</a>
+<ul>
+<li><a href="#amazon">Amazon</a></li>
+<li><a href="#arbtt">Arbtt (desktop time tracker)</a></li>
+<li><a href="#bitbucket">Bitbucket (repositories)</a></li>
+<li><a href="#bluemaestro">Bluemaestro (environment sensor)</a></li>
+<li><a href="#browser_history">Browser history (Firefox/Chrome)</a></li>
+<li><a href="#emfit">Emfit QS (sleep tracker)</a></li>
+<li><a href="#endomondo">Endomondo</a></li>
+<li><a href="#facebook">Facebook</a></li>
+<li><a href="#messenger">Facebook Messenger</a></li>
+<li><a href="#feedbin">Feedbin</a></li>
+<li><a href="#feedly">Feedly</a></li>
+<li><a href="#fitbit">Fitbit</a></li>
+<li><a href="#foursquare">Foursquare/Swarm</a></li>
+<li><a href="#github_repos">Github (repositories)</a></li>
+<li><a href="#github_events">Github (events)</a></li>
+<li><a href="#gmail">Gmail</a></li>
+<li><a href="#goodreads">Goodreads</a></li>
+<li><a href="#takeout">Google takeout</a></li>
+<li><a href="#hackernews"><span class="todo TODO">TODO</span> Hackernews</a></li>
+<li><a href="#hsbc">HSBC bank</a></li>
+<li><a href="#hypothesis">Hypothesis</a></li>
+<li><a href="#instapaper">Instapaper</a></li>
+<li><a href="#jawbone">Jawbone</a></li>
+<li><a href="#kindle">Kindle</a></li>
+<li><a href="#kobo">Kobo reader</a></li>
+<li><a href="#lastfm">Last.fm</a></li>
+<li><a href="#monzo">Monzo bank</a></li>
+<li><a href="#nomie">Nomie</a></li>
+<li><a href="#pinboard">Pinboard</a></li>
+<li><a href="#pocket">Pocket</a></li>
+<li><a href="#reddit">Reddit</a></li>
+<li><a href="#rtm">Remember the Milk</a></li>
+<li><a href="#rescuetime">Rescuetime</a></li>
+<li><a href="#sms_calls">Sms/calls</a></li>
+<li><a href="#spotify">Spotify</a></li>
+<li><a href="#stackexchange">Stackexchange</a></li>
+<li><a href="#taplog">Taplog</a></li>
+<li><a href="#telegram">Telegram</a></li>
+<li><a href="#twitter">Twitter</a></li>
+<li><a href="#vk">VK.com</a></li>
+<li><a href="#whatsapp"><span class="todo TODO">TODO</span> Whatsapp</a></li>
+</ul>
+</li>
+<li><a href="#consumers">3. Data consumers</a>
+<ul>
+<li><a href="#search">search</a></li>
+<li><a href="#promnesia">promnesia</a></li>
+<li><a href="#orger">orger</a></li>
+<li><a href="#dashboard">dashboard</a></li>
+<li><a href="#mypkg"><code class="inline">my.</code> python package</a></li>
+</ul>
+</li>
+<li><a href="#org0000000">4. --</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000004">
+<h2 id="why"><a class="headerlink" href="#why">¶</a><span class="section-number-2">1</span> Why do you collect X? How do you use your data?</h2>
+<div class="outline-text-2" id="text-why">
+<p>
+All things considered, I think it's a fair question!
+Why bother with all this <a href="./tags.html#infra">infrastructure</a> and hoard the data if you never use it?
+</p>
+<p>
+In the next section, I will elaborate on each specific data source, but to start with I'll list the rationales that all of them share:
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000001">
+<h3 id="backup"><a class="headerlink" href="#backup">¶</a>backup</h3>
+<div class="outline-text-3" id="text-backup">
+<p>
+It may feel unnecessary, but shit happens. What if your account gets suspended for some reason or the company goes bust?
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000002">
+<h3 id="lifelogging"><a class="headerlink" href="#lifelogging">¶</a><a href="./tags.html#lifelogging">lifelogging</a></h3>
+<div class="outline-text-3" id="text-lifelogging">
+<p>
+Most data in digital form got timestamps, so automatically, without manual effort, constitutes data for your timeline.
+</p>
+<p>
+I want to remember more, be able to review my past and bring back and reflect on memories. Practicing lifelogging helps with that.
+</p>
+<p>
+It feels very wrong that things can be forgotten and lost forever.
+It's understandable from the neuroscience point of view, i.e. the brain has limited capacity and it would be too distracting to remember everything all the time.
+That said, I want to have a <b>choice</b> whether to forget or remember events, and I'd like to be able to potentially access forgotten ones.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000003">
+<h3 id="qs"><a class="headerlink" href="#qs">¶</a><a href="./tags.html#quantifiedself">quantified self</a></h3>
+<div class="outline-text-3" id="text-qs">
+<p>
+Most collected digital data is somewhat quantitative and can be used to analyze your body or mind.
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000002e">
+<h2 id="what"><a class="headerlink" href="#what">¶</a><span class="section-number-2">2</span> What do I collect/want to collect?</h2>
+<div class="outline-text-2" id="text-what">
+<p>
+As I mentioned, most of the collected data serve as a means of backup/lifelogging/quantified self, so I won't mention them again in the 'Why' section.
+</p>
+<p>
+All my data collection pipelines are <b>automatic unless mentioned otherwise</b>.
+</p>
+<p>
+Some scripts are still private so if you want to know more, let me know so I can prioritize sharing them.
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000005">
+<h3 id="amazon"><a class="headerlink" href="#amazon">¶</a>Amazon</h3>
+<div class="outline-text-3" id="text-amazon">
+<p>
+How: <a href="https://github.com/jbms/finance-dl">jbms/finance-dl</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>was planning to correlate them with <a class="link-down" href="#monzo">monzo</a>/<a class="link-down" href="#hsbc">HSBC</a> transactions, but haven't got to it yet</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000006">
+<h3 id="arbtt"><a class="headerlink" href="#arbtt">¶</a>Arbtt (desktop time tracker)</h3>
+<div class="outline-text-3" id="text-arbtt">
+<p>
+How: <a href="https://arbtt.nomeata.de">arbtt-capture</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>haven't used it yet, but it could be a rich source of lifelogging context</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000007">
+<h3 id="bitbucket"><a class="headerlink" href="#bitbucket">¶</a>Bitbucket (repositories)</h3>
+<div class="outline-text-3" id="text-bitbucket">
+<p>
+How: <a href="https://github.com/samkuehn/bitbucket-backup">samkuehn/bitbucket-backup</a>
+</p>
+<p>
+Why: 
+</p>
+<ul class="org-ul">
+<li><p>
+proved especially useful considering Atlassian is going to <a href="https://bitbucket.org/blog/sunsetting-mercurial-support-in-bitbucket"><b>wipe</b></a> mercurial repositories
+</p>
+<p>
+I've got lots of private mercurial repositories with university homework, and it's sad to think of people who will lose theirs during this wipe.
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000008">
+<h3 id="bluemaestro"><a class="headerlink" href="#bluemaestro">¶</a><a href="https://bluemaestro.com/products/product-details/bluetooth-environmental-monitor-and-logger">Bluemaestro</a> (environment sensor)</h3>
+<div class="outline-text-3" id="text-bluemaestro">
+<p>
+How: sensor syncs with phone app via Bluetooth, <samp class="inline">/data/data/com.bluemaestro.tempo_utility/databases/</samp> is regularly copied to grab the data.
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>temperature during sleep data for the <a class="link-down" href="#dashboard">dashboard</a></li>
+<li><p>
+lifelogging: capturing weather conditions information
+</p>
+<p>
+E.g. I can potentially see temperature/humidity readings along with my photos from hiking or skiing.
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000009">
+<h3 id="browser_history"><a class="headerlink" href="#browser_history">¶</a>Browser history (Firefox/Chrome)</h3>
+<div class="outline-text-3" id="text-browser_history">
+<p>
+How: <a href="https://github.com/karlicoss/promnesia/tree/master/scripts">custom scripts</a>, copying the underlying sqlite databases directly, running on my computers and phone.
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000a">
+<h3 id="emfit"><a class="headerlink" href="#emfit">¶</a><a href="https://shop-eu.emfit.com/products/emfit-qs">Emfit QS</a> (sleep tracker)</h3>
+<div class="outline-text-3" id="text-emfit">
+<p>
+How: <a href="https://github.com/karlicoss/backup-emfit">emfitexport</a>.
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>sleep data for the <a class="link-down" href="#dashboard">dashboard</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000b">
+<h3 id="endomondo"><a class="headerlink" href="#endomondo">¶</a>Endomondo</h3>
+<div class="outline-text-3" id="text-endomondo">
+<p>
+How: <a href="https://github.com/karlicoss/endoexport">karlicoss/endoexport</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>exercise data for the <a class="link-down" href="#dashboard">dashboard</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000c">
+<h3 id="facebook"><a class="headerlink" href="#facebook">¶</a>Facebook</h3>
+<div class="outline-text-3" id="text-facebook">
+<p>
+How: manual archive export.
+</p>
+<p>
+I barely use Facebook, so don't even bother doing it regularly.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000d">
+<h3 id="messenger"><a class="headerlink" href="#messenger">¶</a>Facebook Messenger</h3>
+<div class="outline-text-3" id="text-messenger">
+<p>
+How: <a href="https://github.com/karlicoss/fbmessengerexport">karlicoss/fbmessengerexport</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000e">
+<h3 id="feedbin"><a class="headerlink" href="#feedbin">¶</a>Feedbin</h3>
+<div class="outline-text-3" id="text-feedbin">
+<p>
+How: via API
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000f">
+<h3 id="feedly"><a class="headerlink" href="#feedly">¶</a>Feedly</h3>
+<div class="outline-text-3" id="text-feedly">
+<p>
+How: via API
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000010">
+<h3 id="fitbit"><a class="headerlink" href="#fitbit">¶</a>Fitbit</h3>
+<div class="outline-text-3" id="text-fitbit">
+<p>
+How: manual CSV export, as I only used it for a week. However, it seems <a href="https://dev.fitbit.com/build/reference/web-api/intraday-requests">possible</a> via API.
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>activity data for the <a class="link-down" href="#dashboard">#dashboard</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000011">
+<h3 id="foursquare"><a class="headerlink" href="#foursquare">¶</a>Foursquare/Swarm</h3>
+<div class="outline-text-3" id="text-foursquare">
+<p>
+How: via API
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000012">
+<h3 id="github_repos"><a class="headerlink" href="#github_repos">¶</a>Github (repositories)</h3>
+<div class="outline-text-3" id="text-github_repos">
+<p>
+How: <a href="https://github.com/josegonzalez/python-github-backup">github-backup</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>capable of exporting starred repositories as well, so if the authors delete them I will still have them</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000013">
+<h3 id="github_events"><a class="headerlink" href="#github_events">¶</a>Github (events)</h3>
+<div class="outline-text-3" id="text-github_events">
+<p>
+How: manually requested archive (once), after that automatic <a href="https://github.com/karlicoss/ghexport">karlicoss/ghexport</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000014">
+<h3 id="gmail"><a class="headerlink" href="#gmail">¶</a>Gmail</h3>
+<div class="outline-text-3" id="text-gmail">
+<p>
+How: <a href="https://github.com/joeyates/imap-backup">imap-backup</a>, <a class="link-down" href="#takeout">Google Takeout</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>this is arguably <b>the most important</b> thing you should export considering how heavily everything relies on email</li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000015">
+<h3 id="goodreads"><a class="headerlink" href="#goodreads">¶</a>Goodreads</h3>
+<div class="outline-text-3" id="text-goodreads">
+<p>
+How: <a href="https://github.com/karlicoss/goodrexport">karlicoss/goodrexport</a>
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000016">
+<h3 id="takeout"><a class="headerlink" href="#takeout">¶</a>Google takeout</h3>
+<div class="outline-text-3" id="text-takeout">
+<p>
+How: semi-automatic. 
+</p>
+<ul class="org-ul">
+<li>only manual step: enable scheduled exports (you can schedule 6 per year at a time), and choose to keep it on Google Drive in export settings</li>
+<li>mount your Google Drive (e.g. via <a href="https://github.com/astrada/google-drive-ocamlfuse">google-drive-ocamlfuse</a>)</li>
+<li>keep a script that checks mounted Google Drive for fresh takeouts and move them somewhere safe</li>
+</ul>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>Google collects lots of data, which you could put to some good use. However, old data is getting <a href="./takeout-data-gone.html">wiped</a>, so it's important to export Takeout regularly.</li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+<li>(potentially) search history for <a class="link-down" href="#promnesia">promnesia</a></li>
+<li><a class="link-down" href="#search">search</a> in youtube watch history</li>
+<li>location data for lifelogging and the <a class="link-down" href="#dashboard">dashboard</a> (activity)</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000017">
+<h3 id="hackernews"><a class="headerlink" href="#hackernews">¶</a><span class="todo TODO">TODO</span> Hackernews</h3>
+<div class="outline-text-3" id="text-hackernews">
+<p>
+How: haven't got to it yet. It's going to require:
+</p>
+<ul class="org-ul">
+<li>extracting upvotes/saved items via web scraping since Hackernews doesn't offer an API for that. Hopefully, there is an existing library for that.</li>
+<li><p>
+I'm also using <a href="https://play.google.com/store/apps/details?id=io.github.hidroh.materialistic">Materialistic</a> app that has its own 'saved' posts and doesn't synchronize with Hackernews. 
+</p>
+<p>
+Exporting them is going to require copying the database directly from the app private storage.
+</p></li>
+</ul>
+<p>
+Why: same reasons as <a class="link-down" href="#reddit">Reddit</a>.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000018">
+<h3 id="hsbc"><a class="headerlink" href="#hsbc">¶</a>HSBC bank</h3>
+<div class="outline-text-3" id="text-hsbc">
+<p>
+How: manual exports of monthly PDFs with transactions. They don't really offer API, so unless you want to scrape it seems it's the best you can do.
+</p>
+<p>
+Why
+</p>
+<ul class="org-ul">
+<li>personal finance; used it with <a href="https://github.com/karlicoss/hsbc-parser">karlicoss/hsbc-parser</a> to feed into <a href="https://hledger.org">hledger</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000019">
+<h3 id="hypothesis"><a class="headerlink" href="#hypothesis">¶</a><a href="https://hypothes.is">Hypothesis</a></h3>
+<div class="outline-text-3" id="text-hypothesis">
+<p>
+How: <a href="https://github.com/karlicoss/hypexport">karlicoss/hypexport</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+<li>quick todos via <a class="link-down" href="#orger">orger</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001a">
+<h3 id="instapaper"><a class="headerlink" href="#instapaper">¶</a>Instapaper</h3>
+<div class="outline-text-3" id="text-instapaper">
+<p>
+How: <a href="https://github.com/karlicoss/instapexport">karlicoss/instapexport</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+<li>quick todos via <a class="link-down" href="#orger">orger</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001b">
+<h3 id="jawbone"><a class="headerlink" href="#jawbone">¶</a>Jawbone</h3>
+<div class="outline-text-3" id="text-jawbone">
+<p>
+How: via API.
+Jawbone is dead now, so if you haven't exported it already, likely your data is lost forever.
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>sleep data for the <a class="link-down" href="#dashboard">dashboard</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001c">
+<h3 id="kindle"><a class="headerlink" href="#kindle">¶</a>Kindle</h3>
+<div class="outline-text-3" id="text-kindle">
+<p>
+How: manually exported <samp class="inline">MyClippings.txt</samp> from Kindle. Potentially can be automated similarly to <a class="link-down" href="#kobo">Kobo</a>.
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001d">
+<h3 id="kobo"><a class="headerlink" href="#kobo">¶</a><a href="https://www.kobo.com">Kobo</a> reader</h3>
+<div class="outline-text-3" id="text-kobo">
+<p>
+How: almost automatic via <a href="https://github.com/karlicoss/kobuddy">karlicoss/kobuddy</a>. Manual step: having to connect your reader via USB now and then.
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+<li><a href="orger-todos.html#krill">spaced repetition</a> for unfamiliar words/new concepts via <a class="link-down" href="#orger">orger</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001e">
+<h3 id="lastfm"><a class="headerlink" href="#lastfm">¶</a>Last.fm</h3>
+<div class="outline-text-3" id="text-lastfm">
+<p>
+How: <a href="https://github.com/karlicoss/lastfm-backup">karlicoss/lastfm-backup</a>
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001f">
+<h3 id="monzo"><a class="headerlink" href="#monzo">¶</a>Monzo bank</h3>
+<div class="outline-text-3" id="text-monzo">
+<p>
+How: <a href="https://github.com/karlicoss/monzoexport">karlicoss/monzoexport</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>automatic personal finance, fed into <a href="https://hledger.org">hledger</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000020">
+<h3 id="nomie"><a class="headerlink" href="#nomie">¶</a><a href="https://nomie.app">Nomie</a></h3>
+<div class="outline-text-3" id="text-nomie">
+<p>
+How: regular copies of <samp class="inline">/data/data/io.nomie.pro/files/_pouch_events</samp> and <samp class="inline">/data/data/io.nomie.pro/files/_pouch_trackers</samp>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>could be a great tool for detailed lifelogging if you're into it</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000021">
+<h3 id="pinboard"><a class="headerlink" href="#pinboard">¶</a>Pinboard</h3>
+<div class="outline-text-3" id="text-pinboard">
+<p>
+How: <a href="https://github.com/karlicoss/pinbexport">karlicoss/pinbexport</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000022">
+<h3 id="pocket"><a class="headerlink" href="#pocket">¶</a>Pocket</h3>
+<div class="outline-text-3" id="text-pocket">
+<p>
+How: <a href="https://github.com/karlicoss/pockexport">karlicoss/pockexport</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000023">
+<h3 id="reddit"><a class="headerlink" href="#reddit">¶</a>Reddit</h3>
+<div class="outline-text-3" id="text-reddit">
+<p>
+How: <a href="https://github.com/karlicoss/rexport">karlicoss/rexport</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+<li><a href="orger-todos.html#reddit">org-mode interface</a> for processing saved Reddit posts/comments, via <a class="link-down" href="#orger">orger</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000024">
+<h3 id="rtm"><a class="headerlink" href="#rtm">¶</a>Remember the Milk</h3>
+<div class="outline-text-3" id="text-rtm">
+<p>
+How: ical export from the API.
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><p>
+<a class="link-down" href="#search">better search</a>
+</p>
+<p>
+I stopped using RTM in favor of org-mode, but I can still easily find my old task and notes.
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000025">
+<h3 id="rescuetime"><a class="headerlink" href="#rescuetime">¶</a>Rescuetime</h3>
+<div class="outline-text-3" id="text-rescuetime">
+<p>
+How: <a href="https://github.com/karlicoss/rescuexport">karlicoss/rescuexport</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>richer contexts for lifelogging</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000026">
+<h3 id="sms_calls"><a class="headerlink" href="#sms_calls">¶</a>Sms/calls</h3>
+<div class="outline-text-3" id="text-sms_calls">
+<p>
+How: <a href="https://play.google.com/store/apps/details?id=com.riteshsahu.SMSBackupRestore">SMS Backup &amp; Restore</a> app, automatic exports.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000027">
+<h3 id="spotify"><a class="headerlink" href="#spotify">¶</a>Spotify</h3>
+<div class="outline-text-3" id="text-spotify">
+<p>
+How: export script, using <a href="https://github.com/plamere/spotipy">plamere/spotipy</a>
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000028">
+<h3 id="stackexchange"><a class="headerlink" href="#stackexchange">¶</a>Stackexchange</h3>
+<div class="outline-text-3" id="text-stackexchange">
+<p>
+How: <a href="https://github.com/karlicoss/stexport">karlicoss/stexport</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000029">
+<h3 id="taplog"><a class="headerlink" href="#taplog">¶</a><a href="https://play.google.com/store/apps/details?id=com.waterbear.taglog">Taplog</a></h3>
+<div class="outline-text-3" id="text-taplog">
+<p>
+(not using it anymore, in favor of org-mode)
+</p>
+<p>
+How: regular copying of <samp class="inline">/data/data/com.waterbear.taglog/databases/Buttons Database</samp>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>a quick way of single tap logging (e.g. weight/sleep/exercise etc), contributes to the <a class="link-down" href="#dashboard">dashboard</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000002a">
+<h3 id="telegram"><a class="headerlink" href="#telegram">¶</a>Telegram</h3>
+<div class="outline-text-3" id="text-telegram">
+<p>
+How: <a href="https://github.com/fabianonline/telegram_backup">fabianonline/telegram_backup</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000002b">
+<h3 id="twitter"><a class="headerlink" href="#twitter">¶</a>Twitter</h3>
+<div class="outline-text-3" id="text-twitter">
+<p>
+How: twitter archive (manually, once), after that regular automatic exports via API
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000002c">
+<h3 id="vk"><a class="headerlink" href="#vk">¶</a>VK.com</h3>
+<div class="outline-text-3" id="text-vk">
+<p>
+How: <a href="https://github.com/Totktonada/vk_messages_backup">Totktonada/vk_messages_backup</a>.
+</p>
+<p>
+Sadly VK broke their API so the script stopped working. I'm barely using VK now anyway so not motivated enough to work around it.
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000002d">
+<h3 id="whatsapp"><a class="headerlink" href="#whatsapp">¶</a><span class="todo TODO">TODO</span> Whatsapp</h3>
+<div class="outline-text-3" id="text-whatsapp">
+<p>
+Barely using it so haven't bothered yet.   
+</p>
+<p>
+How: Whatsapp doesn't offer API, so potentially going to require grabbing sqlite database from Android app (<samp class="inline">/data/data/com.whatsapp/databases/msgstore.db</samp>)
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000034">
+<h2 id="consumers"><a class="headerlink" href="#consumers">¶</a><span class="section-number-2">3</span> Data consumers</h2>
+<div class="outline-text-2" id="text-consumers">
+</div>
+<div class="outline-3" id="outline-container-org000002f">
+<h3 id="search"><a class="headerlink" href="#search">¶</a>search</h3>
+<div class="outline-text-3" id="text-search">
+<p>
+Typical search interfaces make me unhappy as they are <b>siloed, slow, awkward to use and don't work offline</b>.
+So I built my own ways around it! I write about it in detail <a href="pkm-search.html#personal_information">here</a>.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000030">
+<h3 id="promnesia"><a class="headerlink" href="#promnesia">¶</a>promnesia</h3>
+<div class="outline-text-3" id="text-promnesia">
+<p>
+<a href="https://github.com/karlicoss/promnesia#demo">promnesia</a> is a browser extension I'm working on to escape silos by <b>unifying annotations and browsing history</b> from different data sources.
+</p>
+<p>
+I've been using it for more than a year now and working on final touches to make it possible to be used by other people.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000031">
+<h3 id="orger"><a class="headerlink" href="#orger">¶</a>orger</h3>
+<div class="outline-text-3" id="text-orger">
+<p>
+<a href="https://github.com/karlicoss/orger">orger</a> is a tool and set of modules for converting data into org-mode to allow for <b>instant and offline search and overview</b>.
+</p>
+<p>
+In addition, I'm using it for creating tasks straight from native app interfaces (e.g. Reddit/Telegram) and spaced repetition via <a href="https://orgmode.org/worg/org-contrib/org-drill.html">org-drill</a>.
+</p>
+<p>
+I write about it in detail <a href="orger.html">here</a> and <a href="orger-todos.html">here</a>.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000032">
+<h3 id="dashboard"><a class="headerlink" href="#dashboard">¶</a>dashboard</h3>
+<div class="outline-text-3" id="text-dashboard">
+<p>
+I'm working on personal health, sleep and exercise dashboard, built from various data sources.
+</p>
+<p>
+I'm working on making it public, you can see some screenshots <a href="https://www.reddit.com/r/QuantifiedSelf/comments/cokt4f/what_do_you_all_do_with_your_data/ewmucgk">here</a>.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000033">
+<h3 id="mypkg"><a class="headerlink" href="#mypkg">¶</a><a href="https://github.com/karlicoss/my"><code class="inline">my.</code></a> python package</h3>
+<div class="outline-text-3" id="text-mypkg">
+<p>
+This python package is a kind of my personal API to access all collected data.
+</p>
+<p>
+I'm in the progress of writing about it <a href="mypkg.html">here</a>.
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000000">
+<h2 id="org0000000"><a class="headerlink" href="#org0000000">¶</a><span class="section-number-2">4</span> --</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Happy to answer any questions on my approach and help you with liberating your data.  
+</p>
+<p>
+In the <a href="exports.html">next post</a> (writing still in progress) I'm going to elaborate on design decisions behind my data export and access infrastructure.
+</p>
+</div>
+</div>
+
+    </section>
+
+    
+    <section class="footer">
+        <div class="post-tags"><a class="post-tag" href="./tags.html#dataliberation">#dataliberation</a> <a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#quantified-self">#quantified-self</a></div>
+        <!-- TODO post-date? -->
+        <div class="date">12 January 2020</div>
+    </section>
+    
+
+    
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_my_data"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
+        
+        <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
+
+            <a href="http://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>
+            
+            
+        </footer>
+    </body>
+</html>
+]]></summary>
+</entry>
+<entry>
     <title>The sad state of personal data and infrastructure</title>
     <link href="https://beepb00p.xyz/sad-infra.html" />
     <id>https://beepb00p.xyz/sad-infra.html</id>
@@ -1130,7 +2060,7 @@ Finally, some tools and scripts I've implemented to make possible the interactio
 </p>
 <ul class="org-ul">
 <li>A <a href="pkm-search.html">personal search engine</a> for quick incremental search of my data and digital trace</li>
-<li><a href="orger.html">orger</a>: tool to convert data into org-mode views for quick search and overview
+<li><a href="orger.html">orger</a>: tool to convert data into org-mode views for instant and offline search and overview
 <ul class="org-ul">
 <li><a href="orger-todos.html#reddit">also</a> for prioritizing content consumption (e.g. processing Reddit saves)</li>
 <li><a href="orger-todos.html#krill">also</a> for populating my spaced repetition queue</li>
@@ -1138,7 +2068,7 @@ Finally, some tools and scripts I've implemented to make possible the interactio
 </ul></li>
 <li><a href="./grasp.html">grasp</a>, browser extension to clip links straight into my org-mode notes</li>
 <li><a href="https://github.com/karlicoss/promnesia">promnesia</a>, a browser extension to escape silos by unifying annotations and browsing history from different data sources (still somewhat WIP and needs final touches, but planning to release soon)</li>
-<li>personal health, sleep and exercise dashboard, pulling in possible data sources. I'm in the process of making it public, you can see some screenshots <a href="https://www.reddit.com/r/QuantifiedSelf/comments/cokt4f/what_do_you_all_do_with_your_data/ewmucgk">here</a></li>
+<li>personal health, sleep and exercise dashboard, built from various data sources. I'm in the process of making it public, you can see some screenshots <a href="https://www.reddit.com/r/QuantifiedSelf/comments/cokt4f/what_do_you_all_do_with_your_data/ewmucgk">here</a></li>
 </ul>
 </div>
 </div>
@@ -8058,1282 +8988,6 @@ Free term: -9.281
 </script>
 
 <section id="isso-thread" data-isso-id="isso_endomondo_kcal_heartbeats"></section>
-
-    </section>
-
-</article>
-
-        </main>
-
-        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
-        
-        <footer>
-            <span style="float:left">
-            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
-            ·
-            <a href="https://github.com/karlicoss">💻 me @github</a>
-            </span>
-
-            <a href="http://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>
-            
-            
-        </footer>
-    </body>
-</html>
-]]></summary>
-</entry>
-<entry>
-    <title>How to annotate literally everything</title>
-    <link href="https://beepb00p.xyz/annotating.html" />
-    <id>https://beepb00p.xyz/annotating.html</id>
-    <published>2019-07-05T00:00:00Z</published>
-    <updated>2019-07-05T00:00:00Z</updated>
-    <summary type="html"><![CDATA[<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!-- Icon made by Twitter -->
-        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
-        <link rel="icon" href="./robot-face.png">
-        <link rel="apple-touch-icon" href="./robot-face.png">
-
-        <meta name="generator" content="hakyll">
-        <meta name="language" content="English">
-        
-        <meta name="keywords" content="pkm annotation sr tools">
-        
-        <!-- TODO concat with keywords tags; also need to make comma separated? -->
-
-        <title>How to annotate literally everything | Mildly entertainingᵝ</title>
-
-        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="./css/default.css?v=3" />
-        <link rel="stylesheet" href="./css/links.css?v=4" />
-
-        
-    </head>
-    <body>
-        <header>
-            <nav>
-                <span class="nav-left">
-                    <a class="fat" href="./">Home</a>
-                    <!-- TODO eh, not sure if this symbol is good for that... -->
-                    ·
-                    <a class="fat" href="./ideas.html">Ideas</a>
-                    ·
-                    <a class="fat" href="./notes.html">Notes</a>
-                    ·
-                    <a class="fat" href="./tags.html">Tags</a>
-                </span>
-                <span class="nav-right">
-                    <a class="fat" href="./feed.html">Feed</a>
-                    ·
-                    <a class="fat" href="./site.html">Site</a>
-                    ·
-                    <a class="fat" href="./me.html">Me</a>
-                </span>
-            </nav>
-        </header>
-
-        <main>
-            
-
-<!-- <link rel="stylesheet" href="/css/org.css" /> -->
-
-<link rel="stylesheet" href="./css/htmlize.css" />
-<link rel="stylesheet" href="./css/org-default.css" />
-
-<link rel="stylesheet" href="./css/org-extra.css?v=3" />
-
-
-
-<article>
-    
-    <section class="post-title">
-    <h1>How to annotate literally everything</h1>
-    <div class="summary">Comprehensive overview of existing tools, strategies and thoughts on interacting with your data</h2>
-    </section>
-    <!-- are sections appropriate for that? -->
-
-    <section class="content">
-    <div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#motivation">1. Motivation</a></li>
-<li><a href="#org000000a">2. Annotating web</a>
-<ul>
-<li><a href="#org0000002">Pocket</a></li>
-<li><a href="#instapaper">Instapaper</a></li>
-<li><a href="#wallabag">Wallabag</a></li>
-<li><a href="#hypothesis">Hypothes.is</a></li>
-<li><a href="#grasp">Grasp</a></li>
-<li><a href="#org0000009">Summary</a></li>
-</ul>
-</li>
-<li><a href="#pdfs">3. Annotating PDFs</a>
-<ul>
-<li><a href="#org000000e">Okular, Evince, Atril</a></li>
-<li><a href="#pdftools">Emacs: pdf-tools</a></li>
-<li><a href="#org0000010">Other Linux readers</a></li>
-<li><a href="#orgnoter">Emacs: org-noter</a></li>
-<li><a href="#xournal">Xournal</a></li>
-<li><a href="#hypothesis_pdf">Hypothes.is (again)</a></li>
-<li><a href="#polar">Polar</a></li>
-<li><a href="#android_ann">Annotating on Android</a></li>
-<li><a href="#org0000016">Summary</a></li>
-</ul>
-</li>
-<li><a href="#org0000020">4. Annotating E-ink</a>
-<ul>
-<li><a href="#kindle">Kindle</a></li>
-<li><a href="#kobo">Kobo</a></li>
-<li><a href="#koreader">Koreader</a></li>
-</ul>
-</li>
-<li><a href="#org0000027">5. Miscellaneous</a>
-<ul>
-<li><a href="#org0000021">Annotating paper books</a></li>
-<li><a href="#org0000022">Annotating plaintext</a></li>
-<li><a href="#org0000023">Annotating videos</a></li>
-<li><a href="#org0000024">Other notable mentions</a></li>
-<li><a href="#other_tools">Other tools</a></li>
-<li><a href="#hall_of_shame">Hall of shame!</a></li>
-</ul>
-</li>
-<li><a href="#vision">6. What makes a good annotation system?</a>
-<ul>
-<li><a href="#comparison">Comparison</a></li>
-</ul>
-</li>
-<li><a href="#infra">7. Using annotation data</a>
-<ul>
-<li><a href="#org000002a">Extracting reading stats</a></li>
-<li><a href="#org000002b">Searching in annotations</a></li>
-<li><a href="#todos">Providing TODO items</a></li>
-<li><a href="#spaced_repetition">Spaced repetition</a></li>
-<li><a href="#org000002e">Life log</a></li>
-</ul>
-</li>
-<li><a href="#org0000031">8. --</a></li>
-</ul>
-</div>
-</div>
-<p>
-TLDR: when I read I try to read <a href="https://help.open.ac.uk/active-reading">actively</a>, which for me mainly involves using various tools to annotate content: highlight and leave notes as I read. I've programmed <a class="link-down" href="#infra">data providers</a> that parse them and provide nice interface to interact with this data from other tools. My <a class="link-down" href="#org0000000">automated scripts</a> use them to render these annotations in human readable and searchable plaintext and generate <a class="link-down" href="#todos">TODOs</a>/<a class="link-down" href="#spaced_repetition">spaced repetition</a> items.
-</p>
-<p>
-In this post I'm gonna elaborate on all of that and give some motivation, review of these tools (mainly with the focus on open source thus extendable software) and my vision on how they could work in an ideal world.
-I won't try to convince you that my method of reading and interacting with information is superior for you: it doesn't have to be, and there are people out there more eloquent than me who do that. I assume you want this too and wondering about the practical details.
-</p>
-<div class="outline-2" id="outline-container-org0000001">
-<h2 id="motivation"><a class="headerlink" href="#motivation">¶</a><span class="section-number-2">1</span> Motivation</h2>
-<div class="outline-text-2" id="text-motivation">
-<div><span class="before-aside">
-At some point in my life I realized I didn't remember most of the books/papers/posts/videos I had consumed few years before. 
-</span><aside class="sidenote sidenote">For brevity I'll just refer to all of this as 'content' further on</aside></div>
-<p>
-That bothered me increasingly until I bought a Kindle which had 'highlight' functionality and virtual keyboard; and I had discovered it to help a lot with recalling.
-</p>
-<p>
-I've become increasingly obsessed with this and these days ability to highlight when I read serves multiple purposes for me:
-</p>
-<ul class="org-ul">
-<li>the very act of spending conscious effort on highlighting and commenting helps to remember better.</li>
-<li><p>
-it's easier to recall the content I already read, I just skim through highlights and refresh the memory
-</p>
-<p>
-In particular, often I'd run on something on the internet that I remember reading before. If I have annotations for that, I can quickly go through them and restore the context.
-</p></li>
-<li>it's easier to recommend content to other people because you can refer to specific moments or points you liked/disliked</li>
-<li>it's got social value if highlights are visible to other people (e.g. <a class="link-down" href="#hypothesis">Hypothesis</a>, Medium, Goodreads)</li>
-<li>it helps with <a href="./notes.html#book_scoring">book scoring</a>. If I don't have any highlights, it probably means that the content was not interesting at all for me. Fiction books are not an exception: I tend to highlight use of language I liked, inspirational things, etc.</li>
-<li>it serves as activity log if you are into <a class="post-tag" href="./tags.html#lifelogging">#lifelogging</a>.</li>
-<li>you can <a class="link-down" href="#todos">populate your TODO list</a> and <a class="link-down" href="#spaced_repetition">step up your spaced repetition game</a>.</li>
-</ul>
-<p>
-I'm going to review some of the tools I tried using and still using and highlight their different positive and negative aspects. If you're getting impatient, you can skip straight to my <a class="link-down" href="#comparison">comparison table</a>.
-</p>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org000000a">
-<h2 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><span class="section-number-2">2</span> Annotating web</h2>
-<div class="outline-text-2" id="text-2">
-</div>
-<div class="outline-3" id="outline-container-org0000002">
-<h3 id="org0000002"><a class="headerlink" href="#org0000002">¶</a><a href="https://getpocket.com">Pocket</a></h3>
-<div class="outline-text-3" id="text-org0000002">
-<p>
-I won't really write much about it for one reason which is a big deal: while you can highlight text, you can't leave notes. Nearest functionality is 'recommending' a highlight while reading a comment, but that's only displayed on your 'timeline'.
-</p>
-<p>
-Pocket API doesn't support exporting highlights too, or to be precise it seems to be hidden. If you need it you can use <a href="https://github.com/karlicoss/pockexport">my script</a> where I hacked around it.
-</p>
-<p>
-Also, interesting enough, <a class="link-down" href="#kobo">Kobo reader</a> has got Pocket integration, but for some reason when you read Pocket articles on Kobo, you can't highlight at all (let alone syncing highlights with Pocket). Not sure what's the purpose of this integration.
-</p>
-<p>
-Pocket was acquired by Mozilla in 2017, which might be a good thing, but so far their main focus seem to be readability features.
-</p>
-<p>
-You can also read <a href="https://news.ycombinator.com/item?id=19763106">a rant</a> raising similar issues to what I mentioned.
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000004">
-<h3 id="instapaper"><a class="headerlink" href="#instapaper">¶</a><a href="https://www.instapaper.com">Instapaper</a></h3>
-<div class="outline-text-3" id="text-instapaper">
-<p>
-I won't go into Instapaper's readability capabilities (e.g. fonts and article formatting) because it's not something I care much about, so you might be better off googling that for yourself, here I'll concentrate on annotating aspect. 
-Here are couple of recent extensive comparisons of Instapaper and Pocket, which feature screenshots and other aspects of Instapaper:
-</p>
-<ul class="org-ul">
-<li><a href="https://zapier.com/blog/instapaper-vs-pocket">Read-It-Later App Showdown: Instapaper vs. Pocket</a>; <a href="https://zappy.zapier.com/A040E0D5-C672-4F08-812B-D7793F6B40A7.png">screenshot</a> of annotation interface.</li>
-<li><a href="https://medium.com/@janniks/instapaper-vs-pocket-2019-comparison-453524ff952d">Instapaper vs. Pocket (2019 Comparison)</a></li>
-</ul>
-<p>
-So, to read something in Instapaper, first you'll have to import the article into it (to unclutter and optimize it for reading). 
-Due to this import process, you can <b><b>only read and highlight in Instapaper's app</b></b>, and you can only see your highlights there as well, which is its main limitation for me.
-</p>
-<p>
-The only reason I'm using it at all is that its Android app has got <b><b>offline</b></b> capabilities, so I would export to Instapaper things I want to read on the tube while I don't have connection and read/comment while offline.
-</p>
-<p>
-Mind that free version of Instapaper has got <b><b>5 notes per month limit</b></b>. Personally I'm happy to pay 3$ per month for <a href="https://www.instapaper.com/premium">premium version</a> of such a decent product though in absence of good alternatives.
-</p>
-<p>
-Instapaper got <a href="https://www.instapaper.com/api">Json API</a>, through which you can access your saved articles, comments and highlights. I'm using a <a href="https://github.com/karlicoss/instapaper">fork</a> of python wrapper to access it. Highlights are only stored as text though (as opposed to CSS/xpath locators), so there is no easy way to match them against original text apart from some sort of fuzzy search. 
-</p>
-<p>
-<a id="org0000003"></a>Search function works for full text search in saved articles, but doesn't let you restrict search for highlights, and you can't search in notes at all.
-</p>
-<p>
-One red flag was in 2018 when Instapaper wasn't available in Europe for few months until they resolved GDPR issues. While I don't blame it on Instapaper, this is a kind of thing that happens when you don't own your data and use a closed source product.
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000006">
-<h3 id="wallabag"><a class="headerlink" href="#wallabag">¶</a><a href="https://github.com/wallabag/wallabag">Wallabag</a></h3>
-<div class="outline-text-3" id="text-wallabag">
-<p>
-Wallabag is the most mature open source/selfhosted read-it-later kind of project I know of. <a href="https://opensource.com/article/18/7/wallabag">Here's</a> a review featuring some screenshots of their web app and Android app.
-</p>
-<p>
-It's very similar to Instapaper in terms of <b><b>having to import</b></b> the article in Wallabag in order to annotate it. I used it for a while and only had some issues with importing articles heavy on MathJax backed Latex.
-</p>
-<p>
-If you don't want to selfhost it, you can use <a href="https://www.wallabag.it/en">wallabag.it</a> hosting for as little as 9 euros per year and two weeks of trial.
-</p>
-<p>
-<a id="org0000005"></a>There is also an <a href="https://github.com/wallabag/android-app">Android app</a>, but sadly it <a href="https://github.com/wallabag/android-app/issues/115">lacks</a> support for highlighting.
-</p>
-<p>
-I wish it had more attention from the community, and might try to work on Android annotation when I got more time.
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000007">
-<h3 id="hypothesis"><a class="headerlink" href="#hypothesis">¶</a><a href="https://web.hypothes.is/#see-how-it-works">Hypothes.is</a></h3>
-<div class="outline-text-3" id="text-hypothesis">
-<p>
-Hypothesis is simply awesome and my favorite web annotation tool. Their killer feature is that it embeds a bit of JS in the page to provide an <b><b>in-browser overlay</b></b>, so you don't have to leave the page you were reading and can highlight and add comments natively.
-They use something cool called <a href="https://web.hypothes.is/blog/fuzzy-anchoring">fuzzy anchoring</a> to achieve this.
-That also makes annotations <b><b>resilient to document markup changes</b></b>, and if they can't locate your annotations it would be still shown in metadata as <a href="https://web.hypothes.is/blog/showing-orphaned-annotations">'orphaned'</a>, so you never lose your notes.
-</p>
-<p>
-Another cool feature is that you can choose to make your annotations public and see other people's annotations or create a private group if you want to share them among specific people only.
-</p>
-<p>
-To get a sense of it you can skim through <a href="https://web.hypothes.is/help/annotation-basics">tutorial</a> which has plenty of screenshots,
-and I also strongly recommend you checking it out in action here: <a href="https://web.hypothes.is/blog/annotation-is-now-a-web-standard">Annotation Is Now a Web Standard</a>,
-or try the very page <a href="https://via.hypothes.is/https://beepb00p.xyz/annotating.html#hypothesis">you're reading now</a>.
-</p>
-<p>
-You don't have to install anything or register, it's just a widget embedded in the page, but do make sure to allow JS.
-You should see yellow highlights and the sidebar on the right.
-</p>
-<p>
-It's open source, can be selfhosted and they provide their own service for free (but please consider donating them!).
-</p>
-<p>
-Since Hypothesis powered by javascript, it actually works well in modern <b><b>Android</b></b> browsers via <a href="https://web.hypothes.is/start/">bookmarklet</a>.
-It's somewhat not obvious in terms of browser UI how to actually use them though:
-</p>
-<ul class="org-ul">
-<li>for mobile Firefox, once you added a bookmarklet, to invoke it you need to <a href="https://www.reddit.com/r/firefox/comments/3uquy5/do_bookmarklets_work_in_firefox_browser_for/cxh8uvq">tap on the address bar</a> and click the bookmarklet.</li>
-<li>for mobile Chrome, it's a bit more tedious but also <a href="https://android.stackexchange.com/questions/159308/how-can-a-bookmarklet-be-added-on-mobile-chrome">possible</a>.</li>
-</ul>
-<p>
-One downside of this service is that you won't be able to annotate while offline.
-I feel it's actually more of mobile browser's problem in general rather than Hypothesis though.
-While you potentially can annotate offline without querying API and preserving data in <samp class="inline">localStorage</samp>, if you can't load the page in the first place, it doesn't matter. Perhaps that can be given better support in browsers.
-</p>
-<p>
-Hypothesis got <a href="https://h.readthedocs.io/en/latest/api-reference/v1/#tag/annotations/paths/~1search/get">JSON API</a> which gives access to your and other people's public annotations.
-I'm using <a href="https://github.com/judell/Hypothesis">judell/Hypothesis</a> python wrapper to access and back up this data.
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000008">
-<h3 id="grasp"><a class="headerlink" href="#grasp">¶</a><a href="./grasp.html">Grasp</a></h3>
-<div class="outline-text-3" id="text-grasp">
-<p>
-Shameless plug! If you just want to send annotations directly into a plaintext (e.g. org-mode) file and don't really care about displaying them within the original web page you can use my <a href="https://github.com/karlicoss/grasp">grasp</a> browser addon for that.
-</p>
-<p>
-I typically use it for highlights that would be good candidates for TODO items, e.g. something actionable like piece of advice or further reading.
-</p>
-<p>
-Not available for <a href="https://github.com/karlicoss/grasp/issues/15">mobile yet</a>, but perhaps on Android native select and share capabilities (e.g. into <a href="https://github.com/orgzly/orgzly-android">orgzly</a>) makes more sense anyway.
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000009">
-<h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a>Summary</h3>
-<div class="outline-text-3" id="text-org0000009">
-<p>
-<a class="link-up" href="#hypothesis">Hypothes.is</a> is a clear winner for me on desktop and I'm using <a class="link-up" href="#instapaper">Instapaper</a> for offline reading on Android.
-</p>
-</div>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000017">
-<h2 id="pdfs"><a class="headerlink" href="#pdfs">¶</a><span class="section-number-2">3</span> Annotating PDFs</h2>
-<div class="outline-text-2" id="text-pdfs">
-<p>
-Small disclaimer: I don't own Mac/Windows/iPhone so have very little idea what's going on in their world. Sorry! You can take a look at a section I added with <a class="link-down" href="#other_tools">other people's suggestions</a>.
-</p>
-<p>
-PDF format is a complicated beast, and its native annotations are a whole different story to annotating web.
-</p>
-<p>
-First, its ISO standard is <a href="https://www.iso.org/standard/63534.html">not freely available</a>. Adobe website has got some sort of <a href="https://www.adobe.com/devnet/pdf/pdf_reference.html">reference</a>
-which is not the same as standard, but apparently close enough.
-</p>
-<p>
-There are quite a few different kinds of PDF annotations, e.g. you can see them here in <a href="https://www.adobe.com/content/dam/acom/en/devnet/pdf/PDF32000_2008.pdf">section 12.5.6: Annotation Types</a> or in <a href="https://gitlab.freedesktop.org/poppler/poppler/blob/a4d3db87c3bae5e2a364c828479a6cbb0277069e/poppler/Annot.h#L606-634">Poppler source code</a>.
-In addition to Highlight and Text types there are things like support for styling, underlines, strikethoughs, and even (heaven forbid) sounds, movies and 3D.
-</p>
-<p>
-Using native PDF annotations has one major drawback: you will have to save metadata back to the PDF file at some point.
-At worst it could be impossible due to DRM, but in any case, you'd need to somehow remember that some of your documents might have private notes inside.
-I get around it by making a copy of the file I'm about to annotate first, and giving it <samp class="inline">[annotated]</samp> prefix so I wouldn't confuse it with the original file.
-</p>
-</div>
-<div class="outline-3" id="outline-container-org000000e">
-<h3 id="org000000e"><a class="headerlink" href="#org000000e">¶</a>Okular, Evince, Atril</h3>
-<div class="outline-text-3" id="text-org000000e">
-<p>
-Probably most widely used PDF readers, all of these use <a href="https://poppler.freedesktop.org">Poppler</a> library for working with PDF, which in particular does the messy business of annotation handling.
-</p>
-<p>
-All of them would let you view existing annotations, but there are some nuances and limitations:
-</p>
-<ul class="org-ul">
-<li><a href="https://github.com/mate-desktop/atril">Atril</a> (as of 1.20.3) allows you to add or edit popup notes only, other types of annotations aren't even displayed in the sidebar</li>
-<li><p>
-<a href="https://wiki.gnome.org/Apps/Evince">Evince</a> (as of 3.32.0) only allows to add or edit highlights or popup notes (no inline!). Here is <a href="https://www.debugpoint.com/2016/05/evince-3-18-2-comes-with-text-and-highlight-annotation-in-ubuntu-16-04">article</a> with some screenshot (not much changed since 2016).
-</p>
-<p>
-However it's got a nasty few years old bug (<a href="https://bugs.launchpad.net/ubuntu/+source/evince/+bug/1567565">1</a>, <a href="https://gitlab.gnome.org/GNOME/evince/issues/868">2</a>) that doesn't allow you saving over the same file you're editing. That means that to work around it every time you want to persist your changes, you'd have to save to a new file and reopen the new copy. That makes it pretty unusable unless you only want to do couple of changes.
-</p></li>
-<li><p>
-<a id="org000000b"></a><a href="https://okular.kde.org">Okular</a> (as of 1.6.3) allows <b><b>editing and adding pretty much every type of annotation</b></b> that you would expect: highlights, popup and inline notes, freehand and <a href="https://docs.kde.org/stable5/en/kdegraphics/okular/annotations.html">more</a>.
-</p>
-<p>
-Annotation process (<a href="./annotating/okular.jpg">screenshot</a>) is pretty pleasant, hitting Ctrl-S results in saving the file you're working on without any problems.
-</p>
-<p>
-<a id="org000000c"></a>Okular also got support for something called <a href="https://docs.kde.org/stable5/en/kdegraphics/okular/annotations.html">'document archive'</a>, which saves the original document in a zip file along with <samp class="inline">metadata.xml</samp>, which allows you to <b><b>annotate non-PDF files</b></b> (e.g. DJVU), which is a very neat feature. It's obviously Okular specific, in theory though it's possible to process <samp class="inline">metadata.xml</samp> with other tools.
-</p>
-<p>
-<a id="org000000d"></a>Search in okular can't be restricted to annotations only and while you can use normal PDF search for inline notes and highlights (along with the other text that happened to match), it doesn't work at all for popups.
-</p>
-<p>
-Even though Okular is part of KDE, there is no reason not to use it in other desktops environments, it's not that complicated in terms of UI; looks quite native in GTK, and few extra dependencies are barely a problem these days.
-</p></li>
-</ul>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org000000f">
-<h3 id="pdftools"><a class="headerlink" href="#pdftools">¶</a><a href="https://github.com/politza/pdf-tools#pdf-tools-readme">Emacs: pdf-tools</a></h3>
-<div class="outline-text-3" id="text-pdftools">
-<p>
-Pdf-tools (as of 0.90) is a PDF viewer for Emacs that meant to be more efficient than the builtin one (in terms of rendering), but is also capable of interacting with PDF metadata.
-</p>
-<p>
-Here's a <a href="./annotating/pdf-tools.jpg">screenshot</a> and a short <a href="https://www.dailymotion.com/video/x2bc1is">screencast</a>, interesting stuff starts somewhere around 02:00 mark.
-</p>
-<p>
-One big drawback is that to highlight and add new annotations you <b><b>still have to use mouse</b></b>, which loses half of the benefits of using Emacs for me.
-Also it's got some minor issue displaying inline annotations text in the 'Content' buffer and annotations list (you can edit it if you click on it with your mouse though).
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000010">
-<h3 id="org0000010"><a class="headerlink" href="#org0000010">¶</a>Other Linux readers</h3>
-<div class="outline-text-3" id="text-org0000010">
-<p>
-There are few other apps I tried using so figured it's worth mentioning.   
-</p>
-<ul class="org-ul">
-<li><p>
-<a href="https://mupdf.com">mupdf</a> (as of 1.14.0) is both rendering library (claimed to be faster than poppler) and PDF viewers. It's capable of displaying all types of highlights and annotations, but there is no way to add or edit them.
-</p>
-<p>
-It mentions annotation editing in <a href="https://mupdf.com/release_history.html">changelog</a>, but in something called 'mupdf-gl', and it doesn't seem to be available in Ubuntu.
-</p></li>
-<li><a href="https://wiki.archlinux.org/index.php/Zathura">zathura</a> (as of 0.4.3) is capable of both poppler and mupdf backends, but suffers from the same problem that you can't edit and add new highlights. It's pretty sad, because I like it as a viewer: it's minimalist and capable of VI style keybindings.</li>
-</ul>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000011">
-<h3 id="orgnoter"><a class="headerlink" href="#orgnoter">¶</a><a href="https://github.com/weirdNox/org-noter">Emacs: org-noter</a></h3>
-<div class="outline-text-3" id="text-orgnoter">
-<p>
-Org-noter (as of 1.3.0) allows you to annotate a PDF while keeping the text annotations in a separate <samp class="inline">org</samp> file which keep track of PDF locations in Org note properties.
-<a href="https://github.com/weirdNox/org-noter#screencast">Here's</a> a short demo.
-</p>
-<p>
-For me the main drawback is that it <b><b>doesn't let you highlight</b></b>, which I tend to do a lot.
-</p>
-<p>
-Existing annotations in PDF can be imported via <a href="https://github.com/weirdNox/org-noter/blob/920798e2a977ca74b77cf728ee40bb48450f941b/org-noter.el#L1455"><code class="inline">org-noter-create-skeleton</code></a> function (it didn't work for me for some reason though, and I wasn't motivated enough to investigate).
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000012">
-<h3 id="xournal"><a class="headerlink" href="#xournal">¶</a><a href="https://github.com/xournalpp/xournalpp#xournal">Xournal</a></h3>
-<div class="outline-text-3" id="text-xournal">
-<p>
-Xournal is different from the above PDF viewers, since it isn't using types of annotations described in the PDF standard and instead uses its own <a href="http://xournal.sourceforge.net/manual.html#tools">tools</a>.
-</p>
-<p>
-It doesn't modify the original files and instead keeps <samp class="inline">.xoj</samp> file containing the metadata and pointing at the original PDF, so in that sense it's pretty similar to <a class="link-up" href="#org000000c">okular</a>. Similarly, it's xournal-specific and can't be viewed anywhere else unless you export it in PDF before sharing (at which point your annotations wold basically become background images).
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000013">
-<h3 id="hypothesis_pdf"><a class="headerlink" href="#hypothesis_pdf">¶</a><a href="https://web.hypothes.is/#see-how-it-works">Hypothes.is</a> (again)</h3>
-<div class="outline-text-3" id="text-hypothesis_pdf">
-<p>
-Already mentioned in the previous section, it's also capable of annotating PDFs via <a href="https://github.com/mozilla/pdf.js">pdf.js</a>. 
-</p>
-<p>
-Check out <a href="https://web.hypothes.is/help/annotating-locally-saved-pdfs">their guide</a>, especially if you're using Chrome, apart from it it's as easy as opening the PDF in your browser and activating Hypothesis.
-It fingerprints the PDFs so you don't have to worry about losing your annotations and it's easy to collaborate with other people.
-</p>
-<p>
-It seems to work fast enough for big PDF books as well, however generally reading long things in browser is not very convenient as you lose reading position if you close the tab.
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000014">
-<h3 id="polar"><a class="headerlink" href="#polar">¶</a><a href="https://github.com/burtonator/polar-bookshelf#polar-bookshelf">Polar</a></h3>
-<div class="outline-text-3" id="text-polar">
-<p>
-Polar is a new project which aims to be not just reader, but 'personal knowledge repository'. 
-</p>
-<ul class="org-ul">
-<li>supports <a href="https://getpolarized.io/#integrated-annotations">highlights and comments</a></li>
-<li><a href="https://getpolarized.io/assets/screenshots/document-repo-2019-04.webp">document repository</a>, so you have overview of all the stuff you ever read/commented. It also keeps track of your reading position.</li>
-<li>the <b><b>PDFs are fingerprinted</b></b>, so you don't need to worry about moving them around your filesystem</li>
-<li><samp class="inline">~.polar</samp> directory holds all the data, which makes it <b><b>easy to share among your computers</b></b> (e.g. via git, or if you keep it on Dropbox and symlink)</li>
-<li>metadata is in well structured <samp class="inline">json</samp> files, which makes it easy to access from scripts</li>
-<li>highlight locators keep <a href="https://github.com/burtonator/polar-bookshelf/blob/ac36e59e98d378e1ff7ab02aa241b89fdbb68c46/web/js/metadata/TextHighlightsTest.ts#L164">matched text</a> alongside the absolute coordinates, which leaves potential for matching against different editions of the PDF file</li>
-<li>it's got <a href="https://github.com/burtonator/polar-bookshelf#personal-knowledge-repository">builtin flashcards engine</a>. Personally, I'm too used to <a href="https://orgmode.org/worg/org-contrib/org-drill.html">org-drill</a> now, but that's a great a way of introducing <b><b>spaced repetition</b></b> to people.</li>
-<li>the author is very passionate about this project, invests a lot of effort and quite <a href="https://getpolarized.io/2019/04/11/Polar-Initial-Crowdfunding-Campaign.html">ambitious</a></li>
-</ul>
-<p>
-If you like it, please consider donating them!
-</p>
-<p>
-The only downside is that annotation format is <b><b>Polar specific</b></b>, so it'd be hard to share with other people unless they are willing to use Polar as well.
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000015">
-<h3 id="android_ann"><a class="headerlink" href="#android_ann">¶</a>Annotating on Android</h3>
-<div class="outline-text-3" id="text-android_ann">
-<p>
-Similar disclaimer: I've never had Iphone, so have no idea what people use. If anyone sends me a link to a decent overview, I'd be happy to include it!
-</p>
-<ul class="org-ul">
-<li><p>
-<a href="https://play.google.com/store/apps/details?id=com.adobe.reader">Adobe Reader</a>
-</p>
-<p>
-Supports most reasonable ways of annotation: highlights, popup/inline comments, strikethough, styling, etc. (<a href="./annotating/adobe-annot.jpg">screenshot</a>). "Comment List" gives overview of your document: <a href="./annotating/adobe-list.jpg">screenshot</a>.
-</p>
-<p>
-It offers Adobe Cloud and Dropbox integration, but I rely on Syncthing for syncing my stuff anyway.
-</p></li>
-<li><p>
-<a href="https://play.google.com/store/apps/details?id=com.xodo.pdf.reader">Xodo</a>
-</p>
-<p>
-Basically supports same things that Adobe does.
-</p>
-<p>
-For me, Xodo wins by a very thin margin because its interface tends to be a bit more denser and 'material': <a href="./annotating/xodo-annot.jpg">interface</a>, <a href="./annotating/xodo-list.jpg">annotations list</a>. Otherwise, it's virtually no different from Adobe Reader.
-</p></li>
-<li><p>
-<a href="https://f-droid.org/en/packages/com.artifex.mupdf.viewer.app">mupdf</a>
-</p>
-<p>
-The F-droid description claims it supports annotation, but it couldn't display any of the existing ones in my pdf files. What's more, the app wasn't responsive on any long taps or my attempts to select text, let alone highlight or comment.
-</p>
-<p>
-Perhaps PDF 1.7 is too outdated? Something weird has been going on with the 'full' version, maybe this is somehow related (<a href="https://forum.f-droid.org/t/what-happened-to-mupdf-full-version/4511">1</a>, <a href="https://gitlab.com/fdroid/fdroiddata/issues/252">2</a>).
-</p></li>
-<li><a href="https://github.com/cgogolin/penandpdf">Pen&amp;Pdf</a>: I tried this one since it was open source and claimed to support annotation, but it didn't even manage to pick up any of the existing ones.</li>
-</ul>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000016">
-<h3 id="org0000016"><a class="headerlink" href="#org0000016">¶</a>Summary</h3>
-<div class="outline-text-3" id="text-org0000016">
-<p>
-If you want the convenience of editing and viewing on phone and working with other people, <b><b>Okular</b></b> wins on desktop and <b><b>Adobe Reader/Xodo</b></b> could be used on your phone.
-</p>
-<p>
-If you care about preserving the original PDF files and want convenience in accessing the annotations programmatically, <b><b>Polar</b></b> is best.
-</p>
-</div>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000020">
-<h2 id="org0000020"><a class="headerlink" href="#org0000020">¶</a><span class="section-number-2">4</span> Annotating E-ink</h2>
-<div class="outline-text-2" id="text-4">
-<p>
-Two e-ink readers that support highlights and notes I know of are Kindle (I had Paperwhite 2) and Kobo (I own Kobo Aura One).
-Highlighting works as you would expect on E-ink touchscreen (long press and dragging the selection); and you can leave notes by typing on a virtual keyboard (somewhat laggy, but ok for up to few sentences).
-Perhaps the only differences are how you can search and access the annotations.
-</p>
-</div>
-<div class="outline-3" id="outline-container-org000001b">
-<h3 id="kindle"><a class="headerlink" href="#kindle">¶</a>Kindle</h3>
-<div class="outline-text-3" id="text-kindle">
-<p>
-Kindle stores bookmarks, notes and highlights in <code class="inline">My Clippings.txt</code> on the device.
-The good thing about the format is that it's already plaintext and fairly human readable, so you might be happy with that alone.
-The format is a bit nasty for parsing (as you would expect from something with <samp class="inline">.txt</samp> extension). Dates are locale dependent, document locators may or may not have roman numerals, separators are inconsistent at times, etc. 
-When I was using Kindle I was just copying the file from time to time, and you can set up some sort of automatic copying when your device is connected similarly to  what I'm doing with <a class="link-down" href="#org0000018">Kobo</a>.
-</p>
-<p>
-Kindle uploads your notes and highlights to <a href="https://read.amazon.com">Kindle Cloud Reader</a>
-(<a href="https://www.epubor.com/images/uppic/manage-kindle-highlights-and-notes.png">screenshot</a>, <a href="https://ebookfriendly.com/wp-content/uploads/2017/06/New-home-for-Kindle-highlights-and-notes-540x388.jpg">screenshot</a>)
-, but it <b><b>only</b></b> works for stuff bought on Kindle store. <a href="https://www.reddit.com/r/kindle/comments/6sttez/the_new_amazon_highlights_system">Reportedly</a> people also have issues displaying their highlights on Cloud Reader due to copyright restrictions.
-</p>
-<p>
-<a id="org0000019"></a>Kindle also <a href="https://www.makeuseof.com/tag/share-kindle-notes-highlights-friends">integrates with Goodreads</a>, which synchronizes reading progress and lets you selectively share annotations to Goodreads.
-But that's also restricted to books bought from Amazon.
-</p>
-<p>
-<a id="org000001a"></a>Search function is somewhat limited: you can search in the book and it displays your highlights alongside content it found in the book, but you can't restrict search to highlights. You can't search in notes either.
-Funny enough though, the <code class="inline">My Clipping.txt</code> file can be opened on Kindle itself (as any other <code class="inline">txt</code> file), and then you can search in it. It's not super convenient, but better than nothing. (I wasn't brave enough to try and see what happens if you try to highlight in this file.)
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org000001e">
-<h3 id="kobo"><a class="headerlink" href="#kobo">¶</a>Kobo</h3>
-<div class="outline-text-3" id="text-kobo">
-<p>
-Stores all of it's stuff in <code class="inline">.kobo/KoboReader.sqlite</code> on the device.
-</p>
-<p>
-<a id="org000001c"></a>The database has got lots of cool stuff: in addition to highlights and notes you can also access reading progress, time spend reading and possibly some other interesting data I didn't manage to reverse engineer yet.
-You can check out <a href="https://github.com/karlicoss/kobuddy">kobuddy</a>, which is my attempt to extract useful data from the database and provide nicer high level Python interface. It's also fairly straightforward to open it in <code class="inline">sqlitebrowser</code> and play with your own queries.
-</p>
-<div class="noop" id="kobo_sync_for_sadinfra">
-<p>
-<a id="org0000018"></a>Kobo <b><b>doesn't seem to support cloud sync for annotations</b></b>. I was considering syncing the database wirelessly, as <a href="https://github.com/dropmeaword/kobo-aura-remote">there are</a> some SSH modules for its firmware, but people report it <a href="https://github.com/dropmeaword/kobo-aura-remote/issues/1">may break wifi</a> on it.
-</p>
-</div>
-<p>
-I'm using <a href="https://github.com/karlicoss/kobuddy#as-a-backup-tool">kobuddy</a> as well to work around it.
-</p>
-<p>
-<a id="org000001d"></a>There is an official <a href="https://play.google.com/store/apps/details?id=com.kobobooks.android">Android app</a> which lets you manage and annotate books from Kobo store and seems to be syncing progress between eink and phone.
-However annotations <b><b>don't sync between Kobo and phone</b></b> for me, and other people also report same experience: <a href="https://www.mobileread.com/forums/showthread.php?t=314687">1</a>, <a href="https://www.mobileread.com/forums/showthread.php?t=256685">2</a>, <a href="https://www.mobileread.com/forums/showthread.php?t=271762">3</a>. 
-<a href="https://www.mobileread.com/forums/showthread.php?p=3056862#post3056862">Some</a> claim it works on iphones though.
-</p>
-<p>
-Kobo lets you conveniently search over all of your highlights and notes.
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org000001f">
-<h3 id="koreader"><a class="headerlink" href="#koreader">¶</a><a href="https://github.com/koreader/koreader#main-features-for-users">Koreader</a></h3>
-<div class="outline-text-3" id="text-koreader">
-<p>
-Koreader is an alternative <b><b>open source</b></b> software for Kindle, Kobo and other E-ink devices.
-</p>
-<p>
-It's got some very cool <a href="https://github.com/koreader/koreader/wiki/Features-list">features</a>, in particular most common document formats, dictionary and Wikipedia lookups, and various plugins.
-</p>
-<p>
-It also supports highlighting, but (as of v2019.06), note taking is unsupported <a href="https://github.com/koreader/koreader/issues/1095">yet</a>, but some progress is going on. I'd be keen to try it once it's implemented!
-</p>
-</div>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000027">
-<h2 id="org0000027"><a class="headerlink" href="#org0000027">¶</a><span class="section-number-2">5</span> Miscellaneous</h2>
-<div class="outline-text-2" id="text-5">
-</div>
-<div class="outline-3" id="outline-container-org0000021">
-<h3 id="org0000021"><a class="headerlink" href="#org0000021">¶</a>Annotating paper books</h3>
-<div class="outline-text-3" id="text-org0000021">
-<p>
-So far, for me the only downside of using nice tools for annotating digital content is that it ruined the experience of reading paper books for me. 
-</p>
-<p>
-Usually I don't own the books I read, so using a highlighter or pencil would be just mean to the owner.
-Even if you own the book and okay with that, it's still not searchable and not easily accessible, which feels very wrong to me.
-</p>
-<p>
-To get around this I've tried few of tricks:
-</p>
-<ul class="org-ul">
-<li>Take pictures of bits I'm interested in, perhaps highlight using image editor on the phone</li>
-<li>Sticky notes are ok for commenting as long as you don't damage the book with the glue, but they down help with highlighting</li>
-<li><p>
-Using paper strips as an annotation overlay.
-</p>
-<p>
-This one I'm particularly proud of coming up to as I haven't found anyone else doing that, and I rarely come up with useful meatspace things.
-</p>
-<p>
-This is how it looks in action: <a href="./annotating/paper-strips.jpg">photo</a>.
-</p>
-<p>
-Basically, before reading, I prepare a bunch of paper strips slightly longer than the page height, kinda like bookmarks.
-You will use it as a 'sidebar overlay' for writing notes and highlighting, so the width depends on your handwriting and how much you're expected to do that, I usually use something like 1/4 of the page.
-</p>
-<p>
-If you want to annotate the page, you'll align strip's bottom to the bottom of the page and mark lines you found interesting on this strip and write comments on it as well. You can also use the other side of the strip to annotate the other page.
-</p>
-<p>
-The downside of this is that in order to annotations to make sense, it requires a physical copy of exact same book.
-Another one is that it doesn't have automatic timestamps, which somewhat bothers my <a class="post-tag" href="./tags.html#lifelogging">#lifelogging</a> OCD. You can get around it by writing down time as well, but that's quite distracting.
-</p></li>
-</ul>
-<p>
-When I'm done with a book, I'd spend a bit of time digitizing annotations and manually typing them into plaintext. Luckily, I don't have to do that often.
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000022">
-<h3 id="org0000022"><a class="headerlink" href="#org0000022">¶</a>Annotating plaintext</h3>
-<div class="outline-text-3" id="text-org0000022">
-<p>
-Often, I want to leave a quick comment to an org-mode item.
-I've got a handy Emacs <a href="https://gitlab.com/karlicoss/dotspacemacs/blob/3f14fd054cef1ff95f6a376523cfae9bd1afe22b/init.el#L1019-1027">binding</a> which appends a child note with a timestamp and enters edit mode, so the whole process is smooth.
-If you're not using org-mode you still can benefit from something similar, most of modern text editors allow you binding snippets on hotkeys.
-</p>
-<p>
-One big drawback with Org mode (and I believe most of outline/task list formats) though is that if you insert child outline items in the middle of text,
-it would structurally break it in two parts, so you'd have to append your commend to the end of current outline (which can be potentially very long).
-On the other hand, plain list items, which you can insert in arbitrary place, are very limited and don't support most of things outline support like tags, timestamps, priorities etc.
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000023">
-<h3 id="org0000023"><a class="headerlink" href="#org0000023">¶</a>Annotating videos</h3>
-<div class="outline-text-3" id="text-org0000023">
-<p>
-Often when I watch lectures or some talks on Youtube or in VLC, I want to leave a bookmark or write a note with a reference to a specific timestamp. 
-This is pretty much not possible apart from opening your text editor and manually recording the position in video. All the video annotation software I know of is more oriented towards video editing/effects etc.
-</p>
-<p>
-So, if I'm watching something in browser, I normally end up using <a class="link-up" href="#grasp">grasp</a> and manually type the timestamp.
-</p>
-<p>
-This is distracting, but even worse is that whatever you use have no means of quickly jumping to the timestamp you recorded; you'd have to move the slider to it manually. 
-</p>
-<p>
-There is no common standard that I know of for jumping at a certain timestamp neither in web nor in desktop applications (e.g. via mime handler).
-</p>
-<p>
-I'd say this is somewhat unsolved problem, which is surprising since presumably it could be helpful for lots of students.
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000024">
-<h3 id="org0000024"><a class="headerlink" href="#org0000024">¶</a>Other notable mentions</h3>
-<div class="outline-text-3" id="text-org0000024">
-<p>
-Due to the lack of common standard for annotated content, some services try to implement their own:
-</p>
-<ul class="org-ul">
-<li><p>
-<a href="https://medium.com/@wiobyrne/getting-started-in-medium-reading-annotating-commenting-and-recommending-757f43be83ee">Medium</a>. They use   highlights and annotation that also serve social function: when you read a Medium post you can see if a certain bit of text was highlighted by many other people.
-</p>
-<p>
-They don't tamper with browser selection, so you can still use external annotation tools like Hypothesis. However, judging by their <a href="https://github.com/Medium/medium-api-docs#3-resources">API</a>, there is no way to access your highlights. Anyway, I would encourage people not to use these especially if you only care about personal use, after all Medium is not the only source of information out there.
-</p></li>
-<li><p>
-<a href="https://genius.com/web-annotator">Genius</a>.
-Annotated lyrics on genius.com looks neat, however I'm not sure what are its benefits over <a class="link-up" href="#hypothesis">Hypothesis</a>.
-</p>
-<p>
-Also, while I was looking up about Genius, I've stumbled upon an unusual opinion opposing web annotation: <a href="https://www.vijithassar.com/2641/how-to-block-genius-annotations">how to block Genius annotations</a>:
-</p>
-<blockquote>
-<p>
-Genius was functionally equivalent to forcing crude, violent, or hateful user comments onto a web site she created as a safe space to write about the sensitive work she does
-</p>
-</blockquote>
-<p>
-I can't agree with this, but I think it deserves to be mentioned.
-</p></li>
-</ul>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000025">
-<h3 id="other_tools"><a class="headerlink" href="#other_tools">¶</a>Other tools</h3>
-<div class="outline-text-3" id="text-other_tools">
-<p>
-These are tools suggested by other people, I haven't had time to try them all properly yet, but will list nevertheless.   
-If someone sends me links to other people's experience with these, I'd be happy to add them!
-</p>
-<ul class="org-ul">
-<li><p>
-<a href="https://gitlab.com/jagrg/org-emms">org-emms</a>: org-mode link handler to start playback at certain timestamp, could potentially be useful for video annotation:
-</p>
-<pre class="example">
-[[emms:/path/to/audio.mp3::1:10:45]]  Starts playback at 1 hr 10 min 45 sec.
-</pre></li>
-<li><a href="https://supermemo.guru/wiki/Incremental_video">Incremental video in SuperMemo</a>: could be useful for video annotation. Suggested by <a href="https://beepb00p.xyz/annotating.html#isso-7">Ypo</a>.</li>
-<li><p>
-<a href="https://readwise.io">Readwise</a>: paid (30 day trial) web tool that allows you to import and sync your highlights from Kindle/Instapaper/Pocket/Medium/etc so you could review them later via daily emails or web app.
-They've got a nice <a href="https://blog.readwise.io">blog</a> where they are describing how to use spaced repetition and read actively.
-</p>
-<p>
-Suggested by few people, in particular <a href="https://twitter.com/deadly_onion">Daniel</a>, one of cofounders.
-</p>
-<p>
-UPD from <span class="timestamp-wrapper"><span class="timestamp">[2019-12-21]</span></span>: I gave it a try and it's actually pretty neat. They send you an email daily so you can practice spaced repetition with a single link click.
-Personally I'm too invested in all of my own infrastructure, but if you want to try out spaced repetition without extra hassle, I highly recommend checking it out!
-</p></li>
-<li><p>
-<a href="https://skim-app.sourceforge.io">Skim</a>: open source PDF reader and note-taker for OS X. Uses xattrs and a separate <samp class="inline">.skim</samp> file to keep annotations.
-</p>
-<p>
-Recommendation <a href="https://twitter.com/i/web/status/1147473985514459137">from a follower</a>.
-</p></li>
-<li><a href="https://www.kontxt.io">Kontxt</a>: paid, looks very similar to <a class="link-up" href="#hypothesis">Hypothesis</a>, also offers some sort of CMS.
-I couldn't find anything on it on Reddit/Hackernews, not sure if it's still under development.</li>
-<li><a href="https://histre.com">Histre</a>: also looks similar to <a class="link-up" href="#hypothesis">Hypothesis</a> in terms of web annotation, also enhances browser history.
-Here's <a href="https://news.ycombinator.com/item?id=20133031">HN discussion</a>.</li>
-<li><p>
-<a href="https://hookproductivity.com/help/general/videos">Hook productivity</a>: paid MacOS tool that allows to interlink content between different apps.
-</p>
-<p>
-Suggested by <a href="https://beepb00p.xyz/annotating.html#isso-47">Luc P. Beaudoin</a>.
-</p></li>
-<li><p>
-<a href="https://worldbrain.io">Worldbrain Memex</a>: free, offline first tools that works similarly to Hypothesis as well and provides some browser history enhancements.
-I really need to looks closer into that one!
-</p>
-<p>
-Recommended by <a href="https://beepb00p.xyz/annotating.html#isso-11">Jay</a>.
-</p></li>
-<li><a href="https://ant.umn.edu/documentation#%23section-annotating-and-commenting">VideoAnt</a>: looks like video annotation tool. Suggested by <a href="https://news.ycombinator.com/item?id=21653827">philyg</a>.</li>
-<li><p>
-<a href="https://products.office.com/en-gb/onenote/digital-note-taking-app">Microsoft OneNote</a>: can be used for PDF annotation, but it seems that you have to import PDF in OneNote first, so it'll become locked in the app.
-However that allows extra features like using pen to annotate on top of PDF. In that regard it's similar to <a class="link-up" href="#xournal">Xournal</a>.
-</p>
-<p>
-Suggested by <a href="https://news.ycombinator.com/user?id=daok">daok</a>.
-</p></li>
-</ul>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000026">
-<h3 id="hall_of_shame"><a class="headerlink" href="#hall_of_shame">¶</a>Hall of shame!</h3>
-<div class="outline-text-3" id="text-hall_of_shame">
-<p>
-These are services that wouldn't let you select text. Not sure why that happens: could be some sort of copyright restriction, being assholes, or just accidental pointless restriction.
-</p>
-<ul class="org-ul">
-<li><a href="https://www.quora.com/How-do-I-copy-text-from-Facebook-and-paste-somewhere-else-on-Android-mobile">Facebook</a>: Android app and mobile site prevent text selection.</li>
-<li><p>
-<a href="https://www.blinkist.com">Blinkist</a>: Android app and website.
-</p>
-<p>
-You can't use native text selection as Blinkist forces some custom JS for highlighting. But their highlights suck: you can't leave a comment and also they actively prevent you from selecting text forcing to use their own JS thing.
-</p>
-<p>
-In addition you can't even export your highlights, best you can do seems to be <a href="https://www.blinkist.com/en/nc/settings/external_services">syncing to an Evernote notebook</a>, and perhaps then you can use Evernote API. I didn't bother with it though.
-</p>
-<p>
-<b>UPD (20190818)</b> I actually managed to dump my highlight data before canceling Blinkist subscription by using (apparently private) API, here's the <a href="https://github.com/karlicoss/blinkist-backup">script</a>.
-</p></li>
-</ul>
-</div>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000029">
-<h2 id="vision"><a class="headerlink" href="#vision">¶</a><span class="section-number-2">6</span> What makes a good annotation system?</h2>
-<div class="outline-text-2" id="text-vision">
-<p>
-In my quest for the perfect annotation engine I've figured certain aspects that make or would make an annotation tool pleasant to use.
-</p>
-<ul class="org-ul">
-<li><p>
-<b><b>Uniform</b></b>
-</p>
-<p>
-Highlighting a piece of content and leaving a comment are fairly straightforward operations, and you shouldn't have to think much about how exactly you do it and which program you use.
-Most current annotation engines are also somewhat tedious to interact with, add more content in existing annotations, link, etc.
-</p>
-<p>
-Solving this requires the tools being <b><b>cross platform</b></b> and <b><b>cross format</b></b>.
-</p>
-<p>
-<a class="link-up" href="#hypothesis">Hypothes.is</a> is the move in the right direction, but there are plenty of other things starting from unsupported formats and working offline to paper books which are missed out.
-</p>
-<p>
-While current sad state of different tools/products for different forms of content is understandable, ideally it should be be <b><b>format agnostic</b></b> with some proper way of
-<b><b>fingerprinting</b></b> content. If humans can tell whether a novel published online as HTML and a paper novel are the same thing, so can software.
-</p>
-<p>
-Common standard (e.g. <a href="https://www.w3.org/TR/2017/REC-annotation-model-20170223">Web Annotation Data Model</a>) is a good start, but even this one is pretty unknown and not widely accepted.
-</p>
-<p>
-Perhaps in the near future we could exploit existing (fairly robust) OCR technologies and augmented reality to develop a universal annotation tool, but so far that's a whole different ballpark.
-</p></li>
-</ul>
-<ul class="org-ul">
-<li><p>
-<b><b>Ease of interaction</b></b>
-</p>
-<p>
-Annotating is meant to augment your limited memory capabilities and using them should be <b><b>as easy as retrieving information from your brain</b></b>.
-</p>
-<p>
-While brain-computer interfaces are not quite there, even with existing technologies you can achieve that with as little as few seconds lag just by using
-plaintext representations, indexing and incremental search.
-</p>
-<p>
-Personally, I'm solving this problem via <a class="link-down" href="#org0000000">orger</a>.
-</p></li>
-<li><p>
-<b><b>Separate metadata</b></b>
-</p>
-<p>
-Annotations layer should be loosely coupled to the underlying content. If it's not the case, it makes you too dependent on the specific tools, makes harder to keep track of your private data and to share data with other tools.
-</p>
-<p>
-For physical sources of information it matters even more; although they might decline completely in few decades, who knows.
-</p>
-<p>
-Good examples of this approach are <a class="link-up" href="#polar">Polar</a> and <a class="link-up" href="#hypothesis">Hypothesis</a> which keep metadata in well defined format with locators.
-</p></li>
-<li><p>
-<b><b>Data ownership and resilience</b></b>
-</p>
-<p>
-If annotations make essential part of your knowledge, you want to be capable of accessing them <b><b>anytime</b></b>.
-</p>
-<p>
-Ideally everything should work while fully offline without relying on any services.
-</p>
-<p>
-Currently it's not always feasible due to technical complications (e.g. having to selfhost), but this is a good value to pursue.
-</p></li>
-<li><p>
-<a name="social_function"></a> <b><b>Social and collaborative</b></b>
-</p>
-<p>
-Annotations are a valuable tool for collaborative learning and research, and improving tools can make these activities more pleasant.
-</p>
-<p>
-Blog comments seem to be somewhat in decline which is understandable since it's too annoying to register here and there.
-On the other hand, platforms like Facebook comments or Disqus are not very privacy friendly, don't give access to data stored (e.g. if Disqus disappears tomorrow so do comments in your blog),
-and are not very friendly towards people who do want to comment anonymously.
-</p>
-<p>
-Perhaps in some near future we could <b><b>ditch all the internet commenting platforms</b></b> and rely on annotation layer instead.
-<a class="link-up" href="#hypothesis">Hypothesis</a> basically lets you do that already, perhaps with a little work on design (sidebar is not necessarily convenient for social commenting), it could serve that purpose.
-</p>
-<p>
-I also consider comments people write as projections of their minds and it would be great to give other people easier access to that to get to know each other better.
-</p>
-<p>
-It's hardly worth mentioning that one should be in control whether highlights they are making are private or everyone else can see them.
-</p></li>
-<li><p>
-<b><b>Open source</b></b>: not sure if that even needs justifying :)
-</p>
-<p>
-People have somewhat different requirements for their cognitive tools and it should be possible to can hack them and fix annoying bugs.
-That also gives way more potential for integrating them with other services.
-</p></li>
-</ul>
-</div>
-<div class="outline-3" id="outline-container-org0000028">
-<h3 id="comparison"><a class="headerlink" href="#comparison">¶</a>Comparison</h3>
-<div class="outline-text-3" id="text-comparison">
-<p>
-I'm only listing tools that support proper highlighting and commenting.
-</p>
-<table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
-<colgroup>
-<col class="org-left" />
-</colgroup>
-<colgroup>
-<col class="org-left" />
-<col class="org-left" />
-<col class="org-left" />
-<col class="org-left" />
-<col class="org-left" />
-<col class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th class="org-left" scope="col"> </th>
-<th class="org-left" scope="col">mobile annotations</th>
-<th class="org-left" scope="col">fingerprinting</th>
-<th class="org-left" scope="col">search in annotations</th>
-<th class="org-left" scope="col">separate metadata</th>
-<th class="org-left" scope="col">sharing</th>
-<th class="org-left" scope="col">open source</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left"><a class="link-up" href="#instapaper">Instapaper</a></td>
-<td class="org-left"><span style="color:green">Y</span>, offline</td>
-<td class="org-left">n/a</td>
-<td class="org-left"><a class="link-up" href="#org0000003"><span style="color:red">N</span></a></td>
-<td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><span style="color:red">N</span></td>
-</tr>
-<tr>
-<td class="org-left"><a class="link-up" href="#wallabag">Wallabag</a></td>
-<td class="org-left"><a class="link-up" href="#org0000005"><span style="color:red">N</span></a></td>
-<td class="org-left">n/a</td>
-<td class="org-left"><a href="https://github.com/wallabag/wallabag/issues/3635"><span style="color:red">N</span></a></td>
-<td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><a href="https://github.com/wallabag/wallabag/issues/679"><span style="color:red">N</span></a></td>
-<td class="org-left"><span style="color:green">Y</span></td>
-</tr>
-<tr>
-<td class="org-left"><a class="link-up" href="#hypothesis"><b><b>Hypothesis</b></b></a></td>
-<td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><span style="color:green">Y</span>, web API</td>
-<td class="org-left"><span style="color:green">Y</span></td>
-</tr>
-<tr>
-<td class="org-left"><a class="link-up" href="#grasp">Copy-paste</a></td>
-<td class="org-left"><span style="color:green">Y</span>, offline</td>
-<td class="org-left"><span style="color:red">N</span> (manual)</td>
-<td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><span style="color:green">Y</span>, file sync</td>
-<td class="org-left"><span style="color:green">Y</span></td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><a class="link-up" href="#org000000b">Okular</a></td>
-<td class="org-left">n/a</td>
-<td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><a class="link-up" href="#org000000d"><span style="color:#ff9933">limited</span></a></td>
-<td class="org-left"><a class="link-up" href="#org000000c"><span style="color:#ff9933">limited</span></a></td>
-<td class="org-left"><span style="color:green">Y</span>, file sync</td>
-<td class="org-left"><span style="color:green">Y</span></td>
-</tr>
-<tr>
-<td class="org-left"><a class="link-up" href="#pdftools">Emacs pdf-tools</a></td>
-<td class="org-left">n/a</td>
-<td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><span style="color:green">Y</span>, file sync</td>
-<td class="org-left"><span style="color:green">Y</span></td>
-</tr>
-<tr>
-<td class="org-left"><a class="link-up" href="#orgnoter">Emacs org-noter</a></td>
-<td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><span style="color:green">Y</span>, file sync</td>
-<td class="org-left"><span style="color:green">Y</span></td>
-</tr>
-<tr>
-<td class="org-left"><a class="link-up" href="#hypothesis_pdf">Hypothesis (PDF)</a></td>
-<td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><span style="color:green">Y</span>, web API</td>
-<td class="org-left"><span style="color:green">Y</span></td>
-</tr>
-<tr>
-<td class="org-left"><a class="link-up" href="#xournal">Xournal</a></td>
-<td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><span style="color:green">Y</span>, file sync</td>
-<td class="org-left"><span style="color:green">Y</span></td>
-</tr>
-<tr>
-<td class="org-left"><a class="link-up" href="#polar"><b><b>Polar</b></b></a></td>
-<td class="org-left"><span style="color:red">N</span>, <a href="https://github.com/burtonator/polar-bookshelf/issues/916">on roadmap</a></td>
-<td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><a href="https://github.com/burtonator/polar-bookshelf/issues/966"><span style="color:red">N</span></a></td>
-<td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><span style="color:green">Y</span>, file sync, cloud</td>
-<td class="org-left"><span style="color:green">Y</span></td>
-</tr>
-<tr>
-<td class="org-left"><a class="link-up" href="#android_ann">Xodo/Adobe Reader</a></td>
-<td class="org-left"><span style="color:green">Y</span>, offline</td>
-<td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><span style="color:green">Y</span>, file sync, cloud</td>
-<td class="org-left"><span style="color:red">N</span></td>
-</tr>
-</tbody>
-<tbody>
-<tr>
-<td class="org-left"><a class="link-up" href="#kindle">Kindle</a></td>
-<td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><a class="link-up" href="#org000001a"><span style="color:#ff9933">limited</span></a></td>
-<td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><a class="link-up" href="#org0000019"><span style="color:#ff9933">limited</span></a></td>
-<td class="org-left"><span style="color:red">N</span>, <a class="link-up" href="#koreader">but koreader</a></td>
-</tr>
-<tr>
-<td class="org-left"><a class="link-up" href="#kobo"><b><b>Kobo</b></b></a></td>
-<td class="org-left"><span style="color:red">N</span>, <a class="link-up" href="#org000001d">broken</a></td>
-<td class="org-left"><span style="color:red">N</span></td>
-<td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><span style="color:green">Y</span></td>
-<td class="org-left"><span style="color:red">N</span>, <a class="link-up" href="#org0000018">but possible</a></td>
-<td class="org-left"><span style="color:red">N</span>, <a class="link-up" href="#koreader">but koreader</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org000002f">
-<h2 id="infra"><a class="headerlink" href="#infra">¶</a><span class="section-number-2">7</span> Using annotation data</h2>
-<div class="outline-text-2" id="text-infra">
-<p>
-Considering there are multiple tools I have to use none of which is fully capable of doing everything I would ideally want from annotation system, I've developed my ways of getting closer to my <a class="link-up" href="#vision">ideal</a>.
-For that I've got some infrastructure set up.
-</p>
-<p>
-<b><b>Backups</b></b>: I've already mentioned script I'm using to back up Kobo database, for cloud services I'm running bunch of daily cron jobs that query APIs for data. Most of the job scripts are fairly ad-hoc and just a matter of GET query with properly set oauth token so perhaps not worth sharing, but let me know if you want something specific. These files are always synced across all of my devices, including phone, so I always have access to them.
-</p>
-<p>
-That serves not just as data backup, but also as <b><b>data providers</b></b> for my tools. I only interact with these daily snapshots on filesystem rather than directly with API. That helps to avoid dealing with rate limiting, flakiness in network connection or API itself, and makes it way faster to iterate and develop. The only downside is that the data is not necessarily up to date, but perhaps you can dump data more often to get around this; I would still highly recommend you to prefer that to interacting with API directly. 
-</p>
-<p>
-I'm using a <b><b>special Python package to access the data</b></b>, which I called <a href="https://github.com/karlicoss/my"><code class="inline">my</code></a>. It's always in my <code class="inline">PYTHONPATH</code> so I can use it from any script/tool or REPL. It's got bunch of different submodules, e.g. <code class="inline">my.instapaper</code>, <code class="inline">my.kobo</code>, <code class="inline">my.polar</code> (and there are other modules as well). 
-</p>
-<p>
-I'm in progress of cleaning it up and documenting, you can read a draft <a href="mypkg.html">here</a>.
-</p>
-</div>
-<div class="outline-3" id="outline-container-org000002a">
-<h3 id="org000002a"><a class="headerlink" href="#org000002a">¶</a>Extracting reading stats</h3>
-<div class="outline-text-3" id="text-org000002a">
-<p>
-As a specific example how I do it: recently my friend asked me if I could recommend them posts I found interesting on <a href="https://slatestarcodex.com/">Slate Star Codex</a>. With a tiny python script I was quickly able to give them some stats on posts I read, so they could choose among them.
-</p>
-<div class="org-src-container">
-<pre class="src src-python"><span class="org-keyword">import</span> my.hypothesis
-<span class="org-keyword">from</span> collections <span class="org-keyword">import</span> Counter
-<span class="org-variable-name">SSC</span> = (p <span class="org-keyword">for</span> p <span class="org-keyword">in</span> my.hypothesis.get_pages() <span class="org-keyword">if</span> <span class="org-string">'slatestarcodex'</span> <span class="org-keyword">in</span> p.link)
-<span class="org-keyword">return</span> Counter({p.link: <span class="org-builtin">len</span>(p.highlights) <span class="org-keyword">for</span> p <span class="org-keyword">in</span> SSC}).most_common(10)
-</pre>
-</div>
-<table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
-<colgroup>
-<col class="org-left" />
-<col class="org-right" />
-</colgroup>
-<tbody>
-<tr>
-<td class="org-left"><a href="http://slatestarcodex.com/2013/10/20/the-anti-reactionary-faq/">http://slatestarcodex.com/2013/10/20/the-anti-reactionary-faq/</a></td>
-<td class="org-right">32</td>
-</tr>
-<tr>
-<td class="org-left"><a href="https://slatestarcodex.com/2013/03/03/reactionary-philosophy-in-an-enormous-planet-sized-nutshell/">https://slatestarcodex.com/2013/03/03/reactionary-philosophy-in-an-enormous-planet-sized-nutshell/</a></td>
-<td class="org-right">17</td>
-</tr>
-<tr>
-<td class="org-left"><a href="http://slatestarcodex.com/2014/12/17/the-toxoplasma-of-rage/">http://slatestarcodex.com/2014/12/17/the-toxoplasma-of-rage/</a></td>
-<td class="org-right">16</td>
-</tr>
-<tr>
-<td class="org-left"><a href="https://slatestarcodex.com/2014/03/17/what-universal-human-experiences-are-you-missing-without-realizing-it/">https://slatestarcodex.com/2014/03/17/what-universal-human-experiences-are-you-missing-without-realizing-it/</a></td>
-<td class="org-right">16</td>
-</tr>
-<tr>
-<td class="org-left"><a href="http://slatestarcodex.com/2014/07/30/meditations-on-moloch/">http://slatestarcodex.com/2014/07/30/meditations-on-moloch/</a></td>
-<td class="org-right">12</td>
-</tr>
-<tr>
-<td class="org-left"><a href="http://slatestarcodex.com/2015/04/21/universal-love-said-the-cactus-person/">http://slatestarcodex.com/2015/04/21/universal-love-said-the-cactus-person/</a></td>
-<td class="org-right">11</td>
-</tr>
-<tr>
-<td class="org-left"><a href="http://slatestarcodex.com/2015/01/01/untitled/">http://slatestarcodex.com/2015/01/01/untitled/</a></td>
-<td class="org-right">11</td>
-</tr>
-<tr>
-<td class="org-left"><a href="https://slatestarcodex.com/2017/02/09/considerations-on-cost-disease/">https://slatestarcodex.com/2017/02/09/considerations-on-cost-disease/</a></td>
-<td class="org-right">10</td>
-</tr>
-<tr>
-<td class="org-left"><a href="http://slatestarcodex.com/2013/04/25/in-defense-of-psych-treatment-for-attempted-suicide/">http://slatestarcodex.com/2013/04/25/in-defense-of-psych-treatment-for-attempted-suicide/</a></td>
-<td class="org-right">9</td>
-</tr>
-<tr>
-<td class="org-left"><a href="https://slatestarcodex.com/2014/09/30/i-can-tolerate-anything-except-the-outgroup/">https://slatestarcodex.com/2014/09/30/i-can-tolerate-anything-except-the-outgroup/</a></td>
-<td class="org-right">9</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org000002b">
-<h3 id="org000002b"><a class="headerlink" href="#org000002b">¶</a>Searching in annotations</h3>
-<div class="outline-text-3" id="text-org000002b">
-<p>
-<a id="org0000000"></a>I've got bunch of scripts and a rendering tool which I named <a href="https://github.com/karlicoss/orger">orger</a> (yep, haven't invested that much thought into naming).
-Basically, these scripts take specific data source as input and produce org-mode output, e.g. renders <samp class="inline">json</samp> backed up from Instapaper into <samp class="inline">instapaper.org</samp> file. That runs every few hours and keeps the contents relatively up to date.
-</p>
-<p>
-I chose org-mode as I was already used to its features, keybindings and metadata. Also the hierarchy (e.g. book → highlight → comments) fits naturally into outline format. But not that it's a real necessity, I feel that as long as it's searchable plaintext, it's good enough.
-</p>
-<p>
-To search them, I've got a <b><b>global keybinding</b></b>, which invokes Emacs with incremental search prompt against the directory with rendered <samp class="inline">org</samp> files, which lets me interact with them in a blink on my computer. On Android I'm using <a href="https://play.google.com/store/apps/details?id=com.docsearch">DocSearch</a> indexer (sadly it's not incremental, and app is not open source, so I'm looking for alternative). I describe this extensively <a href="pkm-search.html#personal_information">here</a>.
-</p>
-<p>
-Finally, I've got a <a href="https://www.lesbonscomptes.com/recoll">Recoll</a> indexer instance + web interface running on my VPS; so if necessary I can access and search annotations via the internet.
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org000002c">
-<h3 id="todos"><a class="headerlink" href="#todos">¶</a>Providing TODO items</h3>
-<div class="outline-text-3" id="text-todos">
-<p>
-While reading, I often encounter something I want to google or check or read about later; or just come up to something actionable inspired by what I'm reading.
-But I also don't want to interrupt from reading and losing context: that especially matters while reading on a E-ink device: distracting from the book, fetching your phone etc is really annoying.
-</p>
-<p>
-So, as a workaround, I have programmed rules that pick out notes that start with "TODO" or marked with "TODO" tags; etc, and they are <b><b>automatically added to my agenda</b></b>. Later, when I see it on agenda, I'd assign it a priority and reschedule/unschedule depending on importance.
-</p>
-<p>
-<a href="https://github.com/karlicoss/orger/blob/350e76000e34db49cf6b574041b98bd813040851/ip2org.py#L16">Here's</a> an example of me using using <code class="inline">my.instapaper</code> module for that.
-</p>
-<p>
-I'm writing about it in more detail in post about <a href="orger-todos.html">Orger</a>.
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org000002d">
-<h3 id="spaced_repetition"><a class="headerlink" href="#spaced_repetition">¶</a>Spaced repetition</h3>
-<div class="outline-text-3" id="text-spaced_repetition">
-<p>
-It's kind of an extension of the previous use case: again, often you want to send something straight into your <a href="https://en.wikipedia.org/wiki/Spaced_repetition">spaced repetition</a> queue without having to remember to add that.
-</p>
-<p>
-I've got two rules for that:
-</p>
-<ul class="org-ul">
-<li>if something is annotated with a certain marker ('drill' for me, comes from <a href="https://orgmode.org/worg/org-contrib/org-drill.html">org-drill</a> package name)</li>
-<li>if it's only got one word highlighted, which is useful for memorizing foreign words</li>
-</ul>
-<p>
-<a href="https://github.com/karlicoss/orger/blob/350e76000e34db49cf6b574041b98bd813040851/krill.py#L13">Here's</a> how I'm using it for Kobo highlights.
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org000002e">
-<h3 id="org000002e"><a class="headerlink" href="#org000002e">¶</a>Life log</h3>
-<div class="outline-text-3" id="text-org000002e">
-<p>
-I'm a big fan of <a class="post-tag" href="./tags.html#lifelogging">#lifelogging</a> and all the timestamped highlights, comments and <a class="link-up" href="#org000001c">reading progress</a> from Kobo are an effortless (no manual logging!) contribution to my personal timeline, which I render and sync on my devices every few hours.
-</p>
-<p>
-I sometimes use it when conversation with other people comes to awkward silence, so I can recall something I was reading recently and spark off an interesting (well at least for me) topic.
-</p>
-</div>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000031">
-<h2 id="org0000031"><a class="headerlink" href="#org0000031">¶</a><span class="section-number-2">8</span> --</h2>
-<div class="outline-text-2" id="text-8">
-<p>
-Some extra links:
-</p>
-<ul class="org-ul">
-<li><a href="https://indieweb.org/annotation">Indieweb</a> page on annotation, in particular with examples of silos</li>
-</ul>
-<p>
-I'd be interested to know what do you think, and how are you managing your annotations or if you need some help with your existing workflow. Please also let me know if I missed any tools or features!
-</p>
-</div>
-<div class="outline-4" id="outline-container-org0000030">
-<h4 id="org0000030">updates</h4>
-<div class="outline-text-4" id="text-org0000030">
-<ul class="org-ul">
-<li><b>2019-12-02</b>: added <a class="link-up" href="#other_tools">section</a> with suggestions by other people.</li>
-</ul>
-</div>
-</div>
-</div>
-
-    </section>
-
-    
-    <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#annotation">#annotation</a> <a class="post-tag" href="./tags.html#sr">#sr</a> <a class="post-tag" href="./tags.html#tools">#tools</a></div>
-        <!-- TODO post-date? -->
-        <div class="date">05 July 2019</div>
-    </section>
-    
-
-    
-    <br>
-    <div>Discussion:</div>
-    <ul>
-    
-        <li><a href="https://news.ycombinator.com/item?id=21635012"><b>hackernews</b></a></li>
-    
-        <li><a href="https://www.reddit.com/r/opensource/comments/cazgsa/annotating_everything_overview_of_linuxandroid">/r/opensource</a></li>
-    
-        <li><a href="https://www.reddit.com/r/gwern/comments/dyptra/how_to_annotate_literally_everything_karlicoss">/r/gwern</a></li>
-    
-    </ul>
-    
-
-    <section class="comments">
-    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
-</script>
-
-<section id="isso-thread" data-isso-id="isso_pkm_annotating"></section>
 
     </section>
 

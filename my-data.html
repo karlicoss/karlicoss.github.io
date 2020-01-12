@@ -1,0 +1,922 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="dataliberation pkm quantified-self">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>What data on myself I collect and why? | Mildly entertainingᵝ</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link rel="stylesheet" href="./css/links.css?v=4" />
+
+        
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    <!-- TODO eh, not sure if this symbol is good for that... -->
+                    ·
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                    ·
+                    <a class="fat" href="./notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
+                </span>
+                <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<!-- <link rel="stylesheet" href="/css/org.css" /> -->
+
+<link rel="stylesheet" href="./css/htmlize.css" />
+<link rel="stylesheet" href="./css/org-default.css" />
+
+<link rel="stylesheet" href="./css/org-extra.css?v=3" />
+
+
+
+<article>
+    
+    <section class="post-title">
+    <h1>What data on myself I collect and why?</h1>
+    
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <p>
+This is the list of personal data sources I use or planning to use with rough guides on how to get your hands on that data if you want it as well.
+</p>
+<p>
+It's still incomplete and I'm going to update it regularly.
+</p>
+<p>
+My goal is <b>automating data collection to the maximum extent possible</b> and making it work in the background, so one can set up pipelines once and hopefully never think about it again.
+</p>
+<p>
+This is kind of a follow-up on my previous post on the <a href="sad-infra.html">sad state of personal data</a>, and part of my personal way of getting around this sad state.
+</p>
+<p>
+If you're terrified by the long list, you can jump straight into <a class="link-down" href="#consumers">"Data consumers"</a> section to find out how I use it.
+</p>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#why">1. Why do you collect X? How do you use your data?</a>
+<ul>
+<li><a href="#backup">backup</a></li>
+<li><a href="#lifelogging">lifelogging</a></li>
+<li><a href="#qs">quantified self</a></li>
+</ul>
+</li>
+<li><a href="#what">2. What do I collect/want to collect?</a>
+<ul>
+<li><a href="#amazon">Amazon</a></li>
+<li><a href="#arbtt">Arbtt (desktop time tracker)</a></li>
+<li><a href="#bitbucket">Bitbucket (repositories)</a></li>
+<li><a href="#bluemaestro">Bluemaestro (environment sensor)</a></li>
+<li><a href="#browser_history">Browser history (Firefox/Chrome)</a></li>
+<li><a href="#emfit">Emfit QS (sleep tracker)</a></li>
+<li><a href="#endomondo">Endomondo</a></li>
+<li><a href="#facebook">Facebook</a></li>
+<li><a href="#messenger">Facebook Messenger</a></li>
+<li><a href="#feedbin">Feedbin</a></li>
+<li><a href="#feedly">Feedly</a></li>
+<li><a href="#fitbit">Fitbit</a></li>
+<li><a href="#foursquare">Foursquare/Swarm</a></li>
+<li><a href="#github_repos">Github (repositories)</a></li>
+<li><a href="#github_events">Github (events)</a></li>
+<li><a href="#gmail">Gmail</a></li>
+<li><a href="#goodreads">Goodreads</a></li>
+<li><a href="#takeout">Google takeout</a></li>
+<li><a href="#hackernews"><span class="todo TODO">TODO</span> Hackernews</a></li>
+<li><a href="#hsbc">HSBC bank</a></li>
+<li><a href="#hypothesis">Hypothesis</a></li>
+<li><a href="#instapaper">Instapaper</a></li>
+<li><a href="#jawbone">Jawbone</a></li>
+<li><a href="#kindle">Kindle</a></li>
+<li><a href="#kobo">Kobo reader</a></li>
+<li><a href="#lastfm">Last.fm</a></li>
+<li><a href="#monzo">Monzo bank</a></li>
+<li><a href="#nomie">Nomie</a></li>
+<li><a href="#pinboard">Pinboard</a></li>
+<li><a href="#pocket">Pocket</a></li>
+<li><a href="#reddit">Reddit</a></li>
+<li><a href="#rtm">Remember the Milk</a></li>
+<li><a href="#rescuetime">Rescuetime</a></li>
+<li><a href="#sms_calls">Sms/calls</a></li>
+<li><a href="#spotify">Spotify</a></li>
+<li><a href="#stackexchange">Stackexchange</a></li>
+<li><a href="#taplog">Taplog</a></li>
+<li><a href="#telegram">Telegram</a></li>
+<li><a href="#twitter">Twitter</a></li>
+<li><a href="#vk">VK.com</a></li>
+<li><a href="#whatsapp"><span class="todo TODO">TODO</span> Whatsapp</a></li>
+</ul>
+</li>
+<li><a href="#consumers">3. Data consumers</a>
+<ul>
+<li><a href="#search">search</a></li>
+<li><a href="#promnesia">promnesia</a></li>
+<li><a href="#orger">orger</a></li>
+<li><a href="#dashboard">dashboard</a></li>
+<li><a href="#mypkg"><code class="inline">my.</code> python package</a></li>
+</ul>
+</li>
+<li><a href="#org0000000">4. --</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000004">
+<h2 id="why"><a class="headerlink" href="#why">¶</a><span class="section-number-2">1</span> Why do you collect X? How do you use your data?</h2>
+<div class="outline-text-2" id="text-why">
+<p>
+All things considered, I think it's a fair question!
+Why bother with all this <a href="./tags.html#infra">infrastructure</a> and hoard the data if you never use it?
+</p>
+<p>
+In the next section, I will elaborate on each specific data source, but to start with I'll list the rationales that all of them share:
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000001">
+<h3 id="backup"><a class="headerlink" href="#backup">¶</a>backup</h3>
+<div class="outline-text-3" id="text-backup">
+<p>
+It may feel unnecessary, but shit happens. What if your account gets suspended for some reason or the company goes bust?
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000002">
+<h3 id="lifelogging"><a class="headerlink" href="#lifelogging">¶</a><a href="./tags.html#lifelogging">lifelogging</a></h3>
+<div class="outline-text-3" id="text-lifelogging">
+<p>
+Most data in digital form got timestamps, so automatically, without manual effort, constitutes data for your timeline.
+</p>
+<p>
+I want to remember more, be able to review my past and bring back and reflect on memories. Practicing lifelogging helps with that.
+</p>
+<p>
+It feels very wrong that things can be forgotten and lost forever.
+It's understandable from the neuroscience point of view, i.e. the brain has limited capacity and it would be too distracting to remember everything all the time.
+That said, I want to have a <b>choice</b> whether to forget or remember events, and I'd like to be able to potentially access forgotten ones.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000003">
+<h3 id="qs"><a class="headerlink" href="#qs">¶</a><a href="./tags.html#quantifiedself">quantified self</a></h3>
+<div class="outline-text-3" id="text-qs">
+<p>
+Most collected digital data is somewhat quantitative and can be used to analyze your body or mind.
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000002e">
+<h2 id="what"><a class="headerlink" href="#what">¶</a><span class="section-number-2">2</span> What do I collect/want to collect?</h2>
+<div class="outline-text-2" id="text-what">
+<p>
+As I mentioned, most of the collected data serve as a means of backup/lifelogging/quantified self, so I won't mention them again in the 'Why' section.
+</p>
+<p>
+All my data collection pipelines are <b>automatic unless mentioned otherwise</b>.
+</p>
+<p>
+Some scripts are still private so if you want to know more, let me know so I can prioritize sharing them.
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000005">
+<h3 id="amazon"><a class="headerlink" href="#amazon">¶</a>Amazon</h3>
+<div class="outline-text-3" id="text-amazon">
+<p>
+How: <a href="https://github.com/jbms/finance-dl">jbms/finance-dl</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>was planning to correlate them with <a class="link-down" href="#monzo">monzo</a>/<a class="link-down" href="#hsbc">HSBC</a> transactions, but haven't got to it yet</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000006">
+<h3 id="arbtt"><a class="headerlink" href="#arbtt">¶</a>Arbtt (desktop time tracker)</h3>
+<div class="outline-text-3" id="text-arbtt">
+<p>
+How: <a href="https://arbtt.nomeata.de">arbtt-capture</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>haven't used it yet, but it could be a rich source of lifelogging context</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000007">
+<h3 id="bitbucket"><a class="headerlink" href="#bitbucket">¶</a>Bitbucket (repositories)</h3>
+<div class="outline-text-3" id="text-bitbucket">
+<p>
+How: <a href="https://github.com/samkuehn/bitbucket-backup">samkuehn/bitbucket-backup</a>
+</p>
+<p>
+Why: 
+</p>
+<ul class="org-ul">
+<li><p>
+proved especially useful considering Atlassian is going to <a href="https://bitbucket.org/blog/sunsetting-mercurial-support-in-bitbucket"><b>wipe</b></a> mercurial repositories
+</p>
+<p>
+I've got lots of private mercurial repositories with university homework, and it's sad to think of people who will lose theirs during this wipe.
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000008">
+<h3 id="bluemaestro"><a class="headerlink" href="#bluemaestro">¶</a><a href="https://bluemaestro.com/products/product-details/bluetooth-environmental-monitor-and-logger">Bluemaestro</a> (environment sensor)</h3>
+<div class="outline-text-3" id="text-bluemaestro">
+<p>
+How: sensor syncs with phone app via Bluetooth, <samp class="inline">/data/data/com.bluemaestro.tempo_utility/databases/</samp> is regularly copied to grab the data.
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>temperature during sleep data for the <a class="link-down" href="#dashboard">dashboard</a></li>
+<li><p>
+lifelogging: capturing weather conditions information
+</p>
+<p>
+E.g. I can potentially see temperature/humidity readings along with my photos from hiking or skiing.
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000009">
+<h3 id="browser_history"><a class="headerlink" href="#browser_history">¶</a>Browser history (Firefox/Chrome)</h3>
+<div class="outline-text-3" id="text-browser_history">
+<p>
+How: <a href="https://github.com/karlicoss/promnesia/tree/master/scripts">custom scripts</a>, copying the underlying sqlite databases directly, running on my computers and phone.
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000a">
+<h3 id="emfit"><a class="headerlink" href="#emfit">¶</a><a href="https://shop-eu.emfit.com/products/emfit-qs">Emfit QS</a> (sleep tracker)</h3>
+<div class="outline-text-3" id="text-emfit">
+<p>
+How: <a href="https://github.com/karlicoss/backup-emfit">emfitexport</a>.
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>sleep data for the <a class="link-down" href="#dashboard">dashboard</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000b">
+<h3 id="endomondo"><a class="headerlink" href="#endomondo">¶</a>Endomondo</h3>
+<div class="outline-text-3" id="text-endomondo">
+<p>
+How: <a href="https://github.com/karlicoss/endoexport">karlicoss/endoexport</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>exercise data for the <a class="link-down" href="#dashboard">dashboard</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000c">
+<h3 id="facebook"><a class="headerlink" href="#facebook">¶</a>Facebook</h3>
+<div class="outline-text-3" id="text-facebook">
+<p>
+How: manual archive export.
+</p>
+<p>
+I barely use Facebook, so don't even bother doing it regularly.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000d">
+<h3 id="messenger"><a class="headerlink" href="#messenger">¶</a>Facebook Messenger</h3>
+<div class="outline-text-3" id="text-messenger">
+<p>
+How: <a href="https://github.com/karlicoss/fbmessengerexport">karlicoss/fbmessengerexport</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000e">
+<h3 id="feedbin"><a class="headerlink" href="#feedbin">¶</a>Feedbin</h3>
+<div class="outline-text-3" id="text-feedbin">
+<p>
+How: via API
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000f">
+<h3 id="feedly"><a class="headerlink" href="#feedly">¶</a>Feedly</h3>
+<div class="outline-text-3" id="text-feedly">
+<p>
+How: via API
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000010">
+<h3 id="fitbit"><a class="headerlink" href="#fitbit">¶</a>Fitbit</h3>
+<div class="outline-text-3" id="text-fitbit">
+<p>
+How: manual CSV export, as I only used it for a week. However, it seems <a href="https://dev.fitbit.com/build/reference/web-api/intraday-requests">possible</a> via API.
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>activity data for the <a class="link-down" href="#dashboard">#dashboard</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000011">
+<h3 id="foursquare"><a class="headerlink" href="#foursquare">¶</a>Foursquare/Swarm</h3>
+<div class="outline-text-3" id="text-foursquare">
+<p>
+How: via API
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000012">
+<h3 id="github_repos"><a class="headerlink" href="#github_repos">¶</a>Github (repositories)</h3>
+<div class="outline-text-3" id="text-github_repos">
+<p>
+How: <a href="https://github.com/josegonzalez/python-github-backup">github-backup</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>capable of exporting starred repositories as well, so if the authors delete them I will still have them</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000013">
+<h3 id="github_events"><a class="headerlink" href="#github_events">¶</a>Github (events)</h3>
+<div class="outline-text-3" id="text-github_events">
+<p>
+How: manually requested archive (once), after that automatic <a href="https://github.com/karlicoss/ghexport">karlicoss/ghexport</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000014">
+<h3 id="gmail"><a class="headerlink" href="#gmail">¶</a>Gmail</h3>
+<div class="outline-text-3" id="text-gmail">
+<p>
+How: <a href="https://github.com/joeyates/imap-backup">imap-backup</a>, <a class="link-down" href="#takeout">Google Takeout</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>this is arguably <b>the most important</b> thing you should export considering how heavily everything relies on email</li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000015">
+<h3 id="goodreads"><a class="headerlink" href="#goodreads">¶</a>Goodreads</h3>
+<div class="outline-text-3" id="text-goodreads">
+<p>
+How: <a href="https://github.com/karlicoss/goodrexport">karlicoss/goodrexport</a>
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000016">
+<h3 id="takeout"><a class="headerlink" href="#takeout">¶</a>Google takeout</h3>
+<div class="outline-text-3" id="text-takeout">
+<p>
+How: semi-automatic. 
+</p>
+<ul class="org-ul">
+<li>only manual step: enable scheduled exports (you can schedule 6 per year at a time), and choose to keep it on Google Drive in export settings</li>
+<li>mount your Google Drive (e.g. via <a href="https://github.com/astrada/google-drive-ocamlfuse">google-drive-ocamlfuse</a>)</li>
+<li>keep a script that checks mounted Google Drive for fresh takeouts and move them somewhere safe</li>
+</ul>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>Google collects lots of data, which you could put to some good use. However, old data is getting <a href="./takeout-data-gone.html">wiped</a>, so it's important to export Takeout regularly.</li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+<li>(potentially) search history for <a class="link-down" href="#promnesia">promnesia</a></li>
+<li><a class="link-down" href="#search">search</a> in youtube watch history</li>
+<li>location data for lifelogging and the <a class="link-down" href="#dashboard">dashboard</a> (activity)</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000017">
+<h3 id="hackernews"><a class="headerlink" href="#hackernews">¶</a><span class="todo TODO">TODO</span> Hackernews</h3>
+<div class="outline-text-3" id="text-hackernews">
+<p>
+How: haven't got to it yet. It's going to require:
+</p>
+<ul class="org-ul">
+<li>extracting upvotes/saved items via web scraping since Hackernews doesn't offer an API for that. Hopefully, there is an existing library for that.</li>
+<li><p>
+I'm also using <a href="https://play.google.com/store/apps/details?id=io.github.hidroh.materialistic">Materialistic</a> app that has its own 'saved' posts and doesn't synchronize with Hackernews. 
+</p>
+<p>
+Exporting them is going to require copying the database directly from the app private storage.
+</p></li>
+</ul>
+<p>
+Why: same reasons as <a class="link-down" href="#reddit">Reddit</a>.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000018">
+<h3 id="hsbc"><a class="headerlink" href="#hsbc">¶</a>HSBC bank</h3>
+<div class="outline-text-3" id="text-hsbc">
+<p>
+How: manual exports of monthly PDFs with transactions. They don't really offer API, so unless you want to scrape it seems it's the best you can do.
+</p>
+<p>
+Why
+</p>
+<ul class="org-ul">
+<li>personal finance; used it with <a href="https://github.com/karlicoss/hsbc-parser">karlicoss/hsbc-parser</a> to feed into <a href="https://hledger.org">hledger</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000019">
+<h3 id="hypothesis"><a class="headerlink" href="#hypothesis">¶</a><a href="https://hypothes.is">Hypothesis</a></h3>
+<div class="outline-text-3" id="text-hypothesis">
+<p>
+How: <a href="https://github.com/karlicoss/hypexport">karlicoss/hypexport</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+<li>quick todos via <a class="link-down" href="#orger">orger</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001a">
+<h3 id="instapaper"><a class="headerlink" href="#instapaper">¶</a>Instapaper</h3>
+<div class="outline-text-3" id="text-instapaper">
+<p>
+How: <a href="https://github.com/karlicoss/instapexport">karlicoss/instapexport</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+<li>quick todos via <a class="link-down" href="#orger">orger</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001b">
+<h3 id="jawbone"><a class="headerlink" href="#jawbone">¶</a>Jawbone</h3>
+<div class="outline-text-3" id="text-jawbone">
+<p>
+How: via API.
+Jawbone is dead now, so if you haven't exported it already, likely your data is lost forever.
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>sleep data for the <a class="link-down" href="#dashboard">dashboard</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001c">
+<h3 id="kindle"><a class="headerlink" href="#kindle">¶</a>Kindle</h3>
+<div class="outline-text-3" id="text-kindle">
+<p>
+How: manually exported <samp class="inline">MyClippings.txt</samp> from Kindle. Potentially can be automated similarly to <a class="link-down" href="#kobo">Kobo</a>.
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001d">
+<h3 id="kobo"><a class="headerlink" href="#kobo">¶</a><a href="https://www.kobo.com">Kobo</a> reader</h3>
+<div class="outline-text-3" id="text-kobo">
+<p>
+How: almost automatic via <a href="https://github.com/karlicoss/kobuddy">karlicoss/kobuddy</a>. Manual step: having to connect your reader via USB now and then.
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+<li><a href="orger-todos.html#krill">spaced repetition</a> for unfamiliar words/new concepts via <a class="link-down" href="#orger">orger</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001e">
+<h3 id="lastfm"><a class="headerlink" href="#lastfm">¶</a>Last.fm</h3>
+<div class="outline-text-3" id="text-lastfm">
+<p>
+How: <a href="https://github.com/karlicoss/lastfm-backup">karlicoss/lastfm-backup</a>
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001f">
+<h3 id="monzo"><a class="headerlink" href="#monzo">¶</a>Monzo bank</h3>
+<div class="outline-text-3" id="text-monzo">
+<p>
+How: <a href="https://github.com/karlicoss/monzoexport">karlicoss/monzoexport</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>automatic personal finance, fed into <a href="https://hledger.org">hledger</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000020">
+<h3 id="nomie"><a class="headerlink" href="#nomie">¶</a><a href="https://nomie.app">Nomie</a></h3>
+<div class="outline-text-3" id="text-nomie">
+<p>
+How: regular copies of <samp class="inline">/data/data/io.nomie.pro/files/_pouch_events</samp> and <samp class="inline">/data/data/io.nomie.pro/files/_pouch_trackers</samp>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>could be a great tool for detailed lifelogging if you're into it</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000021">
+<h3 id="pinboard"><a class="headerlink" href="#pinboard">¶</a>Pinboard</h3>
+<div class="outline-text-3" id="text-pinboard">
+<p>
+How: <a href="https://github.com/karlicoss/pinbexport">karlicoss/pinbexport</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000022">
+<h3 id="pocket"><a class="headerlink" href="#pocket">¶</a>Pocket</h3>
+<div class="outline-text-3" id="text-pocket">
+<p>
+How: <a href="https://github.com/karlicoss/pockexport">karlicoss/pockexport</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000023">
+<h3 id="reddit"><a class="headerlink" href="#reddit">¶</a>Reddit</h3>
+<div class="outline-text-3" id="text-reddit">
+<p>
+How: <a href="https://github.com/karlicoss/rexport">karlicoss/rexport</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+<li><a href="orger-todos.html#reddit">org-mode interface</a> for processing saved Reddit posts/comments, via <a class="link-down" href="#orger">orger</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000024">
+<h3 id="rtm"><a class="headerlink" href="#rtm">¶</a>Remember the Milk</h3>
+<div class="outline-text-3" id="text-rtm">
+<p>
+How: ical export from the API.
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><p>
+<a class="link-down" href="#search">better search</a>
+</p>
+<p>
+I stopped using RTM in favor of org-mode, but I can still easily find my old task and notes.
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000025">
+<h3 id="rescuetime"><a class="headerlink" href="#rescuetime">¶</a>Rescuetime</h3>
+<div class="outline-text-3" id="text-rescuetime">
+<p>
+How: <a href="https://github.com/karlicoss/rescuexport">karlicoss/rescuexport</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>richer contexts for lifelogging</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000026">
+<h3 id="sms_calls"><a class="headerlink" href="#sms_calls">¶</a>Sms/calls</h3>
+<div class="outline-text-3" id="text-sms_calls">
+<p>
+How: <a href="https://play.google.com/store/apps/details?id=com.riteshsahu.SMSBackupRestore">SMS Backup &amp; Restore</a> app, automatic exports.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000027">
+<h3 id="spotify"><a class="headerlink" href="#spotify">¶</a>Spotify</h3>
+<div class="outline-text-3" id="text-spotify">
+<p>
+How: export script, using <a href="https://github.com/plamere/spotipy">plamere/spotipy</a>
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000028">
+<h3 id="stackexchange"><a class="headerlink" href="#stackexchange">¶</a>Stackexchange</h3>
+<div class="outline-text-3" id="text-stackexchange">
+<p>
+How: <a href="https://github.com/karlicoss/stexport">karlicoss/stexport</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000029">
+<h3 id="taplog"><a class="headerlink" href="#taplog">¶</a><a href="https://play.google.com/store/apps/details?id=com.waterbear.taglog">Taplog</a></h3>
+<div class="outline-text-3" id="text-taplog">
+<p>
+(not using it anymore, in favor of org-mode)
+</p>
+<p>
+How: regular copying of <samp class="inline">/data/data/com.waterbear.taglog/databases/Buttons Database</samp>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>a quick way of single tap logging (e.g. weight/sleep/exercise etc), contributes to the <a class="link-down" href="#dashboard">dashboard</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000002a">
+<h3 id="telegram"><a class="headerlink" href="#telegram">¶</a>Telegram</h3>
+<div class="outline-text-3" id="text-telegram">
+<p>
+How: <a href="https://github.com/fabianonline/telegram_backup">fabianonline/telegram_backup</a>
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000002b">
+<h3 id="twitter"><a class="headerlink" href="#twitter">¶</a>Twitter</h3>
+<div class="outline-text-3" id="text-twitter">
+<p>
+How: twitter archive (manually, once), after that regular automatic exports via API
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000002c">
+<h3 id="vk"><a class="headerlink" href="#vk">¶</a>VK.com</h3>
+<div class="outline-text-3" id="text-vk">
+<p>
+How: <a href="https://github.com/Totktonada/vk_messages_backup">Totktonada/vk_messages_backup</a>.
+</p>
+<p>
+Sadly VK broke their API so the script stopped working. I'm barely using VK now anyway so not motivated enough to work around it.
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000002d">
+<h3 id="whatsapp"><a class="headerlink" href="#whatsapp">¶</a><span class="todo TODO">TODO</span> Whatsapp</h3>
+<div class="outline-text-3" id="text-whatsapp">
+<p>
+Barely using it so haven't bothered yet.   
+</p>
+<p>
+How: Whatsapp doesn't offer API, so potentially going to require grabbing sqlite database from Android app (<samp class="inline">/data/data/com.whatsapp/databases/msgstore.db</samp>)
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><a class="link-down" href="#search">better search</a></li>
+<li><a class="link-down" href="#promnesia">better browsing history</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000034">
+<h2 id="consumers"><a class="headerlink" href="#consumers">¶</a><span class="section-number-2">3</span> Data consumers</h2>
+<div class="outline-text-2" id="text-consumers">
+</div>
+<div class="outline-3" id="outline-container-org000002f">
+<h3 id="search"><a class="headerlink" href="#search">¶</a>search</h3>
+<div class="outline-text-3" id="text-search">
+<p>
+Typical search interfaces make me unhappy as they are <b>siloed, slow, awkward to use and don't work offline</b>.
+So I built my own ways around it! I write about it in detail <a href="pkm-search.html#personal_information">here</a>.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000030">
+<h3 id="promnesia"><a class="headerlink" href="#promnesia">¶</a>promnesia</h3>
+<div class="outline-text-3" id="text-promnesia">
+<p>
+<a href="https://github.com/karlicoss/promnesia#demo">promnesia</a> is a browser extension I'm working on to escape silos by <b>unifying annotations and browsing history</b> from different data sources.
+</p>
+<p>
+I've been using it for more than a year now and working on final touches to make it possible to be used by other people.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000031">
+<h3 id="orger"><a class="headerlink" href="#orger">¶</a>orger</h3>
+<div class="outline-text-3" id="text-orger">
+<p>
+<a href="https://github.com/karlicoss/orger">orger</a> is a tool and set of modules for converting data into org-mode to allow for <b>instant and offline search and overview</b>.
+</p>
+<p>
+In addition, I'm using it for creating tasks straight from native app interfaces (e.g. Reddit/Telegram) and spaced repetition via <a href="https://orgmode.org/worg/org-contrib/org-drill.html">org-drill</a>.
+</p>
+<p>
+I write about it in detail <a href="orger.html">here</a> and <a href="orger-todos.html">here</a>.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000032">
+<h3 id="dashboard"><a class="headerlink" href="#dashboard">¶</a>dashboard</h3>
+<div class="outline-text-3" id="text-dashboard">
+<p>
+I'm working on personal health, sleep and exercise dashboard, built from various data sources.
+</p>
+<p>
+I'm working on making it public, you can see some screenshots <a href="https://www.reddit.com/r/QuantifiedSelf/comments/cokt4f/what_do_you_all_do_with_your_data/ewmucgk">here</a>.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000033">
+<h3 id="mypkg"><a class="headerlink" href="#mypkg">¶</a><a href="https://github.com/karlicoss/my"><code class="inline">my.</code></a> python package</h3>
+<div class="outline-text-3" id="text-mypkg">
+<p>
+This python package is a kind of my personal API to access all collected data.
+</p>
+<p>
+I'm in the progress of writing about it <a href="mypkg.html">here</a>.
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000000">
+<h2 id="org0000000"><a class="headerlink" href="#org0000000">¶</a><span class="section-number-2">4</span> --</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Happy to answer any questions on my approach and help you with liberating your data.  
+</p>
+<p>
+In the <a href="exports.html">next post</a> (writing still in progress) I'm going to elaborate on design decisions behind my data export and access infrastructure.
+</p>
+</div>
+</div>
+
+    </section>
+
+    
+    <section class="footer">
+        <div class="post-tags"><a class="post-tag" href="./tags.html#dataliberation">#dataliberation</a> <a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#quantified-self">#quantified-self</a></div>
+        <!-- TODO post-date? -->
+        <div class="date">12 January 2020</div>
+    </section>
+    
+
+    
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_my_data"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
+        
+        <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
+
+            <a href="http://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>
+            
+            
+        </footer>
+    </body>
+</html>
