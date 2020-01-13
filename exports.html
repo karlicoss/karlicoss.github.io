@@ -170,12 +170,10 @@ It's quite possible that I'm slipping extra complexity somewhere and I would be 
 </ul>
 </li>
 <li><a href="#org0000018">10. --</a></li>
-<li><a href="#org0000019">11. <span class="todo TODO">TODO</span> example of not keeping raw data: praw   <span class="tag"><span class="exports">exports</span> <span class="blog">blog</span> <span class="reddit">reddit</span></span></a></li>
-<li><a href="#org000001a">12. <span class="todo TODO">TODO</span> arctee motivation of treating all errors as api flickering/network   <span class="tag"><span class="blog">blog</span> <span class="exports">exports</span></span></a></li>
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000001b">
+<div class="outline-2" id="outline-container-org0000019">
 <h2 id="design"><a class="headerlink" href="#design">¶</a><span class="section-number-2">1</span> Design principles</h2>
 <div class="outline-text-2" id="text-design">
 <p>
@@ -238,7 +236,7 @@ Now I'm going to elaborate on implementing export layer.
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000020">
+<div class="outline-2" id="outline-container-org000001e">
 <h2 id="retrieve"><a class="headerlink" href="#retrieve">¶</a><span class="section-number-2">2</span> Retrieving data</h2>
 <div class="outline-text-2" id="text-retrieve">
 <p>
@@ -303,7 +301,7 @@ Some examples:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001c">
+<div class="outline-3" id="outline-container-org000001a">
 <h3 id="export_scrape"><a class="headerlink" href="#export_scrape">¶</a>scraping</h3>
 <div class="outline-text-3" id="text-export_scrape">
 <p>
@@ -341,7 +339,7 @@ Examples:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001d">
+<div class="outline-3" id="outline-container-org000001b">
 <h3 id="export_manual"><a class="headerlink" href="#export_manual">¶</a>manual export (GDPR/takeout)</h3>
 <div class="outline-text-3" id="text-export_manual">
 <p>
@@ -372,7 +370,7 @@ Examples:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001e">
+<div class="outline-3" id="outline-container-org000001c">
 <h3 id="export_phone"><a class="headerlink" href="#export_phone">¶</a>phone apps</h3>
 <div class="outline-text-3" id="text-export_phone">
 <p>
@@ -401,7 +399,7 @@ Examples:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001f">
+<div class="outline-3" id="outline-container-org000001d">
 <h3 id="export_devices"><a class="headerlink" href="#export_devices">¶</a><span class="todo TODO">TODO</span> devices?</h3>
 <div class="outline-text-3" id="text-export_devices">
 <p>
@@ -448,7 +446,7 @@ Examples:
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000024">
+<div class="outline-2" id="outline-container-org0000022">
 <h2 id="types"><a class="headerlink" href="#types">¶</a><span class="section-number-2">3</span> Types of exports</h2>
 <div class="outline-text-2" id="text-types">
 <p>
@@ -462,7 +460,7 @@ Since data exports by their nature are somewhat similar to <a href="https://en.w
 The way I see it, there are three styles of data exports:
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000021">
+<div class="outline-3" id="outline-container-org000001f">
 <h3 id="full"><a class="headerlink" href="#full">¶</a>full export</h3>
 <div class="outline-text-3" id="text-full">
 <p>
@@ -492,7 +490,7 @@ TODO link to examples
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000022">
+<div class="outline-3" id="outline-container-org0000020">
 <h3 id="incremental"><a class="headerlink" href="#incremental">¶</a>incremental export</h3>
 <div class="outline-text-3" id="text-incremental">
 <p>
@@ -562,7 +560,7 @@ XXX TODO
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000023">
+<div class="outline-3" id="outline-container-org0000021">
 <h3 id="synthetic"><a class="headerlink" href="#synthetic">¶</a>synthetic export</h3>
 <div class="outline-text-3" id="text-synthetic">
 <div><span class="before-aside">
@@ -691,7 +689,7 @@ That can be addressed with TODO using iterators? (so access time is amortized)
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000030">
+<div class="outline-2" id="outline-container-org000002e">
 <h2 id="export_layer"><a class="headerlink" href="#export_layer">¶</a><span class="section-number-2">4</span> Export layer</h2>
 <div class="outline-text-2" id="text-export_layer">
 <p>
@@ -704,7 +702,7 @@ Do the <b>absolute minimum</b> work required to get raw data. This is kind of va
 This section doesn't cover the TODO exact specifics, but it's more of collection of tips of minimizing work necessary:
 </p>
 </div>
-<div class="outline-3" id="outline-container-org000002b">
+<div class="outline-3" id="outline-container-org0000029">
 <h3 id="bindings"><a class="headerlink" href="#bindings">¶</a>use existing bindings</h3>
 <div class="outline-text-3" id="text-bindings">
 <p>
@@ -719,28 +717,28 @@ If there is something in bindings you don't like or lack, it's still easier to m
 Also if you're the author of bindings, I have few requests. Please:
 </p>
 </div>
-<div class="outline-4" id="outline-container-org0000025">
-<h4 id="org0000025">Please never print in stdout. It's a pain to filter out and suppress</h4>
+<div class="outline-4" id="outline-container-org0000023">
+<h4 id="org0000023">Please never print in stdout. It's a pain to filter out and suppress</h4>
 </div>
-<div class="outline-4" id="outline-container-org0000026">
-<h4 id="org0000026"><span class="todo TODO">TODO</span> Please add debug logging. It's pretty sad to</h4>
-<div class="outline-text-4" id="text-org0000026">
+<div class="outline-4" id="outline-container-org0000024">
+<h4 id="org0000024"><span class="todo TODO">TODO</span> Please add debug logging. It's pretty sad to</h4>
+<div class="outline-text-4" id="text-org0000024">
 <p>
 TODO write about requests logging?
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000027">
-<h4 id="org0000027">Please don't be overly defensive, or allow for non-defensive behavior.</h4>
-<div class="outline-text-4" id="text-org0000027">
+<div class="outline-4" id="outline-container-org0000025">
+<h4 id="org0000025">Please don't be overly defensive, or allow for non-defensive behavior.</h4>
+<div class="outline-text-4" id="text-org0000025">
 <p>
 It's quite sad when library silently catches all exception and replaces with empty strings/nulls/etc without you knowing it.
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000028">
-<h4 id="org0000028">Please expose raw underlying data (typically, json)</h4>
-<div class="outline-text-4" id="text-org0000028">
+<div class="outline-4" id="outline-container-org0000026">
+<h4 id="org0000026">Please expose raw underlying data (typically, json)</h4>
+<div class="outline-text-4" id="text-org0000026">
 <p>
 If you forget to handle something or the user disagrees how to interpret data they can hack it with accessing raw underlying TODO chunk??
 </p>
@@ -751,12 +749,12 @@ If you forget to handle something or the user disagrees how to interpret data th
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000029">
-<h4 id="org0000029">Please expose generic methods for handling API calls to make it easy to add new endpoints</h4>
+<div class="outline-4" id="outline-container-org0000027">
+<h4 id="org0000027">Please expose generic methods for handling API calls to make it easy to add new endpoints</h4>
 </div>
-<div class="outline-4" id="outline-container-org000002a">
-<h4 id="org000002a"><span class="todo TODO">TODO</span> examples of employing these principles</h4>
-<div class="outline-text-4" id="text-org000002a">
+<div class="outline-4" id="outline-container-org0000028">
+<h4 id="org0000028"><span class="todo TODO">TODO</span> examples of employing these principles</h4>
+<div class="outline-text-4" id="text-org0000028">
 <p>
 To export <a href="https://github.com/karlicoss/hypexport">Hypothes.is</a> data I'm using existing <a href="https://github.com/judell/Hypothesis">python bindings</a>.
 </p>
@@ -829,7 +827,7 @@ I'd only recommend doing it if you know for sure that certain error
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000002d">
+<div class="outline-3" id="outline-container-org000002b">
 <h3 id="output_stdout"><a class="headerlink" href="#output_stdout">¶</a>output to stdout</h3>
 <div class="outline-text-3" id="text-output_stdout">
 <p>
@@ -858,8 +856,8 @@ If you want to be portable (e.g. <a href="https://stackoverflow.com/a/167555/706
 You really don't want to remember to copy paste it or reimplement every time.
 </p>
 </div>
-<div class="outline-4" id="outline-container-org000002c">
-<h4 id="org000002c"><span class="todo TODO">TODO</span> not sure how to integrate timestamps here? maybe separate export wrapper in a separate file?</h4>
+<div class="outline-4" id="outline-container-org000002a">
+<h4 id="org000002a"><span class="todo TODO">TODO</span> not sure how to integrate timestamps here? maybe separate export wrapper in a separate file?</h4>
 </div>
 </div>
 <div class="outline-3" id="outline-container-org0000004">
@@ -881,17 +879,17 @@ E.g. with Unix permissions you could only allow certain scripts to read secrets.
 Note that I'm not a security expert, so would be interested to know if there are better solutions to that
 </p>
 </div>
-<div class="outline-4" id="outline-container-org000002e">
-<h4 id="org000002e"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-26 23:23]</span></span> even better, python script, e.g. potentially it makes it easier to put auth code close etc</h4>
-<div class="outline-text-4" id="text-org000002e">
+<div class="outline-4" id="outline-container-org000002c">
+<h4 id="org000002c"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-26 23:23]</span></span> even better, python script, e.g. potentially it makes it easier to put auth code close etc</h4>
+<div class="outline-text-4" id="text-org000002c">
 <p>
 TODO also link to post that python is a good format for configs?
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org000002f">
-<h4 id="org000002f"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> benefits of having secrets in python file: you can keep auth code close to the secrets   <span class="tag"><span class="blog">blog</span> <span class="python">python</span></span></h4>
-<div class="outline-text-4" id="text-org000002f">
+<div class="outline-4" id="outline-container-org000002d">
+<h4 id="org000002d"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> benefits of having secrets in python file: you can keep auth code close to the secrets   <span class="tag"><span class="blog">blog</span> <span class="python">python</span></span></h4>
+<div class="outline-text-4" id="text-org000002d">
 <p>
 e.g. getting new secrets – rerun the secrets.py file
 can leave comments (e.g. unlike json)
@@ -924,7 +922,7 @@ For storage I'm just using filesystem; all exports are kept or symlinked in the 
 /exports/goodreads
 </pre>
 </div>
-<div class="outline-3" id="outline-container-org0000031">
+<div class="outline-3" id="outline-container-org000002f">
 <h3 id="timestamps"><a class="headerlink" href="#timestamps">¶</a>naming and timestamping</h3>
 <div class="outline-text-3" id="text-timestamps">
 <p>
@@ -956,7 +954,7 @@ To make timestamping automatic and less boilerplaty, I'm using a wrapper script.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000032">
+<div class="outline-3" id="outline-container-org0000030">
 <h3 id="backups"><a class="headerlink" href="#backups">¶</a>backups</h3>
 <div class="outline-text-3" id="text-backups">
 <p>
@@ -965,7 +963,7 @@ What is more, borg is deduplicating, so it's quite friendly to synthetic exports
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000033">
+<div class="outline-3" id="outline-container-org0000031">
 <h3 id="sync"><a class="headerlink" href="#sync">¶</a>synchronizing</h3>
 <div class="outline-text-3" id="text-sync">
 <p>
@@ -1007,14 +1005,14 @@ I haven't personally tried it.
 </p></li>
 </ul>
 </div>
-<div class="outline-4" id="outline-container-org0000034">
-<h4 id="org0000034"><span class="todo STRT">STRT</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-26 23:57]</span></span> compression – bwrapper</h4>
-<div class="outline-text-4" id="text-org0000034">
+<div class="outline-4" id="outline-container-org0000032">
+<h4 id="org0000032"><span class="todo STRT">STRT</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-26 23:57]</span></span> compression – bwrapper</h4>
+<div class="outline-text-4" id="text-org0000032">
 </div>
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000035">
+<div class="outline-2" id="outline-container-org0000033">
 <h2 id="arctee"><a class="headerlink" href="#arctee">¶</a><span class="section-number-2">6</span> arctee</h2>
 <div class="outline-text-2" id="text-arctee">
 <p>
@@ -1142,7 +1140,7 @@ Systemd – too verbose (e.g. you need to install service/restart etc)
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000036">
+<div class="outline-2" id="outline-container-org0000034">
 <h2 id="dal"><a class="headerlink" href="#dal">¶</a><span class="section-number-2">8</span> Data access layer (DAL)</h2>
 <div class="outline-text-2" id="text-dal">
 </div>
@@ -1213,36 +1211,36 @@ Ok, it's a bit unclear what it can be used for?
 <a href="https://news.ycombinator.com/item?id=17615696">https://news.ycombinator.com/item?id=17615696</a>
 </p>
 </div>
-<div class="outline-4" id="outline-container-org0000040">
-<h4 id="org0000040">trying out</h4>
-<div class="outline-text-4" id="text-org0000040">
+<div class="outline-4" id="outline-container-org000003e">
+<h4 id="org000003e">trying out</h4>
+<div class="outline-text-4" id="text-org000003e">
 </div>
 <ul class="org-ul">
-<li><a id="org0000037"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:00]</span></span> pinboard importer failed (json parsing)<br /></li>
-<li><a id="org0000038"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:01]</span></span> instapaper – couldn't authorize?<br /></li>
-<li><a id="org0000039"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:11]</span></span> twitter – some crap about 'switching to developer account'<br /></li>
-<li><a id="org000003a"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:11]</span></span> mastodon – success<br /></li>
-<li><a id="org000003b"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:12]</span></span> couldn't search for text in UI<br />
-<div class="outline-text-5" id="text-org000003b">
+<li><a id="org0000035"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:00]</span></span> pinboard importer failed (json parsing)<br /></li>
+<li><a id="org0000036"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:01]</span></span> instapaper – couldn't authorize?<br /></li>
+<li><a id="org0000037"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:11]</span></span> twitter – some crap about 'switching to developer account'<br /></li>
+<li><a id="org0000038"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:11]</span></span> mastodon – success<br /></li>
+<li><a id="org0000039"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:12]</span></span> couldn't search for text in UI<br />
+<div class="outline-text-5" id="text-org0000039">
 <p>
 Invalid SearchQuery: Error parsing search expression "whatever": No support for literals yet at position 0, token: "whatever" See: <a href="https://perkeep.org/doc/search-ui">https://perkeep.org/doc/search-ui</a>
 </p>
 </div>
 </li>
-<li><a id="org000003c"></a>couldn't see imported data in the fuse mount<br />
-<div class="outline-text-5" id="text-org000003c">
+<li><a id="org000003a"></a>couldn't see imported data in the fuse mount<br />
+<div class="outline-text-5" id="text-org000003a">
 <p>
 <a href="https://perkeep.org/cmd/pk-mount">https://perkeep.org/cmd/pk-mount</a>, couldn't figure out what's root-blobref
 </p>
 </div>
 </li>
-<li><a id="org000003d"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:33]</span></span> couldn't figure out how to request stuff from my importer either via API or HTTP<br /></li>
-<li><a id="org000003e"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:33]</span></span> happy if someone using Perkeep points me at the right direction!<br /></li>
-<li><a id="org000003f"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:55]</span></span> apparently not very TODO developed? <a href="https://github.com/perkeep/perkeep/releases">https://github.com/perkeep/perkeep/releases</a><br /></li>
+<li><a id="org000003b"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:33]</span></span> couldn't figure out how to request stuff from my importer either via API or HTTP<br /></li>
+<li><a id="org000003c"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:33]</span></span> happy if someone using Perkeep points me at the right direction!<br /></li>
+<li><a id="org000003d"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:55]</span></span> apparently not very TODO developed? <a href="https://github.com/perkeep/perkeep/releases">https://github.com/perkeep/perkeep/releases</a><br /></li>
 </ul>
 </div>
-<div class="outline-4" id="outline-container-org0000041">
-<h4 id="org0000041"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:29]</span></span> could extract in a separate file perhaps?</h4>
+<div class="outline-4" id="outline-container-org000003f">
+<h4 id="org000003f"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-01-01 13:29]</span></span> could extract in a separate file perhaps?</h4>
 </div>
 </div>
 <div class="outline-3" id="outline-container-org0000013">
@@ -1341,21 +1339,6 @@ TODO Approaches I describe works well for me so far. It feels like it's fairly c
 <p>
 However, it still feels like something that shouldn't have been so hard in the first place and ??? to be solved in a more generic way.
 </p>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000019">
-<h2 id="org0000019"><a class="headerlink" href="#org0000019">¶</a><span class="section-number-2">11</span> <span class="todo TODO">TODO</span> example of not keeping raw data: praw   <span class="tag"><span class="exports">exports</span> <span class="blog">blog</span> <span class="reddit">reddit</span></span></h2>
-<div class="outline-text-2" id="text-11">
-<p>
-sadly praw doesn't keep raw json data :( <a href="https://github.com/praw-dev/praw/issues/830">https://github.com/praw-dev/praw/issues/830</a>
-</p>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org000001a">
-<h2 id="org000001a"><a class="headerlink" href="#org000001a">¶</a><span class="section-number-2">12</span> <span class="todo TODO">TODO</span> arctee motivation of treating all errors as api flickering/network   <span class="tag"><span class="blog">blog</span> <span class="exports">exports</span></span></h2>
-<div class="outline-text-2" id="text-12">
-<p>
-'better ask for forgiveness than permission' is a questionable practice in many cases, but it feels like the right one</p>
 </div>
 </div>
 
