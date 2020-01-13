@@ -414,10 +414,40 @@ WARNING:workout-provider:Unhandled: Cycling
 
 
 
-    
+   
+   <details class="cell-collapsed">
+   <summary>hack to make seaborn plots deterministic <span class="cell-collapsed-expand">(click to expand)</span></summary>
+       
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="k">if</span> <span class="n">sns</span><span class="o">.</span><span class="n">algorithms</span><span class="o">.</span><span class="n">bootstrap</span><span class="o">.</span><span class="vm">__module__</span> <span class="o">==</span> <span class="s1">'seaborn.algorithms'</span><span class="p">:</span>
+    <span class="c1"># prevents nondeterminism in plots https://github.com/mwaskom/seaborn/issues/1924</span>
+    <span class="c1"># we only want to do it once</span>
+    <span class="k">def</span> <span class="nf">bootstrap_hacked</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">bootstrap_orig</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">algorithms</span><span class="o">.</span><span class="n">bootstrap</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">bootstrap_orig</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    
+    <span class="n">sns</span><span class="o">.</span><span class="n">algorithms</span><span class="o">.</span><span class="n">bootstrap</span> <span class="o">=</span> <span class="n">bootstrap_hacked</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+   </details>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -475,7 +505,7 @@ WARNING:workout-provider:Unhandled: Cycling
 
 
 <div class="output_png output_subarea ">
-<img src="heartbeats_vs_kcals_files/heartbeats_vs_kcals_11_0.png">
+<img src="heartbeats_vs_kcals_files/heartbeats_vs_kcals_12_0.png">
 </div>
 
 </div>
@@ -509,7 +539,7 @@ WARNING:workout-provider:Unhandled: Cycling
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">linear_model</span>
@@ -571,7 +601,7 @@ Free term: -9.281
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">normal_bpm</span> <span class="o">=</span> <span class="mi">60</span>

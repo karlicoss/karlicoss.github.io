@@ -18,8 +18,10 @@ BEEPB00P_STABLE=yes "$HBLOG/rebuild"
 
 rsync -av --delete --exclude "$SELF" --exclude ".git" "$SRC" .
 
+git add --all 
+
 # meh
-git add --all -- \
- :!heartbeats_vs_kcals_files/heartbeats_vs_kcals_11_0.png
+# -- \
+# :!heartbeats_vs_kcals_files/heartbeats_vs_kcals_11_0.png
 
 git commit -v 
