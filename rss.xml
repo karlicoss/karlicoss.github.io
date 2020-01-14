@@ -138,6 +138,7 @@ If you're terrified by the long list, you can jump straight into <a class="link-
 <li><a href="#lastfm">Last.fm</a></li>
 <li><a href="#monzo">Monzo bank</a></li>
 <li><a href="#nomie">Nomie</a></li>
+<li><a href="#nutrition">Nutrition</a></li>
 <li><a href="#photos">Photos</a></li>
 <li><a href="#pdfs">PDF annotations</a></li>
 <li><a href="#pinboard">Pinboard</a></li>
@@ -146,6 +147,8 @@ If you're terrified by the long list, you can jump straight into <a class="link-
 <li><a href="#reddit">Reddit</a></li>
 <li><a href="#rtm">Remember the Milk</a></li>
 <li><a href="#rescuetime">Rescuetime</a></li>
+<li><a href="#shell">Shell history</a></li>
+<li><a href="#sleep">Sleep</a></li>
 <li><a href="#sms_calls">Sms/calls</a></li>
 <li><a href="#spotify">Spotify</a></li>
 <li><a href="#stackexchange">Stackexchange</a></li>
@@ -215,7 +218,7 @@ Most collected digital data is somewhat quantitative and can be used to analyze 
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000034">
+<div class="outline-2" id="outline-container-org0000037">
 <h2 id="what"><a class="headerlink" href="#what">¶</a><span class="section-number-2">2</span> What do I collect/want to collect?</h2>
 <div class="outline-text-2" id="text-what">
 <p>
@@ -330,6 +333,9 @@ Why:
 <h3 id="emfit"><a class="headerlink" href="#emfit">¶</a><a href="https://shop-eu.emfit.com/products/emfit-qs">Emfit QS</a> (sleep tracker)</h3>
 <div class="outline-text-3" id="text-emfit">
 <p>
+Emfit QS is kind of a medical grade sleep tracker. It's more expensive than wristband ones (e.g. <a class="link-down" href="#fitbit">fitbit</a>, <a class="link-down" href="#jawbone">jawbone</a>) but also more reliable and gives more data.
+</p>
+<p>
 How: <a href="https://github.com/karlicoss/backup-emfit">emfitexport</a>.
 </p>
 <p>
@@ -344,7 +350,7 @@ Why:
 <h3 id="endomondo"><a class="headerlink" href="#endomondo">¶</a>Endomondo</h3>
 <div class="outline-text-3" id="text-endomondo">
 <p>
-How: <a href="https://github.com/karlicoss/endoexport">karlicoss/endoexport</a>
+How: Endomondo collects GPS data, and HR data (via <a href="https://uk.wahoofitness.com/devices/heart-rate-monitors/wahoo-tickr-x-heart-rate-strap">Wahoo Tickr X strap</a>). Then, <a href="https://github.com/karlicoss/endoexport">karlicoss/endoexport</a>.
 </p>
 <p>
 Why:
@@ -654,6 +660,88 @@ Why:
 </div>
 </div>
 <div class="outline-3" id="outline-container-org0000022">
+<h3 id="nutrition"><a class="headerlink" href="#nutrition">¶</a>Nutrition</h3>
+<div class="outline-text-3" id="text-nutrition">
+<p>
+I tracked almost all nutrition data for stuff I ingested over the course of a year.
+</p>
+<p>
+How: I found most existing apps/projects clumsy and unsatisfactory, so I developed my own system.
+Not even a proper app, something simpler, basically a domain-specific language in Python to track it.
+</p>
+<p>
+Tracking process was simply editing a python file and adding entries like:
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-comment-delimiter"># </span><span class="org-comment">file: food_2017.py</span>
+<span class="org-variable-name">july_09</span> = F(
+  [  <span class="org-comment-delimiter"># </span><span class="org-comment">lunch</span>
+       spinach * bag,
+       tuna_spring_water * can,       <span class="org-comment-delimiter"># </span><span class="org-comment">can size for this tuna is 120g</span>
+       beans_broad_wt    * can * 0.5, <span class="org-comment-delimiter"># </span><span class="org-comment">half can. can size for broad beans is 200g</span>
+       onion_red_tsc     * gr(115)  , <span class="org-comment-delimiter"># </span><span class="org-comment">grams, explicit</span>
+       cheese_salad_tsc  * 100,       <span class="org-comment-delimiter"># </span><span class="org-comment">grams, implicit as it makes sense for cheese</span>
+       lime, <span class="org-comment-delimiter"># </span><span class="org-comment">1 fruit, implicit</span>
+  ],
+  [
+     <span class="org-comment-delimiter"># </span><span class="org-comment">dinner...</span>
+  ],
+  tea_black * 10,     <span class="org-comment-delimiter"># </span><span class="org-comment">cups, implicit</span>
+  wine_red * ml * 150, <span class="org-comment-delimiter"># </span><span class="org-comment">ml, explicit</span>
+)
+
+<span class="org-variable-name">july_10</span> = ... <span class="org-comment-delimiter"># </span><span class="org-comment">more logs</span>
+</pre>
+</div>
+<p>
+Comments added for clarity of course, so it'd be more compact normally.
+</p>
+<p>
+Then some code was used for processing, calculating, <a href="https://postimg.cc/bdSVc43Y">visualizing</a>, etc.
+</p>
+<p>
+Having a real programming language instead of an app let me make it very flexible and expressive, e.g.:
+</p>
+<ul class="org-ul">
+<li><p>
+I could define composite dishes as Python objects, and then easily reuse them.
+</p>
+<p>
+E.g. if I made four servings of soup on 10.08.2018, ate one immediately and froze other three I would define something like <samp class="inline">soup_20180810 = [...]</samp>, and then I can simply reuse <samp class="inline">soup_20180810</samp> when I eat it again.
+(date was easy to find out as I label food when put it in the freezer anyway)
+</p></li>
+<li>I could make many things implicit, making it pretty expressive without spending time on unnecessary typing</li>
+<li>I rarely had to in nutrient composition manually, I just pasted the product link to supermarket website and had an automatic script to parse nutrient information</li>
+<li>For micronutrients (that usually aren't listed on labels) I used the <a href="https://github.com/alyssaq/usda-sqlite">USDA sqlite database</a></li>
+</ul>
+<p>
+The hard thing was actually not entering, but rather not having nutrition information if you're eating out. That year I was mostly cooking my own food, so tracking was fairly easy.
+</p>
+<p>
+Also I was more interested in lower bounds, (e.g. "do I consume at least recommended amount of micronutrients"), so not having logged food now and then was fine for me.
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li><p>
+I mostly wanted to learn about food composition and how it relates to my diet, and I did
+</p>
+<p>
+That logging motivated me to learn about different foods and try them out while keeping dishes balanced.
+I cooked so many different things, made my diet way more varied and became less picky.
+</p>
+<p>
+I stopped because cooking did take some time and I actually realized that as long as I actually vary
+food and try to eat everything now and then, I hit all recommended amounts of micronutrients, so I stopped.
+It's kind of an obvious thing that everyone recommends, but one thing is hearing it as a common wisdom
+and completely different is coming to the same conclusion <b>from your data</b>.
+</p></li>
+<li>nutritional information contributes to <a class="link-down" href="#dashboard">dashboard</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000023">
 <h3 id="photos"><a class="headerlink" href="#photos">¶</a>Photos</h3>
 <div class="outline-text-3" id="text-photos">
 <p>
@@ -667,7 +755,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000023">
+<div class="outline-3" id="outline-container-org0000024">
 <h3 id="pdfs"><a class="headerlink" href="#pdfs">¶</a>PDF annotations</h3>
 <div class="outline-text-3" id="text-pdfs">
 <p>
@@ -689,7 +777,7 @@ I'm improving this by using <a class="link-down" href="#orger">orger</a>.
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000024">
+<div class="outline-3" id="outline-container-org0000025">
 <h3 id="pinboard"><a class="headerlink" href="#pinboard">¶</a>Pinboard</h3>
 <div class="outline-text-3" id="text-pinboard">
 <p>
@@ -704,7 +792,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000025">
+<div class="outline-3" id="outline-container-org0000026">
 <h3 id="notes"><a class="headerlink" href="#notes">¶</a>Plaintext notes</h3>
 <div class="outline-text-3" id="text-notes">
 <p>
@@ -722,7 +810,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000026">
+<div class="outline-3" id="outline-container-org0000027">
 <h3 id="pocket"><a class="headerlink" href="#pocket">¶</a>Pocket</h3>
 <div class="outline-text-3" id="text-pocket">
 <p>
@@ -737,7 +825,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000027">
+<div class="outline-3" id="outline-container-org0000028">
 <h3 id="reddit"><a class="headerlink" href="#reddit">¶</a>Reddit</h3>
 <div class="outline-text-3" id="text-reddit">
 <p>
@@ -753,7 +841,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000028">
+<div class="outline-3" id="outline-container-org0000029">
 <h3 id="rtm"><a class="headerlink" href="#rtm">¶</a>Remember the Milk</h3>
 <div class="outline-text-3" id="text-rtm">
 <p>
@@ -772,7 +860,7 @@ I stopped using RTM in favor of org-mode, but I can still easily find my old tas
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000029">
+<div class="outline-3" id="outline-container-org000002a">
 <h3 id="rescuetime"><a class="headerlink" href="#rescuetime">¶</a>Rescuetime</h3>
 <div class="outline-text-3" id="text-rescuetime">
 <p>
@@ -786,7 +874,50 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000002a">
+<div class="outline-3" id="outline-container-org000002b">
+<h3 id="shell"><a class="headerlink" href="#shell">¶</a>Shell history</h3>
+<div class="outline-text-3" id="text-shell">
+<p>
+How: many shells support keeping timestamps along your commands in history.
+</p>
+<p>
+E.g. <a href="http://jesrui.sdf-eu.org/remember-all-your-bash-history-forever.html">"Remember all your bash history forever"</a>.
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>potentially can be useful for detailed lifelogging</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000002c">
+<h3 id="sleep"><a class="headerlink" href="#sleep">¶</a>Sleep</h3>
+<div class="outline-text-3" id="text-sleep">
+<p>
+Apart from <a class="link-up" href="#emfit">automatic collection</a> of HR data, etc., I collect some extra stats like:
+</p>
+<ul class="org-ul">
+<li>whether I woke up on my own or after alarm</li>
+<li>whether I still feel sleepy shortly after waking up</li>
+<li>whether I had dreams (and I log dreams if I did)</li>
+<li>I log every time I feel sleepy throughout the day</li>
+</ul>
+<p>
+How: org-mode, via <a href="https://emacs.stackexchange.com/a/45640/19521">org-capture into table</a>.
+Alternatively, you could use a spreadsheet for that as well.
+</p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>I think it's important to find connections between subjective feelings and objective stats like amount of exercise, sleep HR, etc.,
+so I'm trying to find correlations using my <a class="link-down" href="#dashboard">dashboard</a></li>
+<li>dreams are quite fun part of lifelogging</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000002d">
 <h3 id="sms_calls"><a class="headerlink" href="#sms_calls">¶</a>Sms/calls</h3>
 <div class="outline-text-3" id="text-sms_calls">
 <p>
@@ -794,15 +925,22 @@ How: <a href="https://play.google.com/store/apps/details?id=com.riteshsahu.SMSBa
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000002b">
+<div class="outline-3" id="outline-container-org000002e">
 <h3 id="spotify"><a class="headerlink" href="#spotify">¶</a>Spotify</h3>
 <div class="outline-text-3" id="text-spotify">
 <p>
 How: export script, using <a href="https://github.com/plamere/spotipy">plamere/spotipy</a>
 </p>
+<p>
+Why:
+</p>
+<ul class="org-ul">
+<li>potentially can be useful for better search in music listening history</li>
+<li>can be used for custom recommendation algorithms</li>
+</ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000002c">
+<div class="outline-3" id="outline-container-org000002f">
 <h3 id="stackexchange"><a class="headerlink" href="#stackexchange">¶</a>Stackexchange</h3>
 <div class="outline-text-3" id="text-stackexchange">
 <p>
@@ -817,7 +955,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000002d">
+<div class="outline-3" id="outline-container-org0000030">
 <h3 id="taplog"><a class="headerlink" href="#taplog">¶</a><a href="https://play.google.com/store/apps/details?id=com.waterbear.taglog">Taplog</a></h3>
 <div class="outline-text-3" id="text-taplog">
 <p>
@@ -834,7 +972,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000002e">
+<div class="outline-3" id="outline-container-org0000031">
 <h3 id="telegram"><a class="headerlink" href="#telegram">¶</a>Telegram</h3>
 <div class="outline-text-3" id="text-telegram">
 <p>
@@ -849,7 +987,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000002f">
+<div class="outline-3" id="outline-container-org0000032">
 <h3 id="twitter"><a class="headerlink" href="#twitter">¶</a>Twitter</h3>
 <div class="outline-text-3" id="text-twitter">
 <p>
@@ -864,7 +1002,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000030">
+<div class="outline-3" id="outline-container-org0000033">
 <h3 id="vk"><a class="headerlink" href="#vk">¶</a>VK.com</h3>
 <div class="outline-text-3" id="text-vk">
 <p>
@@ -882,7 +1020,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000031">
+<div class="outline-3" id="outline-container-org0000034">
 <h3 id="weight"><a class="headerlink" href="#weight">¶</a>Weight</h3>
 <div class="outline-text-3" id="text-weight">
 <p>
@@ -897,7 +1035,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000032">
+<div class="outline-3" id="outline-container-org0000035">
 <h3 id="whatsapp"><a class="headerlink" href="#whatsapp">¶</a><span class="todo TODO">TODO</span> Whatsapp</h3>
 <div class="outline-text-3" id="text-whatsapp">
 <p>
@@ -915,7 +1053,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000033">
+<div class="outline-3" id="outline-container-org0000036">
 <h3 id="23andme"><a class="headerlink" href="#23andme">¶</a><a href="https://www.23andme.com">23andme</a></h3>
 <div class="outline-text-3" id="text-23andme">
 <p>
@@ -935,11 +1073,11 @@ Haven't really had time to think about it yet, and it feels like a hard project 
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000003a">
+<div class="outline-2" id="outline-container-org000003d">
 <h2 id="consumers"><a class="headerlink" href="#consumers">¶</a><span class="section-number-2">3</span> Data consumers</h2>
 <div class="outline-text-2" id="text-consumers">
 </div>
-<div class="outline-3" id="outline-container-org0000035">
+<div class="outline-3" id="outline-container-org0000038">
 <h3 id="search"><a class="headerlink" href="#search">¶</a>search</h3>
 <div class="outline-text-3" id="text-search">
 <p>
@@ -948,7 +1086,7 @@ So I built my own ways around it! I write about it in detail <a href="pkm-search
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000036">
+<div class="outline-3" id="outline-container-org0000039">
 <h3 id="promnesia"><a class="headerlink" href="#promnesia">¶</a>promnesia</h3>
 <div class="outline-text-3" id="text-promnesia">
 <p>
@@ -959,7 +1097,7 @@ I've been using it for more than a year now and working on final touches to make
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000037">
+<div class="outline-3" id="outline-container-org000003a">
 <h3 id="orger"><a class="headerlink" href="#orger">¶</a>orger</h3>
 <div class="outline-text-3" id="text-orger">
 <p>
@@ -973,7 +1111,7 @@ I write about it in detail <a href="orger.html">here</a> and <a href="orger-todo
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000038">
+<div class="outline-3" id="outline-container-org000003b">
 <h3 id="dashboard"><a class="headerlink" href="#dashboard">¶</a>dashboard</h3>
 <div class="outline-text-3" id="text-dashboard">
 <p>
@@ -984,7 +1122,7 @@ I'm working on making it public, you can see some screenshots <a href="https://w
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000039">
+<div class="outline-3" id="outline-container-org000003c">
 <h3 id="mypkg"><a class="headerlink" href="#mypkg">¶</a><a href="https://github.com/karlicoss/my"><code class="inline">my.</code></a> python package</h3>
 <div class="outline-text-3" id="text-mypkg">
 <p>
@@ -1005,6 +1143,12 @@ Happy to answer any questions on my approach and help you with liberating your d
 <p>
 In the <a href="exports.html">next post</a> (writing still in progress) I'm going to elaborate on design decisions behind my data export and access infrastructure.
 </p>
+<p>
+<b>Updates</b>:
+</p>
+<ul class="org-ul">
+<li><span class="timestamp-wrapper"><span class="timestamp">[2020-01-14]</span></span>: added 'Nutrition', 'Shell history' and 'Sleep' sections</li>
+</ul>
 </div>
 </div>
 
@@ -2220,7 +2364,7 @@ I'd be interested to know your opinion or questions, whether on my motivation, o
 Let me know if you can think of any other data integrations you are missing and perhaps we can think of something together!
 </p>
 <ul class="org-ul">
-<li><b><span class="timestamp-wrapper"><span class="timestamp">[2020-01-12]</span></span></b> followup: <a href="my-data">What data on myself I collect and why?</a></li>
+<li><b><span class="timestamp-wrapper"><span class="timestamp">[2020-01-12]</span></span></b> followup: <a href="my-data.html">What data on myself I collect and why?</a></li>
 </ul>
 </div>
 </div>
