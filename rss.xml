@@ -1344,7 +1344,7 @@ I also didn't want to mix discussions on motivation (this one) and my take on im
 <h2 id="data_is_trapped"><a class="headerlink" href="#data_is_trapped">¶</a><span class="section-number-2">1</span> Intro: your data is trapped</h2>
 <div class="outline-text-2" id="text-data_is_trapped">
 <p>
-Note: for clarity, I will use <b>'service' to refer to anything holding your data</b> and manipulating it, whether it's a website, phone app or a device (i.e. not necessarily something having an online presence).
+Note: for clarity, I will use <b><span style="color:green">'service'</span> to refer to anything holding your data</b> and manipulating it, whether it's a website, phone app or a device (i.e. not necessarily something having an online presence).
 </p>
 <p>
 On one hand, in 2019 things are pretty great. 
@@ -1395,7 +1395,7 @@ Personal data is in a sad state these days. Let me elaborate.
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000042">
+<div class="outline-2" id="outline-container-org0000043">
 <h2 id="why"><a class="headerlink" href="#why">¶</a><span class="section-number-2">2</span> Why does it bother me?</h2>
 <div class="outline-text-2" id="text-why">
 <style>.outline-4 h4              { font-weight: normal; } </style>
@@ -1579,6 +1579,11 @@ The links are there in the chat history, surely it's a trivial task to find it?
 <div class="outline-4" id="outline-container-org000002f">
 <h4 id="org000002f">Why can't I easily see what were the books/music/art recommended by my friends or some specific Twitter/Reddit/Hackernews users?</h4>
 </div>
+<div class="outline-4" id="outline-container-org0000030">
+<h4 id="org0000030">Why my otherwise perfect hackernews <a href="https://play.google.com/store/apps/details?id=io.github.hidroh.materialistic">Android app</a> doesn't share saved posts/comments with the website?</h4>
+<div class="outline-text-4" id="text-org0000030">
+</div>
+</div>
 </div>
 <div class="outline-3" id="outline-container-org0000004">
 <h3 id="org0000004"><a class="headerlink" href="#org0000004">¶</a>health and body maintenance</h3>
@@ -1587,62 +1592,62 @@ The links are there in the chat history, surely it's a trivial task to find it?
 Aka <a class="post-tag" href="./tags.html#quantified-self">#quantified-self</a>.
 </p>
 </div>
-<div class="outline-4" id="outline-container-org0000030">
-<h4 id="org0000030">Why can't I tell if I was more sedentary than usual during the past week and whether I need to compensate by doing a bit more exercise?</h4>
-<div class="outline-text-4" id="text-org0000030">
+<div class="outline-4" id="outline-container-org0000031">
+<h4 id="org0000031">Why can't I tell if I was more sedentary than usual during the past week and whether I need to compensate by doing a bit more exercise?</h4>
+<div class="outline-text-4" id="text-org0000031">
 <p>
 I have all my location (hence step data), so what's the issue?
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000031">
-<h4 id="org0000031">Why can't I see what's the impact of aerobic exercise on my resting HR?</h4>
-<div class="outline-text-4" id="text-org0000031">
+<div class="outline-4" id="outline-container-org0000032">
+<h4 id="org0000032">Why can't I see what's the impact of aerobic exercise on my resting HR?</h4>
+<div class="outline-text-4" id="text-org0000032">
 <p>
 I use HR tracker and sleep tracker, so all the necessary data is there.
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000032">
-<h4 id="org0000032">Why can't I have a dashboard for all of my health: food, exercise and sleep to see baselines and trends?</h4>
-<div class="outline-text-4" id="text-org0000032">
+<div class="outline-4" id="outline-container-org0000033">
+<h4 id="org0000033">Why can't I have a dashboard for all of my health: food, exercise and sleep to see baselines and trends?</h4>
+<div class="outline-text-4" id="text-org0000033">
 <p>
 Why do I need to rely on some startup to implement this and trust them with my data?
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000033">
-<h4 id="org0000033">Why can't I see the impact of temperature or CO2 concentration in room on my sleep?</h4>
-<div class="outline-text-4" id="text-org0000033">
+<div class="outline-4" id="outline-container-org0000034">
+<h4 id="org0000034">Why can't I see the impact of temperature or CO2 concentration in room on my sleep?</h4>
+<div class="outline-text-4" id="text-org0000034">
 <p>
 My sensors have Bluetooth and Android apps, why can't they interact with my sleep data?
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000034">
-<h4 id="org0000034">Why can't I see how holidays (as in, not going to work) impact my stress levels?</h4>
-<div class="outline-text-4" id="text-org0000034">
+<div class="outline-4" id="outline-container-org0000035">
+<h4 id="org0000035">Why can't I see how holidays (as in, not going to work) impact my stress levels?</h4>
+<div class="outline-text-4" id="text-org0000035">
 <p>
 It's trivial to infer workdays by using my location data.    
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000035">
-<h4 id="org0000035">Why can't I take my Headspace app data and see how/if meditation impacts my sleep?</h4>
-</div>
 <div class="outline-4" id="outline-container-org0000036">
-<h4 id="org0000036">Why can't I run a short snippet of code and check some random health advice on the Internet against <b>my</b> health data.</h4>
+<h4 id="org0000036">Why can't I take my Headspace app data and see how/if meditation impacts my sleep?</h4>
+</div>
+<div class="outline-4" id="outline-container-org0000037">
+<h4 id="org0000037">Why can't I run a short snippet of code and check some random health advice on the Internet against <b>my</b> health data.</h4>
 </div>
 </div>
 <div class="outline-3" id="outline-container-org0000005">
 <h3 id="org0000005"><a class="headerlink" href="#org0000005">¶</a>personal finance</h3>
 <div class="outline-text-3" id="text-org0000005">
 </div>
-<div class="outline-4" id="outline-container-org0000037">
-<h4 id="org0000037">Why am I forced to manually copy transactions from different banking apps into a spreadsheet?</h4>
-</div>
 <div class="outline-4" id="outline-container-org0000038">
-<h4 id="org0000038">Why can't I easily match my Amazon/Ebay orders with my bank transactions?</h4>
+<h4 id="org0000038">Why am I forced to manually copy transactions from different banking apps into a spreadsheet?</h4>
+</div>
+<div class="outline-4" id="outline-container-org0000039">
+<h4 id="org0000039">Why can't I easily match my Amazon/Ebay orders with my bank transactions?</h4>
 </div>
 </div>
 <div class="outline-3" id="outline-container-org0000006">
@@ -1659,35 +1664,35 @@ On the other if you start relying on it too much, it's becoming more and more of
 <h3 id="org0000007"><a class="headerlink" href="#org0000007">¶</a>tools for thinking and learning</h3>
 <div class="outline-text-3" id="text-org0000007">
 </div>
-<div class="outline-4" id="outline-container-org0000039">
-<h4 id="org0000039">Why when something like <a href="https://en.wikipedia.org/wiki/Method_of_loci">'mind palace'</a> is <b>literally possible</b> with VR technology, we don't see any in use?</h4>
-</div>
 <div class="outline-4" id="outline-container-org000003a">
-<h4 id="org000003a">Why can't I easily convert select Instapaper highlights or new foreign words I encountered on my Kindle into Anki flashcards?</h4>
+<h4 id="org000003a">Why when something like <a href="https://en.wikipedia.org/wiki/Method_of_loci">'mind palace'</a> is <b>literally possible</b> with VR technology, we don't see any in use?</h4>
+</div>
+<div class="outline-4" id="outline-container-org000003b">
+<h4 id="org000003b">Why can't I easily convert select Instapaper highlights or new foreign words I encountered on my Kindle into Anki flashcards?</h4>
 </div>
 </div>
 <div class="outline-3" id="outline-container-org0000008">
 <h3 id="org0000008"><a class="headerlink" href="#org0000008">¶</a>mediocre interfaces</h3>
 <div class="outline-text-3" id="text-org0000008">
 </div>
-<div class="outline-4" id="outline-container-org000003b">
-<h4 id="org000003b">Why do I have to suffer from poor management and design decisions in UI changes, even if the interface is not the main reason I'm using the product?</h4>
-</div>
 <div class="outline-4" id="outline-container-org000003c">
-<h4 id="org000003c">Why can't I leave priorities and notes on my saved Reddit/Hackernews items?</h4>
-<div class="outline-text-4" id="text-org000003c">
+<h4 id="org000003c">Why do I have to suffer from poor management and design decisions in UI changes, even if the interface is not the main reason I'm using the product?</h4>
+</div>
+<div class="outline-4" id="outline-container-org000003d">
+<h4 id="org000003d">Why can't I leave priorities and notes on my saved Reddit/Hackernews items?</h4>
+<div class="outline-text-4" id="text-org000003d">
 <p>
 I've got too many saved things to read them linearly and I'll probably never read them all.
 I've also got other things to read and do in general, why can't I have a unified queue for consuming content?
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org000003d">
-<h4 id="org000003d">Why can't I leave private notes on Deliveroo restaurants/dishes, so I'd remember what to order/not to order next time?</h4>
-</div>
 <div class="outline-4" id="outline-container-org000003e">
-<h4 id="org000003e">Why do people have to suffer from Google Inbox shutdown?</h4>
-<div class="outline-text-4" id="text-org000003e">
+<h4 id="org000003e">Why can't I leave private notes on Deliveroo restaurants/dishes, so I'd remember what to order/not to order next time?</h4>
+</div>
+<div class="outline-4" id="outline-container-org000003f">
+<h4 id="org000003f">Why do people have to suffer from Google Inbox shutdown?</h4>
+<div class="outline-text-4" id="text-org000003f">
 <p>
 Not to undervalue Inbox developers, but fundamentally it's <b>just</b> a different interface.
 I'm sure there are plenty of engineers who would happily support it in their spare time if only they had access to the APIs.
@@ -1699,20 +1704,20 @@ I'm sure there are plenty of engineers who would happily support it in their spa
 <h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a>communication and collaboration</h3>
 <div class="outline-text-3" id="text-org0000009">
 </div>
-<div class="outline-4" id="outline-container-org000003f">
-<h4 id="org000003f">Why can't I easily share my web or book highlights with a friend? Or just make highlights in select books public?</h4>
-</div>
 <div class="outline-4" id="outline-container-org0000040">
-<h4 id="org0000040">Why can't I easily find out other person's expertise without interrogating them, just by looking what they read instead?</h4>
+<h4 id="org0000040">Why can't I easily share my web or book highlights with a friend? Or just make highlights in select books public?</h4>
+</div>
+<div class="outline-4" id="outline-container-org0000041">
+<h4 id="org0000041">Why can't I easily find out other person's expertise without interrogating them, just by looking what they read instead?</h4>
 </div>
 </div>
 <div class="outline-3" id="outline-container-org000000a">
 <h3 id="org000000a"><a class="headerlink" href="#org000000a">¶</a>backups</h3>
 <div class="outline-text-3" id="text-org000000a">
 </div>
-<div class="outline-4" id="outline-container-org0000041">
-<h4 id="org0000041">Why do I have to think about it and actively invest time and effort?</h4>
-<div class="outline-text-4" id="text-org0000041">
+<div class="outline-4" id="outline-container-org0000042">
+<h4 id="org0000042">Why do I have to think about it and actively invest time and effort?</h4>
+<div class="outline-text-4" id="text-org0000042">
 <p>
 What about regular people who <b>have no idea</b> how unreliable computers can be and might find out the hard way?
 </p>
@@ -1740,7 +1745,7 @@ If you could let computers handle the boring bits of your life and spend time on
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000043">
+<div class="outline-2" id="outline-container-org0000044">
 <h2 id="data_is_vanishing"><a class="headerlink" href="#data_is_vanishing">¶</a><span class="section-number-2">3</span> Your data is vanishing</h2>
 <div class="outline-text-2" id="text-data_is_vanishing">
 <p>
@@ -1819,7 +1824,7 @@ You <b>can't rely on third parties</b> to keep it safe.
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000044">
+<div class="outline-2" id="outline-container-org0000045">
 <h2 id="what_do_i_want"><a class="headerlink" href="#what_do_i_want">¶</a><span class="section-number-2">4</span> What do I want?</h2>
 <div class="outline-text-2" id="text-what_do_i_want">
 <p>
@@ -1863,7 +1868,7 @@ As you've probably noticed, it's almost never the case that you have your person
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000046">
+<div class="outline-2" id="outline-container-org0000047">
 <h2 id="exports_are_hard"><a class="headerlink" href="#exports_are_hard">¶</a><span class="section-number-2">5</span> So what's the problem?</h2>
 <div class="outline-text-2" id="text-exports_are_hard">
 <p>
@@ -1886,7 +1891,7 @@ This is until you realize you're probably using at least ten different services,
 with various kinds of data, endpoints and restrictions.
 </p>
 <p>
-Even if you have the capacity and are willing to do it, it's still damn hard:
+Even if you have the capacity and are willing to do it, it's still damn hard.
 </p>
 <p>
 You're gonna have to deal with the following problems:
@@ -2076,7 +2081,7 @@ However, there are caveats: e.g. on Android, app data is in <code class="inline"
 <li>devices that have no means of synchronizing
 
 <ul class="org-ul">
-<li><a id="org0000045"></a>Kobo <b><b>doesn't seem to support cloud sync for annotations</b></b>. I was considering syncing the database wirelessly, as <a href="https://github.com/dropmeaword/kobo-aura-remote">there are</a> some SSH modules for its firmware, but people report it <a href="https://github.com/dropmeaword/kobo-aura-remote/issues/1">may break wifi</a> on it.</li>
+<li><a id="org0000046"></a>Kobo <b><b>doesn't seem to support cloud sync for annotations</b></b>. I was considering syncing the database wirelessly, as <a href="https://github.com/dropmeaword/kobo-aura-remote">there are</a> some SSH modules for its firmware, but people report it <a href="https://github.com/dropmeaword/kobo-aura-remote/issues/1">may break wifi</a> on it.</li>
 </ul></li>
 <li>Some devices/apps and formats are <a href="https://en.wikipedia.org/wiki/Vendor_lock-in">vendor locked</a></li>
 </ul>
@@ -2096,7 +2101,7 @@ They deserve to use their data too.
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000047">
+<div class="outline-2" id="outline-container-org0000048">
 <h2 id="data_mirror"><a class="headerlink" href="#data_mirror">¶</a><span class="section-number-2">6</span> How to make it easier: data mirror</h2>
 <div class="outline-text-2" id="text-data_mirror">
 <p>
@@ -2251,7 +2256,7 @@ From a user's perspective not everyone wants the hassle of running things locall
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000049">
+<div class="outline-2" id="outline-container-org000004a">
 <h2 id="what_do_i_do"><a class="headerlink" href="#what_do_i_do">¶</a><span class="section-number-2">7</span> What do I do?</h2>
 <div class="outline-text-2" id="text-what_do_i_do">
 <p>
@@ -2286,7 +2291,7 @@ As I mentioned, I'll share all of this later in a separate post.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000048">
+<div class="outline-3" id="outline-container-org0000049">
 <h3 id="mypkg"><a class="headerlink" href="#mypkg">¶</a>python package to access data</h3>
 <div class="outline-text-3" id="text-mypkg">
 <p>
@@ -2343,14 +2348,28 @@ I'm simply using <a href="https://borgbackup.readthedocs.io/en/stable">borg back
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000004a">
+<div class="outline-2" id="outline-container-org000004b">
 <h2 id="links"><a class="headerlink" href="#links">¶</a><span class="section-number-2">8</span> Related links</h2>
 <div class="outline-text-2" id="text-links">
 <ul class="org-ul">
 <li>jborichevskiy: <a href="https://news.ycombinator.com/item?id=21659876">Digital Tools I Wish Existed (HN)</a></li>
-<li>NetOpWibby: <a href="https://news.ycombinator.com/item?id=21684949">A Personal API (HN)</a></li>
-<li><a href="https://news.ycombinator.com/item?id=21921323">The old Internet died and we watched and did nothing (HN)</a></li>
+<li><a href="https://commandcenter.blogspot.com/2017/10/the-upspin-manifesto-on-ownership-and.html">The Upspin manifesto</a>: On the ownership and sharing of data</li>
 <li>IndieWeb wiki on <a href="https://indieweb.org/silo">silos</a></li>
+<li><a href="https://news.ycombinator.com/item?id=21921323">The old Internet died and we watched and did nothing (HN)</a></li>
+<li>NetOpWibby: <a href="https://news.ycombinator.com/item?id=21684949">A Personal API (HN)</a></li>
+</ul>
+<p>
+Attempts of resolving this sad state:
+</p>
+<ul class="org-ul">
+<li><p>
+<a href="https://en.wikipedia.org/wiki/Solid_(web_decentralization_project)">Solid</a>, web decentralization project by Tim Berners-Lee, WWW pioneer and the director of W3C
+</p>
+<blockquote>
+<p>
+The project "aims to radically change the way Web applications work today, resulting in true data ownership as well as improved privacy" by developing a platform for linked-data applications that are completely decentralized and fully under users' control rather than controlled by other entities.
+</p>
+</blockquote></li>
 </ul>
 </div>
 </div>
@@ -8650,6 +8669,18 @@ To get around that there is a somewhat hacky <a href="https://github.com/karlico
         <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
+        <script type="text/javascript">
+ window.MathJax = {
+     tex2jax: {
+         // note that hakyll source has got double dollar signs due to special meaning in templates
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+     }
+ };
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        
     </head>
     <body>
         <header>
@@ -8714,8 +8745,8 @@ To get around that there is a somewhat hacky <a href="https://github.com/karlico
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>First, I'm importing the dataframe from the python package I'm using to interact with my data. (I've mentioned it <a href="https://beepb00p.xyz/annotating.html#infra">here</a>).</p>
-<p>It's private at the moment, but it's pretty specific to my use cases and the only interfacing in this post it through Pandas dataframe, so hopefully that wouldn't confuse you.</p>
+<p>First, I'm importing the dataframe from the python package I'm using to interact with my data. I write about it <a href="https://beepb00p.xyz/mypkg.html">here</a>.</p>
+<p>All the data is provided by this package, but otherwise it's just a Pandas dataframe, so hopefully, that wouldn't confuse you.</p>
 
 </div>
 </div>
@@ -8864,9 +8895,10 @@ WARNING:workout-provider:Unhandled: Cycling
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Heartbeats were calculated as average HR multiplied by the duration of exercise.</p>
-<p>Error column is a neat way of propagating exceptions from data provider.</p>
-<p>E.g. I only have HR data for the last couple of years or so, so data provider doesn't have any of HR points from endomondo. While I could filter out these points in the data provider, they might still be useful for other plots and analysis pipelines (e.g. if I was actually only interested in kcals and didn't hare about heartbeats).</p>
+<p>Sport type is entered manually when you start recording exercise activity in Endomondo.</p>
+<p>Heartbeats were calculated as average HR multiplied by the duration of the exercise.</p>
+<p>Error column is a neat way of propagating exceptions from the data provider.
+E.g. I only have HR data for the last couple of years or so, so data provider doesn't have any of HR points from endomondo. While I could filter out these points in the data provider, they might still be useful for other plots and analysis pipelines (e.g. if I was actually only interested in kcals and didn't hare about heartbeats).</p>
 <p>Instead, I'm just being defensive and propagating exceptions up through the dataframe, leaving it up to the user to handle them.</p>
 
 </div>
@@ -9051,6 +9083,8 @@ WARNING:workout-provider:Unhandled: Cycling
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="c1"># TODO after 0.9.0+ released, use 'seed' argument in plots? https://github.com/mwaskom/seaborn/pull/1926</span>
+<span class="c1"># also add # truncate=False for regplot/lmplot</span>
 <span class="k">if</span> <span class="n">sns</span><span class="o">.</span><span class="n">algorithms</span><span class="o">.</span><span class="n">bootstrap</span><span class="o">.</span><span class="vm">__module__</span> <span class="o">==</span> <span class="s1">'seaborn.algorithms'</span><span class="p">:</span>
     <span class="c1"># prevents nondeterminism in plots https://github.com/mwaskom/seaborn/issues/1924</span>
     <span class="c1"># we only want to do it once</span>
@@ -9150,10 +9184,17 @@ WARNING:workout-provider:Unhandled: Cycling
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Unsurprisingly, it looks like a simple linear model (considering my weight and age barely changed).</p>
-<p>What I find interesting is that for instance for me, running feels way more intense than any of other cardio I'm doing, definitely way harder than skiing!</p>
-<p>However the regression coeffecient (basically, calories burnt per 'unit of heart activity') is more or less same. I guess that could potentially be explained by the fact that running involves more muscle activity, which Endomondo can't capture and doesn't try to infer from the exercise type (which you enter manually when you start logging the exercise).</p>
-<p>With regards to the actual regression coefficient: seaborn wouldn't let you display them on the regplot (the author has a very strong opition about that, <a href="https://github.com/mwaskom/seaborn/issues/655#issuecomment-370079702">apparently</a>), so we use <code>sklearn</code> to do that for us:</p>
+<p>Unsurprisingly, it looks like a simple linear model (considering my weight and age have barely changed).</p>
+<p>What I find unexpected is that the slope/regression coefficient (i.e. calories burnt per heartbeat) is more or less the same. Personally, for me running feels way more intense than any of other cardio I'm doing, definitely way harder than skiing! There are two possibilities here:</p>
+<ul>
+<li><p>Endomondo can't capture dynamic muscle activity and isn't even trying to use exercise type provided by the user for a better estimate.</p>
+</li>
+<li><p>Energy is mostly burnt by the heart and other muscles don't actually matter or have a very minor impact.</p>
+</li>
+</ul>
+<p>Let's try and check the latter via some back of an envelope calculation.</p>
+<p>In order to run, you use your chemical energy to move your body up and forward. For simplicity, let's only consider 'up' movements that go against gravity, it feels like these would dominate energy spendings. So let's model running as a sequence of vertical jumps. My estimate would be that when you run you jumps are about 5 cm in height.</p>
+<p>We can find out how much energy each jump takes by using $\Delta U = m g \Delta h$ <a href="https://en.wikipedia.org/wiki/Potential_energy#Gravitational_potential_energy">formula</a>.</p>
 
 </div>
 </div>
@@ -9167,6 +9208,74 @@ WARNING:workout-provider:Unhandled: Cycling
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="mf">9.82</span> <span class="c1"># standard Earth gravity</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="mi">65</span> <span class="c1"># kg</span>
+<span class="n">stride_height</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">/</span> <span class="mi">100</span> <span class="c1"># convert cm to m</span>
+
+<span class="n">strides_per_minute</span> <span class="o">=</span> <span class="mi">160</span> <span class="c1"># ish, varies for different people</span>
+<span class="n">duration</span> <span class="o">=</span> <span class="mi">60</span> <span class="c1"># minutes</span>
+<span class="n">joules_in_kcal</span> <span class="o">=</span> <span class="mi">4184</span> 
+
+<span class="n">energy_per_stride</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">stride_height</span>
+
+<span class="n">leg_energy_kcal</span> <span class="o">=</span> <span class="n">energy_per_stride</span> <span class="o">*</span>  <span class="n">strides_per_minute</span> <span class="o">*</span> <span class="n">duration</span> <span class="o">/</span> <span class="n">joules_in_kcal</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">leg_energy_kcal</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>73.22753346080309
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So, 70 kcal is fairly low in comparison with typical numbers Endomondo reports for my exercise.</p>
+<p>This is a very rough calculation of course:</p>
+<ul>
+<li>In reality movements during running are more complex, so it could be an underestimate</li>
+<li>On the other hand, feet can also spring, so not all energy spent on the stride is lost completely, so it could be an overestimate</li>
+</ul>
+<p>With regards to the actual value of the regression coefficient: seaborn <a href="https://github.com/mwaskom/seaborn/issues/655#issuecomment-370079702">wouldn't let you</a> display them on the regplot, so we use <code>sklearn</code> to do that for us:</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">linear_model</span>
@@ -9215,7 +9324,7 @@ Free term: -9.281
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Basically, that means I get about <code>0.1</code> Kcal for each heartbeat during exercise. Free term ideally should be equal to <code>0</code> (i.e. just as a sanity sort of thing: not having heartbeat shouldn't result in calorie loss), and <code>-10</code> is close enough.</p>
-<p>Also, fun calculation: what if we fit the model we got to normal, resting heard rate?</p>
+<p>Also, fun calculation: what if we fit the model we got to normal, resting heart rate?</p>
 
 </div>
 </div>
@@ -9228,7 +9337,7 @@ Free term: -9.281
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">normal_bpm</span> <span class="o">=</span> <span class="mi">60</span>
@@ -9270,6 +9379,20 @@ Free term: -9.281
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>8K Kcals per day? A bit too much for an average person. I wouldn't draw any conclusions from that one though :)</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can find the source of this notebook <a href="https://github.com/karlicoss/endomondo-kcal-analysis">here</a>.</p>
 
 </div>
 </div>

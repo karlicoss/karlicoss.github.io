@@ -23,6 +23,18 @@
         <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
+        <script type="text/javascript">
+ window.MathJax = {
+     tex2jax: {
+         // note that hakyll source has got double dollar signs due to special meaning in templates
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+     }
+ };
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        
     </head>
     <body>
         <header>
@@ -87,8 +99,8 @@
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>First, I'm importing the dataframe from the python package I'm using to interact with my data. (I've mentioned it <a href="https://beepb00p.xyz/annotating.html#infra">here</a>).</p>
-<p>It's private at the moment, but it's pretty specific to my use cases and the only interfacing in this post it through Pandas dataframe, so hopefully that wouldn't confuse you.</p>
+<p>First, I'm importing the dataframe from the python package I'm using to interact with my data. I write about it <a href="https://beepb00p.xyz/mypkg.html">here</a>.</p>
+<p>All the data is provided by this package, but otherwise it's just a Pandas dataframe, so hopefully, that wouldn't confuse you.</p>
 
 </div>
 </div>
@@ -237,9 +249,10 @@ WARNING:workout-provider:Unhandled: Cycling
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Heartbeats were calculated as average HR multiplied by the duration of exercise.</p>
-<p>Error column is a neat way of propagating exceptions from data provider.</p>
-<p>E.g. I only have HR data for the last couple of years or so, so data provider doesn't have any of HR points from endomondo. While I could filter out these points in the data provider, they might still be useful for other plots and analysis pipelines (e.g. if I was actually only interested in kcals and didn't hare about heartbeats).</p>
+<p>Sport type is entered manually when you start recording exercise activity in Endomondo.</p>
+<p>Heartbeats were calculated as average HR multiplied by the duration of the exercise.</p>
+<p>Error column is a neat way of propagating exceptions from the data provider.
+E.g. I only have HR data for the last couple of years or so, so data provider doesn't have any of HR points from endomondo. While I could filter out these points in the data provider, they might still be useful for other plots and analysis pipelines (e.g. if I was actually only interested in kcals and didn't hare about heartbeats).</p>
 <p>Instead, I'm just being defensive and propagating exceptions up through the dataframe, leaving it up to the user to handle them.</p>
 
 </div>
@@ -424,6 +437,8 @@ WARNING:workout-provider:Unhandled: Cycling
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="c1"># TODO after 0.9.0+ released, use 'seed' argument in plots? https://github.com/mwaskom/seaborn/pull/1926</span>
+<span class="c1"># also add # truncate=False for regplot/lmplot</span>
 <span class="k">if</span> <span class="n">sns</span><span class="o">.</span><span class="n">algorithms</span><span class="o">.</span><span class="n">bootstrap</span><span class="o">.</span><span class="vm">__module__</span> <span class="o">==</span> <span class="s1">'seaborn.algorithms'</span><span class="p">:</span>
     <span class="c1"># prevents nondeterminism in plots https://github.com/mwaskom/seaborn/issues/1924</span>
     <span class="c1"># we only want to do it once</span>
@@ -523,10 +538,17 @@ WARNING:workout-provider:Unhandled: Cycling
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Unsurprisingly, it looks like a simple linear model (considering my weight and age barely changed).</p>
-<p>What I find interesting is that for instance for me, running feels way more intense than any of other cardio I'm doing, definitely way harder than skiing!</p>
-<p>However the regression coeffecient (basically, calories burnt per 'unit of heart activity') is more or less same. I guess that could potentially be explained by the fact that running involves more muscle activity, which Endomondo can't capture and doesn't try to infer from the exercise type (which you enter manually when you start logging the exercise).</p>
-<p>With regards to the actual regression coefficient: seaborn wouldn't let you display them on the regplot (the author has a very strong opition about that, <a href="https://github.com/mwaskom/seaborn/issues/655#issuecomment-370079702">apparently</a>), so we use <code>sklearn</code> to do that for us:</p>
+<p>Unsurprisingly, it looks like a simple linear model (considering my weight and age have barely changed).</p>
+<p>What I find unexpected is that the slope/regression coefficient (i.e. calories burnt per heartbeat) is more or less the same. Personally, for me running feels way more intense than any of other cardio I'm doing, definitely way harder than skiing! There are two possibilities here:</p>
+<ul>
+<li><p>Endomondo can't capture dynamic muscle activity and isn't even trying to use exercise type provided by the user for a better estimate.</p>
+</li>
+<li><p>Energy is mostly burnt by the heart and other muscles don't actually matter or have a very minor impact.</p>
+</li>
+</ul>
+<p>Let's try and check the latter via some back of an envelope calculation.</p>
+<p>In order to run, you use your chemical energy to move your body up and forward. For simplicity, let's only consider 'up' movements that go against gravity, it feels like these would dominate energy spendings. So let's model running as a sequence of vertical jumps. My estimate would be that when you run you jumps are about 5 cm in height.</p>
+<p>We can find out how much energy each jump takes by using $\Delta U = m g \Delta h$ <a href="https://en.wikipedia.org/wiki/Potential_energy#Gravitational_potential_energy">formula</a>.</p>
 
 </div>
 </div>
@@ -540,6 +562,74 @@ WARNING:workout-provider:Unhandled: Cycling
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="mf">9.82</span> <span class="c1"># standard Earth gravity</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="mi">65</span> <span class="c1"># kg</span>
+<span class="n">stride_height</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">/</span> <span class="mi">100</span> <span class="c1"># convert cm to m</span>
+
+<span class="n">strides_per_minute</span> <span class="o">=</span> <span class="mi">160</span> <span class="c1"># ish, varies for different people</span>
+<span class="n">duration</span> <span class="o">=</span> <span class="mi">60</span> <span class="c1"># minutes</span>
+<span class="n">joules_in_kcal</span> <span class="o">=</span> <span class="mi">4184</span> 
+
+<span class="n">energy_per_stride</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">stride_height</span>
+
+<span class="n">leg_energy_kcal</span> <span class="o">=</span> <span class="n">energy_per_stride</span> <span class="o">*</span>  <span class="n">strides_per_minute</span> <span class="o">*</span> <span class="n">duration</span> <span class="o">/</span> <span class="n">joules_in_kcal</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">leg_energy_kcal</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>73.22753346080309
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>So, 70 kcal is fairly low in comparison with typical numbers Endomondo reports for my exercise.</p>
+<p>This is a very rough calculation of course:</p>
+<ul>
+<li>In reality movements during running are more complex, so it could be an underestimate</li>
+<li>On the other hand, feet can also spring, so not all energy spent on the stride is lost completely, so it could be an overestimate</li>
+</ul>
+<p>With regards to the actual value of the regression coefficient: seaborn <a href="https://github.com/mwaskom/seaborn/issues/655#issuecomment-370079702">wouldn't let you</a> display them on the regplot, so we use <code>sklearn</code> to do that for us:</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">linear_model</span>
@@ -588,7 +678,7 @@ Free term: -9.281
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Basically, that means I get about <code>0.1</code> Kcal for each heartbeat during exercise. Free term ideally should be equal to <code>0</code> (i.e. just as a sanity sort of thing: not having heartbeat shouldn't result in calorie loss), and <code>-10</code> is close enough.</p>
-<p>Also, fun calculation: what if we fit the model we got to normal, resting heard rate?</p>
+<p>Also, fun calculation: what if we fit the model we got to normal, resting heart rate?</p>
 
 </div>
 </div>
@@ -601,7 +691,7 @@ Free term: -9.281
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">normal_bpm</span> <span class="o">=</span> <span class="mi">60</span>
@@ -643,6 +733,20 @@ Free term: -9.281
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>8K Kcals per day? A bit too much for an average person. I wouldn't draw any conclusions from that one though :)</p>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+    
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can find the source of this notebook <a href="https://github.com/karlicoss/endomondo-kcal-analysis">here</a>.</p>
 
 </div>
 </div>
