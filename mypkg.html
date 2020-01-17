@@ -113,6 +113,7 @@ I tried different things over the years and I think I'm getting to the point whe
 <li><a href="#hypothesis_stats">What are the most interesting Slate Star Codex posts I've read?</a></li>
 <li><a href="#workouts">Accessing workouts data</a></li>
 <li><a href="#kobo_progress">Book reading progress</a></li>
+<li><a href="#messenger_stats">Messenger stats</a></li>
 </ul>
 </li>
 <li><a href="#similar">5. Similar projects/setups/concepts</a></li>
@@ -387,8 +388,42 @@ Finished: 16 Sep 2018 07:26
 </pre>
 </div>
 </div>
+<div class="outline-3" id="outline-container-org0000019">
+<h3 id="messenger_stats"><a class="headerlink" href="#messenger_stats">¶</a>Messenger stats</h3>
+<div class="outline-text-3" id="text-messenger_stats">
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">from</span> my.fbmessenger <span class="org-keyword">import</span> iter_all_messages
+
+<span class="org-keyword">import</span> pandas <span class="org-keyword">as</span> pd
+<span class="org-keyword">import</span> matplotlib.pyplot <span class="org-keyword">as</span> plt
+
+<span class="org-variable-name">df</span> = pd.DataFrame({<span class="org-string">'dt'</span>: m.dt, <span class="org-string">'messages'</span>: 1} <span class="org-keyword">for</span> m <span class="org-keyword">in</span> iter_all_messages())
+df.set_index(<span class="org-string">'dt'</span>, inplace=<span class="org-constant">True</span>)
+
+<span class="org-variable-name">df</span> = df.resample(<span class="org-string">'M'</span>).<span class="org-builtin">sum</span>() <span class="org-comment-delimiter"># </span><span class="org-comment">by month</span>
+<span class="org-variable-name">df</span> = df.loc[<span class="org-string">'2016-01-01'</span>:<span class="org-string">'2019-01-01'</span>] <span class="org-comment-delimiter"># </span><span class="org-comment">past subset for determinism</span>
+
+<span class="org-variable-name">fig</span>, <span class="org-variable-name">ax</span> = plt.subplots(figsize=(15, 5))
+df.plot(kind=<span class="org-string">'bar'</span>, ax=ax)
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">TODO wonder if that vvv can be less verbose...</span>
+<span class="org-variable-name">x_labels</span> = df.index.strftime(<span class="org-string">'%Y %b'</span>)
+ax.set_xticklabels(x_labels)
+
+<span class="org-variable-name">plot_file</span> = <span class="org-string">'messenger_2016_to_2019.png'</span>
+plt.tight_layout()
+plt.savefig(plot_file)
+<span class="org-keyword">return</span> plot_file
+</pre>
 </div>
-<div class="outline-2" id="outline-container-org000001a">
+<div class="figure">
+<p><img alt="messenger_2016_to_2019.png" src="messenger_2016_to_2019.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000001b">
 <h2 id="similar"><a class="headerlink" href="#similar">¶</a><span class="section-number-2">5</span> Similar projects/setups/concepts</h2>
 <div class="outline-text-2" id="text-similar">
 <ul class="org-ul">
@@ -396,6 +431,7 @@ Finished: 16 Sep 2018 07:26
 </ul>
 <ul class="org-ul">
 <li><a href="https://en.wikipedia.org/wiki/Solid_(web_decentralization_project)#Design">Solid project</a>: personal data pod, which websites pull data from</li>
+<li>TODO <a href="https://github.com/bcongdon/bolero">https://github.com/bcongdon/bolero</a> – uses postgres</li>
 </ul>
 </div>
 </div>
