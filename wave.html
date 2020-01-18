@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" prefix="og: http://ogp.me/ns#">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,8 +37,20 @@
 <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         
+
+        <link rel="canonical" href="https://beepb00p.xyz/wave.html" />
+
+        <!-- can test it with https://telegram.me/webpagebot -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://beepb00p.xyz/wave.html" /> <!-- TODO base? -->
+        <meta property="og:title" content="Solving wave equation with SymPy | beepb00p" />
+        <!-- TODO description? -->
+        <!-- ugh. why is image necessary??? -->
+        <meta property="og:image" content="notset" />
+
     </head>
     <body>
+        <!-- TODO make semantic -->
         <header>
             <nav>
                 <span class="nav-left">
@@ -852,7 +864,7 @@ $\displaystyle \left\{\left( 0, \  0\right)\right\}$
 
 
 <div class="output_latex output_subarea output_execute_result">
-$\displaystyle \left\{\left( 0, \  0, \  E\right), \left( C_{2}, \  - C_{2}, \  0\right)\right\}$
+$\displaystyle \left\{\left( 0, \  0, \  E\right), \left( - C_{2}, \  C_{2}, \  0\right)\right\}$
 </div>
 
 </div>
@@ -1222,7 +1234,7 @@ $\displaystyle X{\left(x \right)} = C_{1} e^{- k x} + C_{2} e^{k x}$
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Solutions: {(C₂, C₁, 0), (C₂, C₁, {2⋅n⋅ⅈ⋅π | n ∊ ℤ})}
+<pre>Solutions: {(C₁, C₂, 0), (C₁, C₂, {2⋅n⋅ⅈ⋅π | n ∊ ℤ})}
 </pre>
 </div>
 </div>
@@ -1283,7 +1295,7 @@ $\displaystyle X{\left(x \right)} = C_{1} e^{- k x} + C_{2} e^{k x}$
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>$C_1$ = C₂; C2 = C₁; k = {2⋅n⋅ⅈ⋅π | n ∊ ℤ}
+<pre>$C_1$ = C₁; C2 = C₂; k = {2⋅n⋅ⅈ⋅π | n ∊ ℤ}
 </pre>
 </div>
 </div>
@@ -1341,7 +1353,7 @@ $\displaystyle X{\left(x \right)} = C_{1} e^{- k x} + C_{2} e^{k x}$
 
 
 <div class="output_latex output_subarea ">
-$\displaystyle \left\{C_{2}\right\} \times \left\{C_{1}\right\} \times \left\{2 n i \pi\; |\; n \in \mathbb{Z}\right\}$
+$\displaystyle \left\{C_{1}\right\} \times \left\{C_{2}\right\} \times \left\{2 n i \pi\; |\; n \in \mathbb{Z}\right\}$
 </div>
 
 </div>
@@ -1413,7 +1425,7 @@ $\displaystyle \left\{C_{2}\right\} \times \left\{C_{1}\right\} \times \left\{2 
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>                 ⎧ 2⋅ⅈ⋅π⋅n⋅x         -2⋅ⅈ⋅π⋅n⋅x             ⎫
-Solutions basis: ⎨ℯ         ⋅A[n] + ℯ          ⋅B[n] | n ∊ ℤ⎬
+Solutions basis: ⎨ℯ         ⋅B[n] + ℯ          ⋅A[n] | n ∊ ℤ⎬
                  ⎩                                          ⎭
 </pre>
 </div>
@@ -1523,7 +1535,7 @@ TODO this might be important when we solve something like schrodinger equation, 
 
 
 <div class="output_latex output_subarea ">
-$\displaystyle \sum_{n=-\infty}^{\infty} \left(e^{2 i \pi n x} {A}_{n} + e^{- 2 i \pi n x} {B}_{n}\right)$
+$\displaystyle \sum_{n=-\infty}^{\infty} \left(e^{2 i \pi n x} {B}_{n} + e^{- 2 i \pi n x} {A}_{n}\right)$
 </div>
 
 </div>
@@ -2270,6 +2282,8 @@ $\displaystyle 0 = w$
 
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         
+
+        <!-- TODO make semantic -->
         <footer>
             <span style="float:left">
             <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>

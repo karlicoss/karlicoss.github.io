@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" prefix="og: http://ogp.me/ns#">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -25,8 +25,20 @@
         <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
+
+        <link rel="canonical" href="https://beepb00p.xyz/my-data.html" />
+
+        <!-- can test it with https://telegram.me/webpagebot -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://beepb00p.xyz/my-data.html" /> <!-- TODO base? -->
+        <meta property="og:title" content="What data on myself I collect and why? | beepb00p" />
+        <!-- TODO description? -->
+        <!-- ugh. why is image necessary??? -->
+        <meta property="og:image" content="notset" />
+
     </head>
     <body>
+        <!-- TODO make semantic -->
         <header>
             <nav>
                 <span class="nav-left">
@@ -159,11 +171,11 @@ If you're terrified by the long list, you can jump straight into <a class="link-
 <li><a href="#mypkg"><code class="inline">my.</code> python package</a></li>
 </ul>
 </li>
-<li><a href="#org0000000">4. --</a></li>
+<li><a href="#fin">4. --</a></li>
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000004">
+<div class="outline-2" id="outline-container-org0000003">
 <h2 id="why"><a class="headerlink" href="#why">¶</a><span class="section-number-2">1</span> Why do you collect X? How do you use your data?</h2>
 <div class="outline-text-2" id="text-why">
 <p>
@@ -174,7 +186,7 @@ Why bother with all this <a href="./tags.html#infra">infrastructure</a> and hoar
 In the next section, I will elaborate on each specific data source, but to start with I'll list the rationales that all of them share:
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000001">
+<div class="outline-3" id="outline-container-org0000000">
 <h3 id="backup"><a class="headerlink" href="#backup">¶</a>backup</h3>
 <div class="outline-text-3" id="text-backup">
 <p>
@@ -182,7 +194,7 @@ It may feel unnecessary, but shit happens. What if your device dies, account get
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000002">
+<div class="outline-3" id="outline-container-org0000001">
 <h3 id="lifelogging"><a class="headerlink" href="#lifelogging">¶</a><a href="./tags.html#lifelogging">lifelogging</a></h3>
 <div class="outline-text-3" id="text-lifelogging">
 <p>
@@ -198,7 +210,7 @@ That said, I want to have a <b>choice</b> whether to forget or remember events, 
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000003">
+<div class="outline-3" id="outline-container-org0000002">
 <h3 id="qs"><a class="headerlink" href="#qs">¶</a><a href="./tags.html#quantifiedself">quantified self</a></h3>
 <div class="outline-text-3" id="text-qs">
 <p>
@@ -207,7 +219,7 @@ Most collected digital data is somewhat quantitative and can be used to analyze 
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000037">
+<div class="outline-2" id="outline-container-org0000036">
 <h2 id="what"><a class="headerlink" href="#what">¶</a><span class="section-number-2">2</span> What do I collect/want to collect?</h2>
 <div class="outline-text-2" id="text-what">
 <p>
@@ -220,7 +232,7 @@ All my data collection pipelines are <b>automatic unless mentioned otherwise</b>
 Some scripts are still private so if you want to know more, let me know so I can prioritize sharing them.
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000005">
+<div class="outline-3" id="outline-container-org0000004">
 <h3 id="amazon"><a class="headerlink" href="#amazon">¶</a>Amazon</h3>
 <div class="outline-text-3" id="text-amazon">
 <p>
@@ -234,7 +246,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000006">
+<div class="outline-3" id="outline-container-org0000005">
 <h3 id="arbtt"><a class="headerlink" href="#arbtt">¶</a>Arbtt (desktop time tracker)</h3>
 <div class="outline-text-3" id="text-arbtt">
 <p>
@@ -248,7 +260,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000007">
+<div class="outline-3" id="outline-container-org0000006">
 <h3 id="bitbucket"><a class="headerlink" href="#bitbucket">¶</a>Bitbucket (repositories)</h3>
 <div class="outline-text-3" id="text-bitbucket">
 <p>
@@ -267,7 +279,7 @@ I've got lots of private mercurial repositories with university homework and oth
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000008">
+<div class="outline-3" id="outline-container-org0000007">
 <h3 id="bluemaestro"><a class="headerlink" href="#bluemaestro">¶</a><a href="https://bluemaestro.com/products/product-details/bluetooth-environmental-monitor-and-logger">Bluemaestro</a> (environment sensor)</h3>
 <div class="outline-text-3" id="text-bluemaestro">
 <p>
@@ -287,7 +299,7 @@ E.g. I can potentially see temperature/humidity readings along with my photos fr
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000009">
+<div class="outline-3" id="outline-container-org0000008">
 <h3 id="blood"><a class="headerlink" href="#blood">¶</a>Blood</h3>
 <div class="outline-text-3" id="text-blood">
 <p>
@@ -304,7 +316,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000a">
+<div class="outline-3" id="outline-container-org0000009">
 <h3 id="browser_history"><a class="headerlink" href="#browser_history">¶</a>Browser history (Firefox/Chrome)</h3>
 <div class="outline-text-3" id="text-browser_history">
 <p>
@@ -318,7 +330,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000b">
+<div class="outline-3" id="outline-container-org000000a">
 <h3 id="emfit"><a class="headerlink" href="#emfit">¶</a><a href="https://shop-eu.emfit.com/products/emfit-qs">Emfit QS</a> (sleep tracker)</h3>
 <div class="outline-text-3" id="text-emfit">
 <p>
@@ -335,7 +347,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000c">
+<div class="outline-3" id="outline-container-org000000b">
 <h3 id="endomondo"><a class="headerlink" href="#endomondo">¶</a>Endomondo</h3>
 <div class="outline-text-3" id="text-endomondo">
 <p>
@@ -349,7 +361,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000d">
+<div class="outline-3" id="outline-container-org000000c">
 <h3 id="facebook"><a class="headerlink" href="#facebook">¶</a>Facebook</h3>
 <div class="outline-text-3" id="text-facebook">
 <p>
@@ -360,7 +372,7 @@ I barely use Facebook, so don't even bother doing it regularly.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000e">
+<div class="outline-3" id="outline-container-org000000d">
 <h3 id="messenger"><a class="headerlink" href="#messenger">¶</a>Facebook Messenger</h3>
 <div class="outline-text-3" id="text-messenger">
 <p>
@@ -375,7 +387,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000f">
+<div class="outline-3" id="outline-container-org000000e">
 <h3 id="feedbin"><a class="headerlink" href="#feedbin">¶</a>Feedbin</h3>
 <div class="outline-text-3" id="text-feedbin">
 <p>
@@ -389,7 +401,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000010">
+<div class="outline-3" id="outline-container-org000000f">
 <h3 id="feedly"><a class="headerlink" href="#feedly">¶</a>Feedly</h3>
 <div class="outline-text-3" id="text-feedly">
 <p>
@@ -403,7 +415,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000011">
+<div class="outline-3" id="outline-container-org0000010">
 <h3 id="fitbit"><a class="headerlink" href="#fitbit">¶</a>Fitbit</h3>
 <div class="outline-text-3" id="text-fitbit">
 <p>
@@ -418,7 +430,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000012">
+<div class="outline-3" id="outline-container-org0000011">
 <h3 id="foursquare"><a class="headerlink" href="#foursquare">¶</a>Foursquare/Swarm</h3>
 <div class="outline-text-3" id="text-foursquare">
 <p>
@@ -426,7 +438,7 @@ How: via API
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000013">
+<div class="outline-3" id="outline-container-org0000012">
 <h3 id="github_repos"><a class="headerlink" href="#github_repos">¶</a>Github (repositories)</h3>
 <div class="outline-text-3" id="text-github_repos">
 <p>
@@ -440,7 +452,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000014">
+<div class="outline-3" id="outline-container-org0000013">
 <h3 id="github_events"><a class="headerlink" href="#github_events">¶</a>Github (events)</h3>
 <div class="outline-text-3" id="text-github_events">
 <p>
@@ -455,7 +467,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000015">
+<div class="outline-3" id="outline-container-org0000014">
 <h3 id="gmail"><a class="headerlink" href="#gmail">¶</a>Gmail</h3>
 <div class="outline-text-3" id="text-gmail">
 <p>
@@ -471,7 +483,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000016">
+<div class="outline-3" id="outline-container-org0000015">
 <h3 id="goodreads"><a class="headerlink" href="#goodreads">¶</a>Goodreads</h3>
 <div class="outline-text-3" id="text-goodreads">
 <p>
@@ -479,7 +491,7 @@ How: <a href="https://github.com/karlicoss/goodrexport">karlicoss/goodrexport</a
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000017">
+<div class="outline-3" id="outline-container-org0000016">
 <h3 id="takeout"><a class="headerlink" href="#takeout">¶</a>Google takeout</h3>
 <div class="outline-text-3" id="text-takeout">
 <p>
@@ -502,7 +514,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000018">
+<div class="outline-3" id="outline-container-org0000017">
 <h3 id="hackernews"><a class="headerlink" href="#hackernews">¶</a><span class="todo TODO">TODO</span> Hackernews</h3>
 <div class="outline-text-3" id="text-hackernews">
 <p>
@@ -522,7 +534,7 @@ Why: same reasons as <a class="link-down" href="#reddit">Reddit</a>.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000019">
+<div class="outline-3" id="outline-container-org0000018">
 <h3 id="hsbc"><a class="headerlink" href="#hsbc">¶</a>HSBC bank</h3>
 <div class="outline-text-3" id="text-hsbc">
 <p>
@@ -536,7 +548,7 @@ Why
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001a">
+<div class="outline-3" id="outline-container-org0000019">
 <h3 id="hypothesis"><a class="headerlink" href="#hypothesis">¶</a><a href="https://hypothes.is">Hypothesis</a></h3>
 <div class="outline-text-3" id="text-hypothesis">
 <p>
@@ -552,7 +564,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001b">
+<div class="outline-3" id="outline-container-org000001a">
 <h3 id="instapaper"><a class="headerlink" href="#instapaper">¶</a>Instapaper</h3>
 <div class="outline-text-3" id="text-instapaper">
 <p>
@@ -568,7 +580,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001c">
+<div class="outline-3" id="outline-container-org000001b">
 <h3 id="jawbone"><a class="headerlink" href="#jawbone">¶</a>Jawbone</h3>
 <div class="outline-text-3" id="text-jawbone">
 <p>
@@ -583,7 +595,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001d">
+<div class="outline-3" id="outline-container-org000001c">
 <h3 id="kindle"><a class="headerlink" href="#kindle">¶</a>Kindle</h3>
 <div class="outline-text-3" id="text-kindle">
 <p>
@@ -597,7 +609,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001e">
+<div class="outline-3" id="outline-container-org000001d">
 <h3 id="kobo"><a class="headerlink" href="#kobo">¶</a><a href="https://www.kobo.com">Kobo</a> reader</h3>
 <div class="outline-text-3" id="text-kobo">
 <p>
@@ -612,7 +624,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001f">
+<div class="outline-3" id="outline-container-org000001e">
 <h3 id="lastfm"><a class="headerlink" href="#lastfm">¶</a>Last.fm</h3>
 <div class="outline-text-3" id="text-lastfm">
 <p>
@@ -620,7 +632,7 @@ How: <a href="https://github.com/karlicoss/lastfm-backup">karlicoss/lastfm-backu
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000020">
+<div class="outline-3" id="outline-container-org000001f">
 <h3 id="monzo"><a class="headerlink" href="#monzo">¶</a>Monzo bank</h3>
 <div class="outline-text-3" id="text-monzo">
 <p>
@@ -634,7 +646,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000021">
+<div class="outline-3" id="outline-container-org0000020">
 <h3 id="nomie"><a class="headerlink" href="#nomie">¶</a><a href="https://nomie.app">Nomie</a></h3>
 <div class="outline-text-3" id="text-nomie">
 <p>
@@ -648,7 +660,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000022">
+<div class="outline-3" id="outline-container-org0000021">
 <h3 id="nutrition"><a class="headerlink" href="#nutrition">¶</a>Nutrition</h3>
 <div class="outline-text-3" id="text-nutrition">
 <p>
@@ -730,7 +742,7 @@ and completely different is coming to the same conclusion <b>from your data</b>.
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000023">
+<div class="outline-3" id="outline-container-org0000022">
 <h3 id="photos"><a class="headerlink" href="#photos">¶</a>Photos</h3>
 <div class="outline-text-3" id="text-photos">
 <p>
@@ -744,7 +756,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000024">
+<div class="outline-3" id="outline-container-org0000023">
 <h3 id="pdfs"><a class="headerlink" href="#pdfs">¶</a>PDF annotations</h3>
 <div class="outline-text-3" id="text-pdfs">
 <p>
@@ -766,7 +778,7 @@ I'm improving this by using <a class="link-down" href="#orger">orger</a>.
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000025">
+<div class="outline-3" id="outline-container-org0000024">
 <h3 id="pinboard"><a class="headerlink" href="#pinboard">¶</a>Pinboard</h3>
 <div class="outline-text-3" id="text-pinboard">
 <p>
@@ -781,7 +793,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000026">
+<div class="outline-3" id="outline-container-org0000025">
 <h3 id="notes"><a class="headerlink" href="#notes">¶</a>Plaintext notes</h3>
 <div class="outline-text-3" id="text-notes">
 <p>
@@ -799,7 +811,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000027">
+<div class="outline-3" id="outline-container-org0000026">
 <h3 id="pocket"><a class="headerlink" href="#pocket">¶</a>Pocket</h3>
 <div class="outline-text-3" id="text-pocket">
 <p>
@@ -814,7 +826,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000028">
+<div class="outline-3" id="outline-container-org0000027">
 <h3 id="reddit"><a class="headerlink" href="#reddit">¶</a>Reddit</h3>
 <div class="outline-text-3" id="text-reddit">
 <p>
@@ -830,7 +842,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000029">
+<div class="outline-3" id="outline-container-org0000028">
 <h3 id="rtm"><a class="headerlink" href="#rtm">¶</a>Remember the Milk</h3>
 <div class="outline-text-3" id="text-rtm">
 <p>
@@ -849,7 +861,7 @@ I stopped using RTM in favor of org-mode, but I can still easily find my old tas
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000002a">
+<div class="outline-3" id="outline-container-org0000029">
 <h3 id="rescuetime"><a class="headerlink" href="#rescuetime">¶</a>Rescuetime</h3>
 <div class="outline-text-3" id="text-rescuetime">
 <p>
@@ -863,7 +875,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000002b">
+<div class="outline-3" id="outline-container-org000002a">
 <h3 id="shell"><a class="headerlink" href="#shell">¶</a>Shell history</h3>
 <div class="outline-text-3" id="text-shell">
 <p>
@@ -880,7 +892,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000002c">
+<div class="outline-3" id="outline-container-org000002b">
 <h3 id="sleep"><a class="headerlink" href="#sleep">¶</a>Sleep</h3>
 <div class="outline-text-3" id="text-sleep">
 <p>
@@ -906,7 +918,7 @@ so I'm trying to find correlations using my <a class="link-down" href="#dashboar
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000002d">
+<div class="outline-3" id="outline-container-org000002c">
 <h3 id="sms_calls"><a class="headerlink" href="#sms_calls">¶</a>Sms/calls</h3>
 <div class="outline-text-3" id="text-sms_calls">
 <p>
@@ -914,7 +926,7 @@ How: <a href="https://play.google.com/store/apps/details?id=com.riteshsahu.SMSBa
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000002e">
+<div class="outline-3" id="outline-container-org000002d">
 <h3 id="spotify"><a class="headerlink" href="#spotify">¶</a>Spotify</h3>
 <div class="outline-text-3" id="text-spotify">
 <p>
@@ -929,7 +941,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000002f">
+<div class="outline-3" id="outline-container-org000002e">
 <h3 id="stackexchange"><a class="headerlink" href="#stackexchange">¶</a>Stackexchange</h3>
 <div class="outline-text-3" id="text-stackexchange">
 <p>
@@ -944,7 +956,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000030">
+<div class="outline-3" id="outline-container-org000002f">
 <h3 id="taplog"><a class="headerlink" href="#taplog">¶</a><a href="https://play.google.com/store/apps/details?id=com.waterbear.taglog">Taplog</a></h3>
 <div class="outline-text-3" id="text-taplog">
 <p>
@@ -961,7 +973,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000031">
+<div class="outline-3" id="outline-container-org0000030">
 <h3 id="telegram"><a class="headerlink" href="#telegram">¶</a>Telegram</h3>
 <div class="outline-text-3" id="text-telegram">
 <p>
@@ -976,7 +988,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000032">
+<div class="outline-3" id="outline-container-org0000031">
 <h3 id="twitter"><a class="headerlink" href="#twitter">¶</a>Twitter</h3>
 <div class="outline-text-3" id="text-twitter">
 <p>
@@ -991,7 +1003,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000033">
+<div class="outline-3" id="outline-container-org0000032">
 <h3 id="vk"><a class="headerlink" href="#vk">¶</a>VK.com</h3>
 <div class="outline-text-3" id="text-vk">
 <p>
@@ -1009,7 +1021,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000034">
+<div class="outline-3" id="outline-container-org0000033">
 <h3 id="weight"><a class="headerlink" href="#weight">¶</a>Weight</h3>
 <div class="outline-text-3" id="text-weight">
 <p>
@@ -1024,7 +1036,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000035">
+<div class="outline-3" id="outline-container-org0000034">
 <h3 id="whatsapp"><a class="headerlink" href="#whatsapp">¶</a><span class="todo TODO">TODO</span> Whatsapp</h3>
 <div class="outline-text-3" id="text-whatsapp">
 <p>
@@ -1042,7 +1054,7 @@ Why:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000036">
+<div class="outline-3" id="outline-container-org0000035">
 <h3 id="23andme"><a class="headerlink" href="#23andme">¶</a><a href="https://www.23andme.com">23andme</a></h3>
 <div class="outline-text-3" id="text-23andme">
 <p>
@@ -1062,11 +1074,11 @@ Haven't really had time to think about it yet, and it feels like a hard project 
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000003d">
+<div class="outline-2" id="outline-container-org000003c">
 <h2 id="consumers"><a class="headerlink" href="#consumers">¶</a><span class="section-number-2">3</span> Data consumers</h2>
 <div class="outline-text-2" id="text-consumers">
 </div>
-<div class="outline-3" id="outline-container-org0000038">
+<div class="outline-3" id="outline-container-org0000037">
 <h3 id="search"><a class="headerlink" href="#search">¶</a>search</h3>
 <div class="outline-text-3" id="text-search">
 <p>
@@ -1075,7 +1087,7 @@ So I built my own ways around it! I write about it in detail <a href="pkm-search
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000039">
+<div class="outline-3" id="outline-container-org0000038">
 <h3 id="promnesia"><a class="headerlink" href="#promnesia">¶</a>promnesia</h3>
 <div class="outline-text-3" id="text-promnesia">
 <p>
@@ -1086,7 +1098,7 @@ I've been using it for more than a year now and working on final touches to make
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000003a">
+<div class="outline-3" id="outline-container-org0000039">
 <h3 id="orger"><a class="headerlink" href="#orger">¶</a>orger</h3>
 <div class="outline-text-3" id="text-orger">
 <p>
@@ -1100,7 +1112,7 @@ I write about it in detail <a href="orger.html">here</a> and <a href="orger-todo
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000003b">
+<div class="outline-3" id="outline-container-org000003a">
 <h3 id="dashboard"><a class="headerlink" href="#dashboard">¶</a>dashboard</h3>
 <div class="outline-text-3" id="text-dashboard">
 <p>
@@ -1111,7 +1123,7 @@ I'm working on making it public, you can see some screenshots <a href="https://w
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000003c">
+<div class="outline-3" id="outline-container-org000003b">
 <h3 id="mypkg"><a class="headerlink" href="#mypkg">¶</a><a href="https://github.com/karlicoss/my"><code class="inline">my.</code></a> python package</h3>
 <div class="outline-text-3" id="text-mypkg">
 <p>
@@ -1123,9 +1135,9 @@ I'm in the progress of writing about it <a href="mypkg.html">here</a>.
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000000">
-<h2 id="org0000000"><a class="headerlink" href="#org0000000">¶</a><span class="section-number-2">4</span> --</h2>
-<div class="outline-text-2" id="text-4">
+<div class="outline-2" id="outline-container-org000003d">
+<h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">4</span> --</h2>
+<div class="outline-text-2" id="text-fin">
 <p>
 Happy to answer any questions on my approach and help you with liberating your data.  
 </p>
@@ -1152,6 +1164,14 @@ In the <a href="exports.html">next post</a> (writing still in progress) I'm goin
     
 
     
+    <br>
+    <div>Discussion:</div>
+    <ul>
+    
+        <li><a href="https://www.reddit.com/r/DataHoarder/comments/eol6hw/how_i_collect_and_use_50_sources_of_my_personal">/r/DataHoarder</a></li>
+    
+    </ul>
+    
 
     <section class="comments">
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
@@ -1167,6 +1187,8 @@ In the <a href="exports.html">next post</a> (writing still in progress) I'm goin
 
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
         
+
+        <!-- TODO make semantic -->
         <footer>
             <span style="float:left">
             <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
