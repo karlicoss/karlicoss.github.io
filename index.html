@@ -18,6 +18,8 @@
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
+        <!-- TODO make conditional?? -->
+        <link rel="stylesheet" href="./css/posts-list.css" /> 
         <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
@@ -48,330 +50,332 @@
         <main>
             Work in progress: <a href="./drafts.html">Drafts</a>
 
-<table class="posts-list">
-    
+<!-- TODO hmm, main should have container class on it? -->
+<div class="posts-list">
 
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./my-data.html">
-            <div class="title">What data on myself I collect and why?</div>
-            <div class="summary"></div>
+
+    <div class="post">
+        <a href="./my-data.html" class="post-link">
+            <div class="title"> What data on myself I collect and why?</div>
+            
         </a>
-        </td>
-        <td class="date">12 January 2020</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#dataliberation">dataliberation</a><a class="post-tag" href="./tags.html#pkm">pkm</a><a class="post-tag" href="./tags.html#quantified-self">quantified-self</a></td>
-    </tr>
 
-    
+        
+        
+        <time class="date">12 January 2020</time>
 
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./sad-infra.html">
-            <div class="title">The sad state of personal data and infrastructure</div>
-            <div class="summary"> Why can't we have nice digital things? </div>
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#dataliberation">#dataliberation</a> <a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#quantified-self">#quantified-self</a>
+        </span>
+    </div>
+
+    <div class="post">
+        <a href="./sad-infra.html" class="post-link">
+            <div class="title"> The sad state of personal data and infrastructure</div>
+            <div class="summary">Why can't we have nice digital things?</div>
         </a>
-        </td>
-        <td class="date">15 December 2019</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#infra">infra</a><a class="post-tag" href="./tags.html#pkm">pkm</a></td>
-    </tr>
 
-    
+        
+        
+        <time class="date">15 December 2019</time>
 
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./exercise-bike-model.html">
-            <div class="title">Analyzing accuracy of power reported by stationary bike</div>
-            <div class="summary"> How I found my exercise machine to violate laws of physics </div>
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#infra">#infra</a> <a class="post-tag" href="./tags.html#pkm">#pkm</a>
+        </span>
+    </div>
+
+    <div class="post">
+        <a href="./exercise-bike-model.html" class="post-link">
+            <div class="title"> Analyzing accuracy of power reported by stationary bike</div>
+            <div class="summary">How I found my exercise machine to violate laws of physics</div>
         </a>
-        </td>
-        <td class="date">08 December 2019</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#exercise">exercise</a><a class="post-tag" href="./tags.html#quantified-self">quantified-self</a><a class="post-tag" href="./tags.html#ipython">ipython</a></td>
-    </tr>
 
-    
+        
+        
+        <time class="date">08 December 2019</time>
 
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./scrapyroo.html">
-            <div class="title">Scrapyroo</div>
-            <div class="summary"> How I was unhappy about Deliveroo search and implemented my own </div>
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#exercise">#exercise</a> <a class="post-tag" href="./tags.html#quantified-self">#quantified-self</a> <a class="post-tag" href="./tags.html#ipython">#ipython</a>
+        </span>
+    </div>
+
+    <div class="post">
+        <a href="./scrapyroo.html" class="post-link">
+            <div class="title"> Scrapyroo</div>
+            <div class="summary">How I was unhappy about Deliveroo search and implemented my own</div>
         </a>
-        </td>
-        <td class="date">19 November 2019</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#infra">infra</a><a class="post-tag" href="./tags.html#scraping">scraping</a><a class="post-tag" href="./tags.html#rust">rust</a></td>
-    </tr>
 
-    
+        
+        
+        <time class="date">19 November 2019</time>
 
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./pkm-search.html">
-            <div class="title">Building personal search infrastructure for your knowledge and code</div>
-            <div class="summary"> Overview of search tools for desktop and mobile; using Emacs and Ripgrep as desktop search engine </div>
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#infra">#infra</a> <a class="post-tag" href="./tags.html#scraping">#scraping</a> <a class="post-tag" href="./tags.html#rust">#rust</a>
+        </span>
+    </div>
+
+    <div class="post">
+        <a href="./pkm-search.html" class="post-link">
+            <div class="title"> Building personal search infrastructure for your knowledge and code</div>
+            <div class="summary">Overview of search tools for desktop and mobile; using Emacs and Ripgrep as desktop search engine</div>
         </a>
-        </td>
-        <td class="date">01 November 2019</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#pkm">pkm</a><a class="post-tag" href="./tags.html#search">search</a><a class="post-tag" href="./tags.html#emacs">emacs</a><a class="post-tag" href="./tags.html#orgmode">orgmode</a></td>
-    </tr>
 
-    
+        
+        
+        <time class="date">01 November 2019</time>
 
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./mypy-error-handling.html">
-            <div class="title">Python: better typed than you think</div>
-            <div class="summary"> mypy assisted error handling, exception mechanisms in other languages, fun with pattern matching and type variance </div>
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#search">#search</a> <a class="post-tag" href="./tags.html#emacs">#emacs</a> <a class="post-tag" href="./tags.html#orgmode">#orgmode</a>
+        </span>
+    </div>
+
+    <div class="post">
+        <a href="./mypy-error-handling.html" class="post-link">
+            <div class="title"> Python: better typed than you think</div>
+            <div class="summary">mypy assisted error handling, exception mechanisms in other languages, fun with pattern matching and type variance</div>
         </a>
-        </td>
-        <td class="date">26 October 2019</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#mypy">mypy</a><a class="post-tag" href="./tags.html#python">python</a></td>
-    </tr>
 
-    
+        
+        
+        <time class="date">26 October 2019</time>
 
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./orger-todos.html">
-            <div class="title">Using Orger to populate your tasks list</div>
-            <div class="summary"> Reading Reddit, building spaced repetition queue and quick todos from Telegram messages </div>
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#mypy">#mypy</a> <a class="post-tag" href="./tags.html#python">#python</a>
+        </span>
+    </div>
+
+    <div class="post">
+        <a href="./orger-todos.html" class="post-link">
+            <div class="title"> Using Orger to populate your tasks list</div>
+            <div class="summary">Reading Reddit, building spaced repetition queue and quick todos from Telegram messages</div>
         </a>
-        </td>
-        <td class="date">05 October 2019</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#orgmode">orgmode</a><a class="post-tag" href="./tags.html#productivity">productivity</a><a class="post-tag" href="./tags.html#orger">orger</a></td>
-    </tr>
 
-    
+        
+        
+        <time class="date">05 October 2019</time>
 
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./orger.html">
-            <div class="title">Orger: plaintext reflection of your digital self</div>
-            <div class="summary"> Mirror your personal data as org-mode for instant access and search </div>
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#orgmode">#orgmode</a> <a class="post-tag" href="./tags.html#productivity">#productivity</a> <a class="post-tag" href="./tags.html#orger">#orger</a>
+        </span>
+    </div>
+
+    <div class="post">
+        <a href="./orger.html" class="post-link">
+            <div class="title"> Orger: plaintext reflection of your digital self</div>
+            <div class="summary">Mirror your personal data as org-mode for instant access and search</div>
         </a>
-        </td>
-        <td class="date">26 September 2019</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#pkm">pkm</a><a class="post-tag" href="./tags.html#orgmode">orgmode</a><a class="post-tag" href="./tags.html#orger">orger</a></td>
-    </tr>
 
-    
+        
+        
+        <time class="date">26 September 2019</time>
 
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./cloudmacs.html">
-            <div class="title">Cloudmacs: Emacs in your web browser</div>
-            <div class="summary"> How I really wanted Spacemacs everywhere and my wish came true thanks to Docker </div>
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#orgmode">#orgmode</a> <a class="post-tag" href="./tags.html#orger">#orger</a>
+        </span>
+    </div>
+
+    <div class="post">
+        <a href="./cloudmacs.html" class="post-link">
+            <div class="title"> Cloudmacs: Emacs in your web browser</div>
+            <div class="summary">How I really wanted Spacemacs everywhere and my wish came true thanks to Docker</div>
         </a>
-        </td>
-        <td class="date">12 September 2019</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#emacs">emacs</a><a class="post-tag" href="./tags.html#pkm">pkm</a><a class="post-tag" href="./tags.html#selfhosted">selfhosted</a></td>
-    </tr>
 
-    
+        
+        
+        <time class="date">12 September 2019</time>
 
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./heartbeats_vs_kcals.html">
-            <div class="title">Making sense of Endomondo's calorie estimation</div>
-            <div class="summary"></div>
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#emacs">#emacs</a> <a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#selfhosted">#selfhosted</a>
+        </span>
+    </div>
+
+    <div class="post">
+        <a href="./heartbeats_vs_kcals.html" class="post-link">
+            <div class="title"> Making sense of Endomondo's calorie estimation</div>
+            
         </a>
-        </td>
-        <td class="date">03 August 2019</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#quantified-self">quantified-self</a><a class="post-tag" href="./tags.html#exercise">exercise</a><a class="post-tag" href="./tags.html#ipython">ipython</a></td>
-    </tr>
 
-    
+        
+        
+        <time class="date">03 August 2019</time>
 
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./annotating.html">
-            <div class="title">How to annotate literally everything</div>
-            <div class="summary"> Comprehensive overview of existing tools, strategies and thoughts on interacting with your data </div>
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#quantified-self">#quantified-self</a> <a class="post-tag" href="./tags.html#exercise">#exercise</a> <a class="post-tag" href="./tags.html#ipython">#ipython</a>
+        </span>
+    </div>
+
+    <div class="post">
+        <a href="./annotating.html" class="post-link">
+            <div class="title"> How to annotate literally everything</div>
+            <div class="summary">Comprehensive overview of existing tools, strategies and thoughts on interacting with your data</div>
         </a>
-        </td>
-        <td class="date">05 July 2019</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#pkm">pkm</a><a class="post-tag" href="./tags.html#annotation">annotation</a><a class="post-tag" href="./tags.html#sr">sr</a><a class="post-tag" href="./tags.html#tools">tools</a></td>
-    </tr>
 
-    
+        
+        
+        <time class="date">05 July 2019</time>
 
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./pkm-setup.html">
-            <div class="title">How to cope with having fleshy human brain</div>
-            <div class="summary"> My personal knowledge setup </div>
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#annotation">#annotation</a> <a class="post-tag" href="./tags.html#sr">#sr</a> <a class="post-tag" href="./tags.html#tools">#tools</a>
+        </span>
+    </div>
+
+    <div class="post">
+        <a href="./pkm-setup.html" class="post-link">
+            <div class="title"> How to cope with having fleshy human brain</div>
+            <div class="summary">My personal knowledge setup</div>
         </a>
-        </td>
-        <td class="date">13 May 2019</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#pkm">pkm</a><a class="post-tag" href="./tags.html#orgmode">orgmode</a><a class="post-tag" href="./tags.html#learning">learning</a></td>
-    </tr>
 
-    
+        
+        
+        <time class="date">13 May 2019</time>
 
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./contemp-art.html">
-            <div class="title">Don't shoot the artist</div>
-            <div class="summary"> How I visited a contemporary art museum and didn't get it </div>
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#orgmode">#orgmode</a> <a class="post-tag" href="./tags.html#learning">#learning</a>
+        </span>
+    </div>
+
+    <div class="post">
+        <a href="./contemp-art.html" class="post-link">
+            <div class="title"> Don't shoot the artist</div>
+            <div class="summary">How I visited a contemporary art museum and didn't get it</div>
         </a>
-        </td>
-        <td class="date">12 May 2019</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#art">art</a></td>
-    </tr>
 
-    
+        
+        
+        <time class="date">12 May 2019</time>
 
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./sufs.html">
-            <div class="title">sufs</div>
-            <div class="summary"> Tool to merge directories via symlinks </div>
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#art">#art</a>
+        </span>
+    </div>
+
+    <div class="post">
+        <a href="./sufs.html" class="post-link">
+            <div class="title"> sufs</div>
+            <div class="summary">Tool to merge directories via symlinks</div>
         </a>
-        </td>
-        <td class="date">09 May 2019</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#tools">tools</a><a class="post-tag" href="./tags.html#setup">setup</a></td>
-    </tr>
 
-    
+        
+        
+        <time class="date">09 May 2019</time>
 
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./recycling-is-hard.html">
-            <div class="title">On cognitive demand of recycling</div>
-            <div class="summary"> So many questions, so few answers </div>
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#tools">#tools</a> <a class="post-tag" href="./tags.html#setup">#setup</a>
+        </span>
+    </div>
+
+    <div class="post">
+        <a href="./recycling-is-hard.html" class="post-link">
+            <div class="title"> On cognitive demand of recycling</div>
+            <div class="summary">So many questions, so few answers</div>
         </a>
-        </td>
-        <td class="date">18 April 2019</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#recycling">recycling</a><a class="post-tag" href="./tags.html#environment">environment</a></td>
-    </tr>
 
-    
+        
+        
+        <time class="date">18 April 2019</time>
 
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./ipynb-singleline.html">
-            <div class="title">Forcing IPython to display multiple equations in single line</div>
-            <div class="summary"> How I sacrificed few hours of my life for aethetics </div>
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#recycling">#recycling</a> <a class="post-tag" href="./tags.html#environment">#environment</a>
+        </span>
+    </div>
+
+    <div class="post">
+        <a href="./ipynb-singleline.html" class="post-link">
+            <div class="title"> Forcing IPython to display multiple equations in single line</div>
+            <div class="summary">How I sacrificed few hours of my life for aethetics</div>
         </a>
-        </td>
-        <td class="date">14 April 2019</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#ipython">ipython</a><a class="post-tag" href="./tags.html#emacs">emacs</a></td>
-    </tr>
 
-    
+        
+        
+        <time class="date">14 April 2019</time>
 
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./takeout-data-gone.html">
-            <div class="title">I've found Google Takeouts to silently remove old data</div>
-            <div class="summary"> Crosspost from /r/DataHoarder </div>
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#ipython">#ipython</a> <a class="post-tag" href="./tags.html#emacs">#emacs</a>
+        </span>
+    </div>
+
+    <div class="post">
+        <a href="./takeout-data-gone.html" class="post-link">
+            <div class="title"> I've found Google Takeouts to silently remove old data</div>
+            <div class="summary">Crosspost from /r/DataHoarder</div>
         </a>
-        </td>
-        <td class="date">08 March 2019</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#backup">backup</a></td>
-    </tr>
 
-    
+        
+        
+        <time class="date">08 March 2019</time>
 
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./quantified-mind.html">
-            <div class="title">Quantifying quantified-mind.com</div>
-            <div class="summary"> Exploiting javascript to reverse engineer cognitive score </div>
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#backup">#backup</a>
+        </span>
+    </div>
+
+    <div class="post">
+        <a href="./quantified-mind.html" class="post-link">
+            <div class="title"> Quantifying quantified-mind.com</div>
+            <div class="summary">Exploiting javascript to reverse engineer cognitive score</div>
         </a>
-        </td>
-        <td class="date">06 March 2019</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#quantified-self">quantified-self</a><a class="post-tag" href="./tags.html#cognitive">cognitive</a><a class="post-tag" href="./tags.html#selenium">selenium</a></td>
-    </tr>
 
-    
+        
+        
+        <time class="date">06 March 2019</time>
 
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./sleep-tracking.html">
-            <div class="title">Sleep tracking</div>
-            <div class="summary"> How not to do it </div>
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#quantified-self">#quantified-self</a> <a class="post-tag" href="./tags.html#cognitive">#cognitive</a> <a class="post-tag" href="./tags.html#selenium">#selenium</a>
+        </span>
+    </div>
+
+    <div class="post">
+        <a href="./sleep-tracking.html" class="post-link">
+            <div class="title"> Sleep tracking</div>
+            <div class="summary">How not to do it</div>
         </a>
-        </td>
-        <td class="date">21 February 2019</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#sleep">sleep</a><a class="post-tag" href="./tags.html#quantified-self">quantified-self</a></td>
-    </tr>
 
-    
+        
+        
+        <time class="date">21 February 2019</time>
 
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./grasp.html">
-            <div class="title">Grasp</div>
-            <div class="summary"> How to capture information from your browser and stay sane </div>
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#sleep">#sleep</a> <a class="post-tag" href="./tags.html#quantified-self">#quantified-self</a>
+        </span>
+    </div>
+
+    <div class="post">
+        <a href="./grasp.html" class="post-link">
+            <div class="title"> Grasp</div>
+            <div class="summary">How to capture information from your browser and stay sane</div>
         </a>
-        </td>
-        <td class="date">09 February 2019</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#pkm">pkm</a><a class="post-tag" href="./tags.html#org-capture">org-capture</a><a class="post-tag" href="./tags.html#annotation">annotation</a></td>
-    </tr>
 
-    
+        
+        
+        <time class="date">09 February 2019</time>
 
-</table>
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#org-capture">#org-capture</a> <a class="post-tag" href="./tags.html#annotation">#annotation</a>
+        </span>
+    </div>
+
+
+</div>
 
 
         </main>

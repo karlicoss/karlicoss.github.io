@@ -37,6 +37,8 @@
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
+        <!-- TODO make conditional?? -->
+        <link rel="stylesheet" href="./css/posts-list.css" /> 
         <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
@@ -1225,6 +1227,8 @@ In the <a href="exports.html">next post</a> (writing still in progress) I'm goin
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
+        <!-- TODO make conditional?? -->
+        <link rel="stylesheet" href="./css/posts-list.css" /> 
         <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
@@ -2473,6 +2477,8 @@ Let me know if you can think of any other data integrations you are missing and 
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
+        <!-- TODO make conditional?? -->
+        <link rel="stylesheet" href="./css/posts-list.css" /> 
         <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
@@ -3689,6 +3695,8 @@ strong multicollinearity or other numerical problems.
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
+        <!-- TODO make conditional?? -->
+        <link rel="stylesheet" href="./css/posts-list.css" /> 
         <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
@@ -4650,6 +4658,8 @@ Not very cloud sync-friendly! However happily accepts symlink as <code class="in
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
+        <!-- TODO make conditional?? -->
+        <link rel="stylesheet" href="./css/posts-list.css" /> 
         <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
@@ -5691,6 +5701,8 @@ As always, I'm open to feedback and would love to hear what is or setup or help 
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
+        <!-- TODO make conditional?? -->
+        <link rel="stylesheet" href="./css/posts-list.css" /> 
         <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
@@ -7289,6 +7301,8 @@ Let me know what you think! I'm open to all feedback.
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
+        <!-- TODO make conditional?? -->
+        <link rel="stylesheet" href="./css/posts-list.css" /> 
         <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
@@ -7685,6 +7699,8 @@ Let me know what you think! I'm open to all feedback.
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
+        <!-- TODO make conditional?? -->
+        <link rel="stylesheet" href="./css/posts-list.css" /> 
         <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
@@ -8498,6 +8514,8 @@ This post ended up longer that I expected so in the next part I will tell about 
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
+        <!-- TODO make conditional?? -->
+        <link rel="stylesheet" href="./css/posts-list.css" /> 
         <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
@@ -8670,6 +8688,8 @@ To get around that there is a somewhat hacky <a href="https://github.com/karlico
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
+        <!-- TODO make conditional?? -->
+        <link rel="stylesheet" href="./css/posts-list.css" /> 
         <link rel="stylesheet" href="./css/links.css?v=4" />
 
         

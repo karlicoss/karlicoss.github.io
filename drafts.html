@@ -18,6 +18,8 @@
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
+        <!-- TODO make conditional?? -->
+        <link rel="stylesheet" href="./css/posts-list.css" /> 
         <link rel="stylesheet" href="./css/links.css?v=4" />
 
         
@@ -52,106 +54,108 @@
 
 If someone linked to one of the drafts and you can't find it now, it will most likely be on the main page! Otherwise let me know.
 
-<table class="posts-list">
-    
+<!-- TODO hmm, main should have container class on it? -->
+<div class="posts-list">
 
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./exports.html">
-            <div class="title">🚧Building data liberation infrastructure🚧</div>
-            <div class="summary"> How to export and access your personal data with minimal effort </div>
+
+    <div class="post">
+        <a href="./exports.html" class="post-link">
+            <div class="title">🚧 Building data liberation infrastructure</div>
+            <div class="summary">How to export and access your personal data with minimal effort</div>
         </a>
-        </td>
-        <td class="date">01 January 2020</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#infra">infra</a><a class="post-tag" href="./tags.html#dataliberation">dataliberation</a><a class="post-tag" href="./tags.html#pkm">pkm</a></td>
-    </tr>
 
-    
+        
+        
+        <time class="date">01 January 2020</time>
 
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./python-configs.html">
-            <div class="title">🚧Python is a decent config file format🚧</div>
-            <div class="summary">  </div>
-        </a>
-        </td>
-        <td class="date">04 December 2019</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#python mypy">python mypy</a></td>
-    </tr>
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#infra">#infra</a> <a class="post-tag" href="./tags.html#dataliberation">#dataliberation</a> <a class="post-tag" href="./tags.html#pkm">#pkm</a>
+        </span>
+    </div>
 
-    
-
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./mypkg.html">
-            <div class="title">🚧my. package🚧</div>
-            <div class="summary"> Connecting and interacting with my personal data </div>
-        </a>
-        </td>
-        <td class="date">14 November 2019</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#infra">infra</a><a class="post-tag" href="./tags.html#pkm">pkm</a><a class="post-tag" href="./tags.html#quantifiedself">quantifiedself</a></td>
-    </tr>
-
-    
-
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./pkm-todos.html">
-            <div class="title">🚧On todo lists🚧</div>
-            <div class="summary"> How I am managing my life and keeping track of the things I want to do </div>
-        </a>
-        </td>
-        <td class="date">27 May 2019</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#pkm">pkm</a><a class="post-tag" href="./tags.html#orgmode">orgmode</a><a class="post-tag" href="./tags.html#productivity">productivity</a><a class="post-tag" href="./tags.html#gtd">gtd</a></td>
-    </tr>
-
-    
-
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./lagrangians.html">
-            <div class="title">🚧They see me flowin' they hatin'🚧</div>
-            <div class="summary"> Some questionable experiments with Lagrangians </div>
-        </a>
-        </td>
-        <td class="date">14 April 2019</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#physics">physics</a><a class="post-tag" href="./tags.html#ipython">ipython</a></td>
-    </tr>
-
-    
-
-    <tr class="post">
-        <td rowspan="2" width="70%">
-        <a href="./wave.html">
-            <div class="title">🚧Solving wave equation with SymPy🚧</div>
+    <div class="post">
+        <a href="./python-configs.html" class="post-link">
+            <div class="title">🚧 Python is a decent config file format</div>
             <div class="summary"></div>
         </a>
-        </td>
-        <td class="date">23 December 2018</td>
-    </tr>
-    <!-- TODO careful with colspan -->
-    <tr>
-        <td class="post-tags"><a class="post-tag" href="./tags.html#physics">physics</a><a class="post-tag" href="./tags.html#ipython">ipython</a></td>
-    </tr>
 
-    
+        
+        
+        <time class="date">04 December 2019</time>
 
-</table>
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#python mypy">#python mypy</a>
+        </span>
+    </div>
+
+    <div class="post">
+        <a href="./mypkg.html" class="post-link">
+            <div class="title">🚧 my. package</div>
+            <div class="summary">Connecting and interacting with my personal data</div>
+        </a>
+
+        
+        
+        <time class="date">14 November 2019</time>
+
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#infra">#infra</a> <a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#quantifiedself">#quantifiedself</a>
+        </span>
+    </div>
+
+    <div class="post">
+        <a href="./pkm-todos.html" class="post-link">
+            <div class="title">🚧 On todo lists</div>
+            <div class="summary">How I am managing my life and keeping track of the things I want to do</div>
+        </a>
+
+        
+        
+        <time class="date">27 May 2019</time>
+
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#orgmode">#orgmode</a> <a class="post-tag" href="./tags.html#productivity">#productivity</a> <a class="post-tag" href="./tags.html#gtd">#gtd</a>
+        </span>
+    </div>
+
+    <div class="post">
+        <a href="./lagrangians.html" class="post-link">
+            <div class="title">🚧 They see me flowin' they hatin'</div>
+            <div class="summary">Some questionable experiments with Lagrangians</div>
+        </a>
+
+        
+        
+        <time class="date">14 April 2019</time>
+
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#physics">#physics</a> <a class="post-tag" href="./tags.html#ipython">#ipython</a>
+        </span>
+    </div>
+
+    <div class="post">
+        <a href="./wave.html" class="post-link">
+            <div class="title">🚧 Solving wave equation with SymPy</div>
+            
+        </a>
+
+        
+        
+        <time class="date">23 December 2018</time>
+
+        <span class="post-tags">
+            
+             <a class="post-tag" href="./tags.html#physics">#physics</a> <a class="post-tag" href="./tags.html#ipython">#ipython</a>
+        </span>
+    </div>
+
+
+</div>
 
 
         </main>
