@@ -7,8 +7,493 @@
         <description><![CDATA[feed]]></description>
         <atom:link href="https://beepb00p.xyz/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Sun, 12 Jan 2020 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Sat, 18 Jan 2020 00:00:00 UT</lastBuildDate>
         <item>
+    <title>In search for a better job scheduler</title>
+    <link>https://beepb00p.xyz/scheduler.html</link>
+    <description><![CDATA[<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="infra">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>In search for a better job scheduler | Mildly entertainingᵝ</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <!-- TODO make conditional?? -->
+        <link rel="stylesheet" href="./css/posts-list.css" /> 
+        <link rel="stylesheet" href="./css/links.css?v=4" />
+
+        
+
+        <link rel="canonical" href="https://beepb00p.xyz/scheduler.html" />
+
+        <!-- can test it with https://telegram.me/webpagebot -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://beepb00p.xyz/scheduler.html" /> <!-- TODO base? -->
+        <meta property="og:title" content="In search for a better job scheduler | beepb00p" />
+        <!-- TODO description? -->
+        <!-- ugh. why is image necessary??? -->
+        <meta property="og:image" content="notset" />
+
+    </head>
+    <body>
+        <!-- TODO make semantic -->
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    <!-- TODO eh, not sure if this symbol is good for that... -->
+                    ·
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                    ·
+                    <a class="fat" href="./notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
+                </span>
+                <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<!-- <link rel="stylesheet" href="/css/org.css" /> -->
+
+<link rel="stylesheet" href="./css/htmlize.css" />
+<link rel="stylesheet" href="./css/org-default.css" />
+
+<link rel="stylesheet" href="./css/org-extra.css?v=3" />
+
+
+
+<article>
+    
+    <section class="post-title">
+    <h1>In search for a better job scheduler</h1>
+    <div class="summary">What if cron and systemd had a baby? Wouldn't it be beautiful?</h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <p>
+To support my personal infrastructure, I need a fair amount of regular automatic jobs:
+</p>
+<ul class="org-ul">
+<li>for exporting <a href="my-data.html">my personal data</a> from the cloud</li>
+<li>for generating <a href="orger.html">plaintext</a> views of my digital trace</li>
+<li>for updating my <a href="orger-todos.html">todo lists</a></li>
+<li>lots of other backups and supplementary scripts</li>
+</ul>
+<p>
+Running all that manually (more than 100 scripts across all devices) is an awful job for a human.
+I want to set them up once and more or less forget about it, only checking now and then.
+</p>
+<p>
+In addition, I am trying to share my knowledge with other people, and it turns out not many people (even programmers, let alone less technical people) are using scheduling software in a personal capacity. So in this post I'll be speculation why it's hard and how to make it easier.
+</p>
+<p>
+I'll be considering pros and cons of job scheduling software mostly with the <b>emphasis on the <a href="./tags.html#infra">personal infrastructure</a></b>. 
+I'm sure there will be some aspects I'm missing out on, more specific to industrial-scale job management.
+</p>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#cron">1. cron</a></li>
+<li><a href="#systemd">2. systemd / launchd</a></li>
+<li><a href="#what_do_i_want">3. What do I need?</a></li>
+<li><a href="#other">4. What else did I try?</a></li>
+<li><a href="#solution">5. Solution?</a></li>
+<li><a href="#phone">6. Phone jobs?</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000000">
+<h2 id="cron"><a class="headerlink" href="#cron">¶</a><span class="section-number-2">1</span> <a href="https://en.wikipedia.org/wiki/Cron">cron</a></h2>
+<div class="outline-text-2" id="text-cron">
+<p>
+<b>Pros</b>:  
+</p>
+<ul class="org-ul">
+<li>once you get used to the cron scheduling syntax, it's very easy to actually add new jobs.</li>
+<li><p>
+easy to adjust
+</p>
+<p>
+You just type <code class="inline">crontab -e</code>, and you can insert/delete/comment jobs, overview when they are running, and space them out in time if necessary.
+Once you saved the crontab and exited, it's applied immediately
+</p></li>
+<li><p>
+even though systemd is present in most desktop Linux/Mac distributions, cron will <b>definitely</b> be there
+</p>
+<p>
+This probably doesn't matter if you're using a general purpose Linux distribution.
+</p></li>
+</ul>
+<p>
+<b>Cons</b>: anything else you can think of is extremely tedious and repetitive to achieve in cron.
+</p>
+<ul class="org-ul">
+<li><p>
+no periodic (i.e. 'once a day' scheduling), only supports specific time
+</p>
+<p>
+This is annoying when if you don't keep your computer always on.
+</p></li>
+<li>no job dependencies</li>
+<li>no timeouts and generally no means of resource management</li>
+<li>no restart policies</li>
+<li>no means of failure notifications apart from local email</li>
+<li>logs go to local mail by default and there are no other mechanisms of notification</li>
+<li><p>
+<a href="https://habilis.net/cronic/#disease">some bad defaults</a>
+</p>
+<p>
+Fun fact: cron only emails you if the job has produced output. If your job failed with nonzero exit code but produced no output you'd never find out. 
+</p></li>
+</ul>
+<p>
+Cron has some variations that help with some of these problems:
+</p>
+<ul class="org-ul">
+<li><a href="https://en.wikipedia.org/wiki/Anacron">anacron</a> – allows running commands periodically (e.g. weekly), but it can't run more frequently than once a day</li>
+<li><a href="https://wiki.archlinux.org/index.php/cron#Fcron">fcron</a>, which I'm <b>using at the moment</b>. Pretty decent:
+
+<ul class="org-ul">
+<li>unlike anacron, fully compatible with regular cron jobs and allows running periodically as well</li>
+<li>got lots of cool <a href="http://fcron.free.fr/doc/en/fcrontab.5.html">options</a>, e.g.:
+
+<ul class="org-ul">
+<li>setting <a href="http://fcron.free.fr/doc/en/fcrontab.5.html#FCRONTAB.5.NICE"><code class="inline">nice</code></a> value</li>
+<li><a href="http://fcron.free.fr/doc/en/fcrontab.5.html#FCRONTAB.5.LAVG"><code class="inline">lavg</code></a>: conditional running depending on load balancing</li>
+<li><a href="http://fcron.free.fr/doc/en/fcrontab.5.html#FCRONTAB.5.JITTER"><code class="inline">jitter</code></a>, <a href="http://fcron.free.fr/doc/en/fcrontab.5.html#FCRONTAB.5.RANDOM"><code class="inline">random</code></a></li>
+<li><a href="http://fcron.free.fr/doc/en/fcrontab.5.html#FCRONTAB.5.SERIAL"><code class="inline">serial</code></a> as a primitive way of specifying dependencies</li>
+<li><a href="http://fcron.free.fr/doc/en/fcrontab.5.html#FCRONTAB.5.EXESEV"><code class="inline">exesev</code></a> to prevent multiple instances of the same job (although it doesn't treat it as error)</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000001">
+<h2 id="systemd"><a class="headerlink" href="#systemd">¶</a><span class="section-number-2">2</span> <a href="https://en.wikipedia.org/wiki/Systemd">systemd</a> / <a href="https://en.wikipedia.org/wiki/Launchd">launchd</a></h2>
+<div class="outline-text-2" id="text-systemd">
+<p>
+Disclaimer: I'm not very familiar with Mac OS, but as far as I understand, launchd is very similar to systemd.
+</p>
+<p>
+Systemd is very powerful and flexible, supports timers, dependencies, restart policies, monitoring, logging, etc.
+</p>
+<p>
+<b>Pros</b>:
+</p>
+<ul class="org-ul">
+<li>timers</li>
+<li>dependencies</li>
+<li>resource policies (restricting memory and CPU, timeouts)</li>
+<li>restart policies (although <a href="https://github.com/systemd/systemd/issues/6129">no exponential backoff</a>)</li>
+<li><p>
+shared <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#EnvironmentFile">environments</a>
+</p>
+<p>
+It can be particularly helpful if a set of scripts shares certain libraries (e.g. <samp class="inline">PYTHONPATH</samp>) or data.
+</p></li>
+<li>tooling and monitoring</li>
+<li>logging</li>
+</ul>
+<p>
+<b>Cons</b>:
+</p>
+<ul class="org-ul">
+<li><p>
+tedious to add new jobs
+</p>
+<p>
+If you want to add a job, you need to:
+</p>
+<ul class="org-ul">
+<li><p>
+write a unit file
+</p>
+<p>
+Most of it is boilerplate, so good luck getting the syntax right.
+</p></li>
+<li>copy it to <samp class="inline">~/.config/systemd/user</samp></li>
+<li>remember to enable it the service</li>
+<li>remember to run <code class="inline">systemctl --user reload-daemon</code>.</li>
+</ul>
+<p>
+That's a <b>massive overhead</b> in comparison with <code class="inline">crontab -e</code>, edit, save.
+</p></li>
+<li><p>
+<b>units are scattered</b> across <samp class="inline">~/.config/systemd/user</samp>
+</p>
+<p>
+In cron if I have some boilerplate shared across several jobs (e.g. prefixed by ~nice= or <samp class="inline">timeout</samp> commands), or multiple
+very similar commands, I can tabulate them with spaces and use block editing in vim to add/remove/change it all at once, so there is little opportunity for error.
+</p>
+<p>
+In systemd I'd have two options:
+</p>
+<ul class="org-ul">
+<li>edit each unit file separately: boring and error-prone</li>
+<li>use a script to generate boilerplate for unit files and manage them</li>
+</ul></li>
+<li>error notifications (even mailing) requires some <a href="https://wiki.archlinux.org/index.php/Systemd/Timers#MAILTO">hacking</a></li>
+</ul>
+<p>
+Systemd feels like something desirable when scheduling services is your full time job, but not for personal scripts when everything is a bit more chaotic.
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000002">
+<h2 id="what_do_i_want"><a class="headerlink" href="#what_do_i_want">¶</a><span class="section-number-2">3</span> What do I need?</h2>
+<div class="outline-text-2" id="text-what_do_i_want">
+<p>
+I feel a serious lack of user-friendly job scheduling software for <b>personal</b> needs. I want it to be:
+</p>
+<ul class="org-ul">
+<li><p>
+<b>possible for regular people</b> to use
+</p>
+<p>
+"Regular" has different meaning for different people, so imagine someone starting to learn to program. They are capable of writing and running scripts, committing and pushing to git, etc. Imagine they want to run their script periodically:
+</p>
+<ul class="org-ul">
+<li><p>
+with <a class="link-up" href="#cron">cron</a>: I'd say the difficulty for them is somewhere around 5/10
+</p>
+<p>
+They need to run <samp class="inline">crontab -e</samp>, google the syntax, paste the path to their script, save and exit. That's it.
+</p></li>
+<li><p>
+with <a class="link-up" href="#systemd">systemd</a>: I'd say the difficulty is 9/10
+</p>
+<p>
+Several steps, confusing syntax and boilerplate, multiple different commands. It's not trivial even for experienced programmers.
+</p></li>
+</ul>
+<p>
+In addition, both of these would behave in confusing ways with respect to environment and error reporting.
+</p>
+<p>
+It's understandable why these systems are so complex (they are very powerful and flexible!), but it's not impossible to have an alternative and user-friendlier interface for simple (cron-like) usecases.
+</p></li>
+<li><p>
+as <b>easy to configure</b> as regular cron
+</p>
+<p>
+So you can edit the single plaintext configuration file, quickly adjust the jobs, check and apply configuration immediately.
+</p></li>
+<li><p>
+<b>better specs</b> for jobs
+</p>
+<p>
+dependencies, timeouts, resource policies and retries without hacky wrappers and boilerplate
+</p></li>
+<li><p>
+keeping configuration under <b>version control</b>
+</p>
+<p>
+This is easy with systemd, and also possible with cron (with some extra hacks).
+</p></li>
+<li><p>
+better means of <b>monitoring</b>
+</p>
+<p>
+How often are the jobs running? Which ones are most flaky? How much resources are they using? 
+</p></li>
+<li><p>
+simple way of running in <b>user's environment</b>
+</p>
+<p>
+It's understandable that cron/systemd shell environment is kept minimal, but for personal scripts, you want the same environment as in your interactive shell.
+</p></li>
+<li><p>
+means of <b>logging</b>
+</p>
+<p>
+E.g. easy logging to the filesystem for later inspection.
+</p></li>
+<li><p>
+means of <b>notification</b>
+</p>
+<p>
+E.g. alternative ways of failure notification (e.g. sending desktop/phone notification).
+</p>
+<p>
+Currently, I'm using <a href="https://wiki.archlinux.org/index.php/Mutt">mutt</a> for that which is fine, but TODO
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000003">
+<h2 id="other"><a class="headerlink" href="#other">¶</a><span class="section-number-2">4</span> What else did I try?</h2>
+<div class="outline-text-2" id="text-other">
+<p>
+Some of the tools I tried, none of which really satisfied me:
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/mesos/chronos">mesos/chronos</a>: too heavyweight to use personally</li>
+<li><a href="https://habilis.net/cronic">cronic</a>: simple wrapper that helps with emailing on non-zero exit code, but not much else.</li>
+<li><p>
+<a href="https://github.com/instacart/ohmycron">instacart/ohmycron</a>
+</p>
+<p>
+Supports locks to prevent simultaneous jobs, loads user environment and PATH.
+</p>
+<p>
+The interesting idea is setting it as a <a href="https://github.com/instacart/ohmycron#ohmycron-as-the-cron-shell">cron shell</a>, which can enhance cron syntax.
+</p></li>
+<li><p>
+<a href="https://dshearer.github.io/jobber/doc/v1.4/#jobfile">jobber</a>: looks the most promising so far
+</p>
+<p>
+Supported:
+</p>
+<ul class="org-ul">
+<li>plaintext configuration (yaml)</li>
+<li>job execution history</li>
+<li>quickly testing jobs</li>
+<li>pausing/resuming jobs</li>
+<li>success/failure notifications</li>
+<li>backoffs (although they weren't configurable last time I checked)</li>
+</ul>
+<p>
+However, still no timeouts, dependencies, and jobs can only run at the schedule, like <a class="link-up" href="#cron">cron</a>.
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000004">
+<h2 id="solution"><a class="headerlink" href="#solution">¶</a><span class="section-number-2">5</span> Solution?</h2>
+<div class="outline-text-2" id="text-solution">
+<p>
+<a class="link-up" href="#systemd">Systemd</a> feels almost perfect except for its boilerplate and being somewhat user-unfriendly.
+</p>
+<p>
+What if we took the good bit that cron has (easy means of editing jobs), and tried to do the same within systemd?
+</p>
+<p>
+Imagine a frontend (let's name it <code class="inline">systemdtab</code>), that gave something similar to cron experience:
+</p>
+<ul class="org-ul">
+<li><p>
+you type <code class="inline">systemdtab -e</code>, and that opens the text editor with your configuration
+</p>
+<p>
+You can adjust your jobs as you wish, save the file and exit. It can check syntax the same way <code class="inline">crontab -e</code> checks it, and prompt you to try again.
+</p>
+<p>
+Once you exit, your changes are applied automatically: 
+</p>
+<ul class="org-ul">
+<li><samp class="inline">systemdtab</samp> generates individual unit files from your output</li>
+<li>replaces the old unit files with the new ones and restarts the daemon</li>
+</ul></li>
+<li><p>
+considering the boilerplate, it seems that this 'systemdtab' could be a script that generates the actual unit files
+</p>
+<p>
+It doesn't matter which language is used, it could be bash, python or anything. It would allow one to massively save on boilerplate if you're running sets of similar jobs.
+</p></li>
+<li>the configuration is kept in a text file (e.g. <samp class="inline">~/.systemdtab</samp>), which makes it trivial to inspect and keep under version control.</li>
+</ul>
+<p>
+This doesn't have to be a replacement or something, <samp class="inline">systemdtab</samp> can manage its own set of unit files, completely separate from the rest of the services.
+</p>
+<p>
+<span style="color:darkorange"><strong>Does such a tool exist?</strong></span> It feels like it's possible to hack an implementation, that would satisfy me fairly quickly, but is there really nothing existing? Please let me know!
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000005">
+<h2 id="phone"><a class="headerlink" href="#phone">¶</a><span class="section-number-2">6</span> Phone jobs?</h2>
+<div class="outline-text-2" id="text-phone">
+<p>
+That's another problem I sort of solved for myself, but not fully satisfied.
+</p>
+<p>
+I need to export app data regularly from my (rooted) Android phone (e.g. see <a href="file:///my-data.html#bluemaestro">here</a>). Export scripts themselves are trivial, it's just a matter of copying files from <samp class="inline">/data/data/</samp> directory. However, there is no software for Android to run these scripts regularly.
+</p>
+<p>
+At the moment, I'm using <a href="https://llamalab.com/automate">Automate app</a> to run them. Automate is great, but it feels a bit wrong running a shell script using a complex flowchart, so I'd be interested to know if there are simpler alternatives.
+</p>
+<p>
+Ideally, it would be a simple app that allows running shell scripts at regular intervals, keeping logs and notifying when they fail. 
+</p>
+<p>
+<span style="color:darkorange"><strong>Is there such an app?</strong></span> Please let me know if you know one!
+</p>
+</div>
+</div>
+
+    </section>
+
+    
+    <section class="footer">
+        <div class="post-tags"><a class="post-tag" href="./tags.html#infra">#infra</a></div>
+        <!-- TODO post-date? -->
+        <div class="date">18 January 2020</div>
+    </section>
+    
+
+    
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_scheduler"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
+        
+
+        <!-- TODO make semantic -->
+        <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
+
+            <a href="http://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>
+            
+            
+        </footer>
+    </body>
+</html>
+]]></description>
+    <pubDate>Sat, 18 Jan 2020 00:00:00 UT</pubDate>
+    <guid>https://beepb00p.xyz/scheduler.html</guid>
+    <dc:creator>karlicoss</dc:creator>
+</item>
+<item>
     <title>What data on myself I collect and why?</title>
     <link>https://beepb00p.xyz/my-data.html</link>
     <description><![CDATA[<!doctype html>
@@ -90,7 +575,7 @@
     
     <section class="post-title">
     <h1>What data on myself I collect and why?</h1>
-    
+    <div class="summary">How I am using 50+ sources of my personal data</h2>
     </section>
     <!-- are sections appropriate for that? -->
 
@@ -1316,10 +1801,7 @@ It might seem like a long rant, but I promise you I am not the kind of person wh
 </p>
 <p>
 In this particular post, I'm just building up motivation and engaging you, and I <a class="link-down" href="#what_do_i_do">do have</a> some workarounds and suggestions.
-This article got long enough, so I will explain them in detail in the second part.
-</p>
-<p>
-I also didn't want to mix discussions on motivation (this one) and my take on implementation (which will follow).
+This article got long enough, I also didn't want to mix discussions on motivation (this one) and my take on implementation (which will follow).
 </p>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
@@ -8794,836 +9276,6 @@ To get around that there is a somewhat hacky <a href="https://github.com/karlico
 ]]></description>
     <pubDate>Thu, 12 Sep 2019 00:00:00 UT</pubDate>
     <guid>https://beepb00p.xyz/cloudmacs.html</guid>
-    <dc:creator>karlicoss</dc:creator>
-</item>
-<item>
-    <title>Making sense of Endomondo's calorie estimation</title>
-    <link>https://beepb00p.xyz/heartbeats_vs_kcals.html</link>
-    <description><![CDATA[<!doctype html>
-<html lang="en" prefix="og: http://ogp.me/ns#">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!-- Icon made by Twitter -->
-        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
-        <link rel="icon" href="./robot-face.png">
-        <link rel="apple-touch-icon" href="./robot-face.png">
-
-        <meta name="generator" content="hakyll">
-        <meta name="language" content="English">
-        
-        <meta name="keywords" content="quantified-self exercise ipython">
-        
-        <!-- TODO concat with keywords tags; also need to make comma separated? -->
-
-        <title>Making sense of Endomondo's calorie estimation | Mildly entertainingᵝ</title>
-
-        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="./css/default.css?v=3" />
-        <!-- TODO make conditional?? -->
-        <link rel="stylesheet" href="./css/posts-list.css" /> 
-        <link rel="stylesheet" href="./css/links.css?v=4" />
-
-        
-        <script type="text/javascript">
- window.MathJax = {
-     tex2jax: {
-         // note that hakyll source has got double dollar signs due to special meaning in templates
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         processEscapes: true
-     }
- };
-</script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-        
-
-        <link rel="canonical" href="https://beepb00p.xyz/heartbeats_vs_kcals.html" />
-
-        <!-- can test it with https://telegram.me/webpagebot -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://beepb00p.xyz/heartbeats_vs_kcals.html" /> <!-- TODO base? -->
-        <meta property="og:title" content="Making sense of Endomondo's calorie estimation | beepb00p" />
-        <!-- TODO description? -->
-        <!-- ugh. why is image necessary??? -->
-        <meta property="og:image" content="notset" />
-
-    </head>
-    <body>
-        <!-- TODO make semantic -->
-        <header>
-            <nav>
-                <span class="nav-left">
-                    <a class="fat" href="./">Home</a>
-                    <!-- TODO eh, not sure if this symbol is good for that... -->
-                    ·
-                    <a class="fat" href="./ideas.html">Ideas</a>
-                    ·
-                    <a class="fat" href="./notes.html">Notes</a>
-                    ·
-                    <a class="fat" href="./tags.html">Tags</a>
-                </span>
-                <span class="nav-right">
-                    <a class="fat" href="./feed.html">Feed</a>
-                    ·
-                    <a class="fat" href="./site.html">Site</a>
-                    ·
-                    <a class="fat" href="./me.html">Me</a>
-                </span>
-            </nav>
-        </header>
-
-        <main>
-            
-<link rel="stylesheet" href="./css/ipynb.css" />
-<link rel="stylesheet" href="./css/ipynb-syntax.css" />
-
-
-
-
-<article>
-    
-    <section class="post-title">
-    <h1>Making sense of Endomondo's calorie estimation</h1>
-    
-    </section>
-    <!-- are sections appropriate for that? -->
-
-    <section class="content">
-    
-
-
-    
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The other day I got curious how Endomondo estimates energy expenditure during the exercise.</p>
-<p>On <a href="https://support.endomondo.com/hc/en-us/articles/201861383-Calories">their website</a>, they mention some paywalled paper, but no specifics, so I figured it'd be interesting to reverse engineer that myself. I've extracted endomondo data from their JSON export and plotted a regression.</p>
-<p>I'm using <a href="https://uk.wahoofitness.com/devices/heart-rate-monitors/wahoo-tickr-x-heart-rate-strap">Wahoo TickrX chest strap monitor</a>, so the HR data coming from it is pretty decent.</p>
-
-</div>
-</div>
-</div>
-
-
-
-
-
-    
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>First, I'm importing the dataframe from the python package I'm using to interact with my data. I write about it <a href="https://beepb00p.xyz/mypkg.html">here</a>.</p>
-<p>All the data is provided by this package, but otherwise it's just a Pandas dataframe, so hopefully, that wouldn't confuse you.</p>
-
-</div>
-</div>
-</div>
-
-
-
-
-
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">my.workouts.dataframes</span> <span class="k">import</span> <span class="n">endomondo</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">endomondo</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>WARNING:workout-provider:Unhandled: Cycling
-WARNING:workout-provider:Unhandled: Cycling
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-
-
-
-
-
-    
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Some sample data:</p>
-
-</div>
-</div>
-</div>
-
-
-
-
-
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'dt'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">dt</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">()))</span> <span class="o">==</span> <span class="s1">'2019-04-21'</span><span class="p">])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>dt</th>
-      <th>sport</th>
-      <th>heartbeats</th>
-      <th>kcal</th>
-      <th>error</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>384</th>
-      <td>2019-04-21 10:11:28+00:00</td>
-      <td>Rope jumping</td>
-      <td>3873.500000</td>
-      <td>310.0</td>
-      <td>None</td>
-    </tr>
-    <tr>
-      <th>385</th>
-      <td>2019-04-21 10:47:58+00:00</td>
-      <td>Running</td>
-      <td>2860.666667</td>
-      <td>248.0</td>
-      <td>None</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-
-
-
-
-
-    
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Sport type is entered manually when you start recording exercise activity in Endomondo.</p>
-<p>Heartbeats were calculated as average HR multiplied by the duration of the exercise.</p>
-<p>Error column is a neat way of propagating exceptions from the data provider.
-E.g. I only have HR data for the last couple of years or so, so data provider doesn't have any of HR points from endomondo. While I could filter out these points in the data provider, they might still be useful for other plots and analysis pipelines (e.g. if I was actually only interested in kcals and didn't hare about heartbeats).</p>
-<p>Instead, I'm just being defensive and propagating exceptions up through the dataframe, leaving it up to the user to handle them.</p>
-
-</div>
-</div>
-</div>
-
-
-
-
-
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'dt'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">dt</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span><span class="p">()))</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">'2015-03-06'</span><span class="p">,</span> <span class="s1">'2018-05-28'</span><span class="p">])])</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>dt</th>
-      <th>sport</th>
-      <th>heartbeats</th>
-      <th>kcal</th>
-      <th>error</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>17</th>
-      <td>2015-03-06 05:50:38+00:00</td>
-      <td>Running</td>
-      <td>NaN</td>
-      <td>397.0</td>
-      <td>no hr</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>2015-03-06 13:20:06+00:00</td>
-      <td>Table tennis</td>
-      <td>NaN</td>
-      <td>127.0</td>
-      <td>no hr</td>
-    </tr>
-    <tr>
-      <th>297</th>
-      <td>2018-05-28 10:11:45+00:00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Unhandled activity: Cycling</td>
-    </tr>
-    <tr>
-      <th>298</th>
-      <td>2018-05-28 12:58:33+00:00</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>Unhandled activity: Cycling</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-
-
-
-
-
-    
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>So, first we filter out the entries with errors:</p>
-
-</div>
-</div>
-</div>
-
-
-
-
-
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">'error'</span><span class="p">]</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'sport'</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">'Other'</span><span class="p">)]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-
-
-
-
-
-    
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>As well as some random entries which would end up as outliers:</p>
-
-</div>
-</div>
-</div>
-
-
-
-
-
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'sport'</span><span class="p">])</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">grp</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">grp</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">10</span><span class="p">)</span> 
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-
-
-
-
-
-   
-   <details class="cell-collapsed">
-   <summary>hack to make seaborn plots deterministic <span class="cell-collapsed-expand">(click to expand)</span></summary>
-       
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="c1"># TODO after 0.9.0+ released, use 'seed' argument in plots? https://github.com/mwaskom/seaborn/pull/1926</span>
-<span class="c1"># also add # truncate=False for regplot/lmplot</span>
-<span class="k">if</span> <span class="n">sns</span><span class="o">.</span><span class="n">algorithms</span><span class="o">.</span><span class="n">bootstrap</span><span class="o">.</span><span class="vm">__module__</span> <span class="o">==</span> <span class="s1">'seaborn.algorithms'</span><span class="p">:</span>
-    <span class="c1"># prevents nondeterminism in plots https://github.com/mwaskom/seaborn/issues/1924</span>
-    <span class="c1"># we only want to do it once</span>
-    <span class="k">def</span> <span class="nf">bootstrap_hacked</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">bootstrap_orig</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">algorithms</span><span class="o">.</span><span class="n">bootstrap</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">bootstrap_orig</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-    
-    <span class="n">sns</span><span class="o">.</span><span class="n">algorithms</span><span class="o">.</span><span class="n">bootstrap</span> <span class="o">=</span> <span class="n">bootstrap_hacked</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-   </details>
-
-
-
-
-
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">'seaborn'</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">font_scale</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
-
-<span class="n">sports</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">g</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span><span class="p">,</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'sport'</span><span class="p">])</span>
-<span class="p">}</span>
-
-<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span>
-    <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span>
-    <span class="n">x</span><span class="o">=</span><span class="s1">'heartbeats'</span><span class="p">,</span>
-    <span class="n">y</span><span class="o">=</span><span class="s1">'kcal'</span><span class="p">,</span>
-    <span class="n">hue</span><span class="o">=</span><span class="s1">'sport'</span><span class="p">,</span> 
-    <span class="n">hue_order</span><span class="o">=</span><span class="n">sports</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
-    <span class="n">legend_out</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">height</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
-    <span class="n">palette</span><span class="o">=</span><span class="s1">'colorblind'</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">ax</span> <span class="o">=</span> <span class="n">g</span><span class="o">.</span><span class="n">ax</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Dependency of energy spent during exercise on number of heartbeats'</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'Total heartbeats, measured by chest strap HR monitor'</span><span class="p">)</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'Kcal,</span><span class="se">\n</span><span class="s1">Endomondo</span><span class="se">\n</span><span class="s1">estimate'</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
-
-<span class="c1"># https://stackoverflow.com/a/55108651/706389</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span>
-    <span class="n">title</span><span class="o">=</span><span class="s1">'Sport'</span><span class="p">,</span>
-    <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="n">f</span><span class="s1">'</span><span class="si">{s}</span><span class="s1"> (</span><span class="si">{cnt}</span><span class="s1"> points)'</span> <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="n">cnt</span> <span class="ow">in</span> <span class="n">sports</span><span class="o">.</span><span class="n">items</span><span class="p">()],</span>
-    <span class="n">loc</span><span class="o">=</span><span class="s1">'upper left'</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="k">pass</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_png output_subarea ">
-<img src="heartbeats_vs_kcals_files/heartbeats_vs_kcals_12_0.png">
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-
-
-
-
-
-    
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Unsurprisingly, it looks like a simple linear model (considering my weight and age have barely changed).</p>
-<p>What I find unexpected is that the slope/regression coefficient (i.e. calories burnt per heartbeat) is more or less the same. Personally, for me running feels way more intense than any of other cardio I'm doing, definitely way harder than skiing! There are two possibilities here:</p>
-<ul>
-<li><p>Endomondo can't capture dynamic muscle activity and isn't even trying to use exercise type provided by the user for a better estimate.</p>
-</li>
-<li><p>Energy is mostly burnt by the heart and other muscles don't actually matter or have a very minor impact.</p>
-</li>
-</ul>
-<p>Let's try and check the latter via some back of an envelope calculation.</p>
-<p>In order to run, you use your chemical energy to move your body up and forward. For simplicity, let's only consider 'up' movements that go against gravity, it feels like these would dominate energy spendings. So let's model running as a sequence of vertical jumps. My estimate would be that when you run you jumps are about 5 cm in height.</p>
-<p>We can find out how much energy each jump takes by using $\Delta U = m g \Delta h$ <a href="https://en.wikipedia.org/wiki/Potential_energy#Gravitational_potential_energy">formula</a>.</p>
-
-</div>
-</div>
-</div>
-
-
-
-
-
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">g</span> <span class="o">=</span> <span class="mf">9.82</span> <span class="c1"># standard Earth gravity</span>
-<span class="n">weight</span> <span class="o">=</span> <span class="mi">65</span> <span class="c1"># kg</span>
-<span class="n">stride_height</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">/</span> <span class="mi">100</span> <span class="c1"># convert cm to m</span>
-
-<span class="n">strides_per_minute</span> <span class="o">=</span> <span class="mi">160</span> <span class="c1"># ish, varies for different people</span>
-<span class="n">duration</span> <span class="o">=</span> <span class="mi">60</span> <span class="c1"># minutes</span>
-<span class="n">joules_in_kcal</span> <span class="o">=</span> <span class="mi">4184</span> 
-
-<span class="n">energy_per_stride</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">*</span> <span class="n">g</span> <span class="o">*</span> <span class="n">stride_height</span>
-
-<span class="n">leg_energy_kcal</span> <span class="o">=</span> <span class="n">energy_per_stride</span> <span class="o">*</span>  <span class="n">strides_per_minute</span> <span class="o">*</span> <span class="n">duration</span> <span class="o">/</span> <span class="n">joules_in_kcal</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">leg_energy_kcal</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>73.22753346080309
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-
-
-
-
-
-    
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>So, 70 kcal is fairly low in comparison with typical numbers Endomondo reports for my exercise.</p>
-<p>This is a very rough calculation of course:</p>
-<ul>
-<li>In reality movements during running are more complex, so it could be an underestimate</li>
-<li>On the other hand, feet can also spring, so not all energy spent on the stride is lost completely, so it could be an overestimate</li>
-</ul>
-<p>With regards to the actual value of the regression coefficient: seaborn <a href="https://github.com/mwaskom/seaborn/issues/655#issuecomment-370079702">wouldn't let you</a> display them on the regplot, so we use <code>sklearn</code> to do that for us:</p>
-
-</div>
-</div>
-</div>
-
-
-
-
-
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">linear_model</span>
-
-<span class="n">reg</span> <span class="o">=</span> <span class="n">linear_model</span><span class="o">.</span><span class="n">LinearRegression</span><span class="p">()</span>
-<span class="n">reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">'heartbeats'</span><span class="p">]],</span> <span class="n">df</span><span class="p">[</span><span class="s1">'kcal'</span><span class="p">])</span>
-
-<span class="p">[</span><span class="n">coef</span><span class="p">]</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">coef_</span>
-<span class="n">free</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">intercept_</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Regression coefficient: </span><span class="si">{coef:.3f}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Free term: </span><span class="si">{free:.3f}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Regression coefficient: 0.093
-Free term: -9.281
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-
-
-
-
-
-    
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Basically, that means I get about <code>0.1</code> Kcal for each heartbeat during exercise. Free term ideally should be equal to <code>0</code> (i.e. just as a sanity sort of thing: not having heartbeat shouldn't result in calorie loss), and <code>-10</code> is close enough.</p>
-<p>Also, fun calculation: what if we fit the model we got to normal, resting heart rate?</p>
-
-</div>
-</div>
-</div>
-
-
-
-
-
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">normal_bpm</span> <span class="o">=</span> <span class="mi">60</span>
-<span class="n">minutes_in_day</span> <span class="o">=</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">60</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s1">'{coef * normal_bpm * minutes_in_day:.3f}'</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>8067.127
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-
-
-
-
-
-    
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>8K Kcals per day? A bit too much for an average person. I wouldn't draw any conclusions from that one though :)</p>
-
-</div>
-</div>
-</div>
-
-
-
-
-
-    
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>You can find the source of this notebook <a href="https://github.com/karlicoss/endomondo-kcal-analysis">here</a>.</p>
-
-</div>
-</div>
-</div>
-
-
-
- 
-
-
-    </section>
-
-    
-    <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#quantified-self">#quantified-self</a> <a class="post-tag" href="./tags.html#exercise">#exercise</a> <a class="post-tag" href="./tags.html#ipython">#ipython</a></div>
-        <!-- TODO post-date? -->
-        <div class="date">03 August 2019</div>
-    </section>
-    
-
-    
-    <br>
-    <div>Discussion:</div>
-    <ul>
-    
-        <li><a href="https://www.reddit.com/r/dataisbeautiful/comments/cmqfeu/oc_dependency_of_energy_spent_during_exercise_on">/r/dataisbeautiful</a></li>
-    
-    </ul>
-    
-
-    <section class="comments">
-    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
-</script>
-
-<section id="isso-thread" data-isso-id="isso_endomondo_kcal_heartbeats"></section>
-
-    </section>
-
-</article>
-
-        </main>
-
-        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
-        
-
-        <!-- TODO make semantic -->
-        <footer>
-            <span style="float:left">
-            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
-            ·
-            <a href="https://github.com/karlicoss">💻 me @github</a>
-            </span>
-
-            <a href="http://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>
-            
-            
-        </footer>
-    </body>
-</html>
-]]></description>
-    <pubDate>Sat, 03 Aug 2019 00:00:00 UT</pubDate>
-    <guid>https://beepb00p.xyz/heartbeats_vs_kcals.html</guid>
     <dc:creator>karlicoss</dc:creator>
 </item>
 

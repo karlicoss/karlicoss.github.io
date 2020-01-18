@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="infra">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>In search for a better job scheduler | Mildly entertainingᵝ</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <!-- TODO make conditional?? -->
+        <link rel="stylesheet" href="./css/posts-list.css" /> 
+        <link rel="stylesheet" href="./css/links.css?v=4" />
+
+        
+
+        <link rel="canonical" href="https://beepb00p.xyz/scheduler.html" />
+
+        <!-- can test it with https://telegram.me/webpagebot -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://beepb00p.xyz/scheduler.html" /> <!-- TODO base? -->
+        <meta property="og:title" content="In search for a better job scheduler | beepb00p" />
+        <!-- TODO description? -->
+        <!-- ugh. why is image necessary??? -->
+        <meta property="og:image" content="notset" />
+
+    </head>
+    <body>
+        <!-- TODO make semantic -->
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    <!-- TODO eh, not sure if this symbol is good for that... -->
+                    ·
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                    ·
+                    <a class="fat" href="./notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
+                </span>
+                <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<!-- <link rel="stylesheet" href="/css/org.css" /> -->
+
+<link rel="stylesheet" href="./css/htmlize.css" />
+<link rel="stylesheet" href="./css/org-default.css" />
+
+<link rel="stylesheet" href="./css/org-extra.css?v=3" />
+
+
+
+<article>
+    
+    <section class="post-title">
+    <h1>In search for a better job scheduler</h1>
+    <div class="summary">What if cron and systemd had a baby? Wouldn't it be beautiful?</h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <p>
+To support my personal infrastructure, I need a fair amount of regular automatic jobs:
+</p>
+<ul class="org-ul">
+<li>for exporting <a href="my-data.html">my personal data</a> from the cloud</li>
+<li>for generating <a href="orger.html">plaintext</a> views of my digital trace</li>
+<li>for updating my <a href="orger-todos.html">todo lists</a></li>
+<li>lots of other backups and supplementary scripts</li>
+</ul>
+<p>
+Running all that manually (more than 100 scripts across all devices) is an awful job for a human.
+I want to set them up once and more or less forget about it, only checking now and then.
+</p>
+<p>
+In addition, I am trying to share my knowledge with other people, and it turns out not many people (even programmers, let alone less technical people) are using scheduling software in a personal capacity. So in this post I'll be speculation why it's hard and how to make it easier.
+</p>
+<p>
+I'll be considering pros and cons of job scheduling software mostly with the <b>emphasis on the <a href="./tags.html#infra">personal infrastructure</a></b>. 
+I'm sure there will be some aspects I'm missing out on, more specific to industrial-scale job management.
+</p>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#cron">1. cron</a></li>
+<li><a href="#systemd">2. systemd / launchd</a></li>
+<li><a href="#what_do_i_want">3. What do I need?</a></li>
+<li><a href="#other">4. What else did I try?</a></li>
+<li><a href="#solution">5. Solution?</a></li>
+<li><a href="#phone">6. Phone jobs?</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000000">
+<h2 id="cron"><a class="headerlink" href="#cron">¶</a><span class="section-number-2">1</span> <a href="https://en.wikipedia.org/wiki/Cron">cron</a></h2>
+<div class="outline-text-2" id="text-cron">
+<p>
+<b>Pros</b>:  
+</p>
+<ul class="org-ul">
+<li>once you get used to the cron scheduling syntax, it's very easy to actually add new jobs.</li>
+<li><p>
+easy to adjust
+</p>
+<p>
+You just type <code class="inline">crontab -e</code>, and you can insert/delete/comment jobs, overview when they are running, and space them out in time if necessary.
+Once you saved the crontab and exited, it's applied immediately
+</p></li>
+<li><p>
+even though systemd is present in most desktop Linux/Mac distributions, cron will <b>definitely</b> be there
+</p>
+<p>
+This probably doesn't matter if you're using a general purpose Linux distribution.
+</p></li>
+</ul>
+<p>
+<b>Cons</b>: anything else you can think of is extremely tedious and repetitive to achieve in cron.
+</p>
+<ul class="org-ul">
+<li><p>
+no periodic (i.e. 'once a day' scheduling), only supports specific time
+</p>
+<p>
+This is annoying when if you don't keep your computer always on.
+</p></li>
+<li>no job dependencies</li>
+<li>no timeouts and generally no means of resource management</li>
+<li>no restart policies</li>
+<li>no means of failure notifications apart from local email</li>
+<li>logs go to local mail by default and there are no other mechanisms of notification</li>
+<li><p>
+<a href="https://habilis.net/cronic/#disease">some bad defaults</a>
+</p>
+<p>
+Fun fact: cron only emails you if the job has produced output. If your job failed with nonzero exit code but produced no output you'd never find out. 
+</p></li>
+</ul>
+<p>
+Cron has some variations that help with some of these problems:
+</p>
+<ul class="org-ul">
+<li><a href="https://en.wikipedia.org/wiki/Anacron">anacron</a> – allows running commands periodically (e.g. weekly), but it can't run more frequently than once a day</li>
+<li><a href="https://wiki.archlinux.org/index.php/cron#Fcron">fcron</a>, which I'm <b>using at the moment</b>. Pretty decent:
+
+<ul class="org-ul">
+<li>unlike anacron, fully compatible with regular cron jobs and allows running periodically as well</li>
+<li>got lots of cool <a href="http://fcron.free.fr/doc/en/fcrontab.5.html">options</a>, e.g.:
+
+<ul class="org-ul">
+<li>setting <a href="http://fcron.free.fr/doc/en/fcrontab.5.html#FCRONTAB.5.NICE"><code class="inline">nice</code></a> value</li>
+<li><a href="http://fcron.free.fr/doc/en/fcrontab.5.html#FCRONTAB.5.LAVG"><code class="inline">lavg</code></a>: conditional running depending on load balancing</li>
+<li><a href="http://fcron.free.fr/doc/en/fcrontab.5.html#FCRONTAB.5.JITTER"><code class="inline">jitter</code></a>, <a href="http://fcron.free.fr/doc/en/fcrontab.5.html#FCRONTAB.5.RANDOM"><code class="inline">random</code></a></li>
+<li><a href="http://fcron.free.fr/doc/en/fcrontab.5.html#FCRONTAB.5.SERIAL"><code class="inline">serial</code></a> as a primitive way of specifying dependencies</li>
+<li><a href="http://fcron.free.fr/doc/en/fcrontab.5.html#FCRONTAB.5.EXESEV"><code class="inline">exesev</code></a> to prevent multiple instances of the same job (although it doesn't treat it as error)</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000001">
+<h2 id="systemd"><a class="headerlink" href="#systemd">¶</a><span class="section-number-2">2</span> <a href="https://en.wikipedia.org/wiki/Systemd">systemd</a> / <a href="https://en.wikipedia.org/wiki/Launchd">launchd</a></h2>
+<div class="outline-text-2" id="text-systemd">
+<p>
+Disclaimer: I'm not very familiar with Mac OS, but as far as I understand, launchd is very similar to systemd.
+</p>
+<p>
+Systemd is very powerful and flexible, supports timers, dependencies, restart policies, monitoring, logging, etc.
+</p>
+<p>
+<b>Pros</b>:
+</p>
+<ul class="org-ul">
+<li>timers</li>
+<li>dependencies</li>
+<li>resource policies (restricting memory and CPU, timeouts)</li>
+<li>restart policies (although <a href="https://github.com/systemd/systemd/issues/6129">no exponential backoff</a>)</li>
+<li><p>
+shared <a href="https://www.freedesktop.org/software/systemd/man/systemd.exec.html#EnvironmentFile">environments</a>
+</p>
+<p>
+It can be particularly helpful if a set of scripts shares certain libraries (e.g. <samp class="inline">PYTHONPATH</samp>) or data.
+</p></li>
+<li>tooling and monitoring</li>
+<li>logging</li>
+</ul>
+<p>
+<b>Cons</b>:
+</p>
+<ul class="org-ul">
+<li><p>
+tedious to add new jobs
+</p>
+<p>
+If you want to add a job, you need to:
+</p>
+<ul class="org-ul">
+<li><p>
+write a unit file
+</p>
+<p>
+Most of it is boilerplate, so good luck getting the syntax right.
+</p></li>
+<li>copy it to <samp class="inline">~/.config/systemd/user</samp></li>
+<li>remember to enable it the service</li>
+<li>remember to run <code class="inline">systemctl --user reload-daemon</code>.</li>
+</ul>
+<p>
+That's a <b>massive overhead</b> in comparison with <code class="inline">crontab -e</code>, edit, save.
+</p></li>
+<li><p>
+<b>units are scattered</b> across <samp class="inline">~/.config/systemd/user</samp>
+</p>
+<p>
+In cron if I have some boilerplate shared across several jobs (e.g. prefixed by ~nice= or <samp class="inline">timeout</samp> commands), or multiple
+very similar commands, I can tabulate them with spaces and use block editing in vim to add/remove/change it all at once, so there is little opportunity for error.
+</p>
+<p>
+In systemd I'd have two options:
+</p>
+<ul class="org-ul">
+<li>edit each unit file separately: boring and error-prone</li>
+<li>use a script to generate boilerplate for unit files and manage them</li>
+</ul></li>
+<li>error notifications (even mailing) requires some <a href="https://wiki.archlinux.org/index.php/Systemd/Timers#MAILTO">hacking</a></li>
+</ul>
+<p>
+Systemd feels like something desirable when scheduling services is your full time job, but not for personal scripts when everything is a bit more chaotic.
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000002">
+<h2 id="what_do_i_want"><a class="headerlink" href="#what_do_i_want">¶</a><span class="section-number-2">3</span> What do I need?</h2>
+<div class="outline-text-2" id="text-what_do_i_want">
+<p>
+I feel a serious lack of user-friendly job scheduling software for <b>personal</b> needs. I want it to be:
+</p>
+<ul class="org-ul">
+<li><p>
+<b>possible for regular people</b> to use
+</p>
+<p>
+"Regular" has different meaning for different people, so imagine someone starting to learn to program. They are capable of writing and running scripts, committing and pushing to git, etc. Imagine they want to run their script periodically:
+</p>
+<ul class="org-ul">
+<li><p>
+with <a class="link-up" href="#cron">cron</a>: I'd say the difficulty for them is somewhere around 5/10
+</p>
+<p>
+They need to run <samp class="inline">crontab -e</samp>, google the syntax, paste the path to their script, save and exit. That's it.
+</p></li>
+<li><p>
+with <a class="link-up" href="#systemd">systemd</a>: I'd say the difficulty is 9/10
+</p>
+<p>
+Several steps, confusing syntax and boilerplate, multiple different commands. It's not trivial even for experienced programmers.
+</p></li>
+</ul>
+<p>
+In addition, both of these would behave in confusing ways with respect to environment and error reporting.
+</p>
+<p>
+It's understandable why these systems are so complex (they are very powerful and flexible!), but it's not impossible to have an alternative and user-friendlier interface for simple (cron-like) usecases.
+</p></li>
+<li><p>
+as <b>easy to configure</b> as regular cron
+</p>
+<p>
+So you can edit the single plaintext configuration file, quickly adjust the jobs, check and apply configuration immediately.
+</p></li>
+<li><p>
+<b>better specs</b> for jobs
+</p>
+<p>
+dependencies, timeouts, resource policies and retries without hacky wrappers and boilerplate
+</p></li>
+<li><p>
+keeping configuration under <b>version control</b>
+</p>
+<p>
+This is easy with systemd, and also possible with cron (with some extra hacks).
+</p></li>
+<li><p>
+better means of <b>monitoring</b>
+</p>
+<p>
+How often are the jobs running? Which ones are most flaky? How much resources are they using? 
+</p></li>
+<li><p>
+simple way of running in <b>user's environment</b>
+</p>
+<p>
+It's understandable that cron/systemd shell environment is kept minimal, but for personal scripts, you want the same environment as in your interactive shell.
+</p></li>
+<li><p>
+means of <b>logging</b>
+</p>
+<p>
+E.g. easy logging to the filesystem for later inspection.
+</p></li>
+<li><p>
+means of <b>notification</b>
+</p>
+<p>
+E.g. alternative ways of failure notification (e.g. sending desktop/phone notification).
+</p>
+<p>
+Currently, I'm using <a href="https://wiki.archlinux.org/index.php/Mutt">mutt</a> for that which is fine, but TODO
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000003">
+<h2 id="other"><a class="headerlink" href="#other">¶</a><span class="section-number-2">4</span> What else did I try?</h2>
+<div class="outline-text-2" id="text-other">
+<p>
+Some of the tools I tried, none of which really satisfied me:
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/mesos/chronos">mesos/chronos</a>: too heavyweight to use personally</li>
+<li><a href="https://habilis.net/cronic">cronic</a>: simple wrapper that helps with emailing on non-zero exit code, but not much else.</li>
+<li><p>
+<a href="https://github.com/instacart/ohmycron">instacart/ohmycron</a>
+</p>
+<p>
+Supports locks to prevent simultaneous jobs, loads user environment and PATH.
+</p>
+<p>
+The interesting idea is setting it as a <a href="https://github.com/instacart/ohmycron#ohmycron-as-the-cron-shell">cron shell</a>, which can enhance cron syntax.
+</p></li>
+<li><p>
+<a href="https://dshearer.github.io/jobber/doc/v1.4/#jobfile">jobber</a>: looks the most promising so far
+</p>
+<p>
+Supported:
+</p>
+<ul class="org-ul">
+<li>plaintext configuration (yaml)</li>
+<li>job execution history</li>
+<li>quickly testing jobs</li>
+<li>pausing/resuming jobs</li>
+<li>success/failure notifications</li>
+<li>backoffs (although they weren't configurable last time I checked)</li>
+</ul>
+<p>
+However, still no timeouts, dependencies, and jobs can only run at the schedule, like <a class="link-up" href="#cron">cron</a>.
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000004">
+<h2 id="solution"><a class="headerlink" href="#solution">¶</a><span class="section-number-2">5</span> Solution?</h2>
+<div class="outline-text-2" id="text-solution">
+<p>
+<a class="link-up" href="#systemd">Systemd</a> feels almost perfect except for its boilerplate and being somewhat user-unfriendly.
+</p>
+<p>
+What if we took the good bit that cron has (easy means of editing jobs), and tried to do the same within systemd?
+</p>
+<p>
+Imagine a frontend (let's name it <code class="inline">systemdtab</code>), that gave something similar to cron experience:
+</p>
+<ul class="org-ul">
+<li><p>
+you type <code class="inline">systemdtab -e</code>, and that opens the text editor with your configuration
+</p>
+<p>
+You can adjust your jobs as you wish, save the file and exit. It can check syntax the same way <code class="inline">crontab -e</code> checks it, and prompt you to try again.
+</p>
+<p>
+Once you exit, your changes are applied automatically: 
+</p>
+<ul class="org-ul">
+<li><samp class="inline">systemdtab</samp> generates individual unit files from your output</li>
+<li>replaces the old unit files with the new ones and restarts the daemon</li>
+</ul></li>
+<li><p>
+considering the boilerplate, it seems that this 'systemdtab' could be a script that generates the actual unit files
+</p>
+<p>
+It doesn't matter which language is used, it could be bash, python or anything. It would allow one to massively save on boilerplate if you're running sets of similar jobs.
+</p></li>
+<li>the configuration is kept in a text file (e.g. <samp class="inline">~/.systemdtab</samp>), which makes it trivial to inspect and keep under version control.</li>
+</ul>
+<p>
+This doesn't have to be a replacement or something, <samp class="inline">systemdtab</samp> can manage its own set of unit files, completely separate from the rest of the services.
+</p>
+<p>
+<span style="color:darkorange"><strong>Does such a tool exist?</strong></span> It feels like it's possible to hack an implementation, that would satisfy me fairly quickly, but is there really nothing existing? Please let me know!
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000005">
+<h2 id="phone"><a class="headerlink" href="#phone">¶</a><span class="section-number-2">6</span> Phone jobs?</h2>
+<div class="outline-text-2" id="text-phone">
+<p>
+That's another problem I sort of solved for myself, but not fully satisfied.
+</p>
+<p>
+I need to export app data regularly from my (rooted) Android phone (e.g. see <a href="file:///my-data.html#bluemaestro">here</a>). Export scripts themselves are trivial, it's just a matter of copying files from <samp class="inline">/data/data/</samp> directory. However, there is no software for Android to run these scripts regularly.
+</p>
+<p>
+At the moment, I'm using <a href="https://llamalab.com/automate">Automate app</a> to run them. Automate is great, but it feels a bit wrong running a shell script using a complex flowchart, so I'd be interested to know if there are simpler alternatives.
+</p>
+<p>
+Ideally, it would be a simple app that allows running shell scripts at regular intervals, keeping logs and notifying when they fail. 
+</p>
+<p>
+<span style="color:darkorange"><strong>Is there such an app?</strong></span> Please let me know if you know one!
+</p>
+</div>
+</div>
+
+    </section>
+
+    
+    <section class="footer">
+        <div class="post-tags"><a class="post-tag" href="./tags.html#infra">#infra</a></div>
+        <!-- TODO post-date? -->
+        <div class="date">18 January 2020</div>
+    </section>
+    
+
+    
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_scheduler"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
+        
+
+        <!-- TODO make semantic -->
+        <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
+
+            <a href="http://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>
+            
+            
+        </footer>
+    </body>
+</html>
