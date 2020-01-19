@@ -16,7 +16,7 @@
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
-        <title>In search for a better job scheduler | Mildly entertainingᵝ</title>
+        <title>In search of a better job scheduler | Mildly entertainingᵝ</title>
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
@@ -31,7 +31,7 @@
         <!-- can test it with https://telegram.me/webpagebot -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://beepb00p.xyz/scheduler.html" /> <!-- TODO base? -->
-        <meta property="og:title" content="In search for a better job scheduler | beepb00p" />
+        <meta property="og:title" content="In search of a better job scheduler | beepb00p" />
         <!-- TODO description? -->
         <!-- ugh. why is image necessary??? -->
         <meta property="og:image" content="notset" />
@@ -76,19 +76,20 @@
 <article>
     
     <section class="post-title">
-    <h1>In search for a better job scheduler</h1>
+    <h1>In search of a better job scheduler</h1>
     <div class="summary">What if cron and systemd had a baby? Wouldn't it be beautiful?</h2>
     </section>
     <!-- are sections appropriate for that? -->
 
     <section class="content">
     <p>
-To support my personal infrastructure, I need a fair amount of regular automatic jobs:
+To support my <a href="./tags.html#infra">personal infrastructure</a>, I need a fair amount of regular automatic jobs:
 </p>
 <ul class="org-ul">
 <li>for exporting <a href="my-data.html">my personal data</a> from the cloud</li>
 <li>for generating <a href="orger.html">plaintext</a> views of my digital trace</li>
 <li>for updating my <a href="orger-todos.html">todo lists</a></li>
+<li>updating <a href="https://github.com/karlicoss/promnesia#demo">promnesia</a> index</li>
 <li>lots of other backups and supplementary scripts</li>
 </ul>
 <p>
@@ -96,10 +97,10 @@ Running all that manually (more than 100 scripts across all devices) is an awful
 I want to set them up once and more or less forget about it, only checking now and then.
 </p>
 <p>
-In addition, I am trying to share my knowledge with other people, and it turns out not many people (even programmers, let alone less technical people) are using scheduling software in a personal capacity. So in this post I'll be speculation why it's hard and how to make it easier.
+In addition, I am trying to share my knowledge with other people, and it turns out not many people (even programmers, let alone less technical people) are using scheduling software in a personal capacity. So in this post I'll be speculating why it's hard and how to make it easier.
 </p>
 <p>
-I'll be considering pros and cons of job scheduling software mostly with the <b>emphasis on the <a href="./tags.html#infra">personal infrastructure</a></b>. 
+I'll be considering pros and cons of job scheduling software mostly with the <b>emphasis on the personal infrastructure</b>. 
 I'm sure there will be some aspects I'm missing out on, more specific to industrial-scale job management.
 </p>
 <div id="table-of-contents">
@@ -112,6 +113,7 @@ I'm sure there will be some aspects I'm missing out on, more specific to industr
 <li><a href="#other">4. What else did I try?</a></li>
 <li><a href="#solution">5. Solution?</a></li>
 <li><a href="#phone">6. Phone jobs?</a></li>
+<li><a href="#fin">7. --</a></li>
 </ul>
 </div>
 </div>
@@ -163,7 +165,7 @@ Fun fact: cron only emails you if the job has produced output. If your job faile
 Cron has some variations that help with some of these problems:
 </p>
 <ul class="org-ul">
-<li><a href="https://en.wikipedia.org/wiki/Anacron">anacron</a> – allows running commands periodically (e.g. weekly), but it can't run more frequently than once a day</li>
+<li><a href="https://en.wikipedia.org/wiki/Anacron">anacron</a> – allows running commands periodically (e.g. weekly), which helps if your computer is sometimes offline; but it can't run more frequently than once a day</li>
 <li><a href="https://wiki.archlinux.org/index.php/cron#Fcron">fcron</a>, which I'm <b>using at the moment</b>. Pretty decent:
 
 <ul class="org-ul">
@@ -235,8 +237,8 @@ That's a <b>massive overhead</b> in comparison with <code class="inline">crontab
 <b>units are scattered</b> across <samp class="inline">~/.config/systemd/user</samp>
 </p>
 <p>
-In cron if I have some boilerplate shared across several jobs (e.g. prefixed by ~nice= or <samp class="inline">timeout</samp> commands), or multiple
-very similar commands, I can tabulate them with spaces and use block editing in vim to add/remove/change it all at once, so there is little opportunity for error.
+In cron if I have some boilerplate shared across several jobs (e.g. prefixed with <samp class="inline">nice</samp> or <samp class="inline">timeout</samp>), or multiple
+very similar commands, I can align/tabulate them with spaces and use block editing in vim to add/remove/change it all at once, so if you keep the crontab tidy, there is little opportunity for error.
 </p>
 <p>
 In systemd I'd have two options:
@@ -280,7 +282,7 @@ Several steps, confusing syntax and boilerplate, multiple different commands. It
 </p></li>
 </ul>
 <p>
-In addition, both of these would behave in confusing ways with respect to environment and error reporting.
+In addition, both of these would behave in confusing ways with respect to environment, error reporting, and logging.
 </p>
 <p>
 It's understandable why these systems are so complex (they are very powerful and flexible!), but it's not impossible to have an alternative and user-friendlier interface for simple (cron-like) usecases.
@@ -333,7 +335,7 @@ Currently, I'm using <a href="https://wiki.archlinux.org/index.php/Mutt">mutt</a
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000003">
+<div class="outline-2" id="outline-container-org0000004">
 <h2 id="other"><a class="headerlink" href="#other">¶</a><span class="section-number-2">4</span> What else did I try?</h2>
 <div class="outline-text-2" id="text-other">
 <p>
@@ -350,6 +352,16 @@ Supports locks to prevent simultaneous jobs, loads user environment and PATH.
 </p>
 <p>
 The interesting idea is setting it as a <a href="https://github.com/instacart/ohmycron#ohmycron-as-the-cron-shell">cron shell</a>, which can enhance cron syntax.
+</p></li>
+<li><p>
+<a id="org0000003"></a><a href="https://github.com/huginn/huginn">huginn</a>: great example of a <b>user-friendly</b> tool
+</p>
+<p>
+One thing that makes it different is that it's reactive and mainly event/data driven, so dependencies are first class citizens to the workflow.
+There are multiple ways of inspecting jobs, e.g. list with some stats on events and dependency diagram. I highly recommend checking out <a href="https://github.com/huginn/huginn#examples">example</a>.
+</p>
+<p>
+It seems good for simple pipelines (e.g. scrape something/transform/send Telegram notification), but you're gonna need a real programming language to do something more complicated. It's possible to run <a href="https://huginnio.herokuapp.com/agents#ShellCommandAgent">shell commands</a> and <a href="https://github.com/huginn/huginn/wiki/Creating-a-new-agent">write external agents</a>, but the primary interface for editing is GUI. That makes it not very programmer friendly, and in addition it suffers from the same issues as <a class="link-up" href="#systemd">systemd</a> in that aspect (e.g. no bulk edit for jobs).
 </p></li>
 <li><p>
 <a href="https://dshearer.github.io/jobber/doc/v1.4/#jobfile">jobber</a>: looks the most promising so far
@@ -371,7 +383,7 @@ However, still no timeouts, dependencies, and jobs can only run at the schedule,
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000004">
+<div class="outline-2" id="outline-container-org0000005">
 <h2 id="solution"><a class="headerlink" href="#solution">¶</a><span class="section-number-2">5</span> Solution?</h2>
 <div class="outline-text-2" id="text-solution">
 <p>
@@ -388,7 +400,7 @@ Imagine a frontend (let's name it <code class="inline">systemdtab</code>), that 
 you type <code class="inline">systemdtab -e</code>, and that opens the text editor with your configuration
 </p>
 <p>
-You can adjust your jobs as you wish, save the file and exit. It can check syntax the same way <code class="inline">crontab -e</code> checks it, and prompt you to try again.
+You can adjust your jobs as you wish, save the file and exit. It can check syntax the same way <code class="inline">crontab -e</code> checks it, and prompt to retry in case of typos.
 </p>
 <p>
 Once you exit, your changes are applied automatically: 
@@ -398,22 +410,23 @@ Once you exit, your changes are applied automatically:
 <li>replaces the old unit files with the new ones and restarts the daemon</li>
 </ul></li>
 <li><p>
-considering the boilerplate, it seems that this 'systemdtab' could be a script that generates the actual unit files
+considering the boilerplate, it seems that the systemdtab config could be a script (e.g. <samp class="inline">~/.systemdtab.py</samp>), that generates the actual Systemd unit files
 </p>
 <p>
 It doesn't matter which language is used, it could be bash, python or anything. It would allow one to massively save on boilerplate if you're running sets of similar jobs.
 </p></li>
-<li>the configuration is kept in a text file (e.g. <samp class="inline">~/.systemdtab</samp>), which makes it trivial to inspect and keep under version control.</li>
+<li>the configuration is kept in a plaintext file, which makes it trivial to inspect and version control.</li>
+<li>some means of simple visualization and monitoring, e.g. similar to <a class="link-up" href="#org0000003">huginn</a>?</li>
 </ul>
 <p>
 This doesn't have to be a replacement or something, <samp class="inline">systemdtab</samp> can manage its own set of unit files, completely separate from the rest of the services.
 </p>
 <p>
-<span style="color:darkorange"><strong>Does such a tool exist?</strong></span> It feels like it's possible to hack an implementation, that would satisfy me fairly quickly, but is there really nothing existing? Please let me know!
+<span style="color:darkorange"><strong>Does such a tool exist?</strong></span> It feels like it's possible to hack together a rough implementation (at least satisfying to me) fairly quickly, but is there really nothing existing? Please let me know!
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000005">
+<div class="outline-2" id="outline-container-org0000006">
 <h2 id="phone"><a class="headerlink" href="#phone">¶</a><span class="section-number-2">6</span> Phone jobs?</h2>
 <div class="outline-text-2" id="text-phone">
 <p>
@@ -431,6 +444,17 @@ Ideally, it would be a simple app that allows running shell scripts at regular i
 <p>
 <span style="color:darkorange"><strong>Is there such an app?</strong></span> Please let me know if you know one!
 </p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000007">
+<h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">7</span> --</h2>
+<div class="outline-text-2" id="text-fin">
+<p>
+Updates:
+</p>
+<ul class="org-ul">
+<li><span class="timestamp-wrapper"><span class="timestamp">[2020-01-19]</span></span> added section on <a class="link-up" href="#org0000003">huginn</a></li>
+</ul>
 </div>
 </div>
 
