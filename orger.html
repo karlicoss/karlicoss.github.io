@@ -91,19 +91,19 @@
 <li><a href="#demo">3. Demo: displaying Pocket data via Orger</a></li>
 <li><a href="#examples">4. More examples</a>
 <ul>
-<li><a href="#org0000005">instapaper</a></li>
-<li><a href="#org0000006">hypothesis</a></li>
-<li><a href="#org0000007">kobo</a></li>
-<li><a href="#org0000008">pinboard</a></li>
-<li><a href="#org0000009">pdfs</a></li>
-<li><a href="#org000000a">twitter</a></li>
-<li><a href="#org000000b">rtm2org</a></li>
-<li><a href="#org000000c">telegram2org</a></li>
-<li><a href="#org000000d">reddit</a></li>
+<li><a href="#org0000003">instapaper</a></li>
+<li><a href="#org0000004">hypothesis</a></li>
+<li><a href="#org0000005">kobo</a></li>
+<li><a href="#org0000006">pinboard</a></li>
+<li><a href="#org0000007">pdfs</a></li>
+<li><a href="#org0000008">twitter</a></li>
+<li><a href="#org0000009">rtm2org</a></li>
+<li><a href="#org000000a">telegram2org</a></li>
+<li><a href="#org000000b">reddit</a></li>
 </ul>
 </li>
 <li><a href="#why_hard">5. It does sound very simple. Does that really deserve a post?</a></li>
-<li><a href="#org0000010">6. What makes Orger good?</a></li>
+<li><a href="#org000000e">6. What makes Orger good?</a></li>
 <li><a href="#using">7. Using Orger views</a>
 <ul>
 <li><a href="#usecases">Typical use patterns</a></li>
@@ -111,14 +111,14 @@
 </li>
 <li><a href="#improvements">8. Potential improvements</a>
 <ul>
-<li><a href="#org0000013"><span class="todo TODO">TODO</span> more frequent, ideally realtime updates to views</a></li>
-<li><a href="#org0000014"><span class="todo TODO">TODO</span> alternative export formats</a></li>
-<li><a href="#org0000015"><span class="todo TODO">TODO</span> two-way data flow</a></li>
-<li><a href="#org0000016"><span class="todo TODO">TODO</span> potential for race condition</a></li>
+<li><a href="#org0000011"><span class="todo TODO">TODO</span> more frequent, ideally realtime updates to views</a></li>
+<li><a href="#org0000012"><span class="todo TODO">TODO</span> alternative export formats</a></li>
+<li><a href="#org0000013"><span class="todo TODO">TODO</span> two-way data flow</a></li>
+<li><a href="#org0000014"><span class="todo TODO">TODO</span> potential for race condition</a></li>
 </ul>
 </li>
 <li><a href="#similar">9. Similar projects</a></li>
-<li><a href="#org0000019">10. ----</a></li>
+<li><a href="#org0000017">10. ----</a></li>
 </ul>
 </div>
 </div>
@@ -130,7 +130,7 @@ I'll present some examples and use cases, that will hopefully be helpful to you 
 There is also <a href="orger-todos.html">second part</a> where I'm explaining how it can be used to process Reddit, create quick tasks from Telegram messages and help with spaced repetition.
 If you're impatient, you can jump straight to a <a class="link-down" href="#demo">demo</a>.
 </p>
-<div class="outline-2" id="outline-container-org0000001">
+<div class="outline-2" id="outline-container-org0000000">
 <h2 id="intro"><a class="headerlink" href="#intro">¶</a><span class="section-number-2">1</span> Intro</h2>
 <div class="outline-text-2" id="text-intro">
 <div class="noop" id="for_exports_post">
@@ -149,7 +149,7 @@ The second option is compensating for your sloppy meaty memory and having inform
 
 </span><aside class="sidenote">see <a class="post-tag" href="./tags.html#extendedmind">#extendedmind</a></aside></div>
 <p>
-<a id="org0000000"></a>
+<a id="motivation"></a>
 That sounds simple enough but as with many simple things, in practice you run into obstacles. 
 I'll give some I've personally been overcoming as examples:
 </p>
@@ -189,7 +189,7 @@ So, I present you a system that I've developed and that solves all my problems�
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000003">
+<div class="outline-2" id="outline-container-org0000001">
 <h2 id="what"><a class="headerlink" href="#what">¶</a><span class="section-number-2">2</span> What Orger does</h2>
 <div class="outline-text-2" id="text-what">
 <p>
@@ -239,11 +239,11 @@ See <a class="link-down" href="#examples">'Examples'</a> section for more.
 </p>
 <p>
 So as you can see orger itself is a really not sophisticated tool, at least until you spend time trying to reimplement the same.
-As always the devil is in the details (look at that cheeky <code class="inline">my.github_data</code> import), which I'll explain <a class="link-down" href="#org0000002">further</a>.
+As always the devil is in the details (look at that cheeky <code class="inline">my.github_data</code> import), which I'll explain <a class="link-down" href="#data_sources">further</a>.
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000004">
+<div class="outline-2" id="outline-container-org0000002">
 <h2 id="demo"><a class="headerlink" href="#demo">¶</a><span class="section-number-2">3</span> Demo: displaying Pocket data via Orger</h2>
 <div class="outline-text-2" id="text-demo">
 <p>
@@ -458,7 +458,7 @@ As you can see it's quite easy to search in your highlights and jump straight in
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000000e">
+<div class="outline-2" id="outline-container-org000000c">
 <h2 id="examples"><a class="headerlink" href="#examples">¶</a><span class="section-number-2">4</span> More examples</h2>
 <div class="outline-text-2" id="text-examples">
 <p>
@@ -478,49 +478,49 @@ Hopefully the code is readable enough and will give you some inspiration.
 If you find something confusing or you write your own module and want to contribute, please feel free to open issue/PR!
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000005">
-<h3 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/instapaper.py">instapaper</a></h3>
-<div class="outline-text-3" id="text-org0000005">
+<div class="outline-3" id="outline-container-org0000003">
+<h3 id="org0000003"><a class="headerlink" href="#org0000003">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/instapaper.py">instapaper</a></h3>
+<div class="outline-text-3" id="text-org0000003">
 <p>
 Instapaper <a href="annotating.html#instapaper">doesn't have search</a> over annotations, so I implemented my own!
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000006">
-<h3 id="org0000006"><a class="headerlink" href="#org0000006">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/hypothesis.py">hypothesis</a></h3>
-<div class="outline-text-3" id="text-org0000006">
+<div class="outline-3" id="outline-container-org0000004">
+<h3 id="org0000004"><a class="headerlink" href="#org0000004">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/hypothesis.py">hypothesis</a></h3>
+<div class="outline-text-3" id="text-org0000004">
 <p>
 <a href="https://hypothes.is">Hypothesis</a> does have search, but it's still way quicker for me to invoke search in Emacs (takes literally less than a second) than do that in web browser.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000007">
-<h3 id="org0000007"><a class="headerlink" href="#org0000007">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/kobo.py">kobo</a></h3>
-<div class="outline-text-3" id="text-org0000007">
+<div class="outline-3" id="outline-container-org0000005">
+<h3 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/kobo.py">kobo</a></h3>
+<div class="outline-text-3" id="text-org0000005">
 <p>
 Generates views for all highlights and comments along with book titles from my Kobo database export.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000008">
-<h3 id="org0000008"><a class="headerlink" href="#org0000008">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/pinboard.py">pinboard</a></h3>
-<div class="outline-text-3" id="text-org0000008">
+<div class="outline-3" id="outline-container-org0000006">
+<h3 id="org0000006"><a class="headerlink" href="#org0000006">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/pinboard.py">pinboard</a></h3>
+<div class="outline-text-3" id="text-org0000006">
 <p>
 Searches over my Pinboard bookmarks.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000009">
-<h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/pdfs.py">pdfs</a></h3>
-<div class="outline-text-3" id="text-org0000009">
+<div class="outline-3" id="outline-container-org0000007">
+<h3 id="org0000007"><a class="headerlink" href="#org0000007">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/pdfs.py">pdfs</a></h3>
+<div class="outline-text-3" id="text-org0000007">
 <p>
 Crawls my filesystem for PDF files and collects all highlights and comments in a single view.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000a">
-<h3 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/twitter.py">twitter</a></h3>
-<div class="outline-text-3" id="text-org000000a">
+<div class="outline-3" id="outline-container-org0000008">
+<h3 id="org0000008"><a class="headerlink" href="#org0000008">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/twitter.py">twitter</a></h3>
+<div class="outline-text-3" id="text-org0000008">
 <p>
 It's got two modes
 </p>
@@ -530,17 +530,17 @@ It's got two modes
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000b">
-<h3 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/rtm2org.py">rtm2org</a></h3>
-<div class="outline-text-3" id="text-org000000b">
+<div class="outline-3" id="outline-container-org0000009">
+<h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/rtm2org.py">rtm2org</a></h3>
+<div class="outline-text-3" id="text-org0000009">
 <p>
 I stopped using Remember The Milk a while ago, but there are still some tasks and notes I've left behind, which I'm slowly moving to org-mode or canceling over time.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000c">
-<h3 id="org000000c"><a class="headerlink" href="#org000000c">¶</a><a href="https://github.com/karlicoss/telegram2org">telegram2org</a></h3>
-<div class="outline-text-3" id="text-org000000c">
+<div class="outline-3" id="outline-container-org000000a">
+<h3 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><a href="https://github.com/karlicoss/telegram2org">telegram2org</a></h3>
+<div class="outline-text-3" id="text-org000000a">
 <p>
 Lets me create todo tasks from Telegram messages in couple of taps (you can't use share function on them in Android).
 </p>
@@ -549,9 +549,9 @@ I write about it <a href="orger-todos.html#telegram2org">in the second part</a>.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000d">
-<h3 id="org000000d"><a class="headerlink" href="#org000000d">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/reddit.py">reddit</a></h3>
-<div class="outline-text-3" id="text-org000000d">
+<div class="outline-3" id="outline-container-org000000b">
+<h3 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/reddit.py">reddit</a></h3>
+<div class="outline-text-3" id="text-org000000b">
 <p>
 Displays and lets me search my Reddit saved posts/comments.
 </p>
@@ -561,7 +561,7 @@ I write about it <a href="orger-todos.html#reddit">in the second part</a>.
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000000f">
+<div class="outline-2" id="outline-container-org000000d">
 <h2 id="why_hard"><a class="headerlink" href="#why_hard">¶</a><span class="section-number-2">5</span> It does sound very simple. Does that really deserve a post?</h2>
 <div class="outline-text-2" id="text-why_hard">
 <p>
@@ -582,7 +582,7 @@ When it comes to generating 10+ views from different data sources, you <b>really
 That's how <a href="https://github.com/karlicoss/inorganic">inorganic</a> library was born.
 </p></li>
 <li><p>
-<a id="org0000002"></a>accessing data sources and exposing it through Python interfaces
+<a id="data_sources"></a>accessing data sources and exposing it through Python interfaces
 </p>
 <p>
 This is probably where most of effort was spent. All sorts of stupid APIs, tedious parsing, you can imagine.
@@ -604,12 +604,12 @@ I figured it was worth extracting this 'pattern' in a separate <a href="https://
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000010">
-<h2 id="org0000010"><a class="headerlink" href="#org0000010">¶</a><span class="section-number-2">6</span> What makes Orger good?</h2>
+<div class="outline-2" id="outline-container-org000000e">
+<h2 id="org000000e"><a class="headerlink" href="#org000000e">¶</a><span class="section-number-2">6</span> What makes Orger good?</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li><p>
-it solves <a class="link-up" href="#org0000000">my problems</a>! 
+it solves <a class="link-up" href="#motivation">my problems</a>! 
 </p>
 <p>
 I won't go long into Org-mode propaganda, there are people that do it better than me out there, but for me it's good because it's a decent balance between ease of use and ease of augmenting.
@@ -636,7 +636,7 @@ Also the fact that it's a real programming language rather than some YAML config
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000012">
+<div class="outline-2" id="outline-container-org0000010">
 <h2 id="using"><a class="headerlink" href="#using">¶</a><span class="section-number-2">7</span> Using Orger views</h2>
 <div class="outline-text-2" id="text-using">
 <p>
@@ -663,7 +663,7 @@ On my phone I'm using:
 You can also set up some proper indexing daemon like <a href="https://www.lesbonscomptes.com/recoll">recoll</a>.
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000011">
+<div class="outline-3" id="outline-container-org000000f">
 <h3 id="usecases"><a class="headerlink" href="#usecases">¶</a>Typical use patterns</h3>
 <div class="outline-text-3" id="text-usecases">
 <p>
@@ -695,37 +695,37 @@ Having all annotations in my <samp class="inline">kobo.org</samp> file lets me q
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000017">
+<div class="outline-2" id="outline-container-org0000015">
 <h2 id="improvements"><a class="headerlink" href="#improvements">¶</a><span class="section-number-2">8</span> Potential improvements</h2>
 <div class="outline-text-2" id="text-improvements">
 </div>
-<div class="outline-3" id="outline-container-org0000013">
-<h3 id="org0000013"><a class="headerlink" href="#org0000013">¶</a><span class="todo TODO">TODO</span> more frequent, ideally realtime updates to views</h3>
-<div class="outline-text-3" id="text-org0000013">
+<div class="outline-3" id="outline-container-org0000011">
+<h3 id="org0000011"><a class="headerlink" href="#org0000011">¶</a><span class="todo TODO">TODO</span> more frequent, ideally realtime updates to views</h3>
+<div class="outline-text-3" id="text-org0000011">
 <p>
 If the API doesn't provide push-based interface (as most of them), ultimately it's a question of polling them carefully to avoid rate limiting penalties.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000014">
-<h3 id="org0000014"><a class="headerlink" href="#org0000014">¶</a><span class="todo TODO">TODO</span> alternative export formats</h3>
-<div class="outline-text-3" id="text-org0000014">
+<div class="outline-3" id="outline-container-org0000012">
+<h3 id="org0000012"><a class="headerlink" href="#org0000012">¶</a><span class="todo TODO">TODO</span> alternative export formats</h3>
+<div class="outline-text-3" id="text-org0000012">
 <p>
 There is nothing really about Org-mode that's specific to this system. For instance, there are markdown-based organizers out there and people could benefit from using Orger for them.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000015">
-<h3 id="org0000015"><a class="headerlink" href="#org0000015">¶</a><span class="todo TODO">TODO</span> two-way data flow</h3>
-<div class="outline-text-3" id="text-org0000015">
+<div class="outline-3" id="outline-container-org0000013">
+<h3 id="org0000013"><a class="headerlink" href="#org0000013">¶</a><span class="todo TODO">TODO</span> two-way data flow</h3>
+<div class="outline-text-3" id="text-org0000013">
 <p>
 It would be cool to implement feedback from emacs, e.g. editing Github comment when you edit the corresponding Orger item. But it requires considerably more effort and would only work within emacs.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000016">
-<h3 id="org0000016"><a class="headerlink" href="#org0000016">¶</a><span class="todo TODO">TODO</span> potential for race condition</h3>
-<div class="outline-text-3" id="text-org0000016">
+<div class="outline-3" id="outline-container-org0000014">
+<h3 id="org0000014"><a class="headerlink" href="#org0000014">¶</a><span class="todo TODO">TODO</span> potential for race condition</h3>
+<div class="outline-text-3" id="text-org0000014">
 <p>
 Unfortunately there is a little space for race condition if Orger appends something while you're editing file. 
 Orger tries to detect emacs and vim swap/lock files, but it's if you're very unlucky or using different setup it's still possible.
@@ -737,7 +737,7 @@ Also, I run Orger jobs at night (via cron) so it's quite unlikely to overlap wit
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000018">
+<div class="outline-2" id="outline-container-org0000016">
 <h2 id="similar"><a class="headerlink" href="#similar">¶</a><span class="section-number-2">9</span> Similar projects</h2>
 <div class="outline-text-2" id="text-similar">
 <ul class="org-ul">
@@ -756,8 +756,8 @@ If someone compares Memacs and Orger please let me know, I'd be happy to link it
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000019">
-<h2 id="org0000019"><a class="headerlink" href="#org0000019">¶</a><span class="section-number-2">10</span> ----</h2>
+<div class="outline-2" id="outline-container-org0000017">
+<h2 id="org0000017"><a class="headerlink" href="#org0000017">¶</a><span class="section-number-2">10</span> ----</h2>
 <div class="outline-text-2" id="text-10">
 <p>
 I'd be interested in hearing your thoughts or feature requests.

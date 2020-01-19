@@ -183,7 +183,7 @@ Cron has some variations that help with some of these problems:
 </p>
 <ul class="org-ul">
 <li><a href="https://en.wikipedia.org/wiki/Anacron">anacron</a> – allows running commands periodically (e.g. weekly), which helps if your computer is sometimes offline; but it can't run more frequently than once a day</li>
-<li><a href="https://wiki.archlinux.org/index.php/cron#Fcron">fcron</a>, which I'm <b>using at the moment</b>. Pretty decent:
+<li><a id="fcron"></a><a href="https://wiki.archlinux.org/index.php/cron#Fcron">fcron</a>, which I'm <b>using at the moment</b>. Pretty decent:
 
 <ul class="org-ul">
 <li>unlike anacron, fully compatible with regular cron jobs and allows running periodically as well</li>
@@ -244,7 +244,7 @@ write a unit file
 Most of it is boilerplate, so good luck getting the syntax right.
 </p></li>
 <li>copy it to <samp class="inline">~/.config/systemd/user</samp></li>
-<li>remember to enable it the service</li>
+<li>remember to enable the service</li>
 <li>remember to run <code class="inline">systemctl --user reload-daemon</code>.</li>
 </ul>
 <p>
@@ -352,7 +352,7 @@ Currently, I'm using <a href="https://wiki.archlinux.org/index.php/Mutt">mutt</a
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000004">
+<div class="outline-2" id="outline-container-org0000003">
 <h2 id="other"><a class="headerlink" href="#other">¶</a><span class="section-number-2">4</span> What else did I try?</h2>
 <div class="outline-text-2" id="text-other">
 <p>
@@ -371,7 +371,7 @@ Supports locks to prevent simultaneous jobs, loads user environment and PATH.
 The interesting idea is setting it as a <a href="https://github.com/instacart/ohmycron#ohmycron-as-the-cron-shell">cron shell</a>, which can enhance cron syntax.
 </p></li>
 <li><p>
-<a id="org0000003"></a><a href="https://github.com/huginn/huginn">huginn</a>: great example of a <b>user-friendly</b> tool
+<a id="huginn"></a><a href="https://github.com/huginn/huginn">huginn</a>: great example of a <b>user-friendly</b> tool
 </p>
 <p>
 One thing that makes it different is that it's reactive and mainly event/data driven, so dependencies are first class citizens to the workflow.
@@ -400,7 +400,7 @@ However, still no timeouts, dependencies, and jobs can only run at the schedule,
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000005">
+<div class="outline-2" id="outline-container-org0000004">
 <h2 id="solution"><a class="headerlink" href="#solution">¶</a><span class="section-number-2">5</span> Solution?</h2>
 <div class="outline-text-2" id="text-solution">
 <p>
@@ -433,7 +433,7 @@ considering the boilerplate, it seems that the systemdtab config could be a scri
 It doesn't matter which language is used, it could be bash, python or anything. It would allow one to massively save on boilerplate if you're running sets of similar jobs.
 </p></li>
 <li>the configuration is kept in a plaintext file, which makes it trivial to inspect and version control.</li>
-<li>some means of simple visualization and monitoring, e.g. similar to <a class="link-up" href="#org0000003">huginn</a>?</li>
+<li>some means of simple visualization and monitoring, e.g. similar to <a class="link-up" href="#huginn">huginn</a>?</li>
 </ul>
 <p>
 This doesn't have to be a replacement or something, <samp class="inline">systemdtab</samp> can manage its own set of unit files, completely separate from the rest of the services.
@@ -443,7 +443,7 @@ This doesn't have to be a replacement or something, <samp class="inline">systemd
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000006">
+<div class="outline-2" id="outline-container-org0000005">
 <h2 id="phone"><a class="headerlink" href="#phone">¶</a><span class="section-number-2">6</span> Phone jobs?</h2>
 <div class="outline-text-2" id="text-phone">
 <p>
@@ -463,14 +463,14 @@ Ideally, it would be a simple app that allows running shell scripts at regular i
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000007">
+<div class="outline-2" id="outline-container-org0000006">
 <h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">7</span> --</h2>
 <div class="outline-text-2" id="text-fin">
 <p>
 Updates:
 </p>
 <ul class="org-ul">
-<li><span class="timestamp-wrapper"><span class="timestamp">[2020-01-19]</span></span> added section on <a class="link-up" href="#org0000003">huginn</a></li>
+<li><span class="timestamp-wrapper"><span class="timestamp">[2020-01-19]</span></span> added section on <a class="link-up" href="#huginn">huginn</a></li>
 </ul>
 </div>
 </div>
@@ -1943,7 +1943,7 @@ Personal data is in a sad state these days. Let me elaborate.
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000032">
+<div class="outline-2" id="outline-container-org0000031">
 <h2 id="why"><a class="headerlink" href="#why">¶</a><span class="section-number-2">2</span> Why does it bother me?</h2>
 <div class="outline-text-2" id="text-why">
 <style>.outline-4 h4              { font-weight: normal; } </style>
@@ -1968,7 +1968,7 @@ The second option is compensating for your sloppy meaty memory and having inform
 
 </span><aside class="sidenote">see <a class="post-tag" href="./tags.html#extendedmind">#extendedmind</a></aside></div>
 <p>
-<a id="org0000001"></a>
+<a id="motivation"></a>
 That sounds simple enough but as with many simple things, in practice you run into obstacles. 
 I'll give some I've personally been overcoming as examples:
 </p>
@@ -2007,36 +2007,36 @@ As you can see, my main frustrations are around the lack of the very basic thing
 I'll carry on, just listing some examples. Let's see if any of them resonate with you:
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000005">
+<div class="outline-3" id="outline-container-org0000004">
 <h3 id="why_search"><a class="headerlink" href="#why_search">¶</a>search and information access</h3>
 <div class="outline-text-3" id="text-why_search">
 </div>
+<div class="outline-4" id="outline-container-org0000001">
+<h4 id="org0000001">Why can't I search over all of my personal chat history with a friend, whether it's ICQ logs from 2005 or Whatsapp logs from 2019?</h4>
+</div>
 <div class="outline-4" id="outline-container-org0000002">
-<h4 id="org0000002">Why can't I search over all of my personal chat history with a friend, whether it's ICQ logs from 2005 or Whatsapp logs from 2019?</h4>
+<h4 id="org0000002">Why can't I have incremental search over my tweets? Or browser bookmarks? Or over everything I've ever typed/read on the Internet?</h4>
 </div>
 <div class="outline-4" id="outline-container-org0000003">
-<h4 id="org0000003">Why can't I have incremental search over my tweets? Or browser bookmarks? Or over everything I've ever typed/read on the Internet?</h4>
-</div>
-<div class="outline-4" id="outline-container-org0000004">
-<h4 id="org0000004">Why can't I search across watched youtube videos even though most of them have subtitles hence allowing for full text search?</h4>
+<h4 id="org0000003">Why can't I search across watched youtube videos even though most of them have subtitles hence allowing for full text search?</h4>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000008">
+<div class="outline-3" id="outline-container-org0000007">
 <h3 id="why_productivity"><a class="headerlink" href="#why_productivity">¶</a>productivity</h3>
 <div class="outline-text-3" id="text-why_productivity">
 </div>
-<div class="outline-4" id="outline-container-org0000006">
-<h4 id="org0000006">Why can't my Google Home add shopping list items to Google Keep? Let alone other todo-list apps.</h4>
-<div class="outline-text-4" id="text-org0000006">
+<div class="outline-4" id="outline-container-org0000005">
+<h4 id="org0000005">Why can't my Google Home add shopping list items to Google Keep? Let alone other todo-list apps.</h4>
+<div class="outline-text-4" id="text-org0000005">
 <p>
 Instead, it puts them in a completely separate product, <a href="https://shoppinglist.google.com">Shopping list</a>.
 If any of these had an API, <b>any programmer</b> could write a script to synchronize them in a few hours.
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000007">
-<h4 id="org0000007">Why can't I create a task in my todo list or calendar from a conversation on Facebook Messenger/Whatsapp/VK.com/Telegram?</h4>
-<div class="outline-text-4" id="text-org0000007">
+<div class="outline-4" id="outline-container-org0000006">
+<h4 id="org0000006">Why can't I create a task in my todo list or calendar from a conversation on Facebook Messenger/Whatsapp/VK.com/Telegram?</h4>
+<div class="outline-text-4" id="text-org0000006">
 <p>
 Often, a friend recommends a book to you so you want it to add to your reading list. Or they ask you for something and you want to schedule a reminder.
 </p>
@@ -2046,159 +2046,159 @@ Instead, these apps <b>actively prevent</b> me from using builtin Android share 
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000d">
+<div class="outline-3" id="outline-container-org000000c">
 <h3 id="why_journalling"><a class="headerlink" href="#why_journalling">¶</a>journaling and history</h3>
 <div class="outline-text-3" id="text-why_journalling">
 </div>
-<div class="outline-4" id="outline-container-org0000009">
-<h4 id="org0000009">Why do I have to lose all my browser history if I decide to switch browsers?</h4>
-<div class="outline-text-4" id="text-org0000009">
+<div class="outline-4" id="outline-container-org0000008">
+<h4 id="org0000008">Why do I have to lose all my browser history if I decide to switch browsers?</h4>
+<div class="outline-text-4" id="text-org0000008">
 <p>
 Even when you switch between major ones like Chrome/Firefox. Let alone for less common alternatives.
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org000000a">
-<h4 id="org000000a">Why can't I see all the places I traveled to on a single map and photos alongside?</h4>
-<div class="outline-text-4" id="text-org000000a">
+<div class="outline-4" id="outline-container-org0000009">
+<h4 id="org0000009">Why can't I see all the places I traveled to on a single map and photos alongside?</h4>
+<div class="outline-text-4" id="text-org0000009">
 <p>
 I have location tracking and my photos have GPS and timestamps. 
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org000000b">
-<h4 id="org000000b">Why can't I see what my heart rate (i.e. excitement) and speed were side by side with the video I recorded on GoPro while skiing?</h4>
-<div class="outline-text-4" id="text-org000000b">
+<div class="outline-4" id="outline-container-org000000a">
+<h4 id="org000000a">Why can't I see what my heart rate (i.e. excitement) and speed were side by side with the video I recorded on GoPro while skiing?</h4>
+<div class="outline-text-4" id="text-org000000a">
 <p>
 I've used HR tracking and location tracking, surely that's possible?
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org000000c">
-<h4 id="org000000c">Why can't I easily transfer all my books and metadata if I decide to switch from Kindle to PocketBook or vice versa?</h4>
+<div class="outline-4" id="outline-container-org000000b">
+<h4 id="org000000b">Why can't I easily transfer all my books and metadata if I decide to switch from Kindle to PocketBook or vice versa?</h4>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000017">
+<div class="outline-3" id="outline-container-org0000016">
 <h3 id="why_content"><a class="headerlink" href="#why_content">¶</a>consuming digital content</h3>
 <div class="outline-text-3" id="text-why_content">
 </div>
-<div class="outline-4" id="outline-container-org000000e">
-<h4 id="org000000e">Why can't I see stuff I highlighted on Instapaper as an overlay on top of web page?</h4>
-<div class="outline-text-4" id="text-org000000e">
+<div class="outline-4" id="outline-container-org000000d">
+<h4 id="org000000d">Why can't I see stuff I highlighted on Instapaper as an overlay on top of web page?</h4>
+<div class="outline-text-4" id="text-org000000d">
 <p>
 <a href="https://hypothes.is">Hypothes.is</a> does it, so it's totally possible, right?
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org000000f">
-<h4 id="org000000f">Why can't I have single 'read it later' list, unifying all things saved on Reddit/Hackernews/Pocket?</h4>
+<div class="outline-4" id="outline-container-org000000e">
+<h4 id="org000000e">Why can't I have single 'read it later' list, unifying all things saved on Reddit/Hackernews/Pocket?</h4>
 </div>
-<div class="outline-4" id="outline-container-org0000010">
-<h4 id="org0000010">Why can't I use my todo app instead of 'Watch later' playlist on youtube?</h4>
-<div class="outline-text-4" id="text-org0000010">
+<div class="outline-4" id="outline-container-org000000f">
+<h4 id="org000000f">Why can't I use my todo app instead of 'Watch later' playlist on youtube?</h4>
+<div class="outline-text-4" id="text-org000000f">
 <p>
 'Watch later' is fine for short videos that I can watch over dinner or on my commute.
 Longer videos like talks and lectures need proper time commitment hence prioritizing.
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000011">
-<h4 id="org0000011">Why can't I 'follow' some user on Hackernews?</h4>
-<div class="outline-text-4" id="text-org0000011">
+<div class="outline-4" id="outline-container-org0000010">
+<h4 id="org0000010">Why can't I 'follow' some user on Hackernews?</h4>
+<div class="outline-text-4" id="text-org0000010">
 <p>
 It's just a matter of regularly fetching new stories/comments by a person and showing new items, right?
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000012">
-<h4 id="org0000012">Why can't I see if I've run across a Youtube video because my friend sent me a link months ago?</h4>
-<div class="outline-text-4" id="text-org0000012">
+<div class="outline-4" id="outline-container-org0000011">
+<h4 id="org0000011">Why can't I see if I've run across a Youtube video because my friend sent me a link months ago?</h4>
+<div class="outline-text-4" id="text-org0000011">
 <p>
 The links are there in the chat history, surely it's a trivial task to find it?
 </p>
 </div>
 </div>
+<div class="outline-4" id="outline-container-org0000012">
+<h4 id="org0000012">Why can't I have uniform music listening stats based on my Last.fm/iTunes/Bandcamp/Spotify/Youtube?</h4>
+</div>
 <div class="outline-4" id="outline-container-org0000013">
-<h4 id="org0000013">Why can't I have uniform music listening stats based on my Last.fm/iTunes/Bandcamp/Spotify/Youtube?</h4>
+<h4 id="org0000013">Why am I forced to use Spotify's music recommendation algorithm and don't have an option to try something else?</h4>
 </div>
 <div class="outline-4" id="outline-container-org0000014">
-<h4 id="org0000014">Why am I forced to use Spotify's music recommendation algorithm and don't have an option to try something else?</h4>
+<h4 id="org0000014">Why can't I easily see what were the books/music/art recommended by my friends or some specific Twitter/Reddit/Hackernews users?</h4>
 </div>
 <div class="outline-4" id="outline-container-org0000015">
-<h4 id="org0000015">Why can't I easily see what were the books/music/art recommended by my friends or some specific Twitter/Reddit/Hackernews users?</h4>
-</div>
-<div class="outline-4" id="outline-container-org0000016">
-<h4 id="org0000016">Why my otherwise perfect hackernews <a href="https://play.google.com/store/apps/details?id=io.github.hidroh.materialistic">Android app</a> doesn't share saved posts/comments with the website?</h4>
-<div class="outline-text-4" id="text-org0000016">
+<h4 id="org0000015">Why my otherwise perfect hackernews <a href="https://play.google.com/store/apps/details?id=io.github.hidroh.materialistic">Android app</a> doesn't share saved posts/comments with the website?</h4>
+<div class="outline-text-4" id="text-org0000015">
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001f">
+<div class="outline-3" id="outline-container-org000001e">
 <h3 id="why_health"><a class="headerlink" href="#why_health">¶</a>health and body maintenance</h3>
 <div class="outline-text-3" id="text-why_health">
 <p>
 Aka <a class="post-tag" href="./tags.html#quantified-self">#quantified-self</a>.
 </p>
 </div>
-<div class="outline-4" id="outline-container-org0000018">
-<h4 id="org0000018">Why can't I tell if I was more sedentary than usual during the past week and whether I need to compensate by doing a bit more exercise?</h4>
-<div class="outline-text-4" id="text-org0000018">
+<div class="outline-4" id="outline-container-org0000017">
+<h4 id="org0000017">Why can't I tell if I was more sedentary than usual during the past week and whether I need to compensate by doing a bit more exercise?</h4>
+<div class="outline-text-4" id="text-org0000017">
 <p>
 I have all my location (hence step data), so what's the issue?
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000019">
-<h4 id="org0000019">Why can't I see what's the impact of aerobic exercise on my resting HR?</h4>
-<div class="outline-text-4" id="text-org0000019">
+<div class="outline-4" id="outline-container-org0000018">
+<h4 id="org0000018">Why can't I see what's the impact of aerobic exercise on my resting HR?</h4>
+<div class="outline-text-4" id="text-org0000018">
 <p>
 I use HR tracker and sleep tracker, so all the necessary data is there.
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org000001a">
-<h4 id="org000001a">Why can't I have a dashboard for all of my health: food, exercise and sleep to see baselines and trends?</h4>
-<div class="outline-text-4" id="text-org000001a">
+<div class="outline-4" id="outline-container-org0000019">
+<h4 id="org0000019">Why can't I have a dashboard for all of my health: food, exercise and sleep to see baselines and trends?</h4>
+<div class="outline-text-4" id="text-org0000019">
 <p>
 Why do I need to rely on some startup to implement this and trust them with my data?
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org000001b">
-<h4 id="org000001b">Why can't I see the impact of temperature or CO2 concentration in room on my sleep?</h4>
-<div class="outline-text-4" id="text-org000001b">
+<div class="outline-4" id="outline-container-org000001a">
+<h4 id="org000001a">Why can't I see the impact of temperature or CO2 concentration in room on my sleep?</h4>
+<div class="outline-text-4" id="text-org000001a">
 <p>
 My sensors have Bluetooth and Android apps, why can't they interact with my sleep data?
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org000001c">
-<h4 id="org000001c">Why can't I see how holidays (as in, not going to work) impact my stress levels?</h4>
-<div class="outline-text-4" id="text-org000001c">
+<div class="outline-4" id="outline-container-org000001b">
+<h4 id="org000001b">Why can't I see how holidays (as in, not going to work) impact my stress levels?</h4>
+<div class="outline-text-4" id="text-org000001b">
 <p>
 It's trivial to infer workdays by using my location data.    
 </p>
 </div>
 </div>
+<div class="outline-4" id="outline-container-org000001c">
+<h4 id="org000001c">Why can't I take my Headspace app data and see how/if meditation impacts my sleep?</h4>
+</div>
 <div class="outline-4" id="outline-container-org000001d">
-<h4 id="org000001d">Why can't I take my Headspace app data and see how/if meditation impacts my sleep?</h4>
-</div>
-<div class="outline-4" id="outline-container-org000001e">
-<h4 id="org000001e">Why can't I run a short snippet of code and check some random health advice on the Internet against <b>my</b> health data.</h4>
+<h4 id="org000001d">Why can't I run a short snippet of code and check some random health advice on the Internet against <b>my</b> health data.</h4>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000022">
+<div class="outline-3" id="outline-container-org0000021">
 <h3 id="why_pfinance"><a class="headerlink" href="#why_pfinance">¶</a>personal finance</h3>
 <div class="outline-text-3" id="text-why_pfinance">
 </div>
+<div class="outline-4" id="outline-container-org000001f">
+<h4 id="org000001f">Why am I forced to manually copy transactions from different banking apps into a spreadsheet?</h4>
+</div>
 <div class="outline-4" id="outline-container-org0000020">
-<h4 id="org0000020">Why am I forced to manually copy transactions from different banking apps into a spreadsheet?</h4>
-</div>
-<div class="outline-4" id="outline-container-org0000021">
-<h4 id="org0000021">Why can't I easily match my Amazon/Ebay orders with my bank transactions?</h4>
+<h4 id="org0000020">Why can't I easily match my Amazon/Ebay orders with my bank transactions?</h4>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000023">
+<div class="outline-3" id="outline-container-org0000022">
 <h3 id="why_offline"><a class="headerlink" href="#why_offline">¶</a>why I can't do anything when I'm offline or have a wonky connection?</h3>
 <div class="outline-text-3" id="text-why_offline">
 <p>
@@ -2208,39 +2208,39 @@ On the other if you start relying on it too much, it's becoming more and more of
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000026">
+<div class="outline-3" id="outline-container-org0000025">
 <h3 id="why_thinking"><a class="headerlink" href="#why_thinking">¶</a>tools for thinking and learning</h3>
 <div class="outline-text-3" id="text-why_thinking">
 </div>
+<div class="outline-4" id="outline-container-org0000023">
+<h4 id="org0000023">Why when something like <a href="https://en.wikipedia.org/wiki/Method_of_loci">'mind palace'</a> is <b>literally possible</b> with VR technology, we don't see any in use?</h4>
+</div>
 <div class="outline-4" id="outline-container-org0000024">
-<h4 id="org0000024">Why when something like <a href="https://en.wikipedia.org/wiki/Method_of_loci">'mind palace'</a> is <b>literally possible</b> with VR technology, we don't see any in use?</h4>
-</div>
-<div class="outline-4" id="outline-container-org0000025">
-<h4 id="org0000025">Why can't I easily convert select Instapaper highlights or new foreign words I encountered on my Kindle into Anki flashcards?</h4>
+<h4 id="org0000024">Why can't I easily convert select Instapaper highlights or new foreign words I encountered on my Kindle into Anki flashcards?</h4>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000002b">
+<div class="outline-3" id="outline-container-org000002a">
 <h3 id="why_uis"><a class="headerlink" href="#why_uis">¶</a>mediocre interfaces</h3>
 <div class="outline-text-3" id="text-why_uis">
 </div>
-<div class="outline-4" id="outline-container-org0000027">
-<h4 id="org0000027">Why do I have to suffer from poor management and design decisions in UI changes, even if the interface is not the main reason I'm using the product?</h4>
+<div class="outline-4" id="outline-container-org0000026">
+<h4 id="org0000026">Why do I have to suffer from poor management and design decisions in UI changes, even if the interface is not the main reason I'm using the product?</h4>
 </div>
-<div class="outline-4" id="outline-container-org0000028">
-<h4 id="org0000028">Why can't I leave priorities and notes on my saved Reddit/Hackernews items?</h4>
-<div class="outline-text-4" id="text-org0000028">
+<div class="outline-4" id="outline-container-org0000027">
+<h4 id="org0000027">Why can't I leave priorities and notes on my saved Reddit/Hackernews items?</h4>
+<div class="outline-text-4" id="text-org0000027">
 <p>
 I've got too many saved things to read them linearly and I'll probably never read them all.
 I've also got other things to read and do in general, why can't I have a unified queue for consuming content?
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000029">
-<h4 id="org0000029">Why can't I leave private notes on Deliveroo restaurants/dishes, so I'd remember what to order/not to order next time?</h4>
+<div class="outline-4" id="outline-container-org0000028">
+<h4 id="org0000028">Why can't I leave private notes on Deliveroo restaurants/dishes, so I'd remember what to order/not to order next time?</h4>
 </div>
-<div class="outline-4" id="outline-container-org000002a">
-<h4 id="org000002a">Why do people have to suffer from Google Inbox shutdown?</h4>
-<div class="outline-text-4" id="text-org000002a">
+<div class="outline-4" id="outline-container-org0000029">
+<h4 id="org0000029">Why do people have to suffer from Google Inbox shutdown?</h4>
+<div class="outline-text-4" id="text-org0000029">
 <p>
 Not to undervalue Inbox developers, but fundamentally it's <b>just</b> a different interface.
 I'm sure there are plenty of engineers who would happily support it in their spare time if only they had access to the APIs.
@@ -2248,31 +2248,31 @@ I'm sure there are plenty of engineers who would happily support it in their spa
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000002e">
+<div class="outline-3" id="outline-container-org000002d">
 <h3 id="why_social"><a class="headerlink" href="#why_social">¶</a>communication and collaboration</h3>
 <div class="outline-text-3" id="text-why_social">
 </div>
+<div class="outline-4" id="outline-container-org000002b">
+<h4 id="org000002b">Why can't I easily share my web or book highlights with a friend? Or just make highlights in select books public?</h4>
+</div>
 <div class="outline-4" id="outline-container-org000002c">
-<h4 id="org000002c">Why can't I easily share my web or book highlights with a friend? Or just make highlights in select books public?</h4>
-</div>
-<div class="outline-4" id="outline-container-org000002d">
-<h4 id="org000002d">Why can't I easily find out other person's expertise without interrogating them, just by looking what they read instead?</h4>
+<h4 id="org000002c">Why can't I easily find out other person's expertise without interrogating them, just by looking what they read instead?</h4>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000030">
+<div class="outline-3" id="outline-container-org000002f">
 <h3 id="why_backups"><a class="headerlink" href="#why_backups">¶</a>backups</h3>
 <div class="outline-text-3" id="text-why_backups">
 </div>
-<div class="outline-4" id="outline-container-org000002f">
-<h4 id="org000002f">Why do I have to think about it and actively invest time and effort?</h4>
-<div class="outline-text-4" id="text-org000002f">
+<div class="outline-4" id="outline-container-org000002e">
+<h4 id="org000002e">Why do I have to think about it and actively invest time and effort?</h4>
+<div class="outline-text-4" id="text-org000002e">
 <p>
 What about regular people who <b>have no idea</b> how unreliable computers can be and might find out the hard way?
 </p>
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000031">
+<div class="outline-3" id="outline-container-org0000030">
 <h3 id="why_fin"><a class="headerlink" href="#why_fin">¶</a>--</h3>
 <div class="outline-text-3" id="text-why_fin">
 <p>
@@ -2293,7 +2293,7 @@ If you could let computers handle the boring bits of your life and spend time on
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000033">
+<div class="outline-2" id="outline-container-org0000032">
 <h2 id="data_is_vanishing"><a class="headerlink" href="#data_is_vanishing">¶</a><span class="section-number-2">3</span> Your data is vanishing</h2>
 <div class="outline-text-2" id="text-data_is_vanishing">
 <p>
@@ -2372,7 +2372,7 @@ You <b>can't rely on third parties</b> to keep it safe.
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000034">
+<div class="outline-2" id="outline-container-org0000033">
 <h2 id="what_do_i_want"><a class="headerlink" href="#what_do_i_want">¶</a><span class="section-number-2">4</span> What do I want?</h2>
 <div class="outline-text-2" id="text-what_do_i_want">
 <p>
@@ -2416,7 +2416,7 @@ As you've probably noticed, it's almost never the case that you have your person
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000040">
+<div class="outline-2" id="outline-container-org000003e">
 <h2 id="exports_are_hard"><a class="headerlink" href="#exports_are_hard">¶</a><span class="section-number-2">5</span> So what's the problem?</h2>
 <div class="outline-text-2" id="text-exports_are_hard">
 <p>
@@ -2445,7 +2445,7 @@ Even if you have the capacity and are willing to do it, it's still damn hard.
 You're gonna have to deal with the following problems:
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000035">
+<div class="outline-3" id="outline-container-org0000034">
 <h3 id="auth"><a class="headerlink" href="#auth">¶</a>authorization</h3>
 <div class="outline-text-3" id="text-auth">
 <p>
@@ -2505,7 +2505,7 @@ All the 'worst' scenarios are extremely flaky and basically impossible for nonpr
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000036">
+<div class="outline-3" id="outline-container-org0000035">
 <h3 id="pagination"><a class="headerlink" href="#pagination">¶</a>pagination</h3>
 <div class="outline-text-3" id="text-pagination">
 <p>
@@ -2522,7 +2522,7 @@ It's quite error prone: content might change under your feet, and if the API dev
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000037">
+<div class="outline-3" id="outline-container-org0000036">
 <h3 id="consistency"><a class="headerlink" href="#consistency">¶</a>consistency</h3>
 <div class="outline-text-3" id="text-consistency">
 <p>
@@ -2535,7 +2535,7 @@ and the data is changing as you retrieve it.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000038">
+<div class="outline-3" id="outline-container-org0000037">
 <h3 id="ratelimit"><a class="headerlink" href="#ratelimit">¶</a><a href="https://nordicapis.com/everything-you-need-to-know-about-api-rate-limiting">rate limiting</a></h3>
 <div class="outline-text-3" id="text-ratelimit">
 <p>
@@ -2550,7 +2550,7 @@ Overall, painful and not fun to implement.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000039">
+<div class="outline-3" id="outline-container-org0000038">
 <h3 id="errorhandling"><a class="headerlink" href="#errorhandling">¶</a>error handling</h3>
 <div class="outline-text-3" id="text-errorhandling">
 <p>
@@ -2567,7 +2567,7 @@ In addition, you want to be somewhat <b>semi-defensive</b>, and this is the hard
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000003a">
+<div class="outline-3" id="outline-container-org0000039">
 <h3 id="documentation"><a class="headerlink" href="#documentation">¶</a>documentation and discovery</h3>
 <div class="outline-text-3" id="text-documentation">
 <p>
@@ -2578,7 +2578,7 @@ If the service adds some new endpoints, you might never find out.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000003b">
+<div class="outline-3" id="outline-container-org000003a">
 <h3 id="parsing"><a class="headerlink" href="#parsing">¶</a>parsing</h3>
 <div class="outline-text-3" id="text-parsing">
 <p>
@@ -2589,7 +2589,7 @@ Notorious example: some Hackernews (!) endpoints like 'favorites' are not expose
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000003c">
+<div class="outline-3" id="outline-container-org000003b">
 <h3 id="abstract"><a class="headerlink" href="#abstract">¶</a>abstract representation</h3>
 <div class="outline-text-3" id="text-abstract">
 <p>
@@ -2606,7 +2606,7 @@ Notable examples:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000003e">
+<div class="outline-3" id="outline-container-org000003c">
 <h3 id="locked_in"><a class="headerlink" href="#locked_in">¶</a>no access to data</h3>
 <div class="outline-text-3" id="text-locked_in">
 <p>
@@ -2629,13 +2629,13 @@ However, there are caveats: e.g. on Android, app data is in <code class="inline"
 <li>devices that have no means of synchronizing
 
 <ul class="org-ul">
-<li><a id="org000003d"></a>Kobo <b><b>doesn't seem to support cloud sync for annotations</b></b>. I was considering syncing the database wirelessly, as <a href="https://github.com/dropmeaword/kobo-aura-remote">there are</a> some SSH modules for its firmware, but people report it <a href="https://github.com/dropmeaword/kobo-aura-remote/issues/1">may break wifi</a> on it.</li>
+<li><a id="kobo_sync"></a>Kobo <b><b>doesn't seem to support cloud sync for annotations</b></b>. I was considering syncing the database wirelessly, as <a href="https://github.com/dropmeaword/kobo-aura-remote">there are</a> some SSH modules for its firmware, but people report it <a href="https://github.com/dropmeaword/kobo-aura-remote/issues/1">may break wifi</a> on it.</li>
 </ul></li>
 <li>Some devices/apps and formats are <a href="https://en.wikipedia.org/wiki/Vendor_lock-in">vendor locked</a></li>
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000003f">
+<div class="outline-3" id="outline-container-org000003d">
 <h3 id="what_fin"><a class="headerlink" href="#what_fin">¶</a>--</h3>
 <div class="outline-text-3" id="text-what_fin">
 <p>
@@ -2649,7 +2649,7 @@ They deserve to use their data too.
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000043">
+<div class="outline-2" id="outline-container-org0000041">
 <h2 id="data_mirror"><a class="headerlink" href="#data_mirror">¶</a><span class="section-number-2">6</span> How to make it easier: data mirror</h2>
 <div class="outline-text-2" id="text-data_mirror">
 <p>
@@ -2715,7 +2715,7 @@ But to be honest, we're so far away from that that even some small steps towards
 These suggestions would <b>decouple data from the UI</b> and let the community develop better tools for consuming and working with it.
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000041">
+<div class="outline-3" id="outline-container-org000003f">
 <h3 id="caveats"><a class="headerlink" href="#caveats">¶</a>potential caveats</h3>
 <div class="outline-text-3" id="text-caveats">
 <ul class="org-ul">
@@ -2757,7 +2757,7 @@ Hopefully all of these issues would be solved by distributed/federated services,
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000042">
+<div class="outline-3" id="outline-container-org0000040">
 <h3 id="unsolved"><a class="headerlink" href="#unsolved">¶</a>unsolved problems</h3>
 <div class="outline-text-3" id="text-unsolved">
 <ul class="org-ul">
@@ -2804,7 +2804,7 @@ From a user's perspective not everyone wants the hassle of running things locall
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000049">
+<div class="outline-2" id="outline-container-org0000047">
 <h2 id="what_do_i_do"><a class="headerlink" href="#what_do_i_do">¶</a><span class="section-number-2">7</span> What do I do?</h2>
 <div class="outline-text-2" id="text-what_do_i_do">
 <p>
@@ -2819,7 +2819,7 @@ Putting this in writing helped me motivate and summarize many technical and infr
 I'll be describing my setup in more detail in future posts, however here are some bits and pieces:
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000044">
+<div class="outline-3" id="outline-container-org0000042">
 <h3 id="exports"><a class="headerlink" href="#exports">¶</a>regular data exports</h3>
 <div class="outline-text-3" id="text-exports">
 <p>
@@ -2839,7 +2839,7 @@ As I mentioned, I'll share all of this later in a separate post.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000045">
+<div class="outline-3" id="outline-container-org0000043">
 <h3 id="mypkg"><a class="headerlink" href="#mypkg">¶</a>python package to access data</h3>
 <div class="outline-text-3" id="text-mypkg">
 <p>
@@ -2859,7 +2859,7 @@ As a nice byproduct I've also finally figured out a reliable and elegant way to 
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000046">
+<div class="outline-3" id="outline-container-org0000044">
 <h3 id="how_it_is_used"><a class="headerlink" href="#how_it_is_used">¶</a>how do I use the data?</h3>
 <div class="outline-text-3" id="text-how_it_is_used">
 <p>
@@ -2882,7 +2882,7 @@ I wrote how each specific data source I export contributes to my personal infras
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000047">
+<div class="outline-3" id="outline-container-org0000045">
 <h3 id="sync"><a class="headerlink" href="#sync">¶</a>data availability</h3>
 <div class="outline-text-3" id="text-sync">
 <p>
@@ -2890,7 +2890,7 @@ I'm synchronizing everything across my computers with <a href="https://syncthing
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000048">
+<div class="outline-3" id="outline-container-org0000046">
 <h3 id="backups"><a class="headerlink" href="#backups">¶</a>backups</h3>
 <div class="outline-text-3" id="text-backups">
 <p>
@@ -2899,7 +2899,7 @@ I'm simply using <a href="https://borgbackup.readthedocs.io/en/stable">borg back
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000004a">
+<div class="outline-2" id="outline-container-org0000048">
 <h2 id="links"><a class="headerlink" href="#links">¶</a><span class="section-number-2">8</span> Related links</h2>
 <div class="outline-text-2" id="text-links">
 <ul class="org-ul">
@@ -2924,7 +2924,7 @@ The project "aims to radically change the way Web applications work today, resul
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000004b">
+<div class="outline-2" id="outline-container-org0000049">
 <h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">9</span> --</h2>
 <div class="outline-text-2" id="text-fin">
 <p>
@@ -5308,34 +5308,34 @@ Not very cloud sync-friendly! However happily accepts symlink as <code class="in
 <li><a href="#recoll">4. Recoll</a></li>
 <li><a href="#android">5. Searching on Android</a>
 <ul>
-<li><a href="#org0000009">Orgzly</a></li>
-<li><a href="#org000000a">Docsearch +</a></li>
+<li><a href="#org0000006">Orgzly</a></li>
+<li><a href="#org0000007">Docsearch +</a></li>
 <li><a href="#recoll_web">Recoll Web</a></li>
 </ul>
 </li>
 <li><a href="#web">6. Web search</a>
 <ul>
-<li><a href="#org000000d">Firefox enhancements</a></li>
-<li><a href="#org000000e">Chrome enhancements</a></li>
+<li><a href="#org000000a">Firefox enhancements</a></li>
+<li><a href="#org000000b">Chrome enhancements</a></li>
 </ul>
 </li>
 <li><a href="#code">7. Searching in code</a>
 <ul>
-<li><a href="#org0000010">Why?</a></li>
-<li><a href="#org0000011">What do I want</a></li>
-<li><a href="#org0000012">Existing code search tools</a></li>
-<li><a href="#org0000014">Solution: use Emacs and Ripgrep</a></li>
+<li><a href="#org000000d">Why?</a></li>
+<li><a href="#org000000e">What do I want</a></li>
+<li><a href="#org000000f">Existing code search tools</a></li>
+<li><a href="#org0000010">Solution: use Emacs and Ripgrep</a></li>
 </ul>
 </li>
 <li><a href="#appendix_cloudmacs">8. Appendix: searching away from computer</a></li>
 <li><a href="#appendix_daemon">9. Appendix: Lightning fast Emacs</a>
 <ul>
-<li><a href="#org0000017">running daemon on startup</a></li>
+<li><a href="#org0000013">running daemon on startup</a></li>
 </ul>
 </li>
 <li><a href="#appendix_emacs">10. Appending: general Emacs tips</a></li>
 <li><a href="#future">11. Future and my holy grail of search</a></li>
-<li><a href="#org000001b">12. --</a></li>
+<li><a href="#org0000017">12. --</a></li>
 </ul>
 </div>
 </div>
@@ -5402,14 +5402,14 @@ I'll write about searching in
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000007">
+<div class="outline-2" id="outline-container-org0000004">
 <h2 id="personal_information"><a class="headerlink" href="#personal_information">¶</a><span class="section-number-2">3</span> Searching in personal information</h2>
 <div class="outline-text-2" id="text-personal_information">
 <p>
 By personal information I refer to things like todo list, personal wiki or whatever you use to store information relevant to your life.
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000003">
+<div class="outline-3" id="outline-container-org0000002">
 <h3 id="org_mode"><a class="headerlink" href="#org_mode">¶</a>Org mode notes</h3>
 <div class="outline-text-3" id="text-org_mode">
 <p>
@@ -5440,7 +5440,7 @@ Here are some typical workflows with my org-mode:
 </p>
 <ul class="org-ul">
 <li><p>
-<a id="org0000002"></a> tags for friends
+<a id="friends_tags"></a> tags for friends
 </p>
 <p>
 I see an interesting article or think of something which would be good to share with a friend, but at the moment it's not quite a good time to send it.  I can just capture it and attach a tag (e.g. <samp class="inline">ann</samp> or <samp class="inline">jeremy</samp>). That way next time we chat I can just look up things under their tag and send them.
@@ -5459,7 +5459,7 @@ When I feel it's time to prepare the post, I can just search by the tag (e.g. <c
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000006">
+<div class="outline-3" id="outline-container-org0000003">
 <h3 id="other"><a class="headerlink" href="#other">¶</a>Other plaintext, chats and social media</h3>
 <div class="outline-text-3" id="text-other">
 <p>
@@ -5495,7 +5495,7 @@ That gives me source data for a search engine over anything I've ever:
 All these files are either non-Org or somewhat heavy for structured Org-mode search. In addition, I have many old files from my pre-orgmode era when I was using Gitit or Zim.
 </p>
 <p>
-To search over them, I'm using Emacs and Ripgrep (you can read why <a class="link-down" href="#org0000004">later</a>):
+To search over them, I'm using Emacs and Ripgrep (you can read why <a class="link-down" href="#ripgrep">later</a>):
 </p>
 <p>
 <a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L130-L134"><code class="inline">my/search</code></a>
@@ -5505,7 +5505,7 @@ runs ripgrep against <code class="inline">my/search-targets</code> variable cont
 The interesting bit about <code class="inline">my/search</code> is <a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L87-L127"><code class="inline">--my/one-off-helm-follow-mode</code></a> call. It's a somewhat horrible hack that  automatically enables helm-follow mode so you don't have to press <code class="inline">C-c C-f</code> every time you invoke helm.
 </p>
 <p>
-Finally, to make sure I can invoke search in an instance, I'm using a <a class="link-down" href="#org0000005">global keybinding</a>.
+Finally, to make sure I can invoke search in an instance, I'm using a <a class="link-down" href="#snippet_other">global keybinding</a>.
 </p>
 <p>
 Here's a <b>demo</b> <a href="https://file.globalupload.io/wu7HYYyJaY.gif">gif (5Mb)</a> of using this to search 'greg egan' in my knowledge repository.
@@ -5514,7 +5514,7 @@ You can see that as a result, I'm getting my Kobo highlights (<samp class="inlin
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000008">
+<div class="outline-2" id="outline-container-org0000005">
 <h2 id="recoll"><a class="headerlink" href="#recoll">¶</a><span class="section-number-2">4</span> Recoll</h2>
 <div class="outline-text-2" id="text-recoll">
 <p>
@@ -5545,7 +5545,7 @@ I don't have that much data yet to benefit massively from proper search queries,
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000000c">
+<div class="outline-2" id="outline-container-org0000009">
 <h2 id="android"><a class="headerlink" href="#android">¶</a><span class="section-number-2">5</span> Searching on Android</h2>
 <div class="outline-text-2" id="text-android">
 <p>
@@ -5555,9 +5555,9 @@ Most of my notes and knowledge repository are plaintext, so it is easily and con
 Since using Emacs on Android is hardly a meaningful experience, I'm working around it by using other apps.
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000009">
-<h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><a href="https://github.com/orgzly/orgzly-android">Orgzly</a></h3>
-<div class="outline-text-3" id="text-org0000009">
+<div class="outline-3" id="outline-container-org0000006">
+<h3 id="org0000006"><a class="headerlink" href="#org0000006">¶</a><a href="https://github.com/orgzly/orgzly-android">Orgzly</a></h3>
+<div class="outline-text-3" id="text-org0000006">
 <p>
 I can't recommend it enough, it's got many things done right, very fast and the code is extremely readable and well tested so it's easy to contribute.
 </p>
@@ -5569,13 +5569,13 @@ You can save <a href="https://lh3.googleusercontent.com/FweBE2T3T3wZwJC64DQgtGj8
 Searches can be displayed as persistent widgets, e.g. I find convenient to have a phone screen dedicated to 'Buy' search (<code class="inline">t.buy</code> query) or 'Do at work' search (<code class="inline">t.@work</code> query).
 </p>
 <p>
-As I described <a class="link-up" href="#org0000002">above</a>, I keep few saved search queries for some friends so I can recall what I wanted to discuss with them.
+As I described <a class="link-up" href="#friends_tags">above</a>, I keep few saved search queries for some friends so I can recall what I wanted to discuss with them.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000a">
-<h3 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><a href="https://play.google.com/store/apps/details?id=com.docsearch.pro">Docsearch +</a></h3>
-<div class="outline-text-3" id="text-org000000a">
+<div class="outline-3" id="outline-container-org0000007">
+<h3 id="org0000007"><a class="headerlink" href="#org0000007">¶</a><a href="https://play.google.com/store/apps/details?id=com.docsearch.pro">Docsearch +</a></h3>
+<div class="outline-text-3" id="text-org0000007">
 <p>
 Docsearch is a not very well-known tool (e.g. zero search results on Reddit or Twitter), but I don't know any alternatives for it.
 </p>
@@ -5593,7 +5593,7 @@ I'd be extremely happy to replace this with some open source application, so ple
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000b">
+<div class="outline-3" id="outline-container-org0000008">
 <h3 id="recoll_web"><a class="headerlink" href="#recoll_web">¶</a>Recoll Web</h3>
 <div class="outline-text-3" id="text-recoll_web">
 <p>
@@ -5602,7 +5602,7 @@ On the rare occasions when I need to search in pdfs or books (which I don't sync
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000000f">
+<div class="outline-2" id="outline-container-org000000c">
 <h2 id="web"><a class="headerlink" href="#web">¶</a><span class="section-number-2">6</span> Web search</h2>
 <div class="outline-text-2" id="text-web">
 <p>
@@ -5756,17 +5756,17 @@ I'm still getting used to it, but it's amazing how faster it is than jumping to 
 Finally, it may be convenient to set up <a href="https://github.com/hrs/engine-mode">engine-mode</a> in Emacs, or <a href="https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Bweb-services/search-engine">search-engine layer</a> in Spacemacs. It lets you invoke a browser search directly from Emacs (e.g. <code class="inline">SPC s G</code> to do google search). I find it convenient when I need to search many things in bulk.
 </p>
 </div>
-<div class="outline-3" id="outline-container-org000000d">
-<h3 id="org000000d"><a class="headerlink" href="#org000000d">¶</a>Firefox enhancements</h3>
-<div class="outline-text-3" id="text-org000000d">
+<div class="outline-3" id="outline-container-org000000a">
+<h3 id="org000000a"><a class="headerlink" href="#org000000a">¶</a>Firefox enhancements</h3>
+<div class="outline-text-3" id="text-org000000a">
 <p>
 I find it convenient to enable <a href="https://www.ghacks.net/2016/06/11/firefox-page-search-improvements">'highlight all'</a> for search within a page.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000e">
-<h3 id="org000000e"><a class="headerlink" href="#org000000e">¶</a>Chrome enhancements</h3>
-<div class="outline-text-3" id="text-org000000e">
+<div class="outline-3" id="outline-container-org000000b">
+<h3 id="org000000b"><a class="headerlink" href="#org000000b">¶</a>Chrome enhancements</h3>
+<div class="outline-text-3" id="text-org000000b">
 <p>
 When I used Chrome, one thing that annoyed me was that it populates search engines automatically, and <a href="https://support.google.com/chrome/forum/AAAAP1KN0B0DOS1J_u6N8I">there is not way to disable it</a>.
 </p>
@@ -5776,16 +5776,16 @@ There is a nice open source <a href="https://chrome.google.com/webstore/detail/d
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000015">
+<div class="outline-2" id="outline-container-org0000011">
 <h2 id="code"><a class="headerlink" href="#code">¶</a><span class="section-number-2">7</span> Searching in code</h2>
 <div class="outline-text-2" id="text-code">
 <p>
 TLDR: I tried different existing code search tools, was disappointed and ended up using Emacs + Ripgrep.  
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000010">
-<h3 id="org0000010"><a class="headerlink" href="#org0000010">¶</a>Why?</h3>
-<div class="outline-text-3" id="text-org0000010">
+<div class="outline-3" id="outline-container-org000000d">
+<h3 id="org000000d"><a class="headerlink" href="#org000000d">¶</a>Why?</h3>
+<div class="outline-text-3" id="text-org000000d">
 <p>
 I've got lots of personal projects, experiments, data processing and backup scripts on my computer.
 I also tend to create a git repository at a slightest opportunity primarily as a means of code backup/rollback and progress tracking, but often it results in actual projects, so I would need a repository anyway.
@@ -5851,9 +5851,9 @@ That's a pretty pathetic workflow.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000011">
-<h3 id="org0000011"><a class="headerlink" href="#org0000011">¶</a>What do I want</h3>
-<div class="outline-text-3" id="text-org0000011">
+<div class="outline-3" id="outline-container-org000000e">
+<h3 id="org000000e"><a class="headerlink" href="#org000000e">¶</a>What do I want</h3>
+<div class="outline-text-3" id="text-org000000e">
 <p>
 My ideal code search tool would:
 </p>
@@ -5874,9 +5874,9 @@ Ideally, inotify-based, but any means of refreshing search index without having 
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000012">
-<h3 id="org0000012"><a class="headerlink" href="#org0000012">¶</a>Existing code search tools</h3>
-<div class="outline-text-3" id="text-org0000012">
+<div class="outline-3" id="outline-container-org000000f">
+<h3 id="org000000f"><a class="headerlink" href="#org000000f">¶</a>Existing code search tools</h3>
+<div class="outline-text-3" id="text-org000000f">
 <p>
 So, I wanted some code search and indexing tool that could watch over all the source file on my filesystem and let me search through them.
 </p>
@@ -5904,9 +5904,9 @@ As you can see, none of these are convenient for searching in personal code.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000014">
-<h3 id="org0000014"><a class="headerlink" href="#org0000014">¶</a>Solution: use Emacs and Ripgrep</h3>
-<div class="outline-text-3" id="text-org0000014">
+<div class="outline-3" id="outline-container-org0000010">
+<h3 id="org0000010"><a class="headerlink" href="#org0000010">¶</a>Solution: use Emacs and Ripgrep</h3>
+<div class="outline-text-3" id="text-org0000010">
 <p>
 Disappointed, I figured that least I could do is at somehow improve my workflow with grep.
 </p>
@@ -5929,7 +5929,7 @@ So, what are the problems with using <code class="inline">grep</code>?
 </ul></li>
 </ul>
 <p>
-<a id="org0000004"></a>
+<a id="ripgrep"></a>
 As it turns out, <code class="inline">ripgrep</code> is the tool!
 </p>
 <ul class="org-ul">
@@ -5967,7 +5967,7 @@ Ripgrep searches in real files on my disk, so any changes are reflected <b>immed
 It would still be nice to avoid unnecessary disk operations, and of course, semantic search would be great, and that is definitely going to require some sort of indexer.
 </p>
 <p>
-I've got a <a class="link-down" href="#org0000013">global keybinding</a> to invoke Emacs with a prompt to search in code, so I can do in in a blink.
+I've got a <a class="link-down" href="#snippet_code">global keybinding</a> to invoke Emacs with a prompt to search in code, so I can do in in a blink.
 </p>
 <p>
 Here's a <a href="https://file.globalupload.io/onCac7sh9M.gif">gif (3.5 Mb)</a> showing it <b>in action</b>: say, I am working on testing a browser extension, and need to interact with in via hotkeys. I remember using <code class="inline">pyautogui</code> for automating <a href="https://github.com/karlicoss/grasp">Grasp</a> tests, but I forgot which function I actually need to use. Searching for 'pyautogui' brings me all the repositories where I'm using it and lets me quickly find out the command I need without having to read the documentation all over again.
@@ -5975,7 +5975,7 @@ Here's a <a href="https://file.globalupload.io/onCac7sh9M.gif">gif (3.5 Mb)</a> 
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000016">
+<div class="outline-2" id="outline-container-org0000012">
 <h2 id="appendix_cloudmacs"><a class="headerlink" href="#appendix_cloudmacs">¶</a><span class="section-number-2">8</span> Appendix: searching away from computer</h2>
 <div class="outline-text-2" id="text-appendix_cloudmacs">
 <p>
@@ -5983,7 +5983,7 @@ I'm running Spacemacs on my VPS, so if I'm not near my computer and <a class="li
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000018">
+<div class="outline-2" id="outline-container-org0000014">
 <h2 id="appendix_daemon"><a class="headerlink" href="#appendix_daemon">¶</a><span class="section-number-2">9</span> Appendix: Lightning fast Emacs</h2>
 <div class="outline-text-2" id="text-appendix_daemon">
 <p>
@@ -6029,7 +6029,7 @@ Most of the time I've got Emacs window open on one of my desktops anyway, but so
 I've got a global keybinding (<code class="inline">Win+m</code>) that invokes this script. In addition the script accepts a function to call so you can open Emacs with a search prompt, so I have few more handy keybindings:
 </p>
 <ul class="org-ul">
-<li><a id="org0000005"></a> <code class="inline">Win+F1</code> for searching in my <a class="link-up" href="#other">notes and knowledge repository</a></li>
+<li><a id="snippet_other"></a> <code class="inline">Win+F1</code> for searching in my <a class="link-up" href="#other">notes and knowledge repository</a></li>
 </ul>
 <div class="org-src-container">
 <pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment"> -eux</span>
@@ -6037,7 +6037,7 @@ I've got a global keybinding (<code class="inline">Win+m</code>) that invokes th
 </pre>
 </div>
 <ul class="org-ul">
-<li><a id="org0000013"></a> <code class="inline">Win+F3</code> for searching in my repositories</li>
+<li><a id="snippet_code"></a> <code class="inline">Win+F3</code> for searching in my repositories</li>
 </ul>
 <div class="org-src-container">
 <pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment"> -eux</span>
@@ -6061,9 +6061,9 @@ I've got a global keybinding (<code class="inline">Win+m</code>) that invokes th
 </pre>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000017">
-<h3 id="org0000017"><a class="headerlink" href="#org0000017">¶</a>running daemon on startup</h3>
-<div class="outline-text-3" id="text-org0000017">
+<div class="outline-3" id="outline-container-org0000013">
+<h3 id="org0000013"><a class="headerlink" href="#org0000013">¶</a>running daemon on startup</h3>
+<div class="outline-text-3" id="text-org0000013">
 <p>
 It might be convenient to always have the daemon running, for that I'm using a systemd unit in <samp class="inline">~/.config/systemd/user/emacs-daemon.service</samp>.
 </p>
@@ -6089,7 +6089,7 @@ It's nothing unusual perhaps apart from using <code class="inline">bash -l</code
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000019">
+<div class="outline-2" id="outline-container-org0000015">
 <h2 id="appendix_emacs"><a class="headerlink" href="#appendix_emacs">¶</a><span class="section-number-2">10</span> Appending: general Emacs tips</h2>
 <div class="outline-text-2" id="text-appendix_emacs">
 <p>
@@ -6098,7 +6098,7 @@ These tips might be pretty obvious, but they belong to this post, so here you go
 <ul class="org-ul">
 <li>if you're on Spacemacs, use <a href="https://github.com/syl20bnr/spacemacs/tree/develop"><code class="inline">develop</code></a> branch. Master is pretty backwards.</li>
 <li><p>
-search with <code class="inline">ripgrep</code> instead of <code class="inline">grep</code> (not only in Emacs!). It's just <a class="link-up" href="#org0000004">better</a>.
+search with <code class="inline">ripgrep</code> instead of <code class="inline">grep</code> (not only in Emacs!). It's just <a class="link-up" href="#ripgrep">better</a>.
 </p>
 <p>
 In Spacemacs, set up your <code class="inline">init.el</code>:
@@ -6133,7 +6133,7 @@ E.g. you can use it with <code class="inline">helm-org-in-buffer-headings</code>
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000001a">
+<div class="outline-2" id="outline-container-org0000016">
 <h2 id="future"><a class="headerlink" href="#future">¶</a><span class="section-number-2">11</span> Future and my holy grail of search</h2>
 <div class="outline-text-2" id="text-future">
 <p>
@@ -6166,8 +6166,8 @@ Considering Google Glass hasn't made it, the technology is not exactly there, so
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000001b">
-<h2 id="org000001b"><a class="headerlink" href="#org000001b">¶</a><span class="section-number-2">12</span> --</h2>
+<div class="outline-2" id="outline-container-org0000017">
+<h2 id="org0000017"><a class="headerlink" href="#org0000017">¶</a><span class="section-number-2">12</span> --</h2>
 <div class="outline-text-2" id="text-12">
 <p>
 My closing tips would be:
@@ -6379,7 +6379,7 @@ As always, I'm open to feedback and would love to hear what is or setup or help 
 </li>
 <li><a href="#fin">10. Closing points</a></li>
 <li><a href="#links">11. Other links</a></li>
-<li><a href="#org0000020">12. --</a></li>
+<li><a href="#org000001a">12. --</a></li>
 </ul>
 </div>
 </div>
@@ -6435,7 +6435,7 @@ and introduce a motivating <b>real life problem</b> that I actually had to solve
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000003">
+<div class="outline-2" id="outline-container-org0000001">
 <h2 id="problem"><a class="headerlink" href="#problem">¶</a><span class="section-number-2">2</span> The problem: parsing Kindle highlights</h2>
 <div class="outline-text-2" id="text-problem">
 <p>
@@ -6472,8 +6472,8 @@ No hidden-variable theory can be local (I think some guy named Bell proved that)
 Yes, it's a messy format and not very machine friendly. But oh well it's a file, you're a programmer. You know the drill.
 </p>
 <p>
-<a id="org0000001"></a>
-<a id="org0000002"></a>
+<a id="def_parse_entry"></a>
+<a id="code_initial"></a>
 </p>
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr"> 1: </span><span class="org-keyword">from</span> datetime <span class="org-keyword">import</span> datetime
@@ -6624,7 +6624,7 @@ What do we do?
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000004">
+<div class="outline-2" id="outline-container-org0000002">
 <h2 id="logging"><a class="headerlink" href="#logging">¶</a><span class="section-number-2">3</span> A non-solution #1: logging</h2>
 <div class="outline-text-2" id="text-logging">
 <p>
@@ -6661,7 +6661,7 @@ So we need some way of propagating the errors up the call hierarchy instead of t
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000005">
+<div class="outline-2" id="outline-container-org0000003">
 <h2 id="error_object"><a class="headerlink" href="#error_object">¶</a><span class="section-number-2">4</span> A non-solution #2: special error value</h2>
 <div class="outline-text-2" id="text-error_object">
 <p>
@@ -6688,7 +6688,7 @@ Sometimes it's inevitable though, e.g. I'm giving an example <a class="link-down
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000000c">
+<div class="outline-2" id="outline-container-org0000006">
 <h2 id="container"><a class="headerlink" href="#container">¶</a><span class="section-number-2">5</span> Almost solution #1: Result container</h2>
 <div class="outline-text-2" id="text-container">
 <p>
@@ -6745,7 +6745,7 @@ Well, some people tried! So I'll review a python library that does that: <a href
 </p>
 <p>
 Let's try it on our program and see how it works.
-To make it easier to compare to <a class="link-up" href="#org0000002">the original code</a> I suggest duplicating the tab in a separate window and tiling them side by side.
+To make it easier to compare to <a class="link-up" href="#code_initial">the original code</a> I suggest duplicating the tab in a separate window and tiling them side by side.
 </p>
 <div class="org-src-container">
 <pre class="src src-python"><span class="linenr">33: </span><span class="org-keyword">from</span> result <span class="org-keyword">import</span> Ok, Err
@@ -6809,7 +6809,7 @@ We use <a href="https://docs.python.org/3/library/itertools.html#itertools.tee">
 * ERROR: Couldn't match regex!
 </pre>
 <p>
-<a id="org0000006"></a>
+<a id="kindle_output"></a>
 </p>
 <p>
 Cool, we rendered as much as we can, and we get the error displayed as well, so nothing crashes and the users are not as unhappy.
@@ -6827,7 +6827,7 @@ So, let's try to use mypy to aid us at writing correct code.
 Let's focus just on <code class="inline">iter_highlights</code> and <code class="inline">iter_books</code> and use the <code class="inline">Result</code> type.
 </p>
 <div class="org-src-container">
-<pre class="src src-python" id="org0000007"><span class="linenr">34: </span><span class="org-keyword">from</span> result <span class="org-keyword">import</span> Ok, Err, Result
+<pre class="src src-python" id="org0000004"><span class="linenr">34: </span><span class="org-keyword">from</span> result <span class="org-keyword">import</span> Ok, Err, Result
 <span class="linenr">35: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> Iterator
 <span class="linenr">36: </span><span class="org-variable-name">Error</span> = <span class="org-builtin">str</span>
 <span class="linenr">37: </span>
@@ -6909,7 +6909,7 @@ Success: no issues found in 1 source file
 Phew! With some minor changes and restructuring we've convinced mypy.
 </p>
 <p>
-<a id="org0000008"></a>
+<a id="container_downsides"></a>
 It does come with some downsides:
 </p>
 <ul class="org-ul">
@@ -6918,7 +6918,7 @@ It does come with some downsides:
 <b>safety</b>: you could forget to call <code class="inline">is_ok/is_err</code> before calling <code class="inline">ok/err</code>, and mypy won't even blink.
 </p>
 <p>
-<a id="org0000009"></a>
+<a id="contract_too_complicated"></a>
 The contract <samp class="inline">if .is_ok() is True, then it's safe to call .ok()</samp> is too complicated to be encoded as a type that mypy can handle. You'll get <code class="inline">None</code> or exception thrown in runtime. The author of the library admits it by the way, so it's not a criticism, just highlighting limitations of mypy here!
 </p></li>
 </ul>
@@ -6926,7 +6926,7 @@ The contract <samp class="inline">if .is_ok() is True, then it's safe to call .o
 Ok, we've learned something, let's try again. 
 </p>
 </div>
-<div class="outline-3" id="outline-container-org000000b">
+<div class="outline-3" id="outline-container-org0000005">
 <h3 id="iterator"><a class="headerlink" href="#iterator">¶</a>By the way, what's up with <a href="https://docs.python.org/3/library/typing.html#typing.Iterator"><code class="inline">Iterator</code></a> everywhere?</h3>
 <div class="outline-text-3" id="text-iterator">
 <p>
@@ -6935,12 +6935,12 @@ Glad you asked! Several reasons I'm using generators here:
 <ul class="org-ul">
 <li>it makes code cleaner because there is <b>no need for temporary lists</b>, calling <code class="inline">.append</code> and then returning them in the end.</li>
 <li>it makes code faster (again, no temporary lists), and also it <b>feels faster</b> because you print items as soon as you process</li>
-<li><code class="inline">Iterator</code> type is <b>covariant</b>, whereas <code class="inline">List</code> is not. I'm elaborating on it <a class="link-down" href="#org000000a">later</a>. I'm also using <a href="https://docs.python.org/3/library/typing.html#typing.Sequence"><code class="inline">Sequence</code></a> for the same reason.</li>
+<li><code class="inline">Iterator</code> type is <b>covariant</b>, whereas <code class="inline">List</code> is not. I'm elaborating on it <a class="link-down" href="#covariance">later</a>. I'm also using <a href="https://docs.python.org/3/library/typing.html#typing.Sequence"><code class="inline">Sequence</code></a> for the same reason.</li>
 </ul>
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000010">
+<div class="outline-2" id="outline-container-org000000a">
 <h2 id="combinators"><a class="headerlink" href="#combinators">¶</a><span class="section-number-2">6</span> Almost solution #2: use error combinators</h2>
 <div class="outline-text-2" id="text-combinators">
 <p>
@@ -6951,7 +6951,7 @@ I'm quite glad someone already implemented it and I didn't have to reinvent the 
 So, let's try and rewrite the code using <code class="inline">returns.result.Result</code>:
 </p>
 <div class="org-src-container">
-<pre class="src src-mypy" id="org000000d"><span class="linenr">19: </span><span class="org-keyword">from</span> returns.result <span class="org-keyword">import</span> safe
+<pre class="src src-mypy" id="org0000007"><span class="linenr">19: </span><span class="org-keyword">from</span> returns.result <span class="org-keyword">import</span> safe
 <span class="linenr">20: </span>
 <span class="linenr">21: </span><span class="org-type">@safe</span>
 <span class="linenr">22: </span><span class="org-keyword">def</span> <span class="org-function-name">parse_entry</span>(entry: <span class="org-builtin">str</span>) -&gt; Highlight:
@@ -6978,13 +6978,13 @@ So, let's try and rewrite the code using <code class="inline">returns.result.Res
 </pre>
 </div>
 <p>
-So far the only difference from <a class="link-up" href="#org0000002">the original code</a> is <a href="https://returns.readthedocs.io/en/latest/pages/result.html#safe"><code class="inline">@safe</code></a> decorator on <code class="inline">parse_entry</code>, which basically deals with catching all exceptions and wrapping into <code class="inline">Result</code>.
+So far the only difference from <a class="link-up" href="#code_initial">the original code</a> is <a href="https://returns.readthedocs.io/en/latest/pages/result.html#safe"><code class="inline">@safe</code></a> decorator on <code class="inline">parse_entry</code>, which basically deals with catching all exceptions and wrapping into <code class="inline">Result</code>.
 </p>
 <p>
 As a consequence, <code class="inline">iter_highlights</code> required no changes in its body. (which may not be a desirable thing as we'll see <a class="link-down" href="#error_context">later</a>)
 </p>
 <div class="org-src-container">
-<pre class="src src-mypy" id="org000000e"><span class="linenr">43: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> cast
+<pre class="src src-mypy" id="org0000008"><span class="linenr">43: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> cast
 <span class="linenr">44: </span><span class="org-keyword">from</span> returns.result <span class="org-keyword">import</span> Success, Failure
 <span class="linenr">45: </span><span class="org-keyword">from</span> itertools <span class="org-keyword">import</span> tee
 <span class="linenr">46: </span><span class="org-keyword">def</span> <span class="org-function-name">iter_books</span>() -&gt; Iterator[Result[Book, <span class="org-type">Exception</span>]]:
@@ -7007,13 +7007,13 @@ Ok, that definitely requires some explanation…
 <code class="inline">returns</code> library public API doesn't provide any way to tell between success and failure (<a href="https://returns.readthedocs.io/en/latest/pages/result.html#what-is-the-difference-between-success-and-success">kind of deliberately</a>). The types <code class="inline">_Success</code> and <code class="inline">_Failure</code> are private, and the only method that we can use seems to be <a href="https://returns.readthedocs.io/en/latest/pages/result.html#returns.result.Result.value_or"><code class="inline">result.value_or(default)</code></a>. This method returns the success value if <code class="inline">result</code> is <code class="inline">Success</code> and falls back to <code class="inline">default</code> if <code class="inline">result</code> is a <code class="inline">Failure</code>. So we use a <b>sentinel object to distinguish</b> between actual success values and <code class="inline">default</code> ones, and also have to trick mypy with a <code class="inline">cast</code>.
 </p>
 <p>
-Apart from this obscurity, the function suffers from exactly the same issues as the <code class="inline">iter_books</code> implementation from <a class="link-up" href="#org0000008">the previous section</a>, and for the same reason: contract is too complicated to be expressed in mypy.
+Apart from this obscurity, the function suffers from exactly the same issues as the <code class="inline">iter_books</code> implementation from <a class="link-up" href="#container_downsides">the previous section</a>, and for the same reason: contract is too complicated to be expressed in mypy.
 </p>
 <p>
 One could argue that this function is going to look awkward anyway since we need to separate list of results into successes and errors. Let's see the function that should be more straightforward:
 </p>
 <div class="org-src-container">
-<pre class="src src-mypy" id="org000000f"><span class="linenr">57: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> Callable
+<pre class="src src-mypy" id="org0000009"><span class="linenr">57: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> Callable
 <span class="linenr">58: </span><span class="org-keyword">def</span> <span class="org-function-name">print_books</span>() -&gt; <span class="org-constant">None</span>:
 <span class="linenr">59: </span>    <span class="org-keyword">for</span> r <span class="org-keyword">in</span> iter_books():
 <span class="linenr">60: </span>        <span class="org-keyword">def</span> <span class="org-function-name">print_ok</span>(r: Book) -&gt; <span class="org-constant">None</span>:
@@ -7083,7 +7083,7 @@ But as much as I like ideas from functional programming, I'm almost certain that
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000011">
+<div class="outline-2" id="outline-container-org000000b">
 <h2 id="pair"><a class="headerlink" href="#pair">¶</a><span class="section-number-2">7</span> Still-not-quite-a-solution #3: (Value, Error) pairs</h2>
 <div class="outline-text-2" id="text-pair">
 <p>
@@ -7137,7 +7137,7 @@ If we use it we would have to pay with sacrificing type safety or <b>extra code 
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000012">
+<div class="outline-2" id="outline-container-org000000c">
 <h2 id="kiss"><a class="headerlink" href="#kiss">¶</a><span class="section-number-2">8</span> Solution: keep it simple</h2>
 <div class="outline-text-2" id="text-kiss">
 <p>
@@ -7284,7 +7284,7 @@ Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
 <p>
-Yay, it works and typechecks. Now you can decide for yourself how clean it is by comparing it side by side with <a class="link-up" href="#org0000002">the original code</a> without error handling. You'd see that the only differences (apart from indentation) is code for error handling.
+Yay, it works and typechecks. Now you can decide for yourself how clean it is by comparing it side by side with <a class="link-up" href="#code_initial">the original code</a> without error handling. You'd see that the only differences (apart from indentation) is code for error handling.
 </p>
 <p>
 <a name="upsides"></a>
@@ -7324,7 +7324,7 @@ If you don't need to handle the error, you can just yield it up the call stack a
 </p></li>
 <li><b>doesn't require modifying existing types</b>, and introducing invalid states that signal errors (mentioned <a class="link-up" href="#error_object">here</a>)</li>
 <li><p>
-<a id="org000000a"></a> <b>correct variance</b> for free
+<a id="covariance"></a> <b>correct variance</b> for free
 </p>
 <p>
 <a href="https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)">Variance</a> reflects how compound types (e.g. containers/functions) behave with respect to inheritance of their arguments and return types. You might have also heard of this as Liskov substitution principle.
@@ -7347,7 +7347,7 @@ Downsides:
 <code class="inline">isinstance</code> looks a bit verbose and might be frowned upon as it's <b>often considered as code smell</b>
 </p>
 <p>
-We can't get around this and hide in a helper function for the same reason mentioned <a class="link-up" href="#org0000009">above</a>, 
+We can't get around this and hide in a helper function for the same reason mentioned <a class="link-up" href="#contract_too_complicated">above</a>, 
 but it might be solved in mypy in <a href="https://github.com/python/mypy/issues/5206">some near future</a>, though.
 </p></li>
 </ul>
@@ -7361,11 +7361,11 @@ hopefully you'll figure out parts of your projects where it's applicable.
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000001d">
+<div class="outline-2" id="outline-container-org0000017">
 <h2 id="tips_tricks"><a class="headerlink" href="#tips_tricks">¶</a><span class="section-number-2">9</span> Tips &amp; tricks</h2>
 <div class="outline-text-2" id="text-tips_tricks">
 </div>
-<div class="outline-3" id="outline-container-org0000014">
+<div class="outline-3" id="outline-container-org000000e">
 <h3 id="api"><a class="headerlink" href="#api">¶</a>Custom error type</h3>
 <div class="outline-text-3" id="text-api">
 <p>
@@ -7375,7 +7375,7 @@ While <a class="coderef link-up" href="#coderef-simple_error_api" onmouseout="Co
 One improvement is allowing <b>arbitrary error type</b>.
 </p>
 <div class="org-src-container">
-<pre class="src src-mypy" id="org0000013"><span class="linenr">1: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> TypeVar, Union
+<pre class="src src-mypy" id="org000000d"><span class="linenr">1: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> TypeVar, Union
 <span class="linenr">2: </span><span class="org-variable-name">T</span> = TypeVar(<span class="org-string">'T'</span>)
 <span class="linenr">3: </span><span class="org-variable-name">E</span> = TypeVar(<span class="org-string">'E'</span>)
 <span class="linenr">4: </span><span class="org-variable-name">ResT</span> = Union[T, E]
@@ -7419,7 +7419,7 @@ The downside now is that you do need to wrap your exception (i.e. presumably you
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000015">
+<div class="outline-3" id="outline-container-org000000f">
 <h3 id="unwrap"><a class="headerlink" href="#unwrap">¶</a>unwrap</h3>
 <div class="outline-text-3" id="text-unwrap">
 <p>
@@ -7456,7 +7456,7 @@ Success: no issues found in 1 source file
 </pre>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000018">
+<div class="outline-3" id="outline-container-org0000012">
 <h3 id="global_policy"><a class="headerlink" href="#global_policy">¶</a>Global error policy</h3>
 <div class="outline-text-3" id="text-global_policy">
 <p>
@@ -7464,7 +7464,7 @@ When you're actively working on your code and running tests, you want to make su
 However, in the field, you want to keep the code more defensive. To switch behaviours quickly, you can use the following trick:
 </p>
 <div class="org-src-container">
-<pre class="src src-mypy" id="org0000016"><span class="linenr"> 5: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> Generic
+<pre class="src src-mypy" id="org0000010"><span class="linenr"> 5: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> Generic
 <span class="linenr"> 6: </span><span class="org-variable-name">X</span> = TypeVar(<span class="org-string">'X'</span>, bound=<span class="org-type">Exception</span>, covariant=<span class="org-constant">True</span>)
 <span class="linenr"> 7: </span>
 <span class="linenr"> 8: </span><span class="org-keyword">class</span> <span class="org-type">Error</span>(Generic[X]):
@@ -7485,7 +7485,7 @@ The idea here is <code class="inline">Error.defensive_policy</code> determines i
 Also note the use of <code class="inline">bound=Exception</code> on the type variable, this is because we can only <code class="inline">raise</code> something that inherits <code class="inline">Exception</code>.
 </p>
 <div class="org-src-container">
-<pre class="src src-mypy" id="org0000017"><span class="linenr">17: </span>
+<pre class="src src-mypy" id="org0000011"><span class="linenr">17: </span>
 <span class="linenr">18: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> Iterator
 <span class="linenr">19: </span><span class="org-keyword">def</span> <span class="org-function-name">iter_numbers</span>() -&gt; Iterator[Res[<span class="org-builtin">int</span>]]:
 <span class="linenr">20: </span>    <span class="org-keyword">for</span> s <span class="org-keyword">in</span> [<span class="org-string">'1'</span>, <span class="org-string">'two'</span>, <span class="org-string">'3'</span>, <span class="org-string">'4'</span>]:
@@ -7547,7 +7547,7 @@ Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
 <p>
-Even though you never actually return <code class="inline">Error</code> under the non-defensive policy, you <b>don't have to change any of the type signatures</b>: <code class="inline">Iterator[int]</code> is still a perfectly good <code class="inline">Iterator[Res[int]]</code>. Thanks, <a class="link-up" href="#org000000a">covariance</a>!
+Even though you never actually return <code class="inline">Error</code> under the non-defensive policy, you <b>don't have to change any of the type signatures</b>: <code class="inline">Iterator[int]</code> is still a perfectly good <code class="inline">Iterator[Res[int]]</code>. Thanks, <a class="link-up" href="#covariance">covariance</a>!
 </p>
 <p>
 I'm using this technique in my <a href="https://github.com/karlicoss/kobuddy#as-a-standalone-app">Kobo parser</a> and control it via <samp class="inline">--errors</samp> argument.
@@ -7555,11 +7555,11 @@ On CI, it runs in non-defensive mode of course. However when other people use th
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000019">
+<div class="outline-3" id="outline-container-org0000013">
 <h3 id="error_context"><a class="headerlink" href="#error_context">¶</a>Improving error context</h3>
 <div class="outline-text-3" id="text-error_context">
 <p>
-If you remember <a class="link-up" href="#org0000006">the output</a>, we got a rather cryptic <samp class="inline">ERROR: Couldn't match regex!</samp>.
+If you remember <a class="link-up" href="#kindle_output">the output</a>, we got a rather cryptic <samp class="inline">ERROR: Couldn't match regex!</samp>.
 That's of course not desirable because you can't easily tell what exactly is causing the error.
 </p>
 <p>
@@ -7605,11 +7605,11 @@ Now that's better!
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001a">
+<div class="outline-3" id="outline-container-org0000014">
 <h3 id="warnings"><a class="headerlink" href="#warnings">¶</a>Fine grained defensiveness</h3>
 <div class="outline-text-3" id="text-warnings">
 <p>
-Remember <a class="link-up" href="#org0000001"><code class="inline">parse_entry</code></a>? Its return type is <code class="inline">Highlight</code>, so it can return a single highlight or throw a single error,
+Remember <a class="link-up" href="#def_parse_entry"><code class="inline">parse_entry</code></a>? Its return type is <code class="inline">Highlight</code>, so it can return a single highlight or throw a single error,
 that will be handled by <code class="inline">iter_highlights</code>. 
 </p>
 <p>
@@ -7650,7 +7650,7 @@ Of course, this complicates code, and you can't predict all possible errors anyw
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001b">
+<div class="outline-3" id="outline-container-org0000015">
 <h3 id="dataframe"><a class="headerlink" href="#dataframe">¶</a>Error values, revisited</h3>
 <div class="outline-text-3" id="text-dataframe">
 <p>
@@ -7692,7 +7692,7 @@ E.g. <a href="https://gateway.serph.network/ipfs/Qmc5hBuomCLzb25kg14dAesAcnRSJZH
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001c">
+<div class="outline-3" id="outline-container-org0000016">
 <h3 id="cursed_pattern_matching"><a class="headerlink" href="#cursed_pattern_matching">¶</a>Cursed pattern matching mechanism</h3>
 <div class="outline-text-3" id="text-cursed_pattern_matching">
 <p>
@@ -7767,7 +7767,7 @@ And the obvious downside is that there is a potential to forget to handle except
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000001e">
+<div class="outline-2" id="outline-container-org0000018">
 <h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">10</span> Closing points</h2>
 <div class="outline-text-2" id="text-fin">
 <ul class="org-ul">
@@ -7796,7 +7796,7 @@ That saved me from otherwise massive amounts of code duplication and reference r
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000001f">
+<div class="outline-2" id="outline-container-org0000019">
 <h2 id="links"><a class="headerlink" href="#links">¶</a><span class="section-number-2">11</span> Other links</h2>
 <div class="outline-text-2" id="text-links">
 <ul class="org-ul">
@@ -7806,8 +7806,8 @@ That saved me from otherwise massive amounts of code duplication and reference r
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000020">
-<h2 id="org0000020"><a class="headerlink" href="#org0000020">¶</a><span class="section-number-2">12</span> --</h2>
+<div class="outline-2" id="outline-container-org000001a">
+<h2 id="org000001a"><a class="headerlink" href="#org000001a">¶</a><span class="section-number-2">12</span> --</h2>
 <div class="outline-text-2" id="text-12">
 <p>
 Let me know what you think! I'm open to all feedback.
@@ -8385,19 +8385,19 @@ Let me know what you think! I'm open to all feedback.
 <li><a href="#demo">3. Demo: displaying Pocket data via Orger</a></li>
 <li><a href="#examples">4. More examples</a>
 <ul>
-<li><a href="#org0000005">instapaper</a></li>
-<li><a href="#org0000006">hypothesis</a></li>
-<li><a href="#org0000007">kobo</a></li>
-<li><a href="#org0000008">pinboard</a></li>
-<li><a href="#org0000009">pdfs</a></li>
-<li><a href="#org000000a">twitter</a></li>
-<li><a href="#org000000b">rtm2org</a></li>
-<li><a href="#org000000c">telegram2org</a></li>
-<li><a href="#org000000d">reddit</a></li>
+<li><a href="#org0000003">instapaper</a></li>
+<li><a href="#org0000004">hypothesis</a></li>
+<li><a href="#org0000005">kobo</a></li>
+<li><a href="#org0000006">pinboard</a></li>
+<li><a href="#org0000007">pdfs</a></li>
+<li><a href="#org0000008">twitter</a></li>
+<li><a href="#org0000009">rtm2org</a></li>
+<li><a href="#org000000a">telegram2org</a></li>
+<li><a href="#org000000b">reddit</a></li>
 </ul>
 </li>
 <li><a href="#why_hard">5. It does sound very simple. Does that really deserve a post?</a></li>
-<li><a href="#org0000010">6. What makes Orger good?</a></li>
+<li><a href="#org000000e">6. What makes Orger good?</a></li>
 <li><a href="#using">7. Using Orger views</a>
 <ul>
 <li><a href="#usecases">Typical use patterns</a></li>
@@ -8405,14 +8405,14 @@ Let me know what you think! I'm open to all feedback.
 </li>
 <li><a href="#improvements">8. Potential improvements</a>
 <ul>
-<li><a href="#org0000013"><span class="todo TODO">TODO</span> more frequent, ideally realtime updates to views</a></li>
-<li><a href="#org0000014"><span class="todo TODO">TODO</span> alternative export formats</a></li>
-<li><a href="#org0000015"><span class="todo TODO">TODO</span> two-way data flow</a></li>
-<li><a href="#org0000016"><span class="todo TODO">TODO</span> potential for race condition</a></li>
+<li><a href="#org0000011"><span class="todo TODO">TODO</span> more frequent, ideally realtime updates to views</a></li>
+<li><a href="#org0000012"><span class="todo TODO">TODO</span> alternative export formats</a></li>
+<li><a href="#org0000013"><span class="todo TODO">TODO</span> two-way data flow</a></li>
+<li><a href="#org0000014"><span class="todo TODO">TODO</span> potential for race condition</a></li>
 </ul>
 </li>
 <li><a href="#similar">9. Similar projects</a></li>
-<li><a href="#org0000019">10. ----</a></li>
+<li><a href="#org0000017">10. ----</a></li>
 </ul>
 </div>
 </div>
@@ -8424,7 +8424,7 @@ I'll present some examples and use cases, that will hopefully be helpful to you 
 There is also <a href="orger-todos.html">second part</a> where I'm explaining how it can be used to process Reddit, create quick tasks from Telegram messages and help with spaced repetition.
 If you're impatient, you can jump straight to a <a class="link-down" href="#demo">demo</a>.
 </p>
-<div class="outline-2" id="outline-container-org0000001">
+<div class="outline-2" id="outline-container-org0000000">
 <h2 id="intro"><a class="headerlink" href="#intro">¶</a><span class="section-number-2">1</span> Intro</h2>
 <div class="outline-text-2" id="text-intro">
 <div class="noop" id="for_exports_post">
@@ -8443,7 +8443,7 @@ The second option is compensating for your sloppy meaty memory and having inform
 
 </span><aside class="sidenote">see <a class="post-tag" href="./tags.html#extendedmind">#extendedmind</a></aside></div>
 <p>
-<a id="org0000000"></a>
+<a id="motivation"></a>
 That sounds simple enough but as with many simple things, in practice you run into obstacles. 
 I'll give some I've personally been overcoming as examples:
 </p>
@@ -8483,7 +8483,7 @@ So, I present you a system that I've developed and that solves all my problems�
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000003">
+<div class="outline-2" id="outline-container-org0000001">
 <h2 id="what"><a class="headerlink" href="#what">¶</a><span class="section-number-2">2</span> What Orger does</h2>
 <div class="outline-text-2" id="text-what">
 <p>
@@ -8533,11 +8533,11 @@ See <a class="link-down" href="#examples">'Examples'</a> section for more.
 </p>
 <p>
 So as you can see orger itself is a really not sophisticated tool, at least until you spend time trying to reimplement the same.
-As always the devil is in the details (look at that cheeky <code class="inline">my.github_data</code> import), which I'll explain <a class="link-down" href="#org0000002">further</a>.
+As always the devil is in the details (look at that cheeky <code class="inline">my.github_data</code> import), which I'll explain <a class="link-down" href="#data_sources">further</a>.
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000004">
+<div class="outline-2" id="outline-container-org0000002">
 <h2 id="demo"><a class="headerlink" href="#demo">¶</a><span class="section-number-2">3</span> Demo: displaying Pocket data via Orger</h2>
 <div class="outline-text-2" id="text-demo">
 <p>
@@ -8752,7 +8752,7 @@ As you can see it's quite easy to search in your highlights and jump straight in
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000000e">
+<div class="outline-2" id="outline-container-org000000c">
 <h2 id="examples"><a class="headerlink" href="#examples">¶</a><span class="section-number-2">4</span> More examples</h2>
 <div class="outline-text-2" id="text-examples">
 <p>
@@ -8772,49 +8772,49 @@ Hopefully the code is readable enough and will give you some inspiration.
 If you find something confusing or you write your own module and want to contribute, please feel free to open issue/PR!
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000005">
-<h3 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/instapaper.py">instapaper</a></h3>
-<div class="outline-text-3" id="text-org0000005">
+<div class="outline-3" id="outline-container-org0000003">
+<h3 id="org0000003"><a class="headerlink" href="#org0000003">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/instapaper.py">instapaper</a></h3>
+<div class="outline-text-3" id="text-org0000003">
 <p>
 Instapaper <a href="annotating.html#instapaper">doesn't have search</a> over annotations, so I implemented my own!
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000006">
-<h3 id="org0000006"><a class="headerlink" href="#org0000006">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/hypothesis.py">hypothesis</a></h3>
-<div class="outline-text-3" id="text-org0000006">
+<div class="outline-3" id="outline-container-org0000004">
+<h3 id="org0000004"><a class="headerlink" href="#org0000004">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/hypothesis.py">hypothesis</a></h3>
+<div class="outline-text-3" id="text-org0000004">
 <p>
 <a href="https://hypothes.is">Hypothesis</a> does have search, but it's still way quicker for me to invoke search in Emacs (takes literally less than a second) than do that in web browser.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000007">
-<h3 id="org0000007"><a class="headerlink" href="#org0000007">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/kobo.py">kobo</a></h3>
-<div class="outline-text-3" id="text-org0000007">
+<div class="outline-3" id="outline-container-org0000005">
+<h3 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/kobo.py">kobo</a></h3>
+<div class="outline-text-3" id="text-org0000005">
 <p>
 Generates views for all highlights and comments along with book titles from my Kobo database export.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000008">
-<h3 id="org0000008"><a class="headerlink" href="#org0000008">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/pinboard.py">pinboard</a></h3>
-<div class="outline-text-3" id="text-org0000008">
+<div class="outline-3" id="outline-container-org0000006">
+<h3 id="org0000006"><a class="headerlink" href="#org0000006">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/pinboard.py">pinboard</a></h3>
+<div class="outline-text-3" id="text-org0000006">
 <p>
 Searches over my Pinboard bookmarks.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000009">
-<h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/pdfs.py">pdfs</a></h3>
-<div class="outline-text-3" id="text-org0000009">
+<div class="outline-3" id="outline-container-org0000007">
+<h3 id="org0000007"><a class="headerlink" href="#org0000007">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/pdfs.py">pdfs</a></h3>
+<div class="outline-text-3" id="text-org0000007">
 <p>
 Crawls my filesystem for PDF files and collects all highlights and comments in a single view.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000a">
-<h3 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/twitter.py">twitter</a></h3>
-<div class="outline-text-3" id="text-org000000a">
+<div class="outline-3" id="outline-container-org0000008">
+<h3 id="org0000008"><a class="headerlink" href="#org0000008">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/twitter.py">twitter</a></h3>
+<div class="outline-text-3" id="text-org0000008">
 <p>
 It's got two modes
 </p>
@@ -8824,17 +8824,17 @@ It's got two modes
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000b">
-<h3 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/rtm2org.py">rtm2org</a></h3>
-<div class="outline-text-3" id="text-org000000b">
+<div class="outline-3" id="outline-container-org0000009">
+<h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/rtm2org.py">rtm2org</a></h3>
+<div class="outline-text-3" id="text-org0000009">
 <p>
 I stopped using Remember The Milk a while ago, but there are still some tasks and notes I've left behind, which I'm slowly moving to org-mode or canceling over time.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000c">
-<h3 id="org000000c"><a class="headerlink" href="#org000000c">¶</a><a href="https://github.com/karlicoss/telegram2org">telegram2org</a></h3>
-<div class="outline-text-3" id="text-org000000c">
+<div class="outline-3" id="outline-container-org000000a">
+<h3 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><a href="https://github.com/karlicoss/telegram2org">telegram2org</a></h3>
+<div class="outline-text-3" id="text-org000000a">
 <p>
 Lets me create todo tasks from Telegram messages in couple of taps (you can't use share function on them in Android).
 </p>
@@ -8843,9 +8843,9 @@ I write about it <a href="orger-todos.html#telegram2org">in the second part</a>.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000d">
-<h3 id="org000000d"><a class="headerlink" href="#org000000d">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/reddit.py">reddit</a></h3>
-<div class="outline-text-3" id="text-org000000d">
+<div class="outline-3" id="outline-container-org000000b">
+<h3 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/reddit.py">reddit</a></h3>
+<div class="outline-text-3" id="text-org000000b">
 <p>
 Displays and lets me search my Reddit saved posts/comments.
 </p>
@@ -8855,7 +8855,7 @@ I write about it <a href="orger-todos.html#reddit">in the second part</a>.
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000000f">
+<div class="outline-2" id="outline-container-org000000d">
 <h2 id="why_hard"><a class="headerlink" href="#why_hard">¶</a><span class="section-number-2">5</span> It does sound very simple. Does that really deserve a post?</h2>
 <div class="outline-text-2" id="text-why_hard">
 <p>
@@ -8876,7 +8876,7 @@ When it comes to generating 10+ views from different data sources, you <b>really
 That's how <a href="https://github.com/karlicoss/inorganic">inorganic</a> library was born.
 </p></li>
 <li><p>
-<a id="org0000002"></a>accessing data sources and exposing it through Python interfaces
+<a id="data_sources"></a>accessing data sources and exposing it through Python interfaces
 </p>
 <p>
 This is probably where most of effort was spent. All sorts of stupid APIs, tedious parsing, you can imagine.
@@ -8898,12 +8898,12 @@ I figured it was worth extracting this 'pattern' in a separate <a href="https://
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000010">
-<h2 id="org0000010"><a class="headerlink" href="#org0000010">¶</a><span class="section-number-2">6</span> What makes Orger good?</h2>
+<div class="outline-2" id="outline-container-org000000e">
+<h2 id="org000000e"><a class="headerlink" href="#org000000e">¶</a><span class="section-number-2">6</span> What makes Orger good?</h2>
 <div class="outline-text-2" id="text-6">
 <ul class="org-ul">
 <li><p>
-it solves <a class="link-up" href="#org0000000">my problems</a>! 
+it solves <a class="link-up" href="#motivation">my problems</a>! 
 </p>
 <p>
 I won't go long into Org-mode propaganda, there are people that do it better than me out there, but for me it's good because it's a decent balance between ease of use and ease of augmenting.
@@ -8930,7 +8930,7 @@ Also the fact that it's a real programming language rather than some YAML config
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000012">
+<div class="outline-2" id="outline-container-org0000010">
 <h2 id="using"><a class="headerlink" href="#using">¶</a><span class="section-number-2">7</span> Using Orger views</h2>
 <div class="outline-text-2" id="text-using">
 <p>
@@ -8957,7 +8957,7 @@ On my phone I'm using:
 You can also set up some proper indexing daemon like <a href="https://www.lesbonscomptes.com/recoll">recoll</a>.
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000011">
+<div class="outline-3" id="outline-container-org000000f">
 <h3 id="usecases"><a class="headerlink" href="#usecases">¶</a>Typical use patterns</h3>
 <div class="outline-text-3" id="text-usecases">
 <p>
@@ -8989,37 +8989,37 @@ Having all annotations in my <samp class="inline">kobo.org</samp> file lets me q
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000017">
+<div class="outline-2" id="outline-container-org0000015">
 <h2 id="improvements"><a class="headerlink" href="#improvements">¶</a><span class="section-number-2">8</span> Potential improvements</h2>
 <div class="outline-text-2" id="text-improvements">
 </div>
-<div class="outline-3" id="outline-container-org0000013">
-<h3 id="org0000013"><a class="headerlink" href="#org0000013">¶</a><span class="todo TODO">TODO</span> more frequent, ideally realtime updates to views</h3>
-<div class="outline-text-3" id="text-org0000013">
+<div class="outline-3" id="outline-container-org0000011">
+<h3 id="org0000011"><a class="headerlink" href="#org0000011">¶</a><span class="todo TODO">TODO</span> more frequent, ideally realtime updates to views</h3>
+<div class="outline-text-3" id="text-org0000011">
 <p>
 If the API doesn't provide push-based interface (as most of them), ultimately it's a question of polling them carefully to avoid rate limiting penalties.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000014">
-<h3 id="org0000014"><a class="headerlink" href="#org0000014">¶</a><span class="todo TODO">TODO</span> alternative export formats</h3>
-<div class="outline-text-3" id="text-org0000014">
+<div class="outline-3" id="outline-container-org0000012">
+<h3 id="org0000012"><a class="headerlink" href="#org0000012">¶</a><span class="todo TODO">TODO</span> alternative export formats</h3>
+<div class="outline-text-3" id="text-org0000012">
 <p>
 There is nothing really about Org-mode that's specific to this system. For instance, there are markdown-based organizers out there and people could benefit from using Orger for them.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000015">
-<h3 id="org0000015"><a class="headerlink" href="#org0000015">¶</a><span class="todo TODO">TODO</span> two-way data flow</h3>
-<div class="outline-text-3" id="text-org0000015">
+<div class="outline-3" id="outline-container-org0000013">
+<h3 id="org0000013"><a class="headerlink" href="#org0000013">¶</a><span class="todo TODO">TODO</span> two-way data flow</h3>
+<div class="outline-text-3" id="text-org0000013">
 <p>
 It would be cool to implement feedback from emacs, e.g. editing Github comment when you edit the corresponding Orger item. But it requires considerably more effort and would only work within emacs.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000016">
-<h3 id="org0000016"><a class="headerlink" href="#org0000016">¶</a><span class="todo TODO">TODO</span> potential for race condition</h3>
-<div class="outline-text-3" id="text-org0000016">
+<div class="outline-3" id="outline-container-org0000014">
+<h3 id="org0000014"><a class="headerlink" href="#org0000014">¶</a><span class="todo TODO">TODO</span> potential for race condition</h3>
+<div class="outline-text-3" id="text-org0000014">
 <p>
 Unfortunately there is a little space for race condition if Orger appends something while you're editing file. 
 Orger tries to detect emacs and vim swap/lock files, but it's if you're very unlucky or using different setup it's still possible.
@@ -9031,7 +9031,7 @@ Also, I run Orger jobs at night (via cron) so it's quite unlikely to overlap wit
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000018">
+<div class="outline-2" id="outline-container-org0000016">
 <h2 id="similar"><a class="headerlink" href="#similar">¶</a><span class="section-number-2">9</span> Similar projects</h2>
 <div class="outline-text-2" id="text-similar">
 <ul class="org-ul">
@@ -9050,8 +9050,8 @@ If someone compares Memacs and Orger please let me know, I'd be happy to link it
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000019">
-<h2 id="org0000019"><a class="headerlink" href="#org0000019">¶</a><span class="section-number-2">10</span> ----</h2>
+<div class="outline-2" id="outline-container-org0000017">
+<h2 id="org0000017"><a class="headerlink" href="#org0000017">¶</a><span class="section-number-2">10</span> ----</h2>
 <div class="outline-text-2" id="text-10">
 <p>
 I'd be interested in hearing your thoughts or feature requests.

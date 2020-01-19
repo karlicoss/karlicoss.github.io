@@ -166,7 +166,7 @@ Cron has some variations that help with some of these problems:
 </p>
 <ul class="org-ul">
 <li><a href="https://en.wikipedia.org/wiki/Anacron">anacron</a> – allows running commands periodically (e.g. weekly), which helps if your computer is sometimes offline; but it can't run more frequently than once a day</li>
-<li><a href="https://wiki.archlinux.org/index.php/cron#Fcron">fcron</a>, which I'm <b>using at the moment</b>. Pretty decent:
+<li><a id="fcron"></a><a href="https://wiki.archlinux.org/index.php/cron#Fcron">fcron</a>, which I'm <b>using at the moment</b>. Pretty decent:
 
 <ul class="org-ul">
 <li>unlike anacron, fully compatible with regular cron jobs and allows running periodically as well</li>
@@ -227,7 +227,7 @@ write a unit file
 Most of it is boilerplate, so good luck getting the syntax right.
 </p></li>
 <li>copy it to <samp class="inline">~/.config/systemd/user</samp></li>
-<li>remember to enable it the service</li>
+<li>remember to enable the service</li>
 <li>remember to run <code class="inline">systemctl --user reload-daemon</code>.</li>
 </ul>
 <p>
@@ -335,7 +335,7 @@ Currently, I'm using <a href="https://wiki.archlinux.org/index.php/Mutt">mutt</a
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000004">
+<div class="outline-2" id="outline-container-org0000003">
 <h2 id="other"><a class="headerlink" href="#other">¶</a><span class="section-number-2">4</span> What else did I try?</h2>
 <div class="outline-text-2" id="text-other">
 <p>
@@ -354,7 +354,7 @@ Supports locks to prevent simultaneous jobs, loads user environment and PATH.
 The interesting idea is setting it as a <a href="https://github.com/instacart/ohmycron#ohmycron-as-the-cron-shell">cron shell</a>, which can enhance cron syntax.
 </p></li>
 <li><p>
-<a id="org0000003"></a><a href="https://github.com/huginn/huginn">huginn</a>: great example of a <b>user-friendly</b> tool
+<a id="huginn"></a><a href="https://github.com/huginn/huginn">huginn</a>: great example of a <b>user-friendly</b> tool
 </p>
 <p>
 One thing that makes it different is that it's reactive and mainly event/data driven, so dependencies are first class citizens to the workflow.
@@ -383,7 +383,7 @@ However, still no timeouts, dependencies, and jobs can only run at the schedule,
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000005">
+<div class="outline-2" id="outline-container-org0000004">
 <h2 id="solution"><a class="headerlink" href="#solution">¶</a><span class="section-number-2">5</span> Solution?</h2>
 <div class="outline-text-2" id="text-solution">
 <p>
@@ -416,7 +416,7 @@ considering the boilerplate, it seems that the systemdtab config could be a scri
 It doesn't matter which language is used, it could be bash, python or anything. It would allow one to massively save on boilerplate if you're running sets of similar jobs.
 </p></li>
 <li>the configuration is kept in a plaintext file, which makes it trivial to inspect and version control.</li>
-<li>some means of simple visualization and monitoring, e.g. similar to <a class="link-up" href="#org0000003">huginn</a>?</li>
+<li>some means of simple visualization and monitoring, e.g. similar to <a class="link-up" href="#huginn">huginn</a>?</li>
 </ul>
 <p>
 This doesn't have to be a replacement or something, <samp class="inline">systemdtab</samp> can manage its own set of unit files, completely separate from the rest of the services.
@@ -426,7 +426,7 @@ This doesn't have to be a replacement or something, <samp class="inline">systemd
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000006">
+<div class="outline-2" id="outline-container-org0000005">
 <h2 id="phone"><a class="headerlink" href="#phone">¶</a><span class="section-number-2">6</span> Phone jobs?</h2>
 <div class="outline-text-2" id="text-phone">
 <p>
@@ -446,14 +446,14 @@ Ideally, it would be a simple app that allows running shell scripts at regular i
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000007">
+<div class="outline-2" id="outline-container-org0000006">
 <h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">7</span> --</h2>
 <div class="outline-text-2" id="text-fin">
 <p>
 Updates:
 </p>
 <ul class="org-ul">
-<li><span class="timestamp-wrapper"><span class="timestamp">[2020-01-19]</span></span> added section on <a class="link-up" href="#org0000003">huginn</a></li>
+<li><span class="timestamp-wrapper"><span class="timestamp">[2020-01-19]</span></span> added section on <a class="link-up" href="#huginn">huginn</a></li>
 </ul>
 </div>
 </div>
