@@ -446,7 +446,7 @@ This doesn't have to be a replacement or something, <samp class="inline">systemd
 That's another problem I sort of solved for myself, but not fully satisfied.
 </p>
 <p>
-I need to export app data regularly from my (rooted) Android phone (e.g. see <a href="file:///my-data.html#bluemaestro">here</a>). Export scripts themselves are trivial, it's just a matter of copying files from <samp class="inline">/data/data/</samp> directory. However, there is no software for Android to run these scripts regularly.
+I need to export app data regularly from my (rooted) Android phone (e.g. see <a href="my-data.html#bluemaestro">here</a>). Export scripts themselves are trivial, it's just a matter of copying files from <samp class="inline">/data/data/</samp> directory. However, there is no software for Android to run these scripts regularly.
 </p>
 <p>
 At the moment, I'm using <a href="https://llamalab.com/automate">Automate app</a> to run them. Automate is great, but it feels a bit wrong running a shell script using a complex flowchart, so I'd be interested to know if there are simpler alternatives.

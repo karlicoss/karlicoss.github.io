@@ -1,0 +1,894 @@
+<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="infra dataliberation">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>Against unnecessary databases | Mildly entertainingᵝ</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <!-- TODO make conditional?? -->
+        <link rel="stylesheet" href="./css/posts-list.css" /> 
+        <link rel="stylesheet" href="./css/links.css?v=4" />
+
+        
+
+        <link rel="canonical" href="https://beepb00p.xyz/unnecessary-db.html" />
+
+        <!-- can test it with https://telegram.me/webpagebot -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://beepb00p.xyz/unnecessary-db.html" /> <!-- TODO base? -->
+        <meta property="og:title" content="Against unnecessary databases | beepb00p" />
+        <meta property="og:description" content="Parse, don't normalise" />
+        <!-- ugh. why is image necessary??? -->
+        <meta property="og:image" content="notset" />
+
+    </head>
+    <body>
+        <!-- TODO make semantic -->
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    <!-- TODO eh, not sure if this symbol is good for that... -->
+                    ·
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                    ·
+                    <a class="fat" href="./notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
+                </span>
+                <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<!-- <link rel="stylesheet" href="/css/org.css" /> -->
+
+<link rel="stylesheet" href="./css/htmlize.css" />
+<link rel="stylesheet" href="./css/org-default.css" />
+
+<link rel="stylesheet" href="./css/org-extra.css?v=3" />
+
+
+
+<article>
+    
+    <div>THIS IS A DRAFT! It will appear on the main page once finished!</div>
+    
+    <section class="post-title">
+    <h1>Against unnecessary databases</h1>
+    <div class="summary">Parse, don't normalise</h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <p>
+In my previous post about the <a href="my-data.html">data I collect</a>, I mentioned numerous scripts I implemented, to export my personal data from the cloud, locally.
+</p>
+<p>
+In this post I want to start sharing some of design principles I discovered for making these scripts robust, generic and flexible.
+There are also more posts to follow!
+</p>
+<p>
+Once you've managed to get through <a href="sad-infra.html#exports_are_hard">various difficulties</a> and retrieve your data from the cloud, you want to persist it on the disk.
+</p>
+<p>
+If the exported data is already in a sqlite database, that's great (lucky you!). Keep it and don't let go 🙃
+</p>
+<p>
+Typically though, you end up with some JSON/XML from the API, or HTML if you had to scrape. After that, you have a choice:
+</p>
+<ul class="org-ul">
+<li><p>
+keep it as is 
+</p>
+<p>
+This is the simplest thing to do and also the approach <a class="link-down" href="#asis">I advocate for</a>.
+</p>
+<ul class="org-ul">
+<li><p>
+during export, keep the data on disk as is.
+</p>
+<p>
+No matter how you dislike the format; just store it.
+If it was an XML, let it be XML. If you scraped an HTML, just keep it as is.
+</p></li>
+<li>to access the data, implement TODO data layer on your favorite programming language</li>
+</ul>
+<p>
+If this is obvious to you, then great, hope you will learn something useful from this post nevertheless :)  
+</p></li>
+<li><p>
+keep it in a database
+</p>
+<p>
+This is what I see some people (TODO products?) doing, and I when I started exporting I also got in this TODO trap?
+</p>
+<p>
+Come up with a database schema.
+</p>
+<ul class="org-ul">
+<li>during export, extract the necessary data from XML/JSON/whatever and put it in the database.</li>
+<li>to access the data, query the database directly or implement data bindings on your favorite programming language.</li>
+</ul></li>
+</ul>
+<p>
+In this post, <b>I want to argue very strongly against forcing the data in the database, unless it's really inevitable</b>.
+</p>
+<p>
+Now before someone gets TODO (triggered?), to make it clear:
+</p>
+<ul class="org-ul">
+<li><p>
+this article refers to storing <b>your own personal data and digital trace</b>
+</p>
+<p>
+In general, there absolutely are cases where database is the only feasible and reasonable way of keeping and accessing data.
+However, the amounts of data involved are quite different too.  
+</p></li>
+<li><p>
+I want to argue about this not because I don't like databases/SQL or any othe personal preferences
+</p>
+<p>
+Quite the opposite, <b>I wish I could run SQL query against Instapaper's or Twitter's servers</b> . Needless to say, it's not quite the way things work.
+</p>
+<p>
+I want to argue on this point because I feel like that is a source of friction for implementing and maintaining (TODO personal infrastructure?), and prevents from being TODO dynamic and interactive? flexible?
+</p></li>
+</ul>
+<p>
+My main claim is that for personal data, databases have benefits ans a means of <b>intermediate</b> storage, and as as <b>one of</b> the interfaces to your data, but <b>not as the primary</b> storage of exported data.
+</p>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#databases_good">1. Databases are good</a>
+<ul>
+<li><a href="#space">take less space</a></li>
+<li><a href="#performance">efficient data access</a></li>
+<li><a href="#sql">query language</a></li>
+<li><a href="#rows">SQL rows are a better 'data interface' than JSON</a></li>
+<li><a href="#constraints">types and constraints</a></li>
+<li><a href="#easy_bindings">easy to map onto any language</a></li>
+</ul>
+</li>
+<li><a href="#databases_hard">2. Databases are hard</a>
+<ul>
+<li><a href="#relational">relational model</a></li>
+<li><a href="#schema">coming up with a schema</a></li>
+<li><a href="#maintaining">maintaining</a></li>
+</ul>
+</li>
+<li><a href="#org0000000">3. <span class="todo TODO">TODO</span> Append, don't modify (TODO merge? append is misleading as well?)</a>
+<ul>
+<li><a href="#chrome_history">Example: Chrome history</a></li>
+</ul>
+</li>
+<li><a href="#asis">4. What do you suggest?</a>
+<ul>
+<li><a href="#example_reddit">Example: Reddit export</a></li>
+<li><a href="#cachew">cachew</a></li>
+</ul>
+</li>
+<li><a href="#fin">5. --</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000007">
+<h2 id="databases_good"><a class="headerlink" href="#databases_good">¶</a><span class="section-number-2">1</span> Databases are good</h2>
+<div class="outline-text-2" id="text-databases_good">
+<p>
+In this section, I'll present typical arguments <b>for</b> using databases and try to argue that in most circumstances, for keeping personal data the benefits are not pragmatic and not worth <a class="link-down" href="#databases_hard">the tradeoffs</a>.
+</p>
+<p>
+Note that generally, databases have numerous other benefits, however, like I said, here I'm only considering aspects that are relevant to <b>personal data storage</b>.
+</p>
+<p>
+When I say 'database' here, I typically mean Sqlite, which is most commonly used for personal data, although specific relational database shouldn't matter.
+</p>
+<p>
+<span style="color:darkorange"><strong>If you think I've missed out on something, please let me know!</strong></span>
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000001">
+<h3 id="space"><a class="headerlink" href="#space">¶</a>take less space</h3>
+<div class="outline-text-3" id="text-space">
+<p>
+Yes, however in most cases your data export will take few megabytes. If you compress it, it's hundreds of kilobytes.
+</p>
+<p>
+Storage saved by using a database instead of plaintext is marginal and not worth the effort.
+</p>
+<p>
+Only exceptions to that I can think of are: 
+</p>
+<ul class="org-ul">
+<li>instant messaging apps: number of text messages approaches millions</li>
+<li><p>
+continuous data like room temperature, CO2 levels, etc
+</p>
+<p>
+If you have a minute by minute stream of uniform data, database is probably the way to go.
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000002">
+<h3 id="performance"><a class="headerlink" href="#performance">¶</a>efficient data access</h3>
+<div class="outline-text-3" id="text-performance">
+<p>
+Same point applies as in the <a class="link-up" href="#space">previous section</a>. If a snapshot of your data export contains several thousands items, you won't notice the difference.
+</p>
+<p>
+In addition, there are <a class="link-down" href="#cachew">ways</a> of getting most of database benefits without having to sacrifice TODO? and having to write SQL boilerplate.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000003">
+<h3 id="sql"><a class="headerlink" href="#sql">¶</a>query language</h3>
+<div class="outline-text-3" id="text-sql">
+<p>
+SQL is extremely powerful and helps you to interact with your data without distracting on low level details.
+</p>
+<p>
+That's a very good point, but query language doesn't necessarily mean a database. 
+E.g. see <a href="https://pandas.pydata.org">pandas</a> which is capable of what SQL is capable of, and even more (for our purposes TODO link/anchor?).
+TODO maybe link to one of my dals?
+</p>
+<p>
+In addition, see <a class="link-down" href="#relational">the counterargument</a> about the restrictions of the relational model.
+</p>
+<p>
+And finally, nothing prevents you from providing a database as an alternative interface to your data.   
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000004">
+<h3 id="rows"><a class="headerlink" href="#rows">¶</a>SQL rows are a better 'data interface' than JSON</h3>
+<div class="outline-text-3" id="text-rows">
+<p>
+That's kind of a subjective point (although I'd rather agree).
+</p>
+<p>
+However, raw rows, while good enough for simple queries, can only get you so far.
+</p>
+<p>
+   While Sqlite is more pleasant to query than JSON (but still, do check out out <a href="https://stedolan.github.io/jq">jq</a>),
+once you start using your data repeatedly, you want to abstract away from the low level rows, and encode with proper datatyepes (in your favorite target programming language). E.g. you want to use strings that have the familiar methods, datetime types, data classes, etc.
+</p>
+<p>
+I want an <a href="https://en.wikipedia.org/wiki/Data_access_layer">abstract interface</a> to my data, and I'm not alone, <a href="https://en.wikipedia.org/wiki/Object-relational_mapping">ORMs</a> exist for a reason.
+</p>
+<p>
+So in either case you need to write data bindings. Let's assume that you recieved some data from the API (example?) TODO python?
+</p>
+<p>
+We're comparing two options:
+</p>
+<ul class="org-ul">
+<li><p>
+option 1
+</p>
+<p>
+during export:
+</p>
+<ul class="org-ul">
+<li>retrieve the JSON from the API</li>
+<li>keep it on the disk as is. Trivial step, just save in the file.</li>
+</ul>
+<p>
+during data access:
+</p>
+<ul class="org-ul">
+<li>parse JSON</li>
+<li>map data onto the abstract interface</li>
+</ul></li>
+<li><p>
+option 2
+</p>
+<p>
+during export:
+</p>
+<ul class="org-ul">
+<li>retrieve the JSON from the API</li>
+<li>parse JSON, transform and normalise data <a class="link-down" href="#relational">to conform to the database</a> # TODO hmm would be nice to show a tooltip here?</li>
+<li>insert in the database. Often not a trivial step due to transactions and multiple insert/update statements.</li>
+</ul>
+<p>
+during data access:
+</p>
+<ul class="org-ul">
+<li>make a SQL query</li>
+<li>map data onto the abstract interface</li>
+</ul></li>
+</ul>
+<p>
+Note that you have less steps during the first options than during the second. The less data transformations you do, the less the chance you screw something up. TODO link to screwing up example?
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000005">
+<h3 id="constraints"><a class="headerlink" href="#constraints">¶</a>types and constraints</h3>
+<div class="outline-text-3" id="text-constraints">
+<p>
+Even though schemas in Sqlite are annotated with types, that doesn't give you strong typing guarantees in runtime, a concept that is (somewhat politically correct) called <a href="https://www.sqlite.org/quirks.html#flexible_typing">"flexible typing"</a>. In other words, your data is implicitly coerced which may be convenient, but might cause some unanticipated failures later.
+</p>
+<p>
+SQL <a href="https://www.tutorialspoint.com/sql/sql-check.htm">constraints</a> are a potentially great way to guarantee intrinsic consistency to your data.
+If you encode consistency checks in your target SQL, you will be protected from corrupting the logical state, even if you try to mess with the database manually.
+</p>
+<p>
+This is great in theory, however doesn't work so well on practice for data exports:
+</p>
+<ul class="org-ul">
+<li>when you use something like PostgreSQL, you've got <a href="https://severalnines.com/database-blog/understanding-check-constraints-postgresql">PL/pgSQL</a> at hand, a real programming language, to encode your constraints</li>
+<li>when you use Sqlite, it's a bit more tedious, there is a <a href="https://www.sqlite.org/c3ref/create_function.html">C API</a> to interface with custom functions. Otherwise, you're limited by native Sqlite functions, hence encoding constraints might be very awkward. Needless to say, very few people would bother using it unless it's absolutely vital to implement such checks.</li>
+</ul>
+<p>
+In addition, with regards to personal data, it's easier to assume "single writer" model and implement constraint checking in the programming language, during data access.
+</p>
+<p>
+My observation is: <b>if you don't own the schema, you won't get it right</b>. The services break their APIs, underdocument, or return utter garbage all the time.
+</p>
+<p>
+The alternative I suggest, storing raw data as is means that at least:
+</p>
+<ul class="org-ul">
+<li>you won't make it any more inconsistent than it already is</li>
+<li>if you misinterpret the data, that's just a code change, data is not corrupted</li>
+<li>you will massively save on your time and mental resources</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000006">
+<h3 id="easy_bindings"><a class="headerlink" href="#easy_bindings">¶</a>easy to map onto any language</h3>
+<div class="outline-text-3" id="text-easy_bindings">
+<p>
+That's a good point, also somewhere along the lines of <a class="link-up" href="#rows">'better data interfaces'</a>.
+</p>
+<p>
+Exporting data is one part, and it doesn't particularly matter how it's implemented as long as it works for you.
+</p>
+<p>
+Accessing is different, the realities of the modern <a href="https://en.wikipedia.org/wiki/Foreign_function_interface">FFI</a> are such that you have to reimplement TODO dal from scratch on the programming language you TODO ???
+</p>
+<ul class="org-ul">
+<li>if the data is kept raw (e.g. as JSON), that means reimplementing the parsing logic from scratch TODO?</li>
+<li><p>
+if the data is kept in Sqlite, it's already structured and normalised to TODO large? extent
+</p>
+<p>
+That means that data bindings could be simply a matter of writing datatype definitions, which is fairly straightfoward.
+</p></li>
+</ul>
+<p>
+I have to admit, I don't have much to counter this. This is the tradeoff I have accept while writing tools for export.
+</p>
+<p>
+I want other people to use them, so we have a collective stake in maintaining them.
+I write in Python, so hopefully it's covering lots of people, especially beginners at programming.
+</p>
+<p>
+That said, I'll repeat my point that you can still use a database <a class="link-down" href="#cachew">as an intermediate layer</a>, without relying on it as a primary data storage. 
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000000f">
+<h2 id="databases_hard"><a class="headerlink" href="#databases_hard">¶</a><span class="section-number-2">2</span> Databases are hard</h2>
+<div class="outline-text-2" id="text-databases_hard">
+<p>
+Now let's go through things that directly make databases hard.
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000009">
+<h3 id="relational"><a class="headerlink" href="#relational">¶</a>relational model</h3>
+<div class="outline-text-3" id="text-relational">
+<p>
+These days we just say 'database' when most of the time we mean <a href="https://en.wikipedia.org/wiki/Relational_database">'relational database</a>'. 
+Relational databases can be vaguely thought of as "a set of tables, each table storing typed data tuples".
+Such simplicity allows allows for the query languages expresiveness and enables the optimizer to reason about data retrieval.
+</p>
+<p>
+At the same time this simplicity is a curse and imposes structure that might be incompatible with the format that you recieve data in.
+Often, relational model would require you to rearrange data before inserting, which might be TODO destructive?
+</p>
+</div>
+<div class="outline-4" id="outline-container-org0000008">
+<h4 id="relational_examples">Examples</h4>
+<div class="outline-text-4" id="text-relational_examples">
+<ul class="org-ul">
+<li><p>
+Imagine you want to export your Instapaper bookmarks.
+</p>
+<p>
+API offers you a <a href="https://www.instapaper.com/api">/bookmarks/list</a> method, that lists user's bookmarks.
+The catch is it doesn't requirn all of them; it's got a required <samp class="inline">folder_id</samp> parameter.
+</p>
+<p>
+For your export, that means that you have to go through the folders (i.e. "unread", "archive", etc.), and export each list individually.
+Instead of nice and flat bookmark list, you've got a "folder → bookmark" hierarchy. To make it compatible with the <samp class="inline">Bookmarks</samp> table, you need to flatten it first.
+</p>
+<p>
+There are some potential caveats while during that: you could end up with duplicates if folders are not mutually exclusive or just due to inherent data races between multiple API requiests, so you have to uniquify the bookmaks, which is an extra thing to think about.
+</p>
+<p>
+While in theory <samp class="inline">Bookmark</samp> TODO \iff <samp class="inline">Folder</samp> should fit in a relational model, the nature of the API interaction makes it awkward to implement on client side.
+</p></li>
+<li><p>
+Imagine you want to export your Endomondo workouts.
+</p>
+<p>
+API offers you list of workouts (represented as JSON) with various metadata (type of exercise/datetime/private notes) and in addition, heart rate data and location data.
+</p>
+<p>
+How do you keep heart rate and location?
+</p>
+<ul class="org-ul">
+<li>in a massive <code class="inline">BLOB</code> or <code class="inline">STRING</code> column? That's barely better than simply serializing everything as JSON.</li>
+<li>in separate tables, with timestamps as the primary keys? Then you'd need to refer to them as 'timestamp ranges' which would make it pretty tedious to insert and access.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000a">
+<h3 id="schema"><a class="headerlink" href="#schema">¶</a>coming up with a schema</h3>
+<div class="outline-text-3" id="text-schema">
+<p>
+Kind of similar to the points on <a class="link-up" href="#constraints">types</a> and <a class="link-up" href="#relational">relational model</a>, often you need first hand knowledge of the API to come up with reasonable schema.
+</p>
+<p>
+Schemas use fixed number of fields, which requires you to scrupulously inspect the data and make sure you've covered everything by your schema.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000e">
+<h3 id="maintaining"><a class="headerlink" href="#maintaining">¶</a>maintaining</h3>
+<div class="outline-text-3" id="text-maintaining">
+<p>
+Inevitably, APIs change and extend, often without you knowing that (or not having time to follow the API news).
+If the API starts returing more data, that means the database scheme needs to change.
+</p>
+<p>
+Depending on the way you implemented it, that means one of two things:
+</p>
+<ul class="org-ul">
+<li><p>
+best case scenario: you implement checks for the API schema and fail your export script on a mismatch.
+</p>
+<p>
+Now you are aware of API changes, but your export script stopped working and requires attention and fixing.
+Depending on how TODO often you need it and how much do you value your data, it might require immediate attention.
+</p></li>
+<li><p>
+worst case scenario: you had no checks for schema changes and you're not even aware of it.
+</p>
+<p>
+Sometimes it's fine, but somethimes (TODO link to synthetic?) it's very undesirable.
+</p>
+<p>
+TODO <b>irreversible</b>. If you made a mistake in your export script a year ago, you might lose some of the data forever
+TODO link somewhere? forward to ??
+</p></li>
+</ul>
+<p>
+Let's consider the following scenarios and how we TODO respond/survive them?
+</p>
+</div>
+<div class="outline-4" id="outline-container-org000000b">
+<h4 id="api_extended">API is extended, i.e. returns more data</h4>
+<div class="outline-text-4" id="text-api_extended">
+<p>
+Let's consider a specific example, Pocket API.      
+At the moment it only lets you access your bookmarks, i.e. URLs you saved to Pocket.
+So, to export you're using a database, with the schema <code class="inline">TABLE Article(STRING id, STRING url, STRING title, DATETIME added)</code>.
+</p>
+<p>
+One day, the developers expose highlights (or annotations) from the <a href="https://github.com/karlicoss/pockexport#setting-up">private API</a> and your export script stats receiving it in the response JSON.
+It's quite useful data to have!
+</p>
+<p>
+However, your database can't just magically change to conform to the new field. In addition, we've got same issue with mapping onto the <a class="link-up" href="#relational">relational model</a> here: we've got an
+<code class="inline">Article → Highlight</code> hierarchy, which we need to manually split up into separate tables. So you'd need to:
+</p>
+<ul class="org-ul">
+<li>create new table, <samp class="inline">Highlight</samp></li>
+<li><p>
+split your data away from the <samp class="inline">annotations</samp> JSON field and
+</p>
+<p>
+Don't forget to come up with a correct primary key (<samp class="inline">(highlight_id, bookmark_id)</samp>). Who knows whether <samp class="inline">highlight_id</samp> is unique across article boundaries?
+</p></li>
+<li>TODO migrate data?</li>
+<li>TODO make data acess layer resilient?
+handle <b>both</b> kinds of database schemas – with and without TODO???, if you don't want to break this for other people who may not yet have highlights in their exports</li>
+</ul>
+<p>
+The alternative I suggest is keeping raw data and TODO dealing with data acess in the code. Let's see how that would work:
+</p>
+<ul class="org-ul">
+<li><p>
+when new <samp class="inline">annotations</samp> field is introduced, it's automatically kept on disk along with everything else
+</p>
+<p>
+When you find out about it later, you can still use annotations from the older exported data.
+</p></li>
+<li><p>
+using this field is extremely easy
+</p>
+<p>
+If you keep raw data, it's just a matter of adding a <a href="https://github.com/karlicoss/pockexport/blob/8e141e12663a611891622bfe57dc8b7babdf6526/dal.py#L48-L52">getter</a> method to the <code class="inline">Article</code> class.
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-type">@property</span>
+<span class="org-keyword">def</span> <span class="org-function-name">highlights</span>(<span class="org-keyword">self</span>) -&gt; Sequence[Highlight]:
+    <span class="org-variable-name">default</span> = [] <span class="org-comment-delimiter"># </span><span class="org-comment">defensive to handle older export formats that had no annotations</span>
+    <span class="org-variable-name">jsons</span> = <span class="org-keyword">self</span>.json.get(<span class="org-string">'annotations'</span>, default)
+    <span class="org-keyword">return</span> <span class="org-builtin">list</span>(<span class="org-builtin">map</span>(Highlight, jsons))
+</pre>
+</div>
+<p>
+Modifying code is way easier than messing with databases and migrating you data.
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-4" id="outline-container-org000000d">
+<h4 id="api_changed">API changes TODO data format</h4>
+<div class="outline-text-4" id="text-api_changed">
+<p>
+Your downstream tools, consuming data start failing TOOD choking? over unknown data.
+</p>
+<p>
+However:      
+</p>
+<ol class="org-ol">
+<li>there is no massive time pressure to fix as you know that at least your data is getting exported locally</li>
+<li><p>
+fixing might be a matter of tiny code hack/TODO?
+</p>
+<p>
+Changing code is easy and <b>reversible</b> thanks to version control.
+</p>
+<p>
+Migrating data is hard, requires being very careful and TODO checks.
+</p></li>
+</ol>
+<p>
+TODO neither of these protects if new API handles added, but that's TODO
+</p>
+<p>
+Having a database as your primary storage format means friction and delay TODO for getting more from your data?
+</p>
+<p>
+Similarly to the previous point.
+</p>
+<ul class="org-ul">
+<li>if you want to change TODO field type</li>
+<li>if you want to add new field to a database, you need to a) migrate schema b) backfill old data (in case it's even possible, for which you nedd raw data in the first place)</li>
+</ul>
+<p>
+Database migrations are very hard. You want to avoid them at all costs.
+</p>
+</div>
+<ul class="org-ul">
+<li><a id="org000000c"></a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-01-22 23:41]</span></span> hmm, come up with a specific example?<br /></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000000">
+<h2 id="org0000000"><a class="headerlink" href="#org0000000">¶</a><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> Append, don't modify (TODO merge? append is misleading as well?)</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+This section is kind of relevat to TODO databases are hard, but TODO 
+</p>
+<p>
+When you are exporting data, there are TODO cases?
+</p>
+<ul class="org-ul">
+<li><p>
+you can export all data at once (e.g. imagine you're exporting)
+</p>
+<p>
+It may take TOOD long time, but TODO?
+</p>
+<p>
+This is an easy case, and you can just overwrite your previous export every time.
+</p></li>
+<li><p>
+at any time you only have a slice of data available at hand (TODO incremental export?)
+</p>
+<p>
+TODO examples
+</p>
+<ul class="org-ul">
+<li>APIs that keep TODO</li>
+<li>Data retention (TODO privacy?) Example: chrome history is only retained for 90 days</li>
+<li>TODO embedded device, limited memory? E.g. HR sensor</li>
+</ul>
+<p>
+This case is trickier, since you need some sort of TODO merging logic? to have full view of your data.
+In this section, we'll be dealing with this case.
+</p></li>
+</ul>
+<p>
+The latter is the one we're gonna be considering here
+</p>
+<p>
+TODO link to bluemaestro?
+</p>
+<p>
+How to deal with 'merging' data? As you might have guessed, we have two alternatives here:
+</p>
+<ol class="org-ol">
+<li><p>
+Come up with a schema for the 'master' (TODO FIXME come up with a better word) database
+</p>
+<p>
+During export, merge the data slice into master database.
+</p>
+<p>
+During data acess, just map data rows TODO same as mentioned, ref
+</p></li>
+<li><p>
+Keep slices intact
+</p>
+<p>
+During export, copy the slice along with the timestamp (TODO example?)
+</p>
+<p>
+During data access, go through the slices in the order of timestamp increase and assemble the full view of data.
+</p>
+<p>
+I want to advocate against this. don't try to merge your data at export time
+</p></li>
+</ol>
+<p>
+First of all, all reasons from the <a class="link-up" href="#databases_hard">previous section</a> apply. In addition:
+</p>
+<ul class="org-ul">
+<li><p>
+you have to be even more careful about transactional logic, since you might corrupt your export for good
+</p>
+<p>
+While it's not hard to use transactions, it's still harder than simply using atomic file write.
+</p></li>
+<li><p>
+chunks of data separated in time are more likely to be inconsistent
+</p>
+<p>
+For example, if the API changes some internals, i.e. the way IDs are assigned, you may never notice when you export everything at once.
+</p>
+<p>
+However, with an incremental if old IDs were persisted in the database, it may introduce issues.
+</p></li>
+</ul>
+<p>
+This is inspired by: TODO ??? move to 'my solution', snippet of code that builds the state from scratch?
+</p>
+<ul class="org-ul">
+<li><a href="https://en.wikipedia.org/wiki/Persistent_data_structure#Examples_of_persistent_data_structures">Persistent data structures</a></li>
+<li><a href="https://en.wikipedia.org/wiki/ZFS#Copy-on-write_transactional_model">ZFS</a></li>
+<li><a href="https://martinfowler.com/eaaDev/EventSourcing.html">Event sourcing</a></li>
+</ul>
+<p>
+Let me illustrate this with a specific example.
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000010">
+<h3 id="chrome_history"><a class="headerlink" href="#chrome_history">¶</a>Example: Chrome history</h3>
+<div class="outline-text-3" id="text-chrome_history">
+<p>
+As I mentioned, Chrome only keeps history for last 90 days.
+Imagine you want to retain all your past browsing history (and no, you <a href="./takeout-data-gone.html">can't rely on Takeout</a> for that).
+</p>
+<p>
+So you want a script that would export your database, say, every week and maintain full browsing history over years.
+</p>
+<p>
+Chrome keeps the history in an sqlite table, and exporting it is trivial! It's just a matter of copying <samp class="inline">~/.config/google-chrome/Profile/History</samp>.
+</p>
+<p>
+Imagine you want to come up with a master database schema and merge together weekly history databases.
+That requires some careful inspection of the database in order to find out how it keeps the data.
+</p>
+<pre class="example">
+TABLE   urls(id INTEGER, url STRING    , title STRING)
+TABLE visits(id INTEGER, url_id INTEGER, visit_time STRING)
+</pre>
+<p>
+That requires carefully inspecting the 
+</p>
+<p>
+TODO !!! actually browser history could be a good example? e.g. you forgot to handle time<sub>spent</sub>?
+</p>
+<p>
+   TODO merging in new data – and explain how it's easy to do in code
+   TODO now you're in trouble! It will be fine until the next time your reinstall your OS TODO
+   TODO you need to come up with different ids?
+TODO chorme db ids are simply artifact of the relational model – we don't need to think about it!
+</p>
+<p>
+TODO <b>changing code is easy. changing data is hard</b>
+</p>
+<p>
+TODO the only downside I experience is that it's slower to access, but TODO link to performance and cachew 
+TODO example from chrome
+TODO put in design principles that I elaborate on it later
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000013">
+<h2 id="asis"><a class="headerlink" href="#asis">¶</a><span class="section-number-2">4</span> What do you suggest?</h2>
+<div class="outline-text-2" id="text-asis">
+<p>
+Hopefully by now I've made my point, but just to repeat.
+</p>
+<p>
+Liberating your data involves fairly (TODO different? complementary?) parts:
+</p>
+<ul class="org-ul">
+<li>"data export" layer: knows how to get data from the cloud and saves it on the disk. Deals with network, APIs, etc.</li>
+<li>"data access" layer: knows how to interpret whatever you exported on your disk and maps onto abstract entities
+TODO need to introduce mentions of data access layer across the text</li>
+</ul>
+<p>
+TODO not sure if my point is clear from the beginning? maybe move to start? that would make it clear what I suggest and then they could be prepared what to argue with
+Motivation for this separation
+</p>
+<p>
+My suggestions are:
+</p>
+<ul class="org-ul">
+<li><p>
+during export, keep data as is, don't try to clean it up or normalise
+</p>
+<p>
+This allows you keep your data safe as soon as you managed to retrieve it, and more forgiving to bugs and inconsistencies.
+</p></li>
+<li><p>
+during data access, use code to normalise, merge and access your data
+</p>
+<p>
+This saves you time on maintaining your personal data. There is some inevitable TODO efficeicny? tradeoff.
+</p></li>
+<li><p>
+use databases as an intermediate layer to speed access up and as an interface TODO ?
+</p>
+<p>
+TODO reuse bit from design principles?
+</p></li>
+</ul>
+</div>
+<div class="outline-3" id="outline-container-org0000011">
+<h3 id="example_reddit"><a class="headerlink" href="#example_reddit">¶</a>Example: Reddit export</h3>
+<div class="outline-text-3" id="text-example_reddit">
+<p>
+Before I jump into TODO I think it's fair to make clear what I'm offering
+</p>
+<ul class="org-ul">
+<li><p>
+export layer: simply call API methods (I'm using existing bindings) and combine in a JSON object.
+</p>
+<p>
+<a href="https://github.com/karlicoss/rexport/blob/874e6116bfba8cbd63fa3b4d93810a1488cb8464/export.py#L69-L96">https://github.com/karlicoss/rexport/blob/874e6116bfba8cbd63fa3b4d93810a1488cb8464/export.py#L69-L96</a>
+</p></li>
+<li><p>
+data access layer
+</p>
+<p>
+TODO or perhaps use reddit as example? <a href="https://github.com/karlicoss/rexport/blob/master/dal.py">https://github.com/karlicoss/rexport/blob/master/dal.py</a>
+</p>
+<p>
+<a href="https://github.com/karlicoss/rexport/blob/874e6116bfba8cbd63fa3b4d93810a1488cb8464/dal.py#L136-L153">https://github.com/karlicoss/rexport/blob/874e6116bfba8cbd63fa3b4d93810a1488cb8464/dal.py#L136-L153</a>
+</p>
+<p>
+also demonstrate that i'm keeping raw json and accessing via property
+</p>
+<p>
+reddit – goes through individual export files (remember,reddit got API restriction for 1000 latest items)
+</p>
+<p>
+merges them together
+</p>
+<p>
+maps onto abstract classes with accessors
+</p>
+<p>
+TODO demonstrate cachew use in mypkg as well?
+TODO yep, need cachew here <a href="https://github.com/karlicoss/my/blob/7d56d8573194a142b20b8247f58066d8d4e656a9/my/reddit.py#L46">https://github.com/karlicoss/my/blob/7d56d8573194a142b20b8247f58066d8d4e656a9/my/reddit.py#L46</a>
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000012">
+<h3 id="cachew"><a class="headerlink" href="#cachew">¶</a>cachew</h3>
+<div class="outline-text-3" id="text-cachew">
+<p>
+<a href="https://github.com/karlicoss/cachew#motivation">https://github.com/karlicoss/cachew#motivation</a>
+</p>
+<p>
+cachew is a library I implemented when I realised that sometimes I want to benefit from databases without suffering from inconveniences.
+So I decided to suffer through them once and encapsulate in a library!
+TODO??
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000014">
+<h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">5</span> --</h2>
+<div class="outline-text-2" id="text-fin">
+<p>
+The post title refers (TODO?) to an excellent article <a href="https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate">parse, don't validate</a>.
+It's on a different topic, but TODO somewhat similar thing: making our programs more robust and expressive?
+</p>
+</div>
+</div>
+
+    </section>
+
+    
+    <section class="footer">
+        <div class="post-tags"><a class="post-tag" href="./tags.html#infra">#infra</a> <a class="post-tag" href="./tags.html#dataliberation">#dataliberation</a></div>
+        <!-- TODO post-date? -->
+        <div class="date">20 January 2020</div>
+    </section>
+    
+
+    
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_against_db"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
+        
+
+        <!-- TODO make semantic -->
+        <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
+
+            <a href="http://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>
+            
+            
+        </footer>
+    </body>
+</html>
