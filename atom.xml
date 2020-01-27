@@ -46,12 +46,15 @@
         <link rel="canonical" href="https://beepb00p.xyz/scheduler.html" />
 
         <!-- can test it with https://telegram.me/webpagebot -->
+        <!-- or https://developers.facebook.com/tools/debug -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://beepb00p.xyz/scheduler.html" /> <!-- TODO base? -->
         <meta property="og:title" content="In search of a better job scheduler | beepb00p" />
         <meta property="og:description" content="What if cron and systemd had a baby? Wouldn't it be beautiful?" />
-        <!-- ugh. why is image necessary??? -->
-        <meta property="og:image" content="notset" />
+        <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
+        <!-- ugh. Facebook really wants jpg? -->
+        <!-- also Facebook displays it with black background, but whatever, fuck it. -->
+        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
 
     </head>
     <body>
@@ -127,9 +130,17 @@ I'm sure there will be some aspects I'm missing out on, more specific to industr
 <li><a href="#cron">1. cron</a></li>
 <li><a href="#systemd">2. systemd / launchd</a></li>
 <li><a href="#what_do_i_want">3. What do I need?</a></li>
-<li><a href="#other">4. What else did I try?</a></li>
-<li><a href="#solution">5. Solution?</a></li>
-<li><a href="#phone">6. Phone jobs?</a></li>
+<li><a href="#other">4. Alternative schedulers</a></li>
+<li><a href="#solution">5. Solution?</a>
+<ul>
+<li><a href="#dron">dron</a></li>
+</ul>
+</li>
+<li><a href="#phone">6. Phone jobs?</a>
+<ul>
+<li><a href="#android_cron">cron?</a></li>
+</ul>
+</li>
 <li><a href="#fin">7. --</a></li>
 </ul>
 </div>
@@ -170,12 +181,12 @@ This is annoying when if you don't keep your computer always on.
 <li>no timeouts and generally no means of resource management</li>
 <li>no restart policies</li>
 <li>no means of failure notifications apart from local email</li>
-<li>logs go to local mail by default and there are no other mechanisms of notification</li>
+<li>logs go to local mail by default and there are no other mechanisms of failure notification</li>
 <li><p>
-<a href="https://habilis.net/cronic/#disease">some bad defaults</a>
+<a href="https://habilis.net/cronic/#disease">some really bad defaults</a>
 </p>
 <p>
-Fun fact: cron only emails you if the job has produced output. If your job failed with nonzero exit code but produced no output you'd never find out. 
+Fun fact: cron only emails you if the job has produced output. If your job failed with nonzero exit code, but produced no output you'd never find out. 
 </p></li>
 </ul>
 <p>
@@ -353,7 +364,7 @@ Currently, I'm using <a href="https://wiki.archlinux.org/index.php/Mutt">mutt</a
 </div>
 </div>
 <div class="outline-2" id="outline-container-org0000003">
-<h2 id="other"><a class="headerlink" href="#other">¶</a><span class="section-number-2">4</span> What else did I try?</h2>
+<h2 id="other"><a class="headerlink" href="#other">¶</a><span class="section-number-2">4</span> Alternative schedulers</h2>
 <div class="outline-text-2" id="text-other">
 <p>
 Some of the tools I tried, none of which really satisfied me:
@@ -398,9 +409,15 @@ Supported:
 However, still no timeouts, dependencies, and jobs can only run at the schedule, like <a class="link-up" href="#cron">cron</a>.
 </p></li>
 </ul>
+<p>
+<b><span class="timestamp-wrapper"><span class="timestamp">[2020-01-26]</span></span></b> Thanks to everyone who suggested alternatives in the comments and linked discussions!
+</p>
+<p>
+Sadly, most of them are pretty heavy: often distributed, aiming at orchestrating clusters and grids, which is quite an overkill for my humble personal needs.
+</p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000004">
+<div class="outline-2" id="outline-container-org0000005">
 <h2 id="solution"><a class="headerlink" href="#solution">¶</a><span class="section-number-2">5</span> Solution?</h2>
 <div class="outline-text-2" id="text-solution">
 <p>
@@ -441,9 +458,23 @@ This doesn't have to be a replacement or something, <samp class="inline">systemd
 <p>
 <span style="color:darkorange"><strong>Does such a tool exist?</strong></span> It feels like it's possible to hack together a rough implementation (at least satisfying to me) fairly quickly, but is there really nothing existing? Please let me know!
 </p>
+<p>
+One tool in a similar spirit is <a href="https://github.com/systemd-cron/systemd-cron">systemd-cron/systemd-cron</a>, but it simply maps existing cron job specs into systemd jobs. This seems very useful if you're trying to transition, but doesn't help with my <a class="link-up" href="#what_do_i_want">needs</a>..
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000004">
+<h3 id="dron"><a class="headerlink" href="#dron">¶</a>dron</h3>
+<div class="outline-text-3" id="text-dron">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2020-01-26]</span></span>
+</p>
+<p>
+After writing this post, I realized that even if there are no existing tools, the shortcomings of systemd might be fairly easy to overcome. So I hacked together <a href="https://github.com/karlicoss/dron">dron</a>.
+</p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000005">
+</div>
+<div class="outline-2" id="outline-container-org0000007">
 <h2 id="phone"><a class="headerlink" href="#phone">¶</a><span class="section-number-2">6</span> Phone jobs?</h2>
 <div class="outline-text-2" id="text-phone">
 <p>
@@ -462,8 +493,32 @@ Ideally, it would be a simple app that allows running shell scripts at regular i
 <span style="color:darkorange"><strong>Is there such an app?</strong></span> Please let me know if you know one!
 </p>
 </div>
+<div class="outline-3" id="outline-container-org0000006">
+<h3 id="android_cron"><a class="headerlink" href="#android_cron">¶</a>cron?</h3>
+<div class="outline-text-3" id="text-android_cron">
+<p>
+Thanks to a commenter who <a href="https://beepb00p.xyz/scheduler.html#isso-103">suggested</a> that <a href="https://play.google.com/store/apps/details?id=com.termux">Termux</a> got cron daemon. I tried it out, and it works!
+</p>
+<p>
+The downsides are:
+</p>
+<ul class="org-ul">
+<li><p>
+something still needs to run cron daemon at startup
+</p>
+<p>
+On Linux, this is achieved by the init system, but it turns out <a href="https://android.stackexchange.com/questions/6558/how-can-i-run-a-script-on-boot">a bit tricky</a> to use even on rooted phone.
+</p>
+<p>
+So I'm just starting it on boot via Automate app at the moment.
+</p></li>
+<li>would be nice to have a GUI based tool as it's not very convenient to edit shell scripts on Android (I just used interactive <a href="https://developer.android.com/studio/command-line/adb">adb shell</a>)</li>
+<li>I'm not sure how it behaves with respect to the power saving mode, etc. Ideally you'd want it to integrate with <a href="https://developer.android.com/reference/android/app/job/JobScheduler">JobScheduler</a> Android APIs.</li>
+</ul>
 </div>
-<div class="outline-2" id="outline-container-org0000006">
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000008">
 <h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">7</span> --</h2>
 <div class="outline-text-2" id="text-fin">
 <p>
@@ -471,6 +526,7 @@ Updates:
 </p>
 <ul class="org-ul">
 <li><span class="timestamp-wrapper"><span class="timestamp">[2020-01-19]</span></span> added section on <a class="link-up" href="#huginn">huginn</a></li>
+<li><span class="timestamp-wrapper"><span class="timestamp">[2020-01-26]</span></span> added sections: <a class="link-up" href="#dron">dron</a> and <a class="link-up" href="#android_cron">using cron on Android</a></li>
 </ul>
 </div>
 </div>
@@ -555,12 +611,15 @@ Updates:
         <link rel="canonical" href="https://beepb00p.xyz/my-data.html" />
 
         <!-- can test it with https://telegram.me/webpagebot -->
+        <!-- or https://developers.facebook.com/tools/debug -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://beepb00p.xyz/my-data.html" /> <!-- TODO base? -->
         <meta property="og:title" content="What data on myself I collect and why? | beepb00p" />
         <meta property="og:description" content="How I am using 50+ sources of my personal data" />
-        <!-- ugh. why is image necessary??? -->
-        <meta property="og:image" content="notset" />
+        <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
+        <!-- ugh. Facebook really wants jpg? -->
+        <!-- also Facebook displays it with black background, but whatever, fuck it. -->
+        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
 
     </head>
     <body>
@@ -1767,12 +1826,15 @@ In the <a href="exports.html">next post</a> (writing still in progress) I'm goin
         <link rel="canonical" href="https://beepb00p.xyz/sad-infra.html" />
 
         <!-- can test it with https://telegram.me/webpagebot -->
+        <!-- or https://developers.facebook.com/tools/debug -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://beepb00p.xyz/sad-infra.html" /> <!-- TODO base? -->
         <meta property="og:title" content="The sad state of personal data and infrastructure | beepb00p" />
         <meta property="og:description" content="Why can't we have nice digital things?" />
-        <!-- ugh. why is image necessary??? -->
-        <meta property="og:image" content="notset" />
+        <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
+        <!-- ugh. Facebook really wants jpg? -->
+        <!-- also Facebook displays it with black background, but whatever, fuck it. -->
+        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
 
     </head>
     <body>
@@ -3043,12 +3105,15 @@ Let me know if you can think of any other data integrations you are missing and 
         <link rel="canonical" href="https://beepb00p.xyz/exercise-bike-model.html" />
 
         <!-- can test it with https://telegram.me/webpagebot -->
+        <!-- or https://developers.facebook.com/tools/debug -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://beepb00p.xyz/exercise-bike-model.html" /> <!-- TODO base? -->
         <meta property="og:title" content="Analyzing accuracy of power reported by stationary bike | beepb00p" />
         <meta property="og:description" content="How I found my exercise machine to violate laws of physics" />
-        <!-- ugh. why is image necessary??? -->
-        <meta property="og:image" content="notset" />
+        <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
+        <!-- ugh. Facebook really wants jpg? -->
+        <!-- also Facebook displays it with black background, but whatever, fuck it. -->
+        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
 
     </head>
     <body>
@@ -4263,12 +4328,15 @@ strong multicollinearity or other numerical problems.
         <link rel="canonical" href="https://beepb00p.xyz/scrapyroo.html" />
 
         <!-- can test it with https://telegram.me/webpagebot -->
+        <!-- or https://developers.facebook.com/tools/debug -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://beepb00p.xyz/scrapyroo.html" /> <!-- TODO base? -->
         <meta property="og:title" content="Scrapyroo | beepb00p" />
         <meta property="og:description" content="How I was unhappy about Deliveroo search and implemented my own" />
-        <!-- ugh. why is image necessary??? -->
-        <meta property="og:image" content="notset" />
+        <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
+        <!-- ugh. Facebook really wants jpg? -->
+        <!-- also Facebook displays it with black background, but whatever, fuck it. -->
+        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
 
     </head>
     <body>
@@ -5240,12 +5308,15 @@ Not very cloud sync-friendly! However happily accepts symlink as <code class="in
         <link rel="canonical" href="https://beepb00p.xyz/pkm-search.html" />
 
         <!-- can test it with https://telegram.me/webpagebot -->
+        <!-- or https://developers.facebook.com/tools/debug -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://beepb00p.xyz/pkm-search.html" /> <!-- TODO base? -->
         <meta property="og:title" content="Building personal search infrastructure for your knowledge and code | beepb00p" />
         <meta property="og:description" content="Overview of search tools for desktop and mobile; using Emacs and Ripgrep as desktop search engine" />
-        <!-- ugh. why is image necessary??? -->
-        <meta property="og:image" content="notset" />
+        <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
+        <!-- ugh. Facebook really wants jpg? -->
+        <!-- also Facebook displays it with black background, but whatever, fuck it. -->
+        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
 
     </head>
     <body>
@@ -6297,12 +6368,15 @@ As always, I'm open to feedback and would love to hear what is or setup or help 
         <link rel="canonical" href="https://beepb00p.xyz/mypy-error-handling.html" />
 
         <!-- can test it with https://telegram.me/webpagebot -->
+        <!-- or https://developers.facebook.com/tools/debug -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://beepb00p.xyz/mypy-error-handling.html" /> <!-- TODO base? -->
         <meta property="og:title" content="Python: better typed than you think | beepb00p" />
         <meta property="og:description" content="mypy assisted error handling, exception mechanisms in other languages, fun with pattern matching and type variance" />
-        <!-- ugh. why is image necessary??? -->
-        <meta property="og:image" content="notset" />
+        <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
+        <!-- ugh. Facebook really wants jpg? -->
+        <!-- also Facebook displays it with black background, but whatever, fuck it. -->
+        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
 
     </head>
     <body>
@@ -6379,7 +6453,7 @@ As always, I'm open to feedback and would love to hear what is or setup or help 
 </li>
 <li><a href="#fin">10. Closing points</a></li>
 <li><a href="#links">11. Other links</a></li>
-<li><a href="#org000001a">12. --</a></li>
+<li><a href="#fin">12. --</a></li>
 </ul>
 </div>
 </div>
@@ -7768,7 +7842,7 @@ And the obvious downside is that there is a potential to forget to handle except
 </div>
 </div>
 <div class="outline-2" id="outline-container-org0000018">
-<h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">10</span> Closing points</h2>
+<h2 id="fin"><a class="headerlink link-down" href="#fin">¶</a><span class="section-number-2">10</span> Closing points</h2>
 <div class="outline-text-2" id="text-fin">
 <ul class="org-ul">
 <li>mypy is your best friend</li>
@@ -7807,8 +7881,8 @@ That saved me from otherwise massive amounts of code duplication and reference r
 </div>
 </div>
 <div class="outline-2" id="outline-container-org000001a">
-<h2 id="org000001a"><a class="headerlink" href="#org000001a">¶</a><span class="section-number-2">12</span> --</h2>
-<div class="outline-text-2" id="text-12">
+<h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">12</span> --</h2>
+<div class="outline-text-2" id="text-fin">
 <p>
 Let me know what you think! I'm open to all feedback.
 </p>
@@ -7911,12 +7985,15 @@ Let me know what you think! I'm open to all feedback.
         <link rel="canonical" href="https://beepb00p.xyz/orger-todos.html" />
 
         <!-- can test it with https://telegram.me/webpagebot -->
+        <!-- or https://developers.facebook.com/tools/debug -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://beepb00p.xyz/orger-todos.html" /> <!-- TODO base? -->
         <meta property="og:title" content="Using Orger to populate your tasks list | beepb00p" />
         <meta property="og:description" content="Reading Reddit, building spaced repetition queue and quick todos from Telegram messages" />
-        <!-- ugh. why is image necessary??? -->
-        <meta property="og:image" content="notset" />
+        <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
+        <!-- ugh. Facebook really wants jpg? -->
+        <!-- also Facebook displays it with black background, but whatever, fuck it. -->
+        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
 
     </head>
     <body>
@@ -8323,12 +8400,15 @@ Let me know what you think! I'm open to all feedback.
         <link rel="canonical" href="https://beepb00p.xyz/orger.html" />
 
         <!-- can test it with https://telegram.me/webpagebot -->
+        <!-- or https://developers.facebook.com/tools/debug -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://beepb00p.xyz/orger.html" /> <!-- TODO base? -->
         <meta property="og:title" content="Orger: plaintext reflection of your digital self | beepb00p" />
         <meta property="og:description" content="Mirror your personal data as org-mode for instant access and search" />
-        <!-- ugh. why is image necessary??? -->
-        <meta property="og:image" content="notset" />
+        <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
+        <!-- ugh. Facebook really wants jpg? -->
+        <!-- also Facebook displays it with black background, but whatever, fuck it. -->
+        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
 
     </head>
     <body>
@@ -9152,12 +9232,15 @@ This post ended up longer that I expected so in the next part I will tell about 
         <link rel="canonical" href="https://beepb00p.xyz/cloudmacs.html" />
 
         <!-- can test it with https://telegram.me/webpagebot -->
+        <!-- or https://developers.facebook.com/tools/debug -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://beepb00p.xyz/cloudmacs.html" /> <!-- TODO base? -->
         <meta property="og:title" content="Cloudmacs: Emacs in your web browser | beepb00p" />
         <meta property="og:description" content="How I really wanted Spacemacs everywhere and my wish came true thanks to Docker" />
-        <!-- ugh. why is image necessary??? -->
-        <meta property="og:image" content="notset" />
+        <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
+        <!-- ugh. Facebook really wants jpg? -->
+        <!-- also Facebook displays it with black background, but whatever, fuck it. -->
+        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
 
     </head>
     <body>

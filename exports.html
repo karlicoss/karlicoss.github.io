@@ -29,12 +29,15 @@
         <link rel="canonical" href="https://beepb00p.xyz/exports.html" />
 
         <!-- can test it with https://telegram.me/webpagebot -->
+        <!-- or https://developers.facebook.com/tools/debug -->
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://beepb00p.xyz/exports.html" /> <!-- TODO base? -->
         <meta property="og:title" content="Building data liberation infrastructure | beepb00p" />
         <meta property="og:description" content="How to export, access and own your personal data with minimal effort" />
-        <!-- ugh. why is image necessary??? -->
-        <meta property="og:image" content="notset" />
+        <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
+        <!-- ugh. Facebook really wants jpg? -->
+        <!-- also Facebook displays it with black background, but whatever, fuck it. -->
+        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
 
     </head>
     <body>
@@ -167,10 +170,11 @@ It's quite possible that I'm slipping extra complexity somewhere and I would be 
 </ul>
 </li>
 <li><a href="#org000000b">9. --</a></li>
+<li><a href="#org000000c">10. <span class="todo TODO">TODO</span> add rationale behind the dal/export separation   <span class="tag"><span class="exports">exports</span></span></a></li>
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000000c">
+<div class="outline-2" id="outline-container-org000000d">
 <h2 id="design"><a class="headerlink" href="#design">¶</a><span class="section-number-2">1</span> Design principles</h2>
 <div class="outline-text-2" id="text-design">
 <p>
@@ -233,7 +237,7 @@ Now I'm going to elaborate on implementing export layer.
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000011">
+<div class="outline-2" id="outline-container-org0000012">
 <h2 id="retrieve"><a class="headerlink" href="#retrieve">¶</a><span class="section-number-2">2</span> Retrieving data</h2>
 <div class="outline-text-2" id="text-retrieve">
 <p>
@@ -299,7 +303,7 @@ Some examples:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000d">
+<div class="outline-3" id="outline-container-org000000e">
 <h3 id="export_scrape"><a class="headerlink" href="#export_scrape">¶</a>scraping</h3>
 <div class="outline-text-3" id="text-export_scrape">
 <p>
@@ -337,7 +341,7 @@ Examples:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000e">
+<div class="outline-3" id="outline-container-org000000f">
 <h3 id="export_manual"><a class="headerlink" href="#export_manual">¶</a>manual export (GDPR/takeout)</h3>
 <div class="outline-text-3" id="text-export_manual">
 <p>
@@ -368,7 +372,7 @@ Examples:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000f">
+<div class="outline-3" id="outline-container-org0000010">
 <h3 id="export_phone"><a class="headerlink" href="#export_phone">¶</a>phone apps</h3>
 <div class="outline-text-3" id="text-export_phone">
 <p>
@@ -397,7 +401,7 @@ Examples:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000010">
+<div class="outline-3" id="outline-container-org0000011">
 <h3 id="export_devices"><a class="headerlink" href="#export_devices">¶</a><span class="todo TODO">TODO</span> devices?</h3>
 <div class="outline-text-3" id="text-export_devices">
 <p>
@@ -447,7 +451,7 @@ Examples:
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000001c">
+<div class="outline-2" id="outline-container-org000001d">
 <h2 id="types"><a class="headerlink" href="#types">¶</a><span class="section-number-2">3</span> Types of exports</h2>
 <div class="outline-text-2" id="text-types">
 <p>
@@ -461,7 +465,7 @@ Since data exports by their nature are somewhat similar to <a href="https://en.w
 The way I see it, there are three styles of data exports:
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000014">
+<div class="outline-3" id="outline-container-org0000015">
 <h3 id="full"><a class="headerlink" href="#full">¶</a>full export</h3>
 <div class="outline-text-3" id="text-full">
 <p>
@@ -473,9 +477,9 @@ Typically, with full exports, it's okay to overwrite the older export once you f
 However I wouldn't recommend it (TODO backups and also atomic stuff?)
 </p>
 </div>
-<div class="outline-4" id="outline-container-org0000012">
-<h4 id="org0000012">summary</h4>
-<div class="outline-text-4" id="text-org0000012">
+<div class="outline-4" id="outline-container-org0000013">
+<h4 id="org0000013">summary</h4>
+<div class="outline-text-4" id="text-org0000013">
 <ul class="org-ul">
 <li>advantages
 <ul class="org-ul">
@@ -491,9 +495,9 @@ However I wouldn't recommend it (TODO backups and also atomic stuff?)
 </ul>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000013">
-<h4 id="org0000013">examples</h4>
-<div class="outline-text-4" id="text-org0000013">
+<div class="outline-4" id="outline-container-org0000014">
+<h4 id="org0000014">examples</h4>
+<div class="outline-text-4" id="text-org0000014">
 <p>
 When would you use that kind of export?
 When there isn't much data to retrieve and you can do it in one go.
@@ -509,7 +513,7 @@ There are no apparent API limitations preventing from fetching everything, and i
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000017">
+<div class="outline-3" id="outline-container-org0000018">
 <h3 id="incremental"><a class="headerlink" href="#incremental">¶</a>incremental export</h3>
 <div class="outline-text-3" id="text-incremental">
 <p>
@@ -524,9 +528,9 @@ Implementation wise, it looks like this:
 <li>merge it back with previously exported data, persist on disk</li>
 </ul>
 </div>
-<div class="outline-4" id="outline-container-org0000015">
-<h4 id="org0000015">summary</h4>
-<div class="outline-text-4" id="text-org0000015">
+<div class="outline-4" id="outline-container-org0000016">
+<h4 id="org0000016">summary</h4>
+<div class="outline-text-4" id="text-org0000016">
 <ul class="org-ul">
 <li>advantages
 <ul class="org-ul">
@@ -548,9 +552,9 @@ Incremental exports are <b>always</b> harder to program. Indeed, <a class="link-
 </span><aside class="sidenote">Fun fact: most of your phone apps already implement incremental sync. It's a shame the logic can't be reused.</aside></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000016">
-<h4 id="org0000016">examples</h4>
-<div class="outline-text-4" id="text-org0000016">
+<div class="outline-4" id="outline-container-org0000017">
+<h4 id="org0000017">examples</h4>
+<div class="outline-text-4" id="text-org0000017">
 <p>
 So why would you bother with exporting data incrementally?
 </p>
@@ -593,7 +597,7 @@ Also it's is even flakier than using APIs, so you might want to avoid extra work
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001b">
+<div class="outline-3" id="outline-container-org000001c">
 <h3 id="synthetic"><a class="headerlink" href="#synthetic">¶</a>synthetic export</h3>
 <div class="outline-text-3" id="text-synthetic">
 <div><span class="before-aside">
@@ -691,9 +695,9 @@ If you do spot a problem, you only have to change the code, no need for data mig
 </p></li>
 </ul>
 </div>
-<div class="outline-4" id="outline-container-org0000018">
-<h4 id="org0000018">illustrative example</h4>
-<div class="outline-text-4" id="text-org0000018">
+<div class="outline-4" id="outline-container-org0000019">
+<h4 id="org0000019">illustrative example</h4>
+<div class="outline-text-4" id="text-org0000019">
 <p>
 I feel like the explanations are still slightly confusing, so let's consider a specific scenario.
 </p>
@@ -748,9 +752,9 @@ I hope it's clear how easier is this than having some sort of master sqlite data
 </ul>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000019">
-<h4 id="org0000019">summary</h4>
-<div class="outline-text-4" id="text-org0000019">
+<div class="outline-4" id="outline-container-org000001a">
+<h4 id="org000001a">summary</h4>
+<div class="outline-text-4" id="text-org000001a">
 <ul class="org-ul">
 <li>advantages
 <ul class="org-ul">
@@ -783,9 +787,9 @@ That can be addressed with TODO using iterators? (so access time is amortized)
 </ul>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org000001a">
-<h4 id="org000001a">more examples</h4>
-<div class="outline-text-4" id="text-org000001a">
+<div class="outline-4" id="outline-container-org000001b">
+<h4 id="org000001b">more examples</h4>
+<div class="outline-text-4" id="text-org000001b">
 <ul class="org-ul">
 <li>github API is restricted to 300 latest events, so synthetic logic is used in <a href="https://github.com/karlicoss/ghexport/blob/master/model.py">ghexport</a> tool</li>
 <li>reddit API is restricted to 1000 items, so synthetic logic is used in <a href="https://github.com/karlicoss/rexport/blob/874e6116bfba8cbd63fa3b4d93810a1488cb8464/dal.py#L136">rexport</a> tool</li>
@@ -810,7 +814,7 @@ However, if you treat is as a synthetic export, you have to:
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000023">
+<div class="outline-2" id="outline-container-org0000024">
 <h2 id="export_layer"><a class="headerlink" href="#export_layer">¶</a><span class="section-number-2">4</span> Export layer</h2>
 <div class="outline-text-2" id="text-export_layer">
 <p>
@@ -826,7 +830,7 @@ This is kind of vague (perhaps even obvious), so I will try to elavorate on what
 This section doesn't cover the TODO exact specifics, but it's more of collection of tips of minimizing work necessary:
 </p>
 </div>
-<div class="outline-3" id="outline-container-org000001e">
+<div class="outline-3" id="outline-container-org000001f">
 <h3 id="bindings"><a class="headerlink" href="#bindings">¶</a>use existing bindings</h3>
 <div class="outline-text-3" id="text-bindings">
 <p>
@@ -864,9 +868,9 @@ Same argument: if you forget to handle some API calls, it makes it much easier f
 </p></li>
 </ul>
 </div>
-<div class="outline-4" id="outline-container-org000001d">
-<h4 id="org000001d">examples</h4>
-<div class="outline-text-4" id="text-org000001d">
+<div class="outline-4" id="outline-container-org000001e">
+<h4 id="org000001e">examples</h4>
+<div class="outline-text-4" id="text-org000001e">
 <p>
 To export <a href="https://github.com/karlicoss/hypexport">Hypothes.is</a> data I'm using existing <a href="https://github.com/judell/Hypothesis">judell/Hypothesis</a> bindings.
 </p>
@@ -952,7 +956,7 @@ I'd only recommend doing it if you know for sure that certain error
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000020">
+<div class="outline-3" id="outline-container-org0000021">
 <h3 id="output_stdout"><a class="headerlink" href="#output_stdout">¶</a>output to stdout</h3>
 <div class="outline-text-3" id="text-output_stdout">
 <p>
@@ -981,8 +985,8 @@ If you want to be portable (e.g. <a href="https://stackoverflow.com/a/167555/706
 You really don't want to remember to copy paste it or reimplement every time.
 </p>
 </div>
-<div class="outline-4" id="outline-container-org000001f">
-<h4 id="org000001f"><span class="todo TODO">TODO</span> not sure how to integrate timestamps here? maybe separate export wrapper in a separate file?</h4>
+<div class="outline-4" id="outline-container-org0000020">
+<h4 id="org0000020"><span class="todo TODO">TODO</span> not sure how to integrate timestamps here? maybe separate export wrapper in a separate file?</h4>
 </div>
 </div>
 <div class="outline-3" id="outline-container-org0000004">
@@ -1004,17 +1008,17 @@ E.g. with Unix permissions you could only allow certain scripts to read secrets.
 Note that I'm not a security expert, so would be interested to know if there are better solutions to that
 </p>
 </div>
-<div class="outline-4" id="outline-container-org0000021">
-<h4 id="org0000021"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-26 23:23]</span></span> even better, python script, e.g. potentially it makes it easier to put auth code close etc</h4>
-<div class="outline-text-4" id="text-org0000021">
+<div class="outline-4" id="outline-container-org0000022">
+<h4 id="org0000022"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-26 23:23]</span></span> even better, python script, e.g. potentially it makes it easier to put auth code close etc</h4>
+<div class="outline-text-4" id="text-org0000022">
 <p>
 TODO also link to post that python is a good format for configs?
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000022">
-<h4 id="org0000022"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> benefits of having secrets in python file: you can keep auth code close to the secrets   <span class="tag"><span class="blog">blog</span> <span class="python">python</span></span></h4>
-<div class="outline-text-4" id="text-org0000022">
+<div class="outline-4" id="outline-container-org0000023">
+<h4 id="org0000023"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> benefits of having secrets in python file: you can keep auth code close to the secrets   <span class="tag"><span class="blog">blog</span> <span class="python">python</span></span></h4>
+<div class="outline-text-4" id="text-org0000023">
 <p>
 e.g. getting new secrets – rerun the secrets.py file
 can leave comments (e.g. unlike json)
@@ -1044,7 +1048,7 @@ For the storage I'm just using the filesystem; all exports are kept or symlinked
 /exports/goodreads
 </pre>
 </div>
-<div class="outline-3" id="outline-container-org0000024">
+<div class="outline-3" id="outline-container-org0000025">
 <h3 id="timestamps"><a class="headerlink" href="#timestamps">¶</a>naming and timestamping</h3>
 <div class="outline-text-3" id="text-timestamps">
 <p>
@@ -1076,7 +1080,7 @@ To make timestamping automatic and less boilerplaty, I'm using a <a class="link-
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000025">
+<div class="outline-3" id="outline-container-org0000026">
 <h3 id="backups"><a class="headerlink" href="#backups">¶</a>backups</h3>
 <div class="outline-text-3" id="text-backups">
 <p>
@@ -1085,7 +1089,7 @@ What is more, borg is deduplicating, so it's quite friendly to synthetic exports
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000026">
+<div class="outline-3" id="outline-container-org0000027">
 <h3 id="sync"><a class="headerlink" href="#sync">¶</a>synchronizing between computers</h3>
 <div class="outline-text-3" id="text-sync">
 <p>
@@ -1093,7 +1097,7 @@ I synchronize/replicate it across my computers with Syncthing, also used Dropbox
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000028">
+<div class="outline-3" id="outline-container-org0000029">
 <h3 id="disk_space"><a class="headerlink" href="#disk_space">¶</a>disk space concerns</h3>
 <div class="outline-text-3" id="text-disk_space">
 <p>
@@ -1135,14 +1139,14 @@ I haven't personally tried it.
 </p></li>
 </ul>
 </div>
-<div class="outline-4" id="outline-container-org0000027">
-<h4 id="org0000027"><span class="todo STRT">STRT</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-26 23:57]</span></span> compression – bwrapper</h4>
-<div class="outline-text-4" id="text-org0000027">
+<div class="outline-4" id="outline-container-org0000028">
+<h4 id="org0000028"><span class="todo STRT">STRT</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-26 23:57]</span></span> compression – bwrapper</h4>
+<div class="outline-text-4" id="text-org0000028">
 </div>
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000029">
+<div class="outline-2" id="outline-container-org000002a">
 <h2 id="arctee"><a class="headerlink" href="#arctee">¶</a><span class="section-number-2">6</span> arctee</h2>
 <div class="outline-text-2" id="text-arctee">
 <p>
@@ -1197,7 +1201,7 @@ That said, it feels kind of wrong to have an extra script for all these things s
 <h3 id="org0000007"><a class="headerlink" href="#org0000007">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-01-19 18:34]</span></span> dunno, perhaps move to 'appendix'?? along with cachew?</h3>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000002a">
+<div class="outline-2" id="outline-container-org000002b">
 <h2 id="automatic_exports"><a class="headerlink" href="#automatic_exports">¶</a><span class="section-number-2">7</span> Automating exports</h2>
 <div class="outline-text-2" id="text-automatic_exports">
 <p>
@@ -1216,7 +1220,7 @@ I wish there existed a user-friendlier tool for running periodic tasks, <span st
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000002b">
+<div class="outline-2" id="outline-container-org000002c">
 <h2 id="dal"><a class="headerlink" href="#dal">¶</a><span class="section-number-2">8</span> Data access layer (DAL)</h2>
 <div class="outline-text-2" id="text-dal">
 <p>
@@ -1259,6 +1263,11 @@ TODO Approaches I describe works well for me so far. It feels like it's fairly c
 <p>
 However, it still feels like something that shouldn't have been so hard in the first place and ??? to be solved in a more generic way.
 </p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000000c">
+<h2 id="org000000c"><a class="headerlink" href="#org000000c">¶</a><span class="section-number-2">10</span> <span class="todo TODO">TODO</span> add rationale behind the dal/export separation   <span class="tag"><span class="exports">exports</span></span></h2>
+<div class="outline-text-2" id="text-10">
 </div>
 </div>
 
