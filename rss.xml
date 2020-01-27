@@ -103,7 +103,7 @@ In my previous post about the <a href="my-data.html">data I collect</a>, I menti
 </p>
 <p>
 In this post, I want to start sharing some of the design principles I discovered for making these scripts <b>robust, generic and flexible</b>.
-There are also more posts to follow!
+This is part of a series on building your own <a href="sad-infra.html#data_mirror">'data mirror'</a>, and there are also more posts to follow!
 </p>
 <p>
 Once you've managed to get through <a href="sad-infra.html#exports_are_hard">various difficulties</a> and retrieve your data from the cloud, you want to persist it on the disk.
@@ -233,7 +233,7 @@ Liberating your data involves fairly different, if not complementary, parts (or 
 <ul class="org-ul">
 <li>"data export" part: knows how to get data from the cloud and saves it on the disk. Deals with APIs, network, etc.</li>
 <li><p>
-"data access" part: knows how to interpret whatever you exported on your disk and maps onto abstract entities
+"data access" part: knows how to interpret whatever you exported on your disk and maps onto abstract entities/classes/objects
 </p>
 <p>
 I'll refer to it interchangeably as <b>"data access layer"</b> or <b>"data bindings"</b> further in the article.
@@ -292,14 +292,14 @@ Reddit API is restricted to the 1000 latest items, so to have a full view of my 
 save each exported data slice in a new file, which I also do
 </p>
 <p>
-Using timestamp as a filename is a natural choice, I'm using <a href="https://github.com/karlicoss/arctee">arctee</a> tool that does it for any of my exports.
+Using timestamp as a filename is a natural choice, I'm using <a href="https://github.com/karlicoss/arctee">arctee</a> tool to do this for all of my exports.
 </p></li>
 </ul></li>
 <li><p>
 data access layer
 </p>
 <p>
-The data access layer exposes simple Python objects that make it pleasant to work with the data. 
+The data access layer provides simple Python classes that make it pleasant to work with the data. 
 </p>
 <p>
 My bindings simply expose saved JSON data via Python's properties: e.g. <a href="https://github.com/karlicoss/rexport/blob/874e6116bfba8cbd63fa3b4d93810a1488cb8464/dal.py#L52-L65"><code class="inline">Comment</code></a>. 
@@ -309,7 +309,7 @@ My bindings simply expose saved JSON data via Python's properties: e.g. <a href=
 <li>in contrast, had I kept the data in a database, that would have required a database migration for <samp class="inline">Comments</samp> table <a class="link-down" href="#api_extended">at the very least</a>.</li>
 </ul>
 <p>
-Now, remember I mentioned that Reddit only gives you latest the 1000 items, so I end up with overlapping data slices? To get a full view of my data, I'm simply going through individual JSON files in chronological order and merging together in <a href="https://github.com/karlicoss/rexport/blob/874e6116bfba8cbd63fa3b4d93810a1488cb8464/dal.py#L136-L153"><code class="inline">accumulate</code></a> method.
+Now, remember I mentioned that Reddit only gives you the latest 1000 items, so I end up with overlapping data slices? To get a full view of my data, I'm simply going through individual JSON files in chronological order and merging together in <a href="https://github.com/karlicoss/rexport/blob/874e6116bfba8cbd63fa3b4d93810a1488cb8464/dal.py#L136-L153"><code class="inline">accumulate</code></a> method.
 </p></li>
 <li><p>
 [optional] caching layer
@@ -370,7 +370,7 @@ If you have a minute by minute stream of <b>uniform data</b>, a database is prob
 <h3 id="performance"><a class="headerlink" href="#performance">¶</a>efficient data access</h3>
 <div class="outline-text-3" id="text-performance">
 <p>
-The same point applies as in the <a class="link-up" href="#space">previous section</a>. If a snapshot of your data export contains several thousand items, you won't notice the difference.
+The same point applies as in the <a class="link-up" href="#space">previous section</a>. If a your data export contains several thousand items, you won't notice the difference.
 </p>
 <p>
 In addition, there are <a class="link-down" href="#cachew">ways</a> of getting most of the database benefits without having to sacrifice simplicity and without writing SQL boilerplate.
@@ -381,7 +381,7 @@ In addition, there are <a class="link-down" href="#cachew">ways</a> of getting m
 <h3 id="sql"><a class="headerlink" href="#sql">¶</a>query language</h3>
 <div class="outline-text-3" id="text-sql">
 <p>
-SQL is extremely powerful and helps you to interact with your data without distracting on low-level details.
+SQL is extremely powerful and helps you to interact with your data without distracting on low-level retrieval details.
 </p>
 <p>
 That's a very good point, but query language doesn't necessarily mean a database. 
@@ -458,7 +458,7 @@ during data access:
 </ul></li>
 </ul>
 <p>
-Note that you have fewer steps if you follow the first approach. And it's not only about the time saved on implementing: the less you transform the data, the less the chance you screw something up. I'll elaborate on a specific example of a royal screw up <a class="link-down" href="#example_chrome">later</a>.
+Note that you have fewer steps if you follow the first approach. And it's not only about the time saved on implementing: the less you transform the data, the less the chance you screw something up. I'll elaborate with a specific example of a royal screw up <a class="link-down" href="#example_chrome">later</a>.
 </p>
 </div>
 </div>
@@ -521,7 +521,7 @@ I have to admit, I don't have much to counter this. This is a tradeoff I have ac
 </p>
 <p>
 I want other people to use them, so we have a collective stake in maintaining them.
-I write in Python, so hopefully, it's covering lots of people, especially beginners at programming.
+I write in Python, so hopefully, it's covering enough people.
 </p>
 <p>
 That said, I'll repeat my point that you can still use a database <a class="link-down" href="#cachew">as an intermediate layer</a>, without relying on it as a primary data storage. 
@@ -540,7 +540,7 @@ Now let's go through things that directly make databases hard.
 <h3 id="relational"><a class="headerlink" href="#relational">¶</a>relational model</h3>
 <div class="outline-text-3" id="text-relational">
 <p>
-These days we just say 'database' when most of the time we mean <a href="https://en.wikipedia.org/wiki/Relational_database">'relational database</a>'. 
+These days we often just say 'database' when we mean <a href="https://en.wikipedia.org/wiki/Relational_database">'relational database</a>'. 
 Relational databases can be vaguely thought of as "a set of tables, each table storing typed data tuples".
 Such simplicity allows for query language expressiveness and enables the optimizer to reason about data retrieval.
 </p>
@@ -565,10 +565,10 @@ For your export, that means that you have to go through the folders (i.e. "unrea
 Instead of a nice and flat bookmark list, you've got a <code class="inline">Folder → Bookmark</code> hierarchy. To make it compatible with the <code class="inline">Bookmarks</code> table, you need to flatten it first.
 </p>
 <p>
-There are some potential caveats while during that: you could end up with duplicates if folders are not mutually exclusive or just due to inherent data races between multiple API requests, so you have to uniquify the bookmarks, which is an extra thing to think about.
+There are some potential caveats during that: you could end up with duplicates if folders are not mutually exclusive or just due to inherent data races between multiple API requests, so you have to uniquify the bookmarks, which is an extra thing to think about.
 </p>
 <p>
-While in theory, nothing prevents <code class="inline">Bookmark 🡘 Folder</code> from fitting in a relational model, the nature of the API interactions makes it awkward to implement on the client side.
+While in theory, nothing prevents <code class="inline">Bookmark ↔ Folder</code> from fitting in a relational model, the nature of the API interactions makes it awkward to implement on the client side.
 </p></li>
 <li><p>
 Imagine you want to export your Endomondo workouts.
@@ -624,7 +624,7 @@ Sometimes it's fine, but sometimes that means <a class="link-down" href="#increm
 </p></li>
 </ul>
 <p>
-Let's consider the following scenarios and how we handle them:
+Consider the following scenarios and how we handle them:
 </p>
 </div>
 <div class="outline-4" id="outline-container-org000000c">
@@ -653,10 +653,10 @@ find out that there is a new JSON field in the first place
 That's, of course, regardless of what storage you're using, but in case of a master database, you really might want to <a class="link-down" href="#incremental">find it out sooner than later</a>.
 </p></li>
 <li><p>
-invent a schema and create a new table, <code class="inline">Highlight</code>
+come up a schema and create a new table, <code class="inline">Highlight</code>
 </p>
 <p>
-Don't forget to use up with a correct primary key, <samp class="inline">(highlight_id, bookmark_id)</samp>. Who knows whether <samp class="inline">highlight_id</samp> is unique across bookmarks boundaries?
+Don't forget to use the correct primary key, <samp class="inline">(highlight_id, bookmark_id)</samp>. Who knows whether <samp class="inline">highlight_id</samp> is unique across bookmarks boundaries?
 </p></li>
 <li><p>
 migrate old data
@@ -708,7 +708,7 @@ Imagine that for some reason <a class="link-up" href="#example_reddit">Reddit AP
 Your existing <code class="inline">Comment</code> table assumed <code class="inline">INTEGER</code> for the comment creation date. Suddenly you started receiving strings, which Sqlite can't handle anymore.
 </p>
 <p>
-You have similar issues to the previous section: you need to migrate your old data. But there is even a bigger issue: <b>your exported data isn't advancing anymore</b> until you perform the migration. That's problematic because you might lose data forever if you postpone the fix for too long.
+You have similar issues to the previous section: you need to migrate your old data. But there is even a bigger issue: <b>your data exports are not advancing anymore</b> until you perform the migration. That's problematic because you might lose data forever if you postpone the fix for too long.
 </p>
 <p>
 In contrast, if you <a class="link-up" href="#asis">keep raw data</a>:
@@ -855,14 +855,14 @@ I've already mentioned that regarding <a class="link-up" href="#example_reddit">
 <h3 id="example_chrome"><a class="headerlink" href="#example_chrome">¶</a>Example: Chrome history</h3>
 <div class="outline-text-3" id="text-example_chrome">
 <p>
-As I mentioned, Chrome only keeps history for the last 90 days.
+As I mentioned, Chrome only keeps the history for the last 90 days.
 Imagine you want to retain all your past browsing history. And no, you <a href="./takeout-data-gone.html">can't rely on Takeout</a> for that, or you might not be using Google at all.
 </p>
 <p>
 So you want a script that exports your history, say, every week and maintains full browsing history over the years.
 </p>
 <p>
-Chrome keeps the history in an sqlite table, and exporting itself it is trivial! It's just a matter of copying <samp class="inline">~/.config/google-chrome/Profile/History</samp>.
+Chrome keeps the history in an sqlite file, and exporting it is trivial! It's just a matter of copying <samp class="inline">~/.config/google-chrome/Profile/History</samp>.
 </p>
 <p>
 Imagine you want to come up with a master database schema and merge together weekly history databases.
@@ -1235,7 +1235,7 @@ That way the full data view is a runtime concept and can never corrupt anything.
 If you ever find out that there are more interesting things in your browsing history, e.g. <samp class="inline">time_spent</samp> column (keeps time spent on each page), it's literally just a matter of inserting <samp class="inline">time_spent</samp> in the query.
 </p>
 <p>
-Again, there is an obvious downside is that in runtime, it might take several minutes to assemble the full history (although that may be acceptable, depending on your usecase). And that makes sense to try and use a database for <a class="link-down" href="#cachew">intermediate caching</a>; just don't rely on it for primary data storage.
+Again, an obvious downside is that in runtime, it might take several minutes to assemble the full history (although that may be acceptable, depending on your usecase). And that makes sense to try and use a database for <a class="link-down" href="#cachew">intermediate caching</a>; just don't rely on it for primary data storage.
 </p></li>
 </ul>
 </div>
@@ -1249,7 +1249,7 @@ Again, there is an obvious downside is that in runtime, it might take several mi
 As I mentioned so many times, databases are actually great for caching, as they can persist data in between program's runs.  
 </p>
 <p>
-I've noticed using similar patterns used all over again and that led me to extract the complexity and boilerplate in a separate Python library, <a href="https://github.com/karlicoss/cachew#motivation">cachew</a>.
+After noticing similar similar database access patterns used all over again, I realized that it's possible to isolate the complexity and boilerplate in a separate Python library, <a href="https://github.com/karlicoss/cachew#motivation">cachew</a>.
 </p>
 </div>
 <div class="outline-3" id="outline-container-org0000013">
@@ -1284,11 +1284,11 @@ about serializing/deserializing.
 The readme also contains <a href="https://github.com/karlicoss/cachew#incremental-data-exports">an example</a> of using cachew for exporting temperature sensor data.
 </p>
 <p>
-In essence, exported data sources, i.e. filenames along with their modification times are used as the key for caching:
+In essence, filenames along with their modification times are used as the key for caching:
 </p>
 <ul class="org-ul">
-<li>when the exported data is updated, it makes the cache invalidate and it's updated automatically on the next data access</li>
-<li>in between data updates, data is read from the cache and  the access is pretty much instantaneous: <a class="link-up" href="#performance">databases are indeed fast</a></li>
+<li>when the exported data is updated, files and their modification times change, which makes the cache invalidate. It's it's updated automatically on the next data access</li>
+<li>in between data updates, data is read straight from the cache and  the access is pretty much instantaneous: <a class="link-up" href="#performance">databases are indeed fast</a></li>
 </ul>
 </div>
 </div>
@@ -1297,7 +1297,7 @@ In essence, exported data sources, i.e. filenames along with their modification 
 <h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">6</span> --</h2>
 <div class="outline-text-2" id="text-fin">
 <p>
-The post subtitle title refers to an excellent article <a href="https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate">"Parse, don't validate"</a>.
+The post subtitle refers to an excellent article <a href="https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate">"Parse, don't validate"</a>.
 It's on a different topic, but in a somewhat similar spirit: making our programs more robust while writing less code.
 </p>
 <p>
