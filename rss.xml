@@ -7,8 +7,1352 @@
         <description><![CDATA[feed]]></description>
         <atom:link href="https://beepb00p.xyz/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Sat, 18 Jan 2020 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Sun, 26 Jan 2020 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Against unnecessary databases</title>
+    <link>https://beepb00p.xyz/unnecessary-db.html</link>
+    <description><![CDATA[<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="infra dataliberation databases cachew">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>Against unnecessary databases | Mildly entertainingᵝ</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <!-- TODO make conditional?? -->
+        <link rel="stylesheet" href="./css/posts-list.css" /> 
+        <link rel="stylesheet" href="./css/links.css?v=4" />
+
+        
+
+        <link rel="canonical" href="https://beepb00p.xyz/unnecessary-db.html" />
+
+        <!-- can test it with https://telegram.me/webpagebot -->
+        <!-- or https://developers.facebook.com/tools/debug -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://beepb00p.xyz/unnecessary-db.html" /> <!-- TODO base? -->
+        <meta property="og:title" content="Against unnecessary databases | beepb00p" />
+        <meta property="og:description" content="Parse, don't normalize" />
+        <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
+        <!-- ugh. Facebook really wants jpg? -->
+        <!-- also Facebook displays it with black background, but whatever, fuck it. -->
+        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
+
+    </head>
+    <body>
+        <!-- TODO make semantic -->
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    <!-- TODO eh, not sure if this symbol is good for that... -->
+                    ·
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                    ·
+                    <a class="fat" href="./notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
+                </span>
+                <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<!-- <link rel="stylesheet" href="/css/org.css" /> -->
+
+<link rel="stylesheet" href="./css/htmlize.css" />
+<link rel="stylesheet" href="./css/org-default.css" />
+
+<link rel="stylesheet" href="./css/org-extra.css?v=3" />
+
+
+
+<article>
+    
+    <section class="post-title">
+    <h1>Against unnecessary databases</h1>
+    <div class="summary">Parse, don't normalize</h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <p>
+In my previous post about the <a href="my-data.html">data I collect</a>, I mentioned numerous scripts I implemented, to export my personal data from the cloud, locally.
+</p>
+<p>
+In this post, I want to start sharing some of the design principles I discovered for making these scripts <b>robust, generic and flexible</b>.
+There are also more posts to follow!
+</p>
+<p>
+Once you've managed to get through <a href="sad-infra.html#exports_are_hard">various difficulties</a> and retrieve your data from the cloud, you want to persist it on the disk.
+</p>
+<p>
+If the exported data is already in an sqlite database, that's great (lucky you!). Keep it and don't let go 🙃
+</p>
+<p>
+Typically though, you end up with some JSON/XML from the API, or HTML if you had to scrape. After that, you have a choice:
+</p>
+<ul class="org-ul">
+<li><p>
+keep it as is 
+</p>
+<p>
+This is the simplest thing to do and also the approach <a class="link-down" href="#asis">I advocate for</a>.
+</p>
+<ul class="org-ul">
+<li><p>
+during export, keep the data on disk as is
+</p>
+<p>
+No matter how you dislike the format; just store it.
+E.g. if it was an XML, let it be XML. If you scraped an HTML, just keep it as is.
+</p></li>
+<li><p>
+to access the data, implement bindings on your favorite programming language that extract the necessary bits in runtime
+</p>
+<p>
+I elaborate more on it <a class="link-down" href="#asis">later</a>.
+</p></li>
+</ul>
+<p>
+If this is obvious to you, then great, hope you will learn something useful from this post nevertheless!
+</p></li>
+<li><p>
+keep it in a database
+</p>
+<p>
+This is what I see some projects doing; I also bruised myself with this approach when I started exporting my data.
+</p>
+<p>
+Come up with a database schema and create a <b>"master database"</b>, holding all of your past data.
+</p>
+<ul class="org-ul">
+<li>during export, extract the necessary data from XML/JSON/whatever and put it in the database.</li>
+<li>to access the data, query the database directly or implement data bindings on your favorite programming language.</li>
+</ul></li>
+</ul>
+<p>
+In this post, <b>I want to argue very strongly against forcing the data in the database, unless it's really inevitable</b>.
+More broadly, this also applies to any attempts of normalizing data before persisting it, even if it's not a database.
+</p>
+<p>
+Now before someone thinks I'm some sort of weirdo database hater, I want to make some things clear!
+</p>
+<ul class="org-ul">
+<li><p>
+this article refers to storing <b>your own personal data and digital trace</b>
+</p>
+<p>
+In general, there absolutely are cases where using a database is the only feasible and reasonable way of keeping and accessing data.
+However, the amounts of data involved are quite different too.  
+</p></li>
+<li><p>
+I want to argue about this not because I don't like databases/SQL or any other personal preferences
+</p>
+<p>
+Quite the opposite, <b>I wish I could run SQL queries against Instapaper's or Twitter's servers</b>. Needless to say, it's <a href="sad-infra.html#why">not quite the way things work</a>.
+</p>
+<p>
+I want to argue on this point because I feel like an unnecessary use of databases is a source of friction for implementing, and more importantly, maintaining your personal data exports, and <a class="link-down" href="#api_extended">restricts you</a> from using your data to the full capacity when you want it.
+</p></li>
+</ul>
+<p>
+My main claim is that for personal data, databases have benefits as a means of <b>intermediate</b> storage, for caching, and as <b>one of</b> the interfaces to your data, but <b>not as the primary</b> storage of exported data.
+</p>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#asis">1. What do you suggest?</a>
+<ul>
+<li><a href="#example_reddit">example: Reddit export</a></li>
+</ul>
+</li>
+<li><a href="#databases_good">2. Databases are good</a>
+<ul>
+<li><a href="#space">take less space</a></li>
+<li><a href="#performance">efficient data access</a></li>
+<li><a href="#sql">query language</a></li>
+<li><a href="#rows">SQL rows are a better 'data interface' than JSON</a></li>
+<li><a href="#constraints">types and constraints</a></li>
+<li><a href="#easy_bindings">easy to map onto any language</a></li>
+</ul>
+</li>
+<li><a href="#databases_hard">3. Databases are hard</a>
+<ul>
+<li><a href="#relational">relational model</a></li>
+<li><a href="#schema">coming up with a schema</a></li>
+<li><a href="#maintaining">maintaining</a></li>
+</ul>
+</li>
+<li><a href="#append">4. Append, don't modify</a>
+<ul>
+<li><a href="#example_chrome">Example: Chrome history</a></li>
+</ul>
+</li>
+<li><a href="#cachew">5. Appendix: when you really really want a database</a>
+<ul>
+<li><a href="#cachew_cachew">cachew</a></li>
+</ul>
+</li>
+<li><a href="#fin">6. --</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000001">
+<h2 id="asis"><a class="headerlink" href="#asis">¶</a><span class="section-number-2">1</span> What do you suggest?</h2>
+<div class="outline-text-2" id="text-asis">
+<p>
+Before I jump into explaining what's my problem with databases, let me summarize my current approach, so that it's clear what I'm suggesting as an alternative.
+</p>
+<p>
+Liberating your data involves fairly different, if not complementary, parts (or 'layers'):
+</p>
+<ul class="org-ul">
+<li>"data export" part: knows how to get data from the cloud and saves it on the disk. Deals with APIs, network, etc.</li>
+<li><p>
+"data access" part: knows how to interpret whatever you exported on your disk and maps onto abstract entities
+</p>
+<p>
+I'll refer to it interchangeably as <b>"data access layer"</b> or <b>"data bindings"</b> further in the article.
+</p></li>
+</ul>
+<p>
+My suggestions are:
+</p>
+<ul class="org-ul">
+<li><p>
+during data export, <b>store data as is</b>, don't try to clean it up or normalize
+</p>
+<p>
+This allows you to keep your data safe as soon as you managed to retrieve it, and more forgiving to bugs and inconsistencies.
+</p></li>
+<li><p>
+during data access, merge and <b>normalize your data in runtime</b>
+</p>
+<p>
+This makes the export part simpler, saves you time on maintaining data and allows for faster iterations while working with it.
+</p>
+<p>
+Normalizing on every access might cause some overhead, of course, which I'll discuss <a class="link-down" href="#performance">later</a>.
+</p></li>
+<li><p>
+if necessary use databases as an intermediate layer to speed access up and as an additional interface to your data
+</p>
+<p>
+Nothing wrong with using databases for <a class="link-down" href="#cachew">caching</a> if you need it!
+</p></li>
+</ul>
+<p>
+And as a specific example:
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000000">
+<h3 id="example_reddit"><a class="headerlink" href="#example_reddit">¶</a>example: Reddit export</h3>
+<div class="outline-text-3" id="text-example_reddit">
+<p>
+<a href="https://github.com/karlicoss/rexport">rexport</a> is a script to export user's Reddit data like saved post/comments/submissions and upvotes.
+</p>
+<ul class="org-ul">
+<li><p>
+export layer
+</p>
+<p>
+If you ignore the argparse boilerplate, the export <a href="https://github.com/karlicoss/rexport/blob/874e6116bfba8cbd63fa3b4d93810a1488cb8464/export.py#L69-L96">itself</a> is very simple, just a matter of calling API methods (I'm using existing bindings) and combining the results into a JSON object.
+After that, data is immediately persisted on a disk.
+</p>
+<p>
+Reddit API is restricted to the 1000 latest items, so to have a full view of my data, I need to 
+</p>
+<ul class="org-ul">
+<li>export it regularly (which I do)</li>
+<li><p>
+save each exported data slice in a new file, which I also do
+</p>
+<p>
+Using timestamp as a filename is a natural choice, I'm using <a href="https://github.com/karlicoss/arctee">arctee</a> tool that does it for any of my exports.
+</p></li>
+</ul></li>
+<li><p>
+data access layer
+</p>
+<p>
+The data access layer exposes simple Python objects that make it pleasant to work with the data. 
+</p>
+<p>
+My bindings simply expose saved JSON data via Python's properties: e.g. <a href="https://github.com/karlicoss/rexport/blob/874e6116bfba8cbd63fa3b4d93810a1488cb8464/dal.py#L52-L65"><code class="inline">Comment</code></a>. 
+</p>
+<ul class="org-ul">
+<li>if I ever need to extract something else from the raw JSON (e.g. upvotes), that would only be a matter of adding three lines of code into <code class="inline">Comment</code> class</li>
+<li>in contrast, had I kept the data in a database, that would have required a database migration for <samp class="inline">Comments</samp> table <a class="link-down" href="#api_extended">at the very least</a>.</li>
+</ul>
+<p>
+Now, remember I mentioned that Reddit only gives you latest the 1000 items, so I end up with overlapping data slices? To get a full view of my data, I'm simply going through individual JSON files in chronological order and merging together in <a href="https://github.com/karlicoss/rexport/blob/874e6116bfba8cbd63fa3b4d93810a1488cb8464/dal.py#L136-L153"><code class="inline">accumulate</code></a> method.
+</p></li>
+<li><p>
+[optional] caching layer
+</p>
+<p>
+I've got Reddit data way into past and export it every day, so merging together all these files during data access can indeed take a noticeable time.
+</p>
+<p>
+I'm overcoming this by using a <a href="https://github.com/karlicoss/my/blob/12330dd6041b9a4ee66571dca845947988e6f474/my/reddit.py#L51"><code class="inline">@cachew</code></a> annotation on the <code class="inline">comments()</code> method.
+</p>
+<p>
+One annotation, that's it. Look ma, no SQL! Okay, okay, there is quite a bit of SQL involved, but it's all hidden inside <a href="https://github.com/karlicoss/cachew#how-it-works">cachew</a>. It would also work for any other source of personal data.
+</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000008">
+<h2 id="databases_good"><a class="headerlink" href="#databases_good">¶</a><span class="section-number-2">2</span> Databases are good</h2>
+<div class="outline-text-2" id="text-databases_good">
+<p>
+In this section, I'll present typical arguments <b>for</b> using databases, and will try to argue, that in most circumstances (for keeping personal data), the benefits are not pragmatic and not worth <a class="link-down" href="#databases_hard">the tradeoffs</a>.
+</p>
+<p>
+Note that generally, databases have numerous other benefits, however, I'll emphasize again, here I'm only considering aspects that are relevant to <b>personal data storage</b>.
+</p>
+<p>
+When I say 'database' here, I typically mean Sqlite, which is most commonly used for personal data, although specific database, relational or not, shouldn't matter.
+</p>
+<p>
+<span style="color:darkorange"><strong>If you think I've missed out on something, please let me know!</strong></span>
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000002">
+<h3 id="space"><a class="headerlink" href="#space">¶</a>take less space</h3>
+<div class="outline-text-3" id="text-space">
+<p>
+Yes, however in most cases your data export will take few megabytes anyway. If you compress it, it's hundreds of kilobytes.
+</p>
+<p>
+Storage saved by using a database instead of plaintext is marginal and not worth the effort.
+</p>
+<p>
+Only exceptions I can think of are: 
+</p>
+<ul class="org-ul">
+<li>instant messaging apps: number of text messages approaches millions</li>
+<li><p>
+continuous data like room temperature, CO2 levels, etc
+</p>
+<p>
+If you have a minute by minute stream of <b>uniform data</b>, a database is probably the way to go.
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000003">
+<h3 id="performance"><a class="headerlink" href="#performance">¶</a>efficient data access</h3>
+<div class="outline-text-3" id="text-performance">
+<p>
+The same point applies as in the <a class="link-up" href="#space">previous section</a>. If a snapshot of your data export contains several thousand items, you won't notice the difference.
+</p>
+<p>
+In addition, there are <a class="link-down" href="#cachew">ways</a> of getting most of the database benefits without having to sacrifice simplicity and without writing SQL boilerplate.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000004">
+<h3 id="sql"><a class="headerlink" href="#sql">¶</a>query language</h3>
+<div class="outline-text-3" id="text-sql">
+<p>
+SQL is extremely powerful and helps you to interact with your data without distracting on low-level details.
+</p>
+<p>
+That's a very good point, but query language doesn't necessarily mean a database. 
+E.g. see <a href="https://pandas.pydata.org">pandas</a> which is capable of what SQL is capable of, and even more convenient than SQL for our data exploration purposes.
+</p>
+<p>
+In addition, see <a class="link-down" href="#relational">the counterargument</a> about the restrictions of the relational model.
+</p>
+<p>
+And finally, nothing prevents you from providing a database as an <a class="link-down" href="#cachew">additional interface</a> to your data.   
+</p>
+<p>
+<b>Example</b>: exposing <a href="https://github.com/karlicoss/my/blob/6787c9c0d6a6e0aff49565cf299464a7a9b40e9f/my/jawbone/__init__.py#L267-L280">jawbone sleep data</a> as a dataframe.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000005">
+<h3 id="rows"><a class="headerlink" href="#rows">¶</a>SQL rows are a better 'data interface' than JSON</h3>
+<div class="outline-text-3" id="text-rows">
+<p>
+That's kind of a subjective point (although I'd rather agree).
+</p>
+<p>
+However, raw rows, while good enough for simple queries, can only get you so far.
+</p>
+<p>
+   While Sqlite is more pleasant to query than JSON (but still, do check out out <a href="https://stedolan.github.io/jq">jq</a>),
+once you start using your data repeatedly, you want to abstract away from the low-level rows and encode with proper datatypes (in your favorite target programming language). E.g. you want to use strings that have the familiar methods, datetime types, data classes, etc.
+</p>
+<p>
+I want an <a href="https://en.wikipedia.org/wiki/Data_access_layer">abstract interface</a> to my data, and I'm not alone, <a href="https://en.wikipedia.org/wiki/Object-relational_mapping">ORMs</a> exist for a reason.
+</p>
+<p>
+So, in either case, you need to write data bindings. Say, you want to export some data from an API.
+</p>
+<p>
+We're comparing two options:
+</p>
+<ul class="org-ul">
+<li><p>
+option 1
+</p>
+<p>
+during export:
+</p>
+<ul class="org-ul">
+<li>retrieve the JSON from the API</li>
+<li>keep it on the disk as is. Trivial step, just save in the file.</li>
+</ul>
+<p>
+during data access:
+</p>
+<ul class="org-ul">
+<li>parse JSON</li>
+<li>map data onto the abstract interface</li>
+</ul></li>
+<li><p>
+option 2
+</p>
+<p>
+during export:
+</p>
+<ul class="org-ul">
+<li>retrieve the JSON from the API</li>
+<li>parse JSON, transform and normalize data <a class="link-down" href="#relational">to conform to the database</a></li>
+<li>insert in the database. Often not a trivial step due to transactions and multiple insert/update statements.</li>
+</ul>
+<p>
+during data access:
+</p>
+<ul class="org-ul">
+<li>make a SQL query</li>
+<li>map data onto the abstract interface</li>
+</ul></li>
+</ul>
+<p>
+Note that you have fewer steps if you follow the first approach. And it's not only about the time saved on implementing: the less you transform the data, the less the chance you screw something up. I'll elaborate on a specific example of a royal screw up <a class="link-down" href="#example_chrome">later</a>.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000006">
+<h3 id="constraints"><a class="headerlink" href="#constraints">¶</a>types and constraints</h3>
+<div class="outline-text-3" id="text-constraints">
+<p>
+Even though schemas in Sqlite are annotated with types, that <b>doesn't give you strong typing guarantees in runtime</b>, a concept that is gently called <a href="https://www.sqlite.org/quirks.html#flexible_typing"><b>"flexible typing"</b></a>. In other words, your data is implicitly coerced which may be convenient but might cause some unanticipated failures later.
+</p>
+<p>
+SQL <a href="https://www.tutorialspoint.com/sql/sql-check.htm">constraints</a> are a potentially great way to guarantee intrinsic consistency of your data.
+If you encode consistency checks in your target SQL, you will be protected from corrupting the logical state, even if you try to mess with the database manually.
+</p>
+<p>
+This is great in theory, however, doesn't work so well on practice for personal data:
+</p>
+<ul class="org-ul">
+<li>when you use something like PostgreSQL, you've got <a href="https://severalnines.com/database-blog/understanding-check-constraints-postgresql">PL/pgSQL</a> at hand, a real programming language, to encode your constraints</li>
+<li>when you use Sqlite, it's a bit more tedious, there is a <a href="https://www.sqlite.org/c3ref/create_function.html">C API</a> to interface with custom functions. Otherwise, you're limited by native Sqlite functions, hence encoding constraints might be very awkward. Needless to say, very few people would (and do) bother using it unless it's absolutely vital to implement such checks.</li>
+</ul>
+<p>
+In addition, with regards to personal data, it's easier to assume a "single writer" model and encode constraint checking in the programming language, during data access.
+</p>
+<p>
+My observation is: <b>if you don't own the schema, you won't get it right</b>. The services break their APIs, underdocument, or return utter garbage all the time.
+</p>
+<p>
+The alternative I suggest, storing raw data as is, means that at least:
+</p>
+<ul class="org-ul">
+<li>you won't make it any more inconsistent than it already is</li>
+<li>if you misinterpret the data, that's just a code change, data is not corrupted</li>
+<li>you will massively save on your time and mental resources</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000007">
+<h3 id="easy_bindings"><a class="headerlink" href="#easy_bindings">¶</a>easy to map onto any language</h3>
+<div class="outline-text-3" id="text-easy_bindings">
+<p>
+That's a good point, also somewhere along the lines of <a class="link-up" href="#rows">'better data interfaces'</a>.
+</p>
+<p>
+Exporting data is one part, and it doesn't particularly matter who implemented it and how, as long as it works for you.
+</p>
+<p>
+Accessing is different, the realities of the modern <a href="https://en.wikipedia.org/wiki/Foreign_function_interface">FFI</a> are such that typically, it's easier to reimplement the data bindings from scratch on the programming language you prefer.
+</p>
+<ul class="org-ul">
+<li>if the data is kept as is (e.g. as unnormalized JSON), that means reimplementing the data extraction and parsing logic from scratch</li>
+<li><p>
+if the data is kept in Sqlite, it's already to some extent structured and normalized
+</p>
+<p>
+That means that data bindings could be simply a matter of writing datatype definitions and using some database bindings, which is fairly straightforward.
+</p></li>
+</ul>
+<p>
+I have to admit, I don't have much to counter this. This is a tradeoff I have accepted while writing tools for export.
+</p>
+<p>
+I want other people to use them, so we have a collective stake in maintaining them.
+I write in Python, so hopefully, it's covering lots of people, especially beginners at programming.
+</p>
+<p>
+That said, I'll repeat my point that you can still use a database <a class="link-down" href="#cachew">as an intermediate layer</a>, without relying on it as a primary data storage. 
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000000f">
+<h2 id="databases_hard"><a class="headerlink" href="#databases_hard">¶</a><span class="section-number-2">3</span> Databases are hard</h2>
+<div class="outline-text-2" id="text-databases_hard">
+<p>
+Now let's go through things that directly make databases hard.
+</p>
+</div>
+<div class="outline-3" id="outline-container-org000000a">
+<h3 id="relational"><a class="headerlink" href="#relational">¶</a>relational model</h3>
+<div class="outline-text-3" id="text-relational">
+<p>
+These days we just say 'database' when most of the time we mean <a href="https://en.wikipedia.org/wiki/Relational_database">'relational database</a>'. 
+Relational databases can be vaguely thought of as "a set of tables, each table storing typed data tuples".
+Such simplicity allows for query language expressiveness and enables the optimizer to reason about data retrieval.
+</p>
+<p>
+At the same time, this simplicity is a curse and imposes structure that might be incompatible with the format that you receive data in.
+Often, the relational model requires you to rearrange data before inserting, which might break data consistency.
+</p>
+</div>
+<div class="outline-4" id="outline-container-org0000009">
+<h4 id="relational_examples">Examples</h4>
+<div class="outline-text-4" id="text-relational_examples">
+<ul class="org-ul">
+<li><p>
+Imagine you want to export your Instapaper bookmarks.
+</p>
+<p>
+API offers you a <a href="https://www.instapaper.com/api"><samp class="inline">/bookmarks/list</samp></a> method, that lists user's bookmarks.
+The catch is it doesn't require all of them; it's got a required <samp class="inline">folder_id</samp> parameter.
+</p>
+<p>
+For your export, that means that you have to go through the folders (i.e. "unread", "archive", etc.), and export each list individually.
+Instead of a nice and flat bookmark list, you've got a <code class="inline">Folder → Bookmark</code> hierarchy. To make it compatible with the <code class="inline">Bookmarks</code> table, you need to flatten it first.
+</p>
+<p>
+There are some potential caveats while during that: you could end up with duplicates if folders are not mutually exclusive or just due to inherent data races between multiple API requests, so you have to uniquify the bookmarks, which is an extra thing to think about.
+</p>
+<p>
+While in theory, nothing prevents <code class="inline">Bookmark 🡘 Folder</code> from fitting in a relational model, the nature of the API interactions makes it awkward to implement on the client side.
+</p></li>
+<li><p>
+Imagine you want to export your Endomondo workouts.
+</p>
+<p>
+API offers you a list of workouts (represented as JSON) with various metadata (types of exercise/datetime/private notes) and in addition, heart rate data and location data.
+</p>
+<p>
+How do you keep heart rate and location?
+</p>
+<ul class="org-ul">
+<li>in a massive <a href="https://www.sqlite.org/datatype3.html"><code class="inline">BLOB</code></a> or <code class="inline">TEXT</code> column? That's barely better than simply serializing everything as JSON.</li>
+<li>in separate tables, with timestamps as the primary keys? Then you'd need to refer to them as 'timestamp ranges' which would make it pretty tedious to insert and access.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000b">
+<h3 id="schema"><a class="headerlink" href="#schema">¶</a>coming up with a schema</h3>
+<div class="outline-text-3" id="text-schema">
+<p>
+Kind of similar to the points on <a class="link-up" href="#constraints">types</a> and the <a class="link-up" href="#relational">relational model</a>, often you need first-hand knowledge of the API to come up with a correct and reasonable schema.
+</p>
+<p>
+Schemas use a fixed number of fields, which requires you to scrupulously inspect the data and make sure you've covered everything by your schema.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000e">
+<h3 id="maintaining"><a class="headerlink" href="#maintaining">¶</a>maintaining</h3>
+<div class="outline-text-3" id="text-maintaining">
+<p>
+Inevitably, APIs change and extend, often without you knowing that (or not having time to follow the API news).
+If the API starts returning more data, that means the database scheme needs to change.
+</p>
+<p>
+Depending on the way you implemented it, that means one of two things:
+</p>
+<ul class="org-ul">
+<li><p>
+best-case scenario: you implement checks for the API schema and fail your export script on a mismatch.
+</p>
+<p>
+Now you are aware of API changes, but your export script stopped working and requires attention and fixing
+Depending on the specific service and on how much do you value your data, it might require a <a class="link-down" href="#api_backward">fast fixing response</a>.
+</p></li>
+<li><p>
+worst-case scenario: you had no checks for schema changes and you're not even aware of it.
+</p>
+<p>
+Sometimes it's fine, but sometimes that means <a class="link-down" href="#incremental">losing data forever</a>.
+</p></li>
+</ul>
+<p>
+Let's consider the following scenarios and how we handle them:
+</p>
+</div>
+<div class="outline-4" id="outline-container-org000000c">
+<h4 id="api_extended">API is extended, i.e. returns more data</h4>
+<div class="outline-text-4" id="text-api_extended">
+<p>
+Let's consider a specific example, Pocket API.      
+</p>
+<p>
+At the moment it only lets you access your 'articles', i.e. URLs you bookmarked to Pocket.
+Imagine that you're using a database to export them, so your schema is: <code class="inline">TABLE Article(STRING id, STRING url, STRING title, DATETIME added)</code>.
+</p>
+<p>
+One day, the developers expose highlights (or annotations) from the <a href="https://github.com/karlicoss/pockexport#setting-up">private API</a> and your export script stats receiving it in the response JSON.
+It's quite useful data to have!
+</p>
+<p>
+However, your database can't just magically change to conform to the new field. In addition, we've got the same issue with mapping onto the <a class="link-up" href="#relational">relational model</a> here: we've got an
+<code class="inline">Article → Highlight</code> hierarchy, which we need to manually split up into separate tables. So you'd need to:
+</p>
+<ul class="org-ul">
+<li><p>
+find out that there is a new JSON field in the first place
+</p>
+<p>
+That's, of course, regardless of what storage you're using, but in case of a master database, you really might want to <a class="link-down" href="#incremental">find it out sooner than later</a>.
+</p></li>
+<li><p>
+invent a schema and create a new table, <code class="inline">Highlight</code>
+</p>
+<p>
+Don't forget to use up with a correct primary key, <samp class="inline">(highlight_id, bookmark_id)</samp>. Who knows whether <samp class="inline">highlight_id</samp> is unique across bookmarks boundaries?
+</p></li>
+<li><p>
+migrate old data
+</p>
+<p>
+Why can't I just create the database from scratch, you ask? Well, that may not always be an option.
+</p>
+<p>
+Sometimes you <a class="link-down" href="#incremental">don't have access</a> to older data anymore.
+</p></li>
+</ul>
+<p>
+The alternative <a class="link-up" href="#asis">I suggest</a> is keeping raw data and dealing normalizing during data access. Let's see how that would work:
+</p>
+<ul class="org-ul">
+<li><p>
+when new <samp class="inline">annotations</samp> field is introduced, it's automatically kept on disk along with everything else
+</p>
+<p>
+When you find out about it later, you can still use annotations from the previously exported data.
+</p></li>
+<li><p>
+supporting this field is extremely easy
+</p>
+<p>
+If you keep raw data, it's just a matter of adding a <a href="https://github.com/karlicoss/pockexport/blob/8e141e12663a611891622bfe57dc8b7babdf6526/dal.py#L48-L52">getter</a> method to the <code class="inline">Article</code> class.
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-type">@property</span>
+<span class="org-keyword">def</span> <span class="org-function-name">highlights</span>(<span class="org-keyword">self</span>) -&gt; Sequence[Highlight]:
+    <span class="org-variable-name">default</span> = [] <span class="org-comment-delimiter"># </span><span class="org-comment">defensive to handle older export formats that had no annotations</span>
+    <span class="org-variable-name">jsons</span> = <span class="org-keyword">self</span>.json.get(<span class="org-string">'annotations'</span>, default)
+    <span class="org-keyword">return</span> <span class="org-builtin">list</span>(<span class="org-builtin">map</span>(Highlight, jsons))
+</pre>
+</div>
+<p>
+Modifying code is way easier than messing with databases and modifying the data.
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-4" id="outline-container-org000000d">
+<h4 id="api_backward">API breaks backward compatibility</h4>
+<div class="outline-text-4" id="text-api_backward">
+<p>
+Imagine that for some reason <a class="link-up" href="#example_reddit">Reddit API</a> started returning <a href="https://en.wikipedia.org/wiki/ISO_8601">isoformatted</a> date strings instead of epochs (i.e. <samp class="inline">20200126T19:43:21Z</samp> instead of <samp class="inline">1580067801</samp>).
+</p>
+<p>
+Your existing <code class="inline">Comment</code> table assumed <code class="inline">INTEGER</code> for the comment creation date. Suddenly you started receiving strings, which Sqlite can't handle anymore.
+</p>
+<p>
+You have similar issues to the previous section: you need to migrate your old data. But there is even a bigger issue: <b>your exported data isn't advancing anymore</b> until you perform the migration. That's problematic because you might lose data forever if you postpone the fix for too long.
+</p>
+<p>
+In contrast, if you <a class="link-up" href="#asis">keep raw data</a>:
+</p>
+<ul class="org-ul">
+<li><p>
+your downstream tools, consuming exported data, start choking over wrong type stored in the JSON
+</p>
+<p>
+The massive difference though is: there is <b>no time pressure to fix</b>, you know that at least your data is getting exported locally
+</p></li>
+<li><p>
+fixing this issue is really quick: two lines of defensive code
+</p>
+<p>
+Testing the fix is trivial, code changes are easy and <b>reversible</b> thanks to version control.
+</p></li>
+</ul>
+<p>
+Database migrations are very hard, and you want to avoid them at all costs.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000012">
+<h2 id="append"><a class="headerlink" href="#append">¶</a><span class="section-number-2">4</span> Append, don't modify</h2>
+<div class="outline-text-2" id="text-append">
+<p>
+When it comes to exporting data, there are two very different cases:
+</p>
+<ul class="org-ul">
+<li><p>
+you can access all data at once
+</p>
+<p>
+This is an easy case, and you can just retrieve all over again every time.
+</p>
+<p>
+Example: Pinboard API, there are just a few megabytes of data you have on Pinboard and API doesn't prevent you from retrieving all of it at once.
+</p></li>
+<li><p>
+<a id="incremental"></a>at any time you only have a slice of data available
+</p>
+<p>
+There are different reasons for this:
+</p>
+<ul class="org-ul">
+<li><p>
+many APIs restrict the number of latest items you can retrieve
+</p>
+<p>
+Examples:
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/karlicoss/rexport#limitations">Reddit</a> limits your API requests to 1000 results, due to some performance considerations</li>
+<li><a href="https://docs.monzo.com/#list-transactions">Monzo bank API</a> only gives you last 90 days of transactions, presumably for security reasons</li>
+</ul></li>
+<li><p>
+data retention
+</p>
+<p>
+Example: chrome history is only retained for 90 days
+</p></li>
+<li><p>
+limited memory
+</p>
+<p>
+Examples: temperature sensors, HR sensors, and other embedded devices
+</p></li>
+</ul>
+<p>
+That means the data exports are now <b>incremental</b>. This case is tricky because:
+</p>
+<ul class="org-ul">
+<li>you need to run your export scripts regularly, otherwise, you might miss some data</li>
+<li>you need some sort of 'merging' logic to combine a new slice of data with the data already exported</li>
+</ul>
+<p>
+In this section, we'll be dealing with this case, and this 'merging' logic is what we'll be discussing.
+</p></li>
+</ul>
+<p>
+How to deal with 'merging' data? Again, we have two alternatives here:
+</p>
+<ol class="org-ol">
+<li><p>
+keep everything in a single database
+</p>
+<p>
+Come up with a schema for the 'master database'.
+</p>
+<ul class="org-ul">
+<li>during export: normalize and insert new data into the master database.</li>
+<li>during data access: map data rows onto specific classes and datatypes</li>
+</ul></li>
+<li>keep exported slices intact
+
+<ul class="org-ul">
+<li>during export: save each new data slice along with the timestamp</li>
+<li>during data access: go through the slices in the order of timestamp increase and assemble the full view of data.</li>
+</ul></li>
+</ol>
+<p>
+As you might have guessed, I want to advocate against the first approach. Don't try to merge your data during exporting, unless it's really necessary.
+</p>
+<p>
+First of all, all the reasons from the <a class="link-up" href="#databases_hard">previous section</a> apply. In addition:
+</p>
+<ul class="org-ul">
+<li><p>
+you have to be <b>even more careful</b> about transactional logic since you might corrupt your export for good
+</p>
+<p>
+Remember, you may not be able to retrieve older data anymore.  
+</p>
+<p>
+While it's not hard to use transactions, it's still harder than simply using atomic file write.
+</p></li>
+<li><p>
+slices of data separated in time are <b>even more likely to be inconsistent</b>
+</p>
+<p>
+As an example, imagine the API changes some internals, i.e. the way IDs are assigned, that doesn't matter when you export everything at once.
+</p>
+<p>
+However, for an incremental export, if old IDs were persisted in the database, it may cause issues.
+</p></li>
+</ul>
+<p>
+That's where 'append' in the section title comes from, instead of merging data and modifying the master database, we 'append' data on the disk without modifying anything.
+This is not a new approach and a common software engineering practice:
+</p>
+<ul class="org-ul">
+<li><a href="https://en.wikipedia.org/wiki/Persistent_data_structure#Examples_of_persistent_data_structures">Persistent data structures</a></li>
+<li><a href="https://en.wikipedia.org/wiki/ZFS#Copy-on-write_transactional_model">ZFS</a></li>
+<li><a href="https://martinfowler.com/eaaDev/EventSourcing.html">Event sourcing</a></li>
+</ul>
+<p>
+I've already mentioned that regarding <a class="link-up" href="#example_reddit">Reddit</a> a few times, but let me illustrate the 'inconsistency' aspect with a more specific example:
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000011">
+<h3 id="example_chrome"><a class="headerlink" href="#example_chrome">¶</a>Example: Chrome history</h3>
+<div class="outline-text-3" id="text-example_chrome">
+<p>
+As I mentioned, Chrome only keeps history for the last 90 days.
+Imagine you want to retain all your past browsing history. And no, you <a href="./takeout-data-gone.html">can't rely on Takeout</a> for that, or you might not be using Google at all.
+</p>
+<p>
+So you want a script that exports your history, say, every week and maintains full browsing history over the years.
+</p>
+<p>
+Chrome keeps the history in an sqlite table, and exporting itself it is trivial! It's just a matter of copying <samp class="inline">~/.config/google-chrome/Profile/History</samp>.
+</p>
+<p>
+Imagine you want to come up with a master database schema and merge together weekly history databases.
+That requires some careful inspection of the database in order to find out how it keeps the data.
+</p>
+<p>
+So you do it and it seems that a subset of schema that <samp class="inline">History</samp> database is <a href="https://www.lowmanio.co.uk/blog/entries/how-google-chrome-stores-web-history">already using</a> would make sense:
+</p>
+<pre class="example">
+TABLE   urls(
+    id    INTEGER PRIMARY KEY, 
+    url   STRING,
+    title STRING
+)
+TABLE visits(
+    id         INTEGER PRIMARY KEY,
+    url_id     INTEGER, // foreign key referring to urls.id
+    visit_time STRING
+)
+</pre>
+<p>
+Pseudocode for your export script would look like:
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-variable-name">chunk_db</span> = <span class="org-string">"~/.config/google-chrome/Profile/History"</span>
+<span class="org-variable-name">master_db</span>  = <span class="org-string">"/exports/chrome/full_history.db"</span>
+
+<span class="org-keyword">for</span> row <span class="org-keyword">in</span> query(chunk_db, <span class="org-string">'SELECT id, url, title from urls'</span>):
+    insert_or_ignore(master_db, <span class="org-string">'urls'</span>, row)
+
+<span class="org-keyword">for</span> row <span class="org-keyword">in</span> query(chunk_db, <span class="org-string">'SELECT id, url_id, visit_tile from visits'</span>):
+    insert_or_ignore(master_db, <span class="org-string">'visits'</span>, row)
+</pre>
+</div>
+<p>
+Note: this code already smells because:
+</p>
+<ul class="org-ul">
+<li>accessing an opened (by Chrome) sqlite database would fail – you need to copy the database file first and work with a copy</li>
+<li>it's also easiest to copy to ensure transactional reads: no one guarantees you Chrome updates the database in a transaction</li>
+<li>you need a write transaction on <samp class="inline">master_db</samp>, otherwise, someone who reads it might see inconsistent data</li>
+<li><p>
+we have to use <a href="https://sqlite.org/lang_conflict.html"><samp class="inline">insert_or_ignore</samp></a> (instead of simple <samp class="inline">insert</samp>), because the chunks are overlapping on data, hence primary keys will conflict
+</p>
+<p>
+It's kind of an arbitrary choice; the alternative could be using <samp class="inline">insert_or_update</samp>. Hopefully, they should be equivalent, although it's unclear which one is morally correct. E.g. what happens if URL's <samp class="inline">title</samp> change? But hopefully, that doesn't matter much anyway, right?
+</p>
+<p>
+As we'll see this very bit will turn out to be <b>very problematic</b>.
+</p></li>
+</ul>
+<p>
+But anyway, let's carry on. Fast forward few exports and merges, your full history database looks like:
+</p>
+<style> #urls_old   { display: inline-block; } </style>
+<style> #visits_old { display: inline-block; } </style>
+<table border="2" cellpadding="6" cellspacing="0" frame="hsides" id="urls_old" rules="groups">
+<colgroup>
+<col class="org-right" />
+<col class="org-left" />
+<col class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right"><samp class="inline">id</samp></td>
+<td class="org-left"><samp class="inline">url</samp></td>
+<td class="org-left"><samp class="inline">title</samp></td>
+</tr>
+<tr>
+<td class="org-right">100</td>
+<td class="org-left">reddit.com</td>
+<td class="org-left">Reddit</td>
+</tr>
+<tr>
+<td class="org-right">…</td>
+<td class="org-left">…</td>
+<td class="org-left">…</td>
+</tr>
+<tr>
+<td class="org-right">200</td>
+<td class="org-left">google.com</td>
+<td class="org-left">Google</td>
+</tr>
+</tbody>
+</table>
+<table border="2" cellpadding="6" cellspacing="0" frame="hsides" id="visits_old" rules="groups">
+<colgroup>
+<col class="org-right" />
+<col class="org-right" />
+<col class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right"><samp class="inline">id</samp></td>
+<td class="org-right"><samp class="inline">url_id</samp></td>
+<td class="org-left"><samp class="inline">visit_time</samp></td>
+</tr>
+<tr>
+<td class="org-right">300</td>
+<td class="org-right">100</td>
+<td class="org-left">2011-02-10 10:00</td>
+</tr>
+<tr>
+<td class="org-right">…</td>
+<td class="org-right">…</td>
+<td class="org-left">…</td>
+</tr>
+<tr>
+<td class="org-right">498</td>
+<td class="org-right">100</td>
+<td class="org-left">2011-04-01 09:00</td>
+</tr>
+<tr>
+<td class="org-right">499</td>
+<td class="org-right">200</td>
+<td class="org-left">2011-04-02 05:00</td>
+</tr>
+</tbody>
+</table>
+<p>
+<samp class="inline">visit_time</samp> is in epoch microseconds in the actual chrome history database, but it's easier to illustrate with strings here.
+</p>
+<p>
+Note that ids don't start with 0, we had already been using Chrome for more than 90 days at the time we started exporting, so sadly some data is gone forever.
+</p>
+<p>
+Now, imagine you've reinstalled your operating system. 
+</p>
+<p>
+What happens to the Chrome databases? They reset, no one guaranteed you that ids would persist. The <b>table ids start all over from 0 again</b>.
+</p>
+<p>
+<samp class="inline">~/.config/google-chrome/Profile/History</samp> now looks like:
+</p>
+<style> #urls_chunk_new   { display: inline-block; } </style>
+<style> #visits_chunk_new { display: inline-block; } </style>
+<table border="2" cellpadding="6" cellspacing="0" frame="hsides" id="urls_chunk_new" rules="groups">
+<colgroup>
+<col class="org-right" />
+<col class="org-left" />
+<col class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right"><samp class="inline">id</samp></td>
+<td class="org-left"><samp class="inline">url</samp></td>
+<td class="org-left"><samp class="inline">title</samp></td>
+</tr>
+<tr>
+<td class="org-right">0</td>
+<td class="org-left">wikipedia.org</td>
+<td class="org-left">Wikipedia</td>
+</tr>
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">google.com</td>
+<td class="org-left">Google</td>
+</tr>
+<tr>
+<td class="org-right">…</td>
+<td class="org-left">…</td>
+<td class="org-left">…</td>
+</tr>
+<tr>
+<td class="org-right">100</td>
+<td class="org-left">stackoverflow.com</td>
+<td class="org-left">Stackoverflow</td>
+</tr>
+</tbody>
+</table>
+<table border="2" cellpadding="6" cellspacing="0" frame="hsides" id="visits_chunk_new" rules="groups">
+<colgroup>
+<col class="org-right" />
+<col class="org-right" />
+<col class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right"><samp class="inline">id</samp></td>
+<td class="org-right"><samp class="inline">url_id</samp></td>
+<td class="org-left"><samp class="inline">visit_time</samp></td>
+</tr>
+<tr>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-left">2012-04-20 19:00</td>
+</tr>
+<tr>
+<td class="org-right">…</td>
+<td class="org-right">…</td>
+<td class="org-left">…</td>
+</tr>
+<tr>
+<td class="org-right">900</td>
+<td class="org-right">100</td>
+<td class="org-left">2012-06-03 12:00</td>
+</tr>
+</tbody>
+</table>
+<p>
+Let's see what it means for our full history database <samp class="inline">/exports/chrome/full_history.db</samp>. What happens after you merge the new chunk of history?
+</p>
+<table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
+<colgroup>
+<col class="org-right" />
+<col class="org-left" />
+<col class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right"><samp class="inline">id</samp></td>
+<td class="org-left"><samp class="inline">url</samp></td>
+<td class="org-left"><samp class="inline">title</samp></td>
+</tr>
+<tr>
+<td class="org-right">0</td>
+<td class="org-left">wikipedia.org</td>
+<td class="org-left">Wikipedia</td>
+</tr>
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">google.com</td>
+<td class="org-left">Google</td>
+</tr>
+<tr>
+<td class="org-right">100</td>
+<td class="org-left">reddit.com</td>
+<td class="org-left">Reddit</td>
+</tr>
+<tr>
+<td class="org-right">…</td>
+<td class="org-left">…</td>
+<td class="org-left">…</td>
+</tr>
+<tr>
+<td class="org-right">200</td>
+<td class="org-left">google.com</td>
+<td class="org-left">Google</td>
+</tr>
+</tbody>
+</table>
+<p>
+Hmm.
+</p>
+<ul class="org-ul">
+<li><samp class="inline">google.com</samp> ended up twice with different ids, but okay, why not</li>
+<li>however, the real problem is that <samp class="inline">stackoverflow.com</samp> is gone due to the use of <samp class="inline">insert_or_ignore</samp>.</li>
+</ul>
+<p>
+And it's actually worse. Let's look at the <samp class="inline">visits</samp> table in the <samp class="inline">full_history.db</samp>:
+</p>
+<table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
+<colgroup>
+<col class="org-right" />
+<col class="org-right" />
+<col class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-right"><samp class="inline">id</samp></td>
+<td class="org-right"><samp class="inline">url_id</samp></td>
+<td class="org-left"><samp class="inline">visit_time</samp></td>
+</tr>
+<tr>
+<td class="org-right">0</td>
+<td class="org-right">0</td>
+<td class="org-left">2012-04-20 19:00</td>
+</tr>
+<tr>
+<td class="org-right">…</td>
+<td class="org-right">…</td>
+<td class="org-left">…</td>
+</tr>
+<tr>
+<td class="org-right">300</td>
+<td class="org-right">100</td>
+<td class="org-left">2011-02-10 10:00</td>
+</tr>
+<tr>
+<td class="org-right">…</td>
+<td class="org-right">…</td>
+<td class="org-left">…</td>
+</tr>
+<tr>
+<td class="org-right">498</td>
+<td class="org-right">100</td>
+<td class="org-left">2011-04-01 09:00</td>
+</tr>
+<tr>
+<td class="org-right">499</td>
+<td class="org-right">200</td>
+<td class="org-left">2011-04-02 05:00</td>
+</tr>
+<tr>
+<td class="org-right">…</td>
+<td class="org-right">…</td>
+<td class="org-left">…</td>
+</tr>
+<tr>
+<td class="org-right">900</td>
+<td class="org-right">100</td>
+<td class="org-left">2012-06-03 12:00</td>
+</tr>
+</tbody>
+</table>
+<p>
+The visit with id 900, that should point at <samp class="inline">stackoverflow.com</samp>, now points at <samp class="inline">google.com</samp>, so we ended up with some <b>fake browsing history</b>.
+</p>
+<p>
+How could we have avoided it? Note that using <samp class="inline">insert_or_update</samp> wouldn't have helped: that way we'd just overwrite history in the master database and make it inconsistent again
+</p>
+<p>
+Why did that happen? The schema was wrong. 
+We shouldn't have relied on ids: they are kind of an artifact of the <a class="link-up" href="#relational">relational model</a>. One way of getting around it is <a href="https://en.wikipedia.org/wiki/Unnormalized_form">"unnormalizing"</a>:
+</p>
+<pre class="example">
+TABLE   visit_with_url(
+    visit_time STRING
+    url        STRING
+    title      STRING
+)
+</pre>
+<p>
+When we update the database, we use something like:
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">for</span> row <span class="org-keyword">in</span> query(chunk_db, <span class="org-string">'SELECT visit_time, url, title FROM urls JOIN visits ON url.id = visits.url_id'</span>):
+    insert_or_ignore(master_db, row)
+</pre>
+</div>
+<p>
+Note that by the time you do realize that and fix it, you may have already lost (and even worse, corrupted) older history.
+</p>
+</div>
+<div class="outline-4" id="outline-container-org0000010">
+<h4 id="org0000010">An alternative</h4>
+<div class="outline-text-4" id="text-org0000010">
+<p>
+According to what I suggest:
+</p>
+<ul class="org-ul">
+<li><p>
+export script is a matter of copying <samp class="inline">Profile/History</samp> database along with a timestamp. E.g. if we do it weekly, we end up with:
+</p>
+<pre class="example">
+/exports/chrome/History-20110210.sqlite
+/exports/chrome/History-20110217.sqlite
+...
+/exports/chrome/History-20120603.sqlite
+</pre></li>
+<li><p>
+to get full history, we can use the following code
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">get_history</span>():
+   <span class="org-variable-name">handled</span> = <span class="org-builtin">set</span>()
+   <span class="org-keyword">for</span> db <span class="org-keyword">in</span> <span class="org-builtin">sorted</span>(Path(<span class="org-string">'/exports/chrome/'</span>).glob(<span class="org-string">'*.sqlite'</span>)):
+      <span class="org-keyword">for</span> row <span class="org-keyword">in</span> query(db, <span class="org-string">'SELECT visit_time, url, title FROM urls JOIN visits ON url.id = visits.url_id'</span>):
+          <span class="org-keyword">if</span> row <span class="org-keyword">in</span> handled:
+              <span class="org-keyword">continue</span>
+          <span class="org-keyword">else</span>:
+              <span class="org-keyword">yield</span> row
+              handled.insert(row)
+</pre>
+</div>
+<p>
+That way the full data view is a runtime concept and can never corrupt anything.
+</p>
+<p>
+If you ever find out that there are more interesting things in your browsing history, e.g. <samp class="inline">time_spent</samp> column (keeps time spent on each page), it's literally just a matter of inserting <samp class="inline">time_spent</samp> in the query.
+</p>
+<p>
+Again, there is an obvious downside is that in runtime, it might take several minutes to assemble the full history (although that may be acceptable, depending on your usecase). And that makes sense to try and use a database for <a class="link-down" href="#cachew">intermediate caching</a>; just don't rely on it for primary data storage.
+</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000014">
+<h2 id="cachew"><a class="headerlink" href="#cachew">¶</a><span class="section-number-2">5</span> Appendix: when you really really want a database</h2>
+<div class="outline-text-2" id="text-cachew">
+<p>
+As I mentioned so many times, databases are actually great for caching, as they can persist data in between program's runs.  
+</p>
+<p>
+I've noticed using similar patterns used all over again and that led me to extract the complexity and boilerplate in a separate Python library, <a href="https://github.com/karlicoss/cachew#motivation">cachew</a>.
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000013">
+<h3 id="cachew_cachew"><a class="headerlink" href="#cachew_cachew">¶</a>cachew</h3>
+<div class="outline-text-3" id="text-cachew_cachew">
+<p>
+TLDR: cachew lets you <b>cache function calls</b> into an sqlite database on
+your disk in a matter of <b>single decorator</b> (similar to
+<a href="https://docs.python.org/3/library/functools.html#functools.lru_cache"><samp class="inline">functools.lru_cache</samp></a>).
+The difference from <samp class="inline">functools.lru_cache</samp> is that cached data is
+persisted between program runs, so next time you call your function, it
+will only be a matter of reading from the cache. The cache is <b>invalidated
+automatically</b> if your function's arguments change, so you don't have to
+think about maintaining it.
+</p>
+<p>
+In order to be cacheable, your function needs to return (an
+<a href="https://docs.python.org/3/library/typing.html#typing.Iterator">Iterator</a>,
+that is generator, tuple or list) of simple data types:
+</p>
+<ul class="org-ul">
+<li>primitive types: <samp class="inline">str</samp> / <samp class="inline">int</samp> / <samp class="inline">float</samp> / <samp class="inline">datetime</samp></li>
+<li><a href="https://docs.python.org/3/library/typing.html#typing.NamedTuple">NamedTuples</a></li>
+<li><a href="https://docs.python.org/3/library/dataclasses.html">dataclasses</a></li>
+</ul>
+<p>
+That allows to <b>automatically infer the schema from type hints</b>
+(<a href="https://www.python.org/dev/peps/pep-0526">PEP 526</a>) and not think
+about serializing/deserializing.
+</p>
+<p>
+The readme also contains <a href="https://github.com/karlicoss/cachew#incremental-data-exports">an example</a> of using cachew for exporting temperature sensor data.
+</p>
+<p>
+In essence, exported data sources, i.e. filenames along with their modification times are used as the key for caching:
+</p>
+<ul class="org-ul">
+<li>when the exported data is updated, it makes the cache invalidate and it's updated automatically on the next data access</li>
+<li>in between data updates, data is read from the cache and  the access is pretty much instantaneous: <a class="link-up" href="#performance">databases are indeed fast</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000015">
+<h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">6</span> --</h2>
+<div class="outline-text-2" id="text-fin">
+<p>
+The post subtitle title refers to an excellent article <a href="https://lexi-lambda.github.io/blog/2019/11/05/parse-don-t-validate">"Parse, don't validate"</a>.
+It's on a different topic, but in a somewhat similar spirit: making our programs more robust while writing less code.
+</p>
+<p>
+Happy to hear your thoughts and suggestions! Thank you for making it through this pile of text :)
+</p>
+</div>
+</div>
+
+    </section>
+
+    
+    <section class="footer">
+        <div class="post-tags"><a class="post-tag" href="./tags.html#infra">#infra</a> <a class="post-tag" href="./tags.html#dataliberation">#dataliberation</a> <a class="post-tag" href="./tags.html#databases">#databases</a> <a class="post-tag" href="./tags.html#cachew">#cachew</a></div>
+        <!-- TODO post-date? -->
+        <div class="date">26 January 2020</div>
+    </section>
+    
+
+    
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_against_db"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
+        
+
+        <!-- TODO make semantic -->
+        <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
+
+            <a href="http://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>
+            
+            
+        </footer>
+    </body>
+</html>
+]]></description>
+    <pubDate>Sun, 26 Jan 2020 00:00:00 UT</pubDate>
+    <guid>https://beepb00p.xyz/unnecessary-db.html</guid>
+    <dc:creator>karlicoss</dc:creator>
+</item>
+<item>
     <title>In search of a better job scheduler</title>
     <link>https://beepb00p.xyz/scheduler.html</link>
     <description><![CDATA[<!doctype html>
@@ -9192,197 +10536,6 @@ This post ended up longer that I expected so in the next part I will tell about 
 ]]></description>
     <pubDate>Thu, 26 Sep 2019 00:00:00 UT</pubDate>
     <guid>https://beepb00p.xyz/orger.html</guid>
-    <dc:creator>karlicoss</dc:creator>
-</item>
-<item>
-    <title>Cloudmacs: Emacs in your web browser</title>
-    <link>https://beepb00p.xyz/cloudmacs.html</link>
-    <description><![CDATA[<!doctype html>
-<html lang="en" prefix="og: http://ogp.me/ns#">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!-- Icon made by Twitter -->
-        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
-        <link rel="icon" href="./robot-face.png">
-        <link rel="apple-touch-icon" href="./robot-face.png">
-
-        <meta name="generator" content="hakyll">
-        <meta name="language" content="English">
-        
-        <meta name="keywords" content="emacs pkm selfhosted">
-        
-        <!-- TODO concat with keywords tags; also need to make comma separated? -->
-
-        <title>Cloudmacs: Emacs in your web browser | Mildly entertainingᵝ</title>
-
-        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="./css/default.css?v=3" />
-        <!-- TODO make conditional?? -->
-        <link rel="stylesheet" href="./css/posts-list.css" /> 
-        <link rel="stylesheet" href="./css/links.css?v=4" />
-
-        
-
-        <link rel="canonical" href="https://beepb00p.xyz/cloudmacs.html" />
-
-        <!-- can test it with https://telegram.me/webpagebot -->
-        <!-- or https://developers.facebook.com/tools/debug -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://beepb00p.xyz/cloudmacs.html" /> <!-- TODO base? -->
-        <meta property="og:title" content="Cloudmacs: Emacs in your web browser | beepb00p" />
-        <meta property="og:description" content="How I really wanted Spacemacs everywhere and my wish came true thanks to Docker" />
-        <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
-        <!-- ugh. Facebook really wants jpg? -->
-        <!-- also Facebook displays it with black background, but whatever, fuck it. -->
-        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
-
-    </head>
-    <body>
-        <!-- TODO make semantic -->
-        <header>
-            <nav>
-                <span class="nav-left">
-                    <a class="fat" href="./">Home</a>
-                    <!-- TODO eh, not sure if this symbol is good for that... -->
-                    ·
-                    <a class="fat" href="./ideas.html">Ideas</a>
-                    ·
-                    <a class="fat" href="./notes.html">Notes</a>
-                    ·
-                    <a class="fat" href="./tags.html">Tags</a>
-                </span>
-                <span class="nav-right">
-                    <a class="fat" href="./feed.html">Feed</a>
-                    ·
-                    <a class="fat" href="./site.html">Site</a>
-                    ·
-                    <a class="fat" href="./me.html">Me</a>
-                </span>
-            </nav>
-        </header>
-
-        <main>
-            
-
-<!-- <link rel="stylesheet" href="/css/org.css" /> -->
-
-<link rel="stylesheet" href="./css/htmlize.css" />
-<link rel="stylesheet" href="./css/org-default.css" />
-
-<link rel="stylesheet" href="./css/org-extra.css?v=3" />
-
-
-
-<article>
-    
-    <section class="post-title">
-    <h1>Cloudmacs: Emacs in your web browser</h1>
-    <div class="summary">How I really wanted Spacemacs everywhere and my wish came true thanks to Docker</h2>
-    </section>
-    <!-- are sections appropriate for that? -->
-
-    <section class="content">
-    <p>
-TLDR: I'm running my spacemacs as a web service on my VPS, <a href="https://github.com/karlicoss/cloudmacs">check it out too</a>.
-</p>
-<img src="https://user-images.githubusercontent.com/291333/64866462-26e25c80-d644-11e9-9ad5-ad9d9808b0cb.png" width="auto" />
-<p>
-Since I've became hooked on emacs, I've been looking for ways to have same experience in my browser.
-Sometimes you have to use non-personal computers where it's not possible/undesirable to install desktop Emacs and Dropbox/Syncthing to access your personal data. 
-So I've been looking for some cloud solution since I've got a VPS.
-</p>
-<p>
-The closest tool to what I wanted was <a href="https://github.com/mickael-kerjean/filestash">Filestash</a>: it supports vim/emacs bindings and some <a href="https://www.filestash.app/2018/05/31/release-note-v0.1">org-mode goodies</a>.
-However, it wasn't anywhere as convenient as  Emacs.
-I'm also moving from Dropbox to Syncthing, so was planning to abandon Filestash anyway as it doesn't allow local files, only ftp or git.
-(<b>UPD</b>: <a href="./cloudmacs.html#isso-36">author</a> mentions some planned support for Syncthing)
-</p>
-<p>
-Dropbox is not capable of previewing arbitrary text files let alone edit; and even if it could you obviously wouldn't get anything close to your usual emacs workflow.
-</p>
-<p>
-And you could imagine that while Emacs/Vim style editing is fairly application <a href="https://github.com/brookhong/Surfingkeys#vim-editor-and-emacs-editor">agnostic</a>, it's a thankless job to rewrite/port all the amazing emacs packages and features I'm used to like neotree, helm, refile, swoop, agenda, projectile, org-drill etc.
-</p>
-<p>
-So I figured the only thing that would keep me happy is to run emacs itself over the web! Thankfully, due to its TUI interface that works surprisingly well.
-</p>
-<p>
-It works <b><b>really</b></b> well with spacemacs/evil style <code class="inline">SPC</code> and comma bindings because they for the most part don't overlap with OS/browser hotkeys.
-</p>
-<p>
-Also it's the first time I properly used Docker apart from running other people's containers so here are few non-obvious things I learnt which you might find useful:
-</p>
-<ul class="org-ul">
-<li><a href="https://docs.docker.com/develop/develop-images/multistage-build">Multistage build</a> is a painless way to extend someone else's containers or combine several containers in one</li>
-<li><a href="https://docs.docker.com/engine/reference/commandline/build/#set-build-time-variables---build-arg">build time variables</a> is a nice way to make your container more amendable, e.g. you can avoid hardcoding versions if you use it</li>
-<li><p>
-Perhaps the trickiest one: docker reuses the host kernel and as a consequence same user IDs, so if you built your container as root (which is normally the case if you pull from Docker Hub), your container will write back to mounted volumes as root too!
-</p>
-<p>
-To get around that there is a somewhat hacky <a href="https://github.com/karlicoss/cloudmacs/blob/master/asEnvUser">asEnvUser</a> script and custom <a href="https://github.com/karlicoss/cloudmacs/blob/master/compose">docker-compose wrapper</a> that take care of preserving user ID. 
-</p></li>
-</ul>
-
-    </section>
-
-    
-    <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#emacs">#emacs</a> <a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#selfhosted">#selfhosted</a></div>
-        <!-- TODO post-date? -->
-        <div class="date">12 September 2019</div>
-    </section>
-    
-
-    
-    <br>
-    <div>Discussion:</div>
-    <ul>
-    
-        <li><a href="https://news.ycombinator.com/item?id=21633149"><b>hackernews</b></a></li>
-    
-        <li><a href="https://www.reddit.com/r/emacs/comments/e1o6dz/cloudmacs_emacs_in_your_web_browser">/r/emacs</a></li>
-    
-        <li><a href="https://www.reddit.com/r/selfhosted/comments/d38utu/cloudmacs_make_your_lovely_emacs_setup_accessible">/r/selfhosted</a></li>
-    
-        <li><a href="https://www.reddit.com/r/orgmode/comments/d3pm06/cloudmacs_work_with_your_orgmode_files_and_agenda">/r/orgmode</a></li>
-    
-    </ul>
-    
-
-    <section class="comments">
-    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
-</script>
-
-<section id="isso-thread" data-isso-id="isso_cloudmacs"></section>
-
-    </section>
-
-</article>
-
-        </main>
-
-        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
-        
-
-        <!-- TODO make semantic -->
-        <footer>
-            <span style="float:left">
-            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
-            ·
-            <a href="https://github.com/karlicoss">💻 me @github</a>
-            </span>
-
-            <a href="http://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>
-            
-            
-        </footer>
-    </body>
-</html>
-]]></description>
-    <pubDate>Thu, 12 Sep 2019 00:00:00 UT</pubDate>
-    <guid>https://beepb00p.xyz/cloudmacs.html</guid>
     <dc:creator>karlicoss</dc:creator>
 </item>
 
