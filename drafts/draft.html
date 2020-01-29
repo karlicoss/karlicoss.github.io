@@ -333,6 +333,17 @@
 </ul>
 </li>
 <li><a href="#org00000c1">72. <span class="done DONE">DONE</span> Tweet from Jonathan Borichevskiy (@jborichevskiy), at Jan 17, 19:34</a></li>
+<li><a href="#org00000c2">73. <span class="todo TODO">TODO</span> <span class="priority">[C]</span> GitHub issues   <span class="tag"><span class="ideas">ideas</span> <span class="integrate">integrate</span></span></a></li>
+<li><a href="#org00000c3">74. <span class="todo TODO">TODO</span> <span class="priority">[C]</span> The Communicative Value of Using Git Well – Math ∩ Programming</a></li>
+<li><a href="#org00000c8">75. <span class="todo TODO">TODO</span> <span class="priority">[C]</span> How to annotate everything</a>
+<ul>
+<li><a href="#org00000c4"><span class="todo TODO">TODO</span> Xxx</a></li>
+<li><a href="#org00000c5"><span class="todo TODO">TODO</span> Xxx</a></li>
+<li><a href="#org00000c6"><span class="todo TODO">TODO</span> Xxx</a></li>
+<li><a href="#org00000c7"><span class="todo TODO">TODO</span> How to annotate everything | Hacker News</a></li>
+</ul>
+</li>
+<li><a href="#org00000c9">76. <span class="todo STRT">STRT</span> <span class="priority">[B]</span> Build the ultimate personal knowledge management system - productivity</a></li>
 </ul>
 </div>
 </div>
@@ -1655,6 +1666,109 @@ Created a rough ideas page on my blog. Just random things I’m thinking about. 
 </p>
 <p>
 <a href="https://twitter.com/jborichevskiy/status/1218255312479604737">https://twitter.com/jborichevskiy/status/1218255312479604737</a>
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org00000c2">
+<h2 id="org00000c2"><a class="headerlink" href="#org00000c2">¶</a><span class="section-number-2">73</span> <span class="todo TODO">TODO</span> <span class="priority">[C]</span> GitHub issues   <span class="tag"><span class="ideas">ideas</span> <span class="integrate">integrate</span></span></h2>
+<div class="outline-text-2" id="text-73">
+<p>
+&gt; 2. Writing good issues
+</p>
+<p>
+I've made a small MVP of a utility that syncs issues to/from local folder as a git repo, so that you can use your favorite editor (like Emacs) to keep extensively good issue descriptions
+</p>
+<p>
+<a href="https://github.com/k-bx/github-agent">https://github.com/k-bx/github-agent</a>
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org00000c3">
+<h2 id="org00000c3"><a class="headerlink" href="#org00000c3">¶</a><span class="section-number-2">74</span> <span class="todo TODO">TODO</span> <span class="priority">[C]</span> The Communicative Value of Using Git Well – Math ∩ Programming</h2>
+<div class="outline-text-2" id="text-74">
+<p>
+I’ve written up my ideas, under the name ‘Literate Git’, at <a href="https://github.com/bennorth/literate-git">https://github.com/bennorth/literate-git</a> if you’re interested. The tool I wrote turns a structured git history into an interactive web page. There’s an example there of how the ideas might work in a tutorial setting. After I gave a talk on this work, one of the people in the audience tried it with the Haskell LLVM tutorial: <a href="https://lukelau.me/kaleidoscope/">https://lukelau.me/kaleidoscope/</a>
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org00000c8">
+<h2 id="org00000c8"><a class="headerlink" href="#org00000c8">¶</a><span class="section-number-2">75</span> <span class="todo TODO">TODO</span> <span class="priority">[C]</span> How to annotate everything</h2>
+<div class="outline-text-2" id="text-75">
+<p>
+How to annotate everything - <a href="https://news.ycombinator.com/item?id=21635012">https://news.ycombinator.com/item?id=21635012</a>
+</p>
+</div>
+<div class="outline-3" id="outline-container-org00000c4">
+<h3 id="org00000c4"><a class="headerlink" href="#org00000c4">¶</a><span class="todo TODO">TODO</span> Xxx</h3>
+<div class="outline-text-3" id="text-org00000c4">
+<p>
+Yes, this siloing stops me from using annotation features "native" to each app and format as such as well.
+</p>
+<p>
+Instead, I prefer to exfiltrate information from the silos(apps, formats, etc) and put them into my note taking system. Then I can do highlights, annotations, etc. on my own terms and also get the benefits of centralization such as searching and linking(the OP has another post describing their own system, which is pretty cool[1]). Currently I'm using Notion, which is also a silo of its own, but it's one that gives me a lot of control over how I lay my information out(and an escape plan from).
+</p>
+<p>
+There are a lot of perspectives on this issue with data silos and walled gardens. But I'm of the opinion that it's a fairly bad state for all of us "end users". Computers to me are about infinite flexibility and malleability, but ironically the tools we have for annotation and remixing are in practice worse than what we have in the physical world. Reading a book in the physical world, I can converse with the author simply by jotting marginalia with my pencil. It's fluid, intuitive, and the medium of paper encourages it(in fact it can't help but be mutated by my use!: pages get bended, stained, torn, etc.). If I want to go further I can add post-it notes to mark interesting passages, I can xerox some pages and create subsections, if it's a magazine I can just tear them all out! That kind of flexibility just isn't available on a computer.
+</p>
+<p>
+I think it's worth thinking really hard why we're in this state, especially since computing pioneers were actually very optimistic that data and computing would be way more personally malleable than it is now(I've been working on a small comic on this theme myself[2]). For example, check out this short demo[3] of Smalltalk where Alan Kay hooks up a single frame from an animation of a bouncing ball to a painting program, to modify that one frame while also monitoring the loop. Smarter than paper, but way more flexible.
+</p>
+<p>
+My own thinking lately has been that developers need to think more about how their apps, like your PDF viewer, could cooperate with other apps to achieve our goals. All sorts of deep questions spring forth from here: "what is the best inter-communication system for them to cooperate with?", "how do you design them to intuitive?", "how can you make the UX as good as 'packaged apps'?". And looking at the history of personal computing, these are fairly old questions. The Unix Philosophy provides us with some clues, and its success, even in the smaller world of developer-oriented computing, gives us some hope.
+</p>
+<p>
+Personally, I'm excited to one day live in a world where my desktop and smartphone and other devices -my computing spaces- feel less like a collection of walled gardens that refuse to intermingle, and more like one big beautiful garden, an ecosystem: lots of small, useful programs, chatting and cooperating, data freely flowing between them, each new program multiplying their collective potential and creating a new ecology, that I can adapt to my psyche and my needs, helping me be a better human.
+</p>
+<p>
+[1] <a href="https://beepb00p.xyz/pkm-search.html">https://beepb00p.xyz/pkm-search.html</a>
+</p>
+<p>
+[2] <a href="https://twitter.com/yoshikischmitz/status/118845556004515840">https://twitter.com/yoshikischmitz/status/118845556004515840</a>…
+</p>
+<p>
+[3] <a href="https://youtu.be/AnrlSqtpOkw?t=607">https://youtu.be/AnrlSqtpOkw?t=607</a>
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org00000c5">
+<h3 id="org00000c5"><a class="headerlink" href="#org00000c5">¶</a><span class="todo TODO">TODO</span> Xxx</h3>
+<div class="outline-text-3" id="text-org00000c5">
+<p>
+the main issue I have with native PDF annotation is that it mutates the file, which changes the hash. I've been thinking about building a collaborative PDF reader (using native PDF toolkits, not pdf.js) that fingerprints the file locally and pulls/pushes annotations to a central repository (either self hosted by individuals, research teams) or globally. Would love to see annotations on popular research papers or textbooks.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org00000c6">
+<h3 id="org00000c6"><a class="headerlink" href="#org00000c6">¶</a><span class="todo TODO">TODO</span> Xxx</h3>
+<div class="outline-text-3" id="text-org00000c6">
+<p>
+Are there tools good for aggregating and querying annotations across services for less technical users? Is there a market for better usage of annotations?
+</p>
+<p>
+I've been avid about annotating key tools I use that offer that functionality, and inevitably creating a separate spreadsheet log across things. I'd love something that could be a hub for all my annotations.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org00000c7">
+<h3 id="org00000c7"><a class="headerlink" href="#org00000c7">¶</a><span class="todo TODO">TODO</span> How to annotate everything | Hacker News</h3>
+<div class="outline-text-3" id="text-org00000c7">
+<p>
+I really appreciate this resource, though it largely underlines the fact that there really aren't any good comprehensive solutions.
+</p>
+<p>
+Zotero appears conspicuously missing. It's an articles / references management tool. I've not found it especially useful myself, though it has its fans.
+</p>
+<p>
+My own previous explorations, somewhat disorganised:
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org00000c9">
+<h2 id="org00000c9"><a class="headerlink" href="#org00000c9">¶</a><span class="section-number-2">76</span> <span class="todo STRT">STRT</span> <span class="priority">[B]</span> Build the ultimate personal knowledge management system - productivity</h2>
+<div class="outline-text-2" id="text-76">
+<p>
+<a href="https://www.reddit.com/r/productivity/comments/evjtlz/build_the_ultimate_personal_knowledge_management/">https://www.reddit.com/r/productivity/comments/evjtlz/build_the_ultimate_personal_knowledge_management/</a>
 </p>
 </div>
 </div>
