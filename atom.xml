@@ -1321,6 +1321,14 @@ Happy to hear your thoughts and suggestions! Thank you for making it through thi
     
 
     
+    <br>
+    <div>Discussion:</div>
+    <ul>
+    
+        <li><a href="https://lobste.rs/s/vzpjfj/against_unnecessary_databases">lobsters</a></li>
+    
+    </ul>
+    
 
     <section class="comments">
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
@@ -7634,6 +7642,8 @@ As always, I'm open to feedback and would love to hear what is or setup or help 
     <br>
     <div>Discussion:</div>
     <ul>
+    
+        <li><a href="https://news.ycombinator.com/item?id=22160572"><strong>hackernews</strong></a></li>
     
         <li><a href="https://www.reddit.com/r/emacs/comments/dq42vk/building_personal_search_engine_using_emacs_and">/r/emacs</a></li>
     
