@@ -89,16 +89,36 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org0000000">regular heading</a></li>
+<li><a href="#org0000000">regular heading</a>
+<ul>
+<li><a href="#org0000001">regular child 1</a></li>
+<li><a href="#org0000002">regular child 2</a></li>
+</ul>
+</li>
 <li><a href="#org0000003">heading with CREATED timestamp</a></li>
 <li><a href="#past">intrapage link to a future heading</a></li>
-<li><a href="#something"><span class="timestamp-wrapper"><span class="timestamp">[2019-09-02 19:45]</span></span> heading   <span class="tag"><span class="tag1">tag1</span> <span class="tag2">tag2</span></span></a></li>
+<li><a href="#something"><span class="timestamp-wrapper"><span class="timestamp">[2019-09-02 19:45]</span></span> heading   <span class="tag"><span class="tag1">tag1</span> <span class="tag2">tag2</span></span></a>
+<ul>
+<li><a href="#org0000005"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-09-02 19:46]</span></span> private tags?</a></li>
+</ul>
+</li>
 <li><a href="#org0000007">testing tags aside plain list</a></li>
-<li><a href="#org000000b">code exports</a></li>
+<li><a href="#babel">code exports (org-babel)</a>
+<ul>
+<li><a href="#babel_python">python</a></li>
+<li><a href="#babel_custom">Custom language (mypy as an example)</a></li>
+<li><a href="#babel_context">modifying Babel execution context</a></li>
+</ul>
+</li>
 <li><a href="#links">links</a></li>
-<li><a href="#org000000f">spacing between items</a></li>
-<li><a href="#org0000010">different kinds of inline code</a></li>
-<li><a href="#org0000011">table</a></li>
+<li><a href="#spacing">spacing between items</a>
+<ul>
+<li><a href="#org000000e">xxxx</a></li>
+<li><a href="#org000000f"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> mention why it's necessary; there was smth wrong with default</a></li>
+</ul>
+</li>
+<li><a href="#inline_verbatim">different kinds of inline code</a></li>
+<li><a href="#table">table</a></li>
 <li><a href="#plot">plot</a></li>
 </ul>
 </div>
@@ -111,7 +131,7 @@ If you hover over a child, you'd see dashed line to the left that outlines the s
 </p>
 </div>
 <div class="outline-3" id="outline-container-org0000001">
-<h3 id="org0000001"><a class="headerlink" href="#org0000001">¶</a>child 1</h3>
+<h3 id="org0000001"><a class="headerlink" href="#org0000001">¶</a>regular child 1</h3>
 <div class="outline-text-3" id="text-org0000001">
 <p>
 types of fusion
@@ -125,7 +145,7 @@ types of fusion
 </div>
 </div>
 <div class="outline-3" id="outline-container-org0000002">
-<h3 id="org0000002"><a class="headerlink" href="#org0000002">¶</a>child 2</h3>
+<h3 id="org0000002"><a class="headerlink" href="#org0000002">¶</a>regular child 2</h3>
 <div class="outline-text-3" id="text-org0000002">
 <p>
 Nuclear fission of heavy elements was discovered on December 17, 1938 by German Otto Hahn and his assistant Fritz Strassmann, and explained theoretically in January 1939 by Lise Meitner and her nephew Otto Robert Frisch. Frisch named the process by analogy with biological fission of living cells. For heavy nuclides, it is an exothermic reaction which can release large amounts of energy both as electromagnetic radiation and as kinetic energy of the fragments (heating the bulk material where fission takes place). In order for fission to produce energy, the total binding energy of the resulting elements must be more negative (greater binding energy) than that of the starting element. 
@@ -173,13 +193,13 @@ The sidenote will be displayed on the right
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000000b">
-<h2 id="org000000b"><a class="headerlink" href="#org000000b">¶</a>code exports</h2>
-<div class="outline-text-2" id="text-org000000b">
+<div class="outline-2" id="outline-container-org000000c">
+<h2 id="babel"><a class="headerlink" href="#babel">¶</a>code exports (org-babel)</h2>
+<div class="outline-text-2" id="text-babel">
 </div>
 <div class="outline-3" id="outline-container-org0000008">
-<h3 id="org0000008"><a class="headerlink" href="#org0000008">¶</a>python</h3>
-<div class="outline-text-3" id="text-org0000008">
+<h3 id="babel_python"><a class="headerlink" href="#babel_python">¶</a>python</h3>
+<div class="outline-text-3" id="text-babel_python">
 <p>
 This is a code block:
 </p>
@@ -188,7 +208,7 @@ This is a code block:
 </pre>
 </div>
 <p>
-Separate code block, but they are sharing 'session':
+Separate code block, but they are sharing a 'session', so the following block has access to <code class="inline">a</code>.
 </p>
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-keyword">print</span>(a)
@@ -199,9 +219,9 @@ whatever
 </pre>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000009">
-<h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a>mypy</h3>
-<div class="outline-text-3" id="text-org0000009">
+<div class="outline-3" id="outline-container-org000000a">
+<h3 id="babel_custom"><a class="headerlink" href="#babel_custom">¶</a>Custom language (mypy as an example)</h3>
+<div class="outline-text-3" id="text-babel_custom">
 <p>
 Custom mypy executor that runs both code and mypy
 </p>
@@ -224,12 +244,39 @@ input.py:2: error: Unsupported operand types for + ("str" and "int")
 Found 2 errors in 1 file (checked 1 source file)
 </pre>
 </div>
-<div class="outline-4" id="outline-container-org000000a">
-<h4 id="org000000a"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-24 15:26]</span></span> eh, need to implement proper eval for it somehow..</h4>
+<div class="outline-4" id="outline-container-org0000009">
+<h4 id="org0000009"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-24 15:26]</span></span> eh, need to implement proper eval for it somehow..</h4>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000b">
+<h3 id="babel_context"><a class="headerlink" href="#babel_context">¶</a>modifying Babel execution context</h3>
+<div class="outline-text-3" id="text-babel_context">
+<p>
+Set variables in Elisp code (remember to use <code class="inline">:exports both</code>):
+</p>
+<div class="org-src-container">
+<pre class="src src-elisp"><span class="org-comment-delimiter">;; </span><span class="org-comment">perhaps more useful: (setenv "PATH" (concat "WHATEVER" ":" (getenv "PATH"))))</span>
+(setenv <span class="org-string">"BABEL"</span> <span class="org-string">"yes"</span>)
+</pre>
+</div>
+<pre class="example">
+yes
+</pre>
+<p>
+Use them in the code blocks in the rest of the document:
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">import</span> os
+<span class="org-keyword">print</span>(<span class="org-string">"Babel? "</span>, os.environ[<span class="org-string">'BABEL'</span>])
+</pre>
+</div>
+<pre class="example">
+Babel?  yes
+</pre>
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000000c">
+<div class="outline-2" id="outline-container-org000000d">
 <h2 id="links"><a class="headerlink" href="#links">¶</a>links</h2>
 <div class="outline-text-2" id="text-links">
 <ul class="org-ul">
@@ -265,12 +312,9 @@ target for <a id="internal"></a> internal org link (see <a href="https://www.gnu
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000000f">
-<h2 id="org000000f"><a class="headerlink" href="#org000000f">¶</a>spacing between items</h2>
-<div class="outline-text-2" id="text-org000000f">
-</div>
-<div class="outline-3" id="outline-container-org000000d">
-<h3 id="org000000d"><a class="headerlink" href="#org000000d">¶</a><span class="todo TODO">TODO</span> mention why it's necessary; there was smth wrong with default</h3>
+<div class="outline-2" id="outline-container-org0000010">
+<h2 id="spacing"><a class="headerlink" href="#spacing">¶</a>spacing between items</h2>
+<div class="outline-text-2" id="text-spacing">
 </div>
 <div class="outline-3" id="outline-container-org000000e">
 <h3 id="org000000e"><a class="headerlink" href="#org000000e">¶</a>xxxx</h3>
@@ -287,18 +331,21 @@ and some text
 </ul>
 </div>
 </div>
+<div class="outline-3" id="outline-container-org000000f">
+<h3 id="org000000f"><a class="headerlink" href="#org000000f">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> mention why it's necessary; there was smth wrong with default</h3>
 </div>
-<div class="outline-2" id="outline-container-org0000010">
-<h2 id="org0000010"><a class="headerlink" href="#org0000010">¶</a>different kinds of inline code</h2>
-<div class="outline-text-2" id="text-org0000010">
+</div>
+<div class="outline-2" id="outline-container-org0000011">
+<h2 id="inline_verbatim"><a class="headerlink" href="#inline_verbatim">¶</a>different kinds of inline code</h2>
+<div class="outline-text-2" id="text-inline_verbatim">
 <p>
 <code class="inline">this_is_code()</code> and <samp class="inline">/this/is/verbatim</samp>
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000011">
-<h2 id="org0000011"><a class="headerlink" href="#org0000011">¶</a>table</h2>
-<div class="outline-text-2" id="text-org0000011">
+<div class="outline-2" id="outline-container-org0000012">
+<h2 id="table"><a class="headerlink" href="#table">¶</a>table</h2>
+<div class="outline-text-2" id="text-table">
 <table border="2" cellpadding="6" cellspacing="0" frame="hsides" id="demo_table" rules="groups">
 <colgroup>
 <col class="org-right" />
@@ -356,7 +403,7 @@ Again, <code class="inline">compile-org.el</code> is using some custom code for 
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000012">
+<div class="outline-2" id="outline-container-org0000013">
 <h2 id="plot"><a class="headerlink" href="#plot">¶</a>plot</h2>
 <div class="outline-text-2" id="text-plot">
 <div class="org-src-container">

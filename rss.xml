@@ -7040,87 +7040,107 @@ Knowing how to compose a search query is one thing, but navigating to the servic
 <tr>
 <td class="org-left">g</td>
 <td class="org-left">Google</td>
-<td class="org-left"><samp class="inline">https://www.google.com/complete/search?client=firefox&amp;q={searchTerms}</samp></td>
+<td class="org-left"><code class="inline">https://www.google.com/complete/search?client=firefox&amp;q={searchTerms}</code></td>
 </tr>
 <tr>
 <td class="org-left">d</td>
 <td class="org-left">DuckDuckGo</td>
-<td class="org-left"><samp class="inline">https://duckduckgo.com/?q={searchTerms}&amp;t=canonical</samp></td>
+<td class="org-left"><code class="inline">https://duckduckgo.com/?q={searchTerms}&amp;t=canonical</code></td>
 </tr>
 <tr>
 <td class="org-left">r</td>
 <td class="org-left">Reddit</td>
-<td class="org-left"><samp class="inline">https://www.reddit.com/search?q={searchTerms}</samp></td>
+<td class="org-left"><code class="inline">https://www.reddit.com/search?q={searchTerms}</code></td>
 </tr>
 <tr>
 <td class="org-left">gh</td>
 <td class="org-left">GitHub</td>
-<td class="org-left"><samp class="inline">https://github.com/search?q={searchTerms}&amp;ref=opensearch</samp></td>
+<td class="org-left"><code class="inline">https://github.com/search?q={searchTerms}&amp;ref=opensearch</code></td>
 </tr>
 <tr>
 <td class="org-left">pin</td>
 <td class="org-left">Pinboard: search all</td>
-<td class="org-left"><samp class="inline">https://pinboard.in/search/?query={searchTerms}r&amp;all=Search+All</samp></td>
+<td class="org-left"><code class="inline">https://pinboard.in/search/?query={searchTerms}r&amp;all=Search+All</code></td>
 </tr>
 <tr>
 <td class="org-left">tw</td>
 <td class="org-left">Twitter</td>
-<td class="org-left"><samp class="inline">https://twitter.com/search</samp></td>
+<td class="org-left"><code class="inline">https://twitter.com/search</code></td>
+</tr>
+<tr>
+<td class="org-left">hn</td>
+<td class="org-left">hackernews</td>
+<td class="org-left"><code class="inline">https://hn.algolia.com/?dateRange=all&amp;page=0&amp;prefix=true&amp;query={searchTerms}&amp;sort=byPopularity&amp;type=all</code></td>
 </tr>
 <tr>
 <td class="org-left">y</td>
 <td class="org-left">YouTube</td>
-<td class="org-left"><samp class="inline">https://www.youtube.com/results?search_query={searchTerms}&amp;page={startPage?}&amp;utm_source=opensearch</samp></td>
+<td class="org-left"><code class="inline">https://www.youtube.com/results?search_query={searchTerms}&amp;page={startPage?}&amp;utm_source=opensearch</code></td>
 </tr>
 <tr>
 <td class="org-left">m</td>
 <td class="org-left">Google Maps</td>
-<td class="org-left"><samp class="inline">https://www.google.com/maps/search/{searchTerms}?hl=en&amp;source=opensearch</samp></td>
+<td class="org-left"><code class="inline">https://www.google.com/maps/search/{searchTerms}?hl=en&amp;source=opensearch</code></td>
 </tr>
 <tr>
 <td class="org-left">w</td>
 <td class="org-left">Wikipedia (en)</td>
-<td class="org-left"><samp class="inline">https://en.wikipedia.org/wiki/Special:Search</samp></td>
+<td class="org-left"><code class="inline">https://en.wikipedia.org/wiki/Special:Search</code></td>
+</tr>
+<tr>
+<td class="org-left">tl</td>
+<td class="org-left">Google Timeline</td>
+<td class="org-left"><code class="inline">https://www.google.com/maps/timeline?pb=!1m2!1m1!1s{searchTerms}</code></td>
 </tr>
 <tr>
 <td class="org-left">cpp</td>
 <td class="org-left">Cppreference</td>
-<td class="org-left"><samp class="inline">https://en.cppreference.com/mwiki/index.php?search={searchTerms}</samp></td>
+<td class="org-left"><code class="inline">https://en.cppreference.com/mwiki/index.php?search={searchTerms}</code></td>
 </tr>
 <tr>
 <td class="org-left">js</td>
 <td class="org-left">MDN</td>
-<td class="org-left"><samp class="inline">https://developer.mozilla.org/en-US/search?q={searchTerms}</samp></td>
+<td class="org-left"><code class="inline">https://developer.mozilla.org/en-US/search?q={searchTerms}</code></td>
 </tr>
 <tr>
 <td class="org-left">eb</td>
 <td class="org-left">Ebay</td>
-<td class="org-left"><samp class="inline">https://www.ebay.co.uk/sch/i.html?_nkw={searchTerms}</samp></td>
+<td class="org-left"><code class="inline">https://www.ebay.co.uk/sch/i.html?_nkw={searchTerms}</code></td>
 </tr>
 <tr>
 <td class="org-left">am</td>
 <td class="org-left">Amazon.co.uk</td>
-<td class="org-left"><samp class="inline">https://www.amazon.co.uk/exec/obidos/external-search/</samp></td>
+<td class="org-left"><code class="inline">https://www.amazon.co.uk/exec/obidos/external-search/</code></td>
+</tr>
+<tr>
+<td class="org-left">th</td>
+<td class="org-left">thesaurus</td>
+<td class="org-left"><code class="inline">https://www.powerthesaurus.org/{searchTerms}/synonyms</code></td>
 </tr>
 <tr>
 <td class="org-left">tru</td>
 <td class="org-left">Translate en-ru</td>
-<td class="org-left"><samp class="inline">https://translate.google.com/#view=home&amp;op=translate&amp;sl=en&amp;tl=ru&amp;text={searchTerms}</samp></td>
+<td class="org-left"><code class="inline">https://translate.google.com/#view=home&amp;op=translate&amp;sl=en&amp;tl=ru&amp;text={searchTerms}</code></td>
 </tr>
 <tr>
 <td class="org-left">tde</td>
 <td class="org-left">Translate en-de</td>
-<td class="org-left"><samp class="inline">https://translate.google.com/#view=home&amp;op=translate&amp;sl=en&amp;tl=de&amp;text={searchTerms}</samp></td>
+<td class="org-left"><code class="inline">https://translate.google.com/#view=home&amp;op=translate&amp;sl=en&amp;tl=de&amp;text={searchTerms}</code></td>
 </tr>
 <tr>
 <td class="org-left">dd</td>
 <td class="org-left">DevDocs</td>
-<td class="org-left"><samp class="inline">https://devdocs.io/#q={searchTerms}</samp></td>
+<td class="org-left"><code class="inline">https://devdocs.io/#q={searchTerms}</code></td>
+</tr>
+<tr>
+<td class="org-left">em</td>
+<td class="org-left">emoji</td>
+<td class="org-left"><code class="inline">https://emojipedia.org/search/?q={searchTerms}</code></td>
 </tr>
 </tbody>
 </table>
 <p>
-Some of these obvious, some deserve separate mention:
+Some of these obvious, some deserve a separate mention:
 </p>
 <ul class="org-ul">
 <li><p>
@@ -7137,6 +7157,7 @@ twitter is similar: there is certainly more spam there, but sometimes it's inter
 <p>
 That has limited utility, e.g. doesn't work with politicized content, but if the topic of interest is rare, could be very useful.
 </p></li>
+<li>hackernews: good source of knowledge and high quality discussions for tools and tecnhologies</li>
 <li><a href="https://pinboard.in">pinboard</a> is an awesome source of curated content as well</li>
 </ul>
 <p>
@@ -8165,7 +8186,7 @@ Also notice that error is not just a string, but also contains the position wher
 </ul>
 <p>
 So, Rust and Haskell programmers seem to be quite happy with it? <b>Why can't we have same in Python?</b>
-Well, some people tried! So I'll review a python library that does that: <a href="https://github.com/dbrgn/result#result">result.Result</a>
+Well, some people tried! So I'll review a python library that does that: <a href="https://github.com/dbrgn/result#result">result.Result</a> (<a href="https://github.com/dbrgn/result/releases/tag/v0.4.0">v0.4.0</a> at the time of writing).
 </p>
 <p>
 Let's try it on our program and see how it works.
@@ -8368,7 +8389,7 @@ Glad you asked! Several reasons I'm using generators here:
 <h2 id="combinators"><a class="headerlink" href="#combinators">¶</a><span class="section-number-2">6</span> Almost solution #2: use error combinators</h2>
 <div class="outline-text-2" id="text-combinators">
 <p>
-Now, let's try out <a href="https://github.com/dry-python/returns#result-container">returns.result</a> library, clearly inspired by Haskell's <code class="inline">Either</code> monad and <code class="inline">do</code> notation.
+Now, let's try out <a href="https://github.com/dry-python/returns#result-container">returns.result</a> library (<a href="https://github.com/dry-python/returns/releases/tag/0.11.0">v0.11.0</a> at the time of writing), clearly inspired by Haskell's <code class="inline">Either</code> monad and <code class="inline">do</code> notation.
 I'm quite glad someone already implemented it and I didn't have to reinvent the wheel here.
 </p>
 <p>
