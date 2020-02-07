@@ -7822,7 +7822,7 @@ As always, I'm open to feedback and would love to hear what is or setup or help 
 <li><a href="#cursed_pattern_matching">Cursed pattern matching mechanism</a></li>
 </ul>
 </li>
-<li><a href="#fin">10. Closing points</a></li>
+<li><a href="#closing">10. Closing points</a></li>
 <li><a href="#links">11. Other links</a></li>
 <li><a href="#fin">12. --</a></li>
 </ul>
@@ -9213,8 +9213,8 @@ And the obvious downside is that there is a potential to forget to handle except
 </div>
 </div>
 <div class="outline-2" id="outline-container-org0000018">
-<h2 id="fin"><a class="headerlink link-down" href="#fin">¶</a><span class="section-number-2">10</span> Closing points</h2>
-<div class="outline-text-2" id="text-fin">
+<h2 id="closing"><a class="headerlink" href="#closing">¶</a><span class="section-number-2">10</span> Closing points</h2>
+<div class="outline-text-2" id="text-closing">
 <ul class="org-ul">
 <li>mypy is your best friend</li>
 <li><p>
