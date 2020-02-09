@@ -236,7 +236,7 @@ Liberating your data involves fairly different, if not complementary, parts (or 
 "data access" part: knows how to interpret whatever you exported on your disk and maps onto abstract entities/classes/objects
 </p>
 <p>
-I'll refer to it interchangeably as <b>"data access layer"</b> or <b>"data bindings"</b> further in the article.
+I'll refer to it interchangeably as <b>"data access layer (DAL)"</b> or <b>"data bindings"</b> further in the article.
 </p></li>
 </ul>
 <p>
@@ -1198,8 +1198,8 @@ Note that by the time you do realize that and fix it, you may have already lost 
 </p>
 </div>
 <div class="outline-4" id="outline-container-org0000010">
-<h4 id="org0000010">An alternative</h4>
-<div class="outline-text-4" id="text-org0000010">
+<h4 id="chrome_dal">An alternative</h4>
+<div class="outline-text-4" id="text-chrome_dal">
 <p>
 According to what I suggest:
 </p>
@@ -3239,7 +3239,7 @@ It might seem like a long rant, but I promise you I am not the kind of person wh
 </p>
 <p>
 In this particular post, I'm just building up motivation and engaging you, and I <a class="link-down" href="#what_do_i_do">do have</a> some workarounds and suggestions.
-This article got long enough, I also didn't want to mix discussions on motivation (this one) and my take on implementation (which will follow).
+This article got long enough, I also didn't want to mix discussions on motivation (this one) and my take on more technical details and implementation (which will <a class="link-down" href="#followups">follow</a>).
 </p>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
@@ -3294,7 +3294,11 @@ This article got long enough, I also didn't want to mix discussions on motivatio
 </ul>
 </li>
 <li><a href="#links">8. Related links</a></li>
-<li><a href="#fin">9. --</a></li>
+<li><a href="#fin">9. --</a>
+<ul>
+<li><a href="#followups">followups</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -4239,7 +4243,7 @@ This corresponds to the 'data mirror' bit.
 I <a href="my-data.html">exported/scraped/reverse engineered</a> pretty much my entire digital trace and figured out automation and infrastructure which works for me.
 </p>
 <p>
-I've shared <a href="https://github.com/search?utf8=%E2%9C%93&amp;q=topic%3Aexport+++user%3Akarlicoss&amp;type=Repositories">some</a> of my personal export scripts and tools.
+I've shared <a href="https://github.com/search?type=Repositories&amp;q=user%3Akarlicoss+++topic%3Aexport">some</a> of my personal export scripts and tools.
 </p>
 <p>
 I also have some helper scripts to keep individual exporter's code as clean as possible while ensuring exports are reliable.
@@ -4334,7 +4338,7 @@ The project "aims to radically change the way Web applications work today, resul
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000049">
+<div class="outline-2" id="outline-container-org000004a">
 <h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">9</span> --</h2>
 <div class="outline-text-2" id="text-fin">
 <p>
@@ -4343,9 +4347,15 @@ I'd be interested to know your opinion or questions, whether on my motivation, o
 <p>
 Let me know if you can think of any other data integrations you are missing and perhaps we can think of something together!
 </p>
+</div>
+<div class="outline-3" id="outline-container-org0000049">
+<h3 id="followups"><a class="headerlink" href="#followups">¶</a>followups</h3>
+<div class="outline-text-3" id="text-followups">
 <ul class="org-ul">
-<li><b><span class="timestamp-wrapper"><span class="timestamp">[2020-01-12]</span></span></b> followup: <a href="my-data.html">What data on myself I collect and why?</a></li>
+<li><b><span class="timestamp-wrapper"><span class="timestamp">[2020-01-12]</span></span></b> <a href="my-data.html">What data on myself I collect and why?</a></li>
+<li><b><span class="timestamp-wrapper"><span class="timestamp">[2020-01-18]</span></span></b> <a href="scheduler.html">In search of a friendlier scheduler</a></li>
 </ul>
+</div>
 </div>
 </div>
 
@@ -10333,7 +10343,7 @@ That's how <a href="https://github.com/karlicoss/inorganic">inorganic</a> librar
 This is probably where most of effort was spent. All sorts of stupid APIs, tedious parsing, you can imagine.
 </p>
 <p>
-I'll write separately about it sometime, for now you can see some code I prettified and shared in my github <a href="https://github.com/search?q=topic%3Aexport+user%3Akarlicoss&amp;type=Repositories">'export'</a> and <a href="https://github.com/karlicoss/my">my</a> packages.
+I'll write separately about it sometime, for now you can see some code I prettified and shared in my github <a href="https://github.com/search?type=Repositories&amp;q=user%3Akarlicoss+++topic%3Aexport">'export'</a> and <a href="https://github.com/karlicoss/my">my</a> packages.
 I tried to make sure they are easy to use for other people and not specific to my use cases.
 </p></li>
 <li><p>
