@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="physics">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>Least action principle is a lie | Mildly entertainingᵝ</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <!-- TODO make conditional?? -->
+        <link rel="stylesheet" href="./css/posts-list.css" /> 
+        <link rel="stylesheet" href="./css/links.css?v=4" />
+
+        
+        <script type="text/javascript">
+ window.MathJax = {
+     tex2jax: {
+         // note that hakyll source has got double dollar signs due to special meaning in templates
+         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+         processEscapes: true
+     }
+ };
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        
+
+        <link rel="canonical" href="https://beepb00p.xyz/least-action-lie.html" />
+
+        <!-- can test it with https://telegram.me/webpagebot -->
+        <!-- or https://developers.facebook.com/tools/debug -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://beepb00p.xyz/least-action-lie.html" /> <!-- TODO base? -->
+        <meta property="og:title" content="Least action principle is a lie | beepb00p" />
+        <meta property="og:description" content="Aka 'does stationary action really matter?'" />
+        <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
+        <!-- ugh. Facebook really wants jpg? -->
+        <!-- also Facebook displays it with black background, but whatever, fuck it. -->
+        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
+
+    </head>
+    <body>
+        <!-- TODO make semantic -->
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    <!-- TODO eh, not sure if this symbol is good for that... -->
+                    ·
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                    ·
+                    <a class="fat" href="./notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
+                </span>
+                <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<!-- <link rel="stylesheet" href="/css/org.css" /> -->
+
+<link rel="stylesheet" href="./css/htmlize.css" />
+<link rel="stylesheet" href="./css/org-default.css" />
+
+<link rel="stylesheet" href="./css/org-extra.css?v=3" />
+
+
+
+<article>
+    
+    <div>THIS IS A DRAFT! It will appear on the main page once finished!</div>
+    
+    <section class="post-title">
+    <h1>Least action principle is a lie</h1>
+    <div class="summary">Aka 'does stationary action really matter?'</h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <p>
+<b>Draft stage</b>: very raw and barely comprehendible. I'm not even completely sure what will the post be about.
+</p>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org0000000">1. content</a></li>
+<li><a href="#org0000001">2. <span class="todo TODO">TODO</span> try that?</a></li>
+<li><a href="#org0000002">3. <span class="todo TODO">TODO</span> check it against that condition from pdf..</a></li>
+<li><a href="#org0000003">4. <span class="todo TODO">TODO</span> bigger font?? Right, so now I'm digressing and falling into the same trap of looking at boring 'real' physical systems. But I promise you few more insights.</a></li>
+<li><a href="#org0000004">5. https://physics.stackexchange.com/questions/122486/confusion-regarding-the-principle-of-least-action-in-landau-lifshitz-the-clas</a></li>
+<li><a href="#org0000005">6. <span class="todo TODO">TODO</span> Some googling results in https://en.wikipedia.org/wiki/Conjugate_points</a></li>
+<li><a href="#org0000006">7. <span class="todo TODO">TODO</span> https://books.google.co.uk/books?id=9nL7ZX8Djp4C&amp;pg=PA367&amp;lpg=PA367&amp;dq=%22euler+lagrange%22+solutions+%22global+minimum%22&amp;source=bl&amp;ots=oUmdX3lEHJ&amp;sig=lWeYTxDvVFemkLadlfSg7rgc8_8&amp;hl=en&amp;sa=X&amp;ved=2ahUKEwjF4c7ukoDfAhU9SxUIHatDDmYQ6AEwD3oECA8QAQ#v=onepage&amp;q=%22euler%20lagrange%22%20solutions%20%22global%20minimum%22&amp;f=false</a></li>
+<li><a href="#org0000007">8. This post is powered by:</a></li>
+<li><a href="#org0000008">9. Misc</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000000">
+<h2 id="org0000000"><a class="headerlink" href="#org0000000">¶</a><span class="section-number-2">1</span> content</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Ok, cool. Now that we have space to define things on, let's study it. A fundamental assumption from classical mechanics is that all systems are goverened by something called Lagragian. If you are like me and ever been remotely interested in classical mechanics, you probably know the drill. 
+</p>
+<p>
+<b><b>Problem statement</b></b>: the system evolves from state \(\vb{q_i} \in Q\) to \(\vb{q_f} \in Q\) within time interval \([t_i, t_f]\). We want to figure out how. Which path, i.e. a function \(\gamma: t \in [t_i, t_f] \to Q\)  does it take? 
+</p>
+<p>
+<b><b>Answer</b></b>: to figure out the path, we exploit something that is called <a href="https://en.wikipedia.org/wiki/Principle_of_least_action"><i>stationary action principle</i></a> (more commonly, <i>minimum action principle</i>, I'll elaborate on that later). We define a functional called <i>action</i> \(S(\gamma) = \int\limits_{t_i}^{t_f} L(\gamma(t), \gamma'(t)) dt\) and claim that the system chooses a path, such that \(S\) is <b><b>stationary</b></b> to first order. This is something called <a href="https://en.wikipedia.org/wiki/Hamilton%27s_principle">Hamilton's principle</a> and \(L\) is called <i>Lagrangian</i>.
+</p>
+<div class="NOTE">
+<p>
+Q: what's so special about a poing being stationary? Why does Nature favor that? After all it's a fairly tricky mathematical concept. A: <a href="https://physics.stackexchange.com/a/15902/40624">apparently</a>, answer is somewhere within quantum mechanics, but I need to research that deeper.
+</p>
+</div>
+<p>
+Finding stationary points of a functional is quite tricky. To actually do that, we solve <a href="https://en.wikipedia.org/wiki/Euler%E2%80%93Lagrange_equation#Statement">Euler-Lagrange</a> (I'll just call them EL for brevity) equations. It's pretty much variational calculus 101, you can find the derivation <a href="https://en.wikipedia.org/wiki/Hamilton%27s_principle#Euler%E2%80%93Lagrange_equations_derived_from_the_action_integral">here</a> if you're interested. They look like:
+</p>
+<p>
+\[\pdv{L}{\vb{q}} - \dv{}{t} \pdv{L}{\vb{v}} = 0\]
+</p>
+<p>
+Ok, so far so good. If you see it for the first time it sort of blows your mind so you are curious what's next. After that, 99% of explanations are considering a classical particle in a potential well: \(L(\vb{q}, \vb{v}) = \frac{1}{2} m \vb{v} \cdot \vb{v} - V(\vb{q})\). Then they plug in the Euler-Lagrange equation and get Newthon's law of motion: \(\vb{F} = - \nabla V\). Yeah, awesome. The problem with those explanations is they stop there. So what? What's up with that weird thing which has units of energy but not quite? What <b><b>is</b></b> a Lagrangian? What it isn't? I was pretty comfy solving potential wells without having to minimize a functional, thank you very much.
+</p>
+<p>
+A common viewpoint is a dogmatic one: Lagrangian is whatever function that corresponds to the actual physics observed in a system. For all practical purposes indeed you <i>just</i> guess a function, plug it into EL equations and if you got your desired laws of motion – <a href="https://www.urbandictionary.com/define.php?term=Numberwang">you win</a>. However, what if we want to reverse the process? As in, given a Lagrangian, can we come up with a universe where it would describe the physics? To do that, you of course need to figure out what a Lagrangian can be, that is, a definition. That turns out to be really not easy! 
+The closest insights you get on <a href="https://en.wikipedia.org/wiki/Lagrangian_mechanics">this page</a> are
+</p>
+<blockquote>
+<p>
+Lagrangian is a function of the generalized coordinates, their time derivatives, and time, and contains the information about the dynamics of the system
+</p>
+</blockquote>
+<p>
+and
+</p>
+<blockquote>
+<p>
+the position coordinates and velocity components are all independent variables
+</p>
+</blockquote>
+<p>
+I'm lucky to know Russian, but Russian wikipedia page is not any more helpful. You probably have a gut feeling that it's gotta at least be a smooth function or something like that, but it's not really mentioned anywhere. Okay, for now you decide that it must be any reasonble function of \(\vb{q}\), \(\vb{v}\) and \(t\). Actually, forget time dependency for now, it's tricky enough as it is.
+</p>
+<p>
+So now that you established what's the object you are trying to study, you go through more examples. Next one is typically double pendulum or <a href="https://en.wikipedia.org/wiki/Lagrangian_mechanics#Pendulum_on_a_movable_support">sliding pendulum</a>. But yet again, Lagrangian is postulated to be the difference of kinetic and potential energy, which is not very convincing.
+</p>
+<p>
+Next example is typically electromagnetism: \(L(\vb{q}, \vb{v}) = \frac{1}{2} m \vb{v} \cdot \vb{v} -e \phi(\vb{q}) + e \vb{v} \cdot \vb{A}\). Whoa guys, I'm still not done with simple systems! EM fields are scary, things spiral around and radiate, come on. Also EM fields are defined in three dimensions (<a href="https://en.wikipedia.org/wiki/Covariant_formulation_of_classical_electromagnetism">if not 4</a>), which would make the whole problem six-dimensional. It's a bit too much to begin with!
+</p>
+<p>
+Ok fine, you think. I'll come up with my own Lagrangians and just see what happens. Let's assume that configuration space \(Q\) is 1D for now, so \(q\) and \(v\) are just real numbers.
+</p>
+<ol class="org-ol">
+<li><p>
+If you have to come up with <b><b>any</b></b> real-valued function what would your first thought be? I bet it's zero identity, so \(L(q, v) = 0\). Nice, let's see what does that mean.
+</p>
+<p>
+Well, if you think about it, action is always zero, so <b><b>any</b></b> path would be stationary. This should probably ring an alarm but let's see what happens if we try to plug that in Hamilton's approach…
+</p></li>
+</ol>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000001">
+<h2 id="org0000001"><a class="headerlink" href="#org0000001">¶</a><span class="section-number-2">2</span> <span class="todo TODO">TODO</span> try that?</h2>
+<div class="outline-text-2" id="text-2">
+<ol class="org-ol">
+<li>Okay, another attempt. \(L(q, v) = v^2\) is boring$, it's like typical example, but with no potential energy. Hmm… what if we instead we make the Lagrangian equal to potential energy <b><b>only</b></b>? \(L(q, v) = - q^2\).</li>
+</ol>
+<p>
+So, if we plug \(L\) into EL equation \(\dv{}{t} \pdv{L}{v} = \pdv{L}{q}\), we get… \(0 = -2 q\).
+</p>
+<p>
+Err, that's looks bad. Does it only work if \(q = 0\)? Well, that's not too surprising I guess since we are solving a boundary value problem, and generally existence and uniqueness are <a href="http://www.scholarpedia.org/article/Boundary_value_problem#Existence_and_uniqueness">tricky</a> for them. Anyway, \(q(t) \equiv 0\), fine! Let's look at this solution then. First thing we notice is that it corresponds to a non-moving harmonic oscillator. Ok, that's a reasonable solution and makes physical sense. Now, if we look closely, the Lagrangian is actually taking its <b><b>maximum</b></b> value when \(q = 0\). Taking literally any other path than staying at \(0\) would decrease the value of Lagrangian, and hence the total action. So we actually ended up at a global maximum of this functional. Which is consistent with Hamilton's principle, since it needn't be a local/global minima, but a stationary point. I just found it interesting that such a simple example contradicts the '<b><b>minimum</b></b> action' formulation yet it's so common. But maybe, this is because the who situation is kind of artifical, unphysical and not interesting? Or one could argue that we could have inverted the sign, defined \(L(q, v) = q^2\) and it would be minimum. So let's explore more.
+</p>
+<p>
+One mystery is that we know that the harmonic oscillator admits a solution that… well, oscillates. And our lagrangian is just like harmonic oscillator except for kinetic term. So what happened to oscillating solutions here?
+</p>
+<p>
+To investigate that and try to get some intuition, let's go back to the following 'standard' Lagrangian for harmonic oscillator \(L_{m, k}(q, v) = \frac{1}{2} m v \cdot v - \frac{k}{2} q \cdot q\). The Lagrangian of our interest is just like that but with stiffness fixed at \(k=1\) and mass equal to zero!
+So for \(L_{m, k}\), the E-L equation boils down to just \(m \ddot{q} = -k q\). We are ruling out \(q \equiv 0\) solution for now, so this must a periodic motion with frequency \(\omega = \sqrt{\frac{k}{m}}\) and the law of motion \(x(t) = A sin (\omega t + \phi)\)
+</p>
+<p>
+What happens to a particle on a spring if we reduce its mass while keeping the stiffness fixed? The frequency goes up. And we can't take the limit \(m \to 0\), since \(\sin \frac{1}{m}\) is discontinuous at \(0\). So I guess intuitivel that's how we lose the 'oscillating' solution.
+</p>
+<ol class="org-ol">
+<li>Now let's get back to the \(q \equiv 0\) solution for \(L_{m, k}\). Now that Lagrangian has got a velocity-dependent term in it, it's not that easy to classify what kind of stationary point in it with respect to the action. What we can tell for sure though, it definitely will not be a minimum!</li>
+</ol>
+<p>
+To see that intuitively, just notice that the potential part of action proportional to \(q^2\) gets its contribution from the path's amplitude, whereas the kinetic part proportional to \(v^2\) gets it from the amplitude of path's time derivative. So, given a path \(\gamma(t)\), within the interval \([t_i, t_f]\), we know that \(\int\limits_{t_i}^{t_f} L_{m, k}(q, v) \ge -\frac{k}{2} \left( \max\limits_{t \in [t_i, t_f]} \abs{\gamma(t)} \right)^2\). The interesting thing is we can always increase the impact of kinetic term while keeping the function's maximum same by wiggling \(\gamma(t)\) it more frequently. With enough wiggling, you can make the action strictly positive. To be more specific: suppose we are considering the time interval \([0, T]\) and the variation \(v(t) = \sin 2 \pi n \frac{t}{T}\).
+</p>
+<div class="NOTE">
+<p>
+At some point I TODO about choosing arbitrary variation. I guess that's a matter of a function being 'good enough'? TODO
+Ah, so in this case we just want to fina a variation that increases it. kinda like in a saddle, finding direction that increases the function.
+</p>
+</div>
+<p>
+More rigorously: for any natural \(n\), \(z(t)\) is compatible with the boundary conditions \(z(0) = 0, z(T) = 0\). Now, if you compute the action:
+</p>
+<div class="SAGE">
+<p>
+m, k = var('m k'); T = var('T'); assume(T &gt; 0); n = var('n')
+z(t) = sin(2 * pi * n * t / T)
+A = integrate(m / 2 * z.diff(t) <b>**</b> 2 - k / 2 * z <b>**</b> 2, t, 0, T).full_<sub>simplify</sub>()
+A.show()
+</p>
+</div>
+<p>
+, we get: \(\frac{4 \, \pi^{3} m n^{3} - \pi T^{2} k n + {\left(2 \, {\left(4 \, \pi^{2} m n^{2} + T^{2} k\right)} \cos\left(\pi n\right)^{3} - {\left(4 \, \pi^{2} m n^{2} + T^{2} k\right)} \cos\left(\pi n\right)\right)} \sin\left(\pi n\right)}{4 \, \pi T n}\), so you can see that for any fixed \(m, k, T\), we can choose \(n\) ('wiggling') big enough to make the action positive. Once again, that means that in this (perfectly physical!) case, the action is not a minimum anymore. I find that pretty interesting.
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000002">
+<h2 id="org0000002"><a class="headerlink" href="#org0000002">¶</a><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> check it against that condition from pdf..</h2>
+</div>
+<div class="outline-2" id="outline-container-org0000003">
+<h2 id="org0000003"><a class="headerlink" href="#org0000003">¶</a><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> bigger font?? Right, so now I'm digressing and falling into the same trap of looking at boring 'real' physical systems. But I promise you few more insights.</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Yet again, one could argue that the oscillator that stands still is an extreme and boring case. Perhaps what we normally think of as the trajectories of a pendulum (i.e. periodically swinging) are doing the least action thing? So let's make things simpler and just take \(L(q, v) = \frac{1}{2} v^2 - \frac{1}{2} q^2\).
+</p>
+<p>
+TODO link <a href="https://en.wikipedia.org/wiki/Harmonic_oscillator#Simple_harmonic_oscillator">https://en.wikipedia.org/wiki/Harmonic_oscillator#Simple_harmonic_oscillator</a>
+TODO spoiler should be greyish?
+</p>
+<p>
+So in the spirit of Lagrangian formalism, we pose the following problem: the particle starts at \(q = q_0\) and ends at \(q = q_0\) (yes, same point) after time \(T = 2 \pi\) (spoiler: it better do because the frequency is \(1\) here). We want to know the equations of motion.
+</p>
+<p>
+Now, you know it's gotta be some kind of periodic motion. However the question TODO
+ TODO suppose you were solving the IVP: given \(q_0\) and \(v_0\), where does the particle end up at \(T = 2 \pi\)?
+ So we know the solution is of form \(q(t) = A \cos(t + \phi)\), since \(q(0) = q_0\) and \(q'(0) = v_0\), we get:
+ \(q_0 = A \cos \phi\)
+ \(v_0 = -A \sin \phi\) 
+</p>
+<p>
+\(q(t) = q_0 \cos t + v_0 \sin t\)
+</p>
+<p>
+Now if we consider \(q\) at a fixed time \(T\) as a function of \(v_0\), we get:
+</p>
+<p>
+\(q_T(v_0) = q_0 \cos T + v_0 \sin T\), which is a linear function. So in general you can invert it and consider \(v_0\) as a function of \(q_T\), which would uniquely solve our BVP. However there is one special case: when \(\sin T = 0\), i.e. \(T = \pi k, k \in \bZ\). In that case \(q_T\) ends up being constant function \(q_T = q_0\), and can't be inverted! TODO ???? That means that the EL solution can't be global minimum???
+TODO check that!
+</p>
+<p>
+Now let's fix \(q_0\) and vary \(v_0\), so consider the function $E(v<sub>0</sub>) = $ &lt;TODO position of that particle after \(T\). Of course it will depend continously on \(v_0\), but it also won't be injective! 
+</p>
+<p>
+TODO demonstrate that?…
+TODO compute action to make sure
+TODO for pi, action is 0 to
+TODO just come up with smth negative and positive… that would prove the saddle point thing
+TODO positive – same argument as with zero solution? A bit more handwavy?
+TODO very negative – just stay at \(q_0\) and don't move
+</p>
+<p>
+Let's try out some simple variations satisfying boundary conditions. First things I can think of are something periodic: \(z_1(t) = \sin^2(t)\) and something quadratic: \(z_2(t) = \pi^2 - (t - \pi)^2\).
+</p>
+<div class="SAGE">
+<p>
+q0, v0 = var('q0 v0')
+T = 2 * pi
+q(t) = q0 * cos(t) + v0 * sin(t)
+def A(p):
+    return integrate(p.diff(t) <b>**</b> 2 - p <b>**</b> 2, t, 0, T)
+print("A(q)  is " + str(A(q)))
+eps = var('eps')
+q1 = q + eps * (pi <b>**</b> 2 - (t - pi) <b>**</b> 2); assert q1(0) <samp class="inline">==</samp> q0 and q1(T) <samp class="inline">==</samp> q0
+q2 = q + eps * sin(t) <b>**</b> 2; assert q2(0) <samp class="inline">==</samp> q0 and q2(T) <samp class="inline">==</samp> q0
+print("A(q1) is " + str(A(q1).polynomial(RR)))
+print("A(q2) is " + str(A(q2).polynomial(RR)))
+</p>
+</div>
+<div class="NOTE">
+<p>
+I think there are couple of cool things about that snippet as a Sage program.
+</p>
+<p>
+First, notice those asserts. We are making sure the varied paths are satisfying boundary conditions without having to check manually. Also Sage does it symbolically which means the equality is exact and we don't have to worry about floating point precision!
+</p>
+<p>
+Second, notice that A(q1).polynomial(RR). We tell Sage to treat the expression as a polynomial over \(\mathbb{R}\), which forces it to evaluate the constants like \(\pi\). Without that, the coefficient is \(-\frac{8}{15} (2 \pi^5 - 5\pi^3)\). Personally I find it tricky to quickly tell the sign of that expression.
+</p>
+<p>
+TODO is that really the simplest way to simplify coefficients?
+</p>
+</div>
+<p>
+As a result, we get: \(A(q) = 0\), \(A(q_1) = -243.73\dots \varepsilon^2\), \(A(q_2) = 0.78\dots \varepsilon^2\).
+</p>
+<p>
+Few interesting observations: 
+</p>
+<ol class="org-ol">
+<li>\(A(q) = 0\), which means the action is independent of initial conditions. TODO that might be trivial consequence  though??</li>
+<li>\(A(q_1) &gt; 0\) and \(A(q_2) &lt; 0\), which implies \(A(q)\) is a stationary point.</li>
+</ol>
+<p>
+In this case, you can't argue the motion is unphysical or trivial, but yet again, the solutions are stationary points!
+</p>
+<p>
+So what does that mean? I've managed to do some fruitful googling.
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000004">
+<h2 id="org0000004"><a class="headerlink" href="#org0000004">¶</a><span class="section-number-2">5</span> <a href="https://physics.stackexchange.com/questions/122486/confusion-regarding-the-principle-of-least-action-in-landau-lifshitz-the-clas">https://physics.stackexchange.com/questions/122486/confusion-regarding-the-principle-of-least-action-in-landau-lifshitz-the-clas</a></h2>
+<div class="outline-text-2" id="text-5">
+<p>
+TODO here the guy claims about small T in lagrangian approach. other than that it's only a saddle point
+TODO wonder still if the minimum possible velocity is the global minimum?
+</p>
+<p>
+it even includes the harmonic oscillator as one of the answers; and the claim is that you've got to consider TODO blah blah
+</p>
+<p>
+TODO maybe that's a demonstration Lagrangian approach doesn't make sense on large time scales, only locally? cause it's not clear which solution to choose
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000005">
+<h2 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><span class="section-number-2">6</span> <span class="todo TODO">TODO</span> Some googling results in <a href="https://en.wikipedia.org/wiki/Conjugate_points">https://en.wikipedia.org/wiki/Conjugate_points</a></h2>
+<div class="outline-text-2" id="text-6">
+<p>
+from a quick glance, conjugate points are something like opposing point on a sphere – one could intuitively expect that BVP would not give unique solutions for these.
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000006">
+<h2 id="org0000006"><a class="headerlink" href="#org0000006">¶</a><span class="section-number-2">7</span> <span class="todo TODO">TODO</span> <a href="https://books.google.co.uk/books?id=9nL7ZX8Djp4C&amp;pg=PA367&amp;lpg=PA367&amp;dq=%22euler+lagrange%22+solutions+%22global+minimum%22&amp;source=bl&amp;ots=oUmdX3lEHJ&amp;sig=lWeYTxDvVFemkLadlfSg7rgc8_8&amp;hl=en&amp;sa=X&amp;ved=2ahUKEwjF4c7ukoDfAhU9SxUIHatDDmYQ6AEwD3oECA8QAQ#v=onepage&amp;q=%22euler%20lagrange%22%20solutions%20%22global%20minimum%22&amp;f=false">https://books.google.co.uk/books?id=9nL7ZX8Djp4C&amp;pg=PA367&amp;lpg=PA367&amp;dq=%22euler+lagrange%22+solutions+%22global+minimum%22&amp;source=bl&amp;ots=oUmdX3lEHJ&amp;sig=lWeYTxDvVFemkLadlfSg7rgc8_8&amp;hl=en&amp;sa=X&amp;ved=2ahUKEwjF4c7ukoDfAhU9SxUIHatDDmYQ6AEwD3oECA8QAQ#v=onepage&amp;q=%22euler%20lagrange%22%20solutions%20%22global%20minimum%22&amp;f=false</a></h2>
+<div class="outline-text-2" id="text-7">
+<p>
+'sufficiently long trajectories of solutions of Euler-Lagrange equations that are trajectories of the dynamical system cease to be the minimum'
+</p>
+<p>
+TODO move questions about what's so special about stationary closer to feynman and baez
+</p>
+<p>
+I'm not really criticising, I'm just hoping someone would come up with some intuition why would the action want to be stationary in a similar fashion.
+</p>
+<p>
+TODO 
+The functional S[x]=∫baL(t,x,x˙)dt, x(a)=A, x(b)=B must satisfy the following conditions in order to have a weak minimum for x=x(t):
+</p>
+<p>
+The curve x(t) satisfies the Euler-Lagrange equation, namely it is an extremal,
+∂x˙∂x˙L|x(t)&gt;0,
+The interval [a,b] contains no points conjugate to a.
+The definition of conjugate points is in p.114.
+</p>
+<p>
+TODO why can't a particle jump up high?
+TODO from the physical point of view why does it want to oscillate more often??
+</p>
+<p>
+TODO consider if we start and ed in the rightmost position within a period timespan. Why this path is not stationary? TODO basically, because we could shift everything in the middle in both directions and decrease/increase the lagrangian?
+</p>
+<p>
+Right. So we found out that not having terms dependent on \(v\) (which is kind of like limiting mass to \(0\)) can get us in trouble. Still unclear what's wrong with such a Lagrangian mathematically, as a function though!
+TODO do a better analysis of second variation?
+</p>
+<p>
+TODO chap6.pdf – good remark 4 on page 7. considers harmonic oscillator and slight variation to reason the stationary function is not a maximum
+ look at prob 6.6. – minimum of saddle?
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000009">
+<h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><span class="todo TODO">TODO</span> also that</h3>
+<div class="outline-text-3" id="text-org0000009">
+<ol class="org-ol">
+<li>It is sometimes said that nature has a “purpose,” in that it seeks to take the path that</li>
+</ol>
+<p>
+produces the minimum action. In view of the second remark above, this is incorrect. In fact,
+nature does exactly the opposite. It takes every path, treating them all on equal footing. We
+end up seeing only the path with a stationary action, due to the way the quantum mechanical
+phases add. It would be a harsh requirement, indeed, to demand that nature make a “global”
+decision (that is, to compare paths that are separated by large distances), and to choose the
+one with the smallest action. Instead, we see that everything takes place on a “local” scale.
+Nearby phases simply add, and everything works out automatically.
+When an archer shoots an arrow through the air, the aim is made possible by all the other
+arrows taking all the other nearby paths, each with essentially the same action. Likewise,
+when you walk down the street with a certain destination in mind, you’re not alone. . .
+When walking, I know that my aim
+Is caused by the ghosts with my name.
+And although I can’t see
+Where they walk next to me,
+I know they’re all there, just the same.
+</p>
+<p>
+TODO nature is not lazy. nature is stationary TODO what are the implications??
+</p>
+<p>
+TODO conditions for weak minimum
+</p>
+<p>
+p = dL/dv = 0 ??? H = q ⋅ q$.
+so, dq/dt =  dH/dp = 0, so q = const?
+    dp/dt = -dH/dq = 2q what does that even mean given that 
+Basically, the only solution compatible with that is \(q = 0\), \(p = 0\). If you think about in terms of ordinary energy, it kind of makes sense, the particle has no kinetic energy at all, so no matter what, it can't get past the potential barrier. However, if you imagine same particle starting at \(q \ne 0\), if you think in terms of minimizing the path, it wants to spend as much time as it can at 'q = 0', it doesn't matter to the particle how fast does it have to get from initial \(q\) to \(q = 0\). so we can a discontinuity in the path, that explains our problems with Hamilton's equations? 
+</p>
+<p>
+TODO fuck, actually, as little time at q = 0! Cause the less is position, the bigger is action!
+TODO max position??
+TODO sin, etc
+</p>
+<ol class="org-ol">
+<li>Let's try having some dependency on \(v\). \(L(q, v) = A \cdot v\), where \(A\) is some vector field.</li>
+</ol>
+<p>
+TODO after EL we might actually get something good from it
+</p>
+<p>
+\(p = pL/pv = A\). So, \(H = v \cdot p - L = v \cdot A - A \cdot v = 0\). Crap, we've seen zero Hamiltonian already and it didn't end up well. What's wrong here??? More generally, suppose \(L(q, v) = C(q) \cdot v + D(q)\). Then, \(pL/pv = C(q)\), and we're gonna get \(H(q, p) = -D(q)\). So, if Lagrangian only got linear velocity terms, it has no impact on system dynamics??
+</p>
+<p>
+Again, in essence that is similar to considering a particle with mass \(m\) in EM field and limiting mass to \(0\). TODO is it? what about phi??
+</p>
+<p>
+<a href="https://physics.stackexchange.com/a/63377/40624">https://physics.stackexchange.com/a/63377/40624</a>
+TODO symmetry considerations? So we can't just separate lagrangian form from transofrmations?
+TODO hmm. Landau Lifshitz?? k
+Galilean invariance forces Lagrangian to be a quadratic function of velocity. You may want to read section 4 of Landau and Lifshitz's Mechanics to understand this point better.
+</p>
+<p>
+TODO <a href="https://en.wikibooks.org/wiki/Classical_Mechanics/Lagrange_Theory#Why_does_the_extremum_of_a_functional_determine_motion">https://en.wikibooks.org/wiki/Classical_Mechanics/Lagrange_Theory#Why_does_the_extremum_of_a_functional_determine_motion</a>?
+</p>
+<p>
+TODO <a href="https://physics.stackexchange.com/a/261228/40624">https://physics.stackexchange.com/a/261228/40624</a>
+eh, that's confusing…
+In other words, when you ask for compliance with ELeq you are restricting the solutions, or motions, to functions of constant or linear dependence with time.
+</p>
+<p>
+TODO consider equations of motion??
+</p>
+<p>
+TODO Lorenz invariance??? 1/2 m v<sup>2</sup> is not lorenz invariant either. But the difference is total time derivative???
+</p>
+<p>
+TODO
+</p>
+<p>
+TODO <a href="https://physics.stackexchange.com/a/55465/40624">https://physics.stackexchange.com/a/55465/40624</a>
+</p>
+<p>
+A simpler answer is that the term in the Euler-Lagrange equations involving q˙ is:
+ddt∂L∂q˙
+So L needs to be quadratic in q˙ or else the time derivative will be proportional to something other than q¨.
+hmm…
+</p>
+<p>
+huh <a href="https://physics.stackexchange.com/a/55460/40624">https://physics.stackexchange.com/a/55460/40624</a>
+DIT: Fun Generalization! (Inspired by elfmotat's answer) Take generic Lagrangian L=∑nanq˙n+f(q) (Putting all velocity in the first term, generic function of position in the second). Then
+</p>
+<p>
+<a href="https://www.myphysicslab.com/springs/single-spring-en.html">https://www.myphysicslab.com/springs/single-spring-en.html</a>
+</p>
+<p>
+TODO what does that tell about \(v\)???
+</p>
+<p>
+TODO effectively, system has 0 mass, but mass is not impacted by potential energy??
+</p>
+<p>
+the only solution compatible with such a lagrangian is 
+</p>
+<p>
+TODO vector
+</p>
+<ol class="org-ol">
+<li>Ok. Let's take \(L(v, q) = \frac{1}{2} v \cdot v q \cdot q\).</li>
+</ol>
+<p>
+\(p = v q \cdot q\). So, \(H = p v - L = \frac{1}{2} \frac{p^2}{q^2}\)
+</p>
+<p>
+TODO hmm, that's more interesting now!!!
+</p>
+<p>
+TODO ok, handled it in ipython and physics-sim thing
+</p>
+<p>
+TODO spoiler: next chapter, link to regularity
+TODO postpone it for later??
+</p>
+<p>
+pH/pq = -p<sup>2</sup>/q<sup>3</sup>
+pH/pp = p/q<sup>2</sup>
+</p>
+<p>
+TODO what does q = 0 mean??
+TODO it's pretty similar to geodesic motion, no?
+</p>
+<p>
+do dq/dt = p  /q<sup>2</sup>
+   dp/dt = p<sup>2</sup>/q<sup>3</sup>
+</p>
+<p>
+q &gt; 0,  p &gt; 0 – they will alway increase
+q &gt; 0,  p &lt; 0 – might be interesting… FUCK, it's attracted to 0 in that case… wtf??
+q &lt; 0,  p &lt; 0 – both derivatives are negative and will repulse from 0
+q &lt; 0,  p &gt; 0 – again, q will start getting closer to 0, p will start getting closer to 0… wtf
+</p>
+<p>
+that's super cool! might be worth a separate post!
+</p>
+<p>
+TODO clues for further research: regularity, carefully go throught all formal derivations
+</p>
+<p>
+\(L: TQ \to \mathbb R\).
+</p>
+<p>
+TODO physical intuition about lagrangian
+NOTE lagrangian has units of energy
+</p>
+<p>
+Some typical examples of Lagrangians:
+</p>
+<ol class="org-ol">
+<li>TODO zero lagrangian? Probably doesn't make physical sense…</li>
+<li>Free particle: \(L(q, v) = v \cdot v\). Basically, it's like if only got kinetic energy here (I dropped the \(\frac{1}{2} m\) term)</li>
+<li>Particle in a potential field: \(L(q, v) = v \cdot v - V(q)\), where \(V\) is some smooth function of position, which physicists typically label as 'Potential energy'</li>
+<li>Since Lagrangian is technically just a function os position and velocity, why not \(L(q, v) = q \cdot v\) (TODO does it even make sense?) TODO what the hell is this thing??</li>
+</ol>
+<p>
+So far so good. However, I wanted to get a bit more intuition about the shape of Lagrangians and how it corresponded to actual physics/behaviour. To figure that out, one could try and directly minimise the action over the path they interested in, however it's hardly intuitive!
+What turns out to be easier is if we use the Hamiltonian approach.
+</p>
+<p>
+TODO blah blah link to Hamiltonian wiki page
+</p>
+<p>
+\(p_j = \pdv{L}{v^j}\)
+\(H(q, p) = \sum_i v^i p_i - L(q, v)\)
+</p>
+<p>
+TODO for 4: shit, we get zero hamiltonian. so what does that mean????
+hmm, it doesn't depend on qv terms?? and it's all linear..
+o, then
+dq/dt = pH/pp = 0
+dp/dt = -pH/pq = 0
+</p>
+<p>
+so? q = const; p = const??
+that's a pretty weird system… but in this case, conjugate momentum is equal to position!
+TODO err. that's all very bizarre
+</p>
+<p>
+TODO: looks like it's an example of irregular hamiltonian. give it as an example to solve formally; but also explain why is it bad
+see Baez with example of GR free particle hamiltonian
+</p>
+<p>
+fucking hell. why is that so complicated? :(
+how to translate back from momentum to velocity??
+</p>
+<p>
+ok, as Baez says in classical mechanics book, that basically means no temporal evolution is possible.
+TODO still unclear what's up with inconsistent initial conditions here…
+</p>
+<p>
+The gradient of the Hamiltonian is zero at the saddle point, so a system started at the saddle point does not leave the saddle point.  [SICM]
+</p>
+<p>
+TODO joke about beauty blog? oops sorry wrong tab
+</p>
+<p>
+TODO consider forces?
+</p>
+<p>
+TODO I guess the important thing is that L is independent on the exact problem, it's uniform for ALL trajectories.
+however, for each specific trajectory, we only look at its points q, q'(t)
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000007">
+<h2 id="org0000007"><a class="headerlink" href="#org0000007">¶</a><span class="section-number-2">8</span> This post is powered by:</h2>
+<div class="outline-text-2" id="text-8">
+</div>
+<div class="outline-3" id="outline-container-org000000a">
+<h3 id="org000000a"><a class="headerlink" href="#org000000a">¶</a>Org-mode (via spacemacs) + org-capture</h3>
+</div>
+<div class="outline-3" id="outline-container-org000000b">
+<h3 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><span class="todo TODO">TODO</span> pandoc</h3>
+</div>
+<div class="outline-3" id="outline-container-org000000c">
+<h3 id="org000000c"><a class="headerlink" href="#org000000c">¶</a>mathjax</h3>
+</div>
+<div class="outline-3" id="outline-container-org000000d">
+<h3 id="org000000d"><a class="headerlink" href="#org000000d">¶</a>Sage + <a href="https://sagecell.sagemath.org/">Sagecell</a></h3>
+</div>
+<div class="outline-3" id="outline-container-org000000e">
+<h3 id="org000000e"><a class="headerlink" href="#org000000e">¶</a><span class="todo TODO">TODO</span> ??? spell check</h3>
+</div>
+<div class="outline-3" id="outline-container-org000000f">
+<h3 id="org000000f"><a class="headerlink" href="#org000000f">¶</a>Git</h3>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000008">
+<h2 id="org0000008"><a class="headerlink" href="#org0000008">¶</a><span class="section-number-2">9</span> Misc</h2>
+<div class="outline-text-2" id="text-9">
+</div>
+<div class="outline-3" id="outline-container-org0000010">
+<h3 id="org0000010"><a class="headerlink" href="#org0000010">¶</a><span class="todo TODO">TODO</span> link to prev. post</h3>
+</div>
+<div class="outline-3" id="outline-container-org0000011">
+<h3 id="org0000011"><a class="headerlink" href="#org0000011">¶</a><span class="todo TODO">TODO</span> <a href="https://ickc.github.io/MathJax-third-party-extensions/physics/">https://ickc.github.io/MathJax-third-party-extensions/physics/</a></h3>
+</div>
+<div class="outline-3" id="outline-container-org0000012">
+<h3 id="org0000012"><a class="headerlink" href="#org0000012">¶</a><a href="https://ickc.github.io/MathJax-third-party-extensions/physics/test/macro.html">https://ickc.github.io/MathJax-third-party-extensions/physics/test/macro.html</a></h3>
+</div>
+</div>
+
+    </section>
+
+    
+    <section class="footer">
+        <div class="post-tags"><a class="post-tag" href="./tags.html#physics">#physics</a></div>
+        <!-- TODO post-date? -->
+        <div class="date">19 November 2019</div>
+    </section>
+    
+
+    
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_least_action_lie"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
+        
+
+        <!-- TODO make semantic -->
+        <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
+
+            <a href="http://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>
+            
+            
+        </footer>
+    </body>
+</html>
