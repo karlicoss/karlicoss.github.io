@@ -12,11 +12,11 @@
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
         
-        <meta name="keywords" content="infra dataliberation pkm">
+        <meta name="keywords" content="infra dataliberation">
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
-        <title>Building data liberation infrastructure | Mildly entertainingᵝ</title>
+        <title>Building data liberation infrastructure | beepb00p</title>
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
@@ -77,8 +77,6 @@
 
 
 <article>
-    
-    <div>THIS IS A DRAFT! It will appear on the main page once finished!</div>
     
     <section class="post-title">
     <h1>Building data liberation infrastructure</h1>
@@ -906,10 +904,10 @@ Another example: to export <a href="https://github.com/karlicoss/rexport/blob/ma
 </p>
 <ul class="org-ul">
 <li>praw handles rate limits and pagination</li>
-<li>praw exposes logger, which makes it easy to <a href="https://github.com/karlicoss/rexport/blob/874e6116bfba8cbd63fa3b4d93810a1488cb8464/export.py#L107">control it</a></li>
-<li>praw supports all endpoints, so exporting data is just a matter of <a href="https://github.com/karlicoss/rexport/blob/d001e2d07d716130106ebe07a021f98d84a5ed93/rexport.py#L73-L84">calling right API methods</a></li>
+<li>praw exposes a logger, which makes it easy to <a href="https://github.com/karlicoss/rexport/blob/874e6116bfba8cbd63fa3b4d93810a1488cb8464/export.py#L107">control it</a></li>
+<li>praw supports all endpoints, so exporting data is just a matter of <a href="https://github.com/karlicoss/rexport/blob/d001e2d07d716130106ebe07a021f98d84a5ed93/rexport.py#L73-L84">calling the right API methods</a></li>
 <li><p>
-one shortcoming of praw though is that it won't give you access to raw JSON data for some reason, so we have to use some <a href="https://github.com/karlicoss/rexport/blob/d001e2d07d716130106ebe07a021f98d84a5ed93/rexport.py#L32-L55">hacky logic</a> to serialize.
+one shortcoming of praw though is that it won't give you access to raw JSON data for some reason, so we have to use some <a href="https://github.com/karlicoss/rexport/blob/874e6116bfba8cbd63fa3b4d93810a1488cb8464/export.py#L37-L60">hacky logic</a> to serialize.
 </p>
 <p>
 If praw kept original data from the API, the <a href="https://github.com/karlicoss/rexport/blob/master/export.py">code for export</a> would be half as long.
@@ -1268,6 +1266,9 @@ I'm sharing this because I would <b>really</b> like to make it accessible to mor
 <p>
 I'd be happy to hear any suggestions on simplifying and improving the system!
 </p>
+<p>
+Big thanks to <a href="https://jborichevskiy.com">Jonathan</a> for reading the draft and suggesting helpful edits.
+</p>
 </div>
 </div>
 
@@ -1275,7 +1276,7 @@ I'd be happy to hear any suggestions on simplifying and improving the system!
 
     
     <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#infra">#infra</a> <a class="post-tag" href="./tags.html#dataliberation">#dataliberation</a> <a class="post-tag" href="./tags.html#pkm">#pkm</a></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#infra">#infra</a> <a class="post-tag" href="./tags.html#dataliberation">#dataliberation</a></div>
         <!-- TODO post-date? -->
         <div class="date">13 February 2020</div>
     </section>

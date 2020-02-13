@@ -2,13 +2,1336 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"
     xmlns:dc="http://purl.org/dc/elements/1.1/">
     <channel>
-        <title>Mildly entertaining</title>
+        <title>beepb00p</title>
         <link>https://beepb00p.xyz</link>
         <description><![CDATA[feed]]></description>
         <atom:link href="https://beepb00p.xyz/rss.xml" rel="self"
                    type="application/rss+xml" />
-        <lastBuildDate>Sun, 26 Jan 2020 00:00:00 UT</lastBuildDate>
+        <lastBuildDate>Thu, 13 Feb 2020 00:00:00 UT</lastBuildDate>
         <item>
+    <title>Building data liberation infrastructure</title>
+    <link>https://beepb00p.xyz/exports.html</link>
+    <description><![CDATA[<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="infra dataliberation">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>Building data liberation infrastructure | beepb00p</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <!-- TODO make conditional?? -->
+        <link rel="stylesheet" href="./css/posts-list.css" /> 
+        <link rel="stylesheet" href="./css/links.css?v=4" />
+
+        
+
+        <link rel="canonical" href="https://beepb00p.xyz/exports.html" />
+
+        <!-- can test it with https://telegram.me/webpagebot -->
+        <!-- or https://developers.facebook.com/tools/debug -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://beepb00p.xyz/exports.html" /> <!-- TODO base? -->
+        <meta property="og:title" content="Building data liberation infrastructure | beepb00p" />
+        <meta property="og:description" content="How to export, access and own your personal data with minimal effort" />
+        <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
+        <!-- ugh. Facebook really wants jpg? -->
+        <!-- also Facebook displays it with black background, but whatever, fuck it. -->
+        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
+
+    </head>
+    <body>
+        <!-- TODO make semantic -->
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    <!-- TODO eh, not sure if this symbol is good for that... -->
+                    ·
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                    ·
+                    <a class="fat" href="./notes.html">Notes</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
+                </span>
+                <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<!-- <link rel="stylesheet" href="/css/org.css" /> -->
+
+<link rel="stylesheet" href="./css/htmlize.css" />
+<link rel="stylesheet" href="./css/org-default.css" />
+
+<link rel="stylesheet" href="./css/org-extra.css?v=3" />
+
+
+
+<article>
+    
+    <section class="post-title">
+    <h1>Building data liberation infrastructure</h1>
+    <div class="summary">How to export, access and own your personal data with minimal effort</h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <p>
+Our personal data is siloed, held hostage, and very hard to access for various technical and business reasons.
+I wrote and vented a lot about it in the <a href="sad-infra.html">previous post</a>.
+</p>
+<p>
+People suggest a whole spectrum of possible solutions to these issues, starting from proposals on dismantling capitalism and ending with high tech vaporwavy stuff like <a href="https://en.wikipedia.org/wiki/Urbit">urbit</a>.
+</p>
+<p>
+I, however, want my data <b>here and now</b>. I'm also fortunate to be a software engineer so I can bring this closer to reality by myself.
+</p>
+<p>
+As a pragmatic intermediate solution, feasible with existing technology and infrastructure without reinventing everything from scratch, 
+I suggested a <a href="sad-infra.html#data_mirror"><b>'data mirror'</b></a>, a piece of software that continuously syncs/mirrors user's personal data.
+</p>
+<p>
+So, as I promised, this post will be somewhat more <del>boring</del> specific.
+</p>
+<p>
+You can treat this as a tutorial on liberating your data from any service. I'll be explaining some technical decisions and guidelines on:
+</p>
+<ul class="org-ul">
+<li>how to reliably export your data from the cloud (and other silos), locally</li>
+<li>how to organize it for easy and fast access</li>
+<li>how to keep it up to date without constant maintenance</li>
+<li>how to make the infrastructure modular, so other people could use only parts they find necessary and extend it</li>
+</ul>
+<p>
+In hindsight, some things feel so obvious, they hardly deserve mention, but I hope they might be helpful anyway!
+</p>
+<p>
+I will be presenting and elaborating on different technical decisions, patterns and tricks I figured out while developing data mirrors by myself.
+</p>
+<p>
+I will <a href="myinfra.html">link</a> to my <span style="color:darkgreen; font-weight: bolder">infrastructure map</span> throughout the post, hopefully you'll enjoy exploring it. Links will point at specific clusters of the map and highlight them, so hopefully it will be helpful in communicating the design decisions.
+</p>
+<p>
+I'm also <b>very open</b> for questions like "Why didn't you do Y instead of X?". 
+It's quite possible that I'm slipping in extra complexity somewhere and I would be very happy to eliminate it.
+</p>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#design">1. Design principles</a></li>
+<li><a href="#retrieve">2. Retrieving data</a>
+<ul>
+<li><a href="#api_public">public API</a></li>
+<li><a href="#api_private">private API</a></li>
+<li><a href="#export_scrape">scraping</a></li>
+<li><a href="#export_manual">manual export (GDPR/takeout)</a></li>
+<li><a href="#export_phone">phone apps</a></li>
+<li><a href="#export_devices">devices</a></li>
+</ul>
+</li>
+<li><a href="#types">3. Types of exports: a high-level view</a>
+<ul>
+<li><a href="#full">full export</a></li>
+<li><a href="#incremental">incremental export</a></li>
+<li><a href="#synthetic">synthetic export</a></li>
+</ul>
+</li>
+<li><a href="#export_layer">4. Export layer</a>
+<ul>
+<li><a href="#bindings">use existing bindings</a></li>
+<li><a href="#keep_raw">don't mess with the raw data</a></li>
+<li><a href="#defensive">don't  be too defensive</a></li>
+<li><a href="#credentials">allow reading credentials from a file</a></li>
+</ul>
+</li>
+<li><a href="#storage">5. How to store it: organizing data</a>
+<ul>
+<li><a href="#timestamps">naming and timestamping</a></li>
+<li><a href="#backups">backups</a></li>
+<li><a href="#sync">synchronizing between computers</a></li>
+<li><a href="#disk_space">disk space concerns</a></li>
+</ul>
+</li>
+<li><a href="#dal">6. Data access layer (DAL)</a>
+<ul>
+<li><a href="#dal_performance">performance concerns</a></li>
+<li><a href="#dal_examples">examples</a></li>
+</ul>
+</li>
+<li><a href="#automatic_exports">7. Automating exports</a>
+<ul>
+<li><a href="#scheduling">scheduling</a></li>
+<li><a href="#arctee">arctee</a></li>
+</ul>
+</li>
+<li><a href="#fin">8. --</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000000">
+<h2 id="design"><a class="headerlink" href="#design">¶</a><span class="section-number-2">1</span> Design principles</h2>
+<div class="outline-text-2" id="text-design">
+<p>
+Just as a reminder: the idea of the data mirror is having personal data <b>continuously/periodically synchronized</b> to the file system, and having <b>programmatic access</b> to it.
+</p>
+<p>
+It might not be that hard to achieve for one particular data source, but when you want to use <a href="my-data.html">ten or more</a>,
+each of which with its own quirks it becomes quite painful to implement and maintain over time.
+While there are many reasons to make it simple, generic, reliable and flexible at the same time, it is not an easy goal.
+</p>
+<p>
+The main principles of my design are modularity, separation of concerns and keeping things as simple as possible.
+This allows making it easy to hook onto any layer to allow for different ways of using the data.
+</p>
+<div><span class="before-aside">
+Most of my pipelines for data liberation consist of the following layers
+
+</span><aside class="sidenote">please don't be terrified of the word 'layer', typically these are just single scripts</aside></div>
+<ul class="org-ul">
+<li><p>
+<a class="link-down" href="#export_layer">export layer</a>: knows how to get your data from the silos
+</p>
+<p>
+The purpose of the export layer is to reliably fetch and serialize raw data on your disk. It roughly corresponds to the concept of the <a href="sad-infra.html#data_mirror">'data mirror app'</a>. 
+</p>
+<div><span class="before-aside">
+Export scripts deal with the tedious business of authorization, pagination, being tolerant of network errors, etc.
+
+</span><aside class="sidenote"><span style="color:darkgreen;font-weight:bold">map</span>: <a href="myinfra.html#exports">exports</a></aside></div>
+<p>
+Example: the export layer for <a href="https://github.com/karlicoss/endoexport/blob/e322b44ca1e6e5a779b4e7ea49564ba60d425bfe/export.py#L10-L15">Endomondo data</a> 
+is simply fetching exercise data from the API (using existing library bindings) and prints the JSON out. That's all it does.
+</p>
+<p>
+In theory, this layer is the only essential one; merely having raw data on your disk enables you to use other tools to explore and analyze your data.
+However, long term you'll find yourself doing the same manipulations all over again, which is why we also need:
+</p></li>
+<li><p>
+<a class="link-down" href="#dal">data access layer (DAL)</a>: knows how to read your data
+</p>
+<p>
+For brevity, I'll refer to it as <b>DAL</b> (Data Abstraction/Access Layer).
+</p>
+<div><span class="before-aside">
+The purpose of DAL is simply to deserialize whatever the export script dumped and provide minimalistic data bindings.
+It shouldn't worry about tokens, network errors, etc., once you have your data on the disk DAL should be able to handle it even when you're offline.
+
+</span><aside class="sidenote"><span style="color:darkgreen;font-weight:bold">map</span>: <a href="myinfra.html#dal">data access layer</a></aside></div>
+<p>
+It's not meant to be too high level; otherwise, you might lose the generality and restrict the bindings in such ways that they leave some users out.
+</p>
+<p>
+I think it's very reasonable to keep both the export and DAL code close as you don't want serializing and deserializing to go out of sync, so that's what I'm doing in my export tools.
+</p>
+<div class="noop" id="dal_messenger">
+<p>
+Example: <a href="https://github.com/karlicoss/fbmessengerexport/blob/a8f65a259dfa36ab6d175461994356947ded142a/model.py#L27-L47">DAL for Facebook Messenger</a> knows how to read messages from the database on your disk, access certain fields (e.g. message body) and how to handle obscure details like converting timestamps to <samp class="inline">datetime</samp> objects. 
+</p>
+<ul class="org-ul">
+<li>it's <b>not</b> trying to get messages from Facebook, which makes it way faster and more reliable to interact with data</li>
+<li>it's <b>not</b> trying to do anything fancy beyond providing access to the data, which allows keeping it simple and resilient</li>
+</ul>
+</div></li>
+<li><p>
+downstream data consumers
+</p>
+<div><span class="before-aside">
+You could also count it as the third layer, although the boundaries are not very well defined at this stage.
+
+</span><aside class="sidenote"><span style="color:darkgreen;font-weight:bold">map</span>: <a href="myinfra.html#mypkg">my.</a></aside></div>
+<p>
+As an input it takes abstract (i.e. non-raw) data from the DAL and actually does interesting things with it: analysis, visualizations, interactions across different data sources, etc.
+</p>
+<p>
+For me, it's manifested as <a href="sad-infra.html#mypkg">a Python package</a>. I can simply import it in any Python script, and it knows how to read and access any of my data.
+</p></li>
+</ul>
+<p>
+Next, I'm going to elaborate on implementing the export layer.
+</p>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000007">
+<h2 id="retrieve"><a class="headerlink" href="#retrieve">¶</a><span class="section-number-2">2</span> Retrieving data</h2>
+<div class="outline-text-2" id="text-retrieve">
+<p>
+The first step in exporting and liberating your data is figuring out what and how are you actually supposed to fetch.
+</p>
+<p>
+I'll mostly refer to Python libraries (since that's what I'm using and most familiar with), but I'm quite sure there are analogs in other languages.
+</p>
+<p>
+Also remember, this is just to fetch the data! If you get a regular file on your disk as a result, you can use any other programming language you like to access it.
+That's the beauty of decoupling.
+</p>
+<p>
+Here, I won't elaborate much on potential difficulties during exports, as I wrote about them <a href="sad-infra.html#exports_are_hard">before</a>.
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000001">
+<h3 id="api_public"><a class="headerlink" href="#api_public">¶</a>public API</h3>
+<div class="outline-text-3" id="text-api_public">
+<p>
+You register your app, authorize it, get a token, and you are free to call various endpoints and fetch whatever you want.   
+</p>
+<p>
+I won't really elaborate on this as if you're reading this you probably have some idea how to use it.
+Otherwise, I'm sure there are tutorials out there that would help you.
+</p>
+<p>
+<span style="color:darkorange"><strong>if anyone knows of decent ones, please let me know and I'll add links!</strong></span>
+</p>
+<p>
+Examples: thankfully, most services out there offer public API to some extent
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000002">
+<h3 id="api_private"><a class="headerlink" href="#api_private">¶</a>private API</h3>
+<div class="outline-text-3" id="text-api_private">
+<p>
+Sometimes a service doesn't offer an API. 
+But from the service developer's perspective, it's still very reasonable to have one if you've got backend/frontend communication.
+</p>
+<p>
+So chances are the service just isn't exposing it, but you can spy on the token/cookies in your browser devtools and use them to access the API.
+</p>
+<p>
+You can read more about handling such data sources here:
+</p>
+<ul class="org-ul">
+<li><a href="https://willschenk.com/articles/2019/reverse_engineering_apis_using_chrome">Reverse engineering APIs using Chrome Developer Tools</a>: an extremely comprehensive and beginner-friendly tutorial</li>
+<li><a href="https://www.freecodecamp.org/news/how-i-used-python-to-find-interesting-people-on-medium-be9261b924b0">"How I used Python to find interesting people to follow on Medium"</a>: an example of reverse engineering Medium API and using devtools</li>
+<li><a href="https://blog.tendigi.com/starbucks-should-really-make-their-apis-public-6b64a1c2e923">Starbucks should really make their API public</a>: demo of reverse engineering Starbucks Android app, featuring using proxy and forging the signature</li>
+</ul>
+<p>
+Some examples:
+</p>
+<ul class="org-ul">
+<li>for <a href="https://github.com/karlicoss/fbmessengerexport">exporting Messenger data</a>, I'm using <a href="https://fbchat.readthedocs.io/en/stable">fbchat</a> library. It works by tricking Facebook into believing it's a browser and interacting with private API.</li>
+<li>even though Pocket has an API, to get highlights from it you need to <a href="https://github.com/karlicoss/pockexport#setting-up">spy on the API key</a> they use in the web app</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000003">
+<h3 id="export_scrape"><a class="headerlink" href="#export_scrape">¶</a>scraping</h3>
+<div class="outline-text-3" id="text-export_scrape">
+<p>
+Sometimes a service doesn't offer an API, doesn't use it even internally and serves HTML pages directly instead.
+Or, reverse engineering the API is so painful scraping becomes a more attractive option.
+</p>
+<p>
+In addition to the same difficulties you would experience during API exports, there are some extra caveats here:
+</p>
+<ul class="org-ul">
+<li>authorization is harder: you definitely need username/password and potentially even a 2FA token</li>
+<li>DDOS protection: captchas, Cloudflare, etc.</li>
+<li>or even deliberate anti-scraping measures</li>
+</ul>
+<p>
+For Python the holy grail of scraping is <a href="https://scrapy.org">scrapy</a>:
+</p>
+<ul class="org-ul">
+<li><a href="http://sangaline.com/post/advanced-web-scraping-tutorial">Advanced Web Scraping Tutorial</a>: bypassing "403 Forbidden", captchas, and more</li>
+<li><a href="https://gist.github.com/alecxe/fc1527d6d9492b59c610">self-contained minimum example script to run scrapy</a></li>
+</ul>
+<p>
+I'm pretty sure there are similar libraries for other languages, perhaps you could start with <a href="https://github.com/lorien/awesome-web-scraping">awesome-web-scraping repo</a> or <a href="https://news.ycombinator.com/item?id=15694118">Ask HN: What are best tools for web scraping?</a>.
+</p>
+<p>
+For dealing with authorization, my personal experience is that using a persistent <a href="https://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.firefox.firefox_profile">profile directory</a> in Selenium is sufficient in most cases: you can login once manually and, reuse the profile in your scripts.
+</p>
+<p>
+Examples:
+</p>
+<ul class="org-ul">
+<li>even though Hackernews has an <a href="https://github.com/HackerNews/API">API for public data</a>, there is no way of getting your upvotes/saves without scraping HTML.</li>
+<li>Amazon and Paypal have to be <a href="https://github.com/jbms/finance-dl#supported-data-sources">scraped</a> if you want your data.</li>
+<li>my bank, HSBC doesn't have an API. Not that I expected it from HSBC, I don't live in a fairy tale; but even their manual transactions exports are in PDF which I have to <a href="https://github.com/karlicoss/hsbc-parser">parse</a>.</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000004">
+<h3 id="export_manual"><a class="headerlink" href="#export_manual">¶</a>manual export (GDPR/takeout)</h3>
+<div class="outline-text-3" id="text-export_manual">
+<p>
+It's great they exist, and it is the easiest way to get your data if you just want a backup.
+However it doesn't really help in the long run:
+</p>
+<ul class="org-ul">
+<li>it's very manual: usually requires requesting and clicking on an email link</li>
+<li>it's slow and asynchronous: normally takes at least a few days</li>
+<li>the takeout format usually differs from the API format, <a href="https://www.reddit.com/r/help/comments/8qr9hs/data_request_and_gdpr/e8acolt">sometimes</a> ends up as something neither machine friendly nor human friendly</li>
+</ul>
+<p>
+That said, with some effort it can potentially be automated as well.
+</p>
+<p>
+They can be useful to get the 'initial' bit of your data, past the <a href="sad-infra.html#data_is_vanishing">API limits</a>.
+</p>
+<p>
+Examples:
+</p>
+<ul class="org-ul">
+<li><a href="https://takeout.google.com">Google Takeout</a></li>
+<li><a href="https://help.twitter.com/en/managing-your-account/how-to-download-your-twitter-archive">Twitter Archive</a></li>
+<li><a href="https://github.blog/2018-12-19-download-your-data">Github</a> data export</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000005">
+<h3 id="export_phone"><a class="headerlink" href="#export_phone">¶</a>phone apps</h3>
+<div class="outline-text-3" id="text-export_phone">
+<p>
+I don't have an iPhone, so will only be referring to Android in this section, but I'd imagine the situation is similar.
+</p>
+<p>
+These days, a service might not even offer a desktop version at all and considering that scraping data off mobile apps is way harder getting it from the phone directly might be an easier option. The data is often kept as an sqlite database which in many ways is even more convenient than an API!
+</p>
+<p>
+On Android the story is simple: apps keep their data in <samp class="inline">/data/data/</samp> directory, which is not accessible unless you <b>root</b> your phone.
+These days, with <a href="https://magiskmanager.com">magisk</a> it's considerably easier; however, it's still definitely not something a typical Android user would be able to do. Rooting your phone can bring all sorts of trouble by triggering root detection (e.g. common in banking apps), so be careful. And of course, phones come unrooted for a reason, so do it at your own risk.
+</p>
+<p>
+Once you have root you can write a script to copy necessary files from <samp class="inline">/data/data/</samp> to your target directory, synchronized with your computer (e.g. via <a href="https://play.google.com/store/apps/details?id=com.ttxapps.dropsync&amp;hl=en_GB">Dropbox</a> or <a href="https://play.google.com/store/apps/details?id=com.github.catfriend1.syncthingandroid&amp;hl=en_GB">Syncthing</a>).
+</p>
+<p>
+Examples:
+</p>
+<ul class="org-ul">
+<li>you can export Whatsapp data by copying <samp class="inline">/data/data/com.whatsapp/databases/msgstore.db</samp></li>
+<li><a href="https://github.com/karlicoss/promnesia/blob/master/scripts/backup-phone-history.sh">scripts</a> for exporting mobile Chrome/Firefox browsing history</li>
+<li>exporting <a href="https://bluemaestro.com">Bluemaestro</a> environment sensor data</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000006">
+<h3 id="export_devices"><a class="headerlink" href="#export_devices">¶</a>devices</h3>
+<div class="outline-text-3" id="text-export_devices">
+<p>
+Here I am referring to standalone specific-purpose gadgets like sleep trackers, e-ink readers, etc. The distinguishing thing is the device doesn't have Internet access or doesn't talk to any API.
+</p>
+<p>
+You've got some options here:
+</p>
+<ul class="org-ul">
+<li><p>
+the device is capable of synchronizing with your phone (e.g. via Bluetooth)
+</p>
+<p>
+It's probably easiest to rely on <a class="link-up" href="#export_phone">phone app exports</a> here.
+If the sync has to be triggered manually, you can benefit from some <a href="https://play.google.com/store/apps/details?id=com.llamalab.automate&amp;hl=en">UI automation</a>.
+</p></li>
+<li><p>
+the device is running Linux and has Internet access
+</p>
+<p>
+That's often the case with e-ink readers.
+</p>
+<p>
+You can potentially run the export script on the device itself and send the data somewhere else.
+Another option is running an SSH server on the device and pulling data from it, but it's quite extreme.
+</p></li>
+<li><p>
+the device can mount to a computer
+</p>
+<p>
+Then, you can use <a href="https://en.wikipedia.org/wiki/Udev">udev</a> to trigger export when the device is plugged in.
+If udev feels too complicated for you, even a cron script running every minute might be enough.
+</p></li>
+</ul>
+<p>
+Examples:
+</p>
+<ul class="org-ul">
+<li>using <a href="https://github.com/karlicoss/kobuddy#as-a-backup-tool">kobuddy</a> for semiautomatic exports from Kobo e-ink reader</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000012">
+<h2 id="types"><a class="headerlink" href="#types">¶</a><span class="section-number-2">3</span> Types of exports: a high-level view</h2>
+<div class="outline-text-2" id="text-types">
+<p>
+Hopefully, the previous section answered your questions about 'where do I get my data from'.
+The next step is figuring out what you actually need to request and how to store it.
+</p>
+<p>
+Now, let's establish a bit of vocabulary here.
+Since data exports by their nature are somewhat similar to <a href="https://en.wikipedia.org/wiki/Backup#Backup_methods">backups</a>, I'm borrowing some terminology.
+</p>
+<p>
+The way I see it, there are three styles of data exports:
+</p>
+</div>
+<div class="outline-3" id="outline-container-org000000a">
+<h3 id="full"><a class="headerlink" href="#full">¶</a>full export</h3>
+<div class="outline-text-3" id="text-full">
+<p>
+Every time you want your data, go exhaustively through all the endpoints and fetch the data.
+The result is some sort of JSON file (reflecting the complete state of your data) which you can save to disk.
+</p>
+</div>
+<div class="outline-4" id="outline-container-org0000008">
+<h4 id="org0000008">summary</h4>
+<div class="outline-text-4" id="text-org0000008">
+<ul class="org-ul">
+<li>advantages
+<ul class="org-ul">
+<li>very straightforward to implement</li>
+</ul></li>
+<li>disadvantages
+<ul class="org-ul">
+<li><b>might be impossible</b> due to <a href="sad-infra.html#data_is_vanishing">API restrictions</a></li>
+<li>takes <b>more resources</b>, i.e. time/bandwidth/CPU</li>
+<li>takes <b>more space</b> if you're keeping old versions</li>
+<li>might be <b>flaky</b> due to excessive network requests</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div class="outline-4" id="outline-container-org0000009">
+<h4 id="org0000009">examples</h4>
+<div class="outline-text-4" id="text-org0000009">
+<p>
+When would you use that kind of export?
+When there isn't much data to retrieve and you can do it in one go.
+</p>
+<ul class="org-ul">
+<li><p>
+<a href="https://github.com/karlicoss/pockexport">Exporting Pocket data</a>
+</p>
+<p>
+There are no apparent API limitations preventing you from fetching everything, and it seems like a plausible option. Presumably, it's just a matter of transferring a few hundred kilobytes. YMMV though: if you are using it extremely heavily you might want to use a <a class="link-down" href="#synthetic">synthetic export</a>.
+</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000d">
+<h3 id="incremental"><a class="headerlink" href="#incremental">¶</a>incremental export</h3>
+<div class="outline-text-3" id="text-incremental">
+<p>
+'Incremental' means that rerunning an export starts from the last persisted point and only fetches missing data.
+</p>
+<p>
+Implementation wise, it looks like this:
+</p>
+<ul class="org-ul">
+<li>query previously exported data to determine the point (e.g. timestamp/message id) to continue from</li>
+<li>fetch missing data starting from that point</li>
+<li>merge it back with previously exported data, persist on disk</li>
+</ul>
+</div>
+<div class="outline-4" id="outline-container-org000000b">
+<h4 id="org000000b">summary</h4>
+<div class="outline-text-4" id="text-org000000b">
+<ul class="org-ul">
+<li>advantages
+<ul class="org-ul">
+<li>takes less resources</li>
+<li>more resilient (if done right) as it needs fewer network operations</li>
+</ul></li>
+<li>disadvantages
+<ul class="org-ul">
+<li>potentially very error-prone, harder to implement
+<ul class="org-ul">
+<li>if you're not careful with <a href="sad-infra.html#pagination">pagination</a> and misinterpret documentation you might never request some data</li>
+<li>if you're not careful with <a href="sad-infra.html#consistency">transactional logic</a>, you might leave your export in an inconsistent and corrupt state</li>
+</ul></li>
+</ul></li>
+</ul>
+<div><span class="before-aside">
+Incremental exports are <b>always</b> harder to program. Indeed, <a class="link-up" href="#full">full export</a> is just an edge case of an incremental one.
+
+</span><aside class="sidenote">Fun fact: most of your phone apps already implement incremental sync. It's a shame the logic can't be reused.</aside></div>
+</div>
+</div>
+<div class="outline-4" id="outline-container-org000000c">
+<h4 id="org000000c">examples</h4>
+<div class="outline-text-4" id="text-org000000c">
+<p>
+If it's so tricky, why would you bother with exporting data incrementally?
+</p>
+<ul class="org-ul">
+<li><p>
+too much data
+</p>
+<p>
+This doesn't even mean too much in terms of bandwidth/storage, more of 'too many entities'.
+</p>
+<p>
+E.g. imagine you want to export your Twitter timeline of 10000 tweets, which is about 1Mb of raw text data.
+Even if you account for extra garbage and assume 10 Mb or even 100 Mb of data it's basically nothing if you're running it once a day.
+</p>
+<p>
+However, APIs usually impose pagination (e.g. 200 tweets per call), so to get these 10000 tweets you might have to do <code class="inline">10000 / 200 = 50</code> API calls. 
+Suddenly the whole thing feels much less reliable, so you might want to make it incremental in order to minimize the number of network calls.
+</p>
+<p>
+For example:
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/fabianonline/telegram_backup">Telegram</a>/<a href="https://github.com/karlicoss/fbmessengerexport">Messenger</a>/Whatsapp – basically IM always means there's too much data to be exported at once</li>
+</ul></li>
+<li><p>
+flaky/slow API
+</p>
+<p>
+If it's the case you want to minimize network interaction.
+</p>
+<p>
+For example:
+</p>
+<ul class="org-ul">
+<li><a class="link-up" href="#export_scrape">web scraping</a> is always somewhat slow; in addition, you might have to rate limit yourself so you don't get banned by DDOS prevention.
+Also, it's even flakier than using APIs, so you might want to avoid extra work if possible.</li>
+<li><a href="https://shop-eu.emfit.com/products/emfit-qs">Emfit QS</a> sleep data: API is a bit flaky, so I minimize network interaction by only fetching missing data.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000011">
+<h3 id="synthetic"><a class="headerlink" href="#synthetic">¶</a>synthetic export</h3>
+<div class="outline-text-3" id="text-synthetic">
+<div><span class="before-aside">
+This is a blend between full export and incremental export.   
+
+</span><aside class="sidenote">If someone thinks of a better term for describing this concept, please let me know!</aside></div>
+<p>
+It's similar to a full export in the sense that there isn't that much data to retrieve: if you could, you would just fetch it in one go.
+</p>
+<p>
+What makes it similar to the incremental export is that you don't have all the data available at once - only the latest chunk.
+The main motivation for a synthetic export is that no single export file will give you all of the data.
+</p>
+<p>
+There are various reasons for that:
+</p>
+<ul class="org-ul">
+<li><p>
+API restrictions
+</p>
+<p>
+Many APIs restrict the number of items you can retrieve through each endpoint for caching and performance reasons.
+</p>
+<p>
+Example: <a href="https://github.com/karlicoss/rexport#limitations">Reddit</a> limits your API queries to 1000 entries.
+</p></li>
+<li><p>
+Limited memory
+</p>
+<p>
+Example: autonomous devices like HR monitors or temperature monitors are embedded systems with limited memory.
+</p>
+<p>
+Typically, they use some kind of <a href="https://en.wikipedia.org/wiki/Circular_buffer">ring buffer</a> so when you export data, you only get, say, the latest 10000 measurements.
+</p></li>
+<li><p>
+Disagreement on the 'state' of the system
+</p>
+<p>
+Example: Kobo reader uses an <a href="https://github.com/karlicoss/kobuddy">sqlite database</a> for keeping metadata like highlights, which is awesome!
+However, when you delete the book from your reader, it removes your annotations and highlights from the database too.
+</p>
+<p>
+There is absolutely no reason to do this: I delete the book because I don't need it on my reader, not because I want to get rid of the annotations.
+So in order to have all of them my only option is having regular database snapshots and assembling the full database from these pieces.
+</p></li>
+<li><p>
+Security
+</p>
+<p>
+Example: <a href="https://docs.monzo.com/#list-transactions">Monzo bank API</a>. 
+</p>
+<blockquote>
+<p>
+After a user has authenticated, your client can fetch all of their transactions, and after 5 minutes, it can only sync the last 90 days of transactions. If you need the user’s entire transaction history, you should consider fetching and storing it right after authentication. 
+</p>
+</blockquote>
+<p>
+So that means that unless you're happy with manually authorizing every time you export, you will only have access to the last 90 days of transactions.
+</p>
+<p>
+Note: I feel kind of sorry complaining at Monzo, considering they are the nicest guys out there in terms of being dev friendly; and I understand the security concerns.
+But that's the only example of such behavior I've seen so far, and it does complicate things.
+</p></li>
+</ul>
+<p>
+One important difference from other types of exports is that you <b>have to</b> do them regularly/often enough.
+Otherwise you inevitably miss some data and in the best case scenario have to get it <a class="link-up" href="#export_manual">manually</a>, or in the worst case <a href="./takeout-data-gone.html">lose it forever</a>.
+</p>
+<p>
+Now, you could deal with these complications the same way you would with incremental exports by retrieving the missing data only.
+The <b>crucial difference</b> is that if you do make a mistake in the logic, it's not just a matter of waiting to re-download everything. 
+Some of the data might be gone <b>forever</b>.
+</p>
+<p>
+So I take a hybrid approach instead:
+</p>
+<ul class="org-ul">
+<li><p>
+at <a class="link-down" href="#export_layer">export time</a>, retrieve all the data I can and keep it along with a timestamp, like a <a class="link-up" href="#full">full export</a>.
+</p>
+<p>
+Basically, it makes it an 'append-only system', so there is no opportunity for losing data.
+</p></li>
+<li><p>
+at <a class="link-down" href="#dal">data access time</a>, we dynamically build (synthesize) the full state of the data
+</p>
+<p>
+We go through all exported data chunks and reconstruct the full state, similarly to <a class="link-up" href="#incremental">incremental export</a>.
+That's where 'synthetic' comes from.
+</p>
+<p>
+The 'full export' only exists at runtime, and errors in merging logic are not problematic as you never overwrite data.
+If you do spot a problem you only have to change the code with no need for data migrations.
+</p></li>
+</ul>
+</div>
+<div class="outline-4" id="outline-container-org000000e">
+<h4 id="org000000e">illustrative example</h4>
+<div class="outline-text-4" id="text-org000000e">
+<p>
+I feel like the explanations are a bit abstract, so let's consider a specific scenario.
+</p>
+<p>
+Say you've got a temperature sensor that takes a measurement every minute and keeps it in its internal database.
+It's only got enough memory for 2000 datapoints so you have to grab data from it every day, otherwise the older measurements would be overwritten (it's implemented as a ring buffer).
+</p>
+<p>
+It seems like a perfect fit for synthetic export. 
+</p>
+<ul class="org-ul">
+<li><p>
+export layer: every day you run a script that connects to the sensor and copies the database onto your computer
+</p>
+<p>
+That's it, it doesn't do anything more complicated than that.
+The whole process is atomic, so if Bluetooth connection fails, we can simply retry until we succeed without having to worry about the details.
+</p>
+<p>
+As a result, we get a bunch of files like:
+</p>
+<pre class="example">
+# ls /data/temperature/*.db
+...
+20190715100026.db
+20190716100138.db
+20190717101651.db
+20190718100118.db
+20190719100701.db
+...
+</pre></li>
+<li><p>
+data access layer: go through all chunks and construct the full temperature history
+</p>
+<p>
+E.g. it would look kind of like:
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">measurements</span>() -&gt; Iterator[<span class="org-builtin">float</span>]:
+    processed: <span class="org-variable-name">Set</span>[datetime] = <span class="org-builtin">set</span>()
+    <span class="org-keyword">for</span> db <span class="org-keyword">in</span> <span class="org-builtin">sorted</span>(Path(<span class="org-string">'/data/temperature'</span>).glob(<span class="org-string">'*.db'</span>)):
+        <span class="org-keyword">for</span> timestamp, value <span class="org-keyword">in</span> query(db, <span class="org-string">'SELECT * FROM measurements'</span>):
+            <span class="org-keyword">if</span> timestamp <span class="org-keyword">in</span> processed:
+                <span class="org-keyword">continue</span>
+            processed.add(timestamp)
+            <span class="org-keyword">yield</span> value
+</pre>
+</div>
+<p>
+I hope it's clear how much easier this is compared with maintaining some sort of master sqlite database and updating it.
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-4" id="outline-container-org000000f">
+<h4 id="org000000f">summary</h4>
+<div class="outline-text-4" id="text-org000000f">
+<ul class="org-ul">
+<li>advantages
+<ul class="org-ul">
+<li>much easier way to achieve incremental exports without having to worry about introducing inconsistencies</li>
+<li><b>very resilient</b>, against pretty much everything: deleted content, data corruption, flaky APIs, programming errors</li>
+<li><b>straightforward</b> to normalize and unify – you are not overwriting anything</li>
+</ul></li>
+<li>disadvantages
+<ul class="org-ul">
+<li><p>
+takes <b>extra space</b>
+</p>
+<p>
+That said, storage shouldn't be that much of a concern unless you export <b>very</b> often.
+I elaborate on this problem <a class="link-down" href="#disk_space">later in the post</a>.
+</p></li>
+<li><p>
+<b>overhead</b> at access time
+</p>
+<p>
+When we access the data we have to merge all snapshots every time. I'll elaborate on this <a class="link-down" href="#dal_performance">later as well</a>.
+</p></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div class="outline-4" id="outline-container-org0000010">
+<h4 id="org0000010">more examples</h4>
+<div class="outline-text-4" id="text-org0000010">
+<ul class="org-ul">
+<li>Github API is restricted to 300 latest events, so synthetic logic is used in <a href="https://github.com/karlicoss/ghexport/blob/master/dal.py">ghexport</a> tool</li>
+<li><p>
+Reddit API is restricted to 1000 items, so synthetic logic is used in <a href="https://github.com/karlicoss/rexport/blob/874e6116bfba8cbd63fa3b4d93810a1488cb8464/dal.py#L136">rexport</a> tool
+</p>
+<p>
+I elaborate on Reddit <a href="unnecessary-db.html#example_reddit">here</a>.
+</p></li>
+<li><p>
+Chrome only keeps 90 days of browsing history in its database
+</p>
+<p>
+<a href="unnecessary-db.html#chrome_dal">Here</a> I write in detail about why synthetic exports make a lot of sense for Chrome.
+</p></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000018">
+<h2 id="export_layer"><a class="headerlink" href="#export_layer">¶</a><span class="section-number-2">4</span> Export layer</h2>
+<div class="outline-text-2" id="text-export_layer">
+<p>
+<span style="color:darkgreen; font-weight: bolder">Map:</span> <a href="myinfra.html#exports">export layer</a>.
+</p>
+<p>
+No matter which <a class="link-up" href="#types">of these</a> ways you have to use to export your data, there are some common difficulties, hence patterns that I'm going to explore in this section.
+</p>
+<p>
+Just a quick reminder of <a href="sad-infra.html#exports_are_hard">the problems</a> that we're dealing with:
+</p>
+<ul class="org-ul">
+<li>authorization: how to log in?</li>
+<li>pagination: how to query the data correctly?</li>
+<li>consistency: how to make sure we assemble the full view of data correctly without running into concurrency issues?</li>
+<li>rate limits: how to respect the service's policies and avoid getting banned?</li>
+<li>error handling: how to be defensive enough without making the code too complicated?</li>
+</ul>
+<p>
+My guiding principle is: during the export, do the <b>absolute minimum</b> work required to reliably get raw data on your disk.
+This is kind of vague (perhaps even obvious), so I will try to elaborate on what I mean by that.
+</p>
+<p>
+This section doesn't cover the exact details, it's more of a collection of tips for minimizing the work and boilerplate. If you are interested in reading the code, <a href="https://github.com/search?type=Repositories&amp;q=user%3Akarlicoss+++topic%3Aexport">here</a> are some of the export scripts and tools I've implemented.
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000014">
+<h3 id="bindings"><a class="headerlink" href="#bindings">¶</a>use existing bindings</h3>
+<div class="outline-text-3" id="text-bindings">
+<p>
+This may be obvious, but I still feel it has to be said.
+Unless retrieving data is trivial (i.e. single GET request), chances that someone has already invested effort in dealing with various API quirks.
+Bindings often deal with dirty details like rate limiting, retrying, pagination, etc. So if you're lucky you might end up spending very little effort on actually exporting data.
+</p>
+<p>
+If there is something in bindings you don't like or lack, it's still easier to <a href="https://en.wikipedia.org/wiki/Monkey_patch">monkey patch</a> or just fork and patch them up (don't forget to open a pull request later!).
+</p>
+<p>
+Also if you're the author of bindings, I have some requests. Please:
+</p>
+<ul class="org-ul">
+<li>don't print in stdout, it's a pain to filter out and suppress. Ideally use proper logging modules</li>
+<li><p>
+don't be overly defensive, or allow to <a href="mypy-error-handling.html#global_policy">configure</a> non-defensive behavior
+</p>
+<p>
+It's quite sad when the library silently catches all exceptions and replaces them with empty strings/nulls/etc., without you even suspecting it.
+It's especially problematic in Python, where "Ask forgiveness, not permission" is very common.
+</p></li>
+<li><p>
+expose raw underlying data (e.g. raw JSON/XML from the API)
+</p>
+<p>
+If you forget to handle something, or the user disagrees with the interpretation of data, they would still be able to benefit from the data bindings for retrieval and only alter the deserialization.
+</p>
+<p>
+Example of good data object:
+</p>
+<ul class="org-ul">
+<li><a href="https://github.com/pawelad/pymonzo/blob/b5c8d4f46dcb3a2f475797a8b8ef1c15f6493fb9/src/pymonzo/api_objects.py#L38-L45">pymonzo</a> exposes programmer-friendly fields and also keeps raw data</li>
+</ul></li>
+<li><p>
+expose generic methods for handling API calls to make it easy to add new endpoints
+</p>
+<p>
+Same argument: if you forgot to handle some API calls, it makes it much easier for consumers to quickly add them.
+</p></li>
+</ul>
+</div>
+<div class="outline-4" id="outline-container-org0000013">
+<h4 id="org0000013">examples</h4>
+<div class="outline-text-4" id="text-org0000013">
+<p>
+To export <a href="https://github.com/karlicoss/hypexport">Hypothes.is</a> data I'm using existing <a href="https://github.com/judell/Hypothesis">judell/Hypothesis</a> bindings.
+</p>
+<ul class="org-ul">
+<li>the bindings handle <a href="https://github.com/judell/Hypothesis/blob/91f881693546aaddc4096327a97f5cf342c3770a/hypothesis.py#L69">pagination and rate limits</a> for you</li>
+<li>the bindings return raw JSONs, making it trivial to serialize the data on disk</li>
+</ul>
+<ul class="org-ul">
+<li><p>
+the bindings expose generic <a href="https://github.com/judell/Hypothesis/blob/91f881693546aaddc4096327a97f5cf342c3770a/hypothesis.py#L138"><code class="inline">authenticated_api_query</code></a> method
+</p>
+<p>
+For instance, profile data request was missing from the bindings; and it was <a href="https://github.com/karlicoss/hypexport/blob/7a80b36aa55da8b541e2778141eb84ada384d734/hypexport.py#L14">trivial</a> to get it anyway 
+</p></li>
+</ul>
+<p>
+Thanks to good bindings, the actual export is pretty <a href="https://github.com/karlicoss/hypexport/blob/7a80b36aa55da8b541e2778141eb84ada384d734/hypexport.py#L6-L19">trivial</a>.
+</p>
+<p>
+Another example: to export <a href="https://github.com/karlicoss/rexport/blob/master/export.py">Reddit data</a>, I'm using <a href="https://github.com/praw-dev/praw">praw</a>, an excellent library for accessing Reddit from Python.
+</p>
+<ul class="org-ul">
+<li>praw handles rate limits and pagination</li>
+<li>praw exposes a logger, which makes it easy to <a href="https://github.com/karlicoss/rexport/blob/874e6116bfba8cbd63fa3b4d93810a1488cb8464/export.py#L107">control it</a></li>
+<li>praw supports all endpoints, so exporting data is just a matter of <a href="https://github.com/karlicoss/rexport/blob/d001e2d07d716130106ebe07a021f98d84a5ed93/rexport.py#L73-L84">calling the right API methods</a></li>
+<li><p>
+one shortcoming of praw though is that it won't give you access to raw JSON data for some reason, so we have to use some <a href="https://github.com/karlicoss/rexport/blob/874e6116bfba8cbd63fa3b4d93810a1488cb8464/export.py#L37-L60">hacky logic</a> to serialize.
+</p>
+<p>
+If praw kept original data from the API, the <a href="https://github.com/karlicoss/rexport/blob/master/export.py">code for export</a> would be half as long.
+</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000015">
+<h3 id="keep_raw"><a class="headerlink" href="#keep_raw">¶</a>don't mess with the raw data</h3>
+<div class="outline-text-3" id="text-keep_raw">
+<p>
+Keep the data you retrieved <b>as intact as possible</b>.
+</p>
+<p>
+That means:
+</p>
+<ul class="org-ul">
+<li>don't insert it in in a database, unless it's really necessary</li>
+<li>don't convert formats (e.g. JSON to XML)</li>
+<li>don't try to clean up and normalize</li>
+</ul>
+<p>
+Instead, <b>keep the exporter code simple</b> and don't try to interpret data in it.
+Move data interpretation burden to the <a class="link-down" href="#dal">data access layer</a> instead.
+</p>
+<p>
+The rationale here is it's a potential source of inconsistencies. If you make a bug during data conversion, you might end corrupting your data forever.
+</p>
+<p>
+I'm elaborating on this point <a href="unnecessary-db.html#asis">here</a>.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000016">
+<h3 id="defensive"><a class="headerlink" href="#defensive">¶</a>don't  be too defensive</h3>
+<div class="outline-text-3" id="text-defensive">
+<ul class="org-ul">
+<li>never silently fallback on default values in case of errors, unless you're really certain about what you're doing</li>
+<li><p>
+don't add retry logic just in case
+</p>
+<p>
+In my experience, it's fair to assume that if the export failed, it's a random server-side glitch and not worth fine-tuning - it's easier to simply start the export all over again.
+I'm not dealing with that in the individual export scripts at all, and using <a class="link-down" href="#arctee">arctee</a>, to retry exports automatically.
+</p>
+<p>
+If you know what you're doing (e.g. some endpoint is notoriously flaky) and do need retries, I recommend using an existing library that handles that like <a href="https://github.com/litl/backoff#examples">backoff</a>.
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000017">
+<h3 id="credentials"><a class="headerlink" href="#credentials">¶</a>allow reading credentials from a file</h3>
+<div class="outline-text-3" id="text-credentials">
+<ul class="org-ul">
+<li>you don't want them in your shell history or in crontabs</li>
+<li><p>
+keeping them in a file can potentially allow for fine access control
+</p>
+<p>
+E.g. with Unix permissions you could only allow certain scripts to read secrets.
+Note that I'm not a security expert and would be interested to know if there are better solutions to that
+</p>
+<p>
+Personally, I found it so boilerplaty I extracted this logic to a separate <a href="https://github.com/karlicoss/instapexport/blob/master/export_helper.py">helper module</a>. You can find an example <a href="https://github.com/karlicoss/instapexport#exporting">here</a>.
+</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org000001d">
+<h2 id="storage"><a class="headerlink" href="#storage">¶</a><span class="section-number-2">5</span> How to store it: organizing data</h2>
+<div class="outline-text-2" id="text-storage">
+<p>
+<span style="color:darkgreen; font-weight: bolder">Map:</span> <a href="myinfra.html#fs">filesystem</a>.
+</p>
+<p>
+As I mentioned, for the most part I'm just keeping the raw API data.
+For storage I'm just using the filesystem; all exports are kept or symlinked in the same directory (<code class="inline">/exports</code>) for ease of access:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">find /exports/ | sort | head -n 20 | tail -n 7
+</pre>
+</div>
+<pre class="example">
+/exports/feedbin
+/exports/feedly
+/exports/firefox-history
+/exports/fitbit
+/exports/github
+/exports/github-events
+/exports/goodreads
+</pre>
+</div>
+<div class="outline-3" id="outline-container-org0000019">
+<h3 id="timestamps"><a class="headerlink" href="#timestamps">¶</a>naming and timestamping</h3>
+<div class="outline-text-3" id="text-timestamps">
+<p>
+I find that the only important bit is if you keep multiple export files (e.g. <a class="link-up" href="#synthetic">synthetic</a>), make sure their names include timestamps and the time order is consistent with lexicographic order.
+</p>
+<p>
+This means the only acceptable date/time format is some variation of <a href="https://en.wikipedia.org/wiki/ISO_8601"><code class="inline">YYYY MM DD HH MM SS Z</code></a>. 
+Feel free to sprinkle in any separators you like, or use milliseconds if you are really serious. Any other date format, e.g. <samp class="inline">MM/DD/YY</samp>, using month names, or not using zero-padded numbers is going to bring you serious grief.
+</p>
+<p>
+E.g.:
+</p>
+<div class="org-src-container">
+<pre class="src src-bash">ls /exports/instapaper/ | tail -n 5
+</pre>
+</div>
+<pre class="example">
+instapaper_20200101T000005Z.json
+instapaper_20200101T040004Z.json
+instapaper_20200101T080010Z.json
+instapaper_20200101T120005Z.json
+instapaper_20200101T160011Z.json
+</pre>
+<p>
+The reason is it's automatically sort/max friendly, which massively reduces the cognitive load when working with data.
+</p>
+<p>
+To make timestamping automatic and less boilerplaty, I'm using a <a class="link-down" href="#arctee">wrapper script</a>.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001a">
+<h3 id="backups"><a class="headerlink" href="#backups">¶</a>backups</h3>
+<div class="outline-text-3" id="text-backups">
+<p>
+Backups are trivial: I can just run <a href="https://borgbackup.readthedocs.io/en/stable">borg</a> against <samp class="inline">/exports</samp>.
+What is more, borg is deduplicating, so it's very friendly to incremental and synthetic exports.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001b">
+<h3 id="sync"><a class="headerlink" href="#sync">¶</a>synchronizing between computers</h3>
+<div class="outline-text-3" id="text-sync">
+<p>
+I synchronize/replicate it across my computers with Syncthing, also used Dropbox in the past.
+</p>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001c">
+<h3 id="disk_space"><a class="headerlink" href="#disk_space">¶</a>disk space concerns</h3>
+<div class="outline-text-3" id="text-disk_space">
+<p>
+Some back of the envelope math arguing it shouldn't be a concern for you:
+</p>
+<ul class="org-ul">
+<li>the amount of data you generate grows linearly. That means that running exports periodically would take 'quadratic' space</li>
+<li>with time, your available storage grows exponentially (and only gets cheaper)</li>
+</ul>
+<p>
+Hopefully that's convincing, but if this is an issue it can also be addressed with compression or even using deduplicating backup software like <a href="https://borgbackup.readthedocs.io/en/stable">borg</a>. Keep in mind that would come at the cost of slowing down access, which may be helped with caching.
+</p>
+<p>
+I don't even bother compressing most of my exports, except for the few which <a class="link-down" href="#arctee">arctee wrapper</a> handles.
+</p>
+<p>
+There are also ways to benefit from compression without having to do it explicitly:
+</p>
+<ul class="org-ul">
+<li><p>
+keeping data under borg and using <a href="https://borgbackup.readthedocs.io/en/stable/usage/mount.html"><samp class="inline">borg mount</samp></a> to access it.
+</p>
+<p>
+You get deduplication for free, however this makes exporting and accessing data much more obscure. In addition, <samp class="inline">borg mount</samp> locks the repository so it's going to be read-only while you access it.
+</p></li>
+<li><p>
+using a filesystem capable of compressing on the fly
+</p>
+<p>
+E.g. <a href="https://serverfault.com/questions/740456/lightweight-transparent-compression-filesystem">ZFS/BTRFS</a>.
+</p>
+<p>
+It seems straightforward enough, thought non-standard file systems might be incompatible with some software, e.g. <a href="https://www.linuxuprising.com/2018/11/how-to-use-dropbox-on-non-ext4.html">Dropbox</a>.
+I haven't personally tried it.
+</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000020">
+<h2 id="dal"><a class="headerlink" href="#dal">¶</a><span class="section-number-2">6</span> Data access layer (DAL)</h2>
+<div class="outline-text-2" id="text-dal">
+<p>
+<span style="color:darkgreen; font-weight: bolder">Map:</span> <a href="myinfra.html#dal">data access layer</a>.
+</p>
+<p>
+As I <a class="link-up" href="#design">mentioned</a>, all that DAL does is maps raw data (saved on the disk by the <a class="link-up" href="#export_layer">export layer</a>) onto abstract objects making it easier to work with in your programs. "Layer" sounds a bit intimidating and enterprisy but usually it's just a single short script.
+</p>
+<p>
+It's meant to deal with data cleanup, normalization, etc. Doing this at runtime rather than during the export makes it easier to work around data issues, allows experimentation, and is more forgiving if you make some bugs.
+</p>
+<p>
+  As I mentioned in the <a class="link-up" href="#design">design principles</a>, I'm trying to keep data retrieval code and data access code separate
+since they serve very different purposes and deal with very different errors.
+</p>
+<p>
+Just as a reminder what we get as a result:
+</p>
+<ul class="org-ul">
+<li><p>
+resilience
+</p>
+<p>
+Accessing and working with data on your disk is considerably easier and faster than using APIs.
+</p></li>
+<li><p>
+offline
+</p>
+<p>
+You only access data on your disk, which makes you completely independent on the Internet.
+</p></li>
+<li><p>
+modularity and decoupling: you can use separate tools (even written in different programming languages) for retrieving and accessing data
+</p>
+<p>
+That's very important, so we all can benefit from existing code and reinventing less wheels.
+</p></li>
+<li><p>
+backups
+</p>
+<p>
+Keeping raw data makes them trivial
+</p></li>
+</ul>
+</div>
+<div class="outline-3" id="outline-container-org000001e">
+<h3 id="dal_performance"><a class="headerlink" href="#dal_performance">¶</a>performance concerns</h3>
+<div class="outline-text-3" id="text-dal_performance">
+<p>
+A natural question is: if you run through all your data snapshots each time you access it, wouldn't it be too slow?
+</p>
+<p>
+First, it's somewhat similar to the worries about the <a class="link-up" href="#disk_space">disk space</a>. Data grows at the quadratic rate; and while processing power doesn't seem to follow Moore's law anymore there is still some potential to scale horizontally and use multiple threads. In practice, for most data sources that I use this process is almost instantaneous without parallelizing anyway.
+</p>
+<p>
+In addition:
+</p>
+<ul class="org-ul">
+<li>if you're using iterators/generators/coroutines (e.g. <a href="https://github.com/karlicoss/rexport/blob/874e6116bfba8cbd63fa3b4d93810a1488cb8464/dal.py#L130-L136">example</a>), that overhead will be amortized and basically unnoticeable</li>
+<li>you can still use caching. Just make sure it doesn't involve boilerplate or cognitive overhead to use. E.g. <a href="unnecessary-db.html#cachew_cachew">cachew</a>.</li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000001f">
+<h3 id="dal_examples"><a class="headerlink" href="#dal_examples">¶</a>examples</h3>
+<div class="outline-text-3" id="text-dal_examples">
+<div class="noop" id="dal_messenger">
+<p>
+Example: <a href="https://github.com/karlicoss/fbmessengerexport/blob/a8f65a259dfa36ab6d175461994356947ded142a/model.py#L27-L47">DAL for Facebook Messenger</a> knows how to read messages from the database on your disk, access certain fields (e.g. message body) and how to handle obscure details like converting timestamps to <samp class="inline">datetime</samp> objects. 
+</p>
+<ul class="org-ul">
+<li>it's <b>not</b> trying to get messages from Facebook, which makes it way faster and more reliable to interact with data</li>
+<li>it's <b>not</b> trying to do anything fancy beyond providing access to the data, which allows keeping it simple and resilient</li>
+</ul>
+</div>
+<p>
+You can find more specific examples along with the motivation and explanations here:
+</p>
+<ul class="org-ul">
+<li><a href="unnecessary-db.html#example_reddit">Reddit</a></li>
+<li><a href="unnecessary-db.html#relational">Instapaper/Endomondo</a></li>
+<li><a href="unnecessary-db.html#maintaining">Pocket</a></li>
+<li><a href="unnecessary-db.html#example_chrome">Chrome</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000023">
+<h2 id="automatic_exports"><a class="headerlink" href="#automatic_exports">¶</a><span class="section-number-2">7</span> Automating exports</h2>
+<div class="outline-text-2" id="text-automatic_exports">
+<p>
+In my opinion, it's absolutely essential to automate data exports when possible. 
+You really don't want to think about it and having a recent version of your data motivates you to actually use it, otherwise there is much less utility.
+</p>
+<p>
+In addition, it serves as a means of backup, so you don't have to worry about what happens if the service ceases to exist.
+</p>
+</div>
+<div class="outline-3" id="outline-container-org0000021">
+<h3 id="scheduling"><a class="headerlink" href="#scheduling">¶</a>scheduling</h3>
+<div class="outline-text-3" id="text-scheduling">
+<p>
+I run most of my data exports at least daily.
+</p>
+<p>
+I wrote a whole <a href="scheduler.html">post</a> on scheduling and job running with respect to the personal infrastructure. In short:
+</p>
+<ul class="org-ul">
+<li><p>
+on desktop: at the moment, I'm mostly using cron (to be more specific, <a href="scheduler.html#fcron">fcron</a>).
+</p>
+<p>
+I'm still <a href="scheduler.html#solution">thinking</a> of an alternative, but overall using cron is okay.
+</p></li>
+<li>on Android phone: <a href="scheduler.html#phone">I'm using Automate app and cron</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000022">
+<h3 id="arctee"><a class="headerlink" href="#arctee">¶</a>arctee</h3>
+<div class="outline-text-3" id="text-arctee">
+<p>
+This is a <a href="https://github.com/karlicoss/arctee">wrapper script</a> I'm using to run most of my data exports.
+</p>
+<p>
+Many things are very common to all data exports, regardless of the source.
+In the vast majority of cases, you want to fetch some data, save it in a file (e.g. JSON) along with a timestamp and potentially compress it.
+</p>
+<p>
+This script aims to minimize the common boilerplate:
+</p>
+<ul class="org-ul">
+<li><samp class="inline">path</samp> argument allows easy ISO8601 timestamping and guarantees atomic writing, so you'd never end up with corrupted exports.</li>
+<li><samp class="inline">--compression</samp> allows to compress simply by passing the extension. No more <samp class="inline">tar -zcvf</samp>!</li>
+<li><samp class="inline">--retries</samp> allows easy exponential backoff in case service you're querying is flaky.</li>
+</ul>
+<p>
+Example:
+</p>
+<pre class="example">
+arctee '/exports/rtm/{utcnow}.ical.zstd' --compression zstd --retries 3 -- /soft/export/rememberthemilk.py
+</pre>
+<ol class="org-ol">
+<li><p>
+runs <samp class="inline">/soft/export/rememberthemilk.py</samp>, retrying it up to three times if it fails
+</p>
+<p>
+The script is expected to dump its result in stdout; stderr is simply passed through.
+</p></li>
+<li>once the data is fetched it's compressed as <samp class="inline">zstd</samp></li>
+<li>timestamp is computed and compressed data is written to <samp class="inline">/exports/rtm/20200102T170015Z.ical.zstd</samp></li>
+</ol>
+<p>
+The wrapper operates on regular files and is therefore, programming language agnostic as long as your export script simply outputs to stdout (or accepts a filename, so you can use <samp class="inline">/dev/stdout</samp>). It doesn't really matter how exactly (e.g. which programming language) it's implemented.
+</p>
+<p>
+That said, it feels kind of wrong having an extra script for all these things since they are not hard in principle, just tedious and boring to do all over again. If anyone has bright ideas on simplifying this, I'd be happy to know!
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2" id="outline-container-org0000024">
+<h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">8</span> --</h2>
+<div class="outline-text-2" id="text-fin">
+<p>
+Approaches that I described here have worked pretty well for me so far. It feels fairly composable, flexible and easy to maintain.
+</p>
+<p>
+I'm sharing this because I would <b>really</b> like to make it accessible to more people, so they can also benefit from using their data.
+</p>
+<p>
+I'd be happy to hear any suggestions on simplifying and improving the system!
+</p>
+<p>
+Big thanks to <a href="https://jborichevskiy.com">Jonathan</a> for reading the draft and suggesting helpful edits.
+</p>
+</div>
+</div>
+
+    </section>
+
+    
+    <section class="footer">
+        <div class="post-tags"><a class="post-tag" href="./tags.html#infra">#infra</a> <a class="post-tag" href="./tags.html#dataliberation">#dataliberation</a></div>
+        <!-- TODO post-date? -->
+        <div class="date">13 February 2020</div>
+    </section>
+    
+
+    
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_exports"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
+        
+
+        <!-- TODO make semantic -->
+        <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
+
+            <a href="http://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>
+            
+            
+        </footer>
+    </body>
+</html>
+]]></description>
+    <pubDate>Thu, 13 Feb 2020 00:00:00 UT</pubDate>
+    <guid>https://beepb00p.xyz/exports.html</guid>
+    <dc:creator>karlicoss</dc:creator>
+</item>
+<item>
     <title>Against unnecessary databases</title>
     <link>https://beepb00p.xyz/unnecessary-db.html</link>
     <description><![CDATA[<!doctype html>
@@ -29,7 +1352,7 @@
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
-        <title>Against unnecessary databases | Mildly entertainingᵝ</title>
+        <title>Against unnecessary databases | beepb00p</title>
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
@@ -1381,7 +2704,7 @@ Happy to hear your thoughts and suggestions! Thank you for making it through thi
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
-        <title>In search of a better job scheduler | Mildly entertainingᵝ</title>
+        <title>In search of a better job scheduler | beepb00p</title>
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
@@ -1946,7 +3269,7 @@ Updates:
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
-        <title>What data on myself I collect and why? | Mildly entertainingᵝ</title>
+        <title>What data on myself I collect and why? | beepb00p</title>
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
@@ -3161,7 +4484,7 @@ In the <a href="exports.html">next post</a> (writing still in progress) I'm goin
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
-        <title>The sad state of personal data and infrastructure | Mildly entertainingᵝ</title>
+        <title>The sad state of personal data and infrastructure | beepb00p</title>
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
@@ -4438,7 +5761,7 @@ Let me know if you can think of any other data integrations you are missing and 
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
-        <title>Analyzing accuracy of power reported by stationary bike | Mildly entertainingᵝ</title>
+        <title>Analyzing accuracy of power reported by stationary bike | beepb00p</title>
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
@@ -5673,7 +6996,7 @@ strong multicollinearity or other numerical problems.
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
-        <title>Scrapyroo | Mildly entertainingᵝ</title>
+        <title>Scrapyroo | beepb00p</title>
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
@@ -6653,7 +7976,7 @@ Not very cloud sync-friendly! However happily accepts symlink as <code class="in
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
-        <title>Building personal search infrastructure for your knowledge and code | Mildly entertainingᵝ</title>
+        <title>Building personal search infrastructure for your knowledge and code | beepb00p</title>
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
@@ -7736,7 +9059,7 @@ As always, I'm open to feedback and would love to hear what is or setup or help 
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
-        <title>Python: better typed than you think | Mildly entertainingᵝ</title>
+        <title>Python: better typed than you think | beepb00p</title>
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
@@ -9330,1253 +10653,6 @@ Let me know what you think! I'm open to all feedback.
 ]]></description>
     <pubDate>Sat, 26 Oct 2019 00:00:00 UT</pubDate>
     <guid>https://beepb00p.xyz/mypy-error-handling.html</guid>
-    <dc:creator>karlicoss</dc:creator>
-</item>
-<item>
-    <title>Using Orger to populate your tasks list</title>
-    <link>https://beepb00p.xyz/orger-todos.html</link>
-    <description><![CDATA[<!doctype html>
-<html lang="en" prefix="og: http://ogp.me/ns#">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!-- Icon made by Twitter -->
-        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
-        <link rel="icon" href="./robot-face.png">
-        <link rel="apple-touch-icon" href="./robot-face.png">
-
-        <meta name="generator" content="hakyll">
-        <meta name="language" content="English">
-        
-        <meta name="keywords" content="orgmode productivity orger">
-        
-        <!-- TODO concat with keywords tags; also need to make comma separated? -->
-
-        <title>Using Orger to populate your tasks list | Mildly entertainingᵝ</title>
-
-        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="./css/default.css?v=3" />
-        <!-- TODO make conditional?? -->
-        <link rel="stylesheet" href="./css/posts-list.css" /> 
-        <link rel="stylesheet" href="./css/links.css?v=4" />
-
-        
-
-        <link rel="canonical" href="https://beepb00p.xyz/orger-todos.html" />
-
-        <!-- can test it with https://telegram.me/webpagebot -->
-        <!-- or https://developers.facebook.com/tools/debug -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://beepb00p.xyz/orger-todos.html" /> <!-- TODO base? -->
-        <meta property="og:title" content="Using Orger to populate your tasks list | beepb00p" />
-        <meta property="og:description" content="Reading Reddit, building spaced repetition queue and quick todos from Telegram messages" />
-        <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
-        <!-- ugh. Facebook really wants jpg? -->
-        <!-- also Facebook displays it with black background, but whatever, fuck it. -->
-        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
-
-    </head>
-    <body>
-        <!-- TODO make semantic -->
-        <header>
-            <nav>
-                <span class="nav-left">
-                    <a class="fat" href="./">Home</a>
-                    <!-- TODO eh, not sure if this symbol is good for that... -->
-                    ·
-                    <a class="fat" href="./ideas.html">Ideas</a>
-                    ·
-                    <a class="fat" href="./notes.html">Notes</a>
-                    ·
-                    <a class="fat" href="./tags.html">Tags</a>
-                </span>
-                <span class="nav-right">
-                    <a class="fat" href="./feed.html">Feed</a>
-                    ·
-                    <a class="fat" href="./site.html">Site</a>
-                    ·
-                    <a class="fat" href="./me.html">Me</a>
-                </span>
-            </nav>
-        </header>
-
-        <main>
-            
-
-<!-- <link rel="stylesheet" href="/css/org.css" /> -->
-
-<link rel="stylesheet" href="./css/htmlize.css" />
-<link rel="stylesheet" href="./css/org-default.css" />
-
-<link rel="stylesheet" href="./css/org-extra.css?v=3" />
-
-
-
-<article>
-    
-    <section class="post-title">
-    <h1>Using Orger to populate your tasks list</h1>
-    <div class="summary">Reading Reddit, building spaced repetition queue and quick todos from Telegram messages</h2>
-    </section>
-    <!-- are sections appropriate for that? -->
-
-    <section class="content">
-    <div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#reddit">1. reddit: better processing of saved Reddit items</a></li>
-<li><a href="#telegram2org">2. telegram2org: one tap to create tasks from Telegram messages</a></li>
-<li><a href="#hyp2org">3. hyp2org: create tasks from Hypothesis highlights</a></li>
-<li><a href="#krill">4. krill: learn new words from your Kobo books</a></li>
-<li><a href="#org0000004">5. ---</a></li>
-</ul>
-</div>
-</div>
-<p>
-In <a href="orger.html">the first part</a> about Orger I wrote how I'm using it (in particular, the <code class="inline">orger.StaticView</code> component) to render my personal data as org-mode files
-for easy, instant access and search.
-</p>
-<p>
-Another generic application of Orger, is populating Org-mode files with outlines. 
-In particular that means tasks for your agenda/spaced repetition routine or whatever else you could imagine it to be useful for.
-</p>
-<p>
-Main goal was to minimize the overhead and distractions caused by creating todos by normal means (opening an app, copying some text, etc.).
-Basically I want it to be completely seamless, almost without thinking at all.
-</p>
-<p>
-You can use the target files as any of your normal org-mode files: modify contents, delete or reschedule tasks, etc.
-When Orger detects new items they would be carefully and atomically appended to the end of file.
-It keeps track of already processed items in a separate JSON file. All this nasty business is dealt with in <code class="inline">orger.InteractiveView</code> component.
-</p>
-<p>
-You can find all of interactive Orger modules I'm using <a href="https://github.com/karlicoss/orger/search?q=InteractiveView">on Github</a>. 
-</p>
-<div class="outline-2" id="outline-container-org0000000">
-<h2 id="reddit"><a class="headerlink" href="#reddit">¶</a><span class="section-number-2">1</span> <a href="https://github.com/karlicoss/orger/blob/master/modules/reddit.py">reddit</a>: better processing of saved Reddit items</h2>
-<div class="outline-text-2" id="text-reddit">
-<p>
-This one I have been sustainably using for almost a year now, so I believe it could be useful to many people.
-</p>
-<p>
-I tend to be curious about lots of different topics so I'm subscribed to over 100 subreddits.
-</p>
-<p>
-For the most part I'm reading Reddit passively and I can't afford spending much time on Reddit every day, so my system for years has been: reading updates for the past week on Sundays.
-</p>
-<p>
-For few select subreddits that most interest me (e.g. <a href="https://www.reddit.com/r/QuantifiedSelf/">quantifiedself</a> or <a href="https://www.reddit.com/r/orgmode">orgmode</a>)
-I read all updates, for the rest I just read weekly top.
-</p>
-<p>
-I tend to do it from my phone on the go/in transport or while I'm waiting somewhere, so the concentration is not exactly perfect and many things are too awkward to read or browse on phone anyway.
-</p>
-<p>
-So I tend to favorite interesting submissions (judging by the title) without reading them instead, and later once in a while when I'm at my desktop I have a deeper look at whatever I favorited.
-</p>
-<p>
-This however gets a little clumsy. 
-</p>
-<ul class="org-ul">
-<li><p>
-saved <b>items can't be rearranged</b> in the Reddit interface and the only sort available is by 'saving time'
-</p>
-<p>
-This would be ok if every time you processed your saved items you cleared all of them, but that's just not very realistic.
-</p>
-<p>
-Some things take higher priority; some things just give you few thoughts now and you wanna action on it later.
-So every time you process saved submissions, you end up going through same things all over again, and you have to remember where you stopped last time. 
-That's quite distracting!
-</p></li>
-<li><p>
-you <b>can't add private comments</b> to saved items
-</p>
-<p>
-Using some annotation engine like <a href="https://hypothes.is">Hypothesis</a> on 'Saved' page would be too flaky if Reddit changes design.
-You could annotate saved items directly, but then you won't have an overview on 'Saved' page.
-</p></li>
-<li><p>
-sometimes posts/comments get deleted so if you look at saved item months later, you'd not know what have you saved anymore
-</p>
-<p>
-While there are ways to read removed reddit comments, it's a bit distracting to do too and with orger you'd always have an original version of the item.
-</p></li>
-</ul>
-<p>
-How Orger solves that for me? Here's my typical workflow with <samp class="inline">reddit.org</samp> file:
-</p>
-<ul class="org-ul">
-<li>I'm running <a href="https://github.com/karlicoss/rexport">reddit data exporter</a> and <samp class="inline">reddit.py</samp> every night automatically (via cron).</li>
-<li>when I feel like reading some Reddit, I open <samp class="inline">reddit.org</samp> and jump to new items at the end of file (I can quickly tell them from old ones since they don't have a priority), and go through them</li>
-<li>some things just get refiled immediately. E.g. if it's a recipe it would go to <samp class="inline">food.org</samp>, if it's something C++ related, it would go to <samp class="inline">cpp.org</samp>, etc.</li>
-<li>what isn't refiled, I mark with a priority</li>
-<li>when everything is prioritized, I select the whole file, call <code class="inline">org-sort-entries</code> and sort by priorities.</li>
-<li><p>
-now that everything looks a bit more manageable, I can action on the highest priority items (<code class="inline">#A</code> and <code class="inline">#B</code>) properly.
-</p>
-<p>
-Some I just read and archive.
-</p>
-<p>
-Some give me thoughts or ideas which I can add under the corresponding org-mode heading.
-</p>
-<p>
-Some things just require actually acting on them (e.g. new library release), so I can mark it as TODO and schedule so it shows up in my agenda.
-</p></li>
-<li>also, once in a while I'll look through items with lower (<code class="inline">#C</code> / <code class="inline">#D</code>) priorities and bump them or archive if they become irrelevant.</li>
-</ul>
-<p>
-Needless to say when I'm searching through all of my Org-mode files, items saved on Reddit pop up as well.
-</p>
-<p>
-The only downside of my particular implementation is that items are not unmarked as 'Saved' on Reddit.
-One could probably implement this with API call on archiving/marking item as done or something, I just didn't find it too big of a deal for me.
-</p>
-<p>
-Here's how it looks for me (with content collapsed):
-</p>
-<div class="org-src-container">
-<pre class="src src-org">
-<span class="org-org-level-1">* </span><span class="org-org-todo">TODO</span><span class="org-org-level-1"> </span><span class="org-org-priority">[#B]</span><span class="org-org-level-1"> </span><span class="org-org-date">[2019-05-18 Sat 19:00]</span><span class="org-org-level-1"> </span><span class="org-org-link"><a href="https://reddit.com/r/spacemacs/comments/bnlgkv/refactoring_in_spacemacs_using_iedit_and_helmedit/">Refactoring in Spacemacs using iedit and helm-edit</a></span><span class="org-org-level-1"> /r/spacemacs</span>
-...
-<span class="org-org-level-1">* </span><span class="org-org-todo">TODO</span><span class="org-org-level-1"> </span><span class="org-org-priority">[#B]</span><span class="org-org-level-1"> </span><span class="org-org-date">[2019-09-02 Mon 12:41]</span><span class="org-org-level-1"> </span><span class="org-org-link"><a href="https://reddit.com/r/scifi/comments/cvy78o/searching_stories_with_super_intelligence_in/eyldzyb/">Searching stories with super intelligence in humans theme</a></span><span class="org-org-level-1"> /r/scifi </span><span class="org-org-level-1"><span class="org-org-tag">:read:</span></span>
-...
-<span class="org-org-level-1">* </span><span class="org-org-priority">[#C]</span><span class="org-org-level-1"> </span><span class="org-org-date">[2019-06-21 Fri 06:50]</span><span class="org-org-level-1"> </span><span class="org-org-link"><a href="https://reddit.com/r/AskMen/comments/c2vw9p/how_do_relationship_fights_affect_men/ermvj9a/">How do relationship fights affect men?</a></span><span class="org-org-level-1"> /r/AskMen </span>
-...
-<span class="org-org-level-1">* </span><span class="org-org-priority">[#D]</span><span class="org-org-level-1"> </span><span class="org-org-date">[2019-01-15 Tue 08:30]</span><span class="org-org-level-1"> </span><span class="org-org-link"><a href="https://reddit.com/r/bodyweightfitness/comments/afutqw/mindmuscle_connection_whats_the_evidence/">Mind-Muscle Connection: What's the evidence?</a></span><span class="org-org-level-1"> /r/bodyweightfitness </span>
-...
-<span class="org-org-level-1">* </span><span class="org-org-date">[2019-09-14 Sat 09:00]</span><span class="org-org-level-1"> </span><span class="org-org-link"><a href="https://reddit.com/r/biology/comments/d1u5je/kinesin_a_motor_protein_walks_different_proteins/">Kinesin, a motor protein, "walks" different proteins from one place to another</a></span><span class="org-org-level-1"> /r/biology</span>
-...
-<span class="org-org-level-1">* </span><span class="org-org-date">[2019-09-24 Tue 19:10]</span><span class="org-org-level-1"> </span><span class="org-org-link"><a href="https://reddit.com/r/Biohackers/comments/d8ky2y/why_you_should_not_blindly_trust_nutrition/">Why you should not blindly trust nutrition experts but instead self experiment.</a></span><span class="org-org-level-1"> /r/Biohackers</span>
-...
-<span class="org-org-level-1">* </span><span class="org-org-date">[2019-10-03 Thu 21:51]</span><span class="org-org-level-1"> </span><span class="org-org-link"><a href="https://reddit.com/r/decentralization/comments/dcxtzm/is_there_an_opensource_decentralized_search_engine/">Is there an opensource decentralized search engine?</a></span><span class="org-org-level-1"> /r/decentralization</span>
-
-
-</pre>
-</div>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000001">
-<h2 id="telegram2org"><a class="headerlink" href="#telegram2org">¶</a><span class="section-number-2">2</span> <a href="https://github.com/karlicoss/telegram2org">telegram2org</a>: one tap to create tasks from Telegram messages</h2>
-<div class="outline-text-2" id="text-telegram2org">
-<p>
-</p>
-<p>
-Imagine a friend asked you for something, or sent you a link or a video, but you don't have time to process that right at the moment.
-</p>
-<p>
-Normally I'd share their message to my TODO list app so I can process it later.
-However, official Android app for Telegram doesn't have sharing capabilities.
-</p>
-<p>
-This is a tool that allows you to overcome this restriction by forwarding messages you want to
-remember about to a special private channel. Then it grabs the messages from this private channel and creates TODO items from it!
-</p>
-<p>
-That way you keep your focus while not being mean ignoring your friends' messages.
-</p>
-<p>
-I keep tags for the people I communicate most with (creepy I know :P ), so it also maps select people's names to tags,
-so I can quickly have an overview of things to discuss or reply to.
-</p>
-<p>
-It would be fairly straightforward to modify the code for other instant messengers, although there are some potential issues.
-For instance, Whatsapp  doesn't have an API. You can potentially web scrape it or reverse engineer the database on your phone to get messages,
-but I'm personally not motivated enough since I'm not using them much. Unless many people lack this, so let me know!
-</p>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000002">
-<h2 id="hyp2org"><a class="headerlink" href="#hyp2org">¶</a><span class="section-number-2">3</span> <a href="https://github.com/karlicoss/orger/blob/master/modules/hyp2org.py">hyp2org</a>: create tasks from Hypothesis highlights</h2>
-<div class="outline-text-2" id="text-hyp2org">
-<p>
-</p>
-<p>
-Sometimes when I'm annotating using <a href="https://hypothes.is">Hypothesis</a>, I want to think more
-about specific highlights, google more about them later or generally act on them somehow.
-</p>
-<p>
-Normally you'd have to copy the URL, highlighted text and create a task from it.
-</p>
-<p>
-This script does that automatically, only thing that you have to do is to mark it with a tag or type 'todo'
-in the annotation text.
-</p>
-<p>
-Items get scheduled and appear on my org-mode agenda,
-so I can un/reschedule them if they don't require immediate attention.
-</p>
-<p>
-Modules for <a href="https://github.com/karlicoss/orger/blob/master/modules/kobo2org.py">Kobo</a>
-and <a href="https://github.com/karlicoss/orger/blob/master/modules/ip2org.py">Instapaper</a>
-work in the pretty much same way.
-</p>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000003">
-<h2 id="krill"><a class="headerlink" href="#krill">¶</a><span class="section-number-2">4</span> <a href="https://github.com/karlicoss/orger/blob/master/modules/krill.py">krill</a>: learn new words from your Kobo books</h2>
-<div class="outline-text-2" id="text-krill">
-<p>
-</p>
-<p>
-Automatically import stuff from my Kobo backups into org-mode for further spaced repetition (via org-drill in my case).
-Mainly learning vocabulary with it.
-</p>
-<p>
-It uses <a href="https://github.com/karlicoss/kobuddy">kobuddy</a> to extract data from Kobo exports.
-</p>
-<p>
-The name stands for K[oboD]rill.
-</p>
-<p>
-I'm using <a href="https://orgmode.org/worg/org-contrib/org-drill.html">org-drill</a> for Spaced repetition, but you could potentially use same principle to 
-import cards in Anki or any other spaced repetition engine you like.
-</p>
-<p>
-Here's how it looks for me:
-</p>
-<div class="org-src-container">
-<pre class="src src-org"><span class="org-org-level-1">* </span><span class="org-org-todo">TODO</span><span class="org-org-level-1"> yesterday [ Gestern ]                                          </span><span class="org-org-level-1"><span class="org-org-tag">:drill:</span></span>
-  <span class="org-org-special-keyword">SCHEDULED:</span> <span class="org-org-date">&lt;2019-10-17 Thu&gt;</span>
-<span class="org-org-drawer">:PROPERTIES:</span>
-<span class="org-org-special-keyword">:CREATED:</span>  <span class="org-org-date">[2018-11-16 Fri 20:30]</span>
-<span class="org-org-special-keyword">:ID:</span>       <span class="org-org-property-value">986e4686-75ec-40a9-9827-f9458bcb2811</span>
-<span class="org-org-special-keyword">:DRILL_LAST_INTERVAL:</span> <span class="org-org-property-value">200.7488</span>
-<span class="org-org-special-keyword">:DRILL_REPEATS_SINCE_FAIL:</span> <span class="org-org-property-value">6</span>
-<span class="org-org-special-keyword">:DRILL_TOTAL_REPEATS:</span> <span class="org-org-property-value">5</span>
-<span class="org-org-special-keyword">:DRILL_FAILURE_COUNT:</span> <span class="org-org-property-value">0</span>
-<span class="org-org-special-keyword">:DRILL_AVERAGE_QUALITY:</span> <span class="org-org-property-value">4.6</span>
-<span class="org-org-special-keyword">:DRILL_EASE:</span> <span class="org-org-property-value">2.8</span>
-<span class="org-org-special-keyword">:DRILL_LAST_QUALITY:</span> <span class="org-org-property-value">4</span>
-<span class="org-org-special-keyword">:DRILL_LAST_REVIEWED:</span> <span class="org-org-date">[2019-03-30 Sat 21:27]</span>
-<span class="org-org-drawer">:END:</span>
-from Learn German with Stories: Café in Berlin - 10 short stories for beginners
-
-<span class="org-org-level-1">* </span><span class="org-org-todo">TODO</span><span class="org-org-level-1"> disquieting                                                    </span><span class="org-org-level-1"><span class="org-org-tag">:drill:</span></span>
-  <span class="org-org-special-keyword">SCHEDULED:</span> <span class="org-org-date">&lt;2019-09-29 Sun&gt;</span>
-<span class="org-org-drawer">:PROPERTIES:</span>
-<span class="org-org-special-keyword">:CREATED:</span> <span class="org-org-date">[2019-08-27 Tue 20:12]</span>
-<span class="org-org-special-keyword">:ID:</span>       <span class="org-org-property-value">28652353-c905-46b1-b4a5-bc2daf71125d</span>
-<span class="org-org-special-keyword">:DRILL_LAST_INTERVAL:</span> <span class="org-org-property-value">9.2418</span>
-<span class="org-org-special-keyword">:DRILL_REPEATS_SINCE_FAIL:</span> <span class="org-org-property-value">3</span>
-<span class="org-org-special-keyword">:DRILL_TOTAL_REPEATS:</span> <span class="org-org-property-value">2</span>
-<span class="org-org-special-keyword">:DRILL_FAILURE_COUNT:</span> <span class="org-org-property-value">0</span>
-<span class="org-org-special-keyword">:DRILL_AVERAGE_QUALITY:</span> <span class="org-org-property-value">3.5</span>
-<span class="org-org-special-keyword">:DRILL_EASE:</span> <span class="org-org-property-value">2.36</span>
-<span class="org-org-special-keyword">:DRILL_LAST_QUALITY:</span> <span class="org-org-property-value">4</span>
-<span class="org-org-special-keyword">:DRILL_LAST_REVIEWED:</span> <span class="org-org-date">[2019-09-20 Fri 00:17]</span>
-<span class="org-org-drawer">:END:</span>
- from Worm
-
-<span class="org-org-level-1">* </span><span class="org-org-todo">TODO</span><span class="org-org-level-1"> Plötzlich                                                      </span><span class="org-org-level-1"><span class="org-org-tag">:drill:</span></span>
-  <span class="org-org-special-keyword">SCHEDULED:</span> <span class="org-org-date">&lt;2019-10-05 Sat&gt;</span>
-<span class="org-org-drawer">:PROPERTIES:</span>
-<span class="org-org-special-keyword">:CREATED:</span> <span class="org-org-date">[2019-10-04 Fri 14:19]</span>
-<span class="org-org-drawer">:END:</span>
- from Learn German with Stories: Café in Berlin - 10 short stories for beginners
-</pre>
-</div>
-<p>
-Last item was just appended after I connected my reader to computer, whereas two other have been there for a while.
-</p>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000004">
-<h2 id="org0000004"><a class="headerlink" href="#org0000004">¶</a><span class="section-number-2">5</span> ---</h2>
-<div class="outline-text-2" id="text-5">
-<p>
-Let me know what you think! I'm open to all feedback.
-</p>
-</div>
-</div>
-
-    </section>
-
-    
-    <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#orgmode">#orgmode</a> <a class="post-tag" href="./tags.html#productivity">#productivity</a> <a class="post-tag" href="./tags.html#orger">#orger</a></div>
-        <!-- TODO post-date? -->
-        <div class="date">05 October 2019</div>
-    </section>
-    
-
-    
-    <br>
-    <div>Discussion:</div>
-    <ul>
-    
-        <li><a href="https://www.reddit.com/r/orgmode/comments/dgdej4/orger_part_ii_reading_reddit_via_orgmode_quick">/r/orgmode</a></li>
-    
-    </ul>
-    
-
-    <section class="comments">
-    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
-</script>
-
-<section id="isso-thread" data-isso-id="isso_orger_todos"></section>
-
-    </section>
-
-</article>
-
-        </main>
-
-        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
-        
-
-        <!-- TODO make semantic -->
-        <footer>
-            <span style="float:left">
-            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
-            ·
-            <a href="https://github.com/karlicoss">💻 me @github</a>
-            </span>
-
-            <a href="http://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>
-            
-            
-        </footer>
-    </body>
-</html>
-]]></description>
-    <pubDate>Sat, 05 Oct 2019 00:00:00 UT</pubDate>
-    <guid>https://beepb00p.xyz/orger-todos.html</guid>
-    <dc:creator>karlicoss</dc:creator>
-</item>
-<item>
-    <title>Orger: plaintext reflection of your digital self</title>
-    <link>https://beepb00p.xyz/orger.html</link>
-    <description><![CDATA[<!doctype html>
-<html lang="en" prefix="og: http://ogp.me/ns#">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!-- Icon made by Twitter -->
-        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
-        <link rel="icon" href="./robot-face.png">
-        <link rel="apple-touch-icon" href="./robot-face.png">
-
-        <meta name="generator" content="hakyll">
-        <meta name="language" content="English">
-        
-        <meta name="keywords" content="pkm orgmode orger">
-        
-        <!-- TODO concat with keywords tags; also need to make comma separated? -->
-
-        <title>Orger: plaintext reflection of your digital self | Mildly entertainingᵝ</title>
-
-        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="./css/default.css?v=3" />
-        <!-- TODO make conditional?? -->
-        <link rel="stylesheet" href="./css/posts-list.css" /> 
-        <link rel="stylesheet" href="./css/links.css?v=4" />
-
-        
-
-        <link rel="canonical" href="https://beepb00p.xyz/orger.html" />
-
-        <!-- can test it with https://telegram.me/webpagebot -->
-        <!-- or https://developers.facebook.com/tools/debug -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://beepb00p.xyz/orger.html" /> <!-- TODO base? -->
-        <meta property="og:title" content="Orger: plaintext reflection of your digital self | beepb00p" />
-        <meta property="og:description" content="Mirror your personal data as org-mode for instant access and search" />
-        <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
-        <!-- ugh. Facebook really wants jpg? -->
-        <!-- also Facebook displays it with black background, but whatever, fuck it. -->
-        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
-
-    </head>
-    <body>
-        <!-- TODO make semantic -->
-        <header>
-            <nav>
-                <span class="nav-left">
-                    <a class="fat" href="./">Home</a>
-                    <!-- TODO eh, not sure if this symbol is good for that... -->
-                    ·
-                    <a class="fat" href="./ideas.html">Ideas</a>
-                    ·
-                    <a class="fat" href="./notes.html">Notes</a>
-                    ·
-                    <a class="fat" href="./tags.html">Tags</a>
-                </span>
-                <span class="nav-right">
-                    <a class="fat" href="./feed.html">Feed</a>
-                    ·
-                    <a class="fat" href="./site.html">Site</a>
-                    ·
-                    <a class="fat" href="./me.html">Me</a>
-                </span>
-            </nav>
-        </header>
-
-        <main>
-            
-
-<!-- <link rel="stylesheet" href="/css/org.css" /> -->
-
-<link rel="stylesheet" href="./css/htmlize.css" />
-<link rel="stylesheet" href="./css/org-default.css" />
-
-<link rel="stylesheet" href="./css/org-extra.css?v=3" />
-
-
-
-<article>
-    
-    <section class="post-title">
-    <h1>Orger: plaintext reflection of your digital self</h1>
-    <div class="summary">Mirror your personal data as org-mode for instant access and search</h2>
-    </section>
-    <!-- are sections appropriate for that? -->
-
-    <section class="content">
-    <div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#intro">1. Intro</a></li>
-<li><a href="#what">2. What Orger does</a></li>
-<li><a href="#demo">3. Demo: displaying Pocket data via Orger</a></li>
-<li><a href="#examples">4. More examples</a>
-<ul>
-<li><a href="#org0000003">instapaper</a></li>
-<li><a href="#org0000004">hypothesis</a></li>
-<li><a href="#org0000005">kobo</a></li>
-<li><a href="#org0000006">pinboard</a></li>
-<li><a href="#org0000007">pdfs</a></li>
-<li><a href="#org0000008">twitter</a></li>
-<li><a href="#org0000009">rtm2org</a></li>
-<li><a href="#org000000a">telegram2org</a></li>
-<li><a href="#org000000b">reddit</a></li>
-</ul>
-</li>
-<li><a href="#why_hard">5. It does sound very simple. Does that really deserve a post?</a></li>
-<li><a href="#org000000e">6. What makes Orger good?</a></li>
-<li><a href="#using">7. Using Orger views</a>
-<ul>
-<li><a href="#usecases">Typical use patterns</a></li>
-</ul>
-</li>
-<li><a href="#improvements">8. Potential improvements</a>
-<ul>
-<li><a href="#org0000011"><span class="todo TODO">TODO</span> more frequent, ideally realtime updates to views</a></li>
-<li><a href="#org0000012"><span class="todo TODO">TODO</span> alternative export formats</a></li>
-<li><a href="#org0000013"><span class="todo TODO">TODO</span> two-way data flow</a></li>
-<li><a href="#org0000014"><span class="todo TODO">TODO</span> potential for race condition</a></li>
-</ul>
-</li>
-<li><a href="#similar">9. Similar projects</a></li>
-<li><a href="#org0000017">10. ----</a></li>
-</ul>
-</div>
-</div>
-<p>
-TLDR: I'll write about <a href="https://github.com/karlicoss/orger">orger</a>, a tool I'm using to convert my personal data into easily readable and searchable org-mode views.
-I'll present some examples and use cases, that will hopefully be helpful to you as well even if you are not sold by using my tool.
-</p>
-<p>
-There is also <a href="orger-todos.html">second part</a> where I'm explaining how it can be used to process Reddit, create quick tasks from Telegram messages and help with spaced repetition.
-If you're impatient, you can jump straight to a <a class="link-down" href="#demo">demo</a>.
-</p>
-<div class="outline-2" id="outline-container-org0000000">
-<h2 id="intro"><a class="headerlink" href="#intro">¶</a><span class="section-number-2">1</span> Intro</h2>
-<div class="outline-text-2" id="text-intro">
-<div class="noop" id="for_exports_post">
-<p>
-</p>
-<p>
-I consume lots of digital content (books, articles, Reddit, Youtube, Twitter, etc.) and most of it I find somewhat useful and insightful.
-I want to use that knowledge later, act and build on it. But there's an obstacle: the human brain.
-</p>
-<p>
-It would be cool to be capable of always remembering and instantly recalling information you've interacted with, metadata and your thoughts on it.
-Until we get augmented though, there are two options: the first is just to suck it up and live with it. You might have guessed this is not an option I'm comfortable with.
-</p>
-<div><span class="before-aside">
-The second option is compensating for your sloppy meaty memory and having information you've read at hand and a quick way of searching over it. 
-
-</span><aside class="sidenote">see <a class="post-tag" href="./tags.html#extendedmind">#extendedmind</a></aside></div>
-<p>
-<a id="motivation"></a>
-That sounds simple enough but as with many simple things, in practice you run into obstacles. 
-I'll give some I've personally been overcoming as examples:
-</p>
-<ul class="org-ul">
-<li>convenience of access, e.g.:
-<ul class="org-ul">
-<li>to access highlights and notes on my Kobo ebook I need to actually <b>reach my reader and tap through e-ink</b> touch screen. Not much fun!</li>
-<li><div><span class="before-aside">if you want to search over annotations in your PDF collections… well good luck, I'm just not aware of such a tool. It's actually way worse: many PDF viewers <b>wouldn't even let you search in highlights</b> within the file you're currently viewing. </span><aside class="sidenote">see PDF readers <a href="./annotating.html#pdfs">overview</a></aside></div></li>
-<li>there is no easy way to quickly access all of your twitter favorites, people suggest using hacks like <a href="https://webapps.stackexchange.com/a/131374/68104">autoscroll extension</a>.</li>
-</ul></li>
-<li>searching data, e.g.:
-<ul class="org-ul">
-<li>search function often just isn't available at all, e.g. on Instapaper, you can't restrict search to highlights. If it is available, it's <b>almost never incremental</b>.</li>
-<li>builtin browser search (<code class="inline">Ctrl-F</code>) sucks for the most part: it's not very easy to navigate as you don't get previews and you have to look through every match</li>
-<li>sometimes you vaguely recall reading about something or seeing a link, but <b>don't remember where exactly</b>. Was it on stackoverflow? Or in some github issue? Or in a conversation with friend?</li>
-</ul></li>
-<li>data ownership and liberation, e.g.
-<ul class="org-ul">
-<li><p>
-what happens if data disappears or service is down (temporary/permanently) or banned by your government?
-</p>
-<p>
-You may think you live in a civilized country and that would never affect you. Well, <a href="https://www.theverge.com/2018/5/23/17387146/instapaper-gdpr-europe-access-shut-down-privacy-changes">in 2018</a>, Instapaper was unavailable in Europe for several months (!) due to missing the GDPR deadline.
-</p></li>
-<li><div><span class="before-aside">99% of services <b>don't have support for offline mode</b>. This may be just a small inconvenience if you're on a train or something, but there is more to it.
-What if some sort of apocalypse happens and you lose all access to data? 
-That depends on your paranoia level of course, and apocalypse is bad enough as it is, but my take on it is that at least I'd have my data :) </span><aside class="sidenote">see <a class="post-tag" href="./tags.html#offline">#offline</a></aside></div></li>
-<li>if you delete a book on Kobo, not only you can't access its annotations anymore, but they seem to get <b>wiped</b> from the database.</li>
-</ul></li>
-</ul>
-</div>
-<p>
-Thinking about that and tinkering helped me understand what I want: some sort of <b><b>search engine</b></b>, over my <b><b>personal data</b></b>, with <b><b>uniform</b></b> and <b><b>always available</b></b> way of accessing it.
-</p>
-<p>
-So, I present you a system that I've developed and that solves all my problems™: <a href="https://github.com/karlicoss/orger">orger</a>.
-</p>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000001">
-<h2 id="what"><a class="headerlink" href="#what">¶</a><span class="section-number-2">2</span> What Orger does</h2>
-<div class="outline-text-2" id="text-what">
-<p>
-It's really so quite trivial that it's almost stupid. Orger provides a simple python API to render any data as an Org-mode file. It's easier to give an example:
-</p>
-<div class="org-src-container">
-<pre class="src src-python"><span class="org-keyword">from</span> orger <span class="org-keyword">import</span> StaticView
-<span class="org-keyword">from</span> orger.inorganic <span class="org-keyword">import</span> node, link
-<span class="org-keyword">from</span> orger.common <span class="org-keyword">import</span> dt_heading
-
-<span class="org-keyword">import</span> my.github_data
-
-<span class="org-keyword">class</span> <span class="org-type">Github</span>(StaticView):
-  <span class="org-keyword">def</span> <span class="org-function-name">get_items</span>(<span class="org-keyword">self</span>):
-    <span class="org-keyword">for</span> event <span class="org-keyword">in</span> my.github_data.get_events():
-      <span class="org-keyword">yield</span> node(dt_heading(event.dt, event.summary))
-
-Github.main()
-</pre>
-</div>
-<p>
-That ten line program results in a file <samp class="inline">Github.org</samp>:
-</p>
-<div class="org-src-container">
-<pre class="src src-org"><span class="org-comment"># AUTOGENERATED BY /code/orger/github.py</span>
-
-<span class="org-org-level-1">* </span><span class="org-org-date">[2016-10-30 Sun 10:29]</span><span class="org-org-level-1"> opened PR Add </span><span class="org-org-level-1"><span class="org-underline">__enter__</span></span><span class="org-org-level-1"> and </span><span class="org-org-level-1"><span class="org-underline">__exit__</span></span><span class="org-org-level-1"> to Pool stub</span>
-<span class="org-org-level-1">* </span><span class="org-org-date">[2016-11-10 Thu 09:29]</span><span class="org-org-level-1"> opened PR Update gradle to 2.14.1 and gradle plugin to 2.1.1</span>
-<span class="org-org-level-1">* </span><span class="org-org-date">[2016-11-16 Wed 20:20]</span><span class="org-org-level-1"> commented on issue Linker error makes it impossible to use a stack-provided ghc</span>
-<span class="org-org-level-1">* </span><span class="org-org-date">[2016-12-30 Fri 11:57]</span><span class="org-org-level-1"> commented on issue Fix performance in the rare case of hashCode evaluating to zero </span>
-<span class="org-org-level-1">* </span><span class="org-org-date">[2019-09-21 Sat 16:51]</span><span class="org-org-level-1"> commented on issue Tags containing letters outside of a-zA-Z</span>
-....
-</pre>
-</div>
-<p>
-Even with event summaries only it can already be very useful to search over. What you can potentially do really depends on your imagination and needs! You can also add:
-</p>
-<ul class="org-ul">
-<li>links</li>
-<li>tags</li>
-<li>timestamps</li>
-<li>properties</li>
-<li>child nodes</li>
-</ul>
-<p>
-See <a class="link-down" href="#examples">'Examples'</a> section for more.
-</p>
-<p>
-So as you can see orger itself is a really not sophisticated tool, at least until you spend time trying to reimplement the same.
-As always the devil is in the details (look at that cheeky <code class="inline">my.github_data</code> import), which I'll explain <a class="link-down" href="#data_sources">further</a>.
-</p>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000002">
-<h2 id="demo"><a class="headerlink" href="#demo">¶</a><span class="section-number-2">3</span> Demo: displaying Pocket data via Orger</h2>
-<div class="outline-text-2" id="text-demo">
-<p>
-I've documented one of modules, <a href="https://github.com/karlicoss/orger/blob/master/modules/pocket_demo.py"><samp class="inline">pocket_demo</samp></a> so you could get the sense of using Orger.
-</p>
-<details><summary>Click to view the code</summary>
-<div class="org-src-container">
-<pre class="src src-python"><span class="org-comment-delimiter">#</span><span class="org-comment">!/usr/bin/env python3</span>
-<span class="org-doc">"""</span>
-<span class="org-doc">Demo Orger adapter for Pocket data. For documentation purposes, so please modify pocket.py if you want to contribute.</span>
-<span class="org-doc">"""</span>
-
-<span class="org-doc">"""</span>
-<span class="org-doc">First we define some abstractions for Pocket entities (articles and highlights).</span>
-
-<span class="org-doc">While it's not that necessary and for one script you can get away with using json directly,</span>
-<span class="org-doc"> it does help to separate parsing and rendering, allows you to reuse parsing for other projects</span>
-<span class="org-doc"> and generally makes everything clean.</span>
-
-<span class="org-doc">Also see https://github.com/karlicoss/my package for some inspiration.</span>
-<span class="org-doc">"""</span>
-
-
-<span class="org-keyword">from</span> datetime <span class="org-keyword">import</span> datetime
-<span class="org-keyword">from</span> pathlib <span class="org-keyword">import</span> Path
-<span class="org-keyword">from</span> typing <span class="org-keyword">import</span> NamedTuple, Sequence, Any
-
-<span class="org-keyword">class</span> <span class="org-type">Highlight</span>(NamedTuple):
-    <span class="org-doc">"""</span>
-<span class="org-doc">    Abstract representation of Pocket highlight</span>
-<span class="org-doc">    """</span>
-    json: Any
-
-    <span class="org-type">@property</span>
-    <span class="org-keyword">def</span> <span class="org-function-name">text</span>(<span class="org-keyword">self</span>) -&gt; <span class="org-builtin">str</span>:
-        <span class="org-keyword">return</span> <span class="org-keyword">self</span>.json[<span class="org-string">'quote'</span>]
-
-    <span class="org-type">@property</span>
-    <span class="org-keyword">def</span> <span class="org-function-name">created</span>(<span class="org-keyword">self</span>) -&gt; datetime:
-        <span class="org-keyword">return</span> datetime.strptime(<span class="org-keyword">self</span>.json[<span class="org-string">'created_at'</span>], <span class="org-string">'%Y-%m-%d %H:%M:%S'</span>)
-
-
-<span class="org-keyword">class</span> <span class="org-type">Article</span>(NamedTuple):
-    <span class="org-doc">"""</span>
-<span class="org-doc">    Abstract representation of Pocket saved page</span>
-<span class="org-doc">    """</span>
-    json: Any
-
-    <span class="org-type">@property</span>
-    <span class="org-keyword">def</span> <span class="org-function-name">url</span>(<span class="org-keyword">self</span>) -&gt; <span class="org-builtin">str</span>:
-        <span class="org-keyword">return</span> <span class="org-keyword">self</span>.json[<span class="org-string">'given_url'</span>]
-
-    <span class="org-type">@property</span>
-    <span class="org-keyword">def</span> <span class="org-function-name">title</span>(<span class="org-keyword">self</span>) -&gt; <span class="org-builtin">str</span>:
-        <span class="org-keyword">return</span> <span class="org-keyword">self</span>.json[<span class="org-string">'given_title'</span>]
-
-    <span class="org-type">@property</span>
-    <span class="org-keyword">def</span> <span class="org-function-name">pocket_link</span>(<span class="org-keyword">self</span>) -&gt; <span class="org-builtin">str</span>:
-        <span class="org-keyword">return</span> <span class="org-string">'https://app.getpocket.com/read/'</span> + <span class="org-keyword">self</span>.json[<span class="org-string">'item_id'</span>]
-
-    <span class="org-type">@property</span>
-    <span class="org-keyword">def</span> <span class="org-function-name">added</span>(<span class="org-keyword">self</span>) -&gt; datetime:
-        <span class="org-keyword">return</span> datetime.fromtimestamp(<span class="org-builtin">int</span>(<span class="org-keyword">self</span>.json[<span class="org-string">'time_added'</span>]))
-
-    <span class="org-type">@property</span>
-    <span class="org-keyword">def</span> <span class="org-function-name">highlights</span>(<span class="org-keyword">self</span>) -&gt; Sequence[Highlight]:
-        <span class="org-variable-name">raw</span> = <span class="org-keyword">self</span>.json.get(<span class="org-string">'annotations'</span>, [])
-        <span class="org-keyword">return</span> <span class="org-builtin">list</span>(<span class="org-builtin">map</span>(Highlight, raw))
-
-    <span class="org-comment-delimiter"># </span><span class="org-comment">TODO add tags?</span>
-
-
-<span class="org-keyword">def</span> <span class="org-function-name">get_articles</span>(json_path: Path) -&gt; Sequence[Article]:
-    <span class="org-doc">"""</span>
-<span class="org-doc">    Parses Pocket export produced by https://github.com/karlicoss/pockexport</span>
-<span class="org-doc">    """</span>
-    <span class="org-keyword">import</span> json
-    <span class="org-variable-name">raw</span> = json.loads(json_path.read_text())[<span class="org-string">'list'</span>]
-    <span class="org-keyword">return</span> <span class="org-builtin">list</span>(<span class="org-builtin">map</span>(Article, raw.values()))
-
-<span class="org-string">"""</span>
-<span class="org-string">Ok, now we can get to implementing the adapter.</span>
-<span class="org-string">"""</span>
-<span class="org-keyword">from</span> orger <span class="org-keyword">import</span> StaticView
-<span class="org-string">"""</span>
-<span class="org-string">StaticView means it's meant to be read-only view onto data (as opposed to InteractiveView).</span>
-<span class="org-string">"""</span>
-<span class="org-keyword">from</span> orger.inorganic <span class="org-keyword">import</span> node, link
-<span class="org-keyword">from</span> orger.common <span class="org-keyword">import</span> dt_heading
-
-
-<span class="org-keyword">class</span> <span class="org-type">PocketView</span>(StaticView):
-    <span class="org-keyword">def</span> <span class="org-function-name">get_items</span>(<span class="org-keyword">self</span>):
-        <span class="org-doc">"""</span>
-<span class="org-doc">        get_items returns a sequence/iterator of nodes</span>
-<span class="org-doc">        see orger.inorganic.OrgNode to find out about attributes you can use</span>
-<span class="org-doc">        """</span>
-        <span class="org-variable-name">export_file</span> = <span class="org-keyword">self</span>.cmdline_args.<span class="org-builtin">file</span> <span class="org-comment-delimiter"># </span><span class="org-comment">see setup_parser</span>
-        <span class="org-keyword">for</span> a <span class="org-keyword">in</span> get_articles(export_file):
-            <span class="org-keyword">yield</span> node(
-                heading=dt_heading(
-                    a.added,
-                    link(title=a.title, url=a.url)
-                ),
-                body=link(title=<span class="org-string">'Pocket link'</span>, url=a.pocket_link), <span class="org-comment-delimiter"># </span><span class="org-comment">permalink is pretty convenient to jump straight into Pocket app</span>
-                children=[node( <span class="org-comment-delimiter"># </span><span class="org-comment">comments are displayed as org-mode child entries</span>
-                    heading=dt_heading(hl.created, hl.text)
-                ) <span class="org-keyword">for</span> hl <span class="org-keyword">in</span> a.highlights]
-            )
-
-
-<span class="org-keyword">def</span> <span class="org-function-name">setup_parser</span>(p):
-    <span class="org-doc">"""</span>
-<span class="org-doc">    Optional hooks for extra arguments if you need them in your adapter</span>
-<span class="org-doc">    """</span>
-    p.add_argument(<span class="org-string">'--file'</span>, <span class="org-builtin">type</span>=Path, <span class="org-builtin">help</span>=<span class="org-string">'JSON file from API export'</span>, required=<span class="org-constant">True</span>)
-
-
-<span class="org-keyword">if</span> <span class="org-builtin">__name__</span> == <span class="org-string">'__main__'</span>:
-    <span class="org-string">"""</span>
-<span class="org-string">    Usage example: ./pocket.py --file /backups/pocket/last-backup.json --to /data/orger/pocket.org</span>
-<span class="org-string">    """</span>
-    PocketView.main(setup_parser=setup_parser)
-
-<span class="org-string">"""</span>
-<span class="org-string">Example pocket.org output:</span>
-
-<span class="org-string"># AUTOGENERATED BY /L/zzz_syncthing/coding/orger/pocket.py</span>
-
-<span class="org-string">* [2018-07-09 Mon 10:56] [[https://www.gwern.net/Complexity-vs-AI][Complexity no Bar to AI - Gwern.net]]</span>
-<span class="org-string"> [[https://app.getpocket.com/read/1949330650][Pocket link]]</span>
-<span class="org-string">* [2016-10-21 Fri 14:42] [[https://johncarlosbaez.wordpress.com/2016/09/09/struggles-with-the-continuum-part-2/][Struggles with the Continuum (Part 2) | Azimuth]]</span>
-<span class="org-string"> [[https://app.getpocket.com/read/1407671000][Pocket link]]</span>
-<span class="org-string">* [2016-05-31 Tue 18:25] [[http://www.scottaaronson.com/blog/?p=2464][Bell inequality violation finally done right]]</span>
-<span class="org-string"> [[https://app.getpocket.com/read/1042711293][Pocket link]]</span>
-<span class="org-string">* [2016-05-31 Tue 18:24] [[https://packetzoom.com/blog/how-to-test-your-app-in-different-network-conditions.html][How to test your app in different network conditions -]]</span>
-<span class="org-string"> [[https://app.getpocket.com/read/1188624587][Pocket link]]</span>
-<span class="org-string">* [2016-05-31 Tue 18:24] [[http://www.schibsted.pl/2016/02/hood-okhttps-cache/][What's under the hood of the OkHttp's cache?]]</span>
-<span class="org-string"> [[https://app.getpocket.com/read/1191143185][Pocket link]]</span>
-<span class="org-string">* [2016-03-15 Tue 17:27] [[http://joeduffyblog.com/2016/02/07/the-error-model/][Joe Duffy - The Error Model]]</span>
-<span class="org-string"> [[https://app.getpocket.com/read/1187239791][Pocket link]]</span>
-<span class="org-string">** [2019-09-25 Wed 18:20] A bug is a kind of error the programmer didn’t expect. Inputs weren’t validated correctly, logic was written wrong, or any host of problems have arisen.</span>
-<span class="org-string">** [2019-09-25 Wed 18:19] First, throwing an exception is usually ridiculously expensive. This is almost always due to the gathering of a stack trace.</span>
-<span class="org-string">** [2019-09-25 Wed 18:20] In other words, an exception, as with error codes, is just a different kind of return value!</span>
-<span class="org-string">"""</span>
-</pre>
-</div>
-</details>
-<details><summary>Click to view the output</summary>
-<div id="content">
-<div class="outline-2" id="outline-container-org6385060">
-<h2 id="org6385060"><a class="headerlink" href="#org6385060">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2018-07-09 Mon 10:56] </span></span> <a href="https://www.gwern.net/Complexity-vs-AI">Complexity no Bar to AI - Gwern.net</a></h2>
-<div class="outline-text-2" id="text-1">
-<p>
-<a href="https://app.getpocket.com/read/1949330650">Pocket link</a>
-</p>
-</div>
-</div>
-<div class="outline-2" id="outline-container-orgf66ad5f">
-<h2 id="orgf66ad5f"><a class="headerlink" href="#orgf66ad5f">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2016-10-21 Fri 14:42] </span></span> <a href="https://johncarlosbaez.wordpress.com/2016/09/09/struggles-with-the-continuum-part-2/">Struggles with the Continuum (Part 2) | Azimuth</a></h2>
-<div class="outline-text-2" id="text-2">
-<p>
-<a href="https://app.getpocket.com/read/1407671000">Pocket link</a>
-</p>
-</div>
-</div>
-<div class="outline-2" id="outline-container-orga907d2c">
-<h2 id="orga907d2c"><a class="headerlink" href="#orga907d2c">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2016-05-31 Tue 18:25] </span></span> <a href="http://www.scottaaronson.com/blog/?p=2464">Bell inequality violation finally done right</a></h2>
-<div class="outline-text-2" id="text-3">
-<p>
-<a href="https://app.getpocket.com/read/1042711293">Pocket link</a>
-</p>
-</div>
-</div>
-<div class="outline-2" id="outline-container-orgaa7b53a">
-<h2 id="orgaa7b53a"><a class="headerlink" href="#orgaa7b53a">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2016-05-31 Tue 18:24] </span></span> <a href="https://packetzoom.com/blog/how-to-test-your-app-in-different-network-conditions.html">How to test your app in different network conditions -</a></h2>
-<div class="outline-text-2" id="text-4">
-<p>
-<a href="https://app.getpocket.com/read/1188624587">Pocket link</a>
-</p>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org01f1d77">
-<h2 id="org01f1d77"><a class="headerlink" href="#org01f1d77">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2016-05-31 Tue 18:24] </span></span> <a href="http://www.schibsted.pl/2016/02/hood-okhttps-cache/">What's under the hood of the OkHttp's cache?</a></h2>
-<div class="outline-text-2" id="text-5">
-<p>
-<a href="https://app.getpocket.com/read/1191143185">Pocket link</a>
-</p>
-</div>
-</div>
-<div class="outline-2" id="outline-container-orgdd27fdd">
-<h2 id="orgdd27fdd"><a class="headerlink" href="#orgdd27fdd">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2016-03-15 Tue 17:27] </span></span> <a href="http://joeduffyblog.com/2016/02/07/the-error-model/">Joe Duffy - The Error Model</a></h2>
-<div class="outline-text-2" id="text-6">
-<p>
-<a href="https://app.getpocket.com/read/1187239791">Pocket link</a>
-</p>
-</div>
-<div class="outline-3" id="outline-container-org92bca32">
-<h3 id="org92bca32"><a class="headerlink" href="#org92bca32">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2019-09-25 Wed 18:20] </span></span> A bug is a kind of error the programmer didn’t expect. Inputs weren’t validated correctly, logic was written wrong, or any host of problems have arisen.</h3>
-</div>
-<div class="outline-3" id="outline-container-org41ce646">
-<h3 id="org41ce646"><a class="headerlink" href="#org41ce646">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2019-09-25 Wed 18:19] </span></span> First, throwing an exception is usually ridiculously expensive. This is almost always due to the gathering of a stack trace.</h3>
-</div>
-<div class="outline-3" id="outline-container-orge27b04d">
-<h3 id="orge27b04d"><a class="headerlink" href="#orge27b04d">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2019-09-25 Wed 18:20] </span></span> In other words, an exception, as with error codes, is just a different kind of return value!</h3>
-</div>
-</div>
-</div>
-</details>
-<p>
-As you can see it's quite easy to search in your highlights and jump straight in the pocket app to the article you were reading.
-</p>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org000000c">
-<h2 id="examples"><a class="headerlink" href="#examples">¶</a><span class="section-number-2">4</span> More examples</h2>
-<div class="outline-text-2" id="text-examples">
-<p>
-I'm using more than ten different Orger modules, most of which I've moved into the <a href="https://github.com/karlicoss/orger/tree/master/modules">repository</a>. Here I'll describe some featured views I'm generating.
-</p>
-<p>
-To give you a heads up, if you read the code, you'll see bunch of imports like <code class="inline">from my.hypothesis import ...</code>. 
-I find it easier to move all data parsing in a separate <a href="https://github.com/karlicoss/my"><samp class="inline">my</samp></a> package, that deals with parsing and converting input data (typically, some JSON). 
-That makes everything less messy, separates data and rendering and lets me reuse abstract models in other tools. 
-Also that lets me access my data from any python code, which makes it way easier to use and interact with data.
-</p>
-<p>
-Some of these are still private so if you're interested in something not present in the github repo, please don't be shy and open an issue, so I can prioritize.
-</p>
-<p>
-Hopefully the code is readable enough and will give you some inspiration. 
-If you find something confusing or you write your own module and want to contribute, please feel free to open issue/PR!
-</p>
-</div>
-<div class="outline-3" id="outline-container-org0000003">
-<h3 id="org0000003"><a class="headerlink" href="#org0000003">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/instapaper.py">instapaper</a></h3>
-<div class="outline-text-3" id="text-org0000003">
-<p>
-Instapaper <a href="annotating.html#instapaper">doesn't have search</a> over annotations, so I implemented my own!
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000004">
-<h3 id="org0000004"><a class="headerlink" href="#org0000004">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/hypothesis.py">hypothesis</a></h3>
-<div class="outline-text-3" id="text-org0000004">
-<p>
-<a href="https://hypothes.is">Hypothesis</a> does have search, but it's still way quicker for me to invoke search in Emacs (takes literally less than a second) than do that in web browser.
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000005">
-<h3 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/kobo.py">kobo</a></h3>
-<div class="outline-text-3" id="text-org0000005">
-<p>
-Generates views for all highlights and comments along with book titles from my Kobo database export.
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000006">
-<h3 id="org0000006"><a class="headerlink" href="#org0000006">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/pinboard.py">pinboard</a></h3>
-<div class="outline-text-3" id="text-org0000006">
-<p>
-Searches over my Pinboard bookmarks.
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000007">
-<h3 id="org0000007"><a class="headerlink" href="#org0000007">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/pdfs.py">pdfs</a></h3>
-<div class="outline-text-3" id="text-org0000007">
-<p>
-Crawls my filesystem for PDF files and collects all highlights and comments in a single view.
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000008">
-<h3 id="org0000008"><a class="headerlink" href="#org0000008">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/twitter.py">twitter</a></h3>
-<div class="outline-text-3" id="text-org0000008">
-<p>
-It's got two modes
-</p>
-<ul class="org-ul">
-<li>First mode generates a view of everything I've ever tweeted, so I can search over it.</li>
-<li>Second mode generates a view of all older tweets from the previous years posted on the same day. I find it quite fascinating to read through it and observe how I've been changing over years.</li>
-</ul>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000009">
-<h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/rtm2org.py">rtm2org</a></h3>
-<div class="outline-text-3" id="text-org0000009">
-<p>
-I stopped using Remember The Milk a while ago, but there are still some tasks and notes I've left behind, which I'm slowly moving to org-mode or canceling over time.
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org000000a">
-<h3 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><a href="https://github.com/karlicoss/telegram2org">telegram2org</a></h3>
-<div class="outline-text-3" id="text-org000000a">
-<p>
-Lets me create todo tasks from Telegram messages in couple of taps (you can't use share function on them in Android).
-</p>
-<p>
-I write about it <a href="orger-todos.html#telegram2org">in the second part</a>.
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org000000b">
-<h3 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><a href="https://github.com/karlicoss/orger/blob/master/modules/reddit.py">reddit</a></h3>
-<div class="outline-text-3" id="text-org000000b">
-<p>
-Displays and lets me search my Reddit saved posts/comments.
-</p>
-<p>
-I write about it <a href="orger-todos.html#reddit">in the second part</a>.
-</p>
-</div>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org000000d">
-<h2 id="why_hard"><a class="headerlink" href="#why_hard">¶</a><span class="section-number-2">5</span> It does sound very simple. Does that really deserve a post?</h2>
-<div class="outline-text-2" id="text-why_hard">
-<p>
-Well yeah it really does seem simple… until you try to do it.
-</p>
-<ul class="org-ul">
-<li><p>
-emitting Org-mode
-</p>
-<p>
-While it's plaintext, and generating simple outlines is trivial, with more sophisticated inputs, there is some nasty business of escaping and sanitizing that has to be dealt with.
-I didn't manage to find any Python libraries capable of emitting Org-mode. Only project I knew of was <a href="https://github.com/bjonnh/PyOrgMode">PyOrgMode</a> but the author abandoned it.
-</p>
-<p>
-When it comes to generating 10+ views from different data sources, you <b>really</b> want to make sure it's as little effort and minimal boilerplate as it can possibly be.
-</p>
-<p>
-That's how <a href="https://github.com/karlicoss/inorganic">inorganic</a> library was born.
-</p></li>
-<li><p>
-<a id="data_sources"></a>accessing data sources and exposing it through Python interfaces
-</p>
-<p>
-This is probably where most of effort was spent. All sorts of stupid APIs, tedious parsing, you can imagine.
-</p>
-<p>
-I'll write separately about it sometime, for now you can see some code I prettified and shared in my github <a href="https://github.com/search?type=Repositories&amp;q=user%3Akarlicoss+++topic%3Aexport">'export'</a> and <a href="https://github.com/karlicoss/my">my</a> packages.
-I tried to make sure they are easy to use for other people and not specific to my use cases.
-</p></li>
-<li><p>
-keeping track of already processed items for <samp class="inline">Interactive</samp> views
-</p>
-<p>
-Because there is no feedback from org-mode files back to data sources, you want to keep track of items already added in the file, otherwise you're gonna have duplicates.
-</p>
-<p>
-It's not rocket science of course, but it is quite tedious. There is some additional logic that checks for lock files, makes sure writes are atomic, etc. You really don't want to implement it more than once.
-I figured it was worth extracting this 'pattern' in a separate <a href="https://github.com/karlicoss/orger/blob/master/src/orger/state.py">python module</a>.
-</p></li>
-</ul>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org000000e">
-<h2 id="org000000e"><a class="headerlink" href="#org000000e">¶</a><span class="section-number-2">6</span> What makes Orger good?</h2>
-<div class="outline-text-2" id="text-6">
-<ul class="org-ul">
-<li><p>
-it solves <a class="link-up" href="#motivation">my problems</a>! 
-</p>
-<p>
-I won't go long into Org-mode propaganda, there are people that do it better than me out there, but for me it's good because it's a decent balance between ease of use and ease of augmenting.
-</p>
-<ul class="org-ul">
-<li>it's easy to do unstructured (i.e. grep) or structured (i.e. tag search in emacs) search on any of your devices be it desktop or phone</li>
-<li>you can open it anywhere you can open a text file</li>
-<li>tasks as easy to create as any other Org outline so it can integrate with your todo list and agenda (see more in <a href="orger-todos.html">the second part</a>).</li>
-</ul></li>
-<li><p>
-it doesn't require Emacs
-</p>
-<p>
-If you're not willing to go full on Emacs, you can still benefit from this setup by using plaintext viewer and search tool of your choice.
-</p></li>
-<li><p>
-written in Python. I don't claim at all that Python is the best programming language, but that's the one I'm most productive on as well as many other people.
-</p>
-<p>
-Also the fact that it's a real programming language rather than some YAML config makes sure you can do anything and not restricted by stupid DSL.
-</p></li>
-<li>it's extremely easy to add new views — a matter of 10-20 lines of code.</li>
-<li>agnostic to what you feed in it – it could be offline data from your regular backups, or it could be fresh API data. Again, it's a real programming language, you can do literally anything.</li>
-</ul>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000010">
-<h2 id="using"><a class="headerlink" href="#using">¶</a><span class="section-number-2">7</span> Using Orger views</h2>
-<div class="outline-text-2" id="text-using">
-<p>
-Apart from, obviously, opening org mode file in your favorite text editor, one major strength of this system is being able to effortlessly search over them. 
-</p>
-<p>
-I'm writing extensively about my information search setup <a href="pkm-search.html#personal_information">here</a>. In summary:
-</p>
-<ul class="org-ul">
-<li>on my desktop I'm just using spacemacs or <a href="https://github.com/karlicoss/cloudmacs">cloudmacs</a> from web browser</li>
-<li>in Emacs, I'm usually just using <a href="https://github.com/syohex/emacs-helm-ag">helm-ag</a> with <a href="https://github.com/BurntSushi/ripgrep">ripgrep</a></li>
-<li>sometimes <a href="https://github.com/emacsorphanage/helm-swoop">helm-swoop</a> is very convenient</li>
-<li><a href="https://orgmode.org/manual/Matching-tags-and-properties.html"><samp class="inline">org-tags-view</samp></a> or <a href="https://github.com/alphapapa/org-ql#helm-org-ql"><samp class="inline">helm-org-ql</samp></a> for structured Org-mode search</li>
-<li>I've got hotkeys set up that invoke Emacs window with search prompt in a blink</li>
-</ul>
-<p>
-On my phone I'm using:
-</p>
-<ul class="org-ul">
-<li><a href="https://github.com/orgzly/orgzly-android">orglzy</a> for structured search/viewing Org-mode files</li>
-<li><a href="https://play.google.com/store/apps/details?id=com.docsearch.pro">Docsearch +</a> for</li>
-</ul>
-<p>
-You can also set up some proper indexing daemon like <a href="https://www.lesbonscomptes.com/recoll">recoll</a>.
-</p>
-</div>
-<div class="outline-3" id="outline-container-org000000f">
-<h3 id="usecases"><a class="headerlink" href="#usecases">¶</a>Typical use patterns</h3>
-<div class="outline-text-3" id="text-usecases">
-<p>
-I'll just give some of my use cases:
-</p>
-<ul class="org-ul">
-<li><p>
-While running tests for <a href="https://github.com/karlicoss/orgparse">orgparse</a> I started randomly getting  <samp class="inline">AssertionError: Cannot find component 'A@3' for 'orgparse.A@3</samp>. 
-</p>
-<p>
-I recall that I had same issue few month ago but don't quite remember what was the fix. 
-I press <samp class="inline">F1</samp> which invokes <code class="inline">helm-ag</code> for me and type 'cannot find component'.
-I instantly find a github <a href="https://github.com/python/mypy/issues/7281">issue</a> I opened in <samp class="inline">github.org</samp> and figure out what I need to do to work around the problem.
-</p></li>
-<li><p>
-While discussing special relativity with a friend, I recall watching some intuitive rationale for Maxwell's equations, but don't quite recall what was the video.
-</p>
-<p>
-I press <samp class="inline">F1</samp>, type 'Special relativity' and instantly get few results, in particular <a href="https://www.youtube.com/watch?v=1TKSfAkWWN0">this</a> awesome Veritasium video in <samp class="inline">youtube.org</samp>, which I was looking for.
-</p></li>
-<li><p>
-Recommending books
-</p>
-<p>
-I often struggle to recall the details why I liked a particular book, especially fiction.
-Having all annotations in my <samp class="inline">kobo.org</samp> file lets me quickly look up and skim through highlighted bits, so I can freshen up my memory.
-</p></li>
-</ul>
-</div>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000015">
-<h2 id="improvements"><a class="headerlink" href="#improvements">¶</a><span class="section-number-2">8</span> Potential improvements</h2>
-<div class="outline-text-2" id="text-improvements">
-</div>
-<div class="outline-3" id="outline-container-org0000011">
-<h3 id="org0000011"><a class="headerlink" href="#org0000011">¶</a><span class="todo TODO">TODO</span> more frequent, ideally realtime updates to views</h3>
-<div class="outline-text-3" id="text-org0000011">
-<p>
-If the API doesn't provide push-based interface (as most of them), ultimately it's a question of polling them carefully to avoid rate limiting penalties.
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000012">
-<h3 id="org0000012"><a class="headerlink" href="#org0000012">¶</a><span class="todo TODO">TODO</span> alternative export formats</h3>
-<div class="outline-text-3" id="text-org0000012">
-<p>
-There is nothing really about Org-mode that's specific to this system. For instance, there are markdown-based organizers out there and people could benefit from using Orger for them.
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000013">
-<h3 id="org0000013"><a class="headerlink" href="#org0000013">¶</a><span class="todo TODO">TODO</span> two-way data flow</h3>
-<div class="outline-text-3" id="text-org0000013">
-<p>
-It would be cool to implement feedback from emacs, e.g. editing Github comment when you edit the corresponding Orger item. But it requires considerably more effort and would only work within emacs.
-</p>
-</div>
-</div>
-<div class="outline-3" id="outline-container-org0000014">
-<h3 id="org0000014"><a class="headerlink" href="#org0000014">¶</a><span class="todo TODO">TODO</span> potential for race condition</h3>
-<div class="outline-text-3" id="text-org0000014">
-<p>
-Unfortunately there is a little space for race condition if Orger appends something while you're editing file. 
-Orger tries to detect emacs and vim swap/lock files, but it's if you're very unlucky or using different setup it's still possible.
-Hopefully your text editor warns you when the file had been overwritten while you were editing it (e.g. as emacs does).
-</p>
-<p>
-Also, I run Orger jobs at night (via cron) so it's quite unlikely to overlap with editing anything.
-</p>
-</div>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000016">
-<h2 id="similar"><a class="headerlink" href="#similar">¶</a><span class="section-number-2">9</span> Similar projects</h2>
-<div class="outline-text-2" id="text-similar">
-<ul class="org-ul">
-<li><p>
-<a href="https://github.com/novoid/Memacs">Memacs</a> by Karl Voit.
-</p>
-<p>
-I only discovered it after I released Orger, so frankly haven't got to try it yet! It looks very similar in terms of goals and seems we can cooperate on rendering parts at least. 
-</p>
-<p>
-One (as I see it) big advantage of my setup is that data providers are abstracted away in <code class="inline">my.</code> package, which makes everything more modular and resilient. However Memacs seems to be flexible as well, so it can be used with e.g. <code class="inline">my.</code> package as well.
-</p>
-<p>
-If someone compares Memacs and Orger please let me know, I'd be happy to link it! It would also be more objective than comparison by myself!
-</p></li>
-</ul>
-</div>
-</div>
-<div class="outline-2" id="outline-container-org0000017">
-<h2 id="org0000017"><a class="headerlink" href="#org0000017">¶</a><span class="section-number-2">10</span> ----</h2>
-<div class="outline-text-2" id="text-10">
-<p>
-I'd be interested in hearing your thoughts or feature requests.
-</p>
-<p>
-This post ended up longer that I expected so in the next part I will tell about more use cases, in particular how I'm using Orger to process Reddit.
-</p>
-</div>
-</div>
-
-    </section>
-
-    
-    <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#orgmode">#orgmode</a> <a class="post-tag" href="./tags.html#orger">#orger</a></div>
-        <!-- TODO post-date? -->
-        <div class="date">26 September 2019</div>
-    </section>
-    
-
-    
-    <br>
-    <div>Discussion:</div>
-    <ul>
-    
-        <li><a href="https://www.reddit.com/r/orgmode/comments/da1sf0/orger_plaintext_reflection_of_your_digital_self">/r/orgmode</a></li>
-    
-        <li><a href="https://lobste.rs/s/rr9pxd/orger_plaintext_reflection_your_digital">lobste.rs</a></li>
-    
-    </ul>
-    
-
-    <section class="comments">
-    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
-</script>
-
-<section id="isso-thread" data-isso-id="isso_orger"></section>
-
-    </section>
-
-</article>
-
-        </main>
-
-        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
-        
-
-        <!-- TODO make semantic -->
-        <footer>
-            <span style="float:left">
-            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
-            ·
-            <a href="https://github.com/karlicoss">💻 me @github</a>
-            </span>
-
-            <a href="http://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>
-            
-            
-        </footer>
-    </body>
-</html>
-]]></description>
-    <pubDate>Thu, 26 Sep 2019 00:00:00 UT</pubDate>
-    <guid>https://beepb00p.xyz/orger.html</guid>
     <dc:creator>karlicoss</dc:creator>
 </item>
 
