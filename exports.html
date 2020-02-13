@@ -111,17 +111,20 @@ You can treat this as a tutorial on liberating your data from any service. I'll 
 <li>how to reliably export your data from the cloud (and other silos), locally</li>
 <li>how to organize it for easy and fast access</li>
 <li>how to keep it up to date without constant maintenance</li>
-<li>how to make it modular, so other people could use only parts they find necessary and extend it</li>
+<li>how to make the infrastructure modular, so other people could use only parts they find necessary and extend it</li>
 </ul>
 <p>
-In hindsight, some things feel so obvious, that they hardly deserve mention, but I hope that would be helpful anyway!
+In hindsight, some things feel so obvious, they hardly deserve mention, but I hope they might be helpful anyway!
 </p>
 <p>
 I will be presenting and elaborating on different technical decisions, patterns and tricks I figured out while developing data mirrors by myself.
 </p>
 <p>
-I'm also <b>very open</b> to hear questions like "Why didn't you do Y instead of X?". 
-It's quite possible that I'm slipping extra complexity somewhere and I would be very happy to eliminate it.
+I will <a href="myinfra.html">link</a> to my <span style="color:darkgreen; font-weight: bolder">infrastructure map</span> throughout the post, hopefully you'll enjoy exploring it. Links will point at specific clusters of the map and highlight them, so hopefully it will be helpful in communicating the design decisions.
+</p>
+<p>
+I'm also <b>very open</b> for questions like "Why didn't you do Y instead of X?". 
+It's quite possible that I'm slipping in extra complexity somewhere and I would be very happy to eliminate it.
 </p>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
@@ -181,38 +184,39 @@ It's quite possible that I'm slipping extra complexity somewhere and I would be 
 <h2 id="design"><a class="headerlink" href="#design">¶</a><span class="section-number-2">1</span> Design principles</h2>
 <div class="outline-text-2" id="text-design">
 <p>
-So just as a reminder: the idea of the data mirror is having personal data <b>continuously/periodically synchronized</b> to the file system, and having <b>programmatic access</b> to it.
+Just as a reminder: the idea of the data mirror is having personal data <b>continuously/periodically synchronized</b> to the file system, and having <b>programmatic access</b> to it.
 </p>
 <p>
-That may be not that hard to achieve for one particular data source, but when you want to use <a href="my-data.html">ten or more</a>,
-with each of them having its own quirks it becomes quite painful to write and support.
-So there are many reasons to make it simple, generic, reliable and flexible at the same time, which isn't an easy goal.
+It might not be that hard to achieve for one particular data source, but when you want to use <a href="my-data.html">ten or more</a>,
+each of which with its own quirks it becomes quite painful to implement and maintain over time.
+While there are many reasons to make it simple, generic, reliable and flexible at the same time, it is not an easy goal.
 </p>
 <p>
-The main principles of my design are modularity and separation of concerns. 
+The main principles of my design are modularity, separation of concerns and keeping things as simple as possible.
 This allows making it easy to hook onto any layer to allow for different ways of using the data.
 </p>
 <div><span class="before-aside">
-Most of my pipelines for data liberation consist of the following layers:
+Most of my pipelines for data liberation consist of the following layers
 
 </span><aside class="sidenote">please don't be terrified of the word 'layer', typically these are just single scripts</aside></div>
 <ul class="org-ul">
 <li><p>
-<a class="link-down" href="#export_layer">export layer</a>: knows how to get your data
+<a class="link-down" href="#export_layer">export layer</a>: knows how to get your data from the silos
 </p>
 <p>
-The purpose of the export layer is to reliably fetch and serialize raw data on your disk. It roughly corresponds to the concept of the <a href="sad-infra.html#data_mirror">'data mirror app'</a>.
+The purpose of the export layer is to reliably fetch and serialize raw data on your disk. It roughly corresponds to the concept of the <a href="sad-infra.html#data_mirror">'data mirror app'</a>. 
 </p>
-<p>
+<div><span class="before-aside">
 Export scripts deal with the tedious business of authorization, pagination, being tolerant of network errors, etc.
-</p>
+
+</span><aside class="sidenote"><span style="color:darkgreen;font-weight:bold">map</span>: <a href="myinfra.html#exports">exports</a></aside></div>
 <p>
 Example: the export layer for <a href="https://github.com/karlicoss/endoexport/blob/e322b44ca1e6e5a779b4e7ea49564ba60d425bfe/export.py#L10-L15">Endomondo data</a> 
 is simply fetching exercise data from the API (using existing library bindings) and prints the JSON out. That's all it does.
 </p>
 <p>
 In theory, this layer is the only essential one; merely having raw data on your disk enables you to use other tools to explore and analyze your data.
-However, long term you'll find yourself doing the same manipulations all over again, and that's why we also need:
+However, long term you'll find yourself doing the same manipulations all over again, which is why we also need:
 </p></li>
 <li><p>
 <a class="link-down" href="#dal">data access layer (DAL)</a>: knows how to read your data
@@ -220,33 +224,35 @@ However, long term you'll find yourself doing the same manipulations all over ag
 <p>
 For brevity, I'll refer to it as <b>DAL</b> (Data Abstraction/Access Layer).
 </p>
-<p>
-The purpose of DAL is simply deserializing whatever the export script dumped and providing minimalistic data bindings.
+<div><span class="before-aside">
+The purpose of DAL is simply to deserialize whatever the export script dumped and provide minimalistic data bindings.
 It shouldn't worry about tokens, network errors, etc., once you have your data on the disk DAL should be able to handle it even when you're offline.
+
+</span><aside class="sidenote"><span style="color:darkgreen;font-weight:bold">map</span>: <a href="myinfra.html#dal">data access layer</a></aside></div>
+<p>
+It's not meant to be too high level; otherwise, you might lose the generality and restrict the bindings in such ways that they leave some users out.
 </p>
 <p>
-It's not meant to be too high level; otherwise, you might lose the generality and restring the bindings in such ways that they leave some users out.
-</p>
-<p>
-I think it's very reasonable to keep export code and DAL code close, as you don't want serializing and deserializing to go out of sync, and that's what I'm doing in my export tools.
+I think it's very reasonable to keep both the export and DAL code close as you don't want serializing and deserializing to go out of sync, so that's what I'm doing in my export tools.
 </p>
 <div class="noop" id="dal_messenger">
 <p>
-Example: <a href="https://github.com/karlicoss/fbmessengerexport/blob/a8f65a259dfa36ab6d175461994356947ded142a/model.py#L27-L47">DAL for Facebook Messenger</a> knows how to read messages from the database, access certain fields (e.g. message body) and handle obscure details like converting timestamps to <samp class="inline">datetime</samp> objects. 
+Example: <a href="https://github.com/karlicoss/fbmessengerexport/blob/a8f65a259dfa36ab6d175461994356947ded142a/model.py#L27-L47">DAL for Facebook Messenger</a> knows how to read messages from the database on your disk, access certain fields (e.g. message body) and how to handle obscure details like converting timestamps to <samp class="inline">datetime</samp> objects. 
 </p>
 <ul class="org-ul">
-<li>it's <b>not</b> trying to get messages from Facebook, which makes it way faster and more reliable to interact with data.</li>
-<li>it's <b>not</b> trying to do anything fancier past providing access to the data, which allows to keep it simple and resilient</li>
+<li>it's <b>not</b> trying to get messages from Facebook, which makes it way faster and more reliable to interact with data</li>
+<li>it's <b>not</b> trying to do anything fancy beyond providing access to the data, which allows keeping it simple and resilient</li>
 </ul>
 </div></li>
 <li><p>
 downstream data consumers
 </p>
+<div><span class="before-aside">
+You could also count it as the third layer, although the boundaries are not very well defined at this stage.
+
+</span><aside class="sidenote"><span style="color:darkgreen;font-weight:bold">map</span>: <a href="myinfra.html#mypkg">my.</a></aside></div>
 <p>
-This is also what you could call the third layer (although the boundaries are not very well defined in this case).
-</p>
-<p>
-As an input, it takes abstract (i.e. non-raw) data from DAL and actually does interesting things with it: analysis, visualizations, interactions across different data sources, etc.
+As an input it takes abstract (i.e. non-raw) data from the DAL and actually does interesting things with it: analysis, visualizations, interactions across different data sources, etc.
 </p>
 <p>
 For me, it's manifested as <a href="sad-infra.html#mypkg">a Python package</a>. I can simply import it in any Python script, and it knows how to read and access any of my data.
@@ -261,17 +267,17 @@ Next, I'm going to elaborate on implementing the export layer.
 <h2 id="retrieve"><a class="headerlink" href="#retrieve">¶</a><span class="section-number-2">2</span> Retrieving data</h2>
 <div class="outline-text-2" id="text-retrieve">
 <p>
-The first step in exporting and liberating your data is to figure out what how are you actually supposed to fetch it?
+The first step in exporting and liberating your data is figuring out what and how are you actually supposed to fetch.
 </p>
 <p>
-I'll mostly refer to Python libraries (since that's what I'm mostly using and familiar with), but I'm quite sure there are analogs in other languages.
+I'll mostly refer to Python libraries (since that's what I'm using and most familiar with), but I'm quite sure there are analogs in other languages.
 </p>
 <p>
-Also remember, this is just to fetch the data! If you get a file on the filesystem as a result, you can use any other programming language you like to access it.
+Also remember, this is just to fetch the data! If you get a regular file on your disk as a result, you can use any other programming language you like to access it.
 That's the beauty of decoupling.
 </p>
 <p>
-I won't elaborate much on what are the potential issues during the exports, as I wrote about it <a href="sad-infra.html#exports_are_hard">before</a>.
+Here, I won't elaborate much on potential difficulties during exports, as I wrote about them <a href="sad-infra.html#exports_are_hard">before</a>.
 </p>
 </div>
 <div class="outline-3" id="outline-container-org0000001">
@@ -281,11 +287,11 @@ I won't elaborate much on what are the potential issues during the exports, as I
 You register your app, authorize it, get a token, and you are free to call various endpoints and fetch whatever you want.   
 </p>
 <p>
-I won't really elaborate on this, if you're reading this you probably have some idea how to use it.
+I won't really elaborate on this as if you're reading this you probably have some idea how to use it.
 Otherwise, I'm sure there are tutorials out there that would help you.
 </p>
 <p>
-<span style="color:darkorange"><strong>if anyone knows decent ones, please let me know, I'll add links!</strong></span>
+<span style="color:darkorange"><strong>if anyone knows of decent ones, please let me know and I'll add links!</strong></span>
 </p>
 <p>
 Examples: thankfully, most services out there offer public API to some extent
@@ -296,18 +302,18 @@ Examples: thankfully, most services out there offer public API to some extent
 <h3 id="api_private"><a class="headerlink" href="#api_private">¶</a>private API</h3>
 <div class="outline-text-3" id="text-api_private">
 <p>
-Sometimes service doesn't offer an API. 
-But from the developer's perspective, it's still very reasonable to use one when you've got backend/frontend communication.
+Sometimes a service doesn't offer an API. 
+But from the service developer's perspective, it's still very reasonable to have one if you've got backend/frontend communication.
 </p>
 <p>
-So chances are, the service just isn't exposing it, but you can spy on the token/cookies in your browser devtools and use them to access the API.
+So chances are the service just isn't exposing it, but you can spy on the token/cookies in your browser devtools and use them to access the API.
 </p>
 <p>
 You can read more about handling such data sources here:
 </p>
 <ul class="org-ul">
 <li><a href="https://willschenk.com/articles/2019/reverse_engineering_apis_using_chrome">Reverse engineering APIs using Chrome Developer Tools</a>: an extremely comprehensive and beginner-friendly tutorial</li>
-<li><a href="https://www.freecodecamp.org/news/how-i-used-python-to-find-interesting-people-on-medium-be9261b924b0">"How I used Python to find interesting people to follow on Medium"</a>, an example of reverse engineering Medium API and using devtools</li>
+<li><a href="https://www.freecodecamp.org/news/how-i-used-python-to-find-interesting-people-on-medium-be9261b924b0">"How I used Python to find interesting people to follow on Medium"</a>: an example of reverse engineering Medium API and using devtools</li>
 <li><a href="https://blog.tendigi.com/starbucks-should-really-make-their-apis-public-6b64a1c2e923">Starbucks should really make their API public</a>: demo of reverse engineering Starbucks Android app, featuring using proxy and forging the signature</li>
 </ul>
 <p>
@@ -315,7 +321,7 @@ Some examples:
 </p>
 <ul class="org-ul">
 <li>for <a href="https://github.com/karlicoss/fbmessengerexport">exporting Messenger data</a>, I'm using <a href="https://fbchat.readthedocs.io/en/stable">fbchat</a> library. It works by tricking Facebook into believing it's a browser and interacting with private API.</li>
-<li>even though Pocket has an API, to get highlights from it, you need to <a href="https://github.com/karlicoss/pockexport#setting-up">spy on the API key</a> they use in the web app</li>
+<li>even though Pocket has an API, to get highlights from it you need to <a href="https://github.com/karlicoss/pockexport#setting-up">spy on the API key</a> they use in the web app</li>
 </ul>
 </div>
 </div>
@@ -323,14 +329,14 @@ Some examples:
 <h3 id="export_scrape"><a class="headerlink" href="#export_scrape">¶</a>scraping</h3>
 <div class="outline-text-3" id="text-export_scrape">
 <p>
-Sometimes service doesn't offer an API, doesn't use it even internally and serves HTML pages directly instead.
-Or, reverse engineering API is so painful that scraping becomes a more feasible option.
+Sometimes a service doesn't offer an API, doesn't use it even internally and serves HTML pages directly instead.
+Or, reverse engineering the API is so painful scraping becomes a more attractive option.
 </p>
 <p>
-Apart from the same difficulties you would have during API exports, there are some extras here:
+In addition to the same difficulties you would experience during API exports, there are some extra caveats here:
 </p>
 <ul class="org-ul">
-<li>authorization is harder: you definitely need username/password and potentially even 2FA token</li>
+<li>authorization is harder: you definitely need username/password and potentially even a 2FA token</li>
 <li>DDOS protection: captchas, Cloudflare, etc.</li>
 <li>or even deliberate anti-scraping measures</li>
 </ul>
@@ -345,14 +351,14 @@ For Python the holy grail of scraping is <a href="https://scrapy.org">scrapy</a>
 I'm pretty sure there are similar libraries for other languages, perhaps you could start with <a href="https://github.com/lorien/awesome-web-scraping">awesome-web-scraping repo</a> or <a href="https://news.ycombinator.com/item?id=15694118">Ask HN: What are best tools for web scraping?</a>.
 </p>
 <p>
-For dealing with authorization, my personal experience is that using persistent <a href="https://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.firefox.firefox_profile">profile directory</a> in Selenium is sufficient in most cases: you can login once manually and after that, reuse the profile in your scripts.
+For dealing with authorization, my personal experience is that using a persistent <a href="https://selenium-python.readthedocs.io/api.html#module-selenium.webdriver.firefox.firefox_profile">profile directory</a> in Selenium is sufficient in most cases: you can login once manually and, reuse the profile in your scripts.
 </p>
 <p>
 Examples:
 </p>
 <ul class="org-ul">
-<li>even though Hackernews has <a href="https://github.com/HackerNews/API">API for public data</a>, there is no way of getting your upvotes/saves without scraping HTML.</li>
-<li>Amazon or Paypal have to be <a href="https://github.com/jbms/finance-dl#supported-data-sources">scraped</a> if you want your data.</li>
+<li>even though Hackernews has an <a href="https://github.com/HackerNews/API">API for public data</a>, there is no way of getting your upvotes/saves without scraping HTML.</li>
+<li>Amazon and Paypal have to be <a href="https://github.com/jbms/finance-dl#supported-data-sources">scraped</a> if you want your data.</li>
 <li>my bank, HSBC doesn't have an API. Not that I expected it from HSBC, I don't live in a fairy tale; but even their manual transactions exports are in PDF which I have to <a href="https://github.com/karlicoss/hsbc-parser">parse</a>.</li>
 </ul>
 </div>
@@ -362,16 +368,15 @@ Examples:
 <div class="outline-text-3" id="text-export_manual">
 <p>
 It's great they exist, and it is the easiest way to get your data if you just want a backup.
-That doesn't really help in the long run though:
+However it doesn't really help in the long run:
 </p>
 <ul class="org-ul">
-<li>you can only do it now and then, sometimes there is a hard limit for the number of takeouts per year</li>
-<li>it's manual: usually requires requesting and clicking on an email link</li>
-<li>it's slow and asynchronous: normally takes a few days</li>
-<li>the takeout format differs from the API format, often ends up as something neither machine friendly nor human friendly</li>
+<li>it's very manual: usually requires requesting and clicking on an email link</li>
+<li>it's slow and asynchronous: normally takes at least a few days</li>
+<li>the takeout format usually differs from the API format, <a href="https://www.reddit.com/r/help/comments/8qr9hs/data_request_and_gdpr/e8acolt">sometimes</a> ends up as something neither machine friendly nor human friendly</li>
 </ul>
 <p>
-That said, with a certain effort it can potentially be automated too.
+That said, with some effort it can potentially be automated as well.
 </p>
 <p>
 They can be useful to get the 'initial' bit of your data, past the <a href="sad-infra.html#data_is_vanishing">API limits</a>.
@@ -393,14 +398,14 @@ Examples:
 I don't have an iPhone, so will only be referring to Android in this section, but I'd imagine the situation is similar.
 </p>
 <p>
-These days, service might not even offer a desktop version at all and considering that scraping data off mobile apps is way harder, getting it from the phone directly might be an easier option. In addition, the data is often kept as an sqlite database, which is in many ways even better than using API!
+These days, a service might not even offer a desktop version at all and considering that scraping data off mobile apps is way harder getting it from the phone directly might be an easier option. The data is often kept as an sqlite database which in many ways is even more convenient than an API!
 </p>
 <p>
 On Android the story is simple: apps keep their data in <samp class="inline">/data/data/</samp> directory, which is not accessible unless you <b>root</b> your phone.
-These days, with <a href="https://magiskmanager.com">magisk</a> it's considerably easier, however, it's still definitely not something a typical Android user would be able to do. Also rooting your phone can bring all sorts of trouble by triggering root detection (e.g. common in banking apps), so be careful.
+These days, with <a href="https://magiskmanager.com">magisk</a> it's considerably easier; however, it's still definitely not something a typical Android user would be able to do. Rooting your phone can bring all sorts of trouble by triggering root detection (e.g. common in banking apps), so be careful. And of course, phones come unrooted for a reason, so do it at your own risk.
 </p>
 <p>
-Once you have root, you can write a script to copy necessary files from <samp class="inline">/data/data/</samp> to your target directory, synchronized with your computer (e.g. via <a href="https://play.google.com/store/apps/details?id=com.ttxapps.dropsync&amp;hl=en_GB">Dropbox</a> or <a href="https://play.google.com/store/apps/details?id=com.github.catfriend1.syncthingandroid&amp;hl=en_GB">Syncthing</a>).
+Once you have root you can write a script to copy necessary files from <samp class="inline">/data/data/</samp> to your target directory, synchronized with your computer (e.g. via <a href="https://play.google.com/store/apps/details?id=com.ttxapps.dropsync&amp;hl=en_GB">Dropbox</a> or <a href="https://play.google.com/store/apps/details?id=com.github.catfriend1.syncthingandroid&amp;hl=en_GB">Syncthing</a>).
 </p>
 <p>
 Examples:
@@ -416,10 +421,10 @@ Examples:
 <h3 id="export_devices"><a class="headerlink" href="#export_devices">¶</a>devices</h3>
 <div class="outline-text-3" id="text-export_devices">
 <p>
-Here I'm referring to standalone specific-purpose devices like sleep trackers, e-ink readers, etc. The distinguishing thing is the device doesn't have Internet access or doesn't talk to any API.
+Here I am referring to standalone specific-purpose gadgets like sleep trackers, e-ink readers, etc. The distinguishing thing is the device doesn't have Internet access or doesn't talk to any API.
 </p>
 <p>
-You've got several options here:
+You've got some options here:
 </p>
 <ul class="org-ul">
 <li><p>
@@ -444,7 +449,7 @@ the device can mount to a computer
 </p>
 <p>
 Then, you can use <a href="https://en.wikipedia.org/wiki/Udev">udev</a> to trigger export when the device is plugged in.
-If udev feels too complicated to you, even a cron script running every minute might be enough.
+If udev feels too complicated for you, even a cron script running every minute might be enough.
 </p></li>
 </ul>
 <p>
@@ -460,8 +465,8 @@ Examples:
 <h2 id="types"><a class="headerlink" href="#types">¶</a><span class="section-number-2">3</span> Types of exports: a high-level view</h2>
 <div class="outline-text-2" id="text-types">
 <p>
-Hopefully, the previous section answers your questions on 'where do I get my data from'.
-The next step is to figure out what do you actually need to request and how to store it.
+Hopefully, the previous section answered your questions about 'where do I get my data from'.
+The next step is figuring out what you actually need to request and how to store it.
 </p>
 <p>
 Now, let's establish a bit of vocabulary here.
@@ -476,10 +481,7 @@ The way I see it, there are three styles of data exports:
 <div class="outline-text-3" id="text-full">
 <p>
 Every time you want your data, go exhaustively through all the endpoints and fetch the data.
-As a result, you get some sort of JSON file, which you can save on the disk.
-</p>
-<p>
-Typically, with full exports, it's okay to overwrite the older export once you fetched everything. 
+The result is some sort of JSON file (reflecting the complete state of your data) which you can save to disk.
 </p>
 </div>
 <div class="outline-4" id="outline-container-org0000008">
@@ -493,7 +495,7 @@ Typically, with full exports, it's okay to overwrite the older export once you f
 <li>disadvantages
 <ul class="org-ul">
 <li><b>might be impossible</b> due to <a href="sad-infra.html#data_is_vanishing">API restrictions</a></li>
-<li>takes <b>more resources</b>, i.e. time/bandwidth/CPU/memory</li>
+<li>takes <b>more resources</b>, i.e. time/bandwidth/CPU</li>
 <li>takes <b>more space</b> if you're keeping old versions</li>
 <li>might be <b>flaky</b> due to excessive network requests</li>
 </ul></li>
@@ -512,7 +514,7 @@ When there isn't much data to retrieve and you can do it in one go.
 <a href="https://github.com/karlicoss/pockexport">Exporting Pocket data</a>
 </p>
 <p>
-There are no apparent API limitations preventing from fetching everything, and it seems like a plausible option, presumably it's a matter of transferring a few hundred kilobytes. YMMV, if you are using it extremely heavily, you might want to use <a class="link-down" href="#synthetic">synthetic export</a>.
+There are no apparent API limitations preventing you from fetching everything, and it seems like a plausible option. Presumably, it's just a matter of transferring a few hundred kilobytes. YMMV though: if you are using it extremely heavily you might want to use a <a class="link-down" href="#synthetic">synthetic export</a>.
 </p></li>
 </ul>
 </div>
@@ -522,7 +524,7 @@ There are no apparent API limitations preventing from fetching everything, and i
 <h3 id="incremental"><a class="headerlink" href="#incremental">¶</a>incremental export</h3>
 <div class="outline-text-3" id="text-incremental">
 <p>
-'Incremental' means that rerunning export starts off the latest persisted state and only fetches missing data.
+'Incremental' means that rerunning an export starts from the last persisted point and only fetches missing data.
 </p>
 <p>
 Implementation wise, it looks like this:
@@ -540,14 +542,14 @@ Implementation wise, it looks like this:
 <li>advantages
 <ul class="org-ul">
 <li>takes less resources</li>
-<li>more resilient (if done right) as needs fewer network operations</li>
+<li>more resilient (if done right) as it needs fewer network operations</li>
 </ul></li>
 <li>disadvantages
 <ul class="org-ul">
 <li>potentially very error-prone, harder to implement
 <ul class="org-ul">
 <li>if you're not careful with <a href="sad-infra.html#pagination">pagination</a> and misinterpret documentation you might never request some data</li>
-<li>if you're not careful with <a href="sad-infra.html#consistency">transactional logic</a>, you might leave your export in an inconsistent state</li>
+<li>if you're not careful with <a href="sad-infra.html#consistency">transactional logic</a>, you might leave your export in an inconsistent and corrupt state</li>
 </ul></li>
 </ul></li>
 </ul>
@@ -561,7 +563,7 @@ Incremental exports are <b>always</b> harder to program. Indeed, <a class="link-
 <h4 id="org000000c">examples</h4>
 <div class="outline-text-4" id="text-org000000c">
 <p>
-So why would you bother with exporting data incrementally?
+If it's so tricky, why would you bother with exporting data incrementally?
 </p>
 <ul class="org-ul">
 <li><p>
@@ -571,8 +573,8 @@ too much data
 This doesn't even mean too much in terms of bandwidth/storage, more of 'too many entities'.
 </p>
 <p>
-E.g. imagine you want to export your Twitter timeline of 10000 tweets, that's about 1Mb of raw text data.
-Even if you account for extra garbage and assume 10 Mb or even 100 Mb of data, it's basically nothing if you're running it once a day.
+E.g. imagine you want to export your Twitter timeline of 10000 tweets, which is about 1Mb of raw text data.
+Even if you account for extra garbage and assume 10 Mb or even 100 Mb of data it's basically nothing if you're running it once a day.
 </p>
 <p>
 However, APIs usually impose pagination (e.g. 200 tweets per call), so to get these 10000 tweets you might have to do <code class="inline">10000 / 200 = 50</code> API calls. 
@@ -595,7 +597,7 @@ For example:
 </p>
 <ul class="org-ul">
 <li><a class="link-up" href="#export_scrape">web scraping</a> is always somewhat slow; in addition, you might have to rate limit yourself so you don't get banned by DDOS prevention.
-Also, it's is even flakier than using APIs, so you might want to avoid extra work if possible.</li>
+Also, it's even flakier than using APIs, so you might want to avoid extra work if possible.</li>
 <li><a href="https://shop-eu.emfit.com/products/emfit-qs">Emfit QS</a> sleep data: API is a bit flaky, so I minimize network interaction by only fetching missing data.</li>
 </ul></li>
 </ul>
@@ -606,15 +608,15 @@ Also, it's is even flakier than using APIs, so you might want to avoid extra wor
 <h3 id="synthetic"><a class="headerlink" href="#synthetic">¶</a>synthetic export</h3>
 <div class="outline-text-3" id="text-synthetic">
 <div><span class="before-aside">
-This is a kind of a blend between full export and incremental export.   
+This is a blend between full export and incremental export.   
 
-</span><aside class="sidenote">if someone can think of a better term for describing this concept, please let me know!</aside></div>
+</span><aside class="sidenote">If someone thinks of a better term for describing this concept, please let me know!</aside></div>
 <p>
-It's similar to full export in the sense that there isn't that much data to retrieve and if you could, you would just fetch it in one go.
+It's similar to a full export in the sense that there isn't that much data to retrieve: if you could, you would just fetch it in one go.
 </p>
 <p>
-However, the difference that makes it similar to incremental exports is that you don't have all the data available at once, only the latest chunk.
-The fundamental issue with synthetic exports is that no single export file will give you all of the data.
+What makes it similar to the incremental export is that you don't have all the data available at once - only the latest chunk.
+The main motivation for a synthetic export is that no single export file will give you all of the data.
 </p>
 <p>
 There are various reasons for that:
@@ -646,7 +648,7 @@ Example: Kobo reader uses an <a href="https://github.com/karlicoss/kobuddy">sqli
 However, when you delete the book from your reader, it removes your annotations and highlights from the database too.
 </p>
 <p>
-There is absolutely no reason to do this: I delete the book because I don't need it on my reader, not because I want to get rid of annotations.
+There is absolutely no reason to do this: I delete the book because I don't need it on my reader, not because I want to get rid of the annotations.
 So in order to have all of them my only option is having regular database snapshots and assembling the full database from these pieces.
 </p></li>
 <li><p>
@@ -664,17 +666,17 @@ After a user has authenticated, your client can fetch all of their transactions,
 So that means that unless you're happy with manually authorizing every time you export, you will only have access to the last 90 days of transactions.
 </p>
 <p>
-Note: I feel kind of sorry complaining at Monzo, considering they are the nicest guys out there in terms of being dev friendly.
-But that's the only example of such behavior I've seen so far.
+Note: I feel kind of sorry complaining at Monzo, considering they are the nicest guys out there in terms of being dev friendly; and I understand the security concerns.
+But that's the only example of such behavior I've seen so far, and it does complicate things.
 </p></li>
 </ul>
 <p>
 One important difference from other types of exports is that you <b>have to</b> do them regularly/often enough.
-Otherwise, you inevitably miss some data and in the best case, have to get it <a class="link-up" href="#export_manual">manually</a>, or in the worst case, <a href="./takeout-data-gone.html">lose it forever</a>.
+Otherwise you inevitably miss some data and in the best case scenario have to get it <a class="link-up" href="#export_manual">manually</a>, or in the worst case <a href="./takeout-data-gone.html">lose it forever</a>.
 </p>
 <p>
-Now, you could deal with these complications the same way you would with incremental exports, by pulling missing data only.
-The <b>major difference</b> is that, if you do make a mistake in the logic, it's not just a matter of waiting to re-download everything. 
+Now, you could deal with these complications the same way you would with incremental exports by retrieving the missing data only.
+The <b>crucial difference</b> is that if you do make a mistake in the logic, it's not just a matter of waiting to re-download everything. 
 Some of the data might be gone <b>forever</b>.
 </p>
 <p>
@@ -682,13 +684,13 @@ So I take a hybrid approach instead:
 </p>
 <ul class="org-ul">
 <li><p>
-at <a class="link-down" href="#export_layer">export time</a>, retrieve all the data I can and keep it along with a timestamp, like <a class="link-up" href="#full">full export</a>.
+at <a class="link-down" href="#export_layer">export time</a>, retrieve all the data I can and keep it along with a timestamp, like a <a class="link-up" href="#full">full export</a>.
 </p>
 <p>
 Basically, it makes it an 'append-only system', so there is no opportunity for losing data.
 </p></li>
 <li><p>
-at <a class="link-down" href="#dal">data access time</a>, we dynamically build (synthesize) full state of the data
+at <a class="link-down" href="#dal">data access time</a>, we dynamically build (synthesize) the full state of the data
 </p>
 <p>
 We go through all exported data chunks and reconstruct the full state, similarly to <a class="link-up" href="#incremental">incremental export</a>.
@@ -696,7 +698,7 @@ That's where 'synthetic' comes from.
 </p>
 <p>
 The 'full export' only exists at runtime, and errors in merging logic are not problematic as you never overwrite data.
-If you do spot a problem, you only have to change the code, no need for data migrations.
+If you do spot a problem you only have to change the code with no need for data migrations.
 </p></li>
 </ul>
 </div>
@@ -704,11 +706,11 @@ If you do spot a problem, you only have to change the code, no need for data mig
 <h4 id="org000000e">illustrative example</h4>
 <div class="outline-text-4" id="text-org000000e">
 <p>
-I feel like the explanations are still slightly confusing, so let's consider a specific scenario.
+I feel like the explanations are a bit abstract, so let's consider a specific scenario.
 </p>
 <p>
 Say you've got a temperature sensor that takes a measurement every minute and keeps it in its internal database.
-It's only got enough memory for 2000 datapoints so you have to grab data from it every day, otherwise, older measurements would be overwritten.
+It's only got enough memory for 2000 datapoints so you have to grab data from it every day, otherwise the older measurements would be overwritten (it's implemented as a ring buffer).
 </p>
 <p>
 It seems like a perfect fit for synthetic export. 
@@ -719,7 +721,7 @@ export layer: every day you run a script that connects to the sensor and copies 
 </p>
 <p>
 That's it, it doesn't do anything more complicated than that.
-It's an idempotent operation, so if Bluetooth connection fails, we can simply retry until we succeed without having to worry about transactional logic.
+The whole process is atomic, so if Bluetooth connection fails, we can simply retry until we succeed without having to worry about the details.
 </p>
 <p>
 As a result, we get a bunch of files like:
@@ -752,7 +754,7 @@ E.g. it would look kind of like:
 </pre>
 </div>
 <p>
-I hope it's clear how much easier is this than having some sort of master sqlite database and updating it.
+I hope it's clear how much easier this is compared with maintaining some sort of master sqlite database and updating it.
 </p></li>
 </ul>
 </div>
@@ -795,13 +797,13 @@ When we access the data we have to merge all snapshots every time. I'll elaborat
 Reddit API is restricted to 1000 items, so synthetic logic is used in <a href="https://github.com/karlicoss/rexport/blob/874e6116bfba8cbd63fa3b4d93810a1488cb8464/dal.py#L136">rexport</a> tool
 </p>
 <p>
-I elaborate on Reddit <a href="unnecessary-db.org#example_reddit">here</a>.
+I elaborate on Reddit <a href="unnecessary-db.html#example_reddit">here</a>.
 </p></li>
 <li><p>
 Chrome only keeps 90 days of browsing history in its database
 </p>
 <p>
-<a href="unnecessary-db.org#chrome_dal">Here</a> I write in detail about why synthetic exports make a lot of sense for Chrome.
+<a href="unnecessary-db.html#chrome_dal">Here</a> I write in detail about why synthetic exports make a lot of sense for Chrome.
 </p></li>
 </ul>
 </div>
@@ -812,6 +814,9 @@ Chrome only keeps 90 days of browsing history in its database
 <h2 id="export_layer"><a class="headerlink" href="#export_layer">¶</a><span class="section-number-2">4</span> Export layer</h2>
 <div class="outline-text-2" id="text-export_layer">
 <p>
+<span style="color:darkgreen; font-weight: bolder">Map:</span> <a href="myinfra.html#exports">export layer</a>.
+</p>
+<p>
 No matter which <a class="link-up" href="#types">of these</a> ways you have to use to export your data, there are some common difficulties, hence patterns that I'm going to explore in this section.
 </p>
 <p>
@@ -821,7 +826,7 @@ Just a quick reminder of <a href="sad-infra.html#exports_are_hard">the problems<
 <li>authorization: how to log in?</li>
 <li>pagination: how to query the data correctly?</li>
 <li>consistency: how to make sure we assemble the full view of data correctly without running into concurrency issues?</li>
-<li>rate limits: how to respect the service's policies and not get banned?</li>
+<li>rate limits: how to respect the service's policies and avoid getting banned?</li>
 <li>error handling: how to be defensive enough without making the code too complicated?</li>
 </ul>
 <p>
@@ -841,7 +846,7 @@ Unless retrieving data is trivial (i.e. single GET request), chances that someon
 Bindings often deal with dirty details like rate limiting, retrying, pagination, etc. So if you're lucky you might end up spending very little effort on actually exporting data.
 </p>
 <p>
-If there is something in bindings you don't like or lack, it's still easier to <a href="https://en.wikipedia.org/wiki/Monkey_patch">monkey patch</a>, or just fork and patch them up (don't forget to open a pull request later!).
+If there is something in bindings you don't like or lack, it's still easier to <a href="https://en.wikipedia.org/wiki/Monkey_patch">monkey patch</a> or just fork and patch them up (don't forget to open a pull request later!).
 </p>
 <p>
 Also if you're the author of bindings, I have some requests. Please:
@@ -852,7 +857,7 @@ Also if you're the author of bindings, I have some requests. Please:
 don't be overly defensive, or allow to <a href="mypy-error-handling.html#global_policy">configure</a> non-defensive behavior
 </p>
 <p>
-It's quite sad when the library silently catches all exceptions and replaces with empty strings/nulls/etc., without you even suspecting it.
+It's quite sad when the library silently catches all exceptions and replaces them with empty strings/nulls/etc., without you even suspecting it.
 It's especially problematic in Python, where "Ask forgiveness, not permission" is very common.
 </p></li>
 <li><p>
@@ -894,7 +899,7 @@ For instance, profile data request was missing from the bindings; and it was <a 
 </p></li>
 </ul>
 <p>
-Thanks to good bindings, the actual export is pretty much <a href="https://github.com/karlicoss/hypexport/blob/7a80b36aa55da8b541e2778141eb84ada384d734/hypexport.py#L6-L19">trivial</a>.
+Thanks to good bindings, the actual export is pretty <a href="https://github.com/karlicoss/hypexport/blob/7a80b36aa55da8b541e2778141eb84ada384d734/hypexport.py#L6-L19">trivial</a>.
 </p>
 <p>
 Another example: to export <a href="https://github.com/karlicoss/rexport/blob/master/export.py">Reddit data</a>, I'm using <a href="https://github.com/praw-dev/praw">praw</a>, an excellent library for accessing Reddit from Python.
@@ -904,10 +909,10 @@ Another example: to export <a href="https://github.com/karlicoss/rexport/blob/ma
 <li>praw exposes logger, which makes it easy to <a href="https://github.com/karlicoss/rexport/blob/874e6116bfba8cbd63fa3b4d93810a1488cb8464/export.py#L107">control it</a></li>
 <li>praw supports all endpoints, so exporting data is just a matter of <a href="https://github.com/karlicoss/rexport/blob/d001e2d07d716130106ebe07a021f98d84a5ed93/rexport.py#L73-L84">calling right API methods</a></li>
 <li><p>
-one shortcoming of praw though is that it wouldn't give you access to raw JSON data for some reason, so we have to use some <a href="https://github.com/karlicoss/rexport/blob/d001e2d07d716130106ebe07a021f98d84a5ed93/rexport.py#L32-L55">hacky logic</a> to serialize.
+one shortcoming of praw though is that it won't give you access to raw JSON data for some reason, so we have to use some <a href="https://github.com/karlicoss/rexport/blob/d001e2d07d716130106ebe07a021f98d84a5ed93/rexport.py#L32-L55">hacky logic</a> to serialize.
 </p>
 <p>
-If praw kept original data from the API, the <a href="https://github.com/karlicoss/rexport/blob/master/export.py">code for export</a> would be twice as short.
+If praw kept original data from the API, the <a href="https://github.com/karlicoss/rexport/blob/master/export.py">code for export</a> would be half as long.
 </p></li>
 </ul>
 </div>
@@ -932,7 +937,7 @@ Instead, <b>keep the exporter code simple</b> and don't try to interpret data in
 Move data interpretation burden to the <a class="link-down" href="#dal">data access layer</a> instead.
 </p>
 <p>
-The main rationale for is is that it's a potential source of inconsistencies. If you make a bug during data conversion, you might end corrupt your data forever.
+The rationale here is it's a potential source of inconsistencies. If you make a bug during data conversion, you might end corrupting your data forever.
 </p>
 <p>
 I'm elaborating on this point <a href="unnecessary-db.html#asis">here</a>.
@@ -948,11 +953,11 @@ I'm elaborating on this point <a href="unnecessary-db.html#asis">here</a>.
 don't add retry logic just in case
 </p>
 <p>
-In my experience, it's fair to assume that if the export failed, it's a random server-side glitch and not worth fine-tuning, it's easier to simply start the export all over again.
-I'm not dealing with that in the individual export scripts at all, and using <a class="link-down" href="#arctee">arctee</a> instead, to retry exports automatically.
+In my experience, it's fair to assume that if the export failed, it's a random server-side glitch and not worth fine-tuning - it's easier to simply start the export all over again.
+I'm not dealing with that in the individual export scripts at all, and using <a class="link-down" href="#arctee">arctee</a>, to retry exports automatically.
 </p>
 <p>
-If you know what you're doing (e.g. some endpoint is notoriously flaky) and do need retries, I recommend using an existing library that handles that, like <a href="https://github.com/litl/backoff#examples">backoff</a>.
+If you know what you're doing (e.g. some endpoint is notoriously flaky) and do need retries, I recommend using an existing library that handles that like <a href="https://github.com/litl/backoff#examples">backoff</a>.
 </p></li>
 </ul>
 </div>
@@ -967,10 +972,10 @@ keeping them in a file can potentially allow for fine access control
 </p>
 <p>
 E.g. with Unix permissions you could only allow certain scripts to read secrets.
-Note that I'm not a security expert, so would be interested to know if there are better solutions to that
+Note that I'm not a security expert and would be interested to know if there are better solutions to that
 </p>
 <p>
-Personally, I found it so boilerplaty, that I extracted this logic in a separate <a href="https://github.com/karlicoss/instapexport/blob/master/export_helper.py">helper module</a>. You can find an example <a href="https://github.com/karlicoss/instapexport#exporting">here</a>.
+Personally, I found it so boilerplaty I extracted this logic to a separate <a href="https://github.com/karlicoss/instapexport/blob/master/export_helper.py">helper module</a>. You can find an example <a href="https://github.com/karlicoss/instapexport#exporting">here</a>.
 </p></li>
 </ul>
 </div>
@@ -980,8 +985,11 @@ Personally, I found it so boilerplaty, that I extracted this logic in a separate
 <h2 id="storage"><a class="headerlink" href="#storage">¶</a><span class="section-number-2">5</span> How to store it: organizing data</h2>
 <div class="outline-text-2" id="text-storage">
 <p>
-As I mentioned, for the most part, I'm just keeping the raw API data.
-For the storage I'm just using the filesystem; all exports are kept or symlinked in the same directory (<code class="inline">/exports</code>) for the ease of access:
+<span style="color:darkgreen; font-weight: bolder">Map:</span> <a href="myinfra.html#fs">filesystem</a>.
+</p>
+<p>
+As I mentioned, for the most part I'm just keeping the raw API data.
+For storage I'm just using the filesystem; all exports are kept or symlinked in the same directory (<code class="inline">/exports</code>) for ease of access:
 </p>
 <div class="org-src-container">
 <pre class="src src-bash">find /exports/ | sort | head -n 20 | tail -n 7
@@ -1001,11 +1009,11 @@ For the storage I'm just using the filesystem; all exports are kept or symlinked
 <h3 id="timestamps"><a class="headerlink" href="#timestamps">¶</a>naming and timestamping</h3>
 <div class="outline-text-3" id="text-timestamps">
 <p>
-The only important bit is making sure that if you keep multiple exports (e.g. <a class="link-up" href="#synthetic">synthetic</a>), their names include timestamps, and time order is consistent with lexicographic order.
+I find that the only important bit is if you keep multiple export files (e.g. <a class="link-up" href="#synthetic">synthetic</a>), make sure their names include timestamps and the time order is consistent with lexicographic order.
 </p>
 <p>
-That means that that the only acceptable date/time format is some variation of <a href="https://en.wikipedia.org/wiki/ISO_8601"><code class="inline">YYYY MM DD HH MM SS Z</code></a>. 
-Feel free to sprinkle it with any separators you like, or use milliseconds if you are really serious, but any other date format, e.g. <samp class="inline">MM/DD/YY</samp>, using month names, or not using zero-padded numbers is going to bring you serious grief.
+This means the only acceptable date/time format is some variation of <a href="https://en.wikipedia.org/wiki/ISO_8601"><code class="inline">YYYY MM DD HH MM SS Z</code></a>. 
+Feel free to sprinkle in any separators you like, or use milliseconds if you are really serious. Any other date format, e.g. <samp class="inline">MM/DD/YY</samp>, using month names, or not using zero-padded numbers is going to bring you serious grief.
 </p>
 <p>
 E.g.:
@@ -1050,38 +1058,36 @@ I synchronize/replicate it across my computers with Syncthing, also used Dropbox
 <h3 id="disk_space"><a class="headerlink" href="#disk_space">¶</a>disk space concerns</h3>
 <div class="outline-text-3" id="text-disk_space">
 <p>
-A back on the envelope argument that it shouldn't be a concern to you:
+Some back of the envelope math arguing it shouldn't be a concern for you:
 </p>
 <ul class="org-ul">
 <li>the amount of data you generate grows linearly. That means that running exports periodically would take 'quadratic' space</li>
-<li>with time, the storage available to you grows exponentially (and only gets cheaper)</li>
+<li>with time, your available storage grows exponentially (and only gets cheaper)</li>
 </ul>
 <p>
-Hopefully, that's convincing, but if this is an issue, it can also be addressed with compression or even using deduplicating backup software like <a href="https://borgbackup.readthedocs.io/en/stable">borg</a> for storage. However, that would come at the cost of slowing down access.
-Although it might not be an issue if you use caching.
+Hopefully that's convincing, but if this is an issue it can also be addressed with compression or even using deduplicating backup software like <a href="https://borgbackup.readthedocs.io/en/stable">borg</a>. Keep in mind that would come at the cost of slowing down access, which may be helped with caching.
 </p>
 <p>
-For most of my exports, I don't even bother compressing, for the few that I do need to compress, <a class="link-down" href="#arctee">arctee wrapper</a> handles it.
-Remember that if you compress, you will typically be paying for it with the ease and the speed of data access.
+I don't even bother compressing most of my exports, except for the few which <a class="link-down" href="#arctee">arctee wrapper</a> handles.
 </p>
 <p>
-There are potential ways of making it transparent:
+There are also ways to benefit from compression without having to do it explicitly:
 </p>
 <ul class="org-ul">
 <li><p>
-keeping data under borg and using <a href="https://borgbackup.readthedocs.io/en/stable/usage/mount.html">borg mount</a> to access it.
+keeping data under borg and using <a href="https://borgbackup.readthedocs.io/en/stable/usage/mount.html"><samp class="inline">borg mount</samp></a> to access it.
 </p>
 <p>
-You get deduplication for free, however, this makes exporting and accessing data way more obscure, and in addition borg mount locks the repository so it's going to be read-only while you access it.
+You get deduplication for free, however this makes exporting and accessing data much more obscure. In addition, <samp class="inline">borg mount</samp> locks the repository so it's going to be read-only while you access it.
 </p></li>
 <li><p>
-using filesystem capable of compressing on the fly
+using a filesystem capable of compressing on the fly
 </p>
 <p>
 E.g. <a href="https://serverfault.com/questions/740456/lightweight-transparent-compression-filesystem">ZFS/BTRFS</a>.
 </p>
 <p>
-It seems straightforward enough, as non-standard file systems moth be incompatible with some software, e.g. <a href="https://www.linuxuprising.com/2018/11/how-to-use-dropbox-on-non-ext4.html">Dropbox</a>.
+It seems straightforward enough, thought non-standard file systems might be incompatible with some software, e.g. <a href="https://www.linuxuprising.com/2018/11/how-to-use-dropbox-on-non-ext4.html">Dropbox</a>.
 I haven't personally tried it.
 </p></li>
 </ul>
@@ -1092,14 +1098,17 @@ I haven't personally tried it.
 <h2 id="dal"><a class="headerlink" href="#dal">¶</a><span class="section-number-2">6</span> Data access layer (DAL)</h2>
 <div class="outline-text-2" id="text-dal">
 <p>
-As I <a class="link-up" href="#design">mentioned</a>, all that DAL does is maps raw data (saved on the disk by the <a class="link-up" href="#export_layer">export layer</a>) onto abstract objects, making it easier to work with in your programs. "Layer" sounds a bit intimidating, but in reality, it's usually just a single short script.
+<span style="color:darkgreen; font-weight: bolder">Map:</span> <a href="myinfra.html#dal">data access layer</a>.
 </p>
 <p>
-It's meant to deal with data cleanup, normalization, etc. Doing this in runtime rather than during export makes it easier to work around data issues, experiment, and forgiving if you make some bugs.
+As I <a class="link-up" href="#design">mentioned</a>, all that DAL does is maps raw data (saved on the disk by the <a class="link-up" href="#export_layer">export layer</a>) onto abstract objects making it easier to work with in your programs. "Layer" sounds a bit intimidating and enterprisy but usually it's just a single short script.
 </p>
 <p>
-  As I mentioned in the <a class="link-up" href="#design">design principles</a>, I'm trying to keep data retrieval code and data access code separate,
-because they serve very different purposes and deal with very different errors.
+It's meant to deal with data cleanup, normalization, etc. Doing this at runtime rather than during the export makes it easier to work around data issues, allows experimentation, and is more forgiving if you make some bugs.
+</p>
+<p>
+  As I mentioned in the <a class="link-up" href="#design">design principles</a>, I'm trying to keep data retrieval code and data access code separate
+since they serve very different purposes and deal with very different errors.
 </p>
 <p>
 Just as a reminder what we get as a result:
@@ -1135,17 +1144,17 @@ Keeping raw data makes them trivial
 <h3 id="dal_performance"><a class="headerlink" href="#dal_performance">¶</a>performance concerns</h3>
 <div class="outline-text-3" id="text-dal_performance">
 <p>
-A natural question is: if you run through all your data snapshots each time you access it, wouldn't it bee too slow?
+A natural question is: if you run through all your data snapshots each time you access it, wouldn't it be too slow?
 </p>
 <p>
-First of all, it's somewhat similar to the worries about the <a class="link-up" href="#disk_space">disk space</a>. Data grows at the quadratic rate; while processing power doesn't seem to follow Moore's law anymore, there is still some potential to scale horizontally and use multiple threads. In practice, for most data sources that I use, this process is almost instantaneous even without parallelizing anyway.
+First, it's somewhat similar to the worries about the <a class="link-up" href="#disk_space">disk space</a>. Data grows at the quadratic rate; and while processing power doesn't seem to follow Moore's law anymore there is still some potential to scale horizontally and use multiple threads. In practice, for most data sources that I use this process is almost instantaneous without parallelizing anyway.
 </p>
 <p>
 In addition:
 </p>
 <ul class="org-ul">
 <li>if you're using iterators/generators/coroutines (e.g. <a href="https://github.com/karlicoss/rexport/blob/874e6116bfba8cbd63fa3b4d93810a1488cb8464/dal.py#L130-L136">example</a>), that overhead will be amortized and basically unnoticeable</li>
-<li>you can still use caching, just make sure it doesn't involve boilerplate or cognitive overhead to use. E.g. <a href="unnecessary-db.html#cachew_cachew">cachew</a>.</li>
+<li>you can still use caching. Just make sure it doesn't involve boilerplate or cognitive overhead to use. E.g. <a href="unnecessary-db.html#cachew_cachew">cachew</a>.</li>
 </ul>
 </div>
 </div>
@@ -1154,11 +1163,11 @@ In addition:
 <div class="outline-text-3" id="text-dal_examples">
 <div class="noop" id="dal_messenger">
 <p>
-Example: <a href="https://github.com/karlicoss/fbmessengerexport/blob/a8f65a259dfa36ab6d175461994356947ded142a/model.py#L27-L47">DAL for Facebook Messenger</a> knows how to read messages from the database, access certain fields (e.g. message body) and handle obscure details like converting timestamps to <samp class="inline">datetime</samp> objects. 
+Example: <a href="https://github.com/karlicoss/fbmessengerexport/blob/a8f65a259dfa36ab6d175461994356947ded142a/model.py#L27-L47">DAL for Facebook Messenger</a> knows how to read messages from the database on your disk, access certain fields (e.g. message body) and how to handle obscure details like converting timestamps to <samp class="inline">datetime</samp> objects. 
 </p>
 <ul class="org-ul">
-<li>it's <b>not</b> trying to get messages from Facebook, which makes it way faster and more reliable to interact with data.</li>
-<li>it's <b>not</b> trying to do anything fancier past providing access to the data, which allows to keep it simple and resilient</li>
+<li>it's <b>not</b> trying to get messages from Facebook, which makes it way faster and more reliable to interact with data</li>
+<li>it's <b>not</b> trying to do anything fancy beyond providing access to the data, which allows keeping it simple and resilient</li>
 </ul>
 </div>
 <p>
@@ -1177,8 +1186,8 @@ You can find more specific examples along with the motivation and explanations h
 <h2 id="automatic_exports"><a class="headerlink" href="#automatic_exports">¶</a><span class="section-number-2">7</span> Automating exports</h2>
 <div class="outline-text-2" id="text-automatic_exports">
 <p>
-I think it's absolutely essential to automate data exports when possible. 
-You really don't want to think about it, and having a recent version of your data motivates you to actually use it, otherwise, there is much less utility.
+In my opinion, it's absolutely essential to automate data exports when possible. 
+You really don't want to think about it and having a recent version of your data motivates you to actually use it, otherwise there is much less utility.
 </p>
 <p>
 In addition, it serves as a means of backup, so you don't have to worry about what happens if the service ceases to exist.
@@ -1212,7 +1221,7 @@ This is a <a href="https://github.com/karlicoss/arctee">wrapper script</a> I'm u
 </p>
 <p>
 Many things are very common to all data exports, regardless of the source.
-In the vast majority of cases, you want to fetch some data, save it in a file (e.g. JSON) along with a timestamp and potentially compress.
+In the vast majority of cases, you want to fetch some data, save it in a file (e.g. JSON) along with a timestamp and potentially compress it.
 </p>
 <p>
 This script aims to minimize the common boilerplate:
@@ -1239,10 +1248,10 @@ The script is expected to dump its result in stdout; stderr is simply passed thr
 <li>timestamp is computed and compressed data is written to <samp class="inline">/exports/rtm/20200102T170015Z.ical.zstd</samp></li>
 </ol>
 <p>
-The wrapper operates on files, hence it's programming language agnostic, as long as you export script simply outputs to stdout (or accepts a filename, so you can use <samp class="inline">/dev/stdout</samp>), it doesn't really matter how (e.g. which programming language) it's implemented.
+The wrapper operates on regular files and is therefore, programming language agnostic as long as your export script simply outputs to stdout (or accepts a filename, so you can use <samp class="inline">/dev/stdout</samp>). It doesn't really matter how exactly (e.g. which programming language) it's implemented.
 </p>
 <p>
-That said, it feels kind of wrong to have an extra script for all these things since they are not hard in principle, just tedious and boring to do all over again. If anyone has bright ideas on simplifying this, I'd be happy to know!
+That said, it feels kind of wrong having an extra script for all these things since they are not hard in principle, just tedious and boring to do all over again. If anyone has bright ideas on simplifying this, I'd be happy to know!
 </p>
 </div>
 </div>
@@ -1251,7 +1260,7 @@ That said, it feels kind of wrong to have an extra script for all these things s
 <h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">8</span> --</h2>
 <div class="outline-text-2" id="text-fin">
 <p>
-Approaches that I described here worked pretty well for me so far. It feels fairly composable, flexible and easy to maintain.
+Approaches that I described here have worked pretty well for me so far. It feels fairly composable, flexible and easy to maintain.
 </p>
 <p>
 I'm sharing this because I would <b>really</b> like to make it accessible to more people, so they can also benefit from using their data.
@@ -1268,7 +1277,7 @@ I'd be happy to hear any suggestions on simplifying and improving the system!
     <section class="footer">
         <div class="post-tags"><a class="post-tag" href="./tags.html#infra">#infra</a> <a class="post-tag" href="./tags.html#dataliberation">#dataliberation</a> <a class="post-tag" href="./tags.html#pkm">#pkm</a></div>
         <!-- TODO post-date? -->
-        <div class="date">09 February 2020</div>
+        <div class="date">13 February 2020</div>
     </section>
     
 
