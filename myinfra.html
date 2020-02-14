@@ -91,7 +91,7 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org0000004">1. <span class="todo TODO">TODO</span> TODOs</a></li>
+<li><a href="#org0000006">1. <span class="todo TODO">TODO</span> TODOs</a></li>
 </ul>
 </div>
 </div>
@@ -99,6 +99,25 @@
 <noscript>
 Some links into the map require javascript! Sorry!
 </noscript>
+<script>
+// fix lack of side="right" in chrome...
+
+function fix_side_right () {
+    const paths = Array.from(document.getElementsByTagName('textPath'));
+    for (const p of paths) {
+        if (p.getAttribute('side') == 'right') {
+            p.setAttribute('startOffset', '69%') // pretty arbitrary...
+        }
+    }
+}
+
+// https://stackoverflow.com/a/9851769/706389
+const isFirefox = typeof InstallTrigger !== 'undefined'
+
+if (!isFirefox) {
+    window.addEventListener('load'      , fix_side_right, false)
+}
+</script>
 <script> 
 
 const mm = new Map([
@@ -179,7 +198,7 @@ otherwise it's going to be too overwhelming.
 If something doesn't have a link, it's likely because I haven't made it public yet. Anyway, feel free to ask so I can prioritize.
 </p>
 <p>
-This probably won't be mobile friendly (it's barely desktop friendly!). Content centering (e.g. navigation) isn't broken on this page – it's just a temporary hack to fit in the diagram till I figure out wide pages properly.
+This probably won't be mobile friendly (it's barely desktop friendly!). Content centering (e.g. navigation) isn't broken on this page – it's just a temporary hack to fit in the diagram till I figure out wide pages properly. Also SVG support varies among web browsers, so there might be some minor artifacts.
 </p>
 <p>
 This is rendered via graphviz, and you can find the source <a href="https://github.com/karlicoss/myinfra">here</a>.
@@ -2010,8 +2029,8 @@ text:target ~ .node text {
     font-weight: bold;
 }
 </style></svg>
-<div class="outline-2" id="outline-container-org0000004">
-<h2 id="org0000004"><a class="headerlink" href="#org0000004">¶</a><span class="section-number-2">1</span> <span class="todo TODO">TODO</span> TODOs</h2>
+<div class="outline-2" id="outline-container-org0000006">
+<h2 id="org0000006"><a class="headerlink" href="#org0000006">¶</a><span class="section-number-2">1</span> <span class="todo TODO">TODO</span> TODOs</h2>
 <div class="outline-text-2" id="text-1">
 </div>
 <div class="outline-3" id="outline-container-org0000000">
@@ -2028,7 +2047,20 @@ text:target ~ .node text {
 </div>
 </div>
 <div class="outline-3" id="outline-container-org0000003">
-<h3 id="org0000003"><a class="headerlink" href="#org0000003">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-02-07 19:51]</span></span> labels don't fit into the boxes??</h3>
+<h3 id="org0000003"><a class="headerlink" href="#org0000003">¶</a><span class="todo STRT">STRT</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-02-07 19:51]</span></span> labels don't fit into the boxes??</h3>
+<div class="outline-text-3" id="text-org0000003">
+</div>
+<div class="outline-4" id="outline-container-org0000004">
+<h4 id="org0000004"><span class="timestamp-wrapper"><span class="timestamp">[2020-02-14 21:25]</span></span> apparently only on desktop Firefox =/</h4>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000005">
+<h3 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><span class="todo STRT">STRT</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-02-14 21:30]</span></span> Chrome <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/side#Browser_compatibility">doesn't</a> support svg side attribute, so some labels appear upside down :(</h3>
+<div class="outline-text-3" id="text-org0000005">
+<p>
+fixing with JS for now…
+</p>
+</div>
 </div>
 </div>
 
@@ -2048,7 +2080,7 @@ text:target ~ .node text {
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
 </script>
 
-<section id="isso-thread" data-isso-id="isso_inframap"></section>
+<section id="isso-thread" data-isso-id="isso_infra_diagram"></section>
 
     </section>
 
