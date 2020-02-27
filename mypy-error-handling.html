@@ -672,6 +672,10 @@ Glad you asked! Several reasons I'm using generators here:
 <li>it makes code faster (again, no temporary lists), and also it <b>feels faster</b> because you print items as soon as you process</li>
 <li><code class="inline">Iterator</code> type is <b>covariant</b>, whereas <code class="inline">List</code> is not. I'm elaborating on it <a class="link-down" href="#covariance">later</a>. I'm also using <a href="https://docs.python.org/3/library/typing.html#typing.Sequence"><code class="inline">Sequence</code></a> for the same reason.</li>
 </ul>
+<p>
+If you're not very familiar with <samp class="inline">yield</samp> and Python's generators, I highly recommend an excellent article that explains them in detail:
+ <a href="https://barahilia.github.io/blog/computers/2017/01/04/to-yield-or-not-to-yield.html">To yield or not to yield</a>.
+</p>
 </div>
 </div>
 </div>
@@ -1030,7 +1034,9 @@ Here's what I like about this approach:
 no extra wrapper classes, code is <b>clean and readable</b>
 </p>
 <p>
-Also note that surprisingly, Python's dynamic nature actually helps here. E.g. if you rewrote <code class="inline">iter_books</code> in Rust, you'd have to use <code class="inline">Ok</code> and <code class="inline">Err</code> to wrap the return values into <code class="inline">Res</code> object. I can imagine you might be able get away with explicit wrapping if you use language with conversions like <code class="inline">Scala</code> or <code class="inline">C++</code>.
+Also note that surprisingly, Python's dynamic nature actually helps here.
+E.g. if you rewrote <code class="inline">iter_books</code> in Rust, you'd have to use <code class="inline">Ok</code> and <code class="inline">Err</code> to wrap the return values into <code class="inline">Res</code> object.
+I can imagine that you might get away with explicit wrapping if you use language with conversions like <code class="inline">Scala</code> or <code class="inline">C++</code>.
 </p></li>
 <li><p>
 because of no runtime wrappers, <b>on the 'successful' code path, the callee doesn't need extra code</b> to wrap/unwrap anything.
@@ -1043,6 +1049,16 @@ behaviour during prototyping.
 <p>
 You can completely ignore mypy and error handling, until you're happy, then you harden your program by making sure it complies to mypy.
 </p></li>
+<li><p>
+<b>no extra dependencies</b>: <code class="inline">typing</code> module is a part of Python's standard library
+</p>
+<p>
+It means:
+</p>
+<ul class="org-ul">
+<li>you can use it anywhere, you're not even required to install <samp class="inline">mypy</samp> to run the code</li>
+<li>anyone can interface with your code without having to use your dependencies</li>
+</ul></li>
 <li><p>
 <b>no memory overhead</b> caused by constant wrapping and unwrapping. 
 </p>
@@ -1062,7 +1078,9 @@ If you don't need to handle the error, you can just yield it up the call stack a
 <a id="covariance"></a> <b>correct variance</b> for free
 </p>
 <p>
-<a href="https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)">Variance</a> reflects how compound types (e.g. containers/functions) behave with respect to inheritance of their arguments and return types. You might have also heard of this as Liskov substitution principle.
+<a href="https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)">Variance</a> reflects how compound types (e.g. containers/functions) behave with
+respect to inheritance of their arguments and return types.
+You might have also heard of this as Liskov substitution principle.
 I wouldn't try to explain it here, as it's a topic that deserves a whole post and something you need to experiment with and get comfortable. You can also find some explanations and examples <a href="https://mypy.readthedocs.io/en/latest/generics.html#variance-of-generic-types">here</a>.
 </p>
 <p>

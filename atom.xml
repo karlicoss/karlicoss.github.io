@@ -4684,7 +4684,7 @@ Personal data is in a sad state these days. Let me elaborate.
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000031">
+<div class="outline-2" id="outline-container-org0000032">
 <h2 id="why"><a class="headerlink" href="#why">¶</a><span class="section-number-2">2</span> Why does it bother me?</h2>
 <div class="outline-text-2" id="text-why">
 <style>.outline-4 h4              { font-weight: normal; } </style>
@@ -4748,7 +4748,7 @@ As you can see, my main frustrations are around the lack of the very basic thing
 I'll carry on, just listing some examples. Let's see if any of them resonate with you:
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000004">
+<div class="outline-3" id="outline-container-org0000005">
 <h3 id="why_search"><a class="headerlink" href="#why_search">¶</a>search and information access</h3>
 <div class="outline-text-3" id="text-why_search">
 </div>
@@ -4759,25 +4759,33 @@ I'll carry on, just listing some examples. Let's see if any of them resonate wit
 <h4 id="org0000002">Why can't I have incremental search over my tweets? Or browser bookmarks? Or over everything I've ever typed/read on the Internet?</h4>
 </div>
 <div class="outline-4" id="outline-container-org0000003">
-<h4 id="org0000003">Why can't I search across watched youtube videos even though most of them have subtitles hence allowing for full text search?</h4>
+<h4 id="org0000003">Why can't I search across my watched youtube videos, even though most of them have subtitles hence allowing for full text search?</h4>
+</div>
+<div class="outline-4" id="outline-container-org0000004">
+<h4 id="org0000004">Why can't I see the places my friends recommended me on Google maps (or any other maps app)?</h4>
+<div class="outline-text-4" id="text-org0000004">
+<p>
+It's just a matter of extracting links to maps from the chat apps and generating a list of coordinates. It's got to be trivial.
+</p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000007">
+</div>
+<div class="outline-3" id="outline-container-org0000008">
 <h3 id="why_productivity"><a class="headerlink" href="#why_productivity">¶</a>productivity</h3>
 <div class="outline-text-3" id="text-why_productivity">
 </div>
-<div class="outline-4" id="outline-container-org0000005">
-<h4 id="org0000005">Why can't my Google Home add shopping list items to Google Keep? Let alone other todo-list apps.</h4>
-<div class="outline-text-4" id="text-org0000005">
+<div class="outline-4" id="outline-container-org0000006">
+<h4 id="org0000006">Why can't my Google Home add shopping list items to Google Keep? Let alone other todo-list apps.</h4>
+<div class="outline-text-4" id="text-org0000006">
 <p>
 Instead, it puts them in a completely separate product, <a href="https://shoppinglist.google.com">Shopping list</a>.
 If any of these had an API, <b>any programmer</b> could write a script to synchronize them in a few hours.
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000006">
-<h4 id="org0000006">Why can't I create a task in my todo list or calendar from a conversation on Facebook Messenger/Whatsapp/VK.com/Telegram?</h4>
-<div class="outline-text-4" id="text-org0000006">
+<div class="outline-4" id="outline-container-org0000007">
+<h4 id="org0000007">Why can't I create a task in my todo list or calendar from a conversation on Facebook Messenger/Whatsapp/VK.com/Telegram?</h4>
+<div class="outline-text-4" id="text-org0000007">
 <p>
 Often, a friend recommends a book to you so you want it to add to your reading list. Or they ask you for something and you want to schedule a reminder.
 </p>
@@ -4787,159 +4795,161 @@ Instead, these apps <b>actively prevent</b> me from using builtin Android share 
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000c">
+<div class="outline-3" id="outline-container-org000000d">
 <h3 id="why_journalling"><a class="headerlink" href="#why_journalling">¶</a>journaling and history</h3>
 <div class="outline-text-3" id="text-why_journalling">
 </div>
-<div class="outline-4" id="outline-container-org0000008">
-<h4 id="org0000008">Why do I have to lose all my browser history if I decide to switch browsers?</h4>
-<div class="outline-text-4" id="text-org0000008">
+<div class="outline-4" id="outline-container-org0000009">
+<h4 id="org0000009">Why do I have to lose all my browser history if I decide to switch browsers?</h4>
+<div class="outline-text-4" id="text-org0000009">
 <p>
 Even when you switch between major ones like Chrome/Firefox. Let alone for less common alternatives.
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000009">
-<h4 id="org0000009">Why can't I see all the places I traveled to on a single map and photos alongside?</h4>
-<div class="outline-text-4" id="text-org0000009">
+<div class="outline-4" id="outline-container-org000000a">
+<h4 id="org000000a">Why can't I see all the places I traveled to on a single map and photos alongside?</h4>
+<div class="outline-text-4" id="text-org000000a">
 <p>
 I have location tracking and my photos have GPS and timestamps. 
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org000000a">
-<h4 id="org000000a">Why can't I see what my heart rate (i.e. excitement) and speed were side by side with the video I recorded on GoPro while skiing?</h4>
-<div class="outline-text-4" id="text-org000000a">
+<div class="outline-4" id="outline-container-org000000b">
+<h4 id="org000000b">Why can't I see what my heart rate (i.e. excitement) and speed were side by side with the video I recorded on GoPro while skiing?</h4>
+<div class="outline-text-4" id="text-org000000b">
 <p>
 I've used HR tracking and location tracking, surely that's possible?
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org000000b">
-<h4 id="org000000b">Why can't I easily transfer all my books and metadata if I decide to switch from Kindle to PocketBook or vice versa?</h4>
+<div class="outline-4" id="outline-container-org000000c">
+<h4 id="org000000c">Why can't I easily transfer all my books and metadata if I decide to switch from Kindle to PocketBook or vice versa?</h4>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000016">
+<div class="outline-3" id="outline-container-org0000017">
 <h3 id="why_content"><a class="headerlink" href="#why_content">¶</a>consuming digital content</h3>
 <div class="outline-text-3" id="text-why_content">
 </div>
-<div class="outline-4" id="outline-container-org000000d">
-<h4 id="org000000d">Why can't I see stuff I highlighted on Instapaper as an overlay on top of web page?</h4>
-<div class="outline-text-4" id="text-org000000d">
+<div class="outline-4" id="outline-container-org000000e">
+<h4 id="org000000e">Why can't I see stuff I highlighted on Instapaper as an overlay on top of web page?</h4>
+<div class="outline-text-4" id="text-org000000e">
 <p>
-<a href="https://hypothes.is">Hypothes.is</a> does it, so it's totally possible, right?
+<a href="https://hypothes.is">Hypothes.is</a> and plenty other services can do it, so it's a solved problem, right?
+Does every other annotation service really have to reimplement the algorithm from scratch?
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org000000e">
-<h4 id="org000000e">Why can't I have single 'read it later' list, unifying all things saved on Reddit/Hackernews/Pocket?</h4>
-</div>
 <div class="outline-4" id="outline-container-org000000f">
-<h4 id="org000000f">Why can't I use my todo app instead of 'Watch later' playlist on youtube?</h4>
-<div class="outline-text-4" id="text-org000000f">
+<h4 id="org000000f">Why can't I have single 'read it later' list, unifying all things saved on Reddit/Hackernews/Pocket?</h4>
+</div>
+<div class="outline-4" id="outline-container-org0000010">
+<h4 id="org0000010">Why can't I use my todo app instead of 'Watch later' playlist on youtube?</h4>
+<div class="outline-text-4" id="text-org0000010">
 <p>
 'Watch later' is fine for short videos that I can watch over dinner or on my commute.
 Longer videos like talks and lectures need proper time commitment hence prioritizing.
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000010">
-<h4 id="org0000010">Why can't I 'follow' some user on Hackernews?</h4>
-<div class="outline-text-4" id="text-org0000010">
+<div class="outline-4" id="outline-container-org0000011">
+<h4 id="org0000011">Why can't I 'follow' some user on Hackernews?</h4>
+<div class="outline-text-4" id="text-org0000011">
 <p>
+Or any other service that doesn't have this feature implemnted.
 It's just a matter of regularly fetching new stories/comments by a person and showing new items, right?
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000011">
-<h4 id="org0000011">Why can't I see if I've run across a Youtube video because my friend sent me a link months ago?</h4>
-<div class="outline-text-4" id="text-org0000011">
+<div class="outline-4" id="outline-container-org0000012">
+<h4 id="org0000012">Why can't I see if I've run across a Youtube video because my friend sent me a link months ago?</h4>
+<div class="outline-text-4" id="text-org0000012">
 <p>
 The links are there in the chat history, surely it's a trivial task to find it?
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000012">
-<h4 id="org0000012">Why can't I have uniform music listening stats based on my Last.fm/iTunes/Bandcamp/Spotify/Youtube?</h4>
-</div>
 <div class="outline-4" id="outline-container-org0000013">
-<h4 id="org0000013">Why am I forced to use Spotify's music recommendation algorithm and don't have an option to try something else?</h4>
+<h4 id="org0000013">Why can't I have uniform music listening stats based on my Last.fm/iTunes/Bandcamp/Spotify/Youtube?</h4>
 </div>
 <div class="outline-4" id="outline-container-org0000014">
-<h4 id="org0000014">Why can't I easily see what were the books/music/art recommended by my friends or some specific Twitter/Reddit/Hackernews users?</h4>
+<h4 id="org0000014">Why am I forced to use Spotify's music recommendation algorithm and don't have an option to try something else?</h4>
 </div>
 <div class="outline-4" id="outline-container-org0000015">
-<h4 id="org0000015">Why my otherwise perfect hackernews <a href="https://play.google.com/store/apps/details?id=io.github.hidroh.materialistic">Android app</a> doesn't share saved posts/comments with the website?</h4>
-<div class="outline-text-4" id="text-org0000015">
+<h4 id="org0000015">Why can't I easily see what were the books/music/art recommended by my friends or some specific Twitter/Reddit/Hackernews users?</h4>
+</div>
+<div class="outline-4" id="outline-container-org0000016">
+<h4 id="org0000016">Why my otherwise perfect hackernews <a href="https://play.google.com/store/apps/details?id=io.github.hidroh.materialistic">app for Android</a> doesn't share saved posts/comments with the website?</h4>
+<div class="outline-text-4" id="text-org0000016">
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001e">
+<div class="outline-3" id="outline-container-org000001f">
 <h3 id="why_health"><a class="headerlink" href="#why_health">¶</a>health and body maintenance</h3>
 <div class="outline-text-3" id="text-why_health">
 <p>
 Aka <a class="post-tag" href="./tags.html#quantified-self">#quantified-self</a>.
 </p>
 </div>
-<div class="outline-4" id="outline-container-org0000017">
-<h4 id="org0000017">Why can't I tell if I was more sedentary than usual during the past week and whether I need to compensate by doing a bit more exercise?</h4>
-<div class="outline-text-4" id="text-org0000017">
+<div class="outline-4" id="outline-container-org0000018">
+<h4 id="org0000018">Why can't I tell if I was more sedentary than usual during the past week and whether I need to compensate by doing a bit more exercise?</h4>
+<div class="outline-text-4" id="text-org0000018">
 <p>
 I have all my location (hence step data), so what's the issue?
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000018">
-<h4 id="org0000018">Why can't I see what's the impact of aerobic exercise on my resting HR?</h4>
-<div class="outline-text-4" id="text-org0000018">
+<div class="outline-4" id="outline-container-org0000019">
+<h4 id="org0000019">Why can't I see what's the impact of aerobic exercise on my resting HR?</h4>
+<div class="outline-text-4" id="text-org0000019">
 <p>
 I use HR tracker and sleep tracker, so all the necessary data is there.
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000019">
-<h4 id="org0000019">Why can't I have a dashboard for all of my health: food, exercise and sleep to see baselines and trends?</h4>
-<div class="outline-text-4" id="text-org0000019">
+<div class="outline-4" id="outline-container-org000001a">
+<h4 id="org000001a">Why can't I have a dashboard for all of my health: food, exercise and sleep to see baselines and trends?</h4>
+<div class="outline-text-4" id="text-org000001a">
 <p>
 Why do I need to rely on some startup to implement this and trust them with my data?
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org000001a">
-<h4 id="org000001a">Why can't I see the impact of temperature or CO2 concentration in room on my sleep?</h4>
-<div class="outline-text-4" id="text-org000001a">
+<div class="outline-4" id="outline-container-org000001b">
+<h4 id="org000001b">Why can't I see the impact of temperature or CO2 concentration in room on my sleep?</h4>
+<div class="outline-text-4" id="text-org000001b">
 <p>
 My sensors have Bluetooth and Android apps, why can't they interact with my sleep data?
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org000001b">
-<h4 id="org000001b">Why can't I see how holidays (as in, not going to work) impact my stress levels?</h4>
-<div class="outline-text-4" id="text-org000001b">
+<div class="outline-4" id="outline-container-org000001c">
+<h4 id="org000001c">Why can't I see how holidays (as in, not going to work) impact my stress levels?</h4>
+<div class="outline-text-4" id="text-org000001c">
 <p>
 It's trivial to infer workdays by using my location data.    
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org000001c">
-<h4 id="org000001c">Why can't I take my Headspace app data and see how/if meditation impacts my sleep?</h4>
-</div>
 <div class="outline-4" id="outline-container-org000001d">
-<h4 id="org000001d">Why can't I run a short snippet of code and check some random health advice on the Internet against <b>my</b> health data.</h4>
+<h4 id="org000001d">Why can't I take my Headspace app data and see how/if meditation impacts my sleep?</h4>
 </div>
-</div>
-<div class="outline-3" id="outline-container-org0000021">
-<h3 id="why_pfinance"><a class="headerlink" href="#why_pfinance">¶</a>personal finance</h3>
-<div class="outline-text-3" id="text-why_pfinance">
-</div>
-<div class="outline-4" id="outline-container-org000001f">
-<h4 id="org000001f">Why am I forced to manually copy transactions from different banking apps into a spreadsheet?</h4>
-</div>
-<div class="outline-4" id="outline-container-org0000020">
-<h4 id="org0000020">Why can't I easily match my Amazon/Ebay orders with my bank transactions?</h4>
+<div class="outline-4" id="outline-container-org000001e">
+<h4 id="org000001e">Why can't I run a short snippet of code and check some random health advice on the Internet against <b>my</b> health data.</h4>
 </div>
 </div>
 <div class="outline-3" id="outline-container-org0000022">
+<h3 id="why_pfinance"><a class="headerlink" href="#why_pfinance">¶</a>personal finance</h3>
+<div class="outline-text-3" id="text-why_pfinance">
+</div>
+<div class="outline-4" id="outline-container-org0000020">
+<h4 id="org0000020">Why am I forced to manually copy transactions from different banking apps into a spreadsheet?</h4>
+</div>
+<div class="outline-4" id="outline-container-org0000021">
+<h4 id="org0000021">Why can't I easily match my Amazon/Ebay orders with my bank transactions?</h4>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org0000023">
 <h3 id="why_offline"><a class="headerlink" href="#why_offline">¶</a>why I can't do anything when I'm offline or have a wonky connection?</h3>
 <div class="outline-text-3" id="text-why_offline">
 <p>
@@ -4949,39 +4959,39 @@ On the other if you start relying on it too much, it's becoming more and more of
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000025">
+<div class="outline-3" id="outline-container-org0000026">
 <h3 id="why_thinking"><a class="headerlink" href="#why_thinking">¶</a>tools for thinking and learning</h3>
 <div class="outline-text-3" id="text-why_thinking">
 </div>
-<div class="outline-4" id="outline-container-org0000023">
-<h4 id="org0000023">Why when something like <a href="https://en.wikipedia.org/wiki/Method_of_loci">'mind palace'</a> is <b>literally possible</b> with VR technology, we don't see any in use?</h4>
-</div>
 <div class="outline-4" id="outline-container-org0000024">
-<h4 id="org0000024">Why can't I easily convert select Instapaper highlights or new foreign words I encountered on my Kindle into Anki flashcards?</h4>
+<h4 id="org0000024">Why when something like <a href="https://en.wikipedia.org/wiki/Method_of_loci">'mind palace'</a> is <b>literally possible</b> with VR technology, we don't see any in use?</h4>
+</div>
+<div class="outline-4" id="outline-container-org0000025">
+<h4 id="org0000025">Why can't I easily convert select Instapaper highlights or new foreign words I encountered on my Kindle into Anki flashcards?</h4>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000002a">
+<div class="outline-3" id="outline-container-org000002b">
 <h3 id="why_uis"><a class="headerlink" href="#why_uis">¶</a>mediocre interfaces</h3>
 <div class="outline-text-3" id="text-why_uis">
 </div>
-<div class="outline-4" id="outline-container-org0000026">
-<h4 id="org0000026">Why do I have to suffer from poor management and design decisions in UI changes, even if the interface is not the main reason I'm using the product?</h4>
-</div>
 <div class="outline-4" id="outline-container-org0000027">
-<h4 id="org0000027">Why can't I leave priorities and notes on my saved Reddit/Hackernews items?</h4>
-<div class="outline-text-4" id="text-org0000027">
+<h4 id="org0000027">Why do I have to suffer from poor management and design decisions in UI changes, even if the interface is not the main reason I'm using the product?</h4>
+</div>
+<div class="outline-4" id="outline-container-org0000028">
+<h4 id="org0000028">Why can't I leave priorities and notes on my saved Reddit/Hackernews items?</h4>
+<div class="outline-text-4" id="text-org0000028">
 <p>
 I've got too many saved things to read them linearly and I'll probably never read them all.
 I've also got other things to read and do in general, why can't I have a unified queue for consuming content?
 </p>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000028">
-<h4 id="org0000028">Why can't I leave private notes on Deliveroo restaurants/dishes, so I'd remember what to order/not to order next time?</h4>
-</div>
 <div class="outline-4" id="outline-container-org0000029">
-<h4 id="org0000029">Why do people have to suffer from Google Inbox shutdown?</h4>
-<div class="outline-text-4" id="text-org0000029">
+<h4 id="org0000029">Why can't I leave private notes on Deliveroo restaurants/dishes, so I'd remember what to order/not to order next time?</h4>
+</div>
+<div class="outline-4" id="outline-container-org000002a">
+<h4 id="org000002a">Why do people have to suffer from Google Inbox shutdown?</h4>
+<div class="outline-text-4" id="text-org000002a">
 <p>
 Not to undervalue Inbox developers, but fundamentally it's <b>just</b> a different interface.
 I'm sure there are plenty of engineers who would happily support it in their spare time if only they had access to the APIs.
@@ -4989,31 +4999,31 @@ I'm sure there are plenty of engineers who would happily support it in their spa
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000002d">
+<div class="outline-3" id="outline-container-org000002e">
 <h3 id="why_social"><a class="headerlink" href="#why_social">¶</a>communication and collaboration</h3>
 <div class="outline-text-3" id="text-why_social">
 </div>
-<div class="outline-4" id="outline-container-org000002b">
-<h4 id="org000002b">Why can't I easily share my web or book highlights with a friend? Or just make highlights in select books public?</h4>
-</div>
 <div class="outline-4" id="outline-container-org000002c">
-<h4 id="org000002c">Why can't I easily find out other person's expertise without interrogating them, just by looking what they read instead?</h4>
+<h4 id="org000002c">Why can't I easily share my web or book highlights with a friend? Or just make highlights in select books public?</h4>
+</div>
+<div class="outline-4" id="outline-container-org000002d">
+<h4 id="org000002d">Why can't I easily find out other person's expertise without interrogating them, just by looking what they read instead?</h4>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000002f">
+<div class="outline-3" id="outline-container-org0000030">
 <h3 id="why_backups"><a class="headerlink" href="#why_backups">¶</a>backups</h3>
 <div class="outline-text-3" id="text-why_backups">
 </div>
-<div class="outline-4" id="outline-container-org000002e">
-<h4 id="org000002e">Why do I have to think about it and actively invest time and effort?</h4>
-<div class="outline-text-4" id="text-org000002e">
+<div class="outline-4" id="outline-container-org000002f">
+<h4 id="org000002f">Why do I have to think about it and actively invest time and effort?</h4>
+<div class="outline-text-4" id="text-org000002f">
 <p>
 What about regular people who <b>have no idea</b> how unreliable computers can be and might find out the hard way?
 </p>
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000030">
+<div class="outline-3" id="outline-container-org0000031">
 <h3 id="why_fin"><a class="headerlink" href="#why_fin">¶</a>--</h3>
 <div class="outline-text-3" id="text-why_fin">
 <p>
@@ -5034,7 +5044,7 @@ If you could let computers handle the boring bits of your life and spend time on
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000032">
+<div class="outline-2" id="outline-container-org0000033">
 <h2 id="data_is_vanishing"><a class="headerlink" href="#data_is_vanishing">¶</a><span class="section-number-2">3</span> Your data is vanishing</h2>
 <div class="outline-text-2" id="text-data_is_vanishing">
 <p>
@@ -5113,7 +5123,7 @@ You <b>can't rely on third parties</b> to keep it safe.
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000033">
+<div class="outline-2" id="outline-container-org0000034">
 <h2 id="what_do_i_want"><a class="headerlink" href="#what_do_i_want">¶</a><span class="section-number-2">4</span> What do I want?</h2>
 <div class="outline-text-2" id="text-what_do_i_want">
 <p>
@@ -5135,6 +5145,7 @@ This bit is hard in practice as (typically) the more machine friendly something 
 </p>
 <p>
 Let's concentrate on this part for now. If this is solved, it automatically enables programmers to develop human-friendly tools.
+In addition, playing with data and building tools on it feels fun as it is (unlike getting the data).
 </p></li>
 </ul>
 <p>
@@ -5157,7 +5168,7 @@ As you've probably noticed, it's almost never the case that you have your person
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000003e">
+<div class="outline-2" id="outline-container-org000003f">
 <h2 id="exports_are_hard"><a class="headerlink" href="#exports_are_hard">¶</a><span class="section-number-2">5</span> So what's the problem?</h2>
 <div class="outline-text-2" id="text-exports_are_hard">
 <p>
@@ -5186,7 +5197,7 @@ Even if you have the capacity and are willing to do it, it's still damn hard.
 You're gonna have to deal with the following problems:
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000034">
+<div class="outline-3" id="outline-container-org0000035">
 <h3 id="auth"><a class="headerlink" href="#auth">¶</a>authorization</h3>
 <div class="outline-text-3" id="text-auth">
 <p>
@@ -5246,7 +5257,7 @@ All the 'worst' scenarios are extremely flaky and basically impossible for nonpr
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000035">
+<div class="outline-3" id="outline-container-org0000036">
 <h3 id="pagination"><a class="headerlink" href="#pagination">¶</a>pagination</h3>
 <div class="outline-text-3" id="text-pagination">
 <p>
@@ -5263,7 +5274,7 @@ It's quite error prone: content might change under your feet, and if the API dev
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000036">
+<div class="outline-3" id="outline-container-org0000037">
 <h3 id="consistency"><a class="headerlink" href="#consistency">¶</a>consistency</h3>
 <div class="outline-text-3" id="text-consistency">
 <p>
@@ -5276,7 +5287,7 @@ and the data is changing as you retrieve it.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000037">
+<div class="outline-3" id="outline-container-org0000038">
 <h3 id="ratelimit"><a class="headerlink" href="#ratelimit">¶</a><a href="https://nordicapis.com/everything-you-need-to-know-about-api-rate-limiting">rate limiting</a></h3>
 <div class="outline-text-3" id="text-ratelimit">
 <p>
@@ -5291,7 +5302,7 @@ Overall, painful and not fun to implement.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000038">
+<div class="outline-3" id="outline-container-org0000039">
 <h3 id="errorhandling"><a class="headerlink" href="#errorhandling">¶</a>error handling</h3>
 <div class="outline-text-3" id="text-errorhandling">
 <p>
@@ -5308,7 +5319,7 @@ In addition, you want to be somewhat <b>semi-defensive</b>, and this is the hard
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000039">
+<div class="outline-3" id="outline-container-org000003a">
 <h3 id="documentation"><a class="headerlink" href="#documentation">¶</a>documentation and discovery</h3>
 <div class="outline-text-3" id="text-documentation">
 <p>
@@ -5319,7 +5330,7 @@ If the service adds some new endpoints, you might never find out.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000003a">
+<div class="outline-3" id="outline-container-org000003b">
 <h3 id="parsing"><a class="headerlink" href="#parsing">¶</a>parsing</h3>
 <div class="outline-text-3" id="text-parsing">
 <p>
@@ -5330,7 +5341,7 @@ Notorious example: some Hackernews (!) endpoints like 'favorites' are not expose
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000003b">
+<div class="outline-3" id="outline-container-org000003c">
 <h3 id="abstract"><a class="headerlink" href="#abstract">¶</a>abstract representation</h3>
 <div class="outline-text-3" id="text-abstract">
 <p>
@@ -5347,7 +5358,7 @@ Notable examples:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000003c">
+<div class="outline-3" id="outline-container-org000003d">
 <h3 id="locked_in"><a class="headerlink" href="#locked_in">¶</a>no access to data</h3>
 <div class="outline-text-3" id="text-locked_in">
 <p>
@@ -5376,7 +5387,7 @@ However, there are caveats: e.g. on Android, app data is in <code class="inline"
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000003d">
+<div class="outline-3" id="outline-container-org000003e">
 <h3 id="what_fin"><a class="headerlink" href="#what_fin">¶</a>--</h3>
 <div class="outline-text-3" id="text-what_fin">
 <p>
@@ -5390,7 +5401,7 @@ They deserve to use their data too.
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000041">
+<div class="outline-2" id="outline-container-org0000042">
 <h2 id="data_mirror"><a class="headerlink" href="#data_mirror">¶</a><span class="section-number-2">6</span> How to make it easier: data mirror</h2>
 <div class="outline-text-2" id="text-data_mirror">
 <p>
@@ -5456,7 +5467,7 @@ But to be honest, we're so far away from that that even some small steps towards
 These suggestions would <b>decouple data from the UI</b> and let the community develop better tools for consuming and working with it.
 </p>
 </div>
-<div class="outline-3" id="outline-container-org000003f">
+<div class="outline-3" id="outline-container-org0000040">
 <h3 id="caveats"><a class="headerlink" href="#caveats">¶</a>potential caveats</h3>
 <div class="outline-text-3" id="text-caveats">
 <ul class="org-ul">
@@ -5498,7 +5509,7 @@ Hopefully all of these issues would be solved by distributed/federated services,
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000040">
+<div class="outline-3" id="outline-container-org0000041">
 <h3 id="unsolved"><a class="headerlink" href="#unsolved">¶</a>unsolved problems</h3>
 <div class="outline-text-3" id="text-unsolved">
 <ul class="org-ul">
@@ -5545,7 +5556,7 @@ From a user's perspective not everyone wants the hassle of running things locall
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000047">
+<div class="outline-2" id="outline-container-org0000048">
 <h2 id="what_do_i_do"><a class="headerlink" href="#what_do_i_do">¶</a><span class="section-number-2">7</span> What do I do?</h2>
 <div class="outline-text-2" id="text-what_do_i_do">
 <p>
@@ -5560,7 +5571,7 @@ Putting this in writing helped me motivate and summarize many technical and infr
 I'll be describing my setup in more detail in future posts, however here are some bits and pieces:
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000042">
+<div class="outline-3" id="outline-container-org0000043">
 <h3 id="exports"><a class="headerlink" href="#exports">¶</a>regular data exports</h3>
 <div class="outline-text-3" id="text-exports">
 <p>
@@ -5580,7 +5591,7 @@ As I mentioned, I'll share all of this later in a separate post.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000043">
+<div class="outline-3" id="outline-container-org0000044">
 <h3 id="mypkg"><a class="headerlink" href="#mypkg">¶</a>python package to access data</h3>
 <div class="outline-text-3" id="text-mypkg">
 <p>
@@ -5600,7 +5611,7 @@ As a nice byproduct I've also finally figured out a reliable and elegant way to 
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000044">
+<div class="outline-3" id="outline-container-org0000045">
 <h3 id="how_it_is_used"><a class="headerlink" href="#how_it_is_used">¶</a>how do I use the data?</h3>
 <div class="outline-text-3" id="text-how_it_is_used">
 <p>
@@ -5623,7 +5634,7 @@ I wrote how each specific data source I export contributes to my personal infras
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000045">
+<div class="outline-3" id="outline-container-org0000046">
 <h3 id="sync"><a class="headerlink" href="#sync">¶</a>data availability</h3>
 <div class="outline-text-3" id="text-sync">
 <p>
@@ -5631,7 +5642,7 @@ I'm synchronizing everything across my computers with <a href="https://syncthing
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000046">
+<div class="outline-3" id="outline-container-org0000047">
 <h3 id="backups"><a class="headerlink" href="#backups">¶</a>backups</h3>
 <div class="outline-text-3" id="text-backups">
 <p>
@@ -5640,7 +5651,7 @@ I'm simply using <a href="https://borgbackup.readthedocs.io/en/stable">borg back
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000048">
+<div class="outline-2" id="outline-container-org0000049">
 <h2 id="links"><a class="headerlink" href="#links">¶</a><span class="section-number-2">8</span> Related links</h2>
 <div class="outline-text-2" id="text-links">
 <ul class="org-ul">
@@ -5665,7 +5676,7 @@ The project "aims to radically change the way Web applications work today, resul
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000004a">
+<div class="outline-2" id="outline-container-org000004b">
 <h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">9</span> --</h2>
 <div class="outline-text-2" id="text-fin">
 <p>
@@ -5675,7 +5686,7 @@ I'd be interested to know your opinion or questions, whether on my motivation, o
 Let me know if you can think of any other data integrations you are missing and perhaps we can think of something together!
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000049">
+<div class="outline-3" id="outline-container-org000004a">
 <h3 id="followups"><a class="headerlink" href="#followups">¶</a>followups</h3>
 <div class="outline-text-3" id="text-followups">
 <ul class="org-ul">
@@ -5842,10 +5853,7 @@ Let me know if you can think of any other data integrations you are missing and 
     <!-- are sections appropriate for that? -->
 
     <section class="content">
-    
-
-
-    
+        
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -5893,7 +5901,7 @@ In addition it's displaying current resistance level (you can set it by adjustin
    <details class="cell-collapsed">
    <summary>Measurements <span class="cell-collapsed-expand">(click to expand)</span></summary>
        
-<div class="cell border-box-sizing code_cell rendered">
+<div class="cell border-box-sizing code_cell rendered celltag_collapsed">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
@@ -6112,7 +6120,7 @@ In addition it's displaying current resistance level (you can set it by adjustin
    <details class="cell-collapsed">
    <summary>hack to make seaborn plots deterministic <span class="cell-collapsed-expand">(click to expand)</span></summary>
        
-<div class="cell border-box-sizing code_cell rendered">
+<div class="cell border-box-sizing code_cell rendered celltag_collapsed">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
@@ -6290,7 +6298,7 @@ strong multicollinearity or other numerical problems.
 
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>/home/karlicos/.local/lib/python3.7/site-packages/numpy/core/fromnumeric.py:2389: FutureWarning: Method .ptp is deprecated and will be removed in a future version. Use numpy.ptp instead.
+<pre>/home/karlicos/.local/lib/python3.7/site-packages/numpy/core/fromnumeric.py:2542: FutureWarning: Method .ptp is deprecated and will be removed in a future version. Use numpy.ptp instead.
   return ptp(axis=axis, out=out, **kwargs)
 </pre>
 </div>
@@ -6339,7 +6347,7 @@ I don't think it can be explained by friction either: if anything, friction woul
    <details class="cell-collapsed">
    <summary>More measurements <span class="cell-collapsed-expand">(click to expand)</span></summary>
        
-<div class="cell border-box-sizing code_cell rendered">
+<div class="cell border-box-sizing code_cell rendered celltag_collapsed">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
@@ -6709,7 +6717,7 @@ strong multicollinearity or other numerical problems.
    <details class="cell-collapsed">
    <summary>More measurements <span class="cell-collapsed-expand">(click to expand)</span></summary>
        
-<div class="cell border-box-sizing code_cell rendered">
+<div class="cell border-box-sizing code_cell rendered celltag_collapsed">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
@@ -8810,7 +8818,7 @@ I've got a global keybinding (<code class="inline">Win+m</code>) that invokes th
 </ul>
 <div class="org-src-container">
 <pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment"> -eux</span>
-<span class="org-keyword">exec</span> <span class="org-string">"~/bin/gemacsclient"</span> <span class="org-string">"(spacemacs/defer-until-after-user-config #'my/search)"</span>
+<span class="org-keyword">exec</span> <span class="org-string">"~/bin/gemacsclient"</span> <span class="org-string">"(my/search)"</span>
 </pre>
 </div>
 <ul class="org-ul">
@@ -8818,7 +8826,7 @@ I've got a global keybinding (<code class="inline">Win+m</code>) that invokes th
 </ul>
 <div class="org-src-container">
 <pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment"> -eux</span>
-<span class="org-keyword">exec</span> <span class="org-string">"~/bin/gemacsclient"</span> <span class="org-string">"(spacemacs/defer-until-after-user-config #'my/search-code)"</span>
+<span class="org-keyword">exec</span> <span class="org-string">"~/bin/gemacsclient"</span> <span class="org-string">"(my/search-code)"</span>
 </pre>
 </div>
 <ul class="org-ul">
@@ -8834,7 +8842,7 @@ I've got a global keybinding (<code class="inline">Win+m</code>) that invokes th
 </ul>
 <div class="org-src-container">
 <pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment"> -eux</span>
-<span class="org-keyword">exec</span> <span class="org-string">"~/bin/gemacsclient"</span> <span class="org-string">"(spacemacs/defer-until-after-user-config #'org-capture)"</span>
+<span class="org-keyword">exec</span> <span class="org-string">"~/bin/gemacsclient"</span> <span class="org-string">"(org-capture)"</span>
 </pre>
 </div>
 </div>
@@ -9719,6 +9727,10 @@ Glad you asked! Several reasons I'm using generators here:
 <li>it makes code faster (again, no temporary lists), and also it <b>feels faster</b> because you print items as soon as you process</li>
 <li><code class="inline">Iterator</code> type is <b>covariant</b>, whereas <code class="inline">List</code> is not. I'm elaborating on it <a class="link-down" href="#covariance">later</a>. I'm also using <a href="https://docs.python.org/3/library/typing.html#typing.Sequence"><code class="inline">Sequence</code></a> for the same reason.</li>
 </ul>
+<p>
+If you're not very familiar with <samp class="inline">yield</samp> and Python's generators, I highly recommend an excellent article that explains them in detail:
+ <a href="https://barahilia.github.io/blog/computers/2017/01/04/to-yield-or-not-to-yield.html">To yield or not to yield</a>.
+</p>
 </div>
 </div>
 </div>
@@ -10077,7 +10089,9 @@ Here's what I like about this approach:
 no extra wrapper classes, code is <b>clean and readable</b>
 </p>
 <p>
-Also note that surprisingly, Python's dynamic nature actually helps here. E.g. if you rewrote <code class="inline">iter_books</code> in Rust, you'd have to use <code class="inline">Ok</code> and <code class="inline">Err</code> to wrap the return values into <code class="inline">Res</code> object. I can imagine you might be able get away with explicit wrapping if you use language with conversions like <code class="inline">Scala</code> or <code class="inline">C++</code>.
+Also note that surprisingly, Python's dynamic nature actually helps here.
+E.g. if you rewrote <code class="inline">iter_books</code> in Rust, you'd have to use <code class="inline">Ok</code> and <code class="inline">Err</code> to wrap the return values into <code class="inline">Res</code> object.
+I can imagine that you might get away with explicit wrapping if you use language with conversions like <code class="inline">Scala</code> or <code class="inline">C++</code>.
 </p></li>
 <li><p>
 because of no runtime wrappers, <b>on the 'successful' code path, the callee doesn't need extra code</b> to wrap/unwrap anything.
@@ -10090,6 +10104,16 @@ behaviour during prototyping.
 <p>
 You can completely ignore mypy and error handling, until you're happy, then you harden your program by making sure it complies to mypy.
 </p></li>
+<li><p>
+<b>no extra dependencies</b>: <code class="inline">typing</code> module is a part of Python's standard library
+</p>
+<p>
+It means:
+</p>
+<ul class="org-ul">
+<li>you can use it anywhere, you're not even required to install <samp class="inline">mypy</samp> to run the code</li>
+<li>anyone can interface with your code without having to use your dependencies</li>
+</ul></li>
 <li><p>
 <b>no memory overhead</b> caused by constant wrapping and unwrapping. 
 </p>
@@ -10109,7 +10133,9 @@ If you don't need to handle the error, you can just yield it up the call stack a
 <a id="covariance"></a> <b>correct variance</b> for free
 </p>
 <p>
-<a href="https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)">Variance</a> reflects how compound types (e.g. containers/functions) behave with respect to inheritance of their arguments and return types. You might have also heard of this as Liskov substitution principle.
+<a href="https://en.wikipedia.org/wiki/Covariance_and_contravariance_(computer_science)">Variance</a> reflects how compound types (e.g. containers/functions) behave with
+respect to inheritance of their arguments and return types.
+You might have also heard of this as Liskov substitution principle.
 I wouldn't try to explain it here, as it's a topic that deserves a whole post and something you need to experiment with and get comfortable. You can also find some explanations and examples <a href="https://mypy.readthedocs.io/en/latest/generics.html#variance-of-generic-types">here</a>.
 </p>
 <p>

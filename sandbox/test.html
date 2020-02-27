@@ -106,6 +106,7 @@
 <li><a href="#babel">code exports (org-babel)</a>
 <ul>
 <li><a href="#babel_python">python</a></li>
+<li><a href="#org0000009">proper error handling in code exports</a></li>
 <li><a href="#babel_custom">Custom language (mypy as an example)</a></li>
 <li><a href="#babel_context">modifying Babel execution context</a></li>
 </ul>
@@ -113,8 +114,8 @@
 <li><a href="#links">links</a></li>
 <li><a href="#spacing">spacing between items</a>
 <ul>
-<li><a href="#org000000e">xxxx</a></li>
-<li><a href="#org000000f"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> mention why it's necessary; there was smth wrong with default</a></li>
+<li><a href="#org0000010">xxxx</a></li>
+<li><a href="#org0000011"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> mention why it's necessary; there was smth wrong with default</a></li>
 </ul>
 </li>
 <li><a href="#inline_verbatim">different kinds of inline code</a></li>
@@ -193,7 +194,7 @@ The sidenote will be displayed on the right
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000000c">
+<div class="outline-2" id="outline-container-org000000e">
 <h2 id="babel"><a class="headerlink" href="#babel">¶</a>code exports (org-babel)</h2>
 <div class="outline-text-2" id="text-babel">
 </div>
@@ -219,7 +220,25 @@ whatever
 </pre>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000a">
+<div class="outline-3" id="outline-container-org0000009">
+<h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a>proper error handling in code exports</h3>
+<div class="outline-text-3" id="text-org0000009">
+<div class="properties">
+<div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2020-02-27 10:15]</span></div>
+</div>
+<p>
+This would fail when executed. By default, Emacs simply swallows the errors.
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">import</span> notexisting
+</pre>
+</div>
+</div>
+<div class="outline-4" id="outline-container-org000000a">
+<h4 id="org000000a"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-02-27 12:48]</span></span> need to add defensive policy to display errors in the result</h4>
+</div>
+</div>
+<div class="outline-3" id="outline-container-org000000c">
 <h3 id="babel_custom"><a class="headerlink" href="#babel_custom">¶</a>Custom language (mypy as an example)</h3>
 <div class="outline-text-3" id="text-babel_custom">
 <p>
@@ -244,11 +263,11 @@ input.py:2: error: Unsupported operand types for + ("str" and "int")
 Found 2 errors in 1 file (checked 1 source file)
 </pre>
 </div>
-<div class="outline-4" id="outline-container-org0000009">
-<h4 id="org0000009"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-24 15:26]</span></span> eh, need to implement proper eval for it somehow..</h4>
+<div class="outline-4" id="outline-container-org000000b">
+<h4 id="org000000b"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-24 15:26]</span></span> eh, need to implement proper eval for it somehow..</h4>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000b">
+<div class="outline-3" id="outline-container-org000000d">
 <h3 id="babel_context"><a class="headerlink" href="#babel_context">¶</a>modifying Babel execution context</h3>
 <div class="outline-text-3" id="text-babel_context">
 <p>
@@ -276,7 +295,7 @@ Babel?  yes
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000000d">
+<div class="outline-2" id="outline-container-org000000f">
 <h2 id="links"><a class="headerlink" href="#links">¶</a>links</h2>
 <div class="outline-text-2" id="text-links">
 <ul class="org-ul">
@@ -304,7 +323,6 @@ Should be a browser extension, to be honest.
 <li><a href="https://github.com/karlicoss/beepb00p">github</a></li>
 <li><a href="https://emacs.stackexchange.com/questions/2563/helm-search-within-buffer-feature">stackexchange</a></li>
 <li><a href="https://www.youtube.com/watch?v=eTLTXDHrgtw">youtube</a></li>
-<li><a href="http://quantifiedself.com/wp-content/uploads/2012/04/QM_collage.jpg">image</a></li>
 </ul></li>
 </ul>
 <p>
@@ -312,13 +330,13 @@ target for <a id="internal"></a> internal org link (see <a href="https://www.gnu
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000010">
+<div class="outline-2" id="outline-container-org0000012">
 <h2 id="spacing"><a class="headerlink" href="#spacing">¶</a>spacing between items</h2>
 <div class="outline-text-2" id="text-spacing">
 </div>
-<div class="outline-3" id="outline-container-org000000e">
-<h3 id="org000000e"><a class="headerlink" href="#org000000e">¶</a>xxxx</h3>
-<div class="outline-text-3" id="text-org000000e">
+<div class="outline-3" id="outline-container-org0000010">
+<h3 id="org0000010"><a class="headerlink" href="#org0000010">¶</a>xxxx</h3>
+<div class="outline-text-3" id="text-org0000010">
 <ul class="org-ul">
 <li>one</li>
 <li>twoo</li>
@@ -331,11 +349,11 @@ and some text
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000f">
-<h3 id="org000000f"><a class="headerlink" href="#org000000f">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> mention why it's necessary; there was smth wrong with default</h3>
+<div class="outline-3" id="outline-container-org0000011">
+<h3 id="org0000011"><a class="headerlink" href="#org0000011">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> mention why it's necessary; there was smth wrong with default</h3>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000011">
+<div class="outline-2" id="outline-container-org0000013">
 <h2 id="inline_verbatim"><a class="headerlink" href="#inline_verbatim">¶</a>different kinds of inline code</h2>
 <div class="outline-text-2" id="text-inline_verbatim">
 <p>
@@ -343,7 +361,7 @@ and some text
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000012">
+<div class="outline-2" id="outline-container-org0000014">
 <h2 id="table"><a class="headerlink" href="#table">¶</a>table</h2>
 <div class="outline-text-2" id="text-table">
 <table border="2" cellpadding="6" cellspacing="0" frame="hsides" id="demo_table" rules="groups">
@@ -403,7 +421,7 @@ Again, <code class="inline">compile-org.el</code> is using some custom code for 
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000013">
+<div class="outline-2" id="outline-container-org0000015">
 <h2 id="plot"><a class="headerlink" href="#plot">¶</a>plot</h2>
 <div class="outline-text-2" id="text-plot">
 <div class="org-src-container">
