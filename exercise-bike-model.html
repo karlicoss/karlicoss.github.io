@@ -419,7 +419,8 @@ In addition it's displaying current resistance level (you can set it by adjustin
         <span class="n">data</span><span class="o">=</span><span class="n">dff</span><span class="p">,</span>
         <span class="n">x</span><span class="o">=</span><span class="s1">'rpm x resistance'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'watts'</span><span class="p">,</span>
         <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span>
-        <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">'facecolors'</span><span class="p">:</span><span class="n">dff</span><span class="p">[</span><span class="s1">'color'</span><span class="p">]}</span>
+        <span class="n">scatter_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">'facecolors'</span><span class="p">:</span><span class="n">dff</span><span class="p">[</span><span class="s1">'color'</span><span class="p">]},</span>
+        <span class="n">truncate</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
     <span class="p">)</span>
 
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Power, theoretical, angular velocity multiplied by resistance'</span><span class="p">)</span>
