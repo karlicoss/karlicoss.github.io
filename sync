@@ -23,7 +23,7 @@ BEEPB00P_STABLE=yes "$HBLOG/rebuild"
 grep -r 'href="file://' "$SRC/" && exit 123
 ##
 
-rsync -av --delete --exclude "$SELF" --exclude ".git" "$SRC" .
+rsync -av --delete --exclude "$SELF" --exclude ".git" ".gitattributes" "$SRC" .
 
 git add --all 
 
