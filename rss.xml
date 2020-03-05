@@ -6126,9 +6126,15 @@ In addition it's displaying current resistance level (you can set it by adjustin
     <span class="c1"># prevents nondeterminism in plots https://github.com/mwaskom/seaborn/issues/1924</span>
     <span class="c1"># we only want to do it once</span>
     <span class="k">def</span> <span class="nf">bootstrap_hacked</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">bootstrap_orig</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">algorithms</span><span class="o">.</span><span class="n">bootstrap</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">bootstrap_orig</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">random_seed</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s1">'seed'</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">return</span> <span class="n">bootstrap_orig</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     
     <span class="n">sns</span><span class="o">.</span><span class="n">algorithms</span><span class="o">.</span><span class="n">bootstrap</span> <span class="o">=</span> <span class="n">bootstrap_hacked</span>
+    
+<span class="c1"># apparently because of a dependency    </span>
+<span class="c1"># https://github.com/statsmodels/statsmodels/blob/fdd61859568c4863de9b084cb9f84512be55ab33/setup.cfg#L17</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">,</span> <span class="s1">'Method .ptp is deprecated and will be removed.*'</span><span class="p">,</span> <span class="ne">FutureWarning</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="s1">'numpy.*'</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -6193,22 +6199,10 @@ In addition it's displaying current resistance level (you can set it by adjustin
     <div class="prompt"></div>
 
 
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/home/karlicos/.local/lib/python3.7/site-packages/seaborn/algorithms.py:49: UserWarning: `random_seed` has been renamed to `seed` and will be removed
-  warnings.warn(msg)
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
 
 
 <div class="output_png output_subarea ">
-<img src="exercise-bike-model_files/exercise-bike-model_6_1.png">
+<img src="exercise-bike-model_files/exercise-bike-model_6_0.png">
 </div>
 
 </div>
@@ -6296,18 +6290,6 @@ Warnings:
 [1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
 [2] The condition number is large, 2.87e+03. This might indicate that there are
 strong multicollinearity or other numerical problems.
-</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/home/karlicos/.local/lib/python3.7/site-packages/numpy/core/fromnumeric.py:2389: FutureWarning: Method .ptp is deprecated and will be removed in a future version. Use numpy.ptp instead.
-  return ptp(axis=axis, out=out, **kwargs)
 </pre>
 </div>
 </div>
