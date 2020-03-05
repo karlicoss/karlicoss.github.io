@@ -178,7 +178,7 @@ It's quite possible that I'm slipping in extra complexity somewhere and I would 
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000000">
+<div class="outline-2">
 <h2 id="design"><a class="headerlink" href="#design">¶</a><span class="section-number-2">1</span> Design principles</h2>
 <div class="outline-text-2" id="text-design">
 <p>
@@ -261,7 +261,7 @@ Next, I'm going to elaborate on implementing the export layer.
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000007">
+<div class="outline-2">
 <h2 id="retrieve"><a class="headerlink" href="#retrieve">¶</a><span class="section-number-2">2</span> Retrieving data</h2>
 <div class="outline-text-2" id="text-retrieve">
 <p>
@@ -278,7 +278,7 @@ That's the beauty of decoupling.
 Here, I won't elaborate much on potential difficulties during exports, as I wrote about them <a href="sad-infra.html#exports_are_hard">before</a>.
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000001">
+<div class="outline-3">
 <h3 id="api_public"><a class="headerlink" href="#api_public">¶</a>public API</h3>
 <div class="outline-text-3" id="text-api_public">
 <p>
@@ -296,7 +296,7 @@ Examples: thankfully, most services out there offer public API to some extent
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000002">
+<div class="outline-3">
 <h3 id="api_private"><a class="headerlink" href="#api_private">¶</a>private API</h3>
 <div class="outline-text-3" id="text-api_private">
 <p>
@@ -323,7 +323,7 @@ Some examples:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000003">
+<div class="outline-3">
 <h3 id="export_scrape"><a class="headerlink" href="#export_scrape">¶</a>scraping</h3>
 <div class="outline-text-3" id="text-export_scrape">
 <p>
@@ -361,7 +361,7 @@ Examples:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000004">
+<div class="outline-3">
 <h3 id="export_manual"><a class="headerlink" href="#export_manual">¶</a>manual export (GDPR/takeout)</h3>
 <div class="outline-text-3" id="text-export_manual">
 <p>
@@ -389,7 +389,7 @@ Examples:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000005">
+<div class="outline-3">
 <h3 id="export_phone"><a class="headerlink" href="#export_phone">¶</a>phone apps</h3>
 <div class="outline-text-3" id="text-export_phone">
 <p>
@@ -415,7 +415,7 @@ Examples:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000006">
+<div class="outline-3">
 <h3 id="export_devices"><a class="headerlink" href="#export_devices">¶</a>devices</h3>
 <div class="outline-text-3" id="text-export_devices">
 <p>
@@ -459,7 +459,7 @@ Examples:
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000012">
+<div class="outline-2">
 <h2 id="types"><a class="headerlink" href="#types">¶</a><span class="section-number-2">3</span> Types of exports: a high-level view</h2>
 <div class="outline-text-2" id="text-types">
 <p>
@@ -474,7 +474,7 @@ Since data exports by their nature are somewhat similar to <a href="https://en.w
 The way I see it, there are three styles of data exports:
 </p>
 </div>
-<div class="outline-3" id="outline-container-org000000a">
+<div class="outline-3">
 <h3 id="full"><a class="headerlink" href="#full">¶</a>full export</h3>
 <div class="outline-text-3" id="text-full">
 <p>
@@ -482,9 +482,9 @@ Every time you want your data, go exhaustively through all the endpoints and fet
 The result is some sort of JSON file (reflecting the complete state of your data) which you can save to disk.
 </p>
 </div>
-<div class="outline-4" id="outline-container-org0000008">
-<h4 id="org0000008">summary</h4>
-<div class="outline-text-4" id="text-org0000008">
+<div class="outline-4">
+<h4 id="org0000000">summary</h4>
+<div class="outline-text-4">
 <ul class="org-ul">
 <li>advantages
 <ul class="org-ul">
@@ -500,9 +500,9 @@ The result is some sort of JSON file (reflecting the complete state of your data
 </ul>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000009">
-<h4 id="org0000009">examples</h4>
-<div class="outline-text-4" id="text-org0000009">
+<div class="outline-4">
+<h4 id="org0000001">examples</h4>
+<div class="outline-text-4">
 <p>
 When would you use that kind of export?
 When there isn't much data to retrieve and you can do it in one go.
@@ -518,7 +518,7 @@ There are no apparent API limitations preventing you from fetching everything, a
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000d">
+<div class="outline-3">
 <h3 id="incremental"><a class="headerlink" href="#incremental">¶</a>incremental export</h3>
 <div class="outline-text-3" id="text-incremental">
 <p>
@@ -533,9 +533,9 @@ Implementation wise, it looks like this:
 <li>merge it back with previously exported data, persist on disk</li>
 </ul>
 </div>
-<div class="outline-4" id="outline-container-org000000b">
-<h4 id="org000000b">summary</h4>
-<div class="outline-text-4" id="text-org000000b">
+<div class="outline-4">
+<h4 id="org0000002">summary</h4>
+<div class="outline-text-4">
 <ul class="org-ul">
 <li>advantages
 <ul class="org-ul">
@@ -557,9 +557,9 @@ Incremental exports are <b>always</b> harder to program. Indeed, <a class="link-
 </span><aside class="sidenote">Fun fact: most of your phone apps already implement incremental sync. It's a shame the logic can't be reused.</aside></div>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org000000c">
-<h4 id="org000000c">examples</h4>
-<div class="outline-text-4" id="text-org000000c">
+<div class="outline-4">
+<h4 id="org0000003">examples</h4>
+<div class="outline-text-4">
 <p>
 If it's so tricky, why would you bother with exporting data incrementally?
 </p>
@@ -602,7 +602,7 @@ Also, it's even flakier than using APIs, so you might want to avoid extra work i
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000011">
+<div class="outline-3">
 <h3 id="synthetic"><a class="headerlink" href="#synthetic">¶</a>synthetic export</h3>
 <div class="outline-text-3" id="text-synthetic">
 <div><span class="before-aside">
@@ -700,9 +700,9 @@ If you do spot a problem you only have to change the code with no need for data 
 </p></li>
 </ul>
 </div>
-<div class="outline-4" id="outline-container-org000000e">
-<h4 id="org000000e">illustrative example</h4>
-<div class="outline-text-4" id="text-org000000e">
+<div class="outline-4">
+<h4 id="org0000004">illustrative example</h4>
+<div class="outline-text-4">
 <p>
 I feel like the explanations are a bit abstract, so let's consider a specific scenario.
 </p>
@@ -757,9 +757,9 @@ I hope it's clear how much easier this is compared with maintaining some sort of
 </ul>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org000000f">
-<h4 id="org000000f">summary</h4>
-<div class="outline-text-4" id="text-org000000f">
+<div class="outline-4">
+<h4 id="org0000005">summary</h4>
+<div class="outline-text-4">
 <ul class="org-ul">
 <li>advantages
 <ul class="org-ul">
@@ -786,9 +786,9 @@ When we access the data we have to merge all snapshots every time. I'll elaborat
 </ul>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org0000010">
-<h4 id="org0000010">more examples</h4>
-<div class="outline-text-4" id="text-org0000010">
+<div class="outline-4">
+<h4 id="org0000006">more examples</h4>
+<div class="outline-text-4">
 <ul class="org-ul">
 <li>Github API is restricted to 300 latest events, so synthetic logic is used in <a href="https://github.com/karlicoss/ghexport/blob/master/dal.py">ghexport</a> tool</li>
 <li><p>
@@ -808,7 +808,7 @@ Chrome only keeps 90 days of browsing history in its database
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000018">
+<div class="outline-2">
 <h2 id="export_layer"><a class="headerlink" href="#export_layer">¶</a><span class="section-number-2">4</span> Export layer</h2>
 <div class="outline-text-2" id="text-export_layer">
 <p>
@@ -835,7 +835,7 @@ This is kind of vague (perhaps even obvious), so I will try to elaborate on what
 This section doesn't cover the exact details, it's more of a collection of tips for minimizing the work and boilerplate. If you are interested in reading the code, <a href="https://github.com/search?type=Repositories&amp;q=user%3Akarlicoss+++topic%3Aexport">here</a> are some of the export scripts and tools I've implemented.
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000014">
+<div class="outline-3">
 <h3 id="bindings"><a class="headerlink" href="#bindings">¶</a>use existing bindings</h3>
 <div class="outline-text-3" id="text-bindings">
 <p>
@@ -878,9 +878,9 @@ Same argument: if you forgot to handle some API calls, it makes it much easier f
 </p></li>
 </ul>
 </div>
-<div class="outline-4" id="outline-container-org0000013">
-<h4 id="org0000013">examples</h4>
-<div class="outline-text-4" id="text-org0000013">
+<div class="outline-4">
+<h4 id="org0000007">examples</h4>
+<div class="outline-text-4">
 <p>
 To export <a href="https://github.com/karlicoss/hypexport">Hypothes.is</a> data I'm using existing <a href="https://github.com/judell/Hypothesis">judell/Hypothesis</a> bindings.
 </p>
@@ -916,7 +916,7 @@ If praw kept original data from the API, the <a href="https://github.com/karlico
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000015">
+<div class="outline-3">
 <h3 id="keep_raw"><a class="headerlink" href="#keep_raw">¶</a>don't mess with the raw data</h3>
 <div class="outline-text-3" id="text-keep_raw">
 <p>
@@ -942,7 +942,7 @@ I'm elaborating on this point <a href="unnecessary-db.html#asis">here</a>.
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000016">
+<div class="outline-3">
 <h3 id="defensive"><a class="headerlink" href="#defensive">¶</a>don't  be too defensive</h3>
 <div class="outline-text-3" id="text-defensive">
 <ul class="org-ul">
@@ -960,7 +960,7 @@ If you know what you're doing (e.g. some endpoint is notoriously flaky) and do n
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000017">
+<div class="outline-3">
 <h3 id="credentials"><a class="headerlink" href="#credentials">¶</a>allow reading credentials from a file</h3>
 <div class="outline-text-3" id="text-credentials">
 <ul class="org-ul">
@@ -979,7 +979,7 @@ Personally, I found it so boilerplaty I extracted this logic to a separate <a hr
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000001d">
+<div class="outline-2">
 <h2 id="storage"><a class="headerlink" href="#storage">¶</a><span class="section-number-2">5</span> How to store it: organizing data</h2>
 <div class="outline-text-2" id="text-storage">
 <p>
@@ -1003,7 +1003,7 @@ For storage I'm just using the filesystem; all exports are kept or symlinked in 
 /exports/goodreads
 </pre>
 </div>
-<div class="outline-3" id="outline-container-org0000019">
+<div class="outline-3">
 <h3 id="timestamps"><a class="headerlink" href="#timestamps">¶</a>naming and timestamping</h3>
 <div class="outline-text-3" id="text-timestamps">
 <p>
@@ -1035,7 +1035,7 @@ To make timestamping automatic and less boilerplaty, I'm using a <a class="link-
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001a">
+<div class="outline-3">
 <h3 id="backups"><a class="headerlink" href="#backups">¶</a>backups</h3>
 <div class="outline-text-3" id="text-backups">
 <p>
@@ -1044,7 +1044,7 @@ What is more, borg is deduplicating, so it's very friendly to incremental and sy
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001b">
+<div class="outline-3">
 <h3 id="sync"><a class="headerlink" href="#sync">¶</a>synchronizing between computers</h3>
 <div class="outline-text-3" id="text-sync">
 <p>
@@ -1052,7 +1052,7 @@ I synchronize/replicate it across my computers with Syncthing, also used Dropbox
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001c">
+<div class="outline-3">
 <h3 id="disk_space"><a class="headerlink" href="#disk_space">¶</a>disk space concerns</h3>
 <div class="outline-text-3" id="text-disk_space">
 <p>
@@ -1092,7 +1092,7 @@ I haven't personally tried it.
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000020">
+<div class="outline-2">
 <h2 id="dal"><a class="headerlink" href="#dal">¶</a><span class="section-number-2">6</span> Data access layer (DAL)</h2>
 <div class="outline-text-2" id="text-dal">
 <p>
@@ -1138,7 +1138,7 @@ Keeping raw data makes them trivial
 </p></li>
 </ul>
 </div>
-<div class="outline-3" id="outline-container-org000001e">
+<div class="outline-3">
 <h3 id="dal_performance"><a class="headerlink" href="#dal_performance">¶</a>performance concerns</h3>
 <div class="outline-text-3" id="text-dal_performance">
 <p>
@@ -1156,7 +1156,7 @@ In addition:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000001f">
+<div class="outline-3">
 <h3 id="dal_examples"><a class="headerlink" href="#dal_examples">¶</a>examples</h3>
 <div class="outline-text-3" id="text-dal_examples">
 <div class="noop" id="dal_messenger">
@@ -1180,7 +1180,7 @@ You can find more specific examples along with the motivation and explanations h
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000023">
+<div class="outline-2">
 <h2 id="automatic_exports"><a class="headerlink" href="#automatic_exports">¶</a><span class="section-number-2">7</span> Automating exports</h2>
 <div class="outline-text-2" id="text-automatic_exports">
 <p>
@@ -1191,7 +1191,7 @@ You really don't want to think about it and having a recent version of your data
 In addition, it serves as a means of backup, so you don't have to worry about what happens if the service ceases to exist.
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000021">
+<div class="outline-3">
 <h3 id="scheduling"><a class="headerlink" href="#scheduling">¶</a>scheduling</h3>
 <div class="outline-text-3" id="text-scheduling">
 <p>
@@ -1211,7 +1211,7 @@ I'm still <a href="scheduler.html#solution">thinking</a> of an alternative, but 
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000022">
+<div class="outline-3">
 <h3 id="arctee"><a class="headerlink" href="#arctee">¶</a>arctee</h3>
 <div class="outline-text-3" id="text-arctee">
 <p>
@@ -1254,7 +1254,7 @@ That said, it feels kind of wrong having an extra script for all these things si
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000024">
+<div class="outline-2">
 <h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">8</span> --</h2>
 <div class="outline-text-2" id="text-fin">
 <p>

@@ -125,7 +125,7 @@ simple and clean <a href="https://mypy.readthedocs.io/en/latest/introduction.htm
 <p>
 You might learn few things about error handling in different languages, pattern matching, type variance, mypy's capabilities in general and clues for making your code and interfaces more mypy-friendly (and IDE friendly if you're using LSP/Intellij).
 </p>
-<div class="outline-2" id="outline-container-org0000000">
+<div class="outline-2">
 <h2 id="intro"><a class="headerlink" href="#intro">¶</a><span class="section-number-2">1</span> Intro aka computers are hard</h2>
 <div class="outline-text-2" id="text-intro">
 <p>
@@ -170,7 +170,7 @@ and introduce a motivating <b>real life problem</b> that I actually had to solve
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000001">
+<div class="outline-2">
 <h2 id="problem"><a class="headerlink" href="#problem">¶</a><span class="section-number-2">2</span> The problem: parsing Kindle highlights</h2>
 <div class="outline-text-2" id="text-problem">
 <p>
@@ -359,7 +359,7 @@ What do we do?
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000002">
+<div class="outline-2">
 <h2 id="logging"><a class="headerlink" href="#logging">¶</a><span class="section-number-2">3</span> A non-solution #1: logging</h2>
 <div class="outline-text-2" id="text-logging">
 <p>
@@ -396,7 +396,7 @@ So we need some way of propagating the errors up the call hierarchy instead of t
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000003">
+<div class="outline-2">
 <h2 id="error_object"><a class="headerlink" href="#error_object">¶</a><span class="section-number-2">4</span> A non-solution #2: special error value</h2>
 <div class="outline-text-2" id="text-error_object">
 <p>
@@ -423,7 +423,7 @@ Sometimes it's inevitable though, e.g. I'm giving an example <a class="link-down
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000006">
+<div class="outline-2">
 <h2 id="container"><a class="headerlink" href="#container">¶</a><span class="section-number-2">5</span> Almost solution #1: Result container</h2>
 <div class="outline-text-2" id="text-container">
 <p>
@@ -562,7 +562,7 @@ So, let's try to use mypy to aid us at writing correct code.
 Let's focus just on <code class="inline">iter_highlights</code> and <code class="inline">iter_books</code> and use the <code class="inline">Result</code> type.
 </p>
 <div class="org-src-container">
-<pre class="src src-python" id="org0000004"><span class="linenr">34: </span><span class="org-keyword">from</span> result <span class="org-keyword">import</span> Ok, Err, Result
+<pre class="src src-python" id="org0000000"><span class="linenr">34: </span><span class="org-keyword">from</span> result <span class="org-keyword">import</span> Ok, Err, Result
 <span class="linenr">35: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> Iterator
 <span class="linenr">36: </span><span class="org-variable-name">Error</span> = <span class="org-builtin">str</span>
 <span class="linenr">37: </span>
@@ -661,7 +661,7 @@ The contract <samp class="inline">if .is_ok() is True, then it's safe to call .o
 Ok, we've learned something, let's try again. 
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000005">
+<div class="outline-3">
 <h3 id="iterator"><a class="headerlink" href="#iterator">¶</a>By the way, what's up with <a href="https://docs.python.org/3/library/typing.html#typing.Iterator"><code class="inline">Iterator</code></a> everywhere?</h3>
 <div class="outline-text-3" id="text-iterator">
 <p>
@@ -679,7 +679,7 @@ If you're not very familiar with <samp class="inline">yield</samp> and Python's 
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000000a">
+<div class="outline-2">
 <h2 id="combinators"><a class="headerlink" href="#combinators">¶</a><span class="section-number-2">6</span> Almost solution #2: use error combinators</h2>
 <div class="outline-text-2" id="text-combinators">
 <p>
@@ -690,7 +690,7 @@ I'm quite glad someone already implemented it and I didn't have to reinvent the 
 So, let's try and rewrite the code using <code class="inline">returns.result.Result</code>:
 </p>
 <div class="org-src-container">
-<pre class="src src-mypy" id="org0000007"><span class="linenr">19: </span><span class="org-keyword">from</span> returns.result <span class="org-keyword">import</span> safe
+<pre class="src src-mypy" id="org0000001"><span class="linenr">19: </span><span class="org-keyword">from</span> returns.result <span class="org-keyword">import</span> safe
 <span class="linenr">20: </span>
 <span class="linenr">21: </span><span class="org-type">@safe</span>
 <span class="linenr">22: </span><span class="org-keyword">def</span> <span class="org-function-name">parse_entry</span>(entry: <span class="org-builtin">str</span>) -&gt; Highlight:
@@ -723,7 +723,7 @@ So far the only difference from <a class="link-up" href="#code_initial">the orig
 As a consequence, <code class="inline">iter_highlights</code> required no changes in its body. (which may not be a desirable thing as we'll see <a class="link-down" href="#error_context">later</a>)
 </p>
 <div class="org-src-container">
-<pre class="src src-mypy" id="org0000008"><span class="linenr">43: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> cast
+<pre class="src src-mypy" id="org0000002"><span class="linenr">43: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> cast
 <span class="linenr">44: </span><span class="org-keyword">from</span> returns.result <span class="org-keyword">import</span> Success, Failure
 <span class="linenr">45: </span><span class="org-keyword">from</span> itertools <span class="org-keyword">import</span> tee
 <span class="linenr">46: </span><span class="org-keyword">def</span> <span class="org-function-name">iter_books</span>() -&gt; Iterator[Result[Book, <span class="org-type">Exception</span>]]:
@@ -752,7 +752,7 @@ Apart from this obscurity, the function suffers from exactly the same issues as 
 One could argue that this function is going to look awkward anyway since we need to separate list of results into successes and errors. Let's see the function that should be more straightforward:
 </p>
 <div class="org-src-container">
-<pre class="src src-mypy" id="org0000009"><span class="linenr">57: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> Callable
+<pre class="src src-mypy" id="org0000003"><span class="linenr">57: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> Callable
 <span class="linenr">58: </span><span class="org-keyword">def</span> <span class="org-function-name">print_books</span>() -&gt; <span class="org-constant">None</span>:
 <span class="linenr">59: </span>    <span class="org-keyword">for</span> r <span class="org-keyword">in</span> iter_books():
 <span class="linenr">60: </span>        <span class="org-keyword">def</span> <span class="org-function-name">print_ok</span>(r: Book) -&gt; <span class="org-constant">None</span>:
@@ -822,7 +822,7 @@ But as much as I like ideas from functional programming, I'm almost certain that
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000000b">
+<div class="outline-2">
 <h2 id="pair"><a class="headerlink" href="#pair">¶</a><span class="section-number-2">7</span> Still-not-quite-a-solution #3: (Value, Error) pairs</h2>
 <div class="outline-text-2" id="text-pair">
 <p>
@@ -876,7 +876,7 @@ If we use it we would have to pay with sacrificing type safety or <b>extra code 
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000000c">
+<div class="outline-2">
 <h2 id="kiss"><a class="headerlink" href="#kiss">¶</a><span class="section-number-2">8</span> Solution: keep it simple</h2>
 <div class="outline-text-2" id="text-kiss">
 <p>
@@ -1114,11 +1114,11 @@ hopefully you'll figure out parts of your projects where it's applicable.
 </p>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000017">
+<div class="outline-2">
 <h2 id="tips_tricks"><a class="headerlink" href="#tips_tricks">¶</a><span class="section-number-2">9</span> Tips &amp; tricks</h2>
 <div class="outline-text-2" id="text-tips_tricks">
 </div>
-<div class="outline-3" id="outline-container-org000000e">
+<div class="outline-3">
 <h3 id="api"><a class="headerlink" href="#api">¶</a>Custom error type</h3>
 <div class="outline-text-3" id="text-api">
 <p>
@@ -1128,7 +1128,7 @@ While <a class="coderef link-up" href="#coderef-simple_error_api" onmouseout="Co
 One improvement is allowing <b>arbitrary error type</b>.
 </p>
 <div class="org-src-container">
-<pre class="src src-mypy" id="org000000d"><span class="linenr">1: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> TypeVar, Union
+<pre class="src src-mypy" id="org0000004"><span class="linenr">1: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> TypeVar, Union
 <span class="linenr">2: </span><span class="org-variable-name">T</span> = TypeVar(<span class="org-string">'T'</span>)
 <span class="linenr">3: </span><span class="org-variable-name">E</span> = TypeVar(<span class="org-string">'E'</span>)
 <span class="linenr">4: </span><span class="org-variable-name">ResT</span> = Union[T, E]
@@ -1172,7 +1172,7 @@ The downside now is that you do need to wrap your exception (i.e. presumably you
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000f">
+<div class="outline-3">
 <h3 id="unwrap"><a class="headerlink" href="#unwrap">¶</a>unwrap</h3>
 <div class="outline-text-3" id="text-unwrap">
 <p>
@@ -1209,7 +1209,7 @@ Success: no issues found in 1 source file
 </pre>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000012">
+<div class="outline-3">
 <h3 id="global_policy"><a class="headerlink" href="#global_policy">¶</a>Global error policy</h3>
 <div class="outline-text-3" id="text-global_policy">
 <p>
@@ -1217,7 +1217,7 @@ When you're actively working on your code and running tests, you want to make su
 However, in the field, you want to keep the code more defensive. To switch behaviours quickly, you can use the following trick:
 </p>
 <div class="org-src-container">
-<pre class="src src-mypy" id="org0000010"><span class="linenr"> 5: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> Generic
+<pre class="src src-mypy" id="org0000005"><span class="linenr"> 5: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> Generic
 <span class="linenr"> 6: </span><span class="org-variable-name">X</span> = TypeVar(<span class="org-string">'X'</span>, bound=<span class="org-type">Exception</span>, covariant=<span class="org-constant">True</span>)
 <span class="linenr"> 7: </span>
 <span class="linenr"> 8: </span><span class="org-keyword">class</span> <span class="org-type">Error</span>(Generic[X]):
@@ -1238,7 +1238,7 @@ The idea here is <code class="inline">Error.defensive_policy</code> determines i
 Also note the use of <code class="inline">bound=Exception</code> on the type variable, this is because we can only <code class="inline">raise</code> something that inherits <code class="inline">Exception</code>.
 </p>
 <div class="org-src-container">
-<pre class="src src-mypy" id="org0000011"><span class="linenr">17: </span>
+<pre class="src src-mypy" id="org0000006"><span class="linenr">17: </span>
 <span class="linenr">18: </span><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> Iterator
 <span class="linenr">19: </span><span class="org-keyword">def</span> <span class="org-function-name">iter_numbers</span>() -&gt; Iterator[Res[<span class="org-builtin">int</span>]]:
 <span class="linenr">20: </span>    <span class="org-keyword">for</span> s <span class="org-keyword">in</span> [<span class="org-string">'1'</span>, <span class="org-string">'two'</span>, <span class="org-string">'3'</span>, <span class="org-string">'4'</span>]:
@@ -1308,7 +1308,7 @@ On CI, it runs in non-defensive mode of course. However when other people use th
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000013">
+<div class="outline-3">
 <h3 id="error_context"><a class="headerlink" href="#error_context">¶</a>Improving error context</h3>
 <div class="outline-text-3" id="text-error_context">
 <p>
@@ -1358,7 +1358,7 @@ Now that's better!
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000014">
+<div class="outline-3">
 <h3 id="warnings"><a class="headerlink" href="#warnings">¶</a>Fine grained defensiveness</h3>
 <div class="outline-text-3" id="text-warnings">
 <p>
@@ -1403,7 +1403,7 @@ Of course, this complicates code, and you can't predict all possible errors anyw
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000015">
+<div class="outline-3">
 <h3 id="dataframe"><a class="headerlink" href="#dataframe">¶</a>Error values, revisited</h3>
 <div class="outline-text-3" id="text-dataframe">
 <p>
@@ -1445,7 +1445,7 @@ E.g. <a href="https://gateway.serph.network/ipfs/Qmc5hBuomCLzb25kg14dAesAcnRSJZH
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000016">
+<div class="outline-3">
 <h3 id="cursed_pattern_matching"><a class="headerlink" href="#cursed_pattern_matching">¶</a>Cursed pattern matching mechanism</h3>
 <div class="outline-text-3" id="text-cursed_pattern_matching">
 <p>
@@ -1520,7 +1520,7 @@ And the obvious downside is that there is a potential to forget to handle except
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000018">
+<div class="outline-2">
 <h2 id="closing"><a class="headerlink" href="#closing">¶</a><span class="section-number-2">10</span> Closing points</h2>
 <div class="outline-text-2" id="text-closing">
 <ul class="org-ul">
@@ -1549,7 +1549,7 @@ That saved me from otherwise massive amounts of code duplication and reference r
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000019">
+<div class="outline-2">
 <h2 id="links"><a class="headerlink" href="#links">¶</a><span class="section-number-2">11</span> Other links</h2>
 <div class="outline-text-2" id="text-links">
 <ul class="org-ul">
@@ -1559,7 +1559,7 @@ That saved me from otherwise massive amounts of code duplication and reference r
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000001a">
+<div class="outline-2">
 <h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">12</span> --</h2>
 <div class="outline-text-2" id="text-fin">
 <p>

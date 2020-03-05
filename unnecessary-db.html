@@ -208,7 +208,7 @@ My main claim is that for personal data, databases have benefits as a means of <
 </ul>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000001">
+<div class="outline-2">
 <h2 id="asis"><a class="headerlink" href="#asis">¶</a><span class="section-number-2">1</span> What do you suggest?</h2>
 <div class="outline-text-2" id="text-asis">
 <p>
@@ -256,7 +256,7 @@ Nothing wrong with using databases for <a class="link-down" href="#cachew">cachi
 And as a specific example:
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000000">
+<div class="outline-3">
 <h3 id="example_reddit"><a class="headerlink" href="#example_reddit">¶</a>example: Reddit export</h3>
 <div class="outline-text-3" id="text-example_reddit">
 <p>
@@ -314,7 +314,7 @@ One annotation, that's it. Look ma, no SQL! Okay, okay, there is quite a bit of 
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000008">
+<div class="outline-2">
 <h2 id="databases_good"><a class="headerlink" href="#databases_good">¶</a><span class="section-number-2">2</span> Databases are good</h2>
 <div class="outline-text-2" id="text-databases_good">
 <p>
@@ -330,7 +330,7 @@ When I say 'database' here, I typically mean Sqlite, which is most commonly used
 <span style="color:darkorange"><strong>If you think I've missed out on something, please let me know!</strong></span>
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000002">
+<div class="outline-3">
 <h3 id="space"><a class="headerlink" href="#space">¶</a>take less space</h3>
 <div class="outline-text-3" id="text-space">
 <p>
@@ -353,7 +353,7 @@ If you have a minute by minute stream of <b>uniform data</b>, a database is prob
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000003">
+<div class="outline-3">
 <h3 id="performance"><a class="headerlink" href="#performance">¶</a>efficient data access</h3>
 <div class="outline-text-3" id="text-performance">
 <p>
@@ -364,7 +364,7 @@ In addition, there are <a class="link-down" href="#cachew">ways</a> of getting m
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000004">
+<div class="outline-3">
 <h3 id="sql"><a class="headerlink" href="#sql">¶</a>query language</h3>
 <div class="outline-text-3" id="text-sql">
 <p>
@@ -385,7 +385,7 @@ And finally, nothing prevents you from providing a database as an <a class="link
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000005">
+<div class="outline-3">
 <h3 id="rows"><a class="headerlink" href="#rows">¶</a>SQL rows are a better 'data interface' than JSON</h3>
 <div class="outline-text-3" id="text-rows">
 <p>
@@ -449,7 +449,7 @@ Note that you have fewer steps if you follow the first approach. And it's not on
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000006">
+<div class="outline-3">
 <h3 id="constraints"><a class="headerlink" href="#constraints">¶</a>types and constraints</h3>
 <div class="outline-text-3" id="text-constraints">
 <p>
@@ -482,7 +482,7 @@ The alternative I suggest, storing raw data as is, means that at least:
 </ul>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org0000007">
+<div class="outline-3">
 <h3 id="easy_bindings"><a class="headerlink" href="#easy_bindings">¶</a>easy to map onto any language</h3>
 <div class="outline-text-3" id="text-easy_bindings">
 <p>
@@ -516,14 +516,14 @@ That said, I'll repeat my point that you can still use a database <a class="link
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org000000f">
+<div class="outline-2">
 <h2 id="databases_hard"><a class="headerlink" href="#databases_hard">¶</a><span class="section-number-2">3</span> Databases are hard</h2>
 <div class="outline-text-2" id="text-databases_hard">
 <p>
 Now let's go through things that directly make databases hard.
 </p>
 </div>
-<div class="outline-3" id="outline-container-org000000a">
+<div class="outline-3">
 <h3 id="relational"><a class="headerlink" href="#relational">¶</a>relational model</h3>
 <div class="outline-text-3" id="text-relational">
 <p>
@@ -536,7 +536,7 @@ At the same time, this simplicity is a curse and imposes structure that might be
 Often, the relational model requires you to rearrange data before inserting, which might break data consistency.
 </p>
 </div>
-<div class="outline-4" id="outline-container-org0000009">
+<div class="outline-4">
 <h4 id="relational_examples">Examples</h4>
 <div class="outline-text-4" id="text-relational_examples">
 <ul class="org-ul">
@@ -574,7 +574,7 @@ How do you keep heart rate and location?
 </div>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000b">
+<div class="outline-3">
 <h3 id="schema"><a class="headerlink" href="#schema">¶</a>coming up with a schema</h3>
 <div class="outline-text-3" id="text-schema">
 <p>
@@ -585,7 +585,7 @@ Schemas use a fixed number of fields, which requires you to scrupulously inspect
 </p>
 </div>
 </div>
-<div class="outline-3" id="outline-container-org000000e">
+<div class="outline-3">
 <h3 id="maintaining"><a class="headerlink" href="#maintaining">¶</a>maintaining</h3>
 <div class="outline-text-3" id="text-maintaining">
 <p>
@@ -614,7 +614,7 @@ Sometimes it's fine, but sometimes that means <a class="link-down" href="#increm
 Consider the following scenarios and how we handle them:
 </p>
 </div>
-<div class="outline-4" id="outline-container-org000000c">
+<div class="outline-4">
 <h4 id="api_extended">API is extended, i.e. returns more data</h4>
 <div class="outline-text-4" id="text-api_extended">
 <p>
@@ -685,7 +685,7 @@ Modifying code is way easier than messing with databases and modifying the data.
 </ul>
 </div>
 </div>
-<div class="outline-4" id="outline-container-org000000d">
+<div class="outline-4">
 <h4 id="api_backward">API breaks backward compatibility</h4>
 <div class="outline-text-4" id="text-api_backward">
 <p>
@@ -721,7 +721,7 @@ Database migrations are very hard, and you want to avoid them at all costs.
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000012">
+<div class="outline-2">
 <h2 id="append"><a class="headerlink" href="#append">¶</a><span class="section-number-2">4</span> Append, don't modify</h2>
 <div class="outline-text-2" id="text-append">
 <p>
@@ -838,7 +838,7 @@ This is not a new approach and a common software engineering practice:
 I've already mentioned that regarding <a class="link-up" href="#example_reddit">Reddit</a> a few times, but let me illustrate the 'inconsistency' aspect with a more specific example:
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000011">
+<div class="outline-3">
 <h3 id="example_chrome"><a class="headerlink" href="#example_chrome">¶</a>Example: Chrome history</h3>
 <div class="outline-text-3" id="text-example_chrome">
 <p>
@@ -1184,7 +1184,7 @@ When we update the database, we use something like:
 Note that by the time you do realize that and fix it, you may have already lost (and even worse, corrupted) older history.
 </p>
 </div>
-<div class="outline-4" id="outline-container-org0000010">
+<div class="outline-4">
 <h4 id="chrome_dal">An alternative</h4>
 <div class="outline-text-4" id="text-chrome_dal">
 <p>
@@ -1229,7 +1229,7 @@ Again, an obvious downside is that in runtime, it might take several minutes to 
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000014">
+<div class="outline-2">
 <h2 id="cachew"><a class="headerlink" href="#cachew">¶</a><span class="section-number-2">5</span> Appendix: when you really really want a database</h2>
 <div class="outline-text-2" id="text-cachew">
 <p>
@@ -1239,7 +1239,7 @@ As I mentioned so many times, databases are actually great for caching, as they 
 After noticing similar similar database access patterns used all over again, I realized that it's possible to isolate the complexity and boilerplate in a separate Python library, <a href="https://github.com/karlicoss/cachew#motivation">cachew</a>.
 </p>
 </div>
-<div class="outline-3" id="outline-container-org0000013">
+<div class="outline-3">
 <h3 id="cachew_cachew"><a class="headerlink" href="#cachew_cachew">¶</a>cachew</h3>
 <div class="outline-text-3" id="text-cachew_cachew">
 <p>
@@ -1280,7 +1280,7 @@ In essence, filenames along with their modification times are used as the key fo
 </div>
 </div>
 </div>
-<div class="outline-2" id="outline-container-org0000015">
+<div class="outline-2">
 <h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">6</span> --</h2>
 <div class="outline-text-2" id="text-fin">
 <p>
