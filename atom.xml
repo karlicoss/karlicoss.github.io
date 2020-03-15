@@ -4348,7 +4348,7 @@ So I built my own ways around it! I write about it in detail <a href="pkm-search
 </p>
 <p>
 In essence, I'm mirroring most of my online data like chat logs, comments, etc., as plaintext.
-That allows to overview it in text editors, and incrementally search over <b>all of it</b> in a single keypress.
+I can overview it in any text editor, and incrementally search over <b>all of it</b> in a single keypress.
 </p>
 </div>
 </div>
@@ -4397,8 +4397,8 @@ I want to see all my digital history, search in it, filter, easily jump at a spe
 That way it works as a sort of external memory.
 </p>
 <p>
-Ideally it would look similar to Andrew Louis's <a href="https://hyfen.net/memex">Memex</a>, or might even reuse his interface if
-he open sources it. I highly recommend watching his talk for the inspiration.
+Ideally, it would look similar to Andrew Louis's <a href="https://hyfen.net/memex">Memex</a>, or might even reuse his interface if
+he open sources it. I highly recommend watching his talk for inspiration.
 </p>
 </div>
 </div>

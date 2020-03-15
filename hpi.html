@@ -91,7 +91,7 @@
 <b>Draft stage</b>: almost ready; needs some final touches and grammar check.
 </p>
 <p>
-<b>TLDR</b>: I'm using <a href="https://github.com/karlicoss/HPI">HPI</a> (Human Programming Interface) package as a means of unifying, accessing and interacting with my all my personal data.
+<b>TLDR</b>: I'm using <a href="https://github.com/karlicoss/HPI">HPI</a> (Human Programming Interface) package as a means of unifying, accessing and interacting with all of my personal data.
 </p>
 <p>
 It's a Python library (named <code class="inline">my</code>), a collection of modules for:
@@ -151,8 +151,8 @@ I consider my digital trace an important part of my identity.
 The fact that the data is siloed, and accessing it is inconvenient and borderline frustrating feels very wrong.
 </span><aside class="sidenote"><a class="post-tag" href="./tags.html#extendedmind">#extendedmind</a></aside></div>
 <p>
-Having it available as Python objects allows me to plug in my data into existing tools, libraries and frameworks.
-It makes building new tools considerably easier and allows to create new ways of interacting with the data.
+Once the data is available as Python objects, I can easily plug it into existing tools, libraries and frameworks.
+It makes building new tools considerably easier and allows creating new ways of interacting with the data.
 </p>
 <p>
 I tried different things over the years and I think I'm getting to the point where other people can also benefit from my code by 'just' plugging in their data,
@@ -234,7 +234,7 @@ Integrations of data across silo boundaries are almost non-existent. There is so
 I'm not willing to wait till some vaporwave project reinvents the whole computing model from scratch
 </p>
 <p>
-As a programmer, I have the capacity to do something <b>right now</b>, even though it's not necessarily perfect and consistent.
+As a programmer, I am in capacity to do something <b>right now</b>, even though it's not necessarily perfect and consistent.
 </p></li>
 </ul>
 <p>
@@ -318,7 +318,7 @@ I've written a lot about it <a href="sad-infra.html#why">here</a>, so allow me t
 I'm tired of shitty bloated interfaces
 </p>
 <p>
-Why do we have to be at mercy of their developers, designers and product managers? If we had our data at hand, we could fine tune interfaces for our needs.
+Why do we have to be at mercy of their developers, designers and product managers? If we had our data at hand, we could fine-tune interfaces for our needs.
 </p></li>
 <li><p>
 I'm tired of mediocre search experience
@@ -328,7 +328,7 @@ Text search is something computers do <b>exceptionally</b> well.
 Yet, often it's not available offline, it's not incremental, everyone reinvents their own query language, and so on.
 </p></li>
 <li><p>
-I'm frustrated of poor information exploring and processing experience
+I'm frustrated by poor information exploring and processing experience
 </p>
 <p>
 While for many people, services like Reddit or Twitter are simply time killers (and I don't judge), some want to use them efficiently, as a source of information/research.
@@ -347,7 +347,7 @@ so I could be better at solving the real problems.
 <div class="outline-text-2" id="text-package">
 <p>
 When I started solving some of these problems for myself, I've noticed a common pattern: the <a href="sad-infra.html#exports_are_hard">hardest bit</a> is actually getting your data in the first place.
-It's inherently error prone and frustrating.
+It's inherently error-prone and frustrating.
 </p>
 <p>
 But once you have the data in a convenient representation, working with it is pleasant – you get to explore and build instead of fighting with yet another stupid REST API.
@@ -477,7 +477,7 @@ Here's an (incomplete) list of the modules in the public package:
 </tbody>
 </table>
 <p>
-Some modules are also private, and need a bit of cleanup before I'll merge them in:
+Some modules are private, and need a bit of cleanup before merging:
 </p>
 <table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
 <colgroup>
@@ -513,11 +513,11 @@ Some modules are also private, and need a bit of cleanup before I'll merge them 
 <h2 id="usecases"><a class="headerlink" href="#usecases">¶</a><span class="section-number-2">4</span> How do you use it?</h2>
 <div class="outline-text-2" id="text-usecases">
 <p>
-Mainly I use it as a data provider for my scripts, tools and dashboards.
+Mainly I use it as a data provider for my scripts, tools, and dashboards.
 </p>
 <p>
-Also check out <a href="myinfra.html#mypkg">my infrastructure map</a>.
-It's in a draft at the moment, but might help to understand what's my vision on HPI.
+Also, check out <a href="myinfra.html#mypkg">my infrastructure map</a>.
+It's a draft at the moment, but it might be helpful for understanding what's my vision on HPI.
 </p>
 </div>
 <div class="outline-3">
@@ -529,7 +529,7 @@ So I built my own ways around it! I write about it in detail <a href="../../blog
 </p>
 <p>
 In essence, I'm mirroring most of my online data like chat logs, comments, etc., as plaintext.
-That allows to overview it in text editors, and incrementally search over <b>all of it</b> in a single keypress.
+I can overview it in any text editor, and incrementally search over <b>all of it</b> in a single keypress.
 </p>
 </div>
 </div>
@@ -578,8 +578,8 @@ I want to see all my digital history, search in it, filter, easily jump at a spe
 That way it works as a sort of external memory.
 </p>
 <p>
-Ideally it would look similar to Andrew Louis's <a href="https://hyfen.net/memex">Memex</a>, or might even reuse his interface if
-he open sources it. I highly recommend watching his talk for the inspiration.
+Ideally, it would look similar to Andrew Louis's <a href="https://hyfen.net/memex">Memex</a>, or might even reuse his interface if
+he open sources it. I highly recommend watching his talk for inspiration.
 </p>
 </div>
 </div>
@@ -826,7 +826,7 @@ In short:
 The data is <a href="myinfra.html#exports">periodically synchronized</a> from the services (cloud or not) locally, on the filesystem
 </p>
 <p>
-As a result, you get <a href="myinfra.html#fs">JSONs/sqlite</a> (or other format, depending on the service) on your disk.
+As a result, you get <a href="myinfra.html#fs">JSONs/sqlite</a> (or other formats, depending on the service) on your disk.
 </p>
 <p>
 Once you have it, it's trivial to back it up and synchronize to other computers/phones, if necessary.
@@ -858,7 +858,7 @@ In theory, it's possible to make the system almost realtime by having a service 
 <h3 id="why_python"><a class="headerlink" href="#why_python">¶</a>Why Python?</h3>
 <div class="outline-text-3" id="text-why_python">
 <p>
-By no means I consider Python unique as a language for such a project.
+I don't consider Python unique as a language suitable for such a project.
 It just happens to be the one I'm most comfortable with.
 I do have some reasons that I think make it <i>specifically</i> good, but explaining them is out of this post's scope.
 </p>
@@ -866,7 +866,7 @@ I do have some reasons that I think make it <i>specifically</i> good, but explai
 In addition, Python offers a <a href="https://github.com/karlicoss/awesome-python#data-analysis">very rich ecosystem</a> for data analysis, which we can use to our benefit.
 </p>
 <p>
-That said, I've never seen anything similar in other programming languages, and I would be really interested to, so please send me links if your know some.
+That said, I've never seen anything similar in other programming languages, and I would be really interested in, so please send me links if you know some.
 I've heard LISPs are great for data? ;)
 </p>
 <p>
@@ -904,7 +904,7 @@ The whole setup requires some basic programmer literacy:
 <li>potentially running Cron jobs</li>
 </ul>
 <p>
-If you have any ideas how to make the setup simpler, please let me know!
+If you have any ideas on making the setup simpler, please let me know!
 </p>
 </div>
 </div>
@@ -919,7 +919,7 @@ Everything is <a href="./tags.html#offline">local fist</a>, the input data is on
 If you're truly paranoid, you can even wrap it in a Docker container.
 </p>
 <p>
-There is still a question of whether you trust yourself at even keeping all the data on your disk, but it is out of scope of this post.
+There is still a question of whether you trust yourself at even keeping all the data on your disk, but it is out of the scope of this post.
 </p>
 <p>
 If you'd rather keep some code private too, it's also trivial to achieve with a private subpackage.
@@ -936,15 +936,15 @@ Wouldn't that, like, make you less human?
 </p>
 </blockquote>
 <p>
-I'm not a gatekeeper of what it means to be human, but I don't think that the shortcomings of the human brain is what makes us such.
+I'm not a gatekeeper of what it means to be human, but I don't think that the shortcomings of the human brain are what makes us such.
 </p>
 <p>
 So I can't answer that for you. I certainly want it though.
 I'm <a href="./tags.html#pkm">quite open</a> about my goals – I'd happily get merged/augmented with a computer to enhance my thinking and analytical abilities.
 </p>
 <p>
-While at the moment <a href="https://en.wikipedia.org/wiki/Hard_problem_of_consciousness">we don't even remotely understand</a> what would merging or "mind uploading" entail exactly,
-I can clearly delegate some tasks, like long term memory, information lookup and data processing to a computer. They can already handle it really well.
+While at the moment <a href="https://en.wikipedia.org/wiki/Hard_problem_of_consciousness">we don't even remotely understand</a> what would such merging or "mind uploading" entail exactly,
+I can clearly delegate some tasks, like long term memory, information lookup, and data processing to a computer. They can already handle it really well.
 </p>
 <blockquote>
 <p>
@@ -953,7 +953,7 @@ What about these people who have perfect recall and wish they hadn't.
 </blockquote>
 <p>
 Sure, maybe it sucks. At the moment though, I don't anything close to it and this only annoys me.
-I want to have a choice at least, and digital tools give me such choice.
+I want to have a choice at least, and digital tools give me this choice.
 </p>
 </div>
 </div>
@@ -964,20 +964,22 @@ I want to have a choice at least, and digital tools give me such choice.
 Probably, at least to some extent.
 </p>
 <p>
-First of all, our lives are different, so our APIs might be different too.
+First, our lives are different, so our APIs might be different too.
 This is more of a demonstration of what's I'm using, although I did spend effort towards making it as modular and extensible as possible, so other people could use it too.
 It's easy to modify code, add extra methods and modules. You can even keep all your modifications private.
 </p>
 <p>
-But after all, we've all sharing many similar activities and using same products, so there is a huger overlap.
+But after all, we've all sharing many similar activities and using the same products, so there is a huge overlap.
 I'm not sure how far we can stretch it and keep modules generic enough to be used by multiple people. But let's give it a try perhaps? :)
 </p>
 <p>
 Second, interacting with your data through the code is the central idea of the project.
-You might get away without it and expose some <a href="https://en.wikipedia.org/wiki/No-code_development_platform">no-code</a> interfaces, but for that you'd need to write some code in the first place.
+That kind of cuts off people without technical skills, and even many people capable of coding,
+who dislike the idea of writing code outside of work.
 </p>
 <p>
-As I mentioned that kind of cuts off people without technical skills, and even many people capable of coding, who oppose the idea of writing code outside of work.
+It might be possible to expose some <a href="https://en.wikipedia.org/wiki/No-code_development_platform">no-code</a> interfaces,
+but I still feel that wouldn't be enough.
 </p>
 <p>
 I'm not sure whether it's a solvable problem at this point, but happy to hear any suggestions!
@@ -992,7 +994,7 @@ I'm not sure whether it's a solvable problem at this point, but happy to hear an
 It's not vaporwave
 </p>
 <p>
-It's a crude, but working project, and I've been using it for a long time now, and find it fairly sustainable to keep using for the foreseeable future.
+The project is a little crude, but it's real and working. I've been using it for a long time now, and find it fairly sustainable to keep using for the foreseeable future.
 </p></li>
 <li><p>
 It's not going to be another silo
@@ -1031,7 +1033,7 @@ Other links:
 </p>
 <ul class="org-ul">
 <li>NetOpWibby: <a href="https://news.ycombinator.com/item?id=21684949">A Personal API (HN)</a></li>
-<li><a href="sad-infra.html">The sad state of personal data and infrastructure</a>: here I am going into motivation and difficulties arising in implementation</li>
+<li><a href="sad-infra.html">The sad state of personal data and infrastructure</a>: here I am going into motivation and difficulties arising in the implementation</li>
 </ul>
 </div>
 </div>
@@ -1042,7 +1044,7 @@ Other links:
 Open to any feedback and thoughts!
 </p>
 <p>
-Also don't hesitate to raise an issue, or reach me personally if you want to try using it, and find the instructions confusing. Your questions would help me to make it simpler!
+Also, don't hesitate to raise an issue, or reach me personally if you want to try using it, and find the instructions confusing. Your questions would help me to make it simpler!
 </p>
 <p>
 In some near future I will write more about:
@@ -1050,7 +1052,7 @@ In some near future I will write more about:
 <ul class="org-ul">
 <li>specific technical decisions and patterns</li>
 <li>challenges I had so solve</li>
-<li>more usecases and demos – it's impossible to fit everything in one post!</li>
+<li>more use-cases and demos – it's impossible to fit everything in one post!</li>
 </ul>
 <p>
 , but happy to answer any questions on these topics now!
