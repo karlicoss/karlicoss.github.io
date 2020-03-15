@@ -167,10 +167,11 @@ If you're terrified by the long list, you can jump straight into <a class="link-
 </li>
 <li><a href="#consumers">3. Data consumers</a>
 <ul>
-<li><a href="#search">search</a></li>
-<li><a href="#promnesia">promnesia</a></li>
+<li><a href="#search">Instant search</a></li>
 <li><a href="#orger">orger</a></li>
+<li><a href="#promnesia">promnesia</a></li>
 <li><a href="#dashboard">dashboard</a></li>
+<li><a href="#timeline">timeline</a></li>
 <li><a href="#mypkg"><code class="inline">my.</code> python package</a></li>
 </ul>
 </li>
@@ -1082,11 +1083,27 @@ Haven't really had time to think about it yet, and it feels like a hard project 
 <div class="outline-text-2" id="text-consumers">
 </div>
 <div class="outline-3">
-<h3 id="search"><a class="headerlink" href="#search">¶</a>search</h3>
+<h3 id="search"><a class="headerlink" href="#search">¶</a>Instant search</h3>
 <div class="outline-text-3" id="text-search">
 <p>
 Typical search interfaces make me unhappy as they are <b>siloed, slow, awkward to use and don't work offline</b>.
 So I built my own ways around it! I write about it in detail <a href="pkm-search.html#personal_information">here</a>.
+</p>
+<p>
+In essence, I'm mirroring most of my online data like chat logs, comments, etc., as plaintext.
+That allows to overview it in text editors, and incrementally search over <b>all of it</b> in a single keypress.
+</p>
+</div>
+</div>
+<div class="outline-3">
+<h3 id="orger"><a class="headerlink" href="#orger">¶</a>orger</h3>
+<div class="outline-text-3" id="text-orger">
+<p>
+<a href="https://github.com/karlicoss/orger">orger</a> is a tool and set of modules for accessing data via org-mode.
+It allows searching and overviewing, and in addition, I'm using it for creating tasks straight from native app interfaces (e.g. Reddit/Telegram) and spaced repetition via <a href="https://orgmode.org/worg/org-contrib/org-drill.html">org-drill</a>.
+</p>
+<p>
+I write about it in detail <a href="orger.html">here</a> and <a href="orger-todos.html">here</a>.
 </p>
 </div>
 </div>
@@ -1097,21 +1114,7 @@ So I built my own ways around it! I write about it in detail <a href="pkm-search
 <a href="https://github.com/karlicoss/promnesia#demo">promnesia</a> is a browser extension I'm working on to escape silos by <b>unifying annotations and browsing history</b> from different data sources.
 </p>
 <p>
-I've been using it for more than a year now and working on final touches to make it possible to be used by other people.
-</p>
-</div>
-</div>
-<div class="outline-3">
-<h3 id="orger"><a class="headerlink" href="#orger">¶</a>orger</h3>
-<div class="outline-text-3" id="text-orger">
-<p>
-<a href="https://github.com/karlicoss/orger">orger</a> is a tool and set of modules for converting data into org-mode to allow for <b>instant and offline search and overview</b>.
-</p>
-<p>
-In addition, I'm using it for creating tasks straight from native app interfaces (e.g. Reddit/Telegram) and spaced repetition via <a href="https://orgmode.org/worg/org-contrib/org-drill.html">org-drill</a>.
-</p>
-<p>
-I write about it in detail <a href="orger.html">here</a> and <a href="orger-todos.html">here</a>.
+I've been using it for more than a year now and working on final touches to properly release it for other people.
 </p>
 </div>
 </div>
@@ -1119,10 +1122,26 @@ I write about it in detail <a href="orger.html">here</a> and <a href="orger-todo
 <h3 id="dashboard"><a class="headerlink" href="#dashboard">¶</a>dashboard</h3>
 <div class="outline-text-3" id="text-dashboard">
 <p>
-I'm working on personal health, sleep and exercise dashboard, built from various data sources.
+As a big fan of <a class="post-tag" href="./tags.html#quantified-self">#quantified-self</a>, I'm working on personal health, sleep and exercise dashboard, built from various data sources.
 </p>
 <p>
 I'm working on making it public, you can see some screenshots <a href="https://www.reddit.com/r/QuantifiedSelf/comments/cokt4f/what_do_you_all_do_with_your_data/ewmucgk">here</a>.
+</p>
+</div>
+</div>
+<div class="outline-3">
+<h3 id="timeline"><a class="headerlink" href="#timeline">¶</a>timeline</h3>
+<div class="outline-text-3" id="text-timeline">
+<p>
+Timeline is a <a class="post-tag" href="./tags.html#lifelogging">#lifelogging</a> project I'm working on.
+</p>
+<p>
+I want to see all my digital history, search in it, filter, easily jump at a specific point in time and see the context when it happened.
+That way it works as a sort of external memory.
+</p>
+<p>
+Ideally it would look similar to Andrew Louis's <a href="https://hyfen.net/memex">Memex</a>, or might even reuse his interface if
+he open sources it. I highly recommend watching his talk for the inspiration.
 </p>
 </div>
 </div>
