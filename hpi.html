@@ -12,11 +12,11 @@
         <meta name="generator" content="hakyll">
         <meta name="language" content="English">
         
-        <meta name="keywords" content="infra pkm quantifiedself">
+        <meta name="keywords" content="infra pkm quantifiedself hpi">
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
-        <title>my. package | beepb00p</title>
+        <title>Human Programming Interface | beepb00p</title>
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="./css/default.css?v=3" />
@@ -26,14 +26,14 @@
 
         
 
-        <link rel="canonical" href="https://beepb00p.xyz/mypkg.html" />
+        <link rel="canonical" href="https://beepb00p.xyz/hpi.html" />
 
         <!-- can test it with https://telegram.me/webpagebot -->
         <!-- or https://developers.facebook.com/tools/debug -->
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://beepb00p.xyz/mypkg.html" /> <!-- TODO base? -->
-        <meta property="og:title" content="my. package | beepb00p" />
-        <meta property="og:description" content="Connecting and interacting with my personal data" />
+        <meta property="og:url" content="https://beepb00p.xyz/hpi.html" /> <!-- TODO base? -->
+        <meta property="og:title" content="Human Programming Interface | beepb00p" />
+        <meta property="og:description" content="My life in a Python package" />
         <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
         <!-- ugh. Facebook really wants jpg? -->
         <!-- also Facebook displays it with black background, but whatever, fuck it. -->
@@ -81,17 +81,20 @@
     <div>THIS IS A DRAFT! It will appear on the main page once finished!</div>
     
     <section class="post-title">
-    <h1>my. package</h1>
-    <div class="summary">Connecting and interacting with my personal data</h2>
+    <h1>Human Programming Interface</h1>
+    <div class="summary">My life in a Python package</h2>
     </section>
     <!-- are sections appropriate for that? -->
 
     <section class="content">
     <p>
-<b>Draft stage</b>: almost ready; just need a bit of final cleanup.
+<b>Draft stage</b>: almost ready; needs some final touches and grammar check.
 </p>
 <p>
-<b>TLDR</b>: I'm using <a href="https://github.com/karlicoss/my">my</a> package (Python library) as a means of unifying, accessing and interacting with my all my personal data, like:
+<b>TLDR</b>: I'm using <a href="https://github.com/karlicoss/HPI">HPI</a> (Human Programming Interface) package as a means of unifying, accessing and interacting with my all my personal data.
+</p>
+<p>
+It's a Python library (named <code class="inline">my</code>), a collection of modules for:
 </p>
 <ul class="org-ul">
 <li>social networks: posts, comments, favorites</li>
@@ -117,18 +120,43 @@ Here's a short example to give you an idea: "which subreddits I find the most in
 <span class="org-keyword">from</span> collections <span class="org-keyword">import</span> Counter
 <span class="org-keyword">return</span> Counter(s.subreddit <span class="org-keyword">for</span> s <span class="org-keyword">in</span> my.reddit.saved()).most_common(4)
 </pre>
-</div></li>
+</div>
+<table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
+<colgroup>
+<col class="org-left" />
+<col class="org-right" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">orgmode</td>
+<td class="org-right">62</td>
+</tr>
+<tr>
+<td class="org-left">emacs</td>
+<td class="org-right">60</td>
+</tr>
+<tr>
+<td class="org-left">selfhosted</td>
+<td class="org-right">49</td>
+</tr>
+<tr>
+<td class="org-left">QuantifiedSelf</td>
+<td class="org-right">46</td>
+</tr>
+</tbody>
+</table></li>
 </ul>
 <div><span class="before-aside">
 I consider my digital trace an important part of my identity. 
-The fact that the data is siloed and accessing it is inconvenient and borderline frustrating TODO annoyed?
+The fact that the data is siloed, and accessing it is inconvenient and borderline frustrating feels very wrong.
 </span><aside class="sidenote"><a class="post-tag" href="./tags.html#extendedmind">#extendedmind</a></aside></div>
 <p>
-Having it available as Python objects allows me to plug in my data into existing tools and framework; creating novel TODO and TODO ways of interaction that weren't possible.
-It makes it easier to access, work with, analyze and combine data and leverage on existing libraries for data analysis like Pandas, Matplotlib, etc.
+Having it available as Python objects allows me to plug in my data into existing tools, libraries and frameworks.
+It makes building new tools considerably easier and allows to create new ways of interacting with the data.
 </p>
 <p>
-I tried different things over the years and I think I'm getting to the point where it feels manageable not only for me, but can also be shared with other people so they can 'just' plug in their data and benefit from my code.
+I tried different things over the years and I think I'm getting to the point where other people can also benefit from my code by 'just' plugging in their data,
+and that's why I'm sharing this.
 </p>
 <p>
 Imagine if all your life was reflected digitally and available at your fingertips.
@@ -191,10 +219,10 @@ The main reason that led me to develop this is the dissatisfaction of the curren
 </p>
 <ul class="org-ul">
 <li><p>
-Our personal data is siloed and trapped across cloud services and various devices TODO link
+Our personal data is siloed and trapped across cloud services and various devices
 </p>
 <p>
-Often it's even possible to access it via the API, but it's hardly useful, unless you're an experienced programmer, willing to invest your time and infrastructure.
+Even when it's possible to access it via the API, it's hardly useful, unless you're an experienced programmer, willing to invest your time and infrastructure.
 </p></li>
 <li><p>
 We have insane amounts of data scattered across the cloud, yet we're left at the mercy of those who collect it to provide something useful based on it
@@ -340,7 +368,7 @@ In short: while databases are efficient and easy to read from, often they aren't
 You're probably going to end up writing code anyway.
 </p>
 <p>
-While working with your data, you'll inevitably TODO common patterns, which you'll probably want to extract somewhere.
+While working with your data, you'll inevitably notice common patterns and code repetition, which you'll probably want to extract somewhere.
 That's where a Python package comes in.
 </p>
 </div>
@@ -451,9 +479,34 @@ Here's an (incomplete) list of the modules in the public package:
 <p>
 Some modules are also private, and need a bit of cleanup before I'll merge them in:
 </p>
-<p>
-TODO
-</p>
+<table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
+<colgroup>
+<col class="org-left" />
+<col class="org-left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="org-left">my.workouts</td>
+<td class="org-left">Exercise activity, from Endomondo and manual logs</td>
+</tr>
+<tr>
+<td class="org-left">my.sleep.manual</td>
+<td class="org-left">Subjective sleep data, manually logged</td>
+</tr>
+<tr>
+<td class="org-left">my.nutrition</td>
+<td class="org-left">Food and drink consumption data, logged manually from different sources</td>
+</tr>
+<tr>
+<td class="org-left">my.money</td>
+<td class="org-left">Expenses and shopping data</td>
+</tr>
+<tr>
+<td class="org-left">my.webhistory</td>
+<td class="org-left">Browsing history (part of <a href="https://github.com/karlicoss/promnesia">promnesia</a>)</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 <div class="outline-2">
@@ -463,7 +516,8 @@ TODO
 Mainly I use it as a data provider for my scripts, tools and dashboards.
 </p>
 <p>
-Also check out <a href="myinfra.html#mypkg">my infrastructure map</a>. It's in a draft stage at the moment, but might help to make sense of TODO.
+Also check out <a href="myinfra.html#mypkg">my infrastructure map</a>.
+It's in a draft at the moment, but might help to understand what's my vision on HPI.
 </p>
 </div>
 <div class="outline-3">
@@ -534,7 +588,7 @@ he open sources it. I highly recommend watching his talk for the inspiration.
 <h2 id="interactive"><a class="headerlink" href="#interactive">¶</a><span class="section-number-2">5</span> Ad-hoc and interactive</h2>
 <div class="outline-text-2" id="text-interactive">
 <p>
-Also see <a href="https://github.com/karlicoss/my#usage-examples">readme</a> for <samp class="inline">my.</samp> package.
+<span id="examples" style="visibility:hidden"></span>
 </p>
 </div>
 <div class="outline-3">
@@ -673,7 +727,7 @@ With few lines of Python I can quickly recommend them posts I engaged most with,
 <h3 id="exercise"><a class="headerlink" href="#exercise">¶</a>Accessing exercise data</h3>
 <div class="outline-text-3" id="text-exercise">
 <p>
-E.g. see use of <code class="inline">my.workouts</code> <a href="./heartbeats_vs_kcals.html">here</a>.
+<span id="workouts" style="visibility:hidden"></span> E.g. see use of <code class="inline">my.workouts</code> <a href="./heartbeats_vs_kcals.html">here</a>.
 </p>
 </div>
 </div>
@@ -741,7 +795,7 @@ df.set_index(<span class="org-string">'dt'</span>, inplace=<span class="org-cons
 <span class="org-variable-name">fig</span>, <span class="org-variable-name">ax</span> = plt.subplots(figsize=(15, 5))
 df.plot(kind=<span class="org-string">'bar'</span>, ax=ax)
 
-<span class="org-comment-delimiter"># </span><span class="org-comment">TODO wonder if that vvv can be less verbose...</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">todo wonder if that vvv can be less verbose...</span>
 <span class="org-variable-name">x_labels</span> = df.index.strftime(<span class="org-string">'%Y %b'</span>)
 ax.set_xticklabels(x_labels)
 
@@ -781,7 +835,7 @@ Once you have it, it's trivial to back it up and synchronize to other computers/
 To schedule periodic sync, I'm using <a href="scheduler.html#cron">cron</a>.
 </p></li>
 <li><p>
-my. package only accesses the data on the filesystem
+<samp class="inline">my.</samp> package only accesses the data on the filesystem
 </p>
 <p>
 That makes it extremely fast, reliable, and fully offline capable.
@@ -792,7 +846,7 @@ As you can see, in such a setup, the data is lagging behind the 'realtime'.
 I consider it a necessary sacrifice to make everything fast and resilient.
 </p>
 <p>
-In theory, it's possible to make the system almost realtime by having a service that sucks in data continuously (rather than periodically), but TODO harder
+In theory, it's possible to make the system almost realtime by having a service that sucks in data continuously (rather than periodically), but it's harder as well.
 </p>
 </div>
 </div>
@@ -809,7 +863,7 @@ It just happens to be the one I'm most comfortable with.
 I do have some reasons that I think make it <i>specifically</i> good, but explaining them is out of this post's scope.
 </p>
 <p>
-In addition, Python offers a very rich ecosystem for data analysis, which we can use to our benefit.
+In addition, Python offers a <a href="https://github.com/karlicoss/awesome-python#data-analysis">very rich ecosystem</a> for data analysis, which we can use to our benefit.
 </p>
 <p>
 That said, I've never seen anything similar in other programming languages, and I would be really interested to, so please send me links if your know some.
@@ -915,20 +969,18 @@ This is more of a demonstration of what's I'm using, although I did spend effort
 It's easy to modify code, add extra methods and modules. You can even keep all your modifications private.
 </p>
 <p>
-But after all, we've all sharing some TODO similar activities and using same products, so there is a huger overlap.
+But after all, we've all sharing many similar activities and using same products, so there is a huger overlap.
 I'm not sure how far we can stretch it and keep modules generic enough to be used by multiple people. But let's give it a try perhaps? :)
 </p>
 <p>
-Second, writing code to TODO is the central idea. You might get away without it, but it's the first class citizen TODO ??
+Second, interacting with your data through the code is the central idea of the project.
+You might get away without it and expose some <a href="https://en.wikipedia.org/wiki/No-code_development_platform">no-code</a> interfaces, but for that you'd need to write some code in the first place.
 </p>
 <p>
-You can expose nocode TODO sqlite tables/dataframes
+As I mentioned that kind of cuts off people without technical skills, and even many people capable of coding, who oppose the idea of writing code outside of work.
 </p>
 <p>
-As I mentioned that kind of cuts off people without technical skills, and even many people capable of coding would TODO nose? frown?
-</p>
-<p>
-I'm not sure if it's a solvable problem at the current state of technology. TODO?
+I'm not sure whether it's a solvable problem at this point, but happy to hear any suggestions!
 </p>
 </div>
 </div>
@@ -940,14 +992,19 @@ I'm not sure if it's a solvable problem at the current state of technology. TODO
 It's not vaporwave
 </p>
 <p>
-It's a working TODO, I've been using it for a long time now, and find it fairly sustainable to keep using for the foreseeable future.
+It's a crude, but working project, and I've been using it for a long time now, and find it fairly sustainable to keep using for the foreseeable future.
 </p></li>
 <li><p>
-It's not for sale
+It's not going to be another silo
 </p>
 <p>
 While I don't have anything against commercial use (and I believe any work in this area will benefit all of us), I'm not planning to build a product out of it.
+</p>
+<p>
 I really hope it can grow into or inspire some mature open source system.
+</p>
+<p>
+Please take my ideas and code and build something cool from it!
 </p></li>
 </ul>
 </div>
@@ -960,25 +1017,20 @@ I really hope it can grow into or inspire some mature open source system.
 Similar projects:
 </p>
 <ul class="org-ul">
-<li><a href="https://news.ycombinator.com/item?id=9615901">Me API - turn yourself into an open API (HN)</a>
-TODO write a bit about it?</li>
+<li><a href="https://github.com/novoid/Memacs">Memacs</a> by Karl Voit</li>
+<li><a href="https://news.ycombinator.com/item?id=9615901">Me API - turn yourself into an open API (HN)</a></li>
 <li><a href="https://github.com/markwk/qs_ledger">QS ledger</a> from Mark Koester</li>
 </ul>
 <ul class="org-ul">
 <li><a href="https://github.com/tehmantra/my">tehmantra/my</a>: directly inspired by this package</li>
-<li>TODO <a href="https://github.com/bcongdon/bolero">https://github.com/bcongdon/bolero</a> – uses postgres, also not sure how active it is?</li>
-</ul>
-<p>
-Concepts TODO:
-</p>
-<ul class="org-ul">
+<li><a href="https://github.com/bcongdon/bolero">bcongdon/bolero</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Solid_(web_decentralization_project)#Design">Solid project</a>: personal data pod, which websites pull data from</li>
-<li>NetOpWibby: <a href="https://news.ycombinator.com/item?id=21684949">A Personal API (HN)</a></li>
 </ul>
 <p>
 Other links:
 </p>
 <ul class="org-ul">
+<li>NetOpWibby: <a href="https://news.ycombinator.com/item?id=21684949">A Personal API (HN)</a></li>
 <li><a href="sad-infra.html">The sad state of personal data and infrastructure</a>: here I am going into motivation and difficulties arising in implementation</li>
 </ul>
 </div>
@@ -1010,9 +1062,9 @@ In some near future I will write more about:
 
     
     <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#infra">#infra</a> <a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#quantifiedself">#quantifiedself</a></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#infra">#infra</a> <a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#quantifiedself">#quantifiedself</a> <a class="post-tag" href="./tags.html#hpi">#hpi</a></div>
         <!-- TODO post-date? -->
-        <div class="date">14 November 2019</div>
+        <div class="date">15 March 2020</div>
     </section>
     
 
@@ -1022,7 +1074,7 @@ In some near future I will write more about:
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
 </script>
 
-<section id="isso-thread" data-isso-id="isso_mypkg"></section>
+<section id="isso-thread" data-isso-id="isso_hpi"></section>
 
     </section>
 

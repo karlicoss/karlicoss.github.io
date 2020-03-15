@@ -4405,7 +4405,7 @@ he open sources it. I highly recommend watching his talk for the inspiration.
 This python package is a kind of my personal API to access all collected data.
 </p>
 <p>
-I'm in the progress of writing about it <a href="mypkg.html">here</a>.
+I'm in the progress of writing about it <a href="hpi.html">here</a>.
 </p>
 </div>
 </div>
@@ -5616,7 +5616,7 @@ Each data exporter comes with minimal bindings that merely map json/sqlite expor
 That way anyone who wishes to use data can kick off some reasonable representation, which is not overfitted to my specific needs.
 </p>
 <p>
-Higher level querying and access, specific to myself is implemented in <a href="mypkg.html#examples">my.</a> package (note that this post is still in draft stage).
+Higher level querying and access, specific to myself is implemented in <a href="hpi.html#examples">my.</a> package (note that this post is still in draft stage).
 </p>
 <p>
 <a href="https://github.com/karlicoss/my"><code class="inline">my.</code></a> package allows me to query my data from anywhere, enabling me to use familiar data processing, analysis and visualization tools, and various integrations.
