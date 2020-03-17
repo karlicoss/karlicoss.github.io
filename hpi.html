@@ -88,9 +88,6 @@
 
     <section class="content">
     <p>
-<b>Draft stage</b>: almost ready; needs some final touches and grammar check.
-</p>
-<p>
 <b>TLDR</b>: I'm using <a href="https://github.com/karlicoss/HPI">HPI</a> (Human Programming Interface) package as a means of unifying, accessing and interacting with all of my personal data.
 </p>
 <p>
@@ -137,7 +134,7 @@ Here's a short example to give you an idea: "which subreddits I find the most in
 </tr>
 <tr>
 <td class="org-left">selfhosted</td>
-<td class="org-right">49</td>
+<td class="org-right">51</td>
 </tr>
 <tr>
 <td class="org-left">QuantifiedSelf</td>
@@ -164,6 +161,9 @@ This library is my attempt to achieve this vision.
 </p>
 <p>
 If you're in a hurry, feel free to jump straight to the <a class="link-down" href="#usecases">demos</a>.
+</p>
+<p>
+For <b>installation/configuration/development guide</b>, see <a href="https://github.com/karlicoss/HPI/tree/master/doc/SETUP.org">SETUP.org</a>.
 </p>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
@@ -467,6 +467,10 @@ Here's an (incomplete) list of the modules in the public package:
 <td class="org-left">Module for Reddit data: saved items/comments/upvotes etc</td>
 </tr>
 <tr>
+<td class="org-left"><a href="https://github.com/karlicoss/my/tree/master/my/rtm.py">my.rtm</a></td>
+<td class="org-left"><a href="https://rememberthemilk.com">Remember The Milk</a> tasks and notes</td>
+</tr>
+<tr>
 <td class="org-left"><a href="https://github.com/karlicoss/my/tree/master/my/smscalls.py">my.smscalls</a></td>
 <td class="org-left">Phone calls and SMS messages</td>
 </tr>
@@ -507,6 +511,7 @@ Some modules are private, and need a bit of cleanup before merging:
 </tr>
 </tbody>
 </table>
+<div id="usecases"></div>
 </div>
 </div>
 <div class="outline-2">
@@ -748,7 +753,7 @@ The task looks like this:
 </pre>
 </div>
 <p>
-With a single enter press on the embedded eshell command I can print the progress and fill in the completed books on Goodreads, e.g.:
+With a single Enter keypress on the inlined <samp class="inline">eshell:</samp> command I can print the progress and fill in the completed books on Goodreads, e.g.:
 </p>
 <pre class="example">
 
