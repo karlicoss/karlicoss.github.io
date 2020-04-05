@@ -78,8 +78,6 @@
 
 <article>
     
-    <div>THIS IS A DRAFT! It will appear on the main page once finished!</div>
-    
     <section class="post-title">
     <h1>Your configs suck? Try a real programming language.</h1>
     <div class="summary">Or yet another rant about YAML</h2>
@@ -89,7 +87,7 @@
     <section class="content">
     <p>
 In this post, I'll try to explain why I find most config formats frustrating to use and
-suggest that using a real programming language (e.g. general purpose one, like Python) is often a feasible and more pleasant alternative for writing configs.
+suggest that using a real programming language (i.e. general purpose one, like Python) is often a feasible and more pleasant alternative for writing configs.
 </p>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
@@ -144,10 +142,10 @@ can't contain <b>any logic</b>
 This is considered as a positive by many, but I would argue that when you can't define temporary variables, helper functions, substitute strings or concatenate lists, it's a bit fucked up.
 </p>
 <p>
-The workarounds (if present) are usually pretty horrible and impose cognitive overhead:
+The workarounds (if present) are usually pretty horrible and impose cognitive overhead. Programming language constructs are <b>reinvented from scratch</b>:
 </p>
 <ul class="org-ul">
-<li>templating reinvented
+<li>variables and string interpolation
 
 <ul class="org-ul">
 <li>Ansible uses <a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_templating.html">Jinja templates</a> (!) for variable manipulations.</li>
@@ -160,12 +158,12 @@ Have fun learning a new language you never wanted to!
 </p></li>
 </ul></li>
 <li><p>
-scoping reinvented
+scoping
 </p>
 <p>
 I.e. there are several custom scopes for <a href="https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#env"><samp class="inline">env</samp> directive</a> in Github Actions.
 </p></li>
-<li>control flow reinvented
+<li>control flow
 
 <ul class="org-ul">
 <li><code class="inline">for</code> loop: build matrices and 'excludes' always give me a headache</li>
@@ -261,9 +259,9 @@ Toy example:
 ]
 </pre>
 </div>
-<p>
-Using the config:
-</p>
+<div><span class="before-aside">
+Using the config: 
+</span><aside class="sidenote">see <a href="https://lobste.rs/s/qyhvhc/your_configs_suck_try_real_programming#c_0btczk">this</a> if you're wondering why I use <code class="inline">exec</code> , not <code class="inline">import</code>.</aside></div>
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-keyword">from</span> pathlib <span class="org-keyword">import</span> Path
 
@@ -300,7 +298,7 @@ For example, something like <a href="https://docs.python.org/3/library/pathlib.h
 </p>
 <p>
 Of course, one could go crazy and make it incomprehensible.
-But personally I'd rather accept potential for abusing rather than being restricted.
+But personally I'd rather accept potential for abusing the power of the language rather than being restricted.
 </p></li>
 <li><p>
 validation
@@ -323,7 +321,7 @@ interoperability
 </p>
 <blockquote>
 <p>
-Okay, maybe if your program is in Python it makes sense. But what if it isn't, or you'll rewrite it to another language (i.e. c++) later.
+Okay, maybe if your program is in Python it makes sense. But what if it isn't, or you'll rewrite it to another language (i.e. compiled, like c++) later.
 </p>
 </blockquote>
 <p>
@@ -366,7 +364,7 @@ security
 I.e. if your config executes arbitrary code, then it may steal your passwords, format your hard drive, etc.
 </p>
 <p>
-If your configs are supplied by third parties you don't trust, then I agree that plain configs are safer.
+If your configs are supplied by <b>third parties you don't trust</b>, then I agree that plain configs are safer.
 However, often it's not the case, and the user controls their own config.
 </p>
 <p>
@@ -387,7 +385,7 @@ Personally, I've never run into such issues, but here are some potential workaro
 <ul class="org-ul">
 <li>explicit timeout for loading the config</li>
 <li><p>
-using a subset of the language might help, for example, <a href="https://docs.bazel.build/versions/master/skylark/language.html#differences-with-python">Bazel</a>
+using a subset of the language might help, for example, <a href="https://docs.bazel.build/versions/master/skylark/language.html#differences-with-python"><del>Bazel</del> Skylark</a>
 </p>
 <p>
 Anyone knows examples of conservative static analysis tools that check for termination in general purpose languages?
@@ -436,14 +434,16 @@ However, you can achieve a similarly pleasant experience in <b>most modern progr
 Some projects that allow for using code as configuration:
 </p>
 <ul class="org-ul">
+<li><a href="https://webpack.js.org/configuration">Webpack</a>, web asset bundler, uses a Javascript as a config</li>
 <li><p>
 <a href="https://setuptools.readthedocs.io/en/latest/setuptools.html#basic-use">setuptools</a>, the standard way of installing Python packages
 </p>
 <p>
-Allows using both <samp class="inline">setup.cfg</samp> and <samp class="inline">setup.py</samp> files. That way if you can't achieve something solely with plain config, you can fix this in <samp class="inline">setup.py</samp>.
+Allows using <b>both</b> <samp class="inline">setup.cfg</samp> and <samp class="inline">setup.py</samp> files.
+That way if you can't achieve something solely with plain config, you can fix this in <samp class="inline">setup.py</samp>, which gives you a balance between declarative and flexible.
 </p></li>
 <li><p>
-<a href="https://jupyter.org/">Jupiter</a>, interactive computing tool
+<a href="https://jupyter.org">Jupiter</a>, interactive computing tool
 </p>
 <p>
 Uses a <a href="https://github.com/jupyter/jupyter_core/blob/master/jupyter_core/tests/dotipython_empty/profile_default/ipython_nbconvert_config.py">python file</a> to configure the export.
@@ -452,19 +452,28 @@ Uses a <a href="https://github.com/jupyter/jupyter_core/blob/master/jupyter_core
 <a href="https://www.gnu.org/software/emacs">Emacs</a>: famously uses Elisp for its configuration
 </p>
 <p>
-While I'm not a fan of Elisp at all, that does make Emacs very flexible and it's possible to achieve any configuration you want.
+While I'm not a fan of Elisp at all, it does make Emacs very flexible and it's possible to achieve any configuration you want.
 </p>
 <p>
 On the other hand, if you've ever read other people's Emacs setups, you can see it also demonstrates how things can get out of hand when you allow
 a general purpose language for configuration.
 </p></li>
 <li><a href="https://github.com/brookhong/Surfingkeys#edit-your-own-settings">Surfingkeys</a> browser extension: uses a Javascript DSL for configuration</li>
+<li><a href="https://docs.gradle.org/current/userguide/tutorial_using_tasks.html#sec:build_scripts_are_code">Gradle</a> provides Groovy and Kotlin DSLs for writing build files</li>
+<li><a href="https://awesomewm.org">Awesome Window Manager</a> uses Lua for configuration</li>
+<li><a href="https://guix.gnu.org">Guix</a> package manager: uses <a href="https://www.gnu.org/software/guile">Guile Scheme</a> for configuration</li>
+</ul>
+<p>
+Some languages are designed specifically for configuration:
+</p>
+<ul class="org-ul">
 <li><p>
-<a href="https://docs.bazel.build/versions/master/skylark/language.html#differences-with-python">Bazel</a> uses a subset of Python for describing build rules
+<a href="https://docs.bazel.build/versions/master/skylark/language.html#differences-with-python"><del>Bazel</del> Skylark</a> uses a subset of Python for describing build rules
 </p>
 <p>
 While it's deliberately restricted to ensure termination checking and determinism, configuring Bazel is orders of magnitude more pleasant than any other build system I've used.
 </p></li>
+<li><a href="https://mesonbuild.com/Syntax.html">Meson build system</a>: borrows the syntax from Python</li>
 <li><p>
 <a href="https://nixos.wiki/wiki/Nix_Expression_Language">Nix</a>: language designed specifically for the Nix package manager
 </p>
@@ -476,15 +485,21 @@ While a completely new language feels like an overkill, it's still nicer to work
 </p>
 <p>
 Dhall advertises itself as "JSON + functions + types + imports". And indeed, it looks great, and solves most of the issues I listed.
+</p></li>
+<li><p>
+<a href="https://jsonnet.org">Jsonnet</a>: JSON + variables + control flow
 </p>
 <p>
-One downside is that it's not widespread yet. If you don't have bindings for your target language, you'd end up parsing JSON again.
+See <a href="https://jsonnet.org/articles/comparisons.html">comparison</a> with other configuration languages
+</p></li>
+</ul>
+<p>
+Downsides of such languages is that they aren't widespread yet. If you don't have bindings for your target language, you'd end up parsing JSON again.
 However, at least it makes writing configs pleasant.
 </p>
 <p>
 But again, if your program is written in Javascript and doesn't interact with other languages, why don't you just make the config Javascript?
-</p></li>
-</ul>
+</p>
 </div>
 </div>
 </div>
@@ -558,11 +573,29 @@ Interesting approach, but not always feasible, e.g. you might not have the compi
 <li><a href="https://github.com/magefile/mage#about">Mage</a>: a tool for writing makefiles in Go</li>
 <li>Dhall wiki: <a href="https://github.com/dhall-lang/dhall-lang/wiki/Programmable-configuration-files">Programmable configuration files</a></li>
 </ul>
+<p>
+<b>Updates</b> from the comments (thanks everyone!):
+</p>
+<ul class="org-ul">
+<li><a href="https://www.lua.org/history.html">The evolution of an extension language: a history of Lua</a>: apparently Lua has started as a config language</li>
+<li><p>
+<a href="https://news.ycombinator.com/item?id=20847943">Cue</a>:  A language for defining, generating, and validating data
+</p>
+<p>
+I've <b>really</b> struggled to find a code example on the website through so <a href="https://github.com/cuelang/cue/blob/master/doc/tutorial/kubernetes/README.md">here you go</a>.
+</p></li>
+<li><a href="https://news.ycombinator.com/item?id=14298715">The configuration complexity clock</a>: a case for hard-coding</li>
+</ul>
 </div>
 </div>
 <div class="outline-2">
 <h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">6</span> --</h2>
 <div class="outline-text-2" id="text-fin">
+<p>
+A followup question, which I don't have an answer for: why is it that way?
+I'm sure Ansible/CircleCI or Github Actions are developed by talented engineers who have considered pros and cons of using YAML.
+Do the pros really outweigh the cons?
+</p>
 <p>
 Open to all feedback, and feel free to share your config pain and how are you solving it!
 </p>
@@ -579,6 +612,16 @@ Open to all feedback, and feel free to share your config pain and how are you so
     </section>
     
 
+    
+    <br>
+    <div>Discussion:</div>
+    <ul>
+    
+        <li><a href="https://news.ycombinator.com/item?id=22787332">hackernews</a></li>
+    
+        <li><a href="https://lobste.rs/s/qyhvhc/your_configs_suck_try_real_programming">lobsters</a></li>
+    
+    </ul>
     
 
     <section class="comments">

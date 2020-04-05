@@ -8,8 +8,671 @@
         <name>karlicoss</name>
         <email>karlicoss@gmail.com</email>
     </author>
-    <updated>2020-03-15T00:00:00Z</updated>
+    <updated>2020-04-05T00:00:00Z</updated>
     <entry>
+    <title>Your configs suck? Try a real programming language.</title>
+    <link href="https://beepb00p.xyz/configs-suck.html" />
+    <id>https://beepb00p.xyz/configs-suck.html</id>
+    <published>2020-04-05T00:00:00Z</published>
+    <updated>2020-04-05T00:00:00Z</updated>
+    <summary type="html"><![CDATA[<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="plt python">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>Your configs suck? Try a real programming language. | beepb00p</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <!-- TODO make conditional?? -->
+        <link rel="stylesheet" href="./css/posts-list.css" /> 
+        <link rel="stylesheet" href="./css/links.css?v=4" />
+
+        
+
+        <link rel="canonical" href="https://beepb00p.xyz/configs-suck.html" />
+
+        <!-- can test it with https://telegram.me/webpagebot -->
+        <!-- or https://developers.facebook.com/tools/debug -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://beepb00p.xyz/configs-suck.html" /> <!-- TODO base? -->
+        <meta property="og:title" content="Your configs suck? Try a real programming language. | beepb00p" />
+        <meta property="og:description" content="Or yet another rant about YAML" />
+        <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
+        <!-- ugh. Facebook really wants jpg? -->
+        <!-- also Facebook displays it with black background, but whatever, fuck it. -->
+        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
+
+    </head>
+    <body>
+        <!-- TODO make semantic -->
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    <!-- TODO eh, not sure if this symbol is good for that... -->
+                    ·
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                    ·
+                    <a class="fat" href="./exobrain">Exobrain</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
+                </span>
+                <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<!-- <link rel="stylesheet" href="/css/org.css" /> -->
+
+<link rel="stylesheet" href="./css/htmlize.css" />
+<link rel="stylesheet" href="./css/org-default.css" />
+
+<link rel="stylesheet" href="./css/org-extra.css?v=3" />
+
+
+
+<article>
+    
+    <section class="post-title">
+    <h1>Your configs suck? Try a real programming language.</h1>
+    <div class="summary">Or yet another rant about YAML</h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <p>
+In this post, I'll try to explain why I find most config formats frustrating to use and
+suggest that using a real programming language (i.e. general purpose one, like Python) is often a feasible and more pleasant alternative for writing configs.
+</p>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#configs_suck">1. Most modern config formats suck</a></li>
+<li><a href="#workarounds">2. Workarounds</a></li>
+<li><a href="#real_language">3. Use a real programming language</a>
+<ul>
+<li><a href="#cons">Downsides</a></li>
+<li><a href="#why_python">Why Python?</a></li>
+<li><a href="#who_else">Who else does it?</a></li>
+</ul>
+</li>
+<li><a href="#what_if_i_have_to">4. What if you don't have a choice?</a></li>
+<li><a href="#links">5. Extra links</a></li>
+<li><a href="#fin">6. --</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-2">
+<h2 id="configs_suck"><a class="headerlink" href="#configs_suck">¶</a><span class="section-number-2">1</span> Most modern config formats suck</h2>
+<div class="outline-text-2" id="text-configs_suck">
+<p>
+In this section, I'm mostly referring to JSON/YAML/TOML/ini files, which are the most common config formats I encounter.
+</p>
+<p>
+I'll refer to such configs as <b><span style="color:green">plain configs</span></b>. Not sure if there is a better name for it, please let me know!
+</p>
+<p>
+An incomplete list of my frustrations:
+</p>
+<ul class="org-ul">
+<li>JSON <b>doesn't have comments</b>, <a href="https://stackoverflow.com/a/33963845/706389">by design</a> 🤯</li>
+<li><p>
+bits of configs <b>can't be reused</b>
+</p>
+<p>
+For example, while YAML, in theory, supports reusing/including bits of the config (they call it <a href="https://confluence.atlassian.com/bitbucket/yaml-anchors-960154027.html">anchors</a>),
+some software like <a href="https://github.community/t5/GitHub-Actions/Support-for-YAML-anchors/td-p/30336/page/3">Github Actions</a> doesn't support it
+</p>
+<p>
+Usually, you just don't have any means of reusing parts of your config and have to copy-paste.
+</p>
+<ul class="org-ul">
+<li><code class="inline">.gitconfig</code> uses a <a href="https://git-scm.com/docs/git-config#_includes">custom syntax</a> for merging the configs</li>
+</ul></li>
+<li><p>
+can't contain <b>any logic</b>
+</p>
+<p>
+This is considered as a positive by many, but I would argue that when you can't define temporary variables, helper functions, substitute strings or concatenate lists, it's a bit fucked up.
+</p>
+<p>
+The workarounds (if present) are usually pretty horrible and impose cognitive overhead. Programming language constructs are <b>reinvented from scratch</b>:
+</p>
+<ul class="org-ul">
+<li>variables and string interpolation
+
+<ul class="org-ul">
+<li>Ansible uses <a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_templating.html">Jinja templates</a> (!) for variable manipulations.</li>
+<li><p>
+Github Actions use a <a href="https://help.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions">custom syntax</a> for that
+</p>
+<p>
+In addition, they've got <a href="https://help.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#functions">their own</a> set of functions to manipulate the variables.
+Have fun learning a new language you never wanted to!
+</p></li>
+</ul></li>
+<li><p>
+scoping
+</p>
+<p>
+I.e. there are several custom scopes for <a href="https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#env"><samp class="inline">env</samp> directive</a> in Github Actions.
+</p></li>
+<li>control flow
+
+<ul class="org-ul">
+<li><code class="inline">for</code> loop: build matrices and 'excludes' always give me a headache</li>
+<li><code class="inline">if</code> statement: e.g. <a href="https://circleci.com/docs/2.0/configuration-reference/#the-when-step-requires-version-21"><samp class="inline">when</samp></a> in CircleCI</li>
+</ul></li>
+</ul></li>
+</ul>
+<ul class="org-ul">
+<li><p>
+can't be validated
+</p>
+<p>
+You can validate the config syntax itself (i.e. check JSON for correctness), but you can't do semantic checks.
+</p>
+<p>
+This is kind of a consequence of not having logic in the config files.
+Typically you'll have to write a supplementary program to check your configs and remember to call it before passing to a program.
+</p>
+<p>
+Very few programs bother with that and usually, your program crashes because of something that would be <b>trivial to catch with any simple type system</b>.
+</p></li>
+<li><p>
+YAML simply stands out with its implicit conversions and portability issues
+</p>
+<p>
+There are enough rants about it, so I'll just leave a link to a good one: <a href="https://www.arp242.net/yaml-config.html">"YAML: probably not so great after all"</a>.
+</p></li>
+</ul>
+<p>
+Summary: we spend time learning <b>useless syntax, instead of productive work</b>.
+</p>
+</div>
+</div>
+<div class="outline-2">
+<h2 id="workarounds"><a class="headerlink" href="#workarounds">¶</a><span class="section-number-2">2</span> Workarounds</h2>
+<div class="outline-text-2" id="text-workarounds">
+<p>
+So what happens when people encounter these problems?
+Often they end up using a 'real' (i.e. general purpose, Turing complete) programming language anyway:
+</p>
+<ul class="org-ul">
+<li>you write a program to filter out custom comment syntax</li>
+<li>you write a program to merge configs or use a templating engine</li>
+<li><p>
+you write a program that 'evaluates' the config
+</p>
+<p>
+Often, you <b>end up reimplementing an interpreter</b> for a simple functional language in the process.
+</p></li>
+<li><p>
+you write a program to validate the config
+</p>
+<p>
+For the most part, it's boilerplate for type checking. You're not only working on a solved problem but in addition, end up with mediocre error messages as a result.
+</p></li>
+</ul>
+<p>
+All this stuff is unpleasant and distracts you from your main objective.
+</p>
+<p>
+Perhaps you can see where I'm coming with this.
+</p>
+</div>
+</div>
+<div class="outline-2">
+<h2 id="real_language"><a class="headerlink" href="#real_language">¶</a><span class="section-number-2">3</span> Use a real programming language</h2>
+<div class="outline-text-2" id="text-real_language">
+<p>
+The idea is to write your config in your target programming language.
+I'll have Python in mind here, but the same idea can be applied to <b>any dynamic enough language</b> (i.e. Javascript/Ruby/etc).
+</p>
+<p>
+Then, you simply import/evaluate your config file and viola – you're done. That's it.
+</p>
+<ul class="org-ul">
+<li><p>
+Toy example:
+</p>
+<p>
+<samp class="inline">config.py</samp>
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> NamedTuple
+
+<span class="org-keyword">class</span> <span class="org-type">Person</span>(NamedTuple):
+    name: <span class="org-builtin">str</span>
+    age: <span class="org-builtin">int</span>
+
+<span class="org-variable-name">PEOPLE</span> = [
+    Person(<span class="org-string">'Ann'</span>  , 22),
+    Person(<span class="org-string">'Roger'</span>, 15),
+    Person(<span class="org-string">'Judy'</span> , 49),
+]
+</pre>
+</div>
+<div><span class="before-aside">
+Using the config: 
+</span><aside class="sidenote">see <a href="https://lobste.rs/s/qyhvhc/your_configs_suck_try_real_programming#c_0btczk">this</a> if you're wondering why I use <code class="inline">exec</code> , not <code class="inline">import</code>.</aside></div>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">from</span> pathlib <span class="org-keyword">import</span> Path
+
+<span class="org-variable-name">config</span> = {}
+<span class="org-keyword">exec</span>(Path(<span class="org-string">'config.py'</span>).read_text(), config)
+<span class="org-variable-name">people</span> = config[<span class="org-string">'PEOPLE'</span>]
+
+<span class="org-keyword">print</span>(people)
+</pre>
+</div>
+<pre class="example">
+[Person(name='Ann', age=22), Person(name='Roger', age=15), Person(name='Judy', age=49)]
+</pre></li>
+</ul>
+<p>
+I find it pretty neat.
+Let's see how it helps us with the problems I described:
+</p>
+<ul class="org-ul">
+<li>comments: duh</li>
+<li><p>
+includes: trivial, use imports
+</p>
+<p>
+You can even import the very package you're configuring.
+So you can define a DSL for configuration, which will be imported and used in the config file.
+</p></li>
+<li><p>
+logic
+</p>
+<p>
+You have your language's syntax and libraries available to use.
+For example, something like <a href="https://docs.python.org/3/library/pathlib.html"><samp class="inline">pathlib</samp></a> alone can save you massive amounts of config duplication.
+</p>
+<p>
+Of course, one could go crazy and make it incomprehensible.
+But personally I'd rather accept potential for abusing the power of the language rather than being restricted.
+</p></li>
+<li><p>
+validation
+</p>
+<p>
+You can keep validation logic right in the config, so it would be checked at the time of loading.
+Mature static analysis tools (i.e. JS flow/eslint/pylint/mypy) can be used to aid you.
+</p></li>
+</ul>
+</div>
+<div class="outline-3">
+<h3 id="cons"><a class="headerlink" href="#cons">¶</a>Downsides</h3>
+<div class="outline-text-3" id="text-cons">
+<p>
+Are there any problems with that approach? Sure:
+</p>
+<ul class="org-ul">
+<li><p>
+interoperability
+</p>
+<blockquote>
+<p>
+Okay, maybe if your program is in Python it makes sense. But what if it isn't, or you'll rewrite it to another language (i.e. compiled, like c++) later.
+</p>
+</blockquote>
+<p>
+If you'll be running your software somewhere without an interpreter, then sure, good point.
+Modern <a href="https://en.wikipedia.org/wiki/Foreign_function_interface">FFI</a> is tedious and linking against your config is going to be pretty tricky.
+</p>
+<p>
+In case of Python specifically, it's present in most modern OS distributions. So you might get away with the following:
+</p>
+<ol class="org-ol">
+<li>make your Python config executable</li>
+<li><p>
+in the <samp class="inline">main()</samp> function, build the config, convert to JSON and dump to the stdout
+</p>
+<p>
+This step is possible with no boilerplate due to Python's dynamic nature.
+</p></li>
+<li>in your c++ code, execute the Python config (i.e. use <code class="inline">popen()</code>), read the raw JSON and process</li>
+</ol>
+<p>
+Yep, you will still have to manually deserialize config in the c++ code. But I think that's at least <b>not worse</b> than only using JSON and editing it manually.
+</p></li>
+<li><p>
+general-purpose programming languages are harder to reason about
+</p>
+<p>
+This is somewhat subjective. Personally, I'd be more likely overwhelmed by an overly verbose plain config. I'd always prefer a neat and compact DSL.
+</p>
+<p>
+A large factor here is code style: I'm sure you can make your config file readable in almost any programming language,
+even for people not familiar with the language at all.
+</p>
+<p>
+The biggest issues are probably security and termination checking.
+</p></li>
+<li><p>
+security
+</p>
+<p>
+I.e. if your config executes arbitrary code, then it may steal your passwords, format your hard drive, etc.
+</p>
+<p>
+If your configs are supplied by <b>third parties you don't trust</b>, then I agree that plain configs are safer.
+However, often it's not the case, and the user controls their own config.
+</p>
+<p>
+In addition, this is something that can be potentially solved by sandboxing. Whether it's worth the effort depends on the nature of your project, but for something like CI executor you need it anyway.
+</p>
+<p>
+Also, note that using a plain config format doesn't necessarily save you from trouble. See <a href="https://www.arp242.net/yaml-config.html#insecure-by-default">"YAML: insecure by default"</a>.
+</p></li>
+<li><p>
+termination checking
+</p>
+<p>
+Even if you don't care about security, you don't want your config to hang the program.
+</p>
+<p>
+Personally, I've never run into such issues, but here are some potential workarounds for that:
+</p>
+<ul class="org-ul">
+<li>explicit timeout for loading the config</li>
+<li><p>
+using a subset of the language might help, for example, <a href="https://docs.bazel.build/versions/master/skylark/language.html#differences-with-python"><del>Bazel</del> Skylark</a>
+</p>
+<p>
+Anyone knows examples of conservative static analysis tools that check for termination in general purpose languages?
+</p></li>
+<li><p>
+note that using a plain config doesn't mean it won't loop infinitely
+</p>
+<p>
+See <a href="https://www.gwern.net/Turing-complete#accidentally-turing-complete">"Accidentally Turing complete"</a>.
+</p></li>
+<li><p>
+your config can take <b>very</b> long time to evaluate, while technically taking finite time to complete
+</p>
+<p>
+See <a href="http://www.haskellforall.com/2020/01/why-dhall-advertises-absence-of-turing.html">"Why Dhall advertises the absence of Turing-completeness"</a>
+</p>
+<p>
+While an <a href="https://gist.github.com/Gabriel439/77f715350ecc0443eed5fa613ac6b78e">Ackermann</a> function is a contrived example,
+that means that if you truly care about malicious inputs, you want to sandbox anyway.
+</p></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div class="outline-3">
+<h3 id="why_python"><a class="headerlink" href="#why_python">¶</a>Why Python?</h3>
+<div class="outline-text-3" id="text-why_python">
+<p>
+Some reasons I find Python specifically enjoyable for writing config files:
+</p>
+<ul class="org-ul">
+<li>Python is present on almost all modern operating systems</li>
+<li>Python syntax is considered simple (not a bad thing!), so hopefully Python configs aren't much harder to understand than plain configs</li>
+<li><a href="https://docs.python.org/3/library/dataclasses.html">data classes</a>, functions and generators form a basis for a compact DSL</li>
+<li><a href="https://docs.python.org/3/library/typing.html">typing annotations</a> serve as documentation and validation at the same time</li>
+</ul>
+<p>
+However, you can achieve a similarly pleasant experience in <b>most modern programming languages</b> (provided they are dynamic enough).
+</p>
+</div>
+</div>
+<div class="outline-3">
+<h3 id="who_else"><a class="headerlink" href="#who_else">¶</a>Who else does it?</h3>
+<div class="outline-text-3" id="text-who_else">
+<p>
+Some projects that allow for using code as configuration:
+</p>
+<ul class="org-ul">
+<li><a href="https://webpack.js.org/configuration">Webpack</a>, web asset bundler, uses a Javascript as a config</li>
+<li><p>
+<a href="https://setuptools.readthedocs.io/en/latest/setuptools.html#basic-use">setuptools</a>, the standard way of installing Python packages
+</p>
+<p>
+Allows using <b>both</b> <samp class="inline">setup.cfg</samp> and <samp class="inline">setup.py</samp> files.
+That way if you can't achieve something solely with plain config, you can fix this in <samp class="inline">setup.py</samp>, which gives you a balance between declarative and flexible.
+</p></li>
+<li><p>
+<a href="https://jupyter.org">Jupiter</a>, interactive computing tool
+</p>
+<p>
+Uses a <a href="https://github.com/jupyter/jupyter_core/blob/master/jupyter_core/tests/dotipython_empty/profile_default/ipython_nbconvert_config.py">python file</a> to configure the export.
+</p></li>
+<li><p>
+<a href="https://www.gnu.org/software/emacs">Emacs</a>: famously uses Elisp for its configuration
+</p>
+<p>
+While I'm not a fan of Elisp at all, it does make Emacs very flexible and it's possible to achieve any configuration you want.
+</p>
+<p>
+On the other hand, if you've ever read other people's Emacs setups, you can see it also demonstrates how things can get out of hand when you allow
+a general purpose language for configuration.
+</p></li>
+<li><a href="https://github.com/brookhong/Surfingkeys#edit-your-own-settings">Surfingkeys</a> browser extension: uses a Javascript DSL for configuration</li>
+<li><a href="https://docs.gradle.org/current/userguide/tutorial_using_tasks.html#sec:build_scripts_are_code">Gradle</a> provides Groovy and Kotlin DSLs for writing build files</li>
+<li><a href="https://awesomewm.org">Awesome Window Manager</a> uses Lua for configuration</li>
+<li><a href="https://guix.gnu.org">Guix</a> package manager: uses <a href="https://www.gnu.org/software/guile">Guile Scheme</a> for configuration</li>
+</ul>
+<p>
+Some languages are designed specifically for configuration:
+</p>
+<ul class="org-ul">
+<li><p>
+<a href="https://docs.bazel.build/versions/master/skylark/language.html#differences-with-python"><del>Bazel</del> Skylark</a> uses a subset of Python for describing build rules
+</p>
+<p>
+While it's deliberately restricted to ensure termination checking and determinism, configuring Bazel is orders of magnitude more pleasant than any other build system I've used.
+</p></li>
+<li><a href="https://mesonbuild.com/Syntax.html">Meson build system</a>: borrows the syntax from Python</li>
+<li><p>
+<a href="https://nixos.wiki/wiki/Nix_Expression_Language">Nix</a>: language designed specifically for the Nix package manager
+</p>
+<p>
+While a completely new language feels like an overkill, it's still nicer to work with than plain configs.
+</p></li>
+<li><p>
+<a href="https://dhall-lang.org">Dhall</a>: language designed specifically for config files
+</p>
+<p>
+Dhall advertises itself as "JSON + functions + types + imports". And indeed, it looks great, and solves most of the issues I listed.
+</p></li>
+<li><p>
+<a href="https://jsonnet.org">Jsonnet</a>: JSON + variables + control flow
+</p>
+<p>
+See <a href="https://jsonnet.org/articles/comparisons.html">comparison</a> with other configuration languages
+</p></li>
+</ul>
+<p>
+Downsides of such languages is that they aren't widespread yet. If you don't have bindings for your target language, you'd end up parsing JSON again.
+However, at least it makes writing configs pleasant.
+</p>
+<p>
+But again, if your program is written in Javascript and doesn't interact with other languages, why don't you just make the config Javascript?
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2">
+<h2 id="what_if_i_have_to"><a class="headerlink" href="#what_if_i_have_to">¶</a><span class="section-number-2">4</span> What if you don't have a choice?</h2>
+<div class="outline-text-2" id="text-what_if_i_have_to">
+<p>
+Some ways I've found to minimize the frustration while using plain configs:
+</p>
+<ul class="org-ul">
+<li><p>
+write as little in config files as possible
+</p>
+<p>
+This typically applies to CI pipeline configs (i.e. Gitlab/Circle/Github Actions) or Dockerfiles.
+</p>
+<p>
+Often such configs are bloated with shell commands, which makes it impossible to run locally without copying line by line.
+And yeah, there <a href="https://circleci.com/docs/2.0/local-cli">are</a> <a href="https://github.com/nektos/act">ways</a> to debug, but they have a pretty slow feedback loop.
+</p>
+<ul class="org-ul">
+<li>use tools that are better suited to set up local virtual environments, like <a href="https://github.com/tox-dev/tox">tox-dev/tox</a></li>
+<li><p>
+prefer helper shell scripts and call them from your pipeline
+</p>
+<p>
+It is a bit frustrating since it introduces indirection and scatters code around.
+But, as an upside, you can lint (e.g. <a href="https://www.shellcheck.net">shellcheck</a>) your pipeline scripts, and make it easier to run locally.
+</p>
+<p>
+Sometimes you can get away if your pipeline is short, so use your own judgment.
+</p></li>
+</ul>
+<p>
+Let the CI only handle setting up a VM/container for you, caching the dependencies, and publishing artifacts.
+</p></li>
+<li><p>
+generate instead of writing manually
+</p>
+<p>
+The downside is that the generated config may diverge if edited manually.
+</p>
+<p>
+You can add the warning comment that the config is autogenerated with the link to the generator, and make the config file read-only to discourage manual editing.
+</p>
+<p>
+In addition, if you're running CI, you can make the consistency check a part of the pipeline itself.
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-2">
+<h2 id="links"><a class="headerlink" href="#links">¶</a><span class="section-number-2">5</span> Extra links</h2>
+<div class="outline-text-2" id="text-links">
+<ul class="org-ul">
+<li><p>
+<a href="https://www.arp242.net/flags-config.html">(commandline) flags are great for configuration</a>
+</p>
+<p>
+Overall, I agree, but there are still cases when using flags isn't feasible.
+</p>
+<p>
+It's also prone to leaking secrets (keys/tokens/passwords) – both in your shell history and via <samp class="inline">ps</samp>.
+</p></li>
+<li><p>
+<a href="https://wiki.archlinux.org/index.php/Xmonad#Configuration">Xmonad</a>: config <b>is</b> the executable
+</p>
+<p>
+Interesting approach, but not always feasible, e.g. you might not have the compiler installed.
+</p></li>
+<li><a href="https://github.com/magefile/mage#about">Mage</a>: a tool for writing makefiles in Go</li>
+<li>Dhall wiki: <a href="https://github.com/dhall-lang/dhall-lang/wiki/Programmable-configuration-files">Programmable configuration files</a></li>
+</ul>
+<p>
+<b>Updates</b> from the comments (thanks everyone!):
+</p>
+<ul class="org-ul">
+<li><a href="https://www.lua.org/history.html">The evolution of an extension language: a history of Lua</a>: apparently Lua has started as a config language</li>
+<li><p>
+<a href="https://news.ycombinator.com/item?id=20847943">Cue</a>:  A language for defining, generating, and validating data
+</p>
+<p>
+I've <b>really</b> struggled to find a code example on the website through so <a href="https://github.com/cuelang/cue/blob/master/doc/tutorial/kubernetes/README.md">here you go</a>.
+</p></li>
+<li><a href="https://news.ycombinator.com/item?id=14298715">The configuration complexity clock</a>: a case for hard-coding</li>
+</ul>
+</div>
+</div>
+<div class="outline-2">
+<h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">6</span> --</h2>
+<div class="outline-text-2" id="text-fin">
+<p>
+A followup question, which I don't have an answer for: why is it that way?
+I'm sure Ansible/CircleCI or Github Actions are developed by talented engineers who have considered pros and cons of using YAML.
+Do the pros really outweigh the cons?
+</p>
+<p>
+Open to all feedback, and feel free to share your config pain and how are you solving it!
+</p>
+</div>
+</div>
+
+    </section>
+
+    
+    <section class="footer">
+        <div class="post-tags"><a class="post-tag" href="./tags.html#plt python">#plt python</a></div>
+        <!-- TODO post-date? -->
+        <div class="date">05 April 2020</div>
+    </section>
+    
+
+    
+    <br>
+    <div>Discussion:</div>
+    <ul>
+    
+        <li><a href="https://news.ycombinator.com/item?id=22787332">hackernews</a></li>
+    
+        <li><a href="https://lobste.rs/s/qyhvhc/your_configs_suck_try_real_programming">lobsters</a></li>
+    
+    </ul>
+    
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_python_configs"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
+        
+
+        <!-- TODO make semantic -->
+        <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
+
+            <a href="http://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>
+            
+            
+        </footer>
+    </body>
+</html>
+]]></summary>
+</entry>
+<entry>
     <title>Human Programming Interface</title>
     <link href="https://beepb00p.xyz/hpi.html" />
     <id>https://beepb00p.xyz/hpi.html</id>
@@ -132,31 +795,7 @@ Here's a short example to give you an idea: "which subreddits I find the most in
 <span class="org-keyword">from</span> collections <span class="org-keyword">import</span> Counter
 <span class="org-keyword">return</span> Counter(s.subreddit <span class="org-keyword">for</span> s <span class="org-keyword">in</span> my.reddit.saved()).most_common(4)
 </pre>
-</div>
-<table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
-<colgroup>
-<col class="org-left" />
-<col class="org-right" />
-</colgroup>
-<tbody>
-<tr>
-<td class="org-left">orgmode</td>
-<td class="org-right">62</td>
-</tr>
-<tr>
-<td class="org-left">emacs</td>
-<td class="org-right">60</td>
-</tr>
-<tr>
-<td class="org-left">selfhosted</td>
-<td class="org-right">51</td>
-</tr>
-<tr>
-<td class="org-left">QuantifiedSelf</td>
-<td class="org-right">46</td>
-</tr>
-</tbody>
-</table></li>
+</div></li>
 </ul>
 <div><span class="before-aside">
 I consider my digital trace an important part of my identity. 
@@ -1091,12 +1730,22 @@ In some near future I will write more about:
     
 
     
+    <br>
+    <div>Discussion:</div>
+    <ul>
+    
+        <li><a href="https://www.reddit.com/r/coolgithubprojects/comments/fo28ok/human_programming_interface_your_digital_life_in">/r/coolgithubprojects</a></li>
+    
+        <li><a href="https://lobste.rs/s/vzkb7a/human_programming_interface_python">lobsters</a></li>
+    
+    </ul>
+    
 
     <section class="comments">
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
 </script>
 
-<section id="isso-thread" data-isso-id="isso_hpi"></section>
+<section id="isso-thread" data-isso-id="isso_mypkg"></section>
 
     </section>
 
@@ -9073,1089 +9722,6 @@ Not very cloud sync-friendly! However happily accepts symlink as <code class="in
 </script>
 
 <section id="isso-thread" data-isso-id="isso_scrapyroo"></section>
-
-    </section>
-
-</article>
-
-        </main>
-
-        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
-        
-
-        <!-- TODO make semantic -->
-        <footer>
-            <span style="float:left">
-            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
-            ·
-            <a href="https://github.com/karlicoss">💻 me @github</a>
-            </span>
-
-            <a href="http://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>
-            
-            
-        </footer>
-    </body>
-</html>
-]]></summary>
-</entry>
-<entry>
-    <title>Building personal search infrastructure for your knowledge and code</title>
-    <link href="https://beepb00p.xyz/pkm-search.html" />
-    <id>https://beepb00p.xyz/pkm-search.html</id>
-    <published>2019-11-01T00:00:00Z</published>
-    <updated>2019-11-01T00:00:00Z</updated>
-    <summary type="html"><![CDATA[<!doctype html>
-<html lang="en" prefix="og: http://ogp.me/ns#">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!-- Icon made by Twitter -->
-        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
-        <link rel="icon" href="./robot-face.png">
-        <link rel="apple-touch-icon" href="./robot-face.png">
-
-        <meta name="generator" content="hakyll">
-        <meta name="language" content="English">
-        
-        <meta name="keywords" content="pkm search emacs orgmode">
-        
-        <!-- TODO concat with keywords tags; also need to make comma separated? -->
-
-        <title>Building personal search infrastructure for your knowledge and code | beepb00p</title>
-
-        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="./css/default.css?v=3" />
-        <!-- TODO make conditional?? -->
-        <link rel="stylesheet" href="./css/posts-list.css" /> 
-        <link rel="stylesheet" href="./css/links.css?v=4" />
-
-        
-
-        <link rel="canonical" href="https://beepb00p.xyz/pkm-search.html" />
-
-        <!-- can test it with https://telegram.me/webpagebot -->
-        <!-- or https://developers.facebook.com/tools/debug -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://beepb00p.xyz/pkm-search.html" /> <!-- TODO base? -->
-        <meta property="og:title" content="Building personal search infrastructure for your knowledge and code | beepb00p" />
-        <meta property="og:description" content="Overview of search tools for desktop and mobile; using Emacs and Ripgrep as desktop search engine" />
-        <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
-        <!-- ugh. Facebook really wants jpg? -->
-        <!-- also Facebook displays it with black background, but whatever, fuck it. -->
-        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
-
-    </head>
-    <body>
-        <!-- TODO make semantic -->
-        <header>
-            <nav>
-                <span class="nav-left">
-                    <a class="fat" href="./">Home</a>
-                    <!-- TODO eh, not sure if this symbol is good for that... -->
-                    ·
-                    <a class="fat" href="./ideas.html">Ideas</a>
-                    ·
-                    <a class="fat" href="./exobrain">Exobrain</a>
-                    ·
-                    <a class="fat" href="./tags.html">Tags</a>
-                </span>
-                <span class="nav-right">
-                    <a class="fat" href="./feed.html">Feed</a>
-                    ·
-                    <a class="fat" href="./site.html">Site</a>
-                    ·
-                    <a class="fat" href="./me.html">Me</a>
-                </span>
-            </nav>
-        </header>
-
-        <main>
-            
-
-<!-- <link rel="stylesheet" href="/css/org.css" /> -->
-
-<link rel="stylesheet" href="./css/htmlize.css" />
-<link rel="stylesheet" href="./css/org-default.css" />
-
-<link rel="stylesheet" href="./css/org-extra.css?v=3" />
-
-
-
-<article>
-    
-    <section class="post-title">
-    <h1>Building personal search infrastructure for your knowledge and code</h1>
-    <div class="summary">Overview of search tools for desktop and mobile; using Emacs and Ripgrep as desktop search engine</h2>
-    </section>
-    <!-- are sections appropriate for that? -->
-
-    <section class="content">
-    <div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#why">1. Why search?</a></li>
-<li><a href="#what">2. What do I search?</a></li>
-<li><a href="#personal_information">3. Searching in personal information</a>
-<ul>
-<li><a href="#org_mode">Org mode notes</a></li>
-<li><a href="#other">Other plaintext, chats and social media</a></li>
-</ul>
-</li>
-<li><a href="#recoll">4. Recoll</a></li>
-<li><a href="#android">5. Searching on Android</a>
-<ul>
-<li><a href="#org0000000">Orgzly</a></li>
-<li><a href="#org0000001">Docsearch +</a></li>
-<li><a href="#recoll_web">Recoll Web</a></li>
-</ul>
-</li>
-<li><a href="#web">6. Web search</a>
-<ul>
-<li><a href="#org0000002">Firefox enhancements</a></li>
-<li><a href="#org0000003">Chrome enhancements</a></li>
-</ul>
-</li>
-<li><a href="#code">7. Searching in code</a>
-<ul>
-<li><a href="#org0000004">Why?</a></li>
-<li><a href="#org0000005">What do I want</a></li>
-<li><a href="#org0000006">Existing code search tools</a></li>
-<li><a href="#org0000007">Solution: use Emacs and Ripgrep</a></li>
-</ul>
-</li>
-<li><a href="#appendix_cloudmacs">8. Appendix: searching away from computer</a></li>
-<li><a href="#appendix_daemon">9. Appendix: Lightning fast Emacs</a>
-<ul>
-<li><a href="#org0000008">running daemon on startup</a></li>
-</ul>
-</li>
-<li><a href="#appendix_emacs">10. Appending: general Emacs tips</a></li>
-<li><a href="#future">11. Future and my holy grail of search</a></li>
-<li><a href="#org0000009">12. --</a></li>
-</ul>
-</div>
-</div>
-<div class="outline-2">
-<h2 id="why"><a class="headerlink" href="#why">¶</a><span class="section-number-2">1</span> Why search?</h2>
-<div class="outline-text-2" id="text-why">
-<div><span class="before-aside">
-Having information in the digital form, collecting and writing notes is incredibly valuable.
-Our brains are good at associations, pattern matching and creative thinking, not storing arrays of structured data, and external memory is one of the main thinking hacks computers aid us with. 
-</span><aside class="sidenote">see <a class="post-tag" href="./tags.html#extendedmind">#extendedmind</a></aside></div>
-<p>
-However this information is not so useful if you can't access and search it quickly.
-Instant search changes the way you think. Ever got sense of flow while working through some problem, and trying different things from Stackoverflow or documentation?
-</p>
-<p>
-These days, if you have decent connection, you are seconds away from finding almost any public knowledge in the internet.
-However, there is another aspect of information: personal and specific to <i>your</i> needs, work and hobbies.
-It's <i>your</i> todo list, <i>your</i> private notes, books <i>you</i> are reading. Of course, it's not that well integrated with the outside world, hence the tooling and experience of interacting with it is very different.
-</p>
-<p>
-Some examples:
-</p>
-<ul class="org-ul">
-<li><div><span class="before-aside">
-To find something from <i>my</i> Messenger history with a friend, I need to be online, open Facebook, navigate to search and use the interface Facebook's employees thought convenient (spoiler: it sucks) 
-</span><aside class="sidenote"><a class="post-tag" href="./tags.html#offline">#offline</a></aside></div>
-<p>
-It's <i>my</i> information, something that came out from my brain. Why can't I have it available anywhere, anytime, presented the way I prefer?
-</p></li>
-<li><p>
-To find something in <i>my</i> Kobo ebook, I need to reach my device physically and type the query using the virtual keyboard (yep, e-ink lag!). Not a very pleasant experience.
-</p>
-<p>
-It's something <i>I</i> own and have read. Why does it have to be so hard?
-</p></li>
-</ul>
-<p>
-Such things are pretty frustrating to me, so I've been working on making them easier. Search has to be <a href="https://en.wikipedia.org/wiki/Incremental_search">incremental</a>, fast and as convenient to use as possible.
-I'll be sharing some of workflows, tricks and thoughts in this post.
-</p>
-<p>
-The post is geared towards using Emacs and Org-mode, but hopefully you'll find some useful tricks for your current tools and workflow even if you don't.
-There is (almost) nothing inherently special about Emacs, I'm sure you can achieve similar workflows in other modern text editors given they are flexible enough.
-</p>
-<p>
-Note: throughout the post I will link to my <a href="https://github.com/karlicoss/dotfiles-emacs">emacs config</a> snippets. 
-To prevent code references from staling, I use permalinks, but check master branch as well in case of patches or more comments in code.
-</p>
-</div>
-</div>
-<div class="outline-2">
-<h2 id="what"><a class="headerlink" href="#what">¶</a><span class="section-number-2">2</span> What do I search?</h2>
-<div class="outline-text-2" id="text-what">
-<p>
-I'll write about searching in
-</p>
-<ul class="org-ul">
-<li>my personal notes, tasks and knowledge repository (this blog included)</li>
-<li>all digital trace I'm leaving (tweets, internet comments, annotations)</li>
-<li>chat logs with people</li>
-<li>books and papers I'm reading</li>
-<li>code that I'm working on</li>
-<li>information on the Internet (duh!)</li>
-</ul>
-</div>
-</div>
-<div class="outline-2">
-<h2 id="personal_information"><a class="headerlink" href="#personal_information">¶</a><span class="section-number-2">3</span> Searching in personal information</h2>
-<div class="outline-text-2" id="text-personal_information">
-<p>
-By personal information I refer to things like todo list, personal wiki or whatever you use to store information relevant to your life.
-</p>
-</div>
-<div class="outline-3">
-<h3 id="org_mode"><a class="headerlink" href="#org_mode">¶</a>Org mode notes</h3>
-<div class="outline-text-3" id="text-org_mode">
-<p>
-For the most part, I keep things in Org mode, and I use Emacs to work with it. Apart from regular means of plaintext search (I'll write about it <a class="link-down" href="#other">later</a>), for me it's important to search over tags:
-</p>
-<ul class="org-ul">
-<li><a href="https://orgmode.org/manual/Matching-tags-and-properties.html"><code class="inline">org-tags-view</code></a> is available by default and an easy way to run simple tag searches</li>
-<li><p>
-<a href="https://github.com/alphapapa/org-ql#screenshots">org-ql</a>
-</p>
-<p>
-It's a relatively new package, with new query syntax as the main feature, which is much easier to use and remember than builtin Org query syntax: <a href="https://github.com/alphapapa/org-ql#comparison-with-org-agenda-searches">comparison</a>.
-</p>
-<p>
-I mainly use these commands:
-</p>
-<ul class="org-ul">
-<li><a href="https://github.com/alphapapa/org-ql#helm-org-ql"><code class="inline">helm-org-ql</code></a> for <b>incremental</b> search in the current buffer</li>
-<li><a href="https://github.com/alphapapa/org-ql#org-ql-search"><code class="inline">org-ql-search</code></a> <b>interactively</b> prompts you for the search target, sort and grouping</li>
-</ul></li>
-</ul>
-<p>
-Another notable mention is <a href="https://github.com/alphapapa/org-rifle#screenshots">org-rifle</a>, which is an entry based search, presenting headings along with the matched content in Helm buffer.
-However as the author <a href="https://github.com/alphapapa/org-rifle/issues/42#issuecomment-544114082">mentioned</a> it might be obsoleted by org-ql soon. 
-</p>
-<p>
-Here are some typical workflows with my org-mode:
-</p>
-<ul class="org-ul">
-<li><p>
-<a id="friends_tags"></a> tags for friends
-</p>
-<p>
-I see an interesting article or think of something which would be good to share with a friend, but at the moment it's not quite a good time to send it.  I can just capture it and attach a tag (e.g. <samp class="inline">ann</samp> or <samp class="inline">jeremy</samp>). That way next time we chat I can just look up things under their tag and send them.
-</p>
-<p>
-It works the other way around as well: imagine they sent me a link or asked me to do something, but I can't do it immediately. I have a special script that converts chat messages into todo items and automatically attaches the corresponding tag. I write more about it <a href="orger-todos.html#telegram2org">here</a>.
-</p></li>
-<li><p>
-assembling blog posts
-</p>
-<p>
-Unfortunately, I can't just sit and write comprehensible texts without preparation.
-Typically I have thoughts on the topic now and then, which I just note down and mark with the tag.
-When I feel it's time to prepare the post, I can just search by the tag (e.g. <code class="inline">tags:search</code> for this post), and refile the items into the file with the post draft.
-</p></li>
-</ul>
-</div>
-</div>
-<div class="outline-3">
-<h3 id="other"><a class="headerlink" href="#other">¶</a>Other plaintext, chats and social media</h3>
-<div class="outline-text-3" id="text-other">
-<p>
-As I mentioned, I find having to switch to the browser, wait till the website loads and cope with crappy search implementations very distracting and frustrating.
-</p>
-<p>
-What is more, often you don't even remember whether exactly you were discussing something: on Telegram or Facebook or Reddit? So having a single point of entry to your information and unified search over all of your stuff is extremely helpful.
-</p>
-<p>
-For instant messaging, I'm using plaintext mirrors, so chat history is always available in plaintext on my computers:
-</p>
-<ul class="org-ul">
-<li><a href="https://github.com/karlicoss/telegram-backup-to-txt">Telegram messages</a>
-Didn't bother with org-mode because files would be too huge and there isn't much structure anyway.</li>
-<li><a href="https://github.com/Totktonada/vk_messages_backup">Vkontakte messages</a>
-Sadly export tool stopped working because of API restrictions, but I'm not using VK much anymore either. At least I got historic messages.</li>
-</ul>
-<p>
-Most services where I can comment, write or leave annotation, I'm mirroring as org-mode.
-I write about it in detail here: <a href="orger.html">part I</a>, <a href="orger-todos.html">part II</a>.
-</p>
-<p>
-That gives me source data for a search engine over anything I've ever:
-</p>
-<ul class="org-ul">
-<li>tweeted</li>
-<li>bookmarked on Pinboard</li>
-<li>highlighted in Instapaper or Kobo</li>
-<li>saved or upvoted on Reddit</li>
-<li>etc., etc.</li>
-</ul>
-<p>
-All these files are either non-Org or somewhat heavy for structured Org-mode search. In addition, I have many old files from my pre-orgmode era when I was using Gitit or Zim.
-</p>
-<p>
-To search over them, I'm using Emacs and Ripgrep (you can read why <a class="link-down" href="#ripgrep">later</a>):
-</p>
-<p>
-<a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L130-L134"><code class="inline">my/search</code></a>
-runs ripgrep against <code class="inline">my/search-targets</code> variable contains paths to notes, chat logs, Orger outputs etc.
-</p>
-<p>
-The interesting bit about <code class="inline">my/search</code> is <a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L87-L127"><code class="inline">--my/one-off-helm-follow-mode</code></a> call. It's a somewhat horrible hack that  automatically enables helm-follow mode so you don't have to press <code class="inline">C-c C-f</code> every time you invoke helm.
-</p>
-<p>
-Finally, to make sure I can invoke search in an instance, I'm using a <a class="link-down" href="#snippet_other">global keybinding</a>.
-</p>
-<p>
-Here's a <b>demo</b> <a href="https://file.globalupload.io/wu7HYYyJaY.gif">gif (5Mb)</a> of using this to search 'greg egan' in my knowledge repository.
-You can see that as a result, I'm getting my Kobo highlights (<samp class="inline">kobo.org</samp>), my reading list (<samp class="inline">read.org</samp>) and even some video (<samp class="inline">youtube.org</samp>)!
-</p>
-</div>
-</div>
-</div>
-<div class="outline-2">
-<h2 id="recoll"><a class="headerlink" href="#recoll">¶</a><span class="section-number-2">4</span> Recoll</h2>
-<div class="outline-text-2" id="text-recoll">
-<p>
-Recoll is an indexer that runs as daemon (or a regular cron job) and a full text search tool.
-</p>
-<p>
-It supports many <a href="https://www.lesbonscomptes.com/recoll/features.html">formats and other features</a>, so I suggest checking them out for yourself.
-</p>
-<p>
-Even though I index all my documents, I find it quicker to run grep I described above to search in plaintext. 
-So for me, Recoll is mostly for searching and quickly jumping to results in <b>PDFs and EPUBs</b> (see <a href="https://www.lesbonscomptes.com/recoll/pics/recoll-pdf-snippets.html">screenshot</a>).
-</p>
-<p>
-There is <a href="https://github.com/emacs-helm/helm-recoll">helm-recoll</a> Emacs module, but I found it a bit awkward to use, and Recoll GUI feels significantly superior.
-Basically only thing helm-recoll does is presenting you list of filenames that match your query.
-It feels that it should be straightforward to modify the module and integrate abstract, snippets and other things you can query Recoll for.
-</p>
-<p>
-Considering I don't need use Recoll it too often, I just gave up on helm-recoll and using GUI.
-</p>
-<p>
-I'm also running a <a href="https://github.com/koniu/recoll-webui">Web UI</a> on my VPS, so I can use it from my phone, or potentially from other computers.
-</p>
-<p>
-Recoll's distinguishing features are proper <a href="https://www.lesbonscomptes.com/recoll/usermanual/webhelp/docs/RCL.SEARCH.LANG.html">search query language</a>
-and <a href="https://www.lesbonscomptes.com/recoll/usermanual/webhelp/docs/RCL.INDEXING.MONITOR.html">realtime, inotify based indexing</a>.
-I don't have that much data yet to benefit massively from proper search queries, but I can see that it could be potentially useful in future as amount of personal data grows.
-</p>
-</div>
-</div>
-<div class="outline-2">
-<h2 id="android"><a class="headerlink" href="#android">¶</a><span class="section-number-2">5</span> Searching on Android</h2>
-<div class="outline-text-2" id="text-android">
-<p>
-Most of my notes and knowledge repository are plaintext, so it is easily and continuously shared on my phone via Dropbox/Syncthing.
-</p>
-<p>
-Since using Emacs on Android is hardly a meaningful experience, I'm working around it by using other apps.
-</p>
-</div>
-<div class="outline-3">
-<h3 id="org0000000"><a class="headerlink" href="#org0000000">¶</a><a href="https://github.com/orgzly/orgzly-android">Orgzly</a></h3>
-<div class="outline-text-3">
-<p>
-I can't recommend it enough, it's got many things done right, very fast and the code is extremely readable and well tested so it's easy to contribute.
-</p>
-<p>
-It has its own small <a href="http://www.orgzly.com/help#search">query language</a> (at the time <a href="https://github.com/alphapapa/org-ql">org-ql</a> didn't exist).
-</p>
-<p>
-You can save <a href="https://lh3.googleusercontent.com/FweBE2T3T3wZwJC64DQgtGj8vv8jKPBGTClnRAApSOHdKq4hiFdpq_JjEBPsMj_nTDA=w2560-h1295">search queries</a>, which ends up being pretty similar to custom Org-mode <b><b>agendas</b></b>.
-Searches can be displayed as persistent widgets, e.g. I find convenient to have a phone screen dedicated to 'Buy' search (<code class="inline">t.buy</code> query) or 'Do at work' search (<code class="inline">t.@work</code> query).
-</p>
-<p>
-As I described <a class="link-up" href="#friends_tags">above</a>, I keep few saved search queries for some friends so I can recall what I wanted to discuss with them.
-</p>
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org0000001"><a class="headerlink" href="#org0000001">¶</a><a href="https://play.google.com/store/apps/details?id=com.docsearch.pro">Docsearch +</a></h3>
-<div class="outline-text-3">
-<p>
-Docsearch is a not very well-known tool (e.g. zero search results on Reddit or Twitter), but I don't know any alternatives for it.
-</p>
-<p>
-It's a fulltext indexing and search app for plaintext files, but apparently it even supports EPUBs and PDFs.
-<a href="https://lh3.googleusercontent.com/psPhmFoawEzwZQpwBGgVz42ojnR-uAi70Li4DBc4Z13wLOTannvT2suaxZQA9YX_Bg=w2560-h1295">Here's</a> how matches list looks. Screenshots on Google Play give a pretty good idea what the app does.
-</p>
-<p>
-I find it convenient for quick search over things that are not imported in Orgzly, e.g. <samp class="inline">.txt</samp> chat logs (Telegram, VK) and huge org-mode files
-I described <a class="link-up" href="#other">above</a>.
-</p>
-<p>
-It's a bit backwards in terms of UI (even though I like that it's compact and functional), but main downside is it's not opensource.
-I'd be extremely happy to replace this with some open source application, so please let me know if you know one!
-</p>
-</div>
-</div>
-<div class="outline-3">
-<h3 id="recoll_web"><a class="headerlink" href="#recoll_web">¶</a>Recoll Web</h3>
-<div class="outline-text-3" id="text-recoll_web">
-<p>
-On the rare occasions when I need to search in pdfs or books (which I don't sync on my phone) , I just use Recoll <a href="https://github.com/koniu/recoll-webui">Web UI</a> that I'm selfhosting.
-</p>
-</div>
-</div>
-</div>
-<div class="outline-2">
-<h2 id="web"><a class="headerlink" href="#web">¶</a><span class="section-number-2">6</span> Web search</h2>
-<div class="outline-text-2" id="text-web">
-<p>
-If you're reading this at all, chances you're quite good at using web search already. <a href="https://www.gwern.net/Search#search">Gwern</a> got a good writeup on the subject.
-</p>
-<p>
-Knowing how to compose a search query is one thing, but navigating to the service, waiting till it loads, moving to searchbox takes precious time. Many people forget about <a href="https://www.howtogeek.com/114176/how-to-easily-create-search-plugins-add-any-search-engine-to-your-browser">custom search engines</a>. Here are ones I'm using:
-</p>
-<table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
-<colgroup>
-<col class="org-left" />
-<col class="org-left" />
-<col class="org-left" />
-</colgroup>
-<tbody>
-<tr>
-<td class="org-left">g</td>
-<td class="org-left">Google</td>
-<td class="org-left"><code class="inline">https://www.google.com/complete/search?client=firefox&amp;q={searchTerms}</code></td>
-</tr>
-<tr>
-<td class="org-left">d</td>
-<td class="org-left">DuckDuckGo</td>
-<td class="org-left"><code class="inline">https://duckduckgo.com/?q={searchTerms}&amp;t=canonical</code></td>
-</tr>
-<tr>
-<td class="org-left">r</td>
-<td class="org-left">Reddit</td>
-<td class="org-left"><code class="inline">https://www.reddit.com/search?q={searchTerms}</code></td>
-</tr>
-<tr>
-<td class="org-left">gh</td>
-<td class="org-left">GitHub</td>
-<td class="org-left"><code class="inline">https://github.com/search?q={searchTerms}&amp;ref=opensearch</code></td>
-</tr>
-<tr>
-<td class="org-left">pin</td>
-<td class="org-left">Pinboard: search all</td>
-<td class="org-left"><code class="inline">https://pinboard.in/search/?query={searchTerms}r&amp;all=Search+All</code></td>
-</tr>
-<tr>
-<td class="org-left">tw</td>
-<td class="org-left">Twitter</td>
-<td class="org-left"><code class="inline">https://twitter.com/search</code></td>
-</tr>
-<tr>
-<td class="org-left">hn</td>
-<td class="org-left">hackernews</td>
-<td class="org-left"><code class="inline">https://hn.algolia.com/?dateRange=all&amp;page=0&amp;prefix=true&amp;query={searchTerms}&amp;sort=byPopularity&amp;type=all</code></td>
-</tr>
-<tr>
-<td class="org-left">y</td>
-<td class="org-left">YouTube</td>
-<td class="org-left"><code class="inline">https://www.youtube.com/results?search_query={searchTerms}&amp;page={startPage?}&amp;utm_source=opensearch</code></td>
-</tr>
-<tr>
-<td class="org-left">m</td>
-<td class="org-left">Google Maps</td>
-<td class="org-left"><code class="inline">https://www.google.com/maps/search/{searchTerms}?hl=en&amp;source=opensearch</code></td>
-</tr>
-<tr>
-<td class="org-left">w</td>
-<td class="org-left">Wikipedia (en)</td>
-<td class="org-left"><code class="inline">https://en.wikipedia.org/wiki/Special:Search</code></td>
-</tr>
-<tr>
-<td class="org-left">tl</td>
-<td class="org-left">Google Timeline</td>
-<td class="org-left"><code class="inline">https://www.google.com/maps/timeline?pb=!1m2!1m1!1s{searchTerms}</code></td>
-</tr>
-<tr>
-<td class="org-left">cpp</td>
-<td class="org-left">Cppreference</td>
-<td class="org-left"><code class="inline">https://en.cppreference.com/mwiki/index.php?search={searchTerms}</code></td>
-</tr>
-<tr>
-<td class="org-left">js</td>
-<td class="org-left">MDN</td>
-<td class="org-left"><code class="inline">https://developer.mozilla.org/en-US/search?q={searchTerms}</code></td>
-</tr>
-<tr>
-<td class="org-left">eb</td>
-<td class="org-left">Ebay</td>
-<td class="org-left"><code class="inline">https://www.ebay.co.uk/sch/i.html?_nkw={searchTerms}</code></td>
-</tr>
-<tr>
-<td class="org-left">am</td>
-<td class="org-left">Amazon.co.uk</td>
-<td class="org-left"><code class="inline">https://www.amazon.co.uk/exec/obidos/external-search/</code></td>
-</tr>
-<tr>
-<td class="org-left">th</td>
-<td class="org-left">thesaurus</td>
-<td class="org-left"><code class="inline">https://www.powerthesaurus.org/{searchTerms}/synonyms</code></td>
-</tr>
-<tr>
-<td class="org-left">tru</td>
-<td class="org-left">Translate en-ru</td>
-<td class="org-left"><code class="inline">https://translate.google.com/#view=home&amp;op=translate&amp;sl=en&amp;tl=ru&amp;text={searchTerms}</code></td>
-</tr>
-<tr>
-<td class="org-left">tde</td>
-<td class="org-left">Translate en-de</td>
-<td class="org-left"><code class="inline">https://translate.google.com/#view=home&amp;op=translate&amp;sl=en&amp;tl=de&amp;text={searchTerms}</code></td>
-</tr>
-<tr>
-<td class="org-left">dd</td>
-<td class="org-left">DevDocs</td>
-<td class="org-left"><code class="inline">https://devdocs.io/#q={searchTerms}</code></td>
-</tr>
-<tr>
-<td class="org-left">em</td>
-<td class="org-left">emoji</td>
-<td class="org-left"><code class="inline">https://emojipedia.org/search/?q={searchTerms}</code></td>
-</tr>
-</tbody>
-</table>
-<p>
-Some of these obvious, some deserve a separate mention:
-</p>
-<ul class="org-ul">
-<li><p>
-reddit contains vast amounts of (somewhat curated) human knowledge
-</p>
-<p>
-Google search often gives dubious and not very meaningful results on certain topics (e.g. product reviews, exercise, dieting).
-On reddit, you'd at least find real people sharing their <b>honest and real opinions</b>.
-Chances are that if a link is good, you would find it on  on reddit anyway.
-</p></li>
-<li><p>
-twitter is similar: there is certainly more spam there, but sometimes it's interesting to type a link or blog post title in twitter search to see how <b>real people reacted</b>. 
-</p>
-<p>
-That has limited utility, e.g. doesn't work with politicized content, but if the topic of interest is rare, could be very useful.
-</p></li>
-<li>hackernews: good source of knowledge and high quality discussions for tools and tecnhologies</li>
-<li><a href="https://pinboard.in">pinboard</a> is an awesome source of curated content as well</li>
-</ul>
-<p>
-Next, I find it very convenient to have some code documentation available locally.
-First, it helps when you're on wonky internet or just offline for whatever reason.
-Second, it's feels <b>really fast</b>, even if you're on fiber.
-</p>
-<p>
-Here's what I'm using for that:
-</p>
-<table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
-<colgroup>
-<col class="org-left" />
-<col class="org-left" />
-</colgroup>
-<tbody>
-<tr>
-<td class="org-left">py</td>
-<td class="org-left"><samp class="inline">file:///usr/share/doc/python3/html/search.html?q=%s</samp></td>
-</tr>
-<tr>
-<td class="org-left">rust</td>
-<td class="org-left"><samp class="inline">file:///home/karlicos/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/share/doc/rust/html/std/option/index.html?search=%s</samp></td>
-</tr>
-</tbody>
-</table>
-<p>
-Sadly, the extension mentioned above doesn't work with <samp class="inline">file://</samp> schema for some reason, so to add it in Firefox,
-you can use the method described <a href="https://superuser.com/a/7336/300795">here</a>, it's as easy as adding a bookmark.
-</p>
-<p>
-Recently I ran into <a href="https://devdocs.io/offline">devdocs.io</a>, it's using your browser's <b>offline</b> storage to cache the documentation.
-I'm still getting used to it, but it's amazing how faster it is than jumping to documentation online. You can use it with multiple languages, you just type the search engine prefix first, and then language prefix (e.g. <code class="inline">dd cpp emplace_back</code>).
-</p>
-<p>
-Finally, it may be convenient to set up <a href="https://github.com/hrs/engine-mode">engine-mode</a> in Emacs, or <a href="https://github.com/syl20bnr/spacemacs/tree/master/layers/%2Bweb-services/search-engine">search-engine layer</a> in Spacemacs. It lets you invoke a browser search directly from Emacs (e.g. <code class="inline">SPC s G</code> to do google search). I find it convenient when I need to search many things in bulk.
-</p>
-</div>
-<div class="outline-3">
-<h3 id="org0000002"><a class="headerlink" href="#org0000002">¶</a>Firefox enhancements</h3>
-<div class="outline-text-3">
-<p>
-I find it convenient to enable <a href="https://www.ghacks.net/2016/06/11/firefox-page-search-improvements">'highlight all'</a> for search within a page.
-</p>
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org0000003"><a class="headerlink" href="#org0000003">¶</a>Chrome enhancements</h3>
-<div class="outline-text-3">
-<p>
-When I used Chrome, one thing that annoyed me was that it populates search engines automatically, and <a href="https://support.google.com/chrome/forum/AAAAP1KN0B0DOS1J_u6N8I">there is not way to disable it</a>.
-</p>
-<p>
-There is a nice open source <a href="https://chrome.google.com/webstore/detail/dont-add-custom-search-en/dnodlcololidkjgbpeoleabmkocdhacc">extension</a> that prevents Chrome from doing it.
-</p>
-</div>
-</div>
-</div>
-<div class="outline-2">
-<h2 id="code"><a class="headerlink" href="#code">¶</a><span class="section-number-2">7</span> Searching in code</h2>
-<div class="outline-text-2" id="text-code">
-<p>
-TLDR: I tried different existing code search tools, was disappointed and ended up using Emacs + Ripgrep.  
-</p>
-</div>
-<div class="outline-3">
-<h3 id="org0000004"><a class="headerlink" href="#org0000004">¶</a>Why?</h3>
-<div class="outline-text-3">
-<p>
-I've got lots of personal projects, experiments, data processing and backup scripts on my computer.
-I also tend to create a git repository at a slightest opportunity primarily as a means of code backup/rollback and progress tracking, but often it results in actual projects, so I would need a repository anyway.
-Naturally, these repositories end up scattered across the whole filesystem, making it tricky to remember where I've put the code or that it even existed in the first place.
-</p>
-<p>
-It's very convenient to have some sort of code search engine if you're in a similar situation to mine for multiple reasons:
-</p>
-<ul class="org-ul">
-<li><p>
-Doing potentially breaking code changes
-</p>
-<p>
-For instance, I want to remove some unused function or refactor something in <a href="https://github.com/karlicoss/my"><code class="inline">my</code></a> package, which is a Python library to access my personal data.
-It's used in lots of scripts or dashboards that run in Cron every day.
-</p>
-<p>
-I could just go for it, remove the function and hope nothing fails, but if it does then I'd have to deal with fixing it again.
-It's frustrating and I'd rather search for function usages in all of my code and make sure it's actually safe to remove.
-</p></li>
-<li><p>
-Reusing code snippets and tricks
-</p>
-<p>
-When you're getting familiar to some new library or framework, you often end up googling how to solve problems twice.
-Sometimes you remember solving the problem you've already had, but don't quite recall where. 
-</p>
-<p>
-For instance for me, such library is <a href="https://docs.sqlalchemy.org/en/13/core">Sqlalchemy</a>.
-It's very convenient for handling databases, but I only need it infrequently, so can never remember how to work with it.
-Reading documentation all over again is not very helpful because I've got very few usecases and queries that are specific to my purposes.
-</p>
-<p>
-If I can search for <code class="inline">sqlalchemy</code> in my code, it shows every repository where I used it so I can quickly copy bit of code I'm interested at.
-</p></li>
-<li><p>
-Forgotten code
-</p>
-<p>
-It happens that I remember writing code for some purpose, but don't quite recall where I put it.
-Even if you keep all your repos in the same location, you might forget how you named it.
-</p>
-<p>
-Full text search, however, allows to find it if you remember some comments or class/function names.
-</p></li>
-<li><p>
-Help and documentation
-</p>
-<p>
-However good is library's documentation, sometimes it just isn't covering your typical needs. If you're a power user, docs are almost never enough and you end up reading the code to bend the library into doing what you want.
-</p>
-<p>
-For me such libraries are <a href="https://code.orgmode.org/bzg/org-mode">Org mode</a> or <a href="https://github.com/jaspervdj/hakyll">Hakyll</a>, so I often had to search in their code on Github.
-Searching on Github however is quite awkward. It's slow, it's not incremental and lacks navigation.
-</p>
-<p>
-If I have a local clone of the repository on my disk, I can search over it in an instant (without having it opened in the first place) and use familiar tools (e.g. IDE) for navigation.
-</p></li>
-</ul>
-<p>
-At the time, I was just using recursive <code class="inline">grep</code> and then opening some of results in vim to refine.
-That's a pretty pathetic workflow. 
-</p>
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org0000005"><a class="headerlink" href="#org0000005">¶</a>What do I want</h3>
-<div class="outline-text-3">
-<p>
-My ideal code search tool would:
-</p>
-<ul class="org-ul">
-<li><p>
-run against code on my filesystem
-</p>
-<p>
-Just any source files, so it wouldn't have to fetch repositories from Github and keep them somewhere separately.
-</p></li>
-<li><p>
-realtime indexing 
-</p>
-<p>
-Ideally, inotify-based, but any means of refreshing search index without having to commit first would be nice.
-</p></li>
-<li>semantic search in definitions/variables etc with fallback to simple search if the language isn't supported</li>
-</ul>
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org0000006"><a class="headerlink" href="#org0000006">¶</a>Existing code search tools</h3>
-<div class="outline-text-3">
-<p>
-So, I wanted some code search and indexing tool that could watch over all the source file on my filesystem and let me search through them.
-</p>
-<p>
-It sounds as a fairly straightforward wish, but to my surprise, none of existing projects I found and tried do the job:
-</p>
-<ul class="org-ul">
-<li><p>
-<a href="https://github.com/sourcegraph/sourcegraph">Sourcegraph</a>
-</p>
-<p>
-Lets you index Github/Bitbucket/Gitlab repos etc, but the process for adding local repositories <a href="https://docs.sourcegraph.com/admin/repo/add_from_local_disk">is extremely tedious</a>.
-Also apparently, it clones repositories first so it's not exactly realtime indexing.
-</p>
-<p>
-Overall, I feel that it only makes sense for companies that use few monorepos.
-</p></li>
-<li><a href="https://oracle.github.io/opengrok">OpenGrok</a>: <a href="https://github.com/oracle/opengrok/wiki/How-to-setup-OpenGrok">setup</a> looks extremely heavy, doesn't support realtime search in arbitrary paths</li>
-<li><a href="https://github.com/hound-search/hound">Hound</a>: <a href="https://github.com/hound-search/hound/issues/83">doesn't support</a> recursive repository discovery.</li>
-<li><a href="https://github.com/google/zoekt">zoekt</a>: manual is pretty confusing and also looks tailored for huge standalone repos</li>
-<li><a href="https://livegrep.com">Livegrep</a>: tailored to huge monorepos (see <a href="https://news.ycombinator.com/item?id=3869880">HN discussion</a>)</li>
-</ul>
-<p>
-As you can see, none of these are convenient for searching in personal code.
-</p>
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org0000007"><a class="headerlink" href="#org0000007">¶</a>Solution: use Emacs and Ripgrep</h3>
-<div class="outline-text-3">
-<p>
-Disappointed, I figured that least I could do is at somehow improve my workflow with grep.
-</p>
-<p>
-So, what are the problems with using <code class="inline">grep</code>?
-</p>
-<ul class="org-ul">
-<li>running it against all of code results in false positives. <samp class="inline">node_modules</samp>, minified javascript, etc., you name it
-<ul class="org-ul">
-<li>you probably want to at least ignore anything that's ignored by <code class="inline">.gitignore</code></li>
-</ul></li>
-<li>getting bunch of output lines in terminal is not interactive
-<ul class="org-ul">
-<li>you have to repeat the command to refine the results</li>
-<li>you can't quickly navigate to the result, check it and go back</li>
-</ul></li>
-<li>running it recursively against your filesystem root is ridiculously slow, even if you use an SSD
-<ul class="org-ul">
-<li>you probably want to restrict your search to directories that look like a project (e.g. repositories), and again, exclude files ignored by version control</li>
-</ul></li>
-</ul>
-<p>
-<a id="ripgrep"></a>
-As it turns out, <code class="inline">ripgrep</code> is the tool!
-</p>
-<ul class="org-ul">
-<li>respects <code class="inline">.gitignore</code> files, so by maintaining <code class="inline">.gitignore</code> properly (e.g. adding <samp class="inline">node_modules/venv</samp> etc) you can make sure you only get <b>meaningful matches</b> when searching for code.</li>
-<li>respects <code class="inline">.ignore</code> files. Sometimes code has to be under version control, but you don't want it to show up in search (e.g. could happen if you have vendorized code or minified javascript or static html files).
-In that case you can use <code class="inline">.ignore</code> files with the same syntax to exclude certain patterns from ripgrep's reach without messing with <code class="inline">.gitignore</code>.</li>
-<li>it's <b>very</b> fast, both by <a href="https://github.com/BurntSushi/ripgrep#quick-examples-comparing-tools">benchmarks</a> and subjective experiments. You can read more comprehensive benchmarks <a href="https://blog.burntsushi.net/ripgrep/#code-search-benchmarks">here</a>.</li>
-</ul>
-<p>
-If you just use ripgrep instead of grep, code search becomes magnitude more pleasant, but it's still not interactive. Long story short, we can use <code class="inline">helm</code> in Emacs to achieve <b>interactivity</b> and incremental search.
-</p>
-<p>
-The only thing that's left is restricting the search to git repositories only.
-Ripgrep relies on regexes, so we can't do something like Xpath queries and tell it to only search in directories, that contain <code class="inline">.git</code> directory. I ended up using a two step approach:
-</p>
-<ul class="org-ul">
-<li><p>
-first, <a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L75-L83"><code class="inline">my/code-targets</code></a> returns all git repositories it can reach from <code class="inline">my/git-repos-search-root</code>.
-</p>
-<p>
-I'm using <a href="https://github.com/sharkdp/fd"><code class="inline">fd</code></a> to go through the disk and collect all candidate git repositories.
-</p>
-<p>
-Even though fd is already ridiculously <a href="https://github.com/sharkdp/fd#benchmark">fast</a>, this step still takes some time, so I'm caching the repositories. Cache is refreshed in the background every five minutes so we don't have to crawl the filesystem every time. That saves me few seconds on every search.
-</p></li>
-</ul>
-<ul class="org-ul">
-<li>then, <a href="https://github.com/karlicoss/dotfiles-emacs/blob/4ea7a8deb48403cea712f1bd48b553b465da05f4/.spacemacs.d/config.el#L136-L140"><code class="inline">my/search-code</code></a> keybindings invokes <code class="inline">ripgrep</code> against all my directories with code, defined in <code class="inline">my/code-targets</code> function.</li>
-</ul>
-<p>
-So, literally running grep against my code turned out to be a pretty good solution. I've got about 350 repositories and it works in a blink. Note, however, that I'm using SSD.
-</p>
-<p>
-Ripgrep searches in real files on my disk, so any changes are reflected <b>immediately</b>, which removes the need for indexing (apart from performance concerns if you've got too many files to search in).
-It would still be nice to avoid unnecessary disk operations, and of course, semantic search would be great, and that is definitely going to require some sort of indexer.
-</p>
-<p>
-I've got a <a class="link-down" href="#snippet_code">global keybinding</a> to invoke Emacs with a prompt to search in code, so I can do in in a blink.
-</p>
-<p>
-Here's a <a href="https://file.globalupload.io/onCac7sh9M.gif">gif (3.5 Mb)</a> showing it <b>in action</b>: say, I am working on testing a browser extension, and need to interact with in via hotkeys. I remember using <code class="inline">pyautogui</code> for automating <a href="https://github.com/karlicoss/grasp">Grasp</a> tests, but I forgot which function I actually need to use. Searching for 'pyautogui' brings me all the repositories where I'm using it and lets me quickly find out the command I need without having to read the documentation all over again.
-</p>
-</div>
-</div>
-</div>
-<div class="outline-2">
-<h2 id="appendix_cloudmacs"><a class="headerlink" href="#appendix_cloudmacs">¶</a><span class="section-number-2">8</span> Appendix: searching away from computer</h2>
-<div class="outline-text-2" id="text-appendix_cloudmacs">
-<p>
-I'm running Spacemacs on my VPS, so if I'm not near my computer and <a class="link-up" href="#android">phone search</a> doesn't help for some reason, I can still access and search my data. You can read about it <a href="cloudmacs.html">here</a>.
-</p>
-</div>
-</div>
-<div class="outline-2">
-<h2 id="appendix_daemon"><a class="headerlink" href="#appendix_daemon">¶</a><span class="section-number-2">9</span> Appendix: Lightning fast Emacs</h2>
-<div class="outline-text-2" id="text-appendix_daemon">
-<p>
-As you might have noticed, I'm relying on Emacs as my primary means of interacting with my information, whether it's capturing, accessing or searching.
-That means that I want it as fast as possible, in a matter of milliseconds. Seconds spent waiting to launch discourage break your concentration and workflow.
-</p>
-<p>
-Most of the time I've got Emacs window open on one of my desktops anyway, but sometimes it isn't, or I don't want to pollute the current Emacs instance with my search. So I've got a handy helper <a href="https://github.com/karlicoss/dotfiles-emacs/blob/master/bin/gemacsclient">script</a> to quickly invoke persistent Emacs frame for me:
-</p>
-<div class="org-src-container">
-<pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment"> -eux</span>
-<span class="org-comment-delimiter"># </span><span class="org-comment">Wrapper script to invoke interactive emacs commands in a daemon instance.</span>
-
-<span class="org-comment-delimiter"># </span><span class="org-comment">These days many people don't suspect it,</span>
-<span class="org-comment-delimiter"># </span><span class="org-comment">but Emacs got server ('emacs' binary) and client ('emacsclient') parts.</span>
-<span class="org-comment-delimiter"># </span><span class="org-comment">Launching server (i.e. default 'emacs' command) evaluates the config</span>
-<span class="org-comment-delimiter"># </span><span class="org-comment">and could potentially take seconds if it's very heavy</span>
-<span class="org-comment-delimiter"># </span><span class="org-comment">Launching the client however is lightning fast. It's just a matter of creating a window.</span>
-
-
-<span class="org-variable-name">ARGS</span>=(
- <span class="org-comment-delimiter"># </span><span class="org-comment">This trick gives you best of two worlds: if there is an Emacs daemon running,</span>
- <span class="org-comment-delimiter"># </span><span class="org-comment">it just connects to it. Otherwise, it spawns a daemon first and then connects to it.</span>
- <span class="org-comment-delimiter"># </span><span class="org-comment">Without this setting if you didn't have a daemon running, the command would fail.</span>
- -a <span class="org-string">''</span>
-
- <span class="org-comment-delimiter"># </span><span class="org-comment">spawn new GUI window, otherwise it tries to launch client in terminal</span>
- --create-frame 
- --frame-parameters=<span class="org-string">"'(fullscreen . maximized)"</span>
-
- <span class="org-comment-delimiter"># </span><span class="org-comment">process rest of arguments as elisp code</span>
- --eval
-  <span class="org-comment-delimiter"># </span><span class="org-comment">bring focus to the window</span>
- <span class="org-string">'(select-frame-set-input-focus (selected-frame))'</span>
-)
-
-<span class="org-comment-delimiter"># </span><span class="org-comment">without any extra args it just invokes the daemon instance, otherwise executes the args</span>
-<span class="org-keyword">exec</span> emacsclient <span class="org-string">"${ARGS[@]}"</span> <span class="org-sh-escaped-newline">\</span>
-                 <span class="org-string">"$@"</span>          <span class="org-comment-delimiter"># </span><span class="org-comment">pass through whatever else you are trying to run</span>
-</pre>
-</div>
-<p>
-I've got a global keybinding (<code class="inline">Win+m</code>) that invokes this script. In addition the script accepts a function to call so you can open Emacs with a search prompt, so I have few more handy keybindings:
-</p>
-<ul class="org-ul">
-<li><a id="snippet_other"></a> <code class="inline">Win+F1</code> for searching in my <a class="link-up" href="#other">notes and knowledge repository</a></li>
-</ul>
-<div class="org-src-container">
-<pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment"> -eux</span>
-<span class="org-keyword">exec</span> <span class="org-string">"~/bin/gemacsclient"</span> <span class="org-string">"(my/search)"</span>
-</pre>
-</div>
-<ul class="org-ul">
-<li><a id="snippet_code"></a> <code class="inline">Win+F3</code> for searching in my repositories</li>
-</ul>
-<div class="org-src-container">
-<pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment"> -eux</span>
-<span class="org-keyword">exec</span> <span class="org-string">"~/bin/gemacsclient"</span> <span class="org-string">"(my/search-code)"</span>
-</pre>
-</div>
-<ul class="org-ul">
-<li><code class="inline">Win+a</code> to open my org-mode agenda</li>
-</ul>
-<div class="org-src-container">
-<pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment"> -eux</span>
-<span class="org-keyword">exec</span> <span class="org-string">"~/bin/gemacsclient"</span> <span class="org-string">"(spacemacs/defer-until-after-user-config #'my/switch-to-agenda)"</span>
-</pre>
-</div>
-<ul class="org-ul">
-<li><code class="inline">Win+c</code> to open org-capture</li>
-</ul>
-<div class="org-src-container">
-<pre class="src src-bash"><span class="org-comment-delimiter">#</span><span class="org-comment">!/bin/</span><span class="org-keyword">bash</span><span class="org-comment"> -eux</span>
-<span class="org-keyword">exec</span> <span class="org-string">"~/bin/gemacsclient"</span> <span class="org-string">"(org-capture)"</span>
-</pre>
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org0000008"><a class="headerlink" href="#org0000008">¶</a>running daemon on startup</h3>
-<div class="outline-text-3">
-<p>
-It might be convenient to always have the daemon running, for that I'm using a systemd unit in <samp class="inline">~/.config/systemd/user/emacs-daemon.service</samp>.
-</p>
-<div class="org-src-container">
-<pre class="src src-bash">[Unit]
-<span class="org-variable-name">Description</span>=Emacs daemon
-
-[Service]
-<span class="org-variable-name">Type</span>=forking
-<span class="org-comment-delimiter"># </span><span class="org-comment">running via bash -l makes it pick up .profile, which sets up PATH etc</span>
-<span class="org-variable-name">ExecStart</span>=/bin/bash -l -c <span class="org-string">'/usr/bin/emacs --daemon'</span>
-<span class="org-variable-name">ExecStop</span>=/usr/bin/emacsclient --eval <span class="org-string">"(kill-emacs)"</span>
-<span class="org-variable-name">Environment</span>=<span class="org-variable-name">SSH_AUTH_SOCK</span>=%t/keyring/ssh
-<span class="org-variable-name">Restart</span>=always
-
-[Install]
-<span class="org-variable-name">WantedBy</span>=default.target
-</pre>
-</div>
-<p>
-It's nothing unusual perhaps apart from using <code class="inline">bash -l</code> so Emacs picks up your <code class="inline">.profile</code> file. Without it, you almost certainly will encounter issues with missing binaries because they would not be in your <code class="inline">PATH</code>.
-</p>
-</div>
-</div>
-</div>
-<div class="outline-2">
-<h2 id="appendix_emacs"><a class="headerlink" href="#appendix_emacs">¶</a><span class="section-number-2">10</span> Appending: general Emacs tips</h2>
-<div class="outline-text-2" id="text-appendix_emacs">
-<p>
-These tips might be pretty obvious, but they belong to this post, so here you go:
-</p>
-<ul class="org-ul">
-<li>if you're on Spacemacs, use <a href="https://github.com/syl20bnr/spacemacs/tree/develop"><code class="inline">develop</code></a> branch. Master is pretty backwards.</li>
-<li><p>
-search with <code class="inline">ripgrep</code> instead of <code class="inline">grep</code> (not only in Emacs!). It's just <a class="link-up" href="#ripgrep">better</a>.
-</p>
-<p>
-In Spacemacs, set up your <code class="inline">init.el</code>:
-</p></li>
-</ul>
-<div class="org-src-container">
-<pre class="src src-elisp">dotspacemacs-search-tools '(<span class="org-string">"rg"</span> <span class="org-string">"ag"</span> <span class="org-string">"pt"</span> <span class="org-string">"ack"</span> <span class="org-string">"grep"</span>)
-
-dotspacemacs-additional-packages '(helm-rg)
-</pre>
-</div>
-<ul class="org-ul">
-<li><p>
-use <a href="https://github.com/emacsorphanage/helm-swoop"><code class="inline">helm-swoop</code></a> for search within the buffer
-</p>
-<p>
-It's easier to watch a <a href="https://raw.githubusercontent.com/ShingoFukuyama/images/master/helm-swoop.gif">demo GIF</a> than to explain.
-Swoop opens a Helm window with search result summary and jumps between results in the original buffer as you navigate in helm (<code class="inline">C-j/C-k</code>).
-</p>
-<p>
-I <b><b>highly</b></b> recommend it as a primary way of searching withing a buffer. Bind it it to some convenient combination and get used to it (e.g. mine is <code class="inline">SPC RET</code>).
-</p>
-<p>
-There is also <code class="inline">helm-occur</code>, which has similar functionality, but it seems inferior to swoop.
-</p></li>
-<li><p>
-use <code class="inline">helm-follow-mode</code> (<code class="inline">C-c C-f</code> in Helm buffer) to jump between search results in any Helm search
-</p>
-<p>
-E.g. you can use it with <code class="inline">helm-org-in-buffer-headings</code> as a neat way to navigate within an Org file.
-</p></li>
-</ul>
-</div>
-</div>
-<div class="outline-2">
-<h2 id="future"><a class="headerlink" href="#future">¶</a><span class="section-number-2">11</span> Future and my holy grail of search</h2>
-<div class="outline-text-2" id="text-future">
-<p>
-My ultimate goal is to have my 'external' knowledge as highly integrated as possible, as if it was imprinted on my brain neurons. 
-</p>
-<p>
-  Ideally I want to be able to do fulltext realtime search over anything that I ever had in my visual field.
-Not even necessarily text, but audio and video as well.
-</p>
-<p>
-That way one wouldn't have to distinguish between different services and mediums of information at all, be it digital or analogue.
-</p>
-<p>
-Technically it's not impossible with the current technology:
-</p>
-<ul class="org-ul">
-<li>I believe that state of OCR is pretty good considering existence of products like google instant translate</li>
-<li>speech recognition still sucks in noisy environments, but generally works</li>
-<li>object recognition and annotation is still at dawn (I think?), but we'll get there eventually</li>
-<li>that would be a lot of data, but potentially lots of it can be filtered out (at least until storage gets really compact and cheap to justify keeping everything)</li>
-<li>processing and indexing don't have to be realtime as you can still rely on biological memory and could work overnight on expensive (but not astronomically so?) hardware</li>
-<li>plaintext indexes can potentially be stored on your phone and you could have some sort of backend to access visual component</li>
-<li>to jump back to the content digital media (like e-books/web pages/information screens) could aid this by supplying QR code or something similar</li>
-</ul>
-<p>
-However each of these is a pretty hard problem and hardly with high demand from people.   
-</p>
-<p>
-Considering Google Glass hasn't made it, the technology is not exactly there, so we have to rely on kludges like the ones I described above.
-</p>
-</div>
-</div>
-<div class="outline-2">
-<h2 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><span class="section-number-2">12</span> --</h2>
-<div class="outline-text-2" id="text-12">
-<p>
-My closing tips would be:
-</p>
-<ul class="org-ul">
-<li><p>
-start simple
-</p>
-<p>
-It's better to have a crappy adhoc script or bash alias that runs <code class="inline">grep</code> over your <samp class="inline">~/notes</samp> directory than no means of searching at all.
-</p></li>
-<li><p>
-keep your things as plaintext as possible
-</p>
-<p>
-This is a somewhat sad advice to give in 2019, but the reality is it's still extremely tedious to work with anything else.
-</p></li>
-<li><p>
-whichever tools you use, make sure they launch in an instant
-</p>
-<p>
-Seconds wasted on waiting break your flow. Better spend time on setting it up once and never think about that later.
-</p></li>
-<li><p>
-give Emacs a try
-</p>
-<p>
-I feel almost sorry advocating Emacs for everything, but despite my disgust at Elisp and frequent frustration, 
-it just happens to be superior in terms of bending it to do what you want it to.
-</p></li>
-</ul>
-<p>
-As always, I'm open to feedback and would love to hear what is or setup or help you if you're struggling with something!
-</p>
-</div>
-</div>
-
-    </section>
-
-    
-    <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#search">#search</a> <a class="post-tag" href="./tags.html#emacs">#emacs</a> <a class="post-tag" href="./tags.html#orgmode">#orgmode</a></div>
-        <!-- TODO post-date? -->
-        <div class="date">01 November 2019</div>
-    </section>
-    
-
-    
-    <br>
-    <div>Discussion:</div>
-    <ul>
-    
-        <li><a href="https://news.ycombinator.com/item?id=22160572"><strong>hackernews</strong></a></li>
-    
-        <li><a href="https://www.reddit.com/r/emacs/comments/dq42vk/building_personal_search_engine_using_emacs_and">/r/emacs</a></li>
-    
-        <li><a href="https://lobste.rs/s/kzpegk/building_personal_search">lobsters</a></li>
-    
-        <li><a href="https://irreal.org/blog/?p=8422">irreal</a></li>
-    
-    </ul>
-    
-
-    <section class="comments">
-    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
-</script>
-
-<section id="isso-thread" data-isso-id="isso_pkm_search"></section>
 
     </section>
 
