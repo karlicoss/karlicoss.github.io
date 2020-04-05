@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="en" prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link rel="icon" href="./robot-face.png">
+        <link rel="apple-touch-icon" href="./robot-face.png">
+
+        <meta name="generator" content="hakyll">
+        <meta name="language" content="English">
+        
+        <meta name="keywords" content="plt python">
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>Your configs suck? Try a real programming language. | beepb00p</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <!-- TODO make conditional?? -->
+        <link rel="stylesheet" href="./css/posts-list.css" /> 
+        <link rel="stylesheet" href="./css/links.css?v=4" />
+
+        
+
+        <link rel="canonical" href="https://beepb00p.xyz/configs-suck.html" />
+
+        <!-- can test it with https://telegram.me/webpagebot -->
+        <!-- or https://developers.facebook.com/tools/debug -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://beepb00p.xyz/configs-suck.html" /> <!-- TODO base? -->
+        <meta property="og:title" content="Your configs suck? Try a real programming language. | beepb00p" />
+        <meta property="og:description" content="Or yet another rant about YAML" />
+        <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
+        <!-- ugh. Facebook really wants jpg? -->
+        <!-- also Facebook displays it with black background, but whatever, fuck it. -->
+        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
+
+    </head>
+    <body>
+        <!-- TODO make semantic -->
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    <!-- TODO eh, not sure if this symbol is good for that... -->
+                    ·
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                    ·
+                    <a class="fat" href="./exobrain">Exobrain</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
+                </span>
+                <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<!-- <link rel="stylesheet" href="/css/org.css" /> -->
+
+<link rel="stylesheet" href="./css/htmlize.css" />
+<link rel="stylesheet" href="./css/org-default.css" />
+
+<link rel="stylesheet" href="./css/org-extra.css?v=3" />
+
+
+
+<article>
+    
+    <div>THIS IS A DRAFT! It will appear on the main page once finished!</div>
+    
+    <section class="post-title">
+    <h1>Your configs suck? Try a real programming language.</h1>
+    <div class="summary">Or yet another rant about YAML</h2>
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <p>
+In this post, I'll try to explain why I find most config formats frustrating to use and
+suggest that using a real programming language (e.g. general purpose one, like Python) is often a feasible and more pleasant alternative for writing configs.
+</p>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#configs_suck">1. Most modern config formats suck</a></li>
+<li><a href="#workarounds">2. Workarounds</a></li>
+<li><a href="#real_language">3. Use a real programming language</a>
+<ul>
+<li><a href="#cons">Downsides</a></li>
+<li><a href="#why_python">Why Python?</a></li>
+<li><a href="#who_else">Who else does it?</a></li>
+</ul>
+</li>
+<li><a href="#what_if_i_have_to">4. What if you don't have a choice?</a></li>
+<li><a href="#links">5. Extra links</a></li>
+<li><a href="#fin">6. --</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-2">
+<h2 id="configs_suck"><a class="headerlink" href="#configs_suck">¶</a><span class="section-number-2">1</span> Most modern config formats suck</h2>
+<div class="outline-text-2" id="text-configs_suck">
+<p>
+In this section, I'm mostly referring to JSON/YAML/TOML/ini files, which are the most common config formats I encounter.
+</p>
+<p>
+I'll refer to such configs as <b><span style="color:green">plain configs</span></b>. Not sure if there is a better name for it, please let me know!
+</p>
+<p>
+An incomplete list of my frustrations:
+</p>
+<ul class="org-ul">
+<li>JSON <b>doesn't have comments</b>, <a href="https://stackoverflow.com/a/33963845/706389">by design</a> 🤯</li>
+<li><p>
+bits of configs <b>can't be reused</b>
+</p>
+<p>
+For example, while YAML, in theory, supports reusing/including bits of the config (they call it <a href="https://confluence.atlassian.com/bitbucket/yaml-anchors-960154027.html">anchors</a>),
+some software like <a href="https://github.community/t5/GitHub-Actions/Support-for-YAML-anchors/td-p/30336/page/3">Github Actions</a> doesn't support it
+</p>
+<p>
+Usually, you just don't have any means of reusing parts of your config and have to copy-paste.
+</p>
+<ul class="org-ul">
+<li><code class="inline">.gitconfig</code> uses a <a href="https://git-scm.com/docs/git-config#_includes">custom syntax</a> for merging the configs</li>
+</ul></li>
+<li><p>
+can't contain <b>any logic</b>
+</p>
+<p>
+This is considered as a positive by many, but I would argue that when you can't define temporary variables, helper functions, substitute strings or concatenate lists, it's a bit fucked up.
+</p>
+<p>
+The workarounds (if present) are usually pretty horrible and impose cognitive overhead:
+</p>
+<ul class="org-ul">
+<li>templating reinvented
+
+<ul class="org-ul">
+<li>Ansible uses <a href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_templating.html">Jinja templates</a> (!) for variable manipulations.</li>
+<li><p>
+Github Actions use a <a href="https://help.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions">custom syntax</a> for that
+</p>
+<p>
+In addition, they've got <a href="https://help.github.com/en/actions/reference/context-and-expression-syntax-for-github-actions#functions">their own</a> set of functions to manipulate the variables.
+Have fun learning a new language you never wanted to!
+</p></li>
+</ul></li>
+<li><p>
+scoping reinvented
+</p>
+<p>
+I.e. there are several custom scopes for <a href="https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#env"><samp class="inline">env</samp> directive</a> in Github Actions.
+</p></li>
+<li>control flow reinvented
+
+<ul class="org-ul">
+<li><code class="inline">for</code> loop: build matrices and 'excludes' always give me a headache</li>
+<li><code class="inline">if</code> statement: e.g. <a href="https://circleci.com/docs/2.0/configuration-reference/#the-when-step-requires-version-21"><samp class="inline">when</samp></a> in CircleCI</li>
+</ul></li>
+</ul></li>
+</ul>
+<ul class="org-ul">
+<li><p>
+can't be validated
+</p>
+<p>
+You can validate the config syntax itself (i.e. check JSON for correctness), but you can't do semantic checks.
+</p>
+<p>
+This is kind of a consequence of not having logic in the config files.
+Typically you'll have to write a supplementary program to check your configs and remember to call it before passing to a program.
+</p>
+<p>
+Very few programs bother with that and usually, your program crashes because of something that would be <b>trivial to catch with any simple type system</b>.
+</p></li>
+<li><p>
+YAML simply stands out with its implicit conversions and portability issues
+</p>
+<p>
+There are enough rants about it, so I'll just leave a link to a good one: <a href="https://www.arp242.net/yaml-config.html">"YAML: probably not so great after all"</a>.
+</p></li>
+</ul>
+<p>
+Summary: we spend time learning <b>useless syntax, instead of productive work</b>.
+</p>
+</div>
+</div>
+<div class="outline-2">
+<h2 id="workarounds"><a class="headerlink" href="#workarounds">¶</a><span class="section-number-2">2</span> Workarounds</h2>
+<div class="outline-text-2" id="text-workarounds">
+<p>
+So what happens when people encounter these problems?
+Often they end up using a 'real' (i.e. general purpose, Turing complete) programming language anyway:
+</p>
+<ul class="org-ul">
+<li>you write a program to filter out custom comment syntax</li>
+<li>you write a program to merge configs or use a templating engine</li>
+<li><p>
+you write a program that 'evaluates' the config
+</p>
+<p>
+Often, you <b>end up reimplementing an interpreter</b> for a simple functional language in the process.
+</p></li>
+<li><p>
+you write a program to validate the config
+</p>
+<p>
+For the most part, it's boilerplate for type checking. You're not only working on a solved problem but in addition, end up with mediocre error messages as a result.
+</p></li>
+</ul>
+<p>
+All this stuff is unpleasant and distracts you from your main objective.
+</p>
+<p>
+Perhaps you can see where I'm coming with this.
+</p>
+</div>
+</div>
+<div class="outline-2">
+<h2 id="real_language"><a class="headerlink" href="#real_language">¶</a><span class="section-number-2">3</span> Use a real programming language</h2>
+<div class="outline-text-2" id="text-real_language">
+<p>
+The idea is to write your config in your target programming language.
+I'll have Python in mind here, but the same idea can be applied to <b>any dynamic enough language</b> (i.e. Javascript/Ruby/etc).
+</p>
+<p>
+Then, you simply import/evaluate your config file and viola – you're done. That's it.
+</p>
+<ul class="org-ul">
+<li><p>
+Toy example:
+</p>
+<p>
+<samp class="inline">config.py</samp>
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">from</span> typing <span class="org-keyword">import</span> NamedTuple
+
+<span class="org-keyword">class</span> <span class="org-type">Person</span>(NamedTuple):
+    name: <span class="org-builtin">str</span>
+    age: <span class="org-builtin">int</span>
+
+<span class="org-variable-name">PEOPLE</span> = [
+    Person(<span class="org-string">'Ann'</span>  , 22),
+    Person(<span class="org-string">'Roger'</span>, 15),
+    Person(<span class="org-string">'Judy'</span> , 49),
+]
+</pre>
+</div>
+<p>
+Using the config:
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">from</span> pathlib <span class="org-keyword">import</span> Path
+
+<span class="org-variable-name">config</span> = {}
+<span class="org-keyword">exec</span>(Path(<span class="org-string">'config.py'</span>).read_text(), config)
+<span class="org-variable-name">people</span> = config[<span class="org-string">'PEOPLE'</span>]
+
+<span class="org-keyword">print</span>(people)
+</pre>
+</div>
+<pre class="example">
+[Person(name='Ann', age=22), Person(name='Roger', age=15), Person(name='Judy', age=49)]
+</pre></li>
+</ul>
+<p>
+I find it pretty neat.
+Let's see how it helps us with the problems I described:
+</p>
+<ul class="org-ul">
+<li>comments: duh</li>
+<li><p>
+includes: trivial, use imports
+</p>
+<p>
+You can even import the very package you're configuring.
+So you can define a DSL for configuration, which will be imported and used in the config file.
+</p></li>
+<li><p>
+logic
+</p>
+<p>
+You have your language's syntax and libraries available to use.
+For example, something like <a href="https://docs.python.org/3/library/pathlib.html"><samp class="inline">pathlib</samp></a> alone can save you massive amounts of config duplication.
+</p>
+<p>
+Of course, one could go crazy and make it incomprehensible.
+But personally I'd rather accept potential for abusing rather than being restricted.
+</p></li>
+<li><p>
+validation
+</p>
+<p>
+You can keep validation logic right in the config, so it would be checked at the time of loading.
+Mature static analysis tools (i.e. JS flow/eslint/pylint/mypy) can be used to aid you.
+</p></li>
+</ul>
+</div>
+<div class="outline-3">
+<h3 id="cons"><a class="headerlink" href="#cons">¶</a>Downsides</h3>
+<div class="outline-text-3" id="text-cons">
+<p>
+Are there any problems with that approach? Sure:
+</p>
+<ul class="org-ul">
+<li><p>
+interoperability
+</p>
+<blockquote>
+<p>
+Okay, maybe if your program is in Python it makes sense. But what if it isn't, or you'll rewrite it to another language (i.e. c++) later.
+</p>
+</blockquote>
+<p>
+If you'll be running your software somewhere without an interpreter, then sure, good point.
+Modern <a href="https://en.wikipedia.org/wiki/Foreign_function_interface">FFI</a> is tedious and linking against your config is going to be pretty tricky.
+</p>
+<p>
+In case of Python specifically, it's present in most modern OS distributions. So you might get away with the following:
+</p>
+<ol class="org-ol">
+<li>make your Python config executable</li>
+<li><p>
+in the <samp class="inline">main()</samp> function, build the config, convert to JSON and dump to the stdout
+</p>
+<p>
+This step is possible with no boilerplate due to Python's dynamic nature.
+</p></li>
+<li>in your c++ code, execute the Python config (i.e. use <code class="inline">popen()</code>), read the raw JSON and process</li>
+</ol>
+<p>
+Yep, you will still have to manually deserialize config in the c++ code. But I think that's at least <b>not worse</b> than only using JSON and editing it manually.
+</p></li>
+<li><p>
+general-purpose programming languages are harder to reason about
+</p>
+<p>
+This is somewhat subjective. Personally, I'd be more likely overwhelmed by an overly verbose plain config. I'd always prefer a neat and compact DSL.
+</p>
+<p>
+A large factor here is code style: I'm sure you can make your config file readable in almost any programming language,
+even for people not familiar with the language at all.
+</p>
+<p>
+The biggest issues are probably security and termination checking.
+</p></li>
+<li><p>
+security
+</p>
+<p>
+I.e. if your config executes arbitrary code, then it may steal your passwords, format your hard drive, etc.
+</p>
+<p>
+If your configs are supplied by third parties you don't trust, then I agree that plain configs are safer.
+However, often it's not the case, and the user controls their own config.
+</p>
+<p>
+In addition, this is something that can be potentially solved by sandboxing. Whether it's worth the effort depends on the nature of your project, but for something like CI executor you need it anyway.
+</p>
+<p>
+Also, note that using a plain config format doesn't necessarily save you from trouble. See <a href="https://www.arp242.net/yaml-config.html#insecure-by-default">"YAML: insecure by default"</a>.
+</p></li>
+<li><p>
+termination checking
+</p>
+<p>
+Even if you don't care about security, you don't want your config to hang the program.
+</p>
+<p>
+Personally, I've never run into such issues, but here are some potential workarounds for that:
+</p>
+<ul class="org-ul">
+<li>explicit timeout for loading the config</li>
+<li><p>
+using a subset of the language might help, for example, <a href="https://docs.bazel.build/versions/master/skylark/language.html#differences-with-python">Bazel</a>
+</p>
+<p>
+Anyone knows examples of conservative static analysis tools that check for termination in general purpose languages?
+</p></li>
+<li><p>
+note that using a plain config doesn't mean it won't loop infinitely
+</p>
+<p>
+See <a href="https://www.gwern.net/Turing-complete#accidentally-turing-complete">"Accidentally Turing complete"</a>.
+</p></li>
+<li><p>
+your config can take <b>very</b> long time to evaluate, while technically taking finite time to complete
+</p>
+<p>
+See <a href="http://www.haskellforall.com/2020/01/why-dhall-advertises-absence-of-turing.html">"Why Dhall advertises the absence of Turing-completeness"</a>
+</p>
+<p>
+While an <a href="https://gist.github.com/Gabriel439/77f715350ecc0443eed5fa613ac6b78e">Ackermann</a> function is a contrived example,
+that means that if you truly care about malicious inputs, you want to sandbox anyway.
+</p></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div class="outline-3">
+<h3 id="why_python"><a class="headerlink" href="#why_python">¶</a>Why Python?</h3>
+<div class="outline-text-3" id="text-why_python">
+<p>
+Some reasons I find Python specifically enjoyable for writing config files:
+</p>
+<ul class="org-ul">
+<li>Python is present on almost all modern operating systems</li>
+<li>Python syntax is considered simple (not a bad thing!), so hopefully Python configs aren't much harder to understand than plain configs</li>
+<li><a href="https://docs.python.org/3/library/dataclasses.html">data classes</a>, functions and generators form a basis for a compact DSL</li>
+<li><a href="https://docs.python.org/3/library/typing.html">typing annotations</a> serve as documentation and validation at the same time</li>
+</ul>
+<p>
+However, you can achieve a similarly pleasant experience in <b>most modern programming languages</b> (provided they are dynamic enough).
+</p>
+</div>
+</div>
+<div class="outline-3">
+<h3 id="who_else"><a class="headerlink" href="#who_else">¶</a>Who else does it?</h3>
+<div class="outline-text-3" id="text-who_else">
+<p>
+Some projects that allow for using code as configuration:
+</p>
+<ul class="org-ul">
+<li><p>
+<a href="https://setuptools.readthedocs.io/en/latest/setuptools.html#basic-use">setuptools</a>, the standard way of installing Python packages
+</p>
+<p>
+Allows using both <samp class="inline">setup.cfg</samp> and <samp class="inline">setup.py</samp> files. That way if you can't achieve something solely with plain config, you can fix this in <samp class="inline">setup.py</samp>.
+</p></li>
+<li><p>
+<a href="https://jupyter.org/">Jupiter</a>, interactive computing tool
+</p>
+<p>
+Uses a <a href="https://github.com/jupyter/jupyter_core/blob/master/jupyter_core/tests/dotipython_empty/profile_default/ipython_nbconvert_config.py">python file</a> to configure the export.
+</p></li>
+<li><p>
+<a href="https://www.gnu.org/software/emacs">Emacs</a>: famously uses Elisp for its configuration
+</p>
+<p>
+While I'm not a fan of Elisp at all, that does make Emacs very flexible and it's possible to achieve any configuration you want.
+</p>
+<p>
+On the other hand, if you've ever read other people's Emacs setups, you can see it also demonstrates how things can get out of hand when you allow
+a general purpose language for configuration.
+</p></li>
+<li><a href="https://github.com/brookhong/Surfingkeys#edit-your-own-settings">Surfingkeys</a> browser extension: uses a Javascript DSL for configuration</li>
+<li><p>
+<a href="https://docs.bazel.build/versions/master/skylark/language.html#differences-with-python">Bazel</a> uses a subset of Python for describing build rules
+</p>
+<p>
+While it's deliberately restricted to ensure termination checking and determinism, configuring Bazel is orders of magnitude more pleasant than any other build system I've used.
+</p></li>
+<li><p>
+<a href="https://nixos.wiki/wiki/Nix_Expression_Language">Nix</a>: language designed specifically for the Nix package manager
+</p>
+<p>
+While a completely new language feels like an overkill, it's still nicer to work with than plain configs.
+</p></li>
+<li><p>
+<a href="https://dhall-lang.org">Dhall</a>: language designed specifically for config files
+</p>
+<p>
+Dhall advertises itself as "JSON + functions + types + imports". And indeed, it looks great, and solves most of the issues I listed.
+</p>
+<p>
+One downside is that it's not widespread yet. If you don't have bindings for your target language, you'd end up parsing JSON again.
+However, at least it makes writing configs pleasant.
+</p>
+<p>
+But again, if your program is written in Javascript and doesn't interact with other languages, why don't you just make the config Javascript?
+</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="outline-2">
+<h2 id="what_if_i_have_to"><a class="headerlink" href="#what_if_i_have_to">¶</a><span class="section-number-2">4</span> What if you don't have a choice?</h2>
+<div class="outline-text-2" id="text-what_if_i_have_to">
+<p>
+Some ways I've found to minimize the frustration while using plain configs:
+</p>
+<ul class="org-ul">
+<li><p>
+write as little in config files as possible
+</p>
+<p>
+This typically applies to CI pipeline configs (i.e. Gitlab/Circle/Github Actions) or Dockerfiles.
+</p>
+<p>
+Often such configs are bloated with shell commands, which makes it impossible to run locally without copying line by line.
+And yeah, there <a href="https://circleci.com/docs/2.0/local-cli">are</a> <a href="https://github.com/nektos/act">ways</a> to debug, but they have a pretty slow feedback loop.
+</p>
+<ul class="org-ul">
+<li>use tools that are better suited to set up local virtual environments, like <a href="https://github.com/tox-dev/tox">tox-dev/tox</a></li>
+<li><p>
+prefer helper shell scripts and call them from your pipeline
+</p>
+<p>
+It is a bit frustrating since it introduces indirection and scatters code around.
+But, as an upside, you can lint (e.g. <a href="https://www.shellcheck.net">shellcheck</a>) your pipeline scripts, and make it easier to run locally.
+</p>
+<p>
+Sometimes you can get away if your pipeline is short, so use your own judgment.
+</p></li>
+</ul>
+<p>
+Let the CI only handle setting up a VM/container for you, caching the dependencies, and publishing artifacts.
+</p></li>
+<li><p>
+generate instead of writing manually
+</p>
+<p>
+The downside is that the generated config may diverge if edited manually.
+</p>
+<p>
+You can add the warning comment that the config is autogenerated with the link to the generator, and make the config file read-only to discourage manual editing.
+</p>
+<p>
+In addition, if you're running CI, you can make the consistency check a part of the pipeline itself.
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-2">
+<h2 id="links"><a class="headerlink" href="#links">¶</a><span class="section-number-2">5</span> Extra links</h2>
+<div class="outline-text-2" id="text-links">
+<ul class="org-ul">
+<li><p>
+<a href="https://www.arp242.net/flags-config.html">(commandline) flags are great for configuration</a>
+</p>
+<p>
+Overall, I agree, but there are still cases when using flags isn't feasible.
+</p>
+<p>
+It's also prone to leaking secrets (keys/tokens/passwords) – both in your shell history and via <samp class="inline">ps</samp>.
+</p></li>
+<li><p>
+<a href="https://wiki.archlinux.org/index.php/Xmonad#Configuration">Xmonad</a>: config <b>is</b> the executable
+</p>
+<p>
+Interesting approach, but not always feasible, e.g. you might not have the compiler installed.
+</p></li>
+<li><a href="https://github.com/magefile/mage#about">Mage</a>: a tool for writing makefiles in Go</li>
+<li>Dhall wiki: <a href="https://github.com/dhall-lang/dhall-lang/wiki/Programmable-configuration-files">Programmable configuration files</a></li>
+</ul>
+</div>
+</div>
+<div class="outline-2">
+<h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">6</span> --</h2>
+<div class="outline-text-2" id="text-fin">
+<p>
+Open to all feedback, and feel free to share your config pain and how are you solving it!
+</p>
+</div>
+</div>
+
+    </section>
+
+    
+    <section class="footer">
+        <div class="post-tags"><a class="post-tag" href="./tags.html#plt python">#plt python</a></div>
+        <!-- TODO post-date? -->
+        <div class="date">05 April 2020</div>
+    </section>
+    
+
+    
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section id="isso-thread" data-isso-id="isso_python_configs"></section>
+
+    </section>
+
+</article>
+
+        </main>
+
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
+        
+
+        <!-- TODO make semantic -->
+        <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
+
+            <a href="http://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>
+            
+            
+        </footer>
+    </body>
+</html>
