@@ -253,7 +253,7 @@ The idea is to write your config in your target programming language.
 I'll have Python in mind here, but the same idea can be applied to <b>any dynamic enough language</b> (i.e. Javascript/Ruby/etc).
 </p>
 <p>
-Then, you simply import/evaluate your config file and viola – you're done. That's it.
+Then, you simply import/evaluate your config file and voila – you're done. That's it.
 </p>
 <ul class="org-ul">
 <li><p>
