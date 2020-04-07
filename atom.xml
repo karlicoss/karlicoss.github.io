@@ -477,8 +477,11 @@ a general purpose language for configuration.
 </p></li>
 <li><a href="https://github.com/brookhong/Surfingkeys#edit-your-own-settings">Surfingkeys</a> browser extension: uses a Javascript DSL for configuration</li>
 <li><a href="https://docs.gradle.org/current/userguide/tutorial_using_tasks.html#sec:build_scripts_are_code">Gradle</a> provides Groovy and Kotlin DSLs for writing build files</li>
-<li><a href="https://awesomewm.org">Awesome Window Manager</a> uses Lua for configuration</li>
+<li><a href="https://awesomewm.org">Awesome Window Manager</a> uses Lua for configuration
+
+<ul class="org-ul">
 <li><a href="https://guix.gnu.org">Guix</a> package manager: uses <a href="https://www.gnu.org/software/guile">Guile Scheme</a> for configuration</li>
+</ul></li>
 </ul>
 <p>
 Some languages are designed specifically for configuration:
@@ -599,7 +602,7 @@ Interesting approach, but not always feasible, e.g. you might not have the compi
 <a href="https://news.ycombinator.com/item?id=20847943">Cue</a>:  A language for defining, generating, and validating data
 </p>
 <p>
-I've <b>really</b> struggled to find a code example on the website through so <a href="https://github.com/cuelang/cue/blob/master/doc/tutorial/kubernetes/README.md">here you go</a>.
+I've <b>really</b> struggled to find a code example on the website, so <a href="https://github.com/cuelang/cue/blob/master/doc/tutorial/kubernetes/README.md">here you go</a>.
 </p></li>
 <li><a href="https://news.ycombinator.com/item?id=14298715">The configuration complexity clock</a>: a case for hard-coding</li>
 </ul>
@@ -623,7 +626,7 @@ Open to all feedback, and feel free to share your config pain and how are you so
 
     
     <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#plt python">#plt python</a></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#plt">#plt</a> <a class="post-tag" href="./tags.html#python">#python</a></div>
         <!-- TODO post-date? -->
         <div class="date">05 April 2020</div>
     </section>
