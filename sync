@@ -9,7 +9,10 @@ SRC="$HBLOG/_site/"
 SELF='sync' # script name
 
 
-BEEPB00P_STABLE=yes "$HBLOG/rebuild"
+(
+    cd "$HBLOG"
+    BEEPB00P_STABLE=yes misc/build.py
+)
 
 ##
 # some feed readers might not accept large RSS/atom feeds...
