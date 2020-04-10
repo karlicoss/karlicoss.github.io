@@ -1,43 +1,42 @@
-<!doctype html>
-<html lang="en" prefix="og: http://ogp.me/ns#">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#"><head>
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
 
         <!-- Icon made by Twitter -->
         <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
-        <link rel="icon" href="./robot-face.png">
-        <link rel="apple-touch-icon" href="./robot-face.png">
+        <link href="./robot-face.png" rel="icon"/>
+        <link href="./robot-face.png" rel="apple-touch-icon"/>
 
-        <meta name="generator" content="hakyll">
-        <meta name="language" content="English">
+        <meta content="hakyll" name="generator"/>
+        <meta content="English" name="language"/>
         
-        <meta name="keywords" content="quantified-self cognitive selenium">
+        <meta content="quantified-self cognitive selenium" name="keywords"/>
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
         <title>Quantifying quantified-mind.com | beepb00p</title>
 
-        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css"/>
+        <link href="./css/default.css?v=3" rel="stylesheet"/>
         <!-- TODO make conditional?? -->
-        <link rel="stylesheet" href="./css/posts-list.css" /> 
-        <link rel="stylesheet" href="./css/links.css?v=4" />
+        <link href="./css/posts-list.css" rel="stylesheet"/> 
+        <link href="./css/links.css?v=4" rel="stylesheet"/>
 
         
 
-        <link rel="canonical" href="https://beepb00p.xyz/quantified-mind.html" />
+        <link href="https://beepb00p.xyz/quantified-mind.html" rel="canonical"/>
 
         <!-- can test it with https://telegram.me/webpagebot -->
         <!-- or https://developers.facebook.com/tools/debug -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://beepb00p.xyz/quantified-mind.html" /> <!-- TODO base? -->
-        <meta property="og:title" content="Quantifying quantified-mind.com | beepb00p" />
-        <meta property="og:description" content="Exploiting javascript to reverse engineer cognitive score" />
+        <meta content="website" property="og:type"/>
+        <meta content="https://beepb00p.xyz/quantified-mind.html" property="og:url"/> <!-- TODO base? -->
+        <meta content="Quantifying quantified-mind.com | beepb00p" property="og:title"/>
+        <meta content="Exploiting javascript to reverse engineer cognitive score" property="og:description"/>
         <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
         <!-- ugh. Facebook really wants jpg? -->
         <!-- also Facebook displays it with black background, but whatever, fuck it. -->
-        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
+        <meta content="https://beepb00p.xyz/robot-face.jpg" property="og:image"/>
 
     </head>
     <body>
@@ -74,8 +73,8 @@
     
     <section class="post-title">
     <h1>Quantifying quantified-mind.com</h1>
-    <div class="summary">Exploiting javascript to reverse engineer cognitive score</h2>
-    </section>
+    <div class="summary">Exploiting javascript to reverse engineer cognitive score
+    </div></section>
     <!-- are sections appropriate for that? -->
 
     <section class="content">
@@ -107,10 +106,10 @@ from white to green) by pressing the space bar.
 the two grids are identical.</code></pre>
 <h1 id="results">Results</h1>
 <p>TLDR: I find the models pretty weird.</p>
-<p>Here is the demo of my script that extracted scores from the tests: <iframe width="560" height="315" src="https://www.youtube.com/embed/dolS7X7QrB0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<p>Here is the demo of my script that extracted scores from the tests: <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="https://www.youtube.com/embed/dolS7X7QrB0" width="560"></iframe></p>
 <p>Here is what I got after the simulations (clicking highly recommended):</p>
-<p><a href="https://user-images.githubusercontent.com/291333/53916603-6a875880-405a-11e9-9447-90da86bf959a.png"> <img src="https://user-images.githubusercontent.com/291333/53916603-6a875880-405a-11e9-9447-90da86bf959a.png" width="auto" /> </a></p>
-<p><a href="https://user-images.githubusercontent.com/291333/53916604-6a875880-405a-11e9-824a-ab2445cc4184.png"> <img src="https://user-images.githubusercontent.com/291333/53916604-6a875880-405a-11e9-824a-ab2445cc4184.png" width="auto" /> </a></p>
+<p><a href="https://user-images.githubusercontent.com/291333/53916603-6a875880-405a-11e9-9447-90da86bf959a.png"> <img src="https://user-images.githubusercontent.com/291333/53916603-6a875880-405a-11e9-9447-90da86bf959a.png" width="auto"/> </a></p>
+<p><a href="https://user-images.githubusercontent.com/291333/53916604-6a875880-405a-11e9-824a-ab2445cc4184.png"> <img src="https://user-images.githubusercontent.com/291333/53916604-6a875880-405a-11e9-824a-ab2445cc4184.png" width="auto"/> </a></p>
 <h1 id="observations">Observations</h1>
 <ul>
 <li><p>Same score could mean different things; you can see it from the plots if you draw horizontal lines, they would intersect multiple curves corresponding to different delays.</p>
@@ -131,18 +130,19 @@ the two grids are identical.</code></pre>
 <p>I can’t see how is that score meaningful and I’m glad I didn’t spend more time doing these tests. Perhaps one is better off measuring reaction time directly instead of some mystical ‘score’.</p>
 <h1 id="whats-next">What’s next?</h1>
 <p>Could be interesting to do similar reverse engineering on other cognitive testing platforms.</p>
+
     </section>
 
     
     <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#quantified-self">#quantified-self</a> <a class="post-tag" href="./tags.html#cognitive">#cognitive</a> <a class="post-tag" href="./tags.html#selenium">#selenium</a></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#quantified-self">#quantified-self</a>  <a class="post-tag" href="./tags.html#cognitive">#cognitive</a>  <a class="post-tag" href="./tags.html#selenium">#selenium</a> </div>
         <!-- TODO post-date? -->
         <div class="date">06 March 2019</div>
     </section>
     
 
     
-    <br>
+    <br/>
     <div>Discussion:</div>
     <ul>
     
@@ -157,12 +157,10 @@ the two grids are identical.</code></pre>
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
 </script>
 
-<section id="isso-thread" data-isso-id="isso_quantified_mind"></section>
-
+<section data-isso-id="isso_quantified_mind" id="isso-thread"></section>
     </section>
 
 </article>
-
         </main>
 
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
@@ -180,5 +178,5 @@ the two grids are identical.</code></pre>
             
             
         </footer>
-    </body>
-</html>
+    
+</body></html>

@@ -1,28 +1,27 @@
-<!doctype html>
-<html lang="en" prefix="og: http://ogp.me/ns#">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#"><head>
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
 
         <!-- Icon made by Twitter -->
         <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
-        <link rel="icon" href="./robot-face.png">
-        <link rel="apple-touch-icon" href="./robot-face.png">
+        <link href="./robot-face.png" rel="icon"/>
+        <link href="./robot-face.png" rel="apple-touch-icon"/>
 
-        <meta name="generator" content="hakyll">
-        <meta name="language" content="English">
+        <meta content="hakyll" name="generator"/>
+        <meta content="English" name="language"/>
         
-        <meta name="keywords" content="exercise quantified-self ipython">
+        <meta content="exercise quantified-self ipython" name="keywords"/>
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
         <title>Analyzing accuracy of power reported by stationary bike | beepb00p</title>
 
-        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css"/>
+        <link href="./css/default.css?v=3" rel="stylesheet"/>
         <!-- TODO make conditional?? -->
-        <link rel="stylesheet" href="./css/posts-list.css" /> 
-        <link rel="stylesheet" href="./css/links.css?v=4" />
+        <link href="./css/posts-list.css" rel="stylesheet"/> 
+        <link href="./css/links.css?v=4" rel="stylesheet"/>
 
         
         <script type="text/javascript">
@@ -34,22 +33,21 @@
      }
  };
 </script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         
 
-        <link rel="canonical" href="https://beepb00p.xyz/exercise-bike-model.html" />
+        <link href="https://beepb00p.xyz/exercise-bike-model.html" rel="canonical"/>
 
         <!-- can test it with https://telegram.me/webpagebot -->
         <!-- or https://developers.facebook.com/tools/debug -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://beepb00p.xyz/exercise-bike-model.html" /> <!-- TODO base? -->
-        <meta property="og:title" content="Analyzing accuracy of power reported by stationary bike | beepb00p" />
-        <meta property="og:description" content="How I found my exercise machine to violate laws of physics" />
+        <meta content="website" property="og:type"/>
+        <meta content="https://beepb00p.xyz/exercise-bike-model.html" property="og:url"/> <!-- TODO base? -->
+        <meta content="Analyzing accuracy of power reported by stationary bike | beepb00p" property="og:title"/>
+        <meta content="How I found my exercise machine to violate laws of physics" property="og:description"/>
         <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
         <!-- ugh. Facebook really wants jpg? -->
         <!-- also Facebook displays it with black background, but whatever, fuck it. -->
-        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
+        <meta content="https://beepb00p.xyz/robot-face.jpg" property="og:image"/>
 
     </head>
     <body>
@@ -78,8 +76,8 @@
 
         <main>
             
-<link rel="stylesheet" href="./css/ipynb.css" />
-<link rel="stylesheet" href="./css/ipynb-syntax.css" />
+<link href="./css/ipynb.css" rel="stylesheet"/>
+<link href="./css/ipynb-syntax.css" rel="stylesheet"/>
 
 
 
@@ -88,8 +86,8 @@
     
     <section class="post-title">
     <h1>Analyzing accuracy of power reported by stationary bike</h1>
-    <div class="summary">How I found my exercise machine to violate laws of physics</h2>
-    </section>
+    <div class="summary">How I found my exercise machine to violate laws of physics
+    </div></section>
     <!-- are sections appropriate for that? -->
 
     <section class="content">
@@ -143,11 +141,11 @@ In addition it's displaying current resistance level (you can set it by adjustin
        
 <div class="cell border-box-sizing code_cell rendered celltag_collapsed">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># TODO could only collapse inputs?</span>
-<span class="n">datas</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># TODO could only collapse inputs?</span>
+<span class="n">datas</span> <span class="o">=</span> <span class="s2">"""</span>
 <span class="s2">58 10 129</span>
 <span class="s2">56 10 127</span>
 <span class="s2">56 10 127</span>
@@ -191,7 +189,7 @@ In addition it's displaying current resistance level (you can set it by adjustin
 <span class="s2">60 8  101</span>
 <span class="s2">56 10 129</span>
 <span class="s2">57 10 131</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">"""</span>
 
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="k">def</span> <span class="nf">make_df</span><span class="p">(</span><span class="n">datas</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">:</span>
@@ -199,7 +197,7 @@ In addition it's displaying current resistance level (you can set it by adjustin
         <span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">datas</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">),</span>
         <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'rpm'</span><span class="p">,</span> <span class="s1">'resistance'</span><span class="p">,</span> <span class="s1">'watts'</span><span class="p">],</span>
     <span class="p">)</span>
-    <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">f</span><span class="s2">&quot;</span><span class="si">{row['rpm']}</span><span class="s2">_</span><span class="si">{row['resistance']}</span><span class="s2">_</span><span class="si">{row['watts']}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">'columns'</span><span class="p">)</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">f</span><span class="s2">"</span><span class="si">{row['rpm']}</span><span class="s2">_</span><span class="si">{row['resistance']}</span><span class="s2">_</span><span class="si">{row['watts']}</span><span class="s2">"</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">'columns'</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">df</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">make_df</span><span class="p">(</span><span class="n">datas</span><span class="p">)</span>
@@ -221,10 +219,10 @@ In addition it's displaying current resistance level (you can set it by adjustin
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -241,9 +239,9 @@ In addition it's displaying current resistance level (you can set it by adjustin
 
 
 
-<div class="output_html rendered_html output_subarea ">
+<div class="output_html rendered_html output_subarea">
 <div>
-<style scoped>
+<style scoped="">
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
     }
@@ -362,10 +360,10 @@ In addition it's displaying current resistance level (you can set it by adjustin
        
 <div class="cell border-box-sizing code_cell rendered celltag_collapsed">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 <span class="k">if</span> <span class="n">sns</span><span class="o">.</span><span class="n">algorithms</span><span class="o">.</span><span class="n">bootstrap</span><span class="o">.</span><span class="vm">__module__</span> <span class="o">==</span> <span class="s1">'seaborn.algorithms'</span><span class="p">:</span>
     <span class="c1"># prevents nondeterminism in plots https://github.com/mwaskom/seaborn/issues/1924</span>
     <span class="c1"># we only want to do it once</span>
@@ -395,10 +393,10 @@ In addition it's displaying current resistance level (you can set it by adjustin
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">matplotlib</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="k">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">'seaborn'</span><span class="p">)</span>
@@ -446,8 +444,8 @@ In addition it's displaying current resistance level (you can set it by adjustin
 
 
 
-<div class="output_png output_subarea ">
-<img src="exercise-bike-model_files/exercise-bike-model_6_0.png">
+<div class="output_png output_subarea">
+<img src="exercise-bike-model_files/exercise-bike-model_6_0.png"/>
 </div>
 
 </div>
@@ -478,10 +476,10 @@ In addition it's displaying current resistance level (you can set it by adjustin
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
 <span class="k">def</span> <span class="nf">print_stats</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
     <span class="n">dff</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
     <span class="n">dff</span><span class="p">[</span><span class="s1">'rpm x resistance'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">'rpm'</span><span class="p">]</span> <span class="o">*</span> <span class="n">df</span><span class="p">[</span><span class="s1">'resistance'</span><span class="p">]</span>
@@ -584,10 +582,10 @@ I don't think it can be explained by friction either: if anything, friction woul
        
 <div class="cell border-box-sizing code_cell rendered celltag_collapsed">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">new_df</span> <span class="o">=</span> <span class="n">make_df</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">new_df</span> <span class="o">=</span> <span class="n">make_df</span><span class="p">(</span><span class="s2">"""</span>
 <span class="s2">96  4  66</span>
 <span class="s2">99  4  69</span>
 <span class="s2">101 6  146</span>
@@ -627,7 +625,7 @@ I don't think it can be explained by friction either: if anything, friction woul
 <span class="s2">32  8  31</span>
 <span class="s2">32  8  31</span>
 <span class="s2">29  8  29</span>
-<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="s2">"""</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -644,10 +642,10 @@ I don't think it can be explained by friction either: if anything, friction woul
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">old_df</span><span class="p">,</span> <span class="n">new_df</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">old_df</span><span class="p">,</span> <span class="n">new_df</span><span class="p">])</span>
 <span class="n">plot_df</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 <span class="n">print_stats</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
@@ -667,8 +665,8 @@ I don't think it can be explained by friction either: if anything, friction woul
 
 
 
-<div class="output_png output_subarea ">
-<img src="exercise-bike-model_files/exercise-bike-model_12_0.png">
+<div class="output_png output_subarea">
+<img src="exercise-bike-model_files/exercise-bike-model_12_0.png"/>
 </div>
 
 </div>
@@ -747,15 +745,15 @@ strong multicollinearity or other numerical problems.
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
 <span class="k">def</span> <span class="nf">plot_influence</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
     <span class="c1"># TODO FIXME use it in prev section</span>
-    <span class="n">res</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">formula</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s2">&quot;watts ~ rpm * resistance - resistance - rpm&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+    <span class="n">res</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">formula</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="s2">"watts ~ rpm * resistance - resistance - rpm"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-    <span class="n">sm</span><span class="o">.</span><span class="n">graphics</span><span class="o">.</span><span class="n">influence_plot</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s2">&quot;cooks&quot;</span><span class="p">)</span>
+    <span class="n">sm</span><span class="o">.</span><span class="n">graphics</span><span class="o">.</span><span class="n">influence_plot</span><span class="p">(</span><span class="n">res</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=</span><span class="s2">"cooks"</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="n">plot_influence</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 <span class="c1"># sm.graphics.plot_partregress_grid(res, fig=fig)</span>
@@ -776,8 +774,8 @@ strong multicollinearity or other numerical problems.
 
 
 
-<div class="output_png output_subarea ">
-<img src="exercise-bike-model_files/exercise-bike-model_15_0.png">
+<div class="output_png output_subarea">
+<img src="exercise-bike-model_files/exercise-bike-model_15_0.png"/>
 </div>
 
 </div>
@@ -811,10 +809,10 @@ Although depends on residual too, and here the residual is very high, so it woul
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fdf</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fdf</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span>
     <span class="s1">'27_1_50'</span><span class="p">,</span>
 <span class="p">])</span>
 </pre></div>
@@ -846,10 +844,10 @@ Although depends on residual too, and here the residual is very high, so it woul
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot_df</span><span class="p">(</span><span class="n">fdf</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plot_df</span><span class="p">(</span><span class="n">fdf</span><span class="p">)</span>
 <span class="n">print_stats</span><span class="p">(</span><span class="n">fdf</span><span class="p">)</span>
 </pre></div>
 
@@ -868,8 +866,8 @@ Although depends on residual too, and here the residual is very high, so it woul
 
 
 
-<div class="output_png output_subarea ">
-<img src="exercise-bike-model_files/exercise-bike-model_19_0.png">
+<div class="output_png output_subarea">
+<img src="exercise-bike-model_files/exercise-bike-model_19_0.png"/>
 </div>
 
 </div>
@@ -954,10 +952,10 @@ strong multicollinearity or other numerical problems.
        
 <div class="cell border-box-sizing code_cell rendered celltag_collapsed">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">new_df_2</span> <span class="o">=</span> <span class="n">make_df</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">new_df_2</span> <span class="o">=</span> <span class="n">make_df</span><span class="p">(</span><span class="s2">"""</span>
 <span class="s2">113 2  50</span>
 <span class="s2">73  2  32</span>
 <span class="s2">71  2  30</span>
@@ -987,7 +985,7 @@ strong multicollinearity or other numerical problems.
 <span class="s2">70  3  39</span>
 <span class="s2">49  3  22</span>
 <span class="s2">37  3  14</span>
-<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+<span class="s2">"""</span><span class="p">)</span>
 
 <span class="n">ndf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">fdf</span><span class="p">,</span> <span class="n">new_df_2</span><span class="p">])</span>
 </pre></div>
@@ -1020,10 +1018,10 @@ strong multicollinearity or other numerical problems.
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plot_influence</span><span class="p">(</span><span class="n">ndf</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plot_influence</span><span class="p">(</span><span class="n">ndf</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -1041,8 +1039,8 @@ strong multicollinearity or other numerical problems.
 
 
 
-<div class="output_png output_subarea ">
-<img src="exercise-bike-model_files/exercise-bike-model_24_0.png">
+<div class="output_png output_subarea">
+<img src="exercise-bike-model_files/exercise-bike-model_24_0.png"/>
 </div>
 
 </div>
@@ -1074,10 +1072,10 @@ strong multicollinearity or other numerical problems.
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ress</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">ndf</span><span class="p">[</span><span class="s1">'resistance'</span><span class="p">])))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">ress</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">ndf</span><span class="p">[</span><span class="s1">'resistance'</span><span class="p">])))</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">ress</span><span class="p">,</span> <span class="n">sns</span><span class="o">.</span><span class="n">light_palette</span><span class="p">(</span><span class="s1">'navy'</span><span class="p">,</span> <span class="n">n_colors</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">ress</span><span class="p">))))</span>
 <span class="n">ndf</span><span class="p">[</span><span class="s1">'color'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">colors</span><span class="p">[</span><span class="n">x</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">ndf</span><span class="p">[</span><span class="s1">'resistance'</span><span class="p">]]</span>
 <span class="c1"># if you know of an easier way to use column value as a color in seaborn, please let me know!</span>
@@ -1100,8 +1098,8 @@ strong multicollinearity or other numerical problems.
 
 
 
-<div class="output_png output_subarea ">
-<img src="exercise-bike-model_files/exercise-bike-model_26_0.png">
+<div class="output_png output_subarea">
+<img src="exercise-bike-model_files/exercise-bike-model_26_0.png"/>
 </div>
 
 </div>
@@ -1180,7 +1178,7 @@ strong multicollinearity or other numerical problems.
 
     
     <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#exercise">#exercise</a> <a class="post-tag" href="./tags.html#quantified-self">#quantified-self</a> <a class="post-tag" href="./tags.html#ipython">#ipython</a></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#exercise">#exercise</a>  <a class="post-tag" href="./tags.html#quantified-self">#quantified-self</a>  <a class="post-tag" href="./tags.html#ipython">#ipython</a> </div>
         <!-- TODO post-date? -->
         <div class="date">08 December 2019</div>
     </section>
@@ -1192,12 +1190,10 @@ strong multicollinearity or other numerical problems.
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
 </script>
 
-<section id="isso-thread" data-isso-id="isso_exercise_bike_model"></section>
-
+<section data-isso-id="isso_exercise_bike_model" id="isso-thread"></section>
     </section>
 
 </article>
-
         </main>
 
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
@@ -1215,5 +1211,5 @@ strong multicollinearity or other numerical problems.
             
             
         </footer>
-    </body>
-</html>
+    
+</body></html>

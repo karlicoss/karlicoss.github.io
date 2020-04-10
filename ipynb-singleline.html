@@ -1,28 +1,27 @@
-<!doctype html>
-<html lang="en" prefix="og: http://ogp.me/ns#">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#"><head>
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
 
         <!-- Icon made by Twitter -->
         <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
-        <link rel="icon" href="./robot-face.png">
-        <link rel="apple-touch-icon" href="./robot-face.png">
+        <link href="./robot-face.png" rel="icon"/>
+        <link href="./robot-face.png" rel="apple-touch-icon"/>
 
-        <meta name="generator" content="hakyll">
-        <meta name="language" content="English">
+        <meta content="hakyll" name="generator"/>
+        <meta content="English" name="language"/>
         
-        <meta name="keywords" content="ipython emacs">
+        <meta content="ipython emacs" name="keywords"/>
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
         <title>Forcing IPython to display multiple equations in single line | beepb00p</title>
 
-        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css"/>
+        <link href="./css/default.css?v=3" rel="stylesheet"/>
         <!-- TODO make conditional?? -->
-        <link rel="stylesheet" href="./css/posts-list.css" /> 
-        <link rel="stylesheet" href="./css/links.css?v=4" />
+        <link href="./css/posts-list.css" rel="stylesheet"/> 
+        <link href="./css/links.css?v=4" rel="stylesheet"/>
 
         
         <script type="text/javascript">
@@ -34,22 +33,21 @@
      }
  };
 </script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
+<script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
         
 
-        <link rel="canonical" href="https://beepb00p.xyz/ipynb-singleline.html" />
+        <link href="https://beepb00p.xyz/ipynb-singleline.html" rel="canonical"/>
 
         <!-- can test it with https://telegram.me/webpagebot -->
         <!-- or https://developers.facebook.com/tools/debug -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://beepb00p.xyz/ipynb-singleline.html" /> <!-- TODO base? -->
-        <meta property="og:title" content="Forcing IPython to display multiple equations in single line | beepb00p" />
-        <meta property="og:description" content="How I sacrificed few hours of my life for aethetics" />
+        <meta content="website" property="og:type"/>
+        <meta content="https://beepb00p.xyz/ipynb-singleline.html" property="og:url"/> <!-- TODO base? -->
+        <meta content="Forcing IPython to display multiple equations in single line | beepb00p" property="og:title"/>
+        <meta content="How I sacrificed few hours of my life for aethetics" property="og:description"/>
         <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
         <!-- ugh. Facebook really wants jpg? -->
         <!-- also Facebook displays it with black background, but whatever, fuck it. -->
-        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
+        <meta content="https://beepb00p.xyz/robot-face.jpg" property="og:image"/>
 
     </head>
     <body>
@@ -78,8 +76,8 @@
 
         <main>
             
-<link rel="stylesheet" href="./css/ipynb.css" />
-<link rel="stylesheet" href="./css/ipynb-syntax.css" />
+<link href="./css/ipynb.css" rel="stylesheet"/>
+<link href="./css/ipynb-syntax.css" rel="stylesheet"/>
 
 
 
@@ -88,8 +86,8 @@
     
     <section class="post-title">
     <h1>Forcing IPython to display multiple equations in single line</h1>
-    <div class="summary">How I sacrificed few hours of my life for aethetics</h2>
-    </section>
+    <div class="summary">How I sacrificed few hours of my life for aethetics
+    </div></section>
     <!-- are sections appropriate for that? -->
 
     <section class="content">
@@ -99,10 +97,10 @@
        
 <div class="cell border-box-sizing code_cell rendered celltag_collapsed">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[1]:</div>
+<div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="k">import</span> <span class="n">symbols</span><span class="p">,</span> <span class="n">Derivative</span> <span class="k">as</span> <span class="n">D</span><span class="p">,</span> <span class="n">Function</span> <span class="k">as</span> <span class="n">F</span><span class="p">,</span> <span class="n">Eq</span><span class="p">,</span> <span class="n">init_printing</span><span class="p">,</span> <span class="n">latex</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sympy</span> <span class="k">import</span> <span class="n">symbols</span><span class="p">,</span> <span class="n">Derivative</span> <span class="k">as</span> <span class="n">D</span><span class="p">,</span> <span class="n">Function</span> <span class="k">as</span> <span class="n">F</span><span class="p">,</span> <span class="n">Eq</span><span class="p">,</span> <span class="n">init_printing</span><span class="p">,</span> <span class="n">latex</span>
 <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">Markdown</span>
 <span class="n">init_printing</span><span class="p">()</span>
 </pre></div>
@@ -125,7 +123,7 @@
 <p>If you are working with numerical computations in an IPython notebook, you don't really have much choice but accompany your computations by Latex
 formulas. However, with symbolic computations, you can massively save on repeating the same formulas which are already encoded in your
 symbolic object. Here's a quick example how it typically looks in the notebooks I've seen on the internet:</p>
-<hr>
+<hr/>
 
 </div>
 </div>
@@ -138,10 +136,10 @@ symbolic object. Here's a quick example how it typically looks in the notebooks 
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">'x t'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">t</span> <span class="o">=</span> <span class="n">symbols</span><span class="p">(</span><span class="s1">'x t'</span><span class="p">)</span>
 <span class="n">U</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="s1">'U'</span><span class="p">)(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
 <span class="n">heat_eq</span> <span class="o">=</span> <span class="n">Eq</span><span class="p">(</span><span class="n">D</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">t</span><span class="p">),</span> <span class="n">D</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 </pre></div>
@@ -173,10 +171,10 @@ symbolic object. Here's a quick example how it typically looks in the notebooks 
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[3]:</div>
+<div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">heat_eq</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">heat_eq</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -194,7 +192,7 @@ symbolic object. Here's a quick example how it typically looks in the notebooks 
 
 
 
-<div class="output_latex output_subarea ">
+<div class="output_latex output_subarea">
 $\displaystyle \frac{\partial}{\partial t} U{\left(x,t \right)} = \frac{\partial^{2}}{\partial x^{2}} U{\left(x,t \right)}$
 </div>
 
@@ -212,10 +210,10 @@ $\displaystyle \frac{\partial}{\partial t} U{\left(x,t \right)} = \frac{\partial
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bc_left</span>  <span class="o">=</span> <span class="n">Eq</span><span class="p">(</span><span class="n">U</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bc_left</span>  <span class="o">=</span> <span class="n">Eq</span><span class="p">(</span><span class="n">U</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">bc_right</span> <span class="o">=</span> <span class="n">Eq</span><span class="p">(</span><span class="n">U</span><span class="o">.</span><span class="n">subs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 
@@ -246,10 +244,10 @@ $\displaystyle \frac{\partial}{\partial t} U{\left(x,t \right)} = \frac{\partial
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[5]:</div>
+<div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">bc_left</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">bc_left</span><span class="p">)</span>
 <span class="n">display</span><span class="p">(</span><span class="n">bc_right</span><span class="p">)</span>
 </pre></div>
 
@@ -268,7 +266,7 @@ $\displaystyle \frac{\partial}{\partial t} U{\left(x,t \right)} = \frac{\partial
 
 
 
-<div class="output_latex output_subarea ">
+<div class="output_latex output_subarea">
 $\displaystyle U{\left(0,t \right)} = 0$
 </div>
 
@@ -281,7 +279,7 @@ $\displaystyle U{\left(0,t \right)} = 0$
 
 
 
-<div class="output_latex output_subarea ">
+<div class="output_latex output_subarea">
 $\displaystyle U{\left(1,t \right)} = 0$
 </div>
 
@@ -300,7 +298,7 @@ $\displaystyle U{\left(1,t \right)} = 0$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr>
+<hr/>
 <p>What I don't like about that style of presentation is that it's pretty scattered and reqires interleaving displayed formulas with random python cells.
 That's bad since it either pollutes your notebook and takes up vertical space, or discourages you from producing useful outputs in favor of notebook aethetics. Here are couple of examples <a href="https://www.sympy.org/en/index.html">featured on Sympy</a> website:</p>
 <ul>
@@ -322,10 +320,10 @@ so this is the easiest way of doing it I came up with to so far:</p>
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">&quot;Solving heat type PDE $</span><span class="si">{}</span><span class="s2">$ subject to: $</span><span class="si">{}</span><span class="s2">$ and $</span><span class="si">{}</span><span class="s2">$&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">latex</span><span class="p">(</span><span class="n">heat_eq</span><span class="p">),</span> <span class="n">latex</span><span class="p">(</span><span class="n">bc_left</span><span class="p">),</span> <span class="n">latex</span><span class="p">(</span><span class="n">bc_right</span><span class="p">))))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="s2">"Solving heat type PDE $</span><span class="si">{}</span><span class="s2">$ subject to: $</span><span class="si">{}</span><span class="s2">$ and $</span><span class="si">{}</span><span class="s2">$"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">latex</span><span class="p">(</span><span class="n">heat_eq</span><span class="p">),</span> <span class="n">latex</span><span class="p">(</span><span class="n">bc_left</span><span class="p">),</span> <span class="n">latex</span><span class="p">(</span><span class="n">bc_right</span><span class="p">))))</span>
 </pre></div>
 
     </div>
@@ -342,7 +340,7 @@ so this is the easiest way of doing it I came up with to so far:</p>
 
 
 
-<div class="output_markdown rendered_html output_subarea ">
+<div class="output_markdown rendered_html output_subarea">
 <p>Solving heat type PDE $\frac{\partial}{\partial t} U{\left(x,t \right)} = \frac{\partial^{2}}{\partial x^{2}} U{\left(x,t \right)}$ subject to: $U{\left(0,t \right)} = 0$ and $U{\left(1,t \right)} = 0$</p>
 
 </div>
@@ -376,10 +374,10 @@ TODO inject function code here... perhaps templating engine??</p>
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[7]:</div>
+<div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">ldisplay_md</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">ldisplay_md</span><span class="p">(</span><span class="n">fmt</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="n">display</span><span class="p">(</span><span class="n">Markdown</span><span class="p">(</span><span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
         <span class="o">*</span><span class="p">(</span><span class="n">f</span><span class="s1">'${latex(x)}$'</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">args</span><span class="p">),</span>
         <span class="o">**</span><span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">f</span><span class="s1">'${latex(v)}$'</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()})</span>
@@ -427,10 +425,10 @@ Nevertheless, it is capable of outputing formulas as ASCII art, kinda like this:
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[8]:</div>
+<div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">as_text</span><span class="p">(</span><span class="n">thing</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">as_text</span><span class="p">(</span><span class="n">thing</span><span class="p">):</span>
     <span class="kn">from</span> <span class="nn">IPython.core.interactiveshell</span> <span class="k">import</span> <span class="n">InteractiveShell</span> <span class="c1"># type: ignore</span>
     <span class="n">plain_formatter</span> <span class="o">=</span> <span class="n">InteractiveShell</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">display_formatter</span><span class="o">.</span><span class="n">formatters</span><span class="p">[</span><span class="s1">'text/plain'</span><span class="p">]</span>
     <span class="n">pp</span> <span class="o">=</span> <span class="n">plain_formatter</span><span class="p">(</span><span class="n">thing</span><span class="p">)</span>
@@ -466,9 +464,9 @@ Nevertheless, it is capable of outputing formulas as ASCII art, kinda like this:
             <span class="n">fstr</span> <span class="o">=</span> <span class="n">fmt</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="c1"># we want to keep the formatting specifiers (stuff in curly braces and empty everything else)</span>
-            <span class="n">fstr</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+            <span class="n">fstr</span> <span class="o">=</span> <span class="s2">""</span>
             <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">finditer</span><span class="p">(</span><span class="sa">r</span><span class="s1">'{.*?}'</span><span class="p">,</span> <span class="n">fmt</span><span class="p">):</span>
-                <span class="n">fstr</span> <span class="o">=</span> <span class="n">fstr</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span> <span class="o">*</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">start</span><span class="p">()</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">fstr</span><span class="p">))</span>
+                <span class="n">fstr</span> <span class="o">=</span> <span class="n">fstr</span> <span class="o">+</span> <span class="s2">" "</span> <span class="o">*</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">start</span><span class="p">()</span> <span class="o">-</span> <span class="nb">len</span><span class="p">(</span><span class="n">fstr</span><span class="p">))</span>
                 <span class="n">fstr</span> <span class="o">+=</span> <span class="n">e</span><span class="o">.</span><span class="n">group</span><span class="p">()</span>
         <span class="n">lines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fstr</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">largs</span><span class="p">,</span> <span class="o">**</span><span class="n">lkwargs</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
@@ -488,10 +486,10 @@ Nevertheless, it is capable of outputing formulas as ASCII art, kinda like this:
     
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[9]:</div>
+<div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mdisplay_plain</span><span class="p">(</span><span class="s2">&quot;Solving heat type PDE  </span><span class="si">{}</span><span class="s2"> subject to: </span><span class="si">{bl}</span><span class="s2"> and </span><span class="si">{br}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">heat_eq</span><span class="p">,</span> <span class="n">bl</span><span class="o">=</span><span class="n">bc_left</span><span class="p">,</span> <span class="n">br</span><span class="o">=</span><span class="n">bc_right</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">mdisplay_plain</span><span class="p">(</span><span class="s2">"Solving heat type PDE  </span><span class="si">{}</span><span class="s2"> subject to: </span><span class="si">{bl}</span><span class="s2"> and </span><span class="si">{br}</span><span class="s2">"</span><span class="p">,</span> <span class="n">heat_eq</span><span class="p">,</span> <span class="n">bl</span><span class="o">=</span><span class="n">bc_left</span><span class="p">,</span> <span class="n">br</span><span class="o">=</span><span class="n">bc_right</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -549,7 +547,7 @@ Hopefully that saves someone else a bit of time.</p>
 
     
     <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#ipython">#ipython</a> <a class="post-tag" href="./tags.html#emacs">#emacs</a></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#ipython">#ipython</a>  <a class="post-tag" href="./tags.html#emacs">#emacs</a> </div>
         <!-- TODO post-date? -->
         <div class="date">14 April 2019</div>
     </section>
@@ -561,12 +559,10 @@ Hopefully that saves someone else a bit of time.</p>
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
 </script>
 
-<section id="isso-thread" data-isso-id="isso_ipynb_singleline"></section>
-
+<section data-isso-id="isso_ipynb_singleline" id="isso-thread"></section>
     </section>
 
 </article>
-
         </main>
 
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
@@ -584,5 +580,5 @@ Hopefully that saves someone else a bit of time.</p>
             
             
         </footer>
-    </body>
-</html>
+    
+</body></html>

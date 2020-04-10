@@ -1,43 +1,42 @@
-<!doctype html>
-<html lang="en" prefix="og: http://ogp.me/ns#">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#"><head>
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
 
         <!-- Icon made by Twitter -->
         <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
-        <link rel="icon" href="./robot-face.png">
-        <link rel="apple-touch-icon" href="./robot-face.png">
+        <link href="./robot-face.png" rel="icon"/>
+        <link href="./robot-face.png" rel="apple-touch-icon"/>
 
-        <meta name="generator" content="hakyll">
-        <meta name="language" content="English">
+        <meta content="hakyll" name="generator"/>
+        <meta content="English" name="language"/>
         
-        <meta name="keywords" content="infra pkm quantifiedself hpi">
+        <meta content="infra pkm quantifiedself hpi" name="keywords"/>
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
         <title>Human Programming Interface | beepb00p</title>
 
-        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css"/>
+        <link href="./css/default.css?v=3" rel="stylesheet"/>
         <!-- TODO make conditional?? -->
-        <link rel="stylesheet" href="./css/posts-list.css" /> 
-        <link rel="stylesheet" href="./css/links.css?v=4" />
+        <link href="./css/posts-list.css" rel="stylesheet"/> 
+        <link href="./css/links.css?v=4" rel="stylesheet"/>
 
         
 
-        <link rel="canonical" href="https://beepb00p.xyz/hpi.html" />
+        <link href="https://beepb00p.xyz/hpi.html" rel="canonical"/>
 
         <!-- can test it with https://telegram.me/webpagebot -->
         <!-- or https://developers.facebook.com/tools/debug -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://beepb00p.xyz/hpi.html" /> <!-- TODO base? -->
-        <meta property="og:title" content="Human Programming Interface | beepb00p" />
-        <meta property="og:description" content="My life in a Python package" />
+        <meta content="website" property="og:type"/>
+        <meta content="https://beepb00p.xyz/hpi.html" property="og:url"/> <!-- TODO base? -->
+        <meta content="Human Programming Interface | beepb00p" property="og:title"/>
+        <meta content="My life in a Python package" property="og:description"/>
         <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
         <!-- ugh. Facebook really wants jpg? -->
         <!-- also Facebook displays it with black background, but whatever, fuck it. -->
-        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
+        <meta content="https://beepb00p.xyz/robot-face.jpg" property="og:image"/>
 
     </head>
     <body>
@@ -69,10 +68,10 @@
 
 <!-- <link rel="stylesheet" href="/css/org.css" /> -->
 
-<link rel="stylesheet" href="./css/htmlize.css" />
-<link rel="stylesheet" href="./css/org-default.css" />
+<link href="./css/htmlize.css" rel="stylesheet"/>
+<link href="./css/org-default.css" rel="stylesheet"/>
 
-<link rel="stylesheet" href="./css/org-extra.css?v=3" />
+<link href="./css/org-extra.css?v=3" rel="stylesheet"/>
 
 
 
@@ -80,8 +79,8 @@
     
     <section class="post-title">
     <h1>Human Programming Interface</h1>
-    <div class="summary">My life in a Python package</h2>
-    </section>
+    <div class="summary">My life in a Python package
+    </div></section>
     <!-- are sections appropriate for that? -->
 
     <section class="content">
@@ -115,31 +114,7 @@ Here's a short example to give you an idea: "which subreddits I find the most in
 <span class="org-keyword">from</span> collections <span class="org-keyword">import</span> Counter
 <span class="org-keyword">return</span> Counter(s.subreddit <span class="org-keyword">for</span> s <span class="org-keyword">in</span> my.reddit.saved()).most_common(4)
 </pre>
-</div>
-<table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
-<colgroup>
-<col class="org-left" />
-<col class="org-right" />
-</colgroup>
-<tbody>
-<tr>
-<td class="org-left">orgmode</td>
-<td class="org-right">62</td>
-</tr>
-<tr>
-<td class="org-left">emacs</td>
-<td class="org-right">60</td>
-</tr>
-<tr>
-<td class="org-left">selfhosted</td>
-<td class="org-right">51</td>
-</tr>
-<tr>
-<td class="org-left">QuantifiedSelf</td>
-<td class="org-right">46</td>
-</tr>
-</tbody>
-</table></li>
+</div></li>
 </ul>
 <div><span class="before-aside">
 I consider my digital trace an important part of my identity. 
@@ -380,8 +355,8 @@ Here's an (incomplete) list of the modules in the public package:
 </p>
 <table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
 <colgroup>
-<col class="org-left" />
-<col class="org-left" />
+<col class="org-left"/>
+<col class="org-left"/>
 </colgroup>
 <tbody>
 <tr>
@@ -483,8 +458,8 @@ Some modules are private, and need a bit of cleanup before merging:
 </p>
 <table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
 <colgroup>
-<col class="org-left" />
-<col class="org-left" />
+<col class="org-left"/>
+<col class="org-left"/>
 </colgroup>
 <tbody>
 <tr>
@@ -606,8 +581,7 @@ Single import away from getting tracks you listened to:
 scrobbles[200: 205]
 </pre>
 </div>
-<pre class="example">
-[Scrobble(raw={'album': 'Nevermind', 'artist': 'Nirvana', 'date': '1282488504', 'name': 'Drain You'}),
+<pre class="example">[Scrobble(raw={'album': 'Nevermind', 'artist': 'Nirvana', 'date': '1282488504', 'name': 'Drain You'}),
  Scrobble(raw={'album': 'Dirt', 'artist': 'Alice in Chains', 'date': '1282489764', 'name': 'Would?'}),
  Scrobble(raw={'album': 'Bob Dylan: The Collection', 'artist': 'Bob Dylan', 'date': '1282493517', 'name': 'Like a Rolling Stone'}),
  Scrobble(raw={'album': 'Dark Passion Play', 'artist': 'Nightwish', 'date': '1282493819', 'name': 'Amaranth'}),
@@ -626,8 +600,7 @@ Or, as a pandas frame to make it pretty:
 cdf[200: 205]
 </pre>
 </div>
-<pre class="example">
-                                                                       track
+<pre class="example">                                                                       track
 dt                                                                          
 2010-08-22 14:48:24+00:00                                Nirvana — Drain You
 2010-08-22 15:09:24+00:00                           Alice in Chains — Would?
@@ -654,7 +627,7 @@ plot_file
 </pre>
 </div>
 <div class="figure">
-<p><img alt="lastfm_2018.png" src="lastfm_2018.png" />
+<p><img alt="lastfm_2018.png" src="lastfm_2018.png"/>
 </p>
 </div>
 <p>
@@ -678,8 +651,8 @@ With few lines of Python I can quickly recommend them posts I engaged most with,
 </div>
 <table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
 <colgroup>
-<col class="org-left" />
-<col class="org-right" />
+<col class="org-left"/>
+<col class="org-right"/>
 </colgroup>
 <tbody>
 <tr>
@@ -754,7 +727,6 @@ The task looks like this:
 With a single Enter keypress on the inlined <samp class="inline">eshell:</samp> command I can print the progress and fill in the completed books on Goodreads, e.g.:
 </p>
 <pre class="example">
-
 A_Mathematician's_Apology by G. H. Hardy
 Started : 21 Aug 2018 11:44
 Finished: 22 Aug 2018 12:32
@@ -809,7 +781,7 @@ plt.savefig(plot_file)
 </pre>
 </div>
 <div class="figure">
-<p><img alt="messenger_2016_to_2019.png" src="messenger_2016_to_2019.png" />
+<p><img alt="messenger_2016_to_2019.png" src="messenger_2016_to_2019.png"/>
 </p>
 </div>
 </div>
@@ -1067,14 +1039,14 @@ In some near future I will write more about:
 
     
     <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#infra">#infra</a> <a class="post-tag" href="./tags.html#pkm">#pkm</a> <a class="post-tag" href="./tags.html#quantifiedself">#quantifiedself</a> <a class="post-tag" href="./tags.html#hpi">#hpi</a></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#infra">#infra</a>  <a class="post-tag" href="./tags.html#pkm">#pkm</a>  <a class="post-tag" href="./tags.html#quantifiedself">#quantifiedself</a>  <a class="post-tag" href="./tags.html#hpi">#hpi</a> </div>
         <!-- TODO post-date? -->
         <div class="date">15 March 2020</div>
     </section>
     
 
     
-    <br>
+    <br/>
     <div>Discussion:</div>
     <ul>
     
@@ -1089,12 +1061,10 @@ In some near future I will write more about:
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
 </script>
 
-<section id="isso-thread" data-isso-id="isso_mypkg"></section>
-
+<section data-isso-id="isso_mypkg" id="isso-thread"></section>
     </section>
 
 </article>
-
         </main>
 
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
@@ -1112,5 +1082,5 @@ In some near future I will write more about:
             
             
         </footer>
-    </body>
-</html>
+    
+</body></html>

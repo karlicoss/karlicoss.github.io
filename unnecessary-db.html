@@ -1,43 +1,42 @@
-<!doctype html>
-<html lang="en" prefix="og: http://ogp.me/ns#">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#"><head>
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
 
         <!-- Icon made by Twitter -->
         <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
-        <link rel="icon" href="./robot-face.png">
-        <link rel="apple-touch-icon" href="./robot-face.png">
+        <link href="./robot-face.png" rel="icon"/>
+        <link href="./robot-face.png" rel="apple-touch-icon"/>
 
-        <meta name="generator" content="hakyll">
-        <meta name="language" content="English">
+        <meta content="hakyll" name="generator"/>
+        <meta content="English" name="language"/>
         
-        <meta name="keywords" content="infra dataliberation databases cachew">
+        <meta content="infra dataliberation databases cachew" name="keywords"/>
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
         <title>Against unnecessary databases | beepb00p</title>
 
-        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css"/>
+        <link href="./css/default.css?v=3" rel="stylesheet"/>
         <!-- TODO make conditional?? -->
-        <link rel="stylesheet" href="./css/posts-list.css" /> 
-        <link rel="stylesheet" href="./css/links.css?v=4" />
+        <link href="./css/posts-list.css" rel="stylesheet"/> 
+        <link href="./css/links.css?v=4" rel="stylesheet"/>
 
         
 
-        <link rel="canonical" href="https://beepb00p.xyz/unnecessary-db.html" />
+        <link href="https://beepb00p.xyz/unnecessary-db.html" rel="canonical"/>
 
         <!-- can test it with https://telegram.me/webpagebot -->
         <!-- or https://developers.facebook.com/tools/debug -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://beepb00p.xyz/unnecessary-db.html" /> <!-- TODO base? -->
-        <meta property="og:title" content="Against unnecessary databases | beepb00p" />
-        <meta property="og:description" content="Parse, don't normalize" />
+        <meta content="website" property="og:type"/>
+        <meta content="https://beepb00p.xyz/unnecessary-db.html" property="og:url"/> <!-- TODO base? -->
+        <meta content="Against unnecessary databases | beepb00p" property="og:title"/>
+        <meta content="Parse, don't normalize" property="og:description"/>
         <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
         <!-- ugh. Facebook really wants jpg? -->
         <!-- also Facebook displays it with black background, but whatever, fuck it. -->
-        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
+        <meta content="https://beepb00p.xyz/robot-face.jpg" property="og:image"/>
 
     </head>
     <body>
@@ -69,10 +68,10 @@
 
 <!-- <link rel="stylesheet" href="/css/org.css" /> -->
 
-<link rel="stylesheet" href="./css/htmlize.css" />
-<link rel="stylesheet" href="./css/org-default.css" />
+<link href="./css/htmlize.css" rel="stylesheet"/>
+<link href="./css/org-default.css" rel="stylesheet"/>
 
-<link rel="stylesheet" href="./css/org-extra.css?v=3" />
+<link href="./css/org-extra.css?v=3" rel="stylesheet"/>
 
 
 
@@ -80,8 +79,8 @@
     
     <section class="post-title">
     <h1>Against unnecessary databases</h1>
-    <div class="summary">Parse, don't normalize</h2>
-    </section>
+    <div class="summary">Parse, don't normalize
+    </div></section>
     <!-- are sections appropriate for that? -->
 
     <section class="content">
@@ -858,8 +857,7 @@ That requires some careful inspection of the database in order to find out how i
 <p>
 So you do it and it seems that a subset of schema that <samp class="inline">History</samp> database is <a href="https://www.lowmanio.co.uk/blog/entries/how-google-chrome-stores-web-history">already using</a> would make sense:
 </p>
-<pre class="example">
-TABLE   urls(
+<pre class="example">TABLE   urls(
     id    INTEGER PRIMARY KEY, 
     url   STRING,
     title STRING
@@ -908,9 +906,9 @@ But anyway, let's carry on. Fast forward few exports and merges, your full histo
 <style> #visits_old { display: inline-block; } </style>
 <table border="2" cellpadding="6" cellspacing="0" frame="hsides" id="urls_old" rules="groups">
 <colgroup>
-<col class="org-right" />
-<col class="org-left" />
-<col class="org-left" />
+<col class="org-right"/>
+<col class="org-left"/>
+<col class="org-left"/>
 </colgroup>
 <tbody>
 <tr>
@@ -937,9 +935,9 @@ But anyway, let's carry on. Fast forward few exports and merges, your full histo
 </table>
 <table border="2" cellpadding="6" cellspacing="0" frame="hsides" id="visits_old" rules="groups">
 <colgroup>
-<col class="org-right" />
-<col class="org-right" />
-<col class="org-left" />
+<col class="org-right"/>
+<col class="org-right"/>
+<col class="org-left"/>
 </colgroup>
 <tbody>
 <tr>
@@ -988,9 +986,9 @@ What happens to the Chrome databases? They reset, no one guaranteed you that ids
 <style> #visits_chunk_new { display: inline-block; } </style>
 <table border="2" cellpadding="6" cellspacing="0" frame="hsides" id="urls_chunk_new" rules="groups">
 <colgroup>
-<col class="org-right" />
-<col class="org-left" />
-<col class="org-left" />
+<col class="org-right"/>
+<col class="org-left"/>
+<col class="org-left"/>
 </colgroup>
 <tbody>
 <tr>
@@ -1022,9 +1020,9 @@ What happens to the Chrome databases? They reset, no one guaranteed you that ids
 </table>
 <table border="2" cellpadding="6" cellspacing="0" frame="hsides" id="visits_chunk_new" rules="groups">
 <colgroup>
-<col class="org-right" />
-<col class="org-right" />
-<col class="org-left" />
+<col class="org-right"/>
+<col class="org-right"/>
+<col class="org-left"/>
 </colgroup>
 <tbody>
 <tr>
@@ -1054,9 +1052,9 @@ Let's see what it means for our full history database <samp class="inline">/expo
 </p>
 <table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
 <colgroup>
-<col class="org-right" />
-<col class="org-left" />
-<col class="org-left" />
+<col class="org-right"/>
+<col class="org-left"/>
+<col class="org-left"/>
 </colgroup>
 <tbody>
 <tr>
@@ -1103,9 +1101,9 @@ And it's actually worse. Let's look at the <samp class="inline">visits</samp> ta
 </p>
 <table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
 <colgroup>
-<col class="org-right" />
-<col class="org-right" />
-<col class="org-left" />
+<col class="org-right"/>
+<col class="org-right"/>
+<col class="org-left"/>
 </colgroup>
 <tbody>
 <tr>
@@ -1165,8 +1163,7 @@ How could we have avoided it? Note that using <samp class="inline">insert_or_upd
 Why did that happen? The schema was wrong. 
 We shouldn't have relied on ids: they are kind of an artifact of the <a class="link-up" href="#relational">relational model</a>. One way of getting around it is <a href="https://en.wikipedia.org/wiki/Unnormalized_form">"unnormalizing"</a>:
 </p>
-<pre class="example">
-TABLE   visit_with_url(
+<pre class="example">TABLE   visit_with_url(
     visit_time STRING
     url        STRING
     title      STRING
@@ -1194,8 +1191,7 @@ According to what I suggest:
 <li><p>
 export script is a matter of copying <samp class="inline">Profile/History</samp> database along with a timestamp. E.g. if we do it weekly, we end up with:
 </p>
-<pre class="example">
-/exports/chrome/History-20110210.sqlite
+<pre class="example">/exports/chrome/History-20110210.sqlite
 /exports/chrome/History-20110217.sqlite
 ...
 /exports/chrome/History-20120603.sqlite
@@ -1297,14 +1293,14 @@ Happy to hear your thoughts and suggestions! Thank you for making it through thi
 
     
     <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#infra">#infra</a> <a class="post-tag" href="./tags.html#dataliberation">#dataliberation</a> <a class="post-tag" href="./tags.html#databases">#databases</a> <a class="post-tag" href="./tags.html#cachew">#cachew</a></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#infra">#infra</a>  <a class="post-tag" href="./tags.html#dataliberation">#dataliberation</a>  <a class="post-tag" href="./tags.html#databases">#databases</a>  <a class="post-tag" href="./tags.html#cachew">#cachew</a> </div>
         <!-- TODO post-date? -->
         <div class="date">26 January 2020</div>
     </section>
     
 
     
-    <br>
+    <br/>
     <div>Discussion:</div>
     <ul>
     
@@ -1317,12 +1313,10 @@ Happy to hear your thoughts and suggestions! Thank you for making it through thi
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
 </script>
 
-<section id="isso-thread" data-isso-id="isso_against_db"></section>
-
+<section data-isso-id="isso_against_db" id="isso-thread"></section>
     </section>
 
 </article>
-
         </main>
 
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
@@ -1340,5 +1334,5 @@ Happy to hear your thoughts and suggestions! Thank you for making it through thi
             
             
         </footer>
-    </body>
-</html>
+    
+</body></html>

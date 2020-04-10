@@ -1,43 +1,42 @@
-<!doctype html>
-<html lang="en" prefix="og: http://ogp.me/ns#">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#"><head>
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
 
         <!-- Icon made by Twitter -->
         <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
-        <link rel="icon" href="./robot-face.png">
-        <link rel="apple-touch-icon" href="./robot-face.png">
+        <link href="./robot-face.png" rel="icon"/>
+        <link href="./robot-face.png" rel="apple-touch-icon"/>
 
-        <meta name="generator" content="hakyll">
-        <meta name="language" content="English">
+        <meta content="hakyll" name="generator"/>
+        <meta content="English" name="language"/>
         
-        <meta name="keywords" content="backup">
+        <meta content="backup" name="keywords"/>
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
         <title>I've found Google Takeouts to silently remove old data | beepb00p</title>
 
-        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css"/>
+        <link href="./css/default.css?v=3" rel="stylesheet"/>
         <!-- TODO make conditional?? -->
-        <link rel="stylesheet" href="./css/posts-list.css" /> 
-        <link rel="stylesheet" href="./css/links.css?v=4" />
+        <link href="./css/posts-list.css" rel="stylesheet"/> 
+        <link href="./css/links.css?v=4" rel="stylesheet"/>
 
         
 
-        <link rel="canonical" href="https://beepb00p.xyz/takeout-data-gone.html" />
+        <link href="https://beepb00p.xyz/takeout-data-gone.html" rel="canonical"/>
 
         <!-- can test it with https://telegram.me/webpagebot -->
         <!-- or https://developers.facebook.com/tools/debug -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://beepb00p.xyz/takeout-data-gone.html" /> <!-- TODO base? -->
-        <meta property="og:title" content="I've found Google Takeouts to silently remove old data | beepb00p" />
-        <meta property="og:description" content="Crosspost from /r/DataHoarder" />
+        <meta content="website" property="og:type"/>
+        <meta content="https://beepb00p.xyz/takeout-data-gone.html" property="og:url"/> <!-- TODO base? -->
+        <meta content="I've found Google Takeouts to silently remove old data | beepb00p" property="og:title"/>
+        <meta content="Crosspost from /r/DataHoarder" property="og:description"/>
         <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
         <!-- ugh. Facebook really wants jpg? -->
         <!-- also Facebook displays it with black background, but whatever, fuck it. -->
-        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
+        <meta content="https://beepb00p.xyz/robot-face.jpg" property="og:image"/>
 
     </head>
     <body>
@@ -74,8 +73,8 @@
     
     <section class="post-title">
     <h1>I've found Google Takeouts to silently remove old data</h1>
-    <div class="summary">Crosspost from /r/DataHoarder</h2>
-    </section>
+    <div class="summary">Crosspost from /r/DataHoarder
+    </div></section>
     <!-- are sections appropriate for that? -->
 
     <section class="content">
@@ -87,9 +86,9 @@
 <ul>
 <li><p>archive from 20181227</p>
 <pre><code>  grep time_usec BrowserHistory.json | sort | head -n 3
-            &quot;time_usec&quot;: 1513604826000563
-            &quot;time_usec&quot;: 1513606272469876
-            &quot;time_usec&quot;: 1513606362996796
+            "time_usec": 1513604826000563
+            "time_usec": 1513606272469876
+            "time_usec": 1513606362996796
   oldest entry is 18 Dec 2017
 
   tidy -q -i Chrome/MyActivity.html | grep -e 'PM' -e 'AM' | tail -n 3
@@ -103,9 +102,9 @@
             Jan 23, 2015, 7:42:41 PM UTC</code></pre></li>
 <li><p>archive from 20180623</p>
 <pre><code>  grep time_usec BrowserHistory.json | sort | head -n 3
-            &quot;time_usec&quot;: 1496659157550587
-            &quot;time_usec&quot;: 1496660371451340
-            &quot;time_usec&quot;: 1496661577902967
+            "time_usec": 1496659157550587
+            "time_usec": 1496660371451340
+            "time_usec": 1496661577902967
   oldest entry is 05 Jun 2017
 
   tidy -q -i Chrome/MyActivity.html | grep -e 'PM' -e 'AM' | tail -n 3 
@@ -119,9 +118,9 @@
             Aug 5, 2014, 5:25:32 PM</code></pre></li>
 <li><p>archive from 20170410</p>
 <pre><code>  grep time_usec BrowserHistory.json | sort | head -n 3
-            &quot;time_usec&quot;: 1465298229733388
-            &quot;time_usec&quot;: 1465298231949965
-            &quot;time_usec&quot;: 1465298248753114
+            "time_usec": 1465298229733388
+            "time_usec": 1465298231949965
+            "time_usec": 1465298248753114
   oldest entry is 07 Jun 2016</code></pre>
 <p>that takeout doesn’t have any of MyActivity.html (Google added it later in 2017) there is <code>Searches</code> directory which contains some jsons back to October 2010</p></li>
 </ul>
@@ -129,18 +128,19 @@
 <p>Not sure if there is a similar issue with other takeout stuff (e.g. youtube watch history, shopping, location etc), so be careful if you rely on it!</p>
 <p>I guess it was sort of a gut feeling that I was paranoid about that and was keeping some of the older archives.</p>
 <p>Also I haven’t really found anything about this retention anywhere in google takeout FAQ. Does anyone know about it? Is it some sort of legal requirement, a bug or something else?</p>
+
     </section>
 
     
     <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#backup">#backup</a></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#backup">#backup</a> </div>
         <!-- TODO post-date? -->
         <div class="date">08 March 2019</div>
     </section>
     
 
     
-    <br>
+    <br/>
     <div>Discussion:</div>
     <ul>
     
@@ -153,12 +153,10 @@
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
 </script>
 
-<section id="isso-thread" data-isso-id="isso_takeout_data_gone"></section>
-
+<section data-isso-id="isso_takeout_data_gone" id="isso-thread"></section>
     </section>
 
 </article>
-
         </main>
 
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
@@ -176,5 +174,5 @@
             
             
         </footer>
-    </body>
-</html>
+    
+</body></html>

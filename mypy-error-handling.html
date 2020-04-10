@@ -1,43 +1,42 @@
-<!doctype html>
-<html lang="en" prefix="og: http://ogp.me/ns#">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#"><head>
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
 
         <!-- Icon made by Twitter -->
         <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
-        <link rel="icon" href="./robot-face.png">
-        <link rel="apple-touch-icon" href="./robot-face.png">
+        <link href="./robot-face.png" rel="icon"/>
+        <link href="./robot-face.png" rel="apple-touch-icon"/>
 
-        <meta name="generator" content="hakyll">
-        <meta name="language" content="English">
+        <meta content="hakyll" name="generator"/>
+        <meta content="English" name="language"/>
         
-        <meta name="keywords" content="mypy python">
+        <meta content="mypy python" name="keywords"/>
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
         <title>Python: better typed than you think | beepb00p</title>
 
-        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="./css/default.css?v=3" />
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css"/>
+        <link href="./css/default.css?v=3" rel="stylesheet"/>
         <!-- TODO make conditional?? -->
-        <link rel="stylesheet" href="./css/posts-list.css" /> 
-        <link rel="stylesheet" href="./css/links.css?v=4" />
+        <link href="./css/posts-list.css" rel="stylesheet"/> 
+        <link href="./css/links.css?v=4" rel="stylesheet"/>
 
         
 
-        <link rel="canonical" href="https://beepb00p.xyz/mypy-error-handling.html" />
+        <link href="https://beepb00p.xyz/mypy-error-handling.html" rel="canonical"/>
 
         <!-- can test it with https://telegram.me/webpagebot -->
         <!-- or https://developers.facebook.com/tools/debug -->
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://beepb00p.xyz/mypy-error-handling.html" /> <!-- TODO base? -->
-        <meta property="og:title" content="Python: better typed than you think | beepb00p" />
-        <meta property="og:description" content="mypy assisted error handling, exception mechanisms in other languages, fun with pattern matching and type variance" />
+        <meta content="website" property="og:type"/>
+        <meta content="https://beepb00p.xyz/mypy-error-handling.html" property="og:url"/> <!-- TODO base? -->
+        <meta content="Python: better typed than you think | beepb00p" property="og:title"/>
+        <meta content="mypy assisted error handling, exception mechanisms in other languages, fun with pattern matching and type variance" property="og:description"/>
         <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
         <!-- ugh. Facebook really wants jpg? -->
         <!-- also Facebook displays it with black background, but whatever, fuck it. -->
-        <meta property="og:image" content="https://beepb00p.xyz/robot-face.jpg" />
+        <meta content="https://beepb00p.xyz/robot-face.jpg" property="og:image"/>
 
     </head>
     <body>
@@ -69,10 +68,10 @@
 
 <!-- <link rel="stylesheet" href="/css/org.css" /> -->
 
-<link rel="stylesheet" href="./css/htmlize.css" />
-<link rel="stylesheet" href="./css/org-default.css" />
+<link href="./css/htmlize.css" rel="stylesheet"/>
+<link href="./css/org-default.css" rel="stylesheet"/>
 
-<link rel="stylesheet" href="./css/org-extra.css?v=3" />
+<link href="./css/org-extra.css?v=3" rel="stylesheet"/>
 
 
 
@@ -80,8 +79,8 @@
     
     <section class="post-title">
     <h1>Python: better typed than you think</h1>
-    <div class="summary">mypy assisted error handling, exception mechanisms in other languages, fun with pattern matching and type variance</h2>
-    </section>
+    <div class="summary">mypy assisted error handling, exception mechanisms in other languages, fun with pattern matching and type variance
+    </div></section>
     <!-- are sections appropriate for that? -->
 
     <section class="content">
@@ -186,8 +185,7 @@ so you could easily open it from phone and recall latest books you read to discu
 On device, Kindle keeps bookmarks and highlights are stored … in <samp class="inline">My Clippings.txt</samp> file. 
 </p>
 <details><summary>Click to view 'clippings.txt' </summary>
-<pre class="example">
-PHYS771 Lecture 12: Proof (scottaaronson.com)
+<pre class="example">PHYS771 Lecture 12: Proof (scottaaronson.com)
 - Your Highlight on Page 2 | Added on Sunday, July 21, 2013 10:06:53 AM
 
 Roger Penrose likes to talk about making direct contact with Platonic reality, but it's a bit embarrassing when you think you've made such contact and it turns out the next morning that you were wrong!
@@ -265,8 +263,7 @@ Yes, it's a messy format and not very machine friendly. But oh well it's a file,
 <span class="linenr">52: </span>print_books()
 </pre>
 </div>
-<pre class="example">
-* PHYS771 Lecture 12: Proof (scottaaronson.com)
+<pre class="example">* PHYS771 Lecture 12: Proof (scottaaronson.com)
   - 21 Jul 2013 10:06  Roger Penrose likes to talk about making direct contact with Platonic
       reality, but it's a bit embarrassing when you think you've made such
       contact and it turns out the next morning that you were wrong! [Page 2]
@@ -291,8 +288,7 @@ Now:
 <li><p>
 imagine you've set this script to run in cron, and it's been fine for a while. You left for a three week holiday to finally get some rest from programming; started reading this new book about quant finance (yeah, you've always had interesting ways of getting a rest from computer) and… your script stopped working.
 </p>
-<pre class="example">
-Traceback (most recent call last):
+<pre class="example">Traceback (most recent call last):
   File "&lt;stdin&gt;", line 55, in &lt;module&gt;
   File "&lt;stdin&gt;", line 49, in print_books
   File "&lt;stdin&gt;", line 44, in iter_books
@@ -304,8 +300,7 @@ AssertionError: Couldn't match regex!
 You swear out loud, reach for the laptop you promised to distance yourself from and turns our your parser chokes over <samp class="inline">page</samp> instead of <samp class="inline">Page</samp> in one of new entries. (and yes, this was actually the case in my Kindle export)
 </p>
 <details><summary>Click to view updated 'clippings.txt' </summary>
-<pre class="example">
-PHYS771 Lecture 12: Proof (scottaaronson.com)
+<pre class="example">PHYS771 Lecture 12: Proof (scottaaronson.com)
 - Your Highlight on Page 2 | Added on Sunday, July 21, 2013 10:06:53 AM
 
 Roger Penrose likes to talk about making direct contact with Platonic reality, but it's a bit embarrassing when you think you've made such contact and it turns out the next morning that you were wrong!
@@ -528,8 +523,7 @@ We use <a href="https://docs.python.org/3/library/itertools.html#itertools.tee">
 <span class="linenr">63: </span>print_books()
 </pre>
 </div>
-<pre class="example">
-* PHYS771 Lecture 12: Proof (scottaaronson.com)
+<pre class="example">* PHYS771 Lecture 12: Proof (scottaaronson.com)
   - 21 Jul 2013 10:06  Roger Penrose likes to talk about making direct contact with Platonic
       reality, but it's a bit embarrassing when you think you've made such
       contact and it turns out the next morning that you were wrong! [Page 2]
@@ -588,8 +582,7 @@ Let's focus just on <code class="inline">iter_highlights</code> and <code class=
 <span class="linenr">54: </span>    <span class="org-keyword">yield</span> <span class="org-keyword">from</span> errors
 </pre>
 </div>
-<pre class="example">
-Mypy output [exit code 1]:
+<pre class="example">Mypy output [exit code 1]:
 input.py: note: In function "iter_books":
 input.py:52: error: Item "None" of "Optional[Highlight]" has no
 attribute "dt"  [union-attr]
@@ -636,8 +629,7 @@ Let's apply these insights and try again:
 <span class="linenr">62: </span>        <span class="org-keyword">yield</span> Err(err)
 </pre>
 </div>
-<pre class="example">
-Mypy output [exit code 0]:
+<pre class="example">Mypy output [exit code 0]:
 Success: no issues found in 1 source file
 </pre>
 <p>
@@ -789,8 +781,7 @@ Well at the very least it works and type checks!
 <pre class="src src-mypy"><span class="linenr">67: </span>print_books()
 </pre>
 </div>
-<pre class="example">
-Python output [exit code 0]:
+<pre class="example">Python output [exit code 0]:
 * PHYS771 Lecture 12: Proof (scottaaronson.com)
   - 21 Jul 2013 10:06  Roger Penrose likes to talk about making direct contact with Platonic
       reality, but it's a bit embarrassing when you think you've made such
@@ -1003,8 +994,7 @@ Let's see how we can rewrite our program by employing these principles:
 <span class="linenr">69: </span>print_books()
 </pre>
 </div>
-<pre class="example">
-Python output [exit code 0]:
+<pre class="example">Python output [exit code 0]:
 * PHYS771 Lecture 12: Proof (scottaaronson.com)
   - 21 Jul 2013 10:06  Roger Penrose likes to talk about making direct contact with Platonic
       reality, but it's a bit embarrassing when you think you've made such
@@ -1157,8 +1147,7 @@ One improvement is allowing <b>arbitrary error type</b>.
 <span class="linenr">24: </span>print_negated()
 </pre>
 </div>
-<pre class="example">
-Python output [exit code 0]:
+<pre class="example">Python output [exit code 0]:
 -1
 ERROR! invalid literal for int() with base 10: 'two'
 -3
@@ -1194,8 +1183,7 @@ bad: <span class="org-variable-name">Res</span>[<span class="org-builtin">int</s
 <span class="org-keyword">print</span>(unwrap(bad))
 </pre>
 </div>
-<pre class="example">
-Python output [exit code 1]:
+<pre class="example">Python output [exit code 1]:
 123
 Traceback (most recent call last):
   File "input.py", line 13, in &lt;module&gt;
@@ -1262,8 +1250,7 @@ Now, the default behavior is defensive:
 <pre class="src src-mypy"><span class="linenr">32: </span>print_negated() 
 </pre>
 </div>
-<pre class="example">
-Python output [exit code 0]:
+<pre class="example">Python output [exit code 0]:
 -1
 ERROR! invalid literal for int() with base 10: 'two'
 -3
@@ -1280,8 +1267,7 @@ And if we set the error policy to non-defensive, we get exception as soon as we 
 <span class="linenr">34: </span>print_negated()
 </pre>
 </div>
-<pre class="example">
-Python output [exit code 1]:
+<pre class="example">Python output [exit code 1]:
 -1
 Traceback (most recent call last):
   File "input.py", line 33, in &lt;module&gt;
@@ -1337,8 +1323,7 @@ I find it handy to have a helper function here:
 , then you can write  <code class="inline">yield echain(RuntimeError(entry), from_=e)</code>, and use <code class="inline">traceback.format_exception</code> to unroll it and get the stacktrace.
 The result looks like this:
 </p>
-<pre class="example">
-* ERROR: Traceback (most recent call last):
+<pre class="example">* ERROR: Traceback (most recent call last):
         File "/tmp/tmp.afhyiITIK2", line 45, in iter_highlights
           yield parse_entry(entry.strip())
         File "/tmp/tmp.afhyiITIK2", line 26, in parse_entry
@@ -1478,8 +1463,7 @@ dispatch(C())
 dispatch(A())
 </pre>
 </div>
-<pre class="example">
-Python output [exit code 0]:
+<pre class="example">Python output [exit code 0]:
 Matched B!
 Unhandled object: &lt;class '__main__.C'&gt; 
 Matched A!
@@ -1572,14 +1556,14 @@ Let me know what you think! I'm open to all feedback.
 
     
     <section class="footer">
-        <div class="post-tags"><a class="post-tag" href="./tags.html#mypy">#mypy</a> <a class="post-tag" href="./tags.html#python">#python</a></div>
+        <div class="post-tags"><a class="post-tag" href="./tags.html#mypy">#mypy</a>  <a class="post-tag" href="./tags.html#python">#python</a> </div>
         <!-- TODO post-date? -->
         <div class="date">26 October 2019</div>
     </section>
     
 
     
-    <br>
+    <br/>
     <div>Discussion:</div>
     <ul>
     
@@ -1600,12 +1584,10 @@ Let me know what you think! I'm open to all feedback.
     <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
 </script>
 
-<section id="isso-thread" data-isso-id="isso_mypy_error_handling"></section>
-
+<section data-isso-id="isso_mypy_error_handling" id="isso-thread"></section>
     </section>
 
 </article>
-
         </main>
 
         <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
@@ -1623,5 +1605,5 @@ Let me know what you think! I'm open to all feedback.
             
             
         </footer>
-    </body>
-</html>
+    
+</body></html>
