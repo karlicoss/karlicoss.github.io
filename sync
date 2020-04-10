@@ -11,7 +11,7 @@ SELF='sync' # script name
 
 (
     cd "$HBLOG"
-    BEEPB00P_STABLE=yes misc/build.py
+    BEEPB00P_STABLE=yes src/build.py
 )
 
 ##
