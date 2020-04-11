@@ -99,7 +99,7 @@
     &lt;section class="content"&gt;
     &lt;p&gt;
 In this post, I'll try to explain why I find most config formats frustrating to use and
-suggest that using a real programming language (i.e. general purpose one, like Python) is often a feasible and more pleasant alternative for writing configs.
+suggest that using a real programming language (i.e. general purpose one, like Python) is often (but &lt;a class="link-down" href="#cons"&gt;&lt;b&gt;not always&lt;/b&gt;&lt;/a&gt;) a feasible and more pleasant alternative for writing configs.
 &lt;/p&gt;
 &lt;div id="table-of-contents"&gt;
 &lt;h2&gt;Table of Contents&lt;/h2&gt;
@@ -117,6 +117,7 @@ suggest that using a real programming language (i.e. general purpose one, like P
 &lt;li&gt;&lt;a href="#what_if_i_have_to"&gt;4. What if you don't have a choice?&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#links"&gt;5. Extra links&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#fin"&gt;6. --&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#ps"&gt;7. &lt;span class="timestamp-wrapper"&gt;&lt;span class="timestamp"&gt;[2020-04-11]&lt;/span&gt;&lt;/span&gt; P.S.&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -245,7 +246,7 @@ Perhaps you can see where I'm coming with this.
 &lt;div class="outline-text-2" id="text-real_language"&gt;
 &lt;p&gt;
 The idea is to write your config in your target programming language.
-I'll have Python in mind here, but the same idea can be applied to &lt;b&gt;any dynamic enough language&lt;/b&gt; (i.e. Javascript/Ruby/etc).
+I'll have Python in mind here, but the same idea can be applied to &lt;b&gt;any dynamic enough language&lt;/b&gt; (e.g. Javascript/Ruby).
 &lt;/p&gt;
 &lt;p&gt;
 Then, you simply import/evaluate your config file and voila – you're done. That's it.
@@ -354,9 +355,13 @@ This step is possible with no boilerplate due to Python's dynamic nature.
 &lt;/ol&gt;
 &lt;p&gt;
 Yep, you will still have to manually deserialize config in the c++ code. But I think that's at least &lt;b&gt;not worse&lt;/b&gt; than only using JSON and editing it manually.
+&lt;/p&gt;
+&lt;p&gt;
+Obviously that has a performance hit (i.e. milliseconds taken to run the Python interpreter). Make your own judgment if it's acceptable for you.
+If the tool you're configuring is running for hours, you're probably going to be fine.
 &lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;
-general-purpose programming languages are harder to reason about
+general-purpose programming languages are &lt;b&gt;harder to reason about&lt;/b&gt;
 &lt;/p&gt;
 &lt;p&gt;
 This is somewhat subjective. Personally, I'd be more likely overwhelmed by an overly verbose plain config. I'd always prefer a neat and compact DSL.
@@ -366,20 +371,33 @@ A large factor here is code style: I'm sure you can make your config file readab
 even for people not familiar with the language at all.
 &lt;/p&gt;
 &lt;p&gt;
-The biggest issues are probably security and termination checking.
+However, I appreciate that my experience is different from other engineers (i.e. sysadmins) who would not trade off flexibility for the increase of configuration complexity.
 &lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+&lt;a id="security"&gt;&lt;/a&gt;The most serious issues are probably security and termination checking:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
 &lt;li&gt;&lt;p&gt;
 security
 &lt;/p&gt;
 &lt;p&gt;
-I.e. if your config executes arbitrary code, then it may steal your passwords, format your hard drive, etc.
+I.e. if your config executes arbitrary code, then it may steal your passwords or format your hard drive.
 &lt;/p&gt;
 &lt;p&gt;
-If your configs are supplied by &lt;b&gt;third parties you don't trust&lt;/b&gt;, then I agree that plain configs are safer.
-However, often it's not the case, and the user controls their own config.
+Whether security is actually something you need to think about &lt;b&gt;depends on your threat model&lt;/b&gt;:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;if your configs are supplied by third parties you don't trust, then I agree that plain configs are safer.&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+however, often, especially for end-user software, it's not the case
 &lt;/p&gt;
 &lt;p&gt;
-In addition, this is something that can be potentially solved by sandboxing. Whether it's worth the effort depends on the nature of your project, but for something like CI executor you need it anyway.
+Often the user controls their own config, and the program runs under the same permissions.
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+In addition, this is something that can be potentially solved by sandboxing. Whether it's worth the effort depends on the nature of your project, but for something like CI executor &lt;b&gt;you need a sandbox anyway&lt;/b&gt;.
 &lt;/p&gt;
 &lt;p&gt;
 Also, note that using a plain config format doesn't necessarily save you from trouble. See &lt;a href="https://www.arp242.net/yaml-config.html#insecure-by-default"&gt;"YAML: insecure by default"&lt;/a&gt;.
@@ -396,19 +414,22 @@ Personally, I've never run into such issues, but here are some potential workaro
 &lt;ul class="org-ul"&gt;
 &lt;li&gt;explicit timeout for loading the config&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;
-using a subset of the language might help, for example, &lt;a href="https://docs.bazel.build/versions/master/skylark/language.html#differences-with-python"&gt;&lt;del&gt;Bazel&lt;/del&gt; Skylark&lt;/a&gt;
+using a subset of the language might help, for example, &lt;a href="https://docs.bazel.build/versions/master/skylark/language.html#differences-with-python"&gt;Skylark&lt;/a&gt;
 &lt;/p&gt;
 &lt;p&gt;
-Anyone knows examples of conservative static analysis tools that check for termination in general purpose languages?
-&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;
-note that using a plain config doesn't mean it won't loop infinitely
+Anyone knows examples of /conservative/static analysis tools that check for termination in general purpose languages?
 &lt;/p&gt;
 &lt;p&gt;
-See &lt;a href="https://www.gwern.net/Turing-complete#accidentally-turing-complete"&gt;"Accidentally Turing complete"&lt;/a&gt;.
+Note this is not the same as the &lt;a href="https://en.wikipedia.org/wiki/Halting_problem"&gt;Halting problem&lt;/a&gt;. You don't want to determine whether &lt;b&gt;any&lt;/b&gt; program terminates, you want to figure out a
+&lt;b&gt;reasonable subset of the language&lt;/b&gt; that terminates.
 &lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+Even if your config language is Turing incomplete, you might have to resort to using timeouts anyway:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
 &lt;li&gt;&lt;p&gt;
-your config can take &lt;b&gt;very&lt;/b&gt; long time to evaluate, while technically taking finite time to complete
+your config can take &lt;b&gt;very&lt;/b&gt; long time to evaluate, while taking finite time to complete in theory
 &lt;/p&gt;
 &lt;p&gt;
 See &lt;a href="http://www.haskellforall.com/2020/01/why-dhall-advertises-absence-of-turing.html"&gt;"Why Dhall advertises the absence of Turing-completeness"&lt;/a&gt;
@@ -416,7 +437,15 @@ See &lt;a href="http://www.haskellforall.com/2020/01/why-dhall-advertises-absenc
 &lt;p&gt;
 While an &lt;a href="https://gist.github.com/Gabriel439/77f715350ecc0443eed5fa613ac6b78e"&gt;Ackermann&lt;/a&gt; function is a contrived example,
 that means that if you truly care about malicious inputs, you want to sandbox anyway.
+If your configs support some form of including, you can &lt;a href="https://lobste.rs/s/qyhvhc/your_configs_suck_try_real_programming#c_rtbmnp"&gt;very likely&lt;/a&gt; construct an input that will inflate it
+exponentially.
 &lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+Note that using a plain config doesn't mean it won't loop infinitely:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;See &lt;a href="https://www.gwern.net/Turing-complete#accidentally-turing-complete"&gt;"Accidentally Turing complete"&lt;/a&gt; for an excellent overview&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
@@ -471,11 +500,9 @@ a general purpose language for configuration.
 &lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/brookhong/Surfingkeys#edit-your-own-settings"&gt;Surfingkeys&lt;/a&gt; browser extension: uses a Javascript DSL for configuration&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://docs.gradle.org/current/userguide/tutorial_using_tasks.html#sec:build_scripts_are_code"&gt;Gradle&lt;/a&gt; provides Groovy and Kotlin DSLs for writing build files&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://awesomewm.org"&gt;Awesome Window Manager&lt;/a&gt; uses Lua for configuration
-
-&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;a href="https://awesomewm.org"&gt;Awesome Window Manager&lt;/a&gt; uses Lua for configuration&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://guix.gnu.org"&gt;Guix&lt;/a&gt; package manager: uses &lt;a href="https://www.gnu.org/software/guile"&gt;Guile Scheme&lt;/a&gt; for configuration&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/getpelican/pelican"&gt;Pelican&lt;/a&gt; static site generator: uses &lt;a href="https://raw.githubusercontent.com/getpelican/pelican/master/samples/pelican.conf.py"&gt;Python&lt;/a&gt; for configuration&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;
 Some languages are designed specifically for configuration:
@@ -531,7 +558,7 @@ write as little in config files as possible
 This typically applies to CI pipeline configs (i.e. Gitlab/Circle/Github Actions) or Dockerfiles.
 &lt;/p&gt;
 &lt;p&gt;
-Often such configs are bloated with shell commands, which makes it impossible to run locally without copying line by line.
+Often such configs are &lt;b&gt;bloated with shell commands&lt;/b&gt;, which makes it impossible to run locally without copying line by line.
 And yeah, there &lt;a href="https://circleci.com/docs/2.0/local-cli"&gt;are&lt;/a&gt; &lt;a href="https://github.com/nektos/act"&gt;ways&lt;/a&gt; to debug, but they have a pretty slow feedback loop.
 &lt;/p&gt;
 &lt;ul class="org-ul"&gt;
@@ -551,7 +578,7 @@ Sometimes you can get away if your pipeline is short, so use your own judgment.
 Let the CI only handle setting up a VM/container for you, caching the dependencies, and publishing artifacts.
 &lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;
-generate instead of writing manually
+generate the config instead of writing manually
 &lt;/p&gt;
 &lt;p&gt;
 The downside is that the generated config may diverge if edited manually.
@@ -586,6 +613,7 @@ Interesting approach, but not always feasible, e.g. you might not have the compi
 &lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/magefile/mage#about"&gt;Mage&lt;/a&gt;: a tool for writing makefiles in Go&lt;/li&gt;
 &lt;li&gt;Dhall wiki: &lt;a href="https://github.com/dhall-lang/dhall-lang/wiki/Programmable-configuration-files"&gt;Programmable configuration files&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://news.ycombinator.com/item?id=19108787"&gt;Why are we templating YAML? (HN)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;
 &lt;b&gt;Updates&lt;/b&gt; from the comments (thanks everyone!):
@@ -613,6 +641,83 @@ Do the pros really outweigh the cons?
 &lt;p&gt;
 Open to all feedback, and feel free to share your config pain and how are you solving it!
 &lt;/p&gt;
+&lt;p&gt;
+&lt;b&gt;Updates&lt;/b&gt;:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;span class="timestamp-wrapper"&gt;&lt;span class="timestamp"&gt;[2020-04-11]&lt;/span&gt;&lt;/span&gt; Added P.S. section&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-2"&gt;
+&lt;h2 id="ps"&gt;&lt;a class="headerlink" href="#ps"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;7&lt;/span&gt; &lt;span class="timestamp-wrapper"&gt;&lt;span class="timestamp"&gt;[2020-04-11]&lt;/span&gt;&lt;/span&gt; P.S.&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-ps"&gt;
+&lt;p&gt;
+Thanks everyone for the discussions and comments!
+&lt;/p&gt;
+&lt;p&gt;
+There were some polar opinions involved, so I'd like to clarify the most common objections here:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;p&gt;
+"Programs as a config are a security nightmare"
+&lt;/p&gt;
+&lt;p&gt;
+I admit that I have a programmer's mindset (as opposed to sysadmin's), and very likely underestimate the security risks.
+&lt;/p&gt;
+&lt;p&gt;
+But again, &lt;a class="link-up" href="#security"&gt;I admin&lt;/a&gt; that executable configs are &lt;b&gt;not always&lt;/b&gt; a good idea.
+You can still have the best of both worlds by providing a DSL for generating a plain config and consuming the plain config.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+"If your config is a program, it might end up arbitrarily complex and incomprehensible"
+&lt;/p&gt;
+&lt;p&gt;
+Sure, but again, it largely depends on the discipline. You can also make a plain config incomprehensible and hard to modify.
+&lt;/p&gt;
+&lt;p&gt;
+The best compromise here is probably configuration languages like Dhall.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+"What happens in 20 years, when there is no &amp;lt;insert programming language&amp;gt; around"
+&lt;/p&gt;
+&lt;p&gt;
+That's a good point, but languages don't disappear in an eye blink. There will be plenty of time to adapt.
+In addition, if your software and config are written in the same language, the software will need to be rewritten anyway, which is a bigger problem.
+&lt;/p&gt;
+&lt;p&gt;
+Also even plain config formats come and go. 20 years ago XML was common for configuration; how many times you've seen it lately?
+Does your programming language even include XML parser in the standard library?
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+"If your config is so complex you need a DSL, your design has gone wrong and your software sucks"
+&lt;/p&gt;
+&lt;p&gt;
+Frankly, I've found many of such comments as very opinionated and not constructive, but I'll try to respond.
+&lt;/p&gt;
+&lt;p&gt;
+Software comes in very different shapes and while having the simplest configuration possible is desirable (ideally, none!),
+ sometimes it would change the very nature of the thing you're trying to develop. Sure, you can stop calling it 'software' and start calling a 'library'
+ at this point, but I don't feel it changes the point of the discussion.
+&lt;/p&gt;
+&lt;p&gt;
+Perhaps, my constructive takeaways from this argument would be:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;p&gt;
+think how flexible your configuration might have to be, and whether you need to give up on plain configs early
+&lt;/p&gt;
+&lt;p&gt;
+A good example of this would be some mail filtering systems, that started simple and ended as Turing complete.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+in the rapid development phase, resort to having a flexible config
+&lt;/p&gt;
+&lt;p&gt;
+&lt;b&gt;When/if&lt;/b&gt; your software matures, think about supporting plain configs or/and using a special configuration language.
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 
@@ -1074,7 +1179,7 @@ Here's an (incomplete) list of the modules in the public package:
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/feedly.py"&gt;my.feedly&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;Module for Feedly RSS reader&lt;/td&gt;
+&lt;td class="org-left"&gt;Module for Fedly RSS reader&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/hypothesis.py"&gt;my.hypothesis&lt;/a&gt;&lt;/td&gt;
