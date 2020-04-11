@@ -892,7 +892,31 @@ Here's a short example to give you an idea: "which subreddits I find the most in
 &lt;span class="org-keyword"&gt;from&lt;/span&gt; collections &lt;span class="org-keyword"&gt;import&lt;/span&gt; Counter
 &lt;span class="org-keyword"&gt;return&lt;/span&gt; Counter(s.subreddit &lt;span class="org-keyword"&gt;for&lt;/span&gt; s &lt;span class="org-keyword"&gt;in&lt;/span&gt; my.reddit.saved()).most_common(4)
 &lt;/pre&gt;
-&lt;/div&gt;&lt;/li&gt;
+&lt;/div&gt;
+&lt;table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups"&gt;
+&lt;colgroup&gt;
+&lt;col class="org-left"/&gt;
+&lt;col class="org-right"/&gt;
+&lt;/colgroup&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;orgmode&lt;/td&gt;
+&lt;td class="org-right"&gt;66&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;emacs&lt;/td&gt;
+&lt;td class="org-right"&gt;60&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;selfhosted&lt;/td&gt;
+&lt;td class="org-right"&gt;54&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;QuantifiedSelf&lt;/td&gt;
+&lt;td class="org-right"&gt;47&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div&gt;&lt;span class="before-aside"&gt;
 I consider my digital trace an important part of my identity. 
