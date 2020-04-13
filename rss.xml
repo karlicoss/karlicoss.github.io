@@ -1171,15 +1171,15 @@ Here's an (incomplete) list of the modules in the public package:
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/fbmessenger.py"&gt;my.fbmessenger&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;Module for Facebook Messenger messages&lt;/td&gt;
+&lt;td class="org-left"&gt;Facebook Messenger messages&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/feedbin.py"&gt;my.feedbin&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;Module for Feedbin RSS reader&lt;/td&gt;
+&lt;td class="org-left"&gt;Feedbin RSS reader&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/feedly.py"&gt;my.feedly&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;Module for Fedly RSS reader&lt;/td&gt;
+&lt;td class="org-left"&gt;Feedly RSS reader&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/foursquare.py"&gt;my.foursquare&lt;/a&gt;&lt;/td&gt;
@@ -1203,7 +1203,7 @@ Here's an (incomplete) list of the modules in the public package:
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/location/takeout.py"&gt;my.location.takeout&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;Module for Google Takeout data&lt;/td&gt;
+&lt;td class="org-left"&gt;Google Takeout data&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/materialistic.py"&gt;my.materialistic&lt;/a&gt;&lt;/td&gt;
@@ -1219,7 +1219,7 @@ Here's an (incomplete) list of the modules in the public package:
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/photos"&gt;my.photos&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;Module for accessing photos and videos, with their GPS and timestamps&lt;/td&gt;
+&lt;td class="org-left"&gt;Photos and videos on your filesystem, their GPS and timestamps&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/pinboard.py"&gt;my.pinboard&lt;/a&gt;&lt;/td&gt;
@@ -1231,7 +1231,7 @@ Here's an (incomplete) list of the modules in the public package:
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/reddit.py"&gt;my.reddit&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;Module for Reddit data: saved items/comments/upvotes etc&lt;/td&gt;
+&lt;td class="org-left"&gt;Reddit data: saved items/comments/upvotes etc&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/rescuetime.py"&gt;my.rescuetime&lt;/a&gt;&lt;/td&gt;
@@ -1251,7 +1251,7 @@ Here's an (incomplete) list of the modules in the public package:
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/twitter.py"&gt;my.twitter&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;Module for Twitter (uses official twitter archive export)&lt;/td&gt;
+&lt;td class="org-left"&gt;Twitter data (uses official twitter archive export)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
