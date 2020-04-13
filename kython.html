@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#"><head>
+        <meta charset="utf-8"/>
+        <meta content="width=device-width, initial-scale=1" name="viewport"/>
+
+        <!-- Icon made by Twitter -->
+        <!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html -->
+        <link href="./robot-face.png" rel="icon"/>
+        <link href="./robot-face.png" rel="apple-touch-icon"/>
+
+        <meta content="hakyll" name="generator"/>
+        <meta content="English" name="language"/>
+        
+        <meta content="programming" name="keywords"/>
+        
+        <!-- TODO concat with keywords tags; also need to make comma separated? -->
+
+        <title>Write your own standard library | beepb00p</title>
+
+        <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css"/>
+        <link href="./css/default.css?v=3" rel="stylesheet"/>
+        <!-- TODO make conditional?? -->
+        <link href="./css/posts-list.css" rel="stylesheet"/> 
+        <link href="./css/links.css?v=4" rel="stylesheet"/>
+
+        
+
+        <link href="https://beepb00p.xyz/kython.html" rel="canonical"/>
+
+        <!-- can test it with https://telegram.me/webpagebot -->
+        <!-- or https://developers.facebook.com/tools/debug -->
+        <meta content="website" property="og:type"/>
+        <meta content="https://beepb00p.xyz/kython.html" property="og:url"/> <!-- TODO base? -->
+        <meta content="Write your own standard library | beepb00p" property="og:title"/>
+        <meta content="" property="og:description"/>
+        <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
+        <!-- ugh. Facebook really wants jpg? -->
+        <!-- also Facebook displays it with black background, but whatever, fuck it. -->
+        <meta content="https://beepb00p.xyz/robot-face.jpg" property="og:image"/>
+
+    </head>
+    <body>
+        <!-- TODO make semantic -->
+        <header>
+            <nav>
+                <span class="nav-left">
+                    <a class="fat" href="./">Home</a>
+                    <!-- TODO eh, not sure if this symbol is good for that... -->
+                    ·
+                    <a class="fat" href="./ideas.html">Ideas</a>
+                    ·
+                    <a class="fat" href="./exobrain">Exobrain</a>
+                    ·
+                    <a class="fat" href="./tags.html">Tags</a>
+                </span>
+                <span class="nav-right">
+                    <a class="fat" href="./feed.html">Feed</a>
+                    ·
+                    <a class="fat" href="./site.html">Site</a>
+                    ·
+                    <a class="fat" href="./me.html">Me</a>
+                </span>
+            </nav>
+        </header>
+
+        <main>
+            
+
+<!-- <link rel="stylesheet" href="/css/org.css" /> -->
+
+<link href="./css/htmlize.css" rel="stylesheet"/>
+<link href="./css/org-default.css" rel="stylesheet"/>
+
+<link href="./css/org-extra.css?v=3" rel="stylesheet"/>
+
+
+
+<article>
+    
+    <div>THIS IS A DRAFT! It will appear on the main page once finished!</div>
+    
+    <section class="post-title">
+    <h1>Write your own standard library</h1>
+    
+    </section>
+    <!-- are sections appropriate for that? -->
+
+    <section class="content">
+    <div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org0000000">1. <span class="todo TODO">TODO</span> it's nice to use some nonstandard but convenient library, and later vendorize/hardcode/get rid of imported bits   <span class="tag"><span class="kython">kython</span> <span class="motivation">motivation</span></span></a></li>
+<li><a href="#org0000001">2. <span class="todo TODO">TODO</span> googling for an existing solution is a cognitive overhead, considering that often it's hard to google   <span class="tag"><span class="kython">kython</span> <span class="motivation">motivation</span></span></a></li>
+<li><a href="#org0000002">3. <span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-06 09:49]</span></span> motivation for kython   <span class="tag"><span class="blog">blog</span></span></a></li>
+<li><a href="#org000000c">4. amend   <span class="tag"><span class="refile">refile</span></span></a>
+<ul>
+<li><a href="#org0000003">4.1. <span class="timestamp-wrapper"><span class="timestamp">[2020-04-12 22:29]</span></span> cached<sub>property</sub></a></li>
+<li><a href="#org0000004">4.2. <span class="todo TODO">TODO</span> For the, use set comprehension?   <span class="tag"><span class="kython">kython</span></span></a></li>
+<li><a href="#org0000005">4.3. <span class="todo TODO">TODO</span> use Counter to verify unique keys?   <span class="tag"><span class="kython">kython</span></span></a></li>
+<li><a href="#org0000006">4.4. <span class="todo TODO">TODO</span> groupby(sorted) vs dict-by: dict doesn't require comparable key..   <span class="tag"><span class="kython">kython</span> <span class="kerror">kerror</span> <span class="blog">blog</span></span></a></li>
+<li><a href="#org0000007">4.5. <span class="timestamp-wrapper"><span class="timestamp">[2020-01-04 11:04]</span></span> ok, os.PathLike also doesn't accept string, so PathIsh makes sense   <span class="tag"><span class="python">python</span> <span class="kython">kython</span></span></a></li>
+<li><a href="#org0000008">4.6. <span class="todo TODO">TODO</span> pathlab/README.rst at master · barneygale/pathlab path interface for archives   <span class="tag"><span class="kython">kython</span></span></a></li>
+<li><a href="#org0000009">4.7. <span class="todo TODO">TODO</span> actually json state is so convenient and reusable since we need to remember certain things we did pretty often…   <span class="tag"><span class="mind">mind</span> <span class="kython">kython</span></span></a></li>
+<li><a href="#org000000a">4.8. <span class="todo START">START</span> make parts of kython as decoupled as possible so I can bundle it alongside my stuff independently (and update too!)   <span class="tag"><span class="coding">coding</span> <span class="blog">blog</span> <span class="kython">kython</span></span></a></li>
+<li><a href="#org000000b">4.9. <span class="todo TODO">TODO</span> title: write your own standard library   <span class="tag"><span class="kython">kython</span> <span class="blog">blog</span></span></a></li>
+</ul>
+</li>
+<li><a href="#org000000d">5. <span class="todo STRT">STRT</span> remove org stuff from kython? just rely on inorganic or make a symlink?   <span class="tag"><span class="org">org</span> <span class="kython">kython</span> <span class="inorganic">inorganic</span></span></a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="https://github.com/karlicoss/kython">Kython</a> is a set of various Python utilities I've found myself to use often.
+</p>
+<p>
+I used to have it as a symlink from <samp class="inline">~/.local/lib/python3.x</samp>.
+</p>
+<p>
+Note: now it's an editable installation, but that doesn't really have much benefit apart from allowing to depend on it (TODO link to git dependency?)
+</p>
+<div class="outline-2">
+<h2 id="org0000000"><a class="headerlink" href="#org0000000">¶</a><span class="section-number-2">1</span> <span class="todo TODO">TODO</span> it's nice to use some nonstandard but convenient library, and later vendorize/hardcode/get rid of imported bits   <span class="tag"><span class="kython">kython</span> <span class="motivation">motivation</span></span></h2>
+<div class="outline-text-2" id="text-1">
+</div>
+</div>
+<div class="outline-2">
+<h2 id="org0000001"><a class="headerlink" href="#org0000001">¶</a><span class="section-number-2">2</span> <span class="todo TODO">TODO</span> googling for an existing solution is a cognitive overhead, considering that often it's hard to google   <span class="tag"><span class="kython">kython</span> <span class="motivation">motivation</span></span></h2>
+<div class="outline-text-2" id="text-2">
+<p>
+so having temporary ones TODO
+for instance, lconcat, strptime?
+</p>
+</div>
+</div>
+<div class="outline-2">
+<h2 id="org0000002"><a class="headerlink" href="#org0000002">¶</a><span class="section-number-2">3</span> <span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-12-06 09:49]</span></span> motivation for kython   <span class="tag"><span class="blog">blog</span></span></h2>
+<div class="outline-text-2" id="text-3">
+<p>
+every time you need to do something repetitive, there is a chance it's useful for other people too and there is a shorter version
+</p>
+<p>
+however, chances are you tried searching for some oneliner multiple times and never managed
+</p>
+<p>
+having a common library offers a compromise
+on one hand it frees up your brain from anxiety about copy pasting bits of code and cognitive effort of digging them from TODO??
+on the other hand, when you run across/come up with a solution that's easy enough to memorize and trivial, you can quickly find all uses TOOD
+</p>
+<p>
+why have them dead in your personal wiki when they can be alive as a python code
+</p>
+<p>
+when you release your code to the public, you can vendorize the bits you used
+</p>
+</div>
+</div>
+<div class="outline-2">
+<h2 id="org000000c"><a class="headerlink" href="#org000000c">¶</a><span class="section-number-2">4</span> amend   <span class="tag"><span class="refile">refile</span></span></h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div class="outline-3">
+<h3 id="org0000003"><a class="headerlink" href="#org0000003">¶</a><span class="section-number-3">4.1</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-04-12 22:29]</span></span> cached<sub>property</sub></h3>
+</div>
+<div class="outline-3">
+<h3 id="org0000004"><a class="headerlink" href="#org0000004">¶</a><span class="section-number-3">4.2</span> <span class="todo TODO">TODO</span> For the, use set comprehension?   <span class="tag"><span class="kython">kython</span></span></h3>
+<div class="outline-text-3" id="text-4-2">
+</div>
+</div>
+<div class="outline-3">
+<h3 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><span class="section-number-3">4.3</span> <span class="todo TODO">TODO</span> use Counter to verify unique keys?   <span class="tag"><span class="kython">kython</span></span></h3>
+<div class="outline-text-3" id="text-4-3">
+</div>
+</div>
+<div class="outline-3">
+<h3 id="org0000006"><a class="headerlink" href="#org0000006">¶</a><span class="section-number-3">4.4</span> <span class="todo TODO">TODO</span> groupby(sorted) vs dict-by: dict doesn't require comparable key..   <span class="tag"><span class="kython">kython</span> <span class="kerror">kerror</span> <span class="blog">blog</span></span></h3>
+<div class="outline-text-3" id="text-4-4">
+</div>
+</div>
+<div class="outline-3">
+<h3 id="org0000007"><a class="headerlink" href="#org0000007">¶</a><span class="section-number-3">4.5</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-01-04 11:04]</span></span> ok, os.PathLike also doesn't accept string, so PathIsh makes sense   <span class="tag"><span class="python">python</span> <span class="kython">kython</span></span></h3>
+</div>
+<div class="outline-3">
+<h3 id="org0000008"><a class="headerlink" href="#org0000008">¶</a><span class="section-number-3">4.6</span> <span class="todo TODO">TODO</span> pathlab/README.rst at master · barneygale/pathlab path interface for archives   <span class="tag"><span class="kython">kython</span></span></h3>
+<div class="outline-text-3" id="text-4-6">
+<p>
+<a href="https://github.com/barneygale/pathlab/blob/master/README.rst">https://github.com/barneygale/pathlab/blob/master/README.rst</a>
+</p>
+</div>
+</div>
+<div class="outline-3">
+<h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a><span class="section-number-3">4.7</span> <span class="todo TODO">TODO</span> actually json state is so convenient and reusable since we need to remember certain things we did pretty often…   <span class="tag"><span class="mind">mind</span> <span class="kython">kython</span></span></h3>
+<div class="outline-text-3" id="text-4-7">
+</div>
+</div>
+<div class="outline-3">
+<h3 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><span class="section-number-3">4.8</span> <span class="todo START">START</span> make parts of kython as decoupled as possible so I can bundle it alongside my stuff independently (and update too!)   <span class="tag"><span class="coding">coding</span> <span class="blog">blog</span> <span class="kython">kython</span></span></h3>
+<div class="outline-text-3" id="text-4-8">
+</div>
+</div>
+<div class="outline-3">
+<h3 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><span class="section-number-3">4.9</span> <span class="todo TODO">TODO</span> title: write your own standard library   <span class="tag"><span class="kython">kython</span> <span class="blog">blog</span></span></h3>
+<div class="outline-text-3" id="text-4-9">
+<p>
+this is how I came up with
+</p>
+<ul class="org-ul">
+<li>error handling</li>
+<li>configs?</li>
+<li>discovered pathlib</li>
+<li>????</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="outline-2">
+<h2 id="org000000d"><a class="headerlink" href="#org000000d">¶</a><span class="section-number-2">5</span> <span class="todo STRT">STRT</span> remove org stuff from kython? just rely on inorganic or make a symlink?   <span class="tag"><span class="org">org</span> <span class="kython">kython</span> <span class="inorganic">inorganic</span></span></h2>
+<div class="outline-text-2" id="text-5">
+</div>
+</div>
+
+    </section>
+
+    
+    <section class="footer">
+        <div class="post-tags"><a class="post-tag" href="./tags.html#programming">#programming</a> </div>
+        <!-- TODO post-date? -->
+        <div class="date">12 April 2020</div>
+    </section>
+    
+
+    
+
+    <section class="comments">
+    <script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js">
+</script>
+
+<section data-isso-id="isso_kython" id="isso-thread"></section>
+    </section>
+
+</article>
+        </main>
+
+        <!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... -->
+        
+
+        <!-- TODO make semantic -->
+        <footer>
+            <span style="float:left">
+            <a href="https://twitter.com/karlicoss">🐦 me @twitter</a>
+            ·
+            <a href="https://github.com/karlicoss">💻 me @github</a>
+            </span>
+
+            <a href="http://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>
+            
+            
+        </footer>
+    
+</body></html>

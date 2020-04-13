@@ -892,31 +892,7 @@ Here's a short example to give you an idea: "which subreddits I find the most in
 &lt;span class="org-keyword"&gt;from&lt;/span&gt; collections &lt;span class="org-keyword"&gt;import&lt;/span&gt; Counter
 &lt;span class="org-keyword"&gt;return&lt;/span&gt; Counter(s.subreddit &lt;span class="org-keyword"&gt;for&lt;/span&gt; s &lt;span class="org-keyword"&gt;in&lt;/span&gt; my.reddit.saved()).most_common(4)
 &lt;/pre&gt;
-&lt;/div&gt;
-&lt;table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups"&gt;
-&lt;colgroup&gt;
-&lt;col class="org-left"/&gt;
-&lt;col class="org-right"/&gt;
-&lt;/colgroup&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td class="org-left"&gt;orgmode&lt;/td&gt;
-&lt;td class="org-right"&gt;66&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td class="org-left"&gt;emacs&lt;/td&gt;
-&lt;td class="org-right"&gt;60&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td class="org-left"&gt;selfhosted&lt;/td&gt;
-&lt;td class="org-right"&gt;54&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td class="org-left"&gt;QuantifiedSelf&lt;/td&gt;
-&lt;td class="org-right"&gt;47&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;&lt;/li&gt;
+&lt;/div&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div&gt;&lt;span class="before-aside"&gt;
 I consider my digital trace an important part of my identity. 
@@ -1206,12 +1182,24 @@ Here's an (incomplete) list of the modules in the public package:
 &lt;td class="org-left"&gt;Module for Fedly RSS reader&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/foursquare.py"&gt;my.foursquare&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;Foursquare/Swarm checkins&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/hypothesis.py"&gt;my.hypothesis&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-left"&gt;Hypothes.is highlights and annotations&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/init.py"&gt;my.init&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;A hook to insert user's config directory into Python's search path.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/instapaper.py"&gt;my.instapaper&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-left"&gt;Instapaper bookmarks, highlights and annotations&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/lastfm"&gt;my.lastfm&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;Last.fm scrobbles&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/location/takeout.py"&gt;my.location.takeout&lt;/a&gt;&lt;/td&gt;
@@ -1219,11 +1207,15 @@ Here's an (incomplete) list of the modules in the public package:
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/materialistic.py"&gt;my.materialistic&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;Module for &lt;a href="https://play.google.com/store/apps/details?id=io.github.hidroh.materialistic"&gt;Materialistic&lt;/a&gt; app for Hackernews&lt;/td&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://play.google.com/store/apps/details?id=io.github.hidroh.materialistic"&gt;Materialistic&lt;/a&gt; app for Hackernews&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/notes/orgmode.py"&gt;my.notes.orgmode&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-left"&gt;Programmatic access and queries to org-mode files on the filesystem&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/pdfs.py"&gt;my.pdfs&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;PDF annotations on your filesystem&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/photos"&gt;my.photos&lt;/a&gt;&lt;/td&gt;
@@ -1231,15 +1223,19 @@ Here's an (incomplete) list of the modules in the public package:
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/pinboard.py"&gt;my.pinboard&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;Module for pinboard.in bookmarks&lt;/td&gt;
+&lt;td class="org-left"&gt;pinboard.in bookmarks&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/reading/polar.py"&gt;my.reading.polar&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;Module for Polar articles and highlights&lt;/td&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://github.com/burtonator/polar-books"&gt;Polar&lt;/a&gt; articles and highlights&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/reddit.py"&gt;my.reddit&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-left"&gt;Module for Reddit data: saved items/comments/upvotes etc&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/rescuetime.py"&gt;my.rescuetime&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;Rescuetime (activity tracking) data&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/rtm.py"&gt;my.rtm&lt;/a&gt;&lt;/td&gt;
@@ -1248,6 +1244,10 @@ Here's an (incomplete) list of the modules in the public package:
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/smscalls.py"&gt;my.smscalls&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-left"&gt;Phone calls and SMS messages&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/stackexchange.py"&gt;my.stackexchange&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;Stackexchange data&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/twitter.py"&gt;my.twitter&lt;/a&gt;&lt;/td&gt;
@@ -5123,7 +5123,7 @@ Updates:
         &lt;meta content="hakyll" name="generator"/&gt;
         &lt;meta content="English" name="language"/&gt;
         
-        &lt;meta content="dataliberation pkm quantified-self" name="keywords"/&gt;
+        &lt;meta content="dataliberation pkm quantifiedself" name="keywords"/&gt;
         
         &lt;!-- TODO concat with keywords tags; also need to make comma separated? --&gt;
 
@@ -5283,7 +5283,7 @@ If you're terrified by the long list, you can jump straight into &lt;a class="li
 &lt;li&gt;&lt;a href="#promnesia"&gt;promnesia&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#dashboard"&gt;dashboard&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#timeline"&gt;timeline&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#mypkg"&gt;&lt;code class="inline"&gt;my.&lt;/code&gt; python package&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#mypkg"&gt;&lt;code class="inline"&gt;HPI&lt;/code&gt; python package&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;a href="#fin"&gt;4. --&lt;/a&gt;&lt;/li&gt;
@@ -5971,7 +5971,7 @@ Why:
 &lt;a class="link-down" href="#search"&gt;better search&lt;/a&gt;
 &lt;/p&gt;
 &lt;p&gt;
-I stopped using RTM in favor of org-mode, but I can still easily find my old task and notes.
+I stopped using RTM in favor of org-mode, but I can still easily find my old task and notes, which allowed for a smooth transition.
 &lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
@@ -6257,13 +6257,13 @@ he open sources it. I highly recommend watching his talk for inspiration.
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="outline-3"&gt;
-&lt;h3 id="mypkg"&gt;&lt;a class="headerlink" href="#mypkg"&gt;¶&lt;/a&gt;&lt;a href="https://github.com/karlicoss/my"&gt;&lt;code class="inline"&gt;my.&lt;/code&gt;&lt;/a&gt; python package&lt;/h3&gt;
+&lt;h3 id="mypkg"&gt;&lt;a class="headerlink" href="#mypkg"&gt;¶&lt;/a&gt;&lt;a href="https://github.com/karlicoss/HPI"&gt;&lt;code class="inline"&gt;HPI&lt;/code&gt;&lt;/a&gt; python package&lt;/h3&gt;
 &lt;div class="outline-text-3" id="text-mypkg"&gt;
 &lt;p&gt;
-This python package is a kind of my personal API to access all collected data.
+This python package is a my personal (python) API to access all collected data.
 &lt;/p&gt;
 &lt;p&gt;
-I'm in the progress of writing about it &lt;a href="hpi.html"&gt;here&lt;/a&gt;.
+I'm elaborating on it &lt;a href="hpi.html"&gt;here&lt;/a&gt;.
 &lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
@@ -6275,7 +6275,7 @@ I'm in the progress of writing about it &lt;a href="hpi.html"&gt;here&lt;/a&gt;.
 Happy to answer any questions on my approach and help you with liberating your data.  
 &lt;/p&gt;
 &lt;p&gt;
-In the &lt;a href="exports.html"&gt;next post&lt;/a&gt; (writing still in progress) I'm going to elaborate on design decisions behind my data export and access infrastructure.
+In the &lt;a href="exports.html"&gt;next post&lt;/a&gt; I'm elaborating on design decisions behind my data export and access infrastructure.
 &lt;/p&gt;
 &lt;p&gt;
 &lt;b&gt;Updates&lt;/b&gt;:
@@ -6290,7 +6290,7 @@ In the &lt;a href="exports.html"&gt;next post&lt;/a&gt; (writing still in progre
 
     
     &lt;section class="footer"&gt;
-        &lt;div class="post-tags"&gt;&lt;a class="post-tag" href="./tags.html#dataliberation"&gt;#dataliberation&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#pkm"&gt;#pkm&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#quantified-self"&gt;#quantified-self&lt;/a&gt; &lt;/div&gt;
+        &lt;div class="post-tags"&gt;&lt;a class="post-tag" href="./tags.html#dataliberation"&gt;#dataliberation&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#pkm"&gt;#pkm&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#quantifiedself"&gt;#quantifiedself&lt;/a&gt; &lt;/div&gt;
         &lt;!-- TODO post-date? --&gt;
         &lt;div class="date"&gt;12 January 2020&lt;/div&gt;
     &lt;/section&gt;
@@ -7642,7 +7642,7 @@ Let me know if you can think of any other data integrations you are missing and 
         &lt;meta content="hakyll" name="generator"/&gt;
         &lt;meta content="English" name="language"/&gt;
         
-        &lt;meta content="exercise quantified-self ipython" name="keywords"/&gt;
+        &lt;meta content="exercise quantifiedself ipython" name="keywords"/&gt;
         
         &lt;!-- TODO concat with keywords tags; also need to make comma separated? --&gt;
 
@@ -8809,7 +8809,7 @@ strong multicollinearity or other numerical problems.
 
     
     &lt;section class="footer"&gt;
-        &lt;div class="post-tags"&gt;&lt;a class="post-tag" href="./tags.html#exercise"&gt;#exercise&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#quantified-self"&gt;#quantified-self&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#ipython"&gt;#ipython&lt;/a&gt; &lt;/div&gt;
+        &lt;div class="post-tags"&gt;&lt;a class="post-tag" href="./tags.html#exercise"&gt;#exercise&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#quantifiedself"&gt;#quantifiedself&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#ipython"&gt;#ipython&lt;/a&gt; &lt;/div&gt;
         &lt;!-- TODO post-date? --&gt;
         &lt;div class="date"&gt;08 December 2019&lt;/div&gt;
     &lt;/section&gt;
