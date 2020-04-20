@@ -1238,6 +1238,10 @@ Here's an (incomplete) list of the modules in the public package:
 &lt;td class="org-left"&gt;Rescuetime (activity tracking) data&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/roamresearch.py"&gt;my.roamresearch&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://roamresearch.com"&gt;Roam&lt;/a&gt; data&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/rtm.py"&gt;my.rtm&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://rememberthemilk.com"&gt;Remember The Milk&lt;/a&gt; tasks and notes&lt;/td&gt;
 &lt;/tr&gt;
