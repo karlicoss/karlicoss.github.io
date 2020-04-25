@@ -15,7 +15,7 @@
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
-        <title>Adding a data source to my personal infrastructure | beepb00p</title>
+        <title>Demo: adding a data source to my personal infrastructure | beepb00p</title>
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css"/>
         <link href="./css/default.css?v=3" rel="stylesheet"/>
@@ -31,7 +31,7 @@
         <!-- or https://developers.facebook.com/tools/debug -->
         <meta content="website" property="og:type"/>
         <meta content="https://beepb00p.xyz/myinfra-roam.html" property="og:url"/> <!-- TODO base? -->
-        <meta content="Adding a data source to my personal infrastructure | beepb00p" property="og:title"/>
+        <meta content="Demo: adding a data source to my personal infrastructure | beepb00p" property="og:title"/>
         <meta content="Featuring Roam Research" property="og:description"/>
         <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
         <!-- ugh. Facebook really wants jpg? -->
@@ -77,10 +77,8 @@
 
 <article>
     
-    <div>THIS IS A DRAFT! It will appear on the main page once finished!</div>
-    
     <section class="post-title">
-    <h1>Adding a data source to my personal infrastructure</h1>
+    <h1>Demo: adding a data source to my personal infrastructure</h1>
     <div class="summary">Featuring Roam Research
     </div></section>
     <!-- are sections appropriate for that? -->
@@ -117,7 +115,7 @@ But if you have some questions, feel free to ask anyway!
 <li><a href="#automate">3. Automate export</a></li>
 <li><a href="#dal">4. Adapt the data</a></li>
 <li><a href="#orger">5. Use Orger for org-mode mirror</a></li>
-<li><a href="#promnesia">6. <span class="todo STRT">STRT</span> Promnesia for browser integration</a></li>
+<li><a href="#promnesia">6. Promnesia: integrate Roam with your browser</a></li>
 <li><a href="#fin">7. --</a></li>
 </ul>
 </div>
@@ -149,7 +147,7 @@ If you want to get a glimpse of Org-mode <b>workflow</b> without having to use E
 So, let's say you've been using Roam and want to use its data outside of the web app, for some other purpose. What do you do?
 </p>
 <p>
-For demonstration purposes, I'll be using a <b>public</b> <a href="https://roamresearch.com/#/app/covid19/graph">covid19 Roam database</a>.
+For this demo, I'll be using a <b>public</b> <a href="https://roamresearch.com/#/app/covid19/graph">covid19 Roam database</a>.
 </p>
 </div>
 </div>
@@ -486,7 +484,7 @@ Fun fact: during the first attempt to record the demo, Roam web app wasn't loadi
 you get mobile access
 </p>
 <p>
-Roam doesn't have first-class mobile support yet, so with an org-mode mirror, you can be,nefit from the existing org-mode apps for your phone.
+Roam doesn't have first-class mobile support yet, so with an org-mode mirror, you can benefit from the existing org-mode apps for your phone.
 </p>
 <p>
 Again, Roam specifically might implement it in the future, but the point is that you can be <b>ahead of the developers</b> and do it yourself.
@@ -547,13 +545,91 @@ without having to fully succumb to it.
 </div>
 </div>
 <div class="outline-2">
-<h2 id="promnesia"><a class="headerlink" href="#promnesia">¶</a><span class="section-number-2">6</span> <span class="todo STRT">STRT</span> Promnesia for browser integration</h2>
+<h2 id="promnesia"><a class="headerlink" href="#promnesia">¶</a><span class="section-number-2">6</span> Promnesia: integrate Roam with your browser</h2>
 <div class="outline-text-2" id="text-promnesia">
 <p>
-Added a <a href="https://github.com/karlicoss/promnesia/blob/master/src/promnesia/sources/roamresearch.py">roamresearch module</a> to <a href="https://github.com/karlicoss/promnesia">promnesia</a>.
+<a href="https://github.com/karlicoss/promnesia">Promnesia</a> is an extension for enhancing your browser history.
+It unifies the browsing history, which is siloed in various apps and services; and lets you explore the history in context, showing the information on where and how you've encountered the links.
+If you want to learn more about it, check out <a href="https://github.com/karlicoss/promnesia#demos">demos</a>, here I'll only concentrate on demonstrating Roam.
 </p>
 <p>
-The section is work in progress…
+To use Roam data in Promnesia, all you need is to add a small bit to the <a href="https://github.com/karlicoss/promnesia/blob/master/config.py.example">config</a>:
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">from</span> promnesia.sources <span class="org-keyword">import</span> roamresearch
+<span class="org-variable-name">SOURCES</span> = [
+   ...,
+   Source(roamresearch.index, name=<span class="org-string">'roam'</span>),
+   ...,
+]
+</pre>
+</div>
+<p>
+And that's it! This enables Roam Research module <a href="https://github.com/karlicoss/promnesia/blob/master/src/promnesia/sources/roamresearch.py">(40 lines of code)</a>, which consumes the data from <a class="link-up" href="#dal">HPI</a>.
+</p>
+<p>
+You can also index others' public Roam databases. If Roam is a second brain, this can be a way of <b>interfacing with others' second brains</b>!
+</p>
+<p>
+I've <a href="https://www.youtube.com/watch?v=wyJI96AH91o">recorded a demo</a>, showing various workflows for your Roam data, which are enabled by Promnesia.
+</p>
+<p>
+Here's a text summary of the features, demonstrated in the video:
+</p>
+<ul class="org-ul">
+<li><p>
+the sidebar
+</p>
+<p>
+Shows your browsing history for the <b>current page</b> along with the source, timestamp, and the <b>context</b>, in which the link occurred.
+</p>
+<p>
+Clicking on the permalink brings us straight to the outline within the Roam Research web app.
+</p></li>
+</ul>
+<ul class="org-ul">
+<li><p>
+what are the <b>github repositories</b> saved in this Roam database?
+</p>
+<p>
+If you open the sidebar on <samp class="inline">github.com</samp>, you can see the subpages along with the contexts, in particular,
+links to all the github repositories saved in Roam.
+</p></li>
+<li><p>
+what are the <b>tweets</b> saved in this Roam database
+</p>
+<p>
+Similarly, if you open <samp class="inline">twitter.com</samp>, you can see all the tweets in your browsing history.
+If you open a specific Twitter profile, you get to see all the tweets from a specific person.
+</p>
+<p>
+I find it extremely useful to recall when you've engaged with the content from a specific person,
+for example, to figure out whether you should follow them.
+</p></li>
+<li><b>full text search</b> over your browsing history</li>
+<li><p>
+<b>how did I get on this page</b>?
+</p>
+<p>
+You can trace through all of your history to remember why you bookmarked a page.
+</p></li>
+<li><p>
+what links on this page have I already visited?
+</p>
+<p>
+When you press 'mark visited', Promnesia highlights the links you've already visited so you can explore new information more efficiently.
+</p></li>
+</ul>
+<p>
+There is some room for improvement, especially in terms of the UI (e.g. markup handling could be better), but these are easy to fix.
+</p>
+<p>
+These workflows aren't unique to Roam, and possible with many other data sources.
+Promnesia already supports <a href="https://github.com/karlicoss/promnesia/tree/master/src/promnesia/sources">many</a>, and adding new is very easy.
+You can find find more links, screenshots, and demos in the <a href="https://github.com/karlicoss/promnesia#demos">repository</a>.
+</p>
+<p>
+Thanks for watching, check it out, and let me know if you can think of other cool features!
 </p>
 </div>
 </div>
