@@ -1656,6 +1656,7 @@ For &lt;b&gt;installation/configuration/development guide&lt;/b&gt;, see &lt;a h
 &lt;li&gt;&lt;a href="#exercise"&gt;Accessing exercise data&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#kobo_progress"&gt;Book reading progress&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#messenger_stats"&gt;Messenger stats&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#roamresearch"&gt;Querying Roam Reasearch database&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;a href="#input_data"&gt;6. How does it get input data?&lt;/a&gt;&lt;/li&gt;
@@ -2320,6 +2321,14 @@ plt.savefig(plot_file)
 &lt;p&gt;&lt;img alt="messenger_2016_to_2019.png" src="messenger_2016_to_2019.png"/&gt;
 &lt;/p&gt;
 &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-3"&gt;
+&lt;h3 id="roamresearch"&gt;&lt;a class="headerlink" href="#roamresearch"&gt;¶&lt;/a&gt;Querying Roam Reasearch database&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-roamresearch"&gt;
+&lt;p&gt;
+I've got some code examples &lt;a href="myinfra-roam.html#interactive"&gt;here&lt;/a&gt;.
+&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
