@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <id>https://beepb00p.xyz/atom.xml</id>
   <title>beepb00p</title>
-  <updated>2020-04-05T00:00:00+00:00</updated>
+  <updated>2020-04-20T00:00:00+00:00</updated>
   <author>
     <name>karlicoss</name>
     <email>karlicoss@gmail.com</email>
@@ -11,6 +11,696 @@
   <link href="https://beepb00p.xyz"/>
   <generator uri="http://lkiesow.github.io/python-feedgen" version="0.8.0">python-feedgen</generator>
   <subtitle>feed</subtitle>
+  <entry>
+    <id>https://beepb00p.xyz/myinfra-roam.html</id>
+    <title>Demo: adding a data source to my personal infrastructure</title>
+    <updated>2020-04-20T00:00:00+00:00</updated>
+    <content type="html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en" prefix="og: http://ogp.me/ns#"&gt;&lt;head&gt;
+        &lt;meta charset="utf-8"/&gt;
+        &lt;meta content="width=device-width, initial-scale=1" name="viewport"/&gt;
+
+        &lt;!-- Icon made by Twitter --&gt;
+        &lt;!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html --&gt;
+        &lt;link href="./robot-face.png" rel="icon"/&gt;
+        &lt;link href="./robot-face.png" rel="apple-touch-icon"/&gt;
+
+        &lt;meta content="hakyll" name="generator"/&gt;
+        &lt;meta content="English" name="language"/&gt;
+        
+        &lt;meta content="infra hpi orger promnesia" name="keywords"/&gt;
+        
+        &lt;!-- TODO concat with keywords tags; also need to make comma separated? --&gt;
+
+        &lt;title&gt;Demo: adding a data source to my personal infrastructure | beepb00p&lt;/title&gt;
+
+        &lt;link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css"/&gt;
+        &lt;link href="./css/default.css?v=3" rel="stylesheet"/&gt;
+        &lt;!-- TODO make conditional?? --&gt;
+        &lt;link href="./css/posts-list.css" rel="stylesheet"/&gt; 
+        &lt;link href="./css/links.css?v=4" rel="stylesheet"/&gt;
+
+        
+
+        &lt;link href="https://beepb00p.xyz/myinfra-roam.html" rel="canonical"/&gt;
+
+        &lt;!-- can test it with https://telegram.me/webpagebot --&gt;
+        &lt;!-- or https://developers.facebook.com/tools/debug --&gt;
+        &lt;meta content="website" property="og:type"/&gt;
+        &lt;meta content="https://beepb00p.xyz/myinfra-roam.html" property="og:url"/&gt; &lt;!-- TODO base? --&gt;
+        &lt;meta content="Demo: adding a data source to my personal infrastructure | beepb00p" property="og:title"/&gt;
+        &lt;meta content="Featuring Roam Research" property="og:description"/&gt;
+        &lt;!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s --&gt;
+        &lt;!-- ugh. Facebook really wants jpg? --&gt;
+        &lt;!-- also Facebook displays it with black background, but whatever, fuck it. --&gt;
+        &lt;meta content="https://beepb00p.xyz/robot-face.jpg" property="og:image"/&gt;
+
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;!-- TODO make semantic --&gt;
+        &lt;header&gt;
+            &lt;nav&gt;
+                &lt;span class="nav-left"&gt;
+                    &lt;a class="fat" href="./"&gt;Home&lt;/a&gt;
+                    &lt;!-- TODO eh, not sure if this symbol is good for that... --&gt;
+                    ·
+                    &lt;a class="fat" href="./ideas.html"&gt;Ideas&lt;/a&gt;
+                    ·
+                    &lt;a class="fat" href="./exobrain"&gt;Exobrain&lt;/a&gt;
+                    ·
+                    &lt;a class="fat" href="./tags.html"&gt;Tags&lt;/a&gt;
+                &lt;/span&gt;
+                &lt;span class="nav-right"&gt;
+                    &lt;a class="fat" href="./feed.html"&gt;Feed&lt;/a&gt;
+                    ·
+                    &lt;a class="fat" href="./site.html"&gt;Site&lt;/a&gt;
+                    ·
+                    &lt;a class="fat" href="./me.html"&gt;Me&lt;/a&gt;
+                &lt;/span&gt;
+            &lt;/nav&gt;
+        &lt;/header&gt;
+
+        &lt;main&gt;
+            
+
+&lt;!-- &lt;link rel="stylesheet" href="/css/org.css" /&gt; --&gt;
+
+&lt;link href="./css/htmlize.css" rel="stylesheet"/&gt;
+&lt;link href="./css/org-default.css" rel="stylesheet"/&gt;
+
+&lt;link href="./css/org-extra.css?v=3" rel="stylesheet"/&gt;
+
+
+
+&lt;article&gt;
+    
+    &lt;section class="post-title"&gt;
+    &lt;h1&gt;Demo: adding a data source to my personal infrastructure&lt;/h1&gt;
+    &lt;div class="summary"&gt;Featuring Roam Research
+    &lt;/div&gt;&lt;/section&gt;
+    &lt;!-- are sections appropriate for that? --&gt;
+
+    &lt;section class="content"&gt;
+    &lt;p&gt;
+I have a &lt;a href="sad-infra.html"&gt;frustration&lt;/a&gt; around the fact that our personal data is scattered, siloed and incredibly hard
+to use for any purposes, not anticipated by the original developers.
+&lt;/p&gt;
+&lt;p&gt;
+&lt;a href="my-data.html"&gt;One of my big efforts&lt;/a&gt; is unifying all of this scattered data into a system that makes it easier
+to oversee, combine, interact with and build &lt;b&gt;new tools&lt;/b&gt; around it.
+&lt;/p&gt;
+&lt;p&gt;
+In this post I want to illustrate how to integrate a new data source in the system, with &lt;a href="https://roamresearch.com"&gt;Roam Research&lt;/a&gt; data as an example.
+&lt;/p&gt;
+&lt;p&gt;
+I've chosen Roam for this post because:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;it's a cool, useful and rich data source&lt;/li&gt;
+&lt;li&gt;it hasn't been integrated before &lt;a href="myinfra.html"&gt;in my system&lt;/a&gt;, so it's easy to follow and document all the steps necessary&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+Throughout the post, I will link to my previous writing on building the &lt;a class="post-tag" href="./tags.html#infra"&gt;#infra&lt;/a&gt;, so I won't go into explaining every tiny detail and technical rationales here.
+But if you have some questions, feel free to ask anyway!
+&lt;/p&gt;
+&lt;div id="table-of-contents"&gt;
+&lt;h2&gt;Table of Contents&lt;/h2&gt;
+&lt;div id="text-table-of-contents"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#what_is_roam"&gt;1. What is Roam Research?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#export"&gt;2. Export raw data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#automate"&gt;3. Automate export&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#dal"&gt;4. Adapt the data&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#orger"&gt;5. Use Orger for org-mode mirror&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#promnesia"&gt;6. Promnesia: integrate Roam with your browser&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#fin"&gt;7. --&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-2"&gt;
+&lt;h2 id="what_is_roam"&gt;&lt;a class="headerlink" href="#what_is_roam"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;1&lt;/span&gt; What is Roam Research?&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-what_is_roam"&gt;
+&lt;p&gt;
+&lt;a href="https://roamresearch.com"&gt;Roam&lt;/a&gt; is a new note taking/thinking tool.
+If you're an org-mode user, you can think of it as having a web app with a directory of org files with the main focus (as I see it) on:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;easy note capture&lt;/li&gt;
+&lt;li&gt;markup and &lt;a href="https://orgmode.org/manual/Internal-Links.html"&gt;internal links&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+&lt;a href="https://roamresearch.com/#/app/help/page/ihYVODd74"&gt;bidirectional links&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+This is pretty unique to Roam, and the nearest org-mode analogy is probably tags or &lt;a href="https://orgmode.org/manual/Custom-Agenda-Views.html"&gt;custom agendas&lt;/a&gt;
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+You can learn more about Roam &lt;a href="https://roamresearch.com/#/app/help/page/1wnq-ZAAN"&gt;here&lt;/a&gt;, which is a welcome page and a sandbox at the same time (very cool!).
+&lt;/p&gt;
+&lt;p&gt;
+If you want to get a glimpse of Org-mode &lt;b&gt;workflow&lt;/b&gt; without having to use Emacs, Roam is probably &lt;b&gt;the&lt;/b&gt; tool you should try.
+&lt;/p&gt;
+&lt;p&gt;
+So, let's say you've been using Roam and want to use its data outside of the web app, for some other purpose. What do you do?
+&lt;/p&gt;
+&lt;p&gt;
+For this demo, I'll be using a &lt;b&gt;public&lt;/b&gt; &lt;a href="https://roamresearch.com/#/app/covid19/graph"&gt;covid19 Roam database&lt;/a&gt;.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-2"&gt;
+&lt;h2 id="export"&gt;&lt;a class="headerlink" href="#export"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;2&lt;/span&gt; Export raw data&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-export"&gt;
+&lt;p&gt;
+The first step is figuring out how to get the raw data.
+&lt;/p&gt;
+&lt;p&gt;
+Roam doesn't have a public API yet, but they let you export a JSON from the web interface, which is good enough for us.
+How to proceed with this knowledge? I apply the principles from &lt;a href="exports.html#export_layer"&gt;"Building data liberation infrastructure"&lt;/a&gt;:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;p&gt;
+use an existing library to fetch the data
+&lt;/p&gt;
+&lt;p&gt;
+It is &lt;b&gt;counterproductive&lt;/b&gt; to reimplement this all over again.
+Luckily, there is one, &lt;a href="https://github.com/MatthieuBizien/roam-to-git"&gt;MatthieuBizien/roam-to-git&lt;/a&gt;! It's very decent and does all the heavy lifting like browser automation.
+&lt;/p&gt;
+&lt;p&gt;
+The only thing I had to do is implementing a &lt;a href="https://github.com/karlicoss/exports/blob/master/roamresearch.py"&gt;wrapper&lt;/a&gt; to call it and extract the JSON from the archive.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+keep the raw data intact
+&lt;/p&gt;
+&lt;p&gt;
+I simply store the &lt;b&gt;JSON without any changes&lt;/b&gt; on my filesystem.
+There is not much point trying to squeeze inherently hierarchical Roam data into a database.
+If performance ever becomes an issue, a transparent &lt;a href="unnecessary-db.html#cachew"&gt;caching layer&lt;/a&gt; can always be added.
+&lt;/p&gt;
+&lt;p&gt;
+Roam is under active development, so it's likely that the export format will change.
+It would be pretty sad if it breaks exports, and keeping the data unchanged means I always have a recent version on my disk.
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-2"&gt;
+&lt;h2 id="automate"&gt;&lt;a class="headerlink" href="#automate"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;3&lt;/span&gt; Automate export&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-automate"&gt;
+&lt;p&gt;
+Ok, now we can get a snapshot of Roam data with a single script run: &lt;code class="inline"&gt;./roamresearch.py &amp;gt; export.json&lt;/code&gt;. What's next?
+&lt;/p&gt;
+&lt;p&gt;
+The idea is that we run it &lt;b&gt;periodically&lt;/b&gt;, for example, few times a day. It does mean that the data on your disk is lagging behind slightly, but that gives you 90% of the benefits without all the downsides of
+implementing a realtime synchronization. You also need an API for two-way synchronization anyway (unless you want to poll the service like crazy).
+&lt;/p&gt;
+&lt;p&gt;
+Running it manually is not much fun, and there are several tools that can aid us in it.
+I've done an overview in &lt;a href="scheduler.html"&gt;this post&lt;/a&gt;, and personally, I'm using an experimental tool, &lt;a href="https://github.com/karlicoss/dron"&gt;dron&lt;/a&gt;, which is basically a nice Systemd frontend.
+But it really doesn't matter what exactly to use, so the simplest is a good old &lt;b&gt;cron job&lt;/b&gt;:
+&lt;/p&gt;
+&lt;pre class="example"&gt;00 05 * * * /soft/export-scripts/roamresearch.py &amp;gt; /exports/roamresearch/data.json
+&lt;/pre&gt;
+&lt;p&gt;
+This will export your data every day at 5:00 and save it to a JSON file. The file will be used by other tools and scripts to get &lt;b&gt;the most recent snapshot&lt;/b&gt; of the data.
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;p&gt;
+For me the command looks a bit more sophisticated:
+&lt;/p&gt;
+&lt;pre class="example"&gt;/soft/arctee/arctee.py /exports/roamresearch/roamresearch_{utcnow}.json -- /soft/export-scripts/roamresearch.py
+&lt;/pre&gt;
+&lt;p&gt;
+This keeps every export along with a timestamp, ensures atomic writing to minimize concurrency issues and retries automatically.
+I elaborate more on it &lt;a href="exports.html#arctee"&gt;here&lt;/a&gt;, but it's not super crucial for Roam, more of a nice-to-have thing.
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+Once you automate JSON exports, you also get Roam &lt;b&gt;data backups for free&lt;/b&gt; (you back up your disk, right?).
+&lt;/p&gt;
+&lt;p&gt;
+There is a problem though. Working with JSON is okay for a one-off thing, but if you want to truly benefit from using the data for different applications, you better off having some abstract interface
+for it.
+While Roam's JSON export is fairly reasonable (unlike many other services), it's pretty annoying to figure out the schema
+&lt;/p&gt;
+&lt;p&gt;
+Take a look at the &lt;a href="https://github.com/MatthieuBizien/roam-to-git-demo/blob/27e5fdace2de47dd810caa10e7fb366a8c661a57/json/roam-to-git-demo.json#L123-L143"&gt;raw data&lt;/a&gt;. It's clear, that you'll need
+(at least) to:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;convert integer timestamps into datetime objects&lt;/li&gt;
+&lt;li&gt;keep track of optional and required fields&lt;/li&gt;
+&lt;li&gt;deconstruct the hierarchy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+This is annoying, boring and error-prone to do all over again.
+We need some central way to encapsulate and adapt raw JSON data for easier programmatic use.
+Say hello to the &lt;a href="exports.html#dal"&gt;data access layer&lt;/a&gt;!
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-2"&gt;
+&lt;h2 id="dal"&gt;&lt;a class="headerlink" href="#dal"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;4&lt;/span&gt; Adapt the data&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-dal"&gt;
+&lt;p&gt;
+The data access layer is responsible for deserializing and converting raw (i.e. JSON/sqlite) format into abstract objects, easy to work in your code.
+&lt;/p&gt;
+&lt;p&gt;
+Normally I'd try to use existing data bindings, but Roam is pretty new and I haven't found any, so I implemented my own.
+The data adapter is integrated into &lt;a href="https://github.com/karlicoss/HPI"&gt;HPI&lt;/a&gt; package, which is a central entry point for all of my data access.
+&lt;/p&gt;
+&lt;p&gt;
+The whole thing is contained within a single &lt;a href="https://github.com/karlicoss/HPI/pull/26/files"&gt;pull request&lt;/a&gt; and takes about 100 LOC.
+&lt;/p&gt;
+&lt;p&gt;
+If you browse through the code you can also see the importance of raw data encapsulation: for example,
+&lt;a href="https://github.com/karlicoss/HPI/blob/96a850faf94c781be2fdc24f01699cba9edf580e/my/roamresearch.py#L36-L54"&gt;&lt;code class="inline"&gt;created&lt;/code&gt;&lt;/a&gt; or
+&lt;a href="https://github.com/karlicoss/HPI/blob/96a850faf94c781be2fdc24f01699cba9edf580e/my/roamresearch.py#L75-L82"&gt;&lt;code class="inline"&gt;permalink&lt;/code&gt;&lt;/a&gt; properties.
+You really don't want to reimplement this all over again.
+&lt;/p&gt;
+&lt;p&gt;
+To link HPI package with your private data, you add a small section to your private config in &lt;samp class="inline"&gt;~/.config/my/my/config/__init__.py&lt;/samp&gt;:
+&lt;/p&gt;
+&lt;div class="org-src-container"&gt;
+&lt;pre class="src src-python"&gt;&lt;span class="org-keyword"&gt;class&lt;/span&gt; &lt;span class="org-type"&gt;roamresearch&lt;/span&gt;:
+    &lt;span class="org-variable-name"&gt;export_path&lt;/span&gt; = &lt;span class="org-string"&gt;'/exports/roamresearch/'&lt;/span&gt;
+    &lt;span class="org-variable-name"&gt;username&lt;/span&gt; = &lt;span class="org-string"&gt;'covid19'&lt;/span&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;
+After this, you get IDE help when working with Roam data. For example, &lt;samp class="inline"&gt;mypy&lt;/samp&gt; will remind me that &lt;samp class="inline"&gt;title&lt;/samp&gt; is optional, so I won't have &lt;samp class="inline"&gt;None&lt;/samp&gt; related issues.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="outline-3"&gt;
+&lt;h3 id="interactive"&gt;&lt;a class="headerlink" href="#interactive"&gt;¶&lt;/a&gt;Interactive queries&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-interactive"&gt;
+&lt;p&gt;
+At this stage, you can play with the data &lt;b&gt;interactively&lt;/b&gt; in your Python interpreter. For example:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;p&gt;
+"what's the most active note in my database?"
+&lt;/p&gt;
+&lt;div class="org-src-container"&gt;
+&lt;pre class="src src-python"&gt;&lt;span class="org-keyword"&gt;import&lt;/span&gt; my.roamresearch &lt;span class="org-keyword"&gt;as&lt;/span&gt; RR
+&lt;span class="org-variable-name"&gt;roam&lt;/span&gt; = RR.roam()
+&lt;span class="org-variable-name"&gt;note&lt;/span&gt; = &lt;span class="org-builtin"&gt;max&lt;/span&gt;(roam.notes, key=&lt;span class="org-keyword"&gt;lambda&lt;/span&gt; n: &lt;span class="org-builtin"&gt;len&lt;/span&gt;(n.children))
+&lt;span class="org-keyword"&gt;print&lt;/span&gt;(note)
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;pre class="example"&gt;Node(created=2020-02-27 02:29:22.725000+00:00, title=Worst-Case Scenario Planning, body=None)
+&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+"what's the most 'dangling' link in my database"
+&lt;/p&gt;
+&lt;p&gt;
+This could be useful to organize it, and fill frequently occurring references with more context.
+&lt;/p&gt;
+&lt;p&gt;
+The code is very straightforward:
+&lt;/p&gt;
+&lt;div class="org-src-container"&gt;
+&lt;pre class="src src-python"&gt;&lt;span class="org-keyword"&gt;import&lt;/span&gt; my.roamresearch &lt;span class="org-keyword"&gt;as&lt;/span&gt; RR
+&lt;span class="org-variable-name"&gt;roam&lt;/span&gt; = RR.roam()
+
+&lt;span class="org-keyword"&gt;import&lt;/span&gt; re
+&lt;span class="org-keyword"&gt;def&lt;/span&gt; &lt;span class="org-function-name"&gt;all_internal_links&lt;/span&gt;():
+    &lt;span class="org-keyword"&gt;for&lt;/span&gt; note &lt;span class="org-keyword"&gt;in&lt;/span&gt; roam.traverse(): &lt;span class="org-comment-delimiter"&gt;# &lt;/span&gt;&lt;span class="org-comment"&gt;go recursively through all Roam outlines&lt;/span&gt;
+        &lt;span class="org-variable-name"&gt;links&lt;/span&gt; = re.findall(r&lt;span class="org-string"&gt;'\[\[(.*?)\]\]'&lt;/span&gt;, note.body &lt;span class="org-keyword"&gt;or&lt;/span&gt; &lt;span class="org-string"&gt;''&lt;/span&gt;) &lt;span class="org-comment-delimiter"&gt;# &lt;/span&gt;&lt;span class="org-comment"&gt;extract the [[links]]&lt;/span&gt;
+        &lt;span class="org-keyword"&gt;yield&lt;/span&gt; &lt;span class="org-keyword"&gt;from&lt;/span&gt; links
+
+&lt;span class="org-variable-name"&gt;existing&lt;/span&gt; = { &lt;span class="org-comment-delimiter"&gt;# &lt;/span&gt;&lt;span class="org-comment"&gt;figure out which links already have meaningful pages for them&lt;/span&gt;
+    n.title &lt;span class="org-keyword"&gt;for&lt;/span&gt; n &lt;span class="org-keyword"&gt;in&lt;/span&gt; roam.traverse()
+    &lt;span class="org-keyword"&gt;if&lt;/span&gt; &lt;span class="org-keyword"&gt;not&lt;/span&gt; n.empty()
+}
+&lt;span class="org-variable-name"&gt;missing&lt;/span&gt; = [
+    link &lt;span class="org-keyword"&gt;for&lt;/span&gt; link &lt;span class="org-keyword"&gt;in&lt;/span&gt; all_internal_links()
+    &lt;span class="org-keyword"&gt;if&lt;/span&gt; link &lt;span class="org-keyword"&gt;not&lt;/span&gt; &lt;span class="org-keyword"&gt;in&lt;/span&gt; existing
+]
+
+&lt;span class="org-keyword"&gt;from&lt;/span&gt; collections &lt;span class="org-keyword"&gt;import&lt;/span&gt; Counter
+&lt;span class="org-keyword"&gt;print&lt;/span&gt;(Counter(missing).most_common(5))
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups"&gt;
+&lt;colgroup&gt;
+&lt;col class="org-left"/&gt;
+&lt;col class="org-right"/&gt;
+&lt;/colgroup&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;slider&lt;/td&gt;
+&lt;td class="org-right"&gt;22&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;China&lt;/td&gt;
+&lt;td class="org-right"&gt;12&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;Open Questions&lt;/td&gt;
+&lt;td class="org-right"&gt;10&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;Travel&lt;/td&gt;
+&lt;td class="org-right"&gt;8&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;COVID-19&lt;/td&gt;
+&lt;td class="org-right"&gt;6&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;
+&lt;samp class="inline"&gt;[[slider]]&lt;/samp&gt; is a just a parsing artifact, but you can see that perhaps it's a good time to add some content on the "China" page!
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+This is cool because you don't have to wait till developers add new features or come up with a query language (which is also really hard!).
+You can use a powerful programming language you already know.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-2"&gt;
+&lt;h2 id="orger"&gt;&lt;a class="headerlink" href="#orger"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;5&lt;/span&gt; Use Orger for org-mode mirror&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-orger"&gt;
+&lt;p&gt;
+Now that accessing the data is a matter of &lt;code class="inline"&gt;import my.roamresearch&lt;/code&gt;, we can enjoy using it!
+&lt;/p&gt;
+&lt;p&gt;
+One very useful tool for interacting with my data is &lt;a href="orger.html"&gt;Orger&lt;/a&gt;.
+Orger is a library that helps you generate an org-mode representation of your data.
+&lt;/p&gt;
+&lt;p&gt;
+I won't go into the Orger module implementation details – you can check out the code here: &lt;a href="https://github.com/karlicoss/orger/blob/master/modules/roamresearch.py"&gt;&lt;code class="inline"&gt;roamresearch.py&lt;/code&gt;&lt;/a&gt;.
+There are also &lt;a href="https://github.com/karlicoss/orger/blob/master/modules"&gt;more&lt;/a&gt; modules for other services like Twitter, Reddit, Instapaper, etc.
+&lt;/p&gt;
+&lt;div&gt;&lt;span class="before-aside"&gt;
+We will use Orger to generate a &lt;b&gt;read-only&lt;/b&gt; mirror of the Roam &lt;a href="https://roamresearch.com/#/app/covid19/graph"&gt;database&lt;/a&gt;.
+The idea is that you run Orger script periodically to get a reasonably up-to-date representation of your Roam data.
+You'll still use Roam web app to modify your notes.
+
+&lt;/span&gt;&lt;aside class="sidenote"&gt;note, this makes it different from what &lt;a href="https://github.com/jethrokuan/org-roam"&gt;org-roam&lt;/a&gt; offers&lt;/aside&gt;&lt;/div&gt;
+&lt;p&gt;
+Of course, it would be cool to have proper bidirectional sync, so your modifications to the org-mode file are reflected in Roam.
+But it's a &lt;b&gt;much&lt;/b&gt; harder problem, especially without an API.
+&lt;/p&gt;
+&lt;p&gt;
+But even having a read-only replica enables you to do lots of cool things!
+I invite you to &lt;a href="https://www.youtube.com/watch?v=ib_PDJpTh-Q"&gt;watch a short &lt;b&gt;demo&lt;/b&gt;&lt;/a&gt; I recorded, and I'll highlight some features here in writing.
+&lt;/p&gt;
+&lt;p&gt;
+You benefit from &lt;b&gt;the existing infrastructure and tooling&lt;/b&gt; around org-mode:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;p&gt;
+the org-mode markup and text editor integration
+&lt;/p&gt;
+&lt;p&gt;
+Roam markup maps naturally into org-mode (perhaps not very surprising).
+&lt;/p&gt;
+&lt;p&gt;
+So you can use outlines/colors/bold/italic/linka/code blocks/whatnot. As a bonus, you get all the associated Emacs customizations.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+the Emacs navigation features
+&lt;/p&gt;
+&lt;p&gt;
+You can use your favorite keybindings &lt;b&gt;with no need to learn new hotkeys&lt;/b&gt; hardcoded by the developers. For example:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;editor specific: with &lt;samp class="inline"&gt;evil-mode&lt;/samp&gt; you can just use Vim navigation (&lt;code class="inline"&gt;hjkl&lt;/code&gt; , &lt;code class="inline"&gt;$&lt;/code&gt; / &lt;code class="inline"&gt;w&lt;/code&gt; / &lt;code class="inline"&gt;b&lt;/code&gt; / etc.)&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+org-mode specific: folding/unfolding (&lt;code class="inline"&gt;Shift+Tab/Tab&lt;/code&gt;), outline navigation (&lt;code class="inline"&gt;{&lt;/code&gt; , &lt;code class="inline"&gt;}&lt;/code&gt;), jumping to the heading (&lt;code class="inline"&gt;gh&lt;/code&gt;)
+&lt;/p&gt;
+&lt;p&gt;
+Again, if you're an &lt;samp class="inline"&gt;evil&lt;/samp&gt; person, just check out &lt;a href="https://github.com/Somelauw/evil-org-mode/blob/master/doc/keythemes.org"&gt;&lt;samp class="inline"&gt;evil-org-mode&lt;/samp&gt;&lt;/a&gt;.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+Link navigation: you can use &lt;a href="https://github.com/noctuid/link-hint.el#readme"&gt;link-hint&lt;/a&gt; to quickly navigate links with your keyboard (&lt;code class="inline"&gt;SPC s l&lt;/code&gt; in Doom Emacs)
+&lt;/p&gt;
+&lt;p&gt;
+This is similar to web browser extensions like vimperator,
+&lt;a href="https://www.pakstech.com/blog/browse-web-with-keyboard/#tridactyl"&gt;Tridactyl&lt;/a&gt; and
+&lt;a href="https://www.pakstech.com/blog/browse-web-with-keyboard/#surfingkeys"&gt;Surfingkeys&lt;/a&gt;.
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+Navigating in your text editor is very fast and you never experience network latency or backend hiccups.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;if you need to edit the notes, you can jump back into the Roam web interface by following the permalink&lt;/li&gt;
+&lt;li&gt;&lt;code class="inline"&gt;[[Internal Links]]&lt;/code&gt; in Roam also have first-class support in org-mode, so you can jump within the file&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+the Emacs search modules
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;regular plaintext search (&lt;code class="inline"&gt;/&lt;/code&gt; if you're a Vim person)&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+&lt;samp class="inline"&gt;helm-swoop&lt;/samp&gt;: shows you the search results &lt;b&gt;and&lt;/b&gt;  the context in which each result occurred.
+&lt;/p&gt;
+&lt;p&gt;
+It's probably easier if you check out the &lt;a href="https://github.com/emacsorphanage/helm-swoop#readme"&gt;demo gif&lt;/a&gt; than to put it in words.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+&lt;samp class="inline"&gt;helm-ripgrep&lt;/samp&gt;: I'm using it for a global incremental search (a &lt;a href="pkm-search.html#snippet_other"&gt;single keybinding&lt;/a&gt; away) over &lt;a href="pkm-search.html#other"&gt;&lt;b&gt;all&lt;/b&gt;&lt;/a&gt; of my personal data.
+&lt;/p&gt;
+&lt;p&gt;
+And if you're still not using &lt;a href="https://github.com/BurntSushi/ripgrep"&gt;ripgrep&lt;/a&gt;, you should seriously give it a try.
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+&lt;b&gt;Typically&lt;/b&gt;, web apps provide a pretty &lt;a href="sad-infra.html#why_search"&gt;pathetic&lt;/a&gt; search experience.
+Sometimes it's just not unavailable.
+When it is, it's slow, the results are paginated, ranked by some magic algorithm and the scope is often restricted
+for performance reasons.
+Roam actually stands out because unlike most, it &lt;b&gt;does have&lt;/b&gt; an incremental search within the notes.
+&lt;/p&gt;
+&lt;p&gt;
+Searching in Emacs is an incredibly pleasant experience.
+The search is incremental, updates results as fast as you type, and you can configure it as you wish.
+&lt;/p&gt;
+&lt;p&gt;
+Warning: once you get used to a fast incremental search in Emacs, you will struggle to go back.
+You'll end up grumpy and as frustrated about web apps as me. Think twice.
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+And some extra things I haven't mentioned in the video:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;p&gt;
+you get (read-only) offline mode for free
+&lt;/p&gt;
+&lt;p&gt;
+Roam does offer offline mode in the browser, but however talented Roam engineers are, a plain text file will always be more reliable.
+&lt;/p&gt;
+&lt;p&gt;
+Fun fact: during the first attempt to record the demo, Roam web app wasn't loading :P
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+you get mobile access
+&lt;/p&gt;
+&lt;p&gt;
+Roam doesn't have first-class mobile support yet, so with an org-mode mirror, you can benefit from the existing org-mode apps for your phone.
+&lt;/p&gt;
+&lt;p&gt;
+Again, Roam specifically might implement it in the future, but the point is that you can be &lt;b&gt;ahead of the developers&lt;/b&gt; and do it yourself.
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;div class="outline-3"&gt;
+&lt;h3 id="why_roam"&gt;&lt;a class="headerlink" href="#why_roam"&gt;¶&lt;/a&gt;if org-mode is so cool why not just use it &lt;b&gt;instead&lt;/b&gt; of Roam?&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-why_roam"&gt;
+&lt;p&gt;
+Better ask someone who actively uses Roam, because I'm a stubborn org-mode user!
+If you're like me, you probably tend to stay away from web apps.
+&lt;/p&gt;
+&lt;p&gt;
+In that case, perhaps, check out &lt;a href="https://github.com/jethrokuan/org-roam"&gt;jethrokuan/org-roam&lt;/a&gt;, which implements a workflow similar to Roam, but within Emacs.
+&lt;/p&gt;
+&lt;p&gt;
+But even I can come up with some objective (I hope) reasons to avoid Emacs:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;p&gt;
+entry barrier
+&lt;/p&gt;
+&lt;p&gt;
+I won't lie, I spent a while grasping and learning Emacs and I &lt;b&gt;still&lt;/b&gt; struggle at times.
+&lt;/p&gt;
+&lt;p&gt;
+But also, most of the frustrations are when I'm trying to implement things that wouldn't even be possible in other apps and editors without
+modifying their source code or self-hosting.
+With a reasonable config, like &lt;a href="https://github.com/hlissner/doom-emacs"&gt;doom emacs&lt;/a&gt;, you can get very far just on the defaults.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+cloud sync
+&lt;/p&gt;
+&lt;p&gt;
+As with all cloud apps, this a curse and a blessing at the same time.
+&lt;/p&gt;
+&lt;p&gt;
+The "blessing" bit will be especially evident if Roam adds real-time collaboration (and I bet it's &lt;b&gt;more "when" than "if"&lt;/b&gt;).
+&lt;/p&gt;
+&lt;p&gt;
+I have to admit, to my knowledge, org-mode gang doesn't have much to offer here.
+&lt;span style="color:darkorange"&gt;&lt;strong&gt;I think this is a very important problem and needs solving.&lt;/strong&gt;&lt;/span&gt;
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+easier integration with web
+&lt;/p&gt;
+&lt;p&gt;
+For example, you can embed tweets in Roam, and there is lots of potential for dynamic features.
+&lt;span style="color:darkorange"&gt;&lt;strong&gt;A browser frontend for Emacs might actually be a good idea.&lt;/strong&gt;&lt;/span&gt;
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+Org-mode mirror can &lt;b&gt;complement&lt;/b&gt; your Roam database and serve as an &lt;b&gt;additional&lt;/b&gt; interface and a means of learning org-mode,
+without having to fully succumb to it.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-2"&gt;
+&lt;h2 id="promnesia"&gt;&lt;a class="headerlink" href="#promnesia"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;6&lt;/span&gt; Promnesia: integrate Roam with your browser&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-promnesia"&gt;
+&lt;p&gt;
+&lt;a href="https://github.com/karlicoss/promnesia"&gt;Promnesia&lt;/a&gt; is an extension for enhancing your browser history.
+It unifies the browsing history, which is siloed in various apps and services; and lets you explore the history in context, showing the information on where and how you've encountered the links.
+If you want to learn more about it, check out &lt;a href="https://github.com/karlicoss/promnesia#demos"&gt;demos&lt;/a&gt;, here I'll only concentrate on demonstrating Roam.
+&lt;/p&gt;
+&lt;p&gt;
+To use Roam data in Promnesia, all you need is to add a small bit to the &lt;a href="https://github.com/karlicoss/promnesia/blob/master/config.py.example"&gt;config&lt;/a&gt;:
+&lt;/p&gt;
+&lt;div class="org-src-container"&gt;
+&lt;pre class="src src-python"&gt;&lt;span class="org-keyword"&gt;from&lt;/span&gt; promnesia.sources &lt;span class="org-keyword"&gt;import&lt;/span&gt; roamresearch
+&lt;span class="org-variable-name"&gt;SOURCES&lt;/span&gt; = [
+   ...,
+   Source(roamresearch.index, name=&lt;span class="org-string"&gt;'roam'&lt;/span&gt;),
+   ...,
+]
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;
+And that's it! This enables Roam Research module &lt;a href="https://github.com/karlicoss/promnesia/blob/master/src/promnesia/sources/roamresearch.py"&gt;(40 lines of code)&lt;/a&gt;, which consumes the data from &lt;a class="link-up" href="#dal"&gt;HPI&lt;/a&gt;.
+&lt;/p&gt;
+&lt;p&gt;
+You can also index others' public Roam databases. If Roam is a second brain, this can be a way of &lt;b&gt;interfacing with others' second brains&lt;/b&gt;!
+&lt;/p&gt;
+&lt;p&gt;
+I've &lt;a href="https://www.youtube.com/watch?v=wyJI96AH91o"&gt;recorded a demo&lt;/a&gt;, showing various workflows for your Roam data, which are enabled by Promnesia.
+&lt;/p&gt;
+&lt;p&gt;
+Here's a text summary of the features, demonstrated in the video:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;p&gt;
+the sidebar
+&lt;/p&gt;
+&lt;p&gt;
+Shows your browsing history for the &lt;b&gt;current page&lt;/b&gt; along with the source, timestamp, and the &lt;b&gt;context&lt;/b&gt;, in which the link occurred.
+&lt;/p&gt;
+&lt;p&gt;
+Clicking on the permalink brings us straight to the outline within the Roam Research web app.
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;p&gt;
+what are the &lt;b&gt;github repositories&lt;/b&gt; saved in this Roam database?
+&lt;/p&gt;
+&lt;p&gt;
+If you open the sidebar on &lt;samp class="inline"&gt;github.com&lt;/samp&gt;, you can see the subpages along with the contexts, in particular,
+links to all the github repositories saved in Roam.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+what are the &lt;b&gt;tweets&lt;/b&gt; saved in this Roam database
+&lt;/p&gt;
+&lt;p&gt;
+Similarly, if you open &lt;samp class="inline"&gt;twitter.com&lt;/samp&gt;, you can see all the tweets in your browsing history.
+If you open a specific Twitter profile, you get to see all the tweets from a specific person.
+&lt;/p&gt;
+&lt;p&gt;
+I find it extremely useful to recall when you've engaged with the content from a specific person,
+for example, to figure out whether you should follow them.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;b&gt;full text search&lt;/b&gt; over your browsing history&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+&lt;b&gt;how did I get on this page&lt;/b&gt;?
+&lt;/p&gt;
+&lt;p&gt;
+You can trace through all of your history to remember why you bookmarked a page.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+what links on this page have I already visited?
+&lt;/p&gt;
+&lt;p&gt;
+When you press 'mark visited', Promnesia highlights the links you've already visited so you can explore new information more efficiently.
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+There is some room for improvement, especially in terms of the UI (e.g. markup handling could be better), but these are easy to fix.
+&lt;/p&gt;
+&lt;p&gt;
+These workflows aren't unique to Roam, and possible with many other data sources.
+Promnesia already supports &lt;a href="https://github.com/karlicoss/promnesia/tree/master/src/promnesia/sources"&gt;many&lt;/a&gt;, and adding new is very easy.
+You can find find more links, screenshots, and demos in the &lt;a href="https://github.com/karlicoss/promnesia#demos"&gt;repository&lt;/a&gt;.
+&lt;/p&gt;
+&lt;p&gt;
+Thanks for watching, check it out, and let me know if you can think of other cool features!
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-2"&gt;
+&lt;h2 id="fin"&gt;&lt;a class="headerlink" href="#fin"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;7&lt;/span&gt; --&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-fin"&gt;
+&lt;p&gt;
+Happy to hear your feedback or help you set up the tools I mention!
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;/section&gt;
+
+    
+    &lt;section class="footer"&gt;
+        &lt;div class="post-tags"&gt;&lt;a class="post-tag" href="./tags.html#infra"&gt;#infra&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#hpi"&gt;#hpi&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#orger"&gt;#orger&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#promnesia"&gt;#promnesia&lt;/a&gt; &lt;/div&gt;
+        &lt;!-- TODO post-date? --&gt;
+        &lt;div class="date"&gt;20 April 2020&lt;/div&gt;
+    &lt;/section&gt;
+    
+
+    
+
+    &lt;section class="comments"&gt;
+    &lt;script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js"&gt;
+&lt;/script&gt;
+
+&lt;section data-isso-id="isso_myinfra_roam" id="isso-thread"&gt;&lt;/section&gt;
+    &lt;/section&gt;
+
+&lt;/article&gt;
+        &lt;/main&gt;
+
+        &lt;!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... --&gt;
+        
+
+        &lt;!-- TODO make semantic --&gt;
+        &lt;footer&gt;
+            &lt;span style="float:left"&gt;
+            &lt;a href="https://twitter.com/karlicoss"&gt;🐦 me @twitter&lt;/a&gt;
+            ·
+            &lt;a href="https://github.com/karlicoss"&gt;💻 me @github&lt;/a&gt;
+            &lt;/span&gt;
+
+            &lt;a href="http://creativecommons.org/licenses/by/4.0"&gt;CC BY 4.0&lt;/a&gt;
+            
+            
+        &lt;/footer&gt;
+    
+&lt;/body&gt;&lt;/html&gt;</content>
+    <link href="https://beepb00p.xyz/myinfra-roam.html" rel="alternate"/>
+    <published>2020-04-20T00:00:00+00:00</published>
+  </entry>
   <entry>
     <id>https://beepb00p.xyz/configs-suck.html</id>
     <title>Your configs suck? Try a real programming language.</title>
@@ -1171,6 +1861,10 @@ Here's an (incomplete) list of the modules in the public package:
 &lt;td class="org-left"&gt;Github events and their metadata: comments/issues/pull requests&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/core/cachew.py"&gt;my.core.cachew&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;# TODO this probably belongs to cachew? or cachew.experimental&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/emfit"&gt;my.emfit&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://shop-eu.emfit.com/products/emfit-qs"&gt;Emfit QS&lt;/a&gt; sleep tracker&lt;/td&gt;
 &lt;/tr&gt;
@@ -1400,12 +2094,6 @@ Single import away from getting tracks you listened to:
 scrobbles[200: 205]
 &lt;/pre&gt;
 &lt;/div&gt;
-&lt;pre class="example"&gt;[Scrobble(raw={'album': 'Nevermind', 'artist': 'Nirvana', 'date': '1282488504', 'name': 'Drain You'}),
- Scrobble(raw={'album': 'Dirt', 'artist': 'Alice in Chains', 'date': '1282489764', 'name': 'Would?'}),
- Scrobble(raw={'album': 'Bob Dylan: The Collection', 'artist': 'Bob Dylan', 'date': '1282493517', 'name': 'Like a Rolling Stone'}),
- Scrobble(raw={'album': 'Dark Passion Play', 'artist': 'Nightwish', 'date': '1282493819', 'name': 'Amaranth'}),
- Scrobble(raw={'album': 'Rolled Gold +', 'artist': 'The Rolling Stones', 'date': '1282494161', 'name': "You Can't Always Get What You Want"})]
-&lt;/pre&gt;
 &lt;p&gt;
 Or, as a pandas frame to make it pretty:
 &lt;/p&gt;
@@ -1419,13 +2107,10 @@ Or, as a pandas frame to make it pretty:
 cdf[200: 205]
 &lt;/pre&gt;
 &lt;/div&gt;
-&lt;pre class="example"&gt;                                                                       track
-dt                                                                          
-2010-08-22 14:48:24+00:00                                Nirvana — Drain You
-2010-08-22 15:09:24+00:00                           Alice in Chains — Would?
-2010-08-22 16:11:57+00:00                   Bob Dylan — Like a Rolling Stone
-2010-08-22 16:16:59+00:00                               Nightwish — Amaranth
-2010-08-22 16:22:41+00:00  The Rolling Stones — You Can't Always Get What...
+&lt;pre class="example"&gt;Traceback (most recent call last):
+  File "&amp;lt;stdin&amp;gt;", line 7, in &amp;lt;module&amp;gt;
+  File "&amp;lt;string&amp;gt;", line 5, in &amp;lt;module&amp;gt;
+NameError: name 'scrobbles' is not defined
 &lt;/pre&gt;
 &lt;p&gt;
 We can use &lt;a href="https://github.com/martijnvermaat/calmap"&gt;calmap&lt;/a&gt; library to plot a github-style music listening activity heatmap:
@@ -1445,10 +2130,9 @@ plt.savefig(plot_file)
 plot_file
 &lt;/pre&gt;
 &lt;/div&gt;
-&lt;div class="figure"&gt;
-&lt;p&gt;&lt;img alt="lastfm_2018.png" src="lastfm_2018.png"/&gt;
+&lt;p&gt;
+&lt;a defined="" file="" href="Traceback (most recent call last): File " in="" is="" line="" name="" nameerror:="" not=""&gt;Traceback (most recent call last): File "&amp;lt;stdin&amp;gt;", line 7, in &amp;lt;module&amp;gt; File "&amp;lt;string&amp;gt;", line 5, in &amp;lt;module&amp;gt; NameError: name 'cdf' is not defined &lt;/a&gt;
 &lt;/p&gt;
-&lt;/div&gt;
 &lt;p&gt;
 This isn't necessarily very insightful data, but fun to look at now and then!
 &lt;/p&gt;
@@ -8869,979 +9553,5 @@ strong multicollinearity or other numerical problems.
 &lt;/body&gt;&lt;/html&gt;</content>
     <link href="https://beepb00p.xyz/exercise-bike-model.html" rel="alternate"/>
     <published>2019-12-08T00:00:00+00:00</published>
-  </entry>
-  <entry>
-    <id>https://beepb00p.xyz/scrapyroo.html</id>
-    <title>Scrapyroo</title>
-    <updated>2019-11-19T00:00:00+00:00</updated>
-    <content type="html">&lt;!DOCTYPE html&gt;
-&lt;html lang="en" prefix="og: http://ogp.me/ns#"&gt;&lt;head&gt;
-        &lt;meta charset="utf-8"/&gt;
-        &lt;meta content="width=device-width, initial-scale=1" name="viewport"/&gt;
-
-        &lt;!-- Icon made by Twitter --&gt;
-        &lt;!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html --&gt;
-        &lt;link href="./robot-face.png" rel="icon"/&gt;
-        &lt;link href="./robot-face.png" rel="apple-touch-icon"/&gt;
-
-        &lt;meta content="hakyll" name="generator"/&gt;
-        &lt;meta content="English" name="language"/&gt;
-        
-        &lt;meta content="infra scraping rust" name="keywords"/&gt;
-        
-        &lt;!-- TODO concat with keywords tags; also need to make comma separated? --&gt;
-
-        &lt;title&gt;Scrapyroo | beepb00p&lt;/title&gt;
-
-        &lt;link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css"/&gt;
-        &lt;link href="./css/default.css?v=3" rel="stylesheet"/&gt;
-        &lt;!-- TODO make conditional?? --&gt;
-        &lt;link href="./css/posts-list.css" rel="stylesheet"/&gt; 
-        &lt;link href="./css/links.css?v=4" rel="stylesheet"/&gt;
-
-        
-
-        &lt;link href="https://beepb00p.xyz/scrapyroo.html" rel="canonical"/&gt;
-
-        &lt;!-- can test it with https://telegram.me/webpagebot --&gt;
-        &lt;!-- or https://developers.facebook.com/tools/debug --&gt;
-        &lt;meta content="website" property="og:type"/&gt;
-        &lt;meta content="https://beepb00p.xyz/scrapyroo.html" property="og:url"/&gt; &lt;!-- TODO base? --&gt;
-        &lt;meta content="Scrapyroo | beepb00p" property="og:title"/&gt;
-        &lt;meta content="How I was unhappy about Deliveroo search and implemented my own" property="og:description"/&gt;
-        &lt;!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s --&gt;
-        &lt;!-- ugh. Facebook really wants jpg? --&gt;
-        &lt;!-- also Facebook displays it with black background, but whatever, fuck it. --&gt;
-        &lt;meta content="https://beepb00p.xyz/robot-face.jpg" property="og:image"/&gt;
-
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;!-- TODO make semantic --&gt;
-        &lt;header&gt;
-            &lt;nav&gt;
-                &lt;span class="nav-left"&gt;
-                    &lt;a class="fat" href="./"&gt;Home&lt;/a&gt;
-                    &lt;!-- TODO eh, not sure if this symbol is good for that... --&gt;
-                    ·
-                    &lt;a class="fat" href="./ideas.html"&gt;Ideas&lt;/a&gt;
-                    ·
-                    &lt;a class="fat" href="./exobrain"&gt;Exobrain&lt;/a&gt;
-                    ·
-                    &lt;a class="fat" href="./tags.html"&gt;Tags&lt;/a&gt;
-                &lt;/span&gt;
-                &lt;span class="nav-right"&gt;
-                    &lt;a class="fat" href="./feed.html"&gt;Feed&lt;/a&gt;
-                    ·
-                    &lt;a class="fat" href="./site.html"&gt;Site&lt;/a&gt;
-                    ·
-                    &lt;a class="fat" href="./me.html"&gt;Me&lt;/a&gt;
-                &lt;/span&gt;
-            &lt;/nav&gt;
-        &lt;/header&gt;
-
-        &lt;main&gt;
-            
-
-&lt;!-- &lt;link rel="stylesheet" href="/css/org.css" /&gt; --&gt;
-
-&lt;link href="./css/htmlize.css" rel="stylesheet"/&gt;
-&lt;link href="./css/org-default.css" rel="stylesheet"/&gt;
-
-&lt;link href="./css/org-extra.css?v=3" rel="stylesheet"/&gt;
-
-
-
-&lt;article&gt;
-    
-    &lt;section class="post-title"&gt;
-    &lt;h1&gt;Scrapyroo&lt;/h1&gt;
-    &lt;div class="summary"&gt;How I was unhappy about Deliveroo search and implemented my own
-    &lt;/div&gt;&lt;/section&gt;
-    &lt;!-- are sections appropriate for that? --&gt;
-
-    &lt;section class="content"&gt;
-    &lt;div id="table-of-contents"&gt;
-&lt;h2&gt;Table of Contents&lt;/h2&gt;
-&lt;div id="text-table-of-contents"&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="#org0000000"&gt;1. Past Rust experience&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#org0000001"&gt;2. Deliveroo is great!&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#org0000006"&gt;3. The problem&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#org000000b"&gt;4. What can we do?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#scrapyroo"&gt;5. Scrapy&lt;font color="#b7410e"&gt;r&lt;/font&gt;&lt;font color="#00ccbc"&gt;oo&lt;/font&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#org000000d"&gt;6. Why Tantivy?&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#org000000f"&gt;7. Tantivy: good&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#tantivy_bad"&gt;8. Tantivy: bad&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#org0000012"&gt;9. Enhancing Tantivy&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#org0000013"&gt;10. Contributions back&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#org0000014"&gt;11. Outtakes&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#org0000015"&gt;12. Credits&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#fin"&gt;13. Thanks!&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#org0000018"&gt;14. Appendix: Tantivy details&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#org000001c"&gt;15. Appendix: random Rust things&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;style&gt;.NOTES {background-color: lightgray;}&lt;/style&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-These are my slides + speaker notes from &lt;a href="https://www.meetup.com/Rust-London-User-Group/events/266262531"&gt;November Rust London User Group meetup&lt;/a&gt;. 
-Huge thanks to &lt;a href="https://twitter.com/ernestkissiedu"&gt;Ernest&lt;/a&gt; for organising!
-&lt;/p&gt;
-&lt;p&gt;
-Presentation is done in org-reveal and source is available &lt;a href="https://github.com/karlicoss/scrapyroo-slides"&gt;here&lt;/a&gt;. &lt;b&gt;Grey areas are speaker notes&lt;/b&gt;, rest are actual slides.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-Hi, I'm Dima and today I'm gonna tell you about &lt;a href="https://github.com/karlicoss/scrapyroo"&gt;Scrapyroo&lt;/a&gt;, which is a tool I built to search over Deliveroo menus and make my life a bit easier.
-&lt;/p&gt;
-&lt;p&gt;
-The tool was made possible by &lt;a href="https://github.com/tantivy-search/tantivy"&gt;Tantivy&lt;/a&gt;, &lt;a href="https://github.com/scrapy/scrapy"&gt;scrapy&lt;/a&gt; and &lt;a href="https://reactjs.org"&gt;React&lt;/a&gt;
-&lt;/p&gt;
-&lt;p&gt;
-Also just to make clear: I'm not employed by Deliveroo!
-So it's not like I'm just pitching you the feature I implemented on my day job :P
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="outline-2"&gt;
-&lt;h2 id="org0000000"&gt;&lt;a class="headerlink" href="#org0000000"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;1&lt;/span&gt; Past Rust experience&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-1"&gt;
-&lt;p&gt;
-Virtually none apart from some Project Euler.
-&lt;/p&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-This time I also got away with not writing much of new Rust code.
-Which is a good thing! Library I'm going to tell you about does deals with most of complicated and tedious stuff.
-&lt;/p&gt;
-&lt;p&gt;
-But this is my first proper interaction with the Rust ecosystem.
-&lt;/p&gt;
-&lt;p&gt;
-I am comfortable with many different other programming languages though and have been following Rust news, so haven't struggled with the languages specifically.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-2"&gt;
-&lt;h2 id="org0000001"&gt;&lt;a class="headerlink" href="#org0000001"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;2&lt;/span&gt; Deliveroo is great!&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-2"&gt;
-&lt;p&gt;
-I can't imagine ordering food without a service like this.
-&lt;/p&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-Not sure if there are any Deliveroo employees here, but I want to thank you for a great product!
-&lt;/p&gt;
-&lt;p&gt;
-As a millennial/someone born in mid 90s, I am imagining life before services like Deliveroo and Uber as some sort of dark ages.
-&lt;/p&gt;
-&lt;p&gt;
-My older friends told me some dreadful stories. Apparently you'd browse through paper menus, have to phone call the operator and coordinate the courier?
-&lt;/p&gt;
-&lt;p&gt;
-Brrr.. I'm lucky to live now.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-2"&gt;
-&lt;h2 id="org0000006"&gt;&lt;a class="headerlink" href="#org0000006"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;3&lt;/span&gt; The problem&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-3"&gt;
-&lt;p&gt;
-No search by menus, only restaurants/cuisines :(
-&lt;/p&gt;
-&lt;p&gt;
-It's ok for getting &lt;b&gt;something&lt;/b&gt; to eat, but not great when you know what you want to order.
-&lt;/p&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-UPDATE: Some spooky stuff happened 🎃
-On the morning of Tuesday, 19 November when I was to give this talk I found out that the search bar on Deliveroo has gone from "Restaurants or cuisines" to "Dishes, restaurants or cuisines"!
-&lt;/p&gt;
-&lt;p&gt;
-Which meant  that Deliveroo supported searching in dish names.
-I thought I'd gone bonkers until few of my friends confirmed that they didn't remember that and it must have been added very recently, over the weekend.
-&lt;/p&gt;
-&lt;p&gt;
-I like to think that I'm very important and that wasn't a coincidence so maybe I have some sort of superpower.
-If you miss a feature in some web service you're using, let me know, maybe I can implement it and that would get the service to implement it too :P (could start with editing tweets, perhaps?)
-&lt;/p&gt;
-&lt;p&gt;
-So, you can search in dishes too now, however hopefully that doesn't make my tool irrelevant, you'd be able to see for yourself later.
-(e.g. full text menu search, not just titles, search as you type, queries)
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-3"&gt;
-&lt;h3 id="org0000002"&gt;&lt;a class="headerlink" href="#org0000002"&gt;¶&lt;/a&gt;&lt;span class="section-number-3"&gt;3.1&lt;/span&gt; You can't find specific dishes!&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-3-1"&gt;
-&lt;ul class="org-ul"&gt;
-&lt;li&gt;craving things&lt;/li&gt;
-&lt;li&gt;varying your diet&lt;/li&gt;
-&lt;li&gt;accommodating multiple people's prefs at the same time&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-Why would you want this?
-&lt;/p&gt;
-&lt;ul class="org-ul"&gt;
-&lt;li&gt;Craving: e.g. if you want to treat yourself with some dessert, better get something you'd &lt;b&gt;really&lt;/b&gt; enjoy instead of mediocre one because that's what the restaurant offered.&lt;/li&gt;
-&lt;li&gt;Varying: I'm trying to expose myself to all kinds of food to make sure I'm not missing on some important nutrients.&lt;/li&gt;
-&lt;li&gt;Multiple people: you and your friends want different things and you need to choose a single restaurant to order from.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-3"&gt;
-&lt;h3 id="org0000003"&gt;&lt;a class="headerlink" href="#org0000003"&gt;¶&lt;/a&gt;&lt;span class="section-number-3"&gt;3.2&lt;/span&gt; &lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-3-2"&gt;
-&lt;div class="figure"&gt;
-&lt;p&gt;&lt;img alt="categories.png" src="pic/categories.png"/&gt;
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-Just to demonstrate what I'm talking about, here's the Deliveroo web interface (mobile looks similar).
-&lt;/p&gt;
-&lt;p&gt;
-You can filter by dietary restrictions, fair enough, but then finest you can do is to pick "Categories".
-&lt;/p&gt;
-&lt;p&gt;
-Some of them kinda make sense (e.g. "Bagels"), some of them are too broad (e.g. what is "Asian/American"? could be anything).
-Some of them are just plain weird, like what is "Back to school" supposed to mean?
-&lt;/p&gt;
-&lt;p&gt;
-This is the best you're gonna get from Deliveroo.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-3"&gt;
-&lt;h3 id="org0000004"&gt;&lt;a class="headerlink" href="#org0000004"&gt;¶&lt;/a&gt;&lt;span class="section-number-3"&gt;3.3&lt;/span&gt; &lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-3-3"&gt;
-&lt;div class="figure"&gt;
-&lt;p&gt;&lt;img alt="tabs.png" src="pic/tabs.png"/&gt;
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-Say, you want some grilled tuna and green vegetables. 
-&lt;/p&gt;
-&lt;p&gt;
-Best you can do is open all 15 places that serve fish in different tabs,
-Ctrl-F tuna and then try to decide among them.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-3"&gt;
-&lt;h3 id="org0000005"&gt;&lt;a class="headerlink" href="#org0000005"&gt;¶&lt;/a&gt;&lt;span class="section-number-3"&gt;3.4&lt;/span&gt; Sad!&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-3-4"&gt;
-&lt;p&gt;
-Full text search is a basic human right!     
-&lt;/p&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-I asked people and apparently they just accepted and never questioned that sad workflow!  
-&lt;/p&gt;
-&lt;p&gt;
-It feels especially wrong to me because human brains are good at creative things.
-Not so good at stuff like text search – that's one of things computers are &lt;b&gt;exceptionally&lt;/b&gt; good at and we're ought to exploit that.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-2"&gt;
-&lt;h2 id="org000000b"&gt;&lt;a class="headerlink" href="#org000000b"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;4&lt;/span&gt; What can we do?&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-4"&gt;
-&lt;ul class="org-ul"&gt;
-&lt;li&gt;&lt;p&gt;
-scrape menu data off Deliveroo website
-&lt;/p&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-e.g. every day at 10 AM
-&lt;/p&gt;
-&lt;p&gt;
-About 600 restaurants deliver to my postcode.
-&lt;/p&gt;
-&lt;p&gt;
-Results in huge json file.
-&lt;/p&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;
-index menu data
-&lt;/p&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-Indexing needed mostly because I want
-&lt;/p&gt;
-&lt;ul class="org-ul"&gt;
-&lt;li&gt;search operators&lt;/li&gt;
-&lt;li&gt;stemming, e.g. removing inflection, so there's no difference, between 'grill and grilled'&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;backend to serve indexed data&lt;/li&gt;
-&lt;li&gt;frontend to search in the data&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="outline-3"&gt;
-&lt;h3 id="org0000007"&gt;&lt;a class="headerlink" href="#org0000007"&gt;¶&lt;/a&gt;&lt;span class="section-number-3"&gt;4.1&lt;/span&gt; Scraping menus&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-4-1"&gt;
-&lt;p&gt;
-Python (&lt;a href="https://github.com/scrapy/scrapy"&gt;scrapy&lt;/a&gt;). Almost no need for HTML parsing!
-&lt;/p&gt;
-&lt;div class="figure"&gt;
-&lt;p&gt;&lt;img alt="json.png" src="pic/json.png"/&gt;
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-To try it for yourself, go to some restaurant, e.g.
-&lt;a href="https://deliveroo.co.uk/menu/london/spitalfields/tokyo-sushi-finsbury-park"&gt;https://deliveroo.co.uk/menu/london/spitalfields/tokyo-sushi-finsbury-park&lt;/a&gt;
-open chrome inspector and type &lt;code class="inline"&gt;{"&lt;/code&gt; .  &lt;code class="inline"&gt;js-react-on-rails-context&lt;/code&gt; should be among the results.
-&lt;/p&gt;
-&lt;p&gt;
-If there are any Deliveroo developers here, sorry for public dissection of your website!
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-3"&gt;
-&lt;h3 id="org0000008"&gt;&lt;a class="headerlink" href="#org0000008"&gt;¶&lt;/a&gt;&lt;span class="section-number-3"&gt;4.2&lt;/span&gt; Scraping menus&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-4-2"&gt;
-&lt;div class="org-src-container"&gt;
-&lt;pre class="src src-json"&gt;{
-  "urls": ["/menu/london/liverpool-street/pub-classics-from-greene-king-bishopsgate"],
-  "delivery_location": { "address": [ -0.0623, 51.123 ]},
-  "id": 189155,
-  "name": "Pub Classics from Greene King - Kings Arms",
-  "description": "Bringing the pub to your door",
-  "uname": "pub-classics-from-greene-king-bishopsgate",
-  "menu": {"items": [
-     {
-	 "id": 31299189,
-	 "name": "Chickpea, Red Pepper &amp;amp; Hoisin Burger (VE)",
-	 "description": "Chickpea and mixed vegetable burger",
-	 "price": "\u00a310.79"
-     },
-     {
-	 "id": 31085809,
-	 "name": "Fish &amp;amp; Chips with Wine for 2",
-	 "description": "2 x cod with chips and a bottle of wine\r\n",
-	 "price": "\u00a338.99"
-     }
-  ]}
-}
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-We get something like that (I've filtered out irrelevant stuff) for each restaurant.
-&lt;/p&gt;
-&lt;p&gt;
-Scraped json data is kept separately to checkpoint in case scraping/indexing fails.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-3"&gt;
-&lt;h3 id="org0000009"&gt;&lt;a class="headerlink" href="#org0000009"&gt;¶&lt;/a&gt;&lt;span class="section-number-3"&gt;4.3&lt;/span&gt; Indexing menus &amp;amp; serving data&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-4-3"&gt;
-&lt;p&gt;
-&lt;a href="https://github.com/tantivy-search/tantivy"&gt;Tantivy&lt;/a&gt;!   
-&lt;/p&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-I'm going to be explaining why it works well later in the presentation.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-3"&gt;
-&lt;h3 id="org000000a"&gt;&lt;a class="headerlink" href="#org000000a"&gt;¶&lt;/a&gt;&lt;span class="section-number-3"&gt;4.4&lt;/span&gt; Frontend&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-4-4"&gt;
-&lt;p&gt;
-HTML and some Javascript/React
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-2"&gt;
-&lt;h2 id="scrapyroo"&gt;&lt;a class="headerlink" href="#scrapyroo"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;5&lt;/span&gt; Scrapy&lt;font color="#b7410e"&gt;r&lt;/font&gt;&lt;font color="#00ccbc"&gt;oo&lt;/font&gt;&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-scrapyroo"&gt;
-&lt;p&gt;
-(Live demo). You can try it here: &lt;a href="https://scrapyroo.karlicoss.xyz"&gt;scrapyroo.karlicoss.xyz&lt;/a&gt;
-&lt;/p&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-Note that this only indexes my district (Whitechapel).
-Also not sure for how long I'll expose it, but I'll make a demo video before shutting it down.
-&lt;/p&gt;
-&lt;p&gt;
-Also there is a screenshot in &lt;a href="https://github.com/karlicoss/scrapyroo"&gt;readme&lt;/a&gt;.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-3"&gt;
-&lt;h3 id="org000000c"&gt;&lt;a class="headerlink" href="#org000000c"&gt;¶&lt;/a&gt;&lt;span class="section-number-3"&gt;5.1&lt;/span&gt; Features&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-5-1"&gt;
-&lt;ul class="org-ul"&gt;
-&lt;li&gt;&lt;p&gt;
-search queries
-&lt;/p&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-demo: say you want some halloumi and green vegetables.
-&lt;/p&gt;
-&lt;p&gt;
-Type: 'halloumi AND vegetables'. Whoa, vegetable smoothie in results? No, thank you.
-So we can use phrase query (quotes) and exclusive query (-): add 'AND -"vegetable smoothie"'. Ah, that's better now!
-&lt;/p&gt;
-&lt;p&gt;
-Say you also want some desert. Add 'AND cheesecake' or 'AND "ice cream"'. Nice, few places actually serve this combination!
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-Or you're ordering with two other friends. 
-&lt;/p&gt;
-&lt;p&gt;
-You want prawns, another one wants chicken salad, and the third wants some feta.
-&lt;/p&gt;
-&lt;p&gt;
-'prawns AND "chicken salad" AND "feta"' – and we instantly find few matches!
-&lt;/p&gt;
-&lt;p&gt;
-Without full text search there is no way you would ever find it, and someone would be unsatisfied about collective choice.
-&lt;/p&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;
-search as you type
-&lt;/p&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-At the moment requests index on almost every keystroke, would be nice to keep a persistent connection,
-although that's something that is hard to implement in a generic way.
-&lt;/p&gt;
-&lt;p&gt;
-Demonstrate in dev tools
-&lt;/p&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;works from phone as well as desktop browser&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="NOTES"&gt;
-&lt;ul class="org-ul"&gt;
-&lt;li&gt;show debug mode? maybe later if I got a bit more time&lt;/li&gt;
-&lt;li&gt;ui perhaps is a bit rough&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-2"&gt;
-&lt;h2 id="org000000d"&gt;&lt;a class="headerlink" href="#org000000d"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;6&lt;/span&gt; Why Tantivy?&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-6"&gt;
-&lt;ul class="org-ul"&gt;
-&lt;li&gt;&lt;p&gt;
-initial &lt;a href="https://lunrjs.com"&gt;lunrjs&lt;/a&gt; implementation was visibly laggy even on desktop
-&lt;/p&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-Need to carry data inside the huge html – not that great.
-&lt;/p&gt;
-&lt;p&gt;
-You need internet anyway to make an order, so I didn't mind having a proper backend.
-&lt;/p&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;
-also, why not?
-&lt;/p&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-Wanted to try out Rust for some real project.
-&lt;/p&gt;
-&lt;p&gt;
-Never used any other search engine libraries and was recommended Tantivy.
-&lt;/p&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-2"&gt;
-&lt;h2 id="org000000f"&gt;&lt;a class="headerlink" href="#org000000f"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;7&lt;/span&gt; Tantivy: good&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-7"&gt;
-&lt;p&gt;
-Features:
-&lt;/p&gt;
-&lt;ul class="org-ul"&gt;
-&lt;li&gt;&lt;p&gt;
-&lt;a href="https://docs.rs/tantivy/0.10.3/tantivy/struct.Snippet.html"&gt;highlight positions&lt;/a&gt;, snippets
-&lt;/p&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-alt-tab to the presentation and show what I mean by snippets?
-&lt;/p&gt;
-&lt;p&gt;
-Without the snippets: pretty sad. 
-&lt;/p&gt;
-&lt;p&gt;
-Demonstrate lack of snippets:
-&lt;/p&gt;
-&lt;ul class="org-ul"&gt;
-&lt;li&gt;disable highlights in chrome inspector&lt;/li&gt;
-&lt;li&gt;tick 'show unmatched'&lt;/li&gt;
-&lt;li&gt;untick 'show matched first'&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;
-&lt;a href="https://docs.rs/tantivy/0.10.3/tantivy/struct.IndexWriter.html"&gt;transactional&lt;/a&gt; index updates
-&lt;/p&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-add/delete/rollback/commit
-&lt;/p&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;
-&lt;a href="https://docs.rs/tantivy/0.10.3/tantivy/enum.ReloadPolicy.html"&gt;autoreloading&lt;/a&gt; latest commit in searchers 
-&lt;/p&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-
-Caveat: have to be careful when deploying index remotely, &lt;code class="inline"&gt;meta.json&lt;/code&gt; file has to be deployed &lt;b&gt;last&lt;/b&gt;!
-&lt;/p&gt;
-&lt;p&gt;
-I'm in progress of writing up a github issue, will put the link here.  
-&lt;/p&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/tantivy-search/tantivy-py"&gt;Python bindings&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;
-well documented, easy to modify
-&lt;/p&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-Mention &lt;a href="https://tantivy-search.github.io/tantivy/tantivy/schema/struct.Facet.html"&gt;facets&lt;/a&gt;? 
-&lt;/p&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="outline-3"&gt;
-&lt;h3 id="org000000e"&gt;&lt;a class="headerlink" href="#org000000e"&gt;¶&lt;/a&gt;&lt;span class="section-number-3"&gt;7.1&lt;/span&gt; Tantivy CLI: awesome&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-7-1"&gt;
-&lt;p&gt;
-Takes you from zero to prototype in a matter of &lt;b&gt;minutes&lt;/b&gt; without distracting on irrelevant stuff.
-&lt;/p&gt;
-&lt;div class="org-src-container"&gt;
-&lt;pre class="src src-bash"&gt;tantivy-cli new    -i your_index  &lt;span class="org-comment-delimiter"&gt;# &lt;/span&gt;&lt;span class="org-comment"&gt;interactive!&lt;/span&gt;
-tantivy-cli index  -i your_index &amp;lt; data.jsonl
-tantivy-cli serve  -i your_index &lt;span class="org-comment-delimiter"&gt;# &lt;/span&gt;&lt;span class="org-comment"&gt;http interface&lt;/span&gt;
-tantivy-cli search -i your_index -q &lt;span class="org-string"&gt;"spinach AND paneer"&lt;/span&gt; &lt;span class="org-comment-delimiter"&gt;# &lt;/span&gt;&lt;span class="org-comment"&gt;cli queries&lt;/span&gt;
-tantivy-cli bench  &lt;span class="org-comment-delimiter"&gt;# &lt;/span&gt;&lt;span class="org-comment"&gt;query benchmarking&lt;/span&gt;
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-And I'm not exaggerating about minutes!
-You can index data and expose it to your frontend without a singe line of code.
-&lt;/p&gt;
-&lt;p&gt;
-I spent most time on scraping and frontend.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-2"&gt;
-&lt;h2 id="tantivy_bad"&gt;&lt;a class="headerlink" href="#tantivy_bad"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;8&lt;/span&gt; Tantivy: bad&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-tantivy_bad"&gt;
-&lt;ul class="org-ul"&gt;
-&lt;li&gt;&lt;p&gt;
-no nested document support (&lt;a href="https://github.com/tantivy-search/tantivy/issues/617"&gt;yet&lt;/a&gt;)
-&lt;/p&gt;
-&lt;ul class="org-ul"&gt;
-&lt;li&gt;would be nice to have queries like &lt;samp class="inline"&gt;starter:dumpling AND main:salad&lt;/samp&gt;&lt;/li&gt;
-&lt;li&gt;potentially less resource wasteful&lt;/li&gt;
-&lt;/ul&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-You can't return matched menu items only, have to index and serve the whole menu.
-&lt;/p&gt;
-&lt;p&gt;
-It's not too bad though, I'm getting around this by relying on line breaks to only display matched items.
-&lt;/p&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-2"&gt;
-&lt;h2 id="org0000012"&gt;&lt;a class="headerlink" href="#org0000012"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;9&lt;/span&gt; Enhancing Tantivy&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-9"&gt;
-&lt;p&gt;
-Rust observations:
-&lt;/p&gt;
-&lt;ul class="org-ul"&gt;
-&lt;li&gt;&lt;p&gt;
-single binary: very easy to deploy
-&lt;/p&gt;
-&lt;div class="org-src-container"&gt;
-&lt;pre class="src src-bash"&gt;cargo install tantivy-cli --root /Dropbox/soft/tantivy-cli
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-Especially on VPS, which only (huh!) got two cores and wouldn't handle compiling Rust well
-&lt;/p&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;
-&lt;a href="https://doc.rust-lang.org/edition-guide/rust-2018/platform-and-target-support/musl-support-for-fully-static-binaries.html"&gt;&lt;code class="inline"&gt;musl&lt;/code&gt;&lt;/a&gt;: minimal libc implementation
-&lt;/p&gt;
-&lt;div class="org-src-container"&gt;
-&lt;pre class="src src-bash"&gt;apt install musl-tools 
-rustup target add x86_64-unknown-linux-musl
-cargo build/install --target x86_64-unknown-linux-musl
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-Turned out my desktop and my VPS where I wanted to run the backend use different libc version.
-&lt;/p&gt;
-&lt;p&gt;
-Normally that would mean crosscompiling and all the associated horror.
-&lt;/p&gt;
-&lt;p&gt;
-With Rust it turned out to be a matter of adding a target via rustup and that's it!
-&lt;/p&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;
-&lt;a href="https://doc.rust-lang.org/rust-by-example/trait/derive.html"&gt;derive&lt;/a&gt; debug/serialize
-&lt;/p&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-First seen in Haskell!
-&lt;/p&gt;
-&lt;p&gt;
-Python: kind of there via NamedTuples/dataclasses
-&lt;/p&gt;
-&lt;p&gt;
-I often miss it in C++!
-You can implement it with templates, macros or &lt;code class="inline"&gt;boost::preprocessor&lt;/code&gt; depending on how much you hate yourself/your team :P
-But it's a very reasonable default feature to have.
-&lt;/p&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;div class="outline-3"&gt;
-&lt;h3 id="org0000010"&gt;&lt;a class="headerlink" href="#org0000010"&gt;¶&lt;/a&gt;&lt;span class="section-number-3"&gt;9.1&lt;/span&gt; &lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-9-1"&gt;
-&lt;p&gt;
-Cargo: &lt;b&gt;very&lt;/b&gt; easy to change dependency to local
-&lt;/p&gt;
-&lt;pre class="example"&gt;tantivy-cli/Cargo.toml:
-- tantivy = "0.10"
-+ tantivy = { path = "/coding/tantivy" }
-&lt;/pre&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-I managed to run this with the minimal effort.
-&lt;/p&gt;
-&lt;p&gt;
-There is tantivy, tantivy-cli and tantivy-py.
-I was experimenting with exposing this snippet API from tantivy so needed to change dependency.
-&lt;/p&gt;
-&lt;p&gt;
-To be fair, not too bad in pip:
-&lt;/p&gt;
-&lt;p&gt;
-&lt;code class="inline"&gt;pip3 install --user 'git+https://github.com/karlicoss/tantivy-py@delete-all-documents'&lt;/code&gt;
-&lt;/p&gt;
-&lt;p&gt;
-However, not discoverable via &lt;code class="inline"&gt;--help&lt;/code&gt;, you have to know what to look for!
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;ul class="org-ul"&gt;
-&lt;li&gt;&lt;p&gt;
-or, github: 
-&lt;/p&gt;
-&lt;div class="org-src-container"&gt;
-&lt;pre class="src src-bash"&gt;cargo install  &lt;span class="org-sh-escaped-newline"&gt;\&lt;/span&gt;
---git https://github.com/karlicoss/tantivy-cli &lt;span class="org-sh-escaped-newline"&gt;\&lt;/span&gt;
---branch serve-snippets
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-I had to patch tantivy a bit, and it would take me a bit of time to get PRs accepted to upstream.
-&lt;/p&gt;
-&lt;p&gt;
-You can try it as easy as you would 
-&lt;/p&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-3"&gt;
-&lt;h3 id="org0000011"&gt;&lt;a class="headerlink" href="#org0000011"&gt;¶&lt;/a&gt;&lt;span class="section-number-3"&gt;9.2&lt;/span&gt; &lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-9-2"&gt;
-&lt;p&gt;
-&lt;a href="https://github.com/tantivy-search/tantivy-py"&gt;tantivy-py&lt;/a&gt;: surprisingly simple integration
-&lt;/p&gt;
-&lt;ul class="org-ul"&gt;
-&lt;li&gt;&lt;p&gt;
-just &lt;code class="inline"&gt;pip install&lt;/code&gt; thanks to &lt;a href="https://github.com/PyO3/setuptools-rust"&gt;&lt;samp class="inline"&gt;setuptools-rust&lt;/samp&gt;&lt;/a&gt;.
-&lt;/p&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-Benefits from existing Rust ecosystem: e.g. can run &lt;code class="inline"&gt;cargo build&lt;/code&gt;, etc. You just write normal Rust code.
-&lt;/p&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;
-easy to interface
-&lt;/p&gt;
-&lt;div class="org-src-container"&gt;
-&lt;pre class="src src-rust"&gt;fn delete_all_documents(&amp;amp;mut self) -&amp;gt; PyResult&amp;lt;u64&amp;gt; {
-  self.inner_index_writer.delete_all_documents().map_err(to_pyerr)
-}
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;
-Powered by &lt;a href="https://github.com/PyO3/pyo3#using-rust-from-python"&gt;PyO3&lt;/a&gt;.
-&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-2"&gt;
-&lt;h2 id="org0000013"&gt;&lt;a class="headerlink" href="#org0000013"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;10&lt;/span&gt; Contributions back&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-10"&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-I figured Tantivy could benefit from some things I implemented.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;p&gt;
-Pull requests in progress:
-&lt;/p&gt;
-&lt;ul class="org-ul"&gt;
-&lt;li&gt;&lt;p&gt;
-exposing absolute highlight positions
-&lt;/p&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-&lt;a href="https://docs.rs/tantivy/0.10.2/tantivy/struct.Snippet.html#method.to_html"&gt;&lt;code class="inline"&gt;to_html&lt;/code&gt;&lt;/a&gt; isn't gonna work well, you'll want to restyle it.
-&lt;/p&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;
-React boilerplate to interact with CLI backend
-&lt;/p&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-Most of my time was spent on getting around frontend quirks, so that would make prototyping even easier.
-&lt;/p&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-2"&gt;
-&lt;h2 id="org0000014"&gt;&lt;a class="headerlink" href="#org0000014"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;11&lt;/span&gt; Outtakes&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-11"&gt;
-&lt;ul class="org-ul"&gt;
-&lt;li&gt;&lt;p&gt;
-rust &amp;amp; tantivy
-&lt;/p&gt;
-&lt;p&gt;
-Very pleasant experience, no frustration
-&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;
-my life is simpler now!
-&lt;/p&gt;
-&lt;p&gt;
-I don't have to waste time browsing through the website
-&lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;discovered places I'd have never found otherwise&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;
-you don't have to suffer from inconvenience in your life   
-&lt;/p&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-If you can program, you are literally capable of anything you can think of (well, given enough time :P).
-&lt;/p&gt;
-&lt;p&gt;
-You can bend the interactions with the outside world the way you want.
-&lt;/p&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-2"&gt;
-&lt;h2 id="org0000015"&gt;&lt;a class="headerlink" href="#org0000015"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;12&lt;/span&gt; Credits&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-12"&gt;
-&lt;ul class="org-ul"&gt;
-&lt;li&gt;&lt;p&gt;
-&lt;a href="https://github.com/petr-tik"&gt;github.com/petr-tik&lt;/a&gt;: ask him about Tantivy!
-&lt;/p&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-Petr pushed me to actually give a talk, helped with Tantivy and gave me lots of helpful advice on improving the presentation. Thank you!
-&lt;/p&gt;
-&lt;p&gt;
-He's passionate about Tantivy and will be happy to help you if you think something is missing or can be improved.
-&lt;/p&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://twitter.com/katya_titkova"&gt;Katya&lt;/a&gt;: beta testing and ghostwriting&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-2"&gt;
-&lt;h2 id="fin"&gt;&lt;a class="headerlink" href="#fin"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;13&lt;/span&gt; Thanks!&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-fin"&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-Questions?  
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;ul class="org-ul"&gt;
-&lt;li&gt;&lt;a href="https://github.com/karlicoss/scrapyroo"&gt;github.com/karlicoss/scrapyroo&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;
-&lt;a href="https://beepb00p.xyz/scrapyroo.html"&gt;beepb00p.xyz/scrapyroo.html&lt;/a&gt;: speaker notes!
-&lt;/p&gt;
-&lt;div class="NOTES"&gt;
-&lt;p&gt;
-The presentation will be available as plain text (as well as my notes), so hopefully you won't miss anything.
-&lt;/p&gt;
-&lt;/div&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;
-Tantivy: 
-&lt;/p&gt;
-&lt;ul class="org-ul"&gt;
-&lt;li&gt;&lt;a href="https://github.com/tantivy-search"&gt;github.com/tantivy-search&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://gitter.im/tantivy-search/tantivy"&gt;gitter.im/tantivy-search/tantivy&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://docs.rs/tantivy"&gt;docs.rs/tantivy&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;
-Me:
-&lt;/p&gt;
-&lt;ul class="org-ul"&gt;
-&lt;li&gt;💻 &lt;a href="https://github.com/karlicoss"&gt;github.com/karlicoss&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;🐦 &lt;a href="https://twitter.com/karlicoss"&gt;twitter.com/karlicoss&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-2"&gt;
-&lt;h2 id="org0000018"&gt;&lt;a class="headerlink" href="#org0000018"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;14&lt;/span&gt; Appendix: Tantivy details&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-14"&gt;
-&lt;/div&gt;
-&lt;div class="outline-3"&gt;
-&lt;h3 id="org0000016"&gt;&lt;a class="headerlink" href="#org0000016"&gt;¶&lt;/a&gt;&lt;span class="section-number-3"&gt;14.1&lt;/span&gt; how are scores calculated?&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-14-1"&gt;
-&lt;p&gt;
-See &lt;a href="https://docs.rs/tantivy/0.10.3/tantivy/query/struct.Explanation.html"&gt;&lt;code class="inline"&gt;Explanation&lt;/code&gt;&lt;/a&gt;. Basically builds a computation tree for a given match.
-&lt;/p&gt;
-&lt;p&gt;
-Demonstrate &lt;a href="https://docs.rs/tantivy/0.10.3/tantivy/query/trait.Query.html#method.explain"&gt;&lt;code class="inline"&gt;explain&lt;/code&gt;&lt;/a&gt; in logs?
-&lt;/p&gt;
-&lt;p&gt;
-'pretty' json is a little rough at the moment.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-3"&gt;
-&lt;h3 id="org0000017"&gt;&lt;a class="headerlink" href="#org0000017"&gt;¶&lt;/a&gt;&lt;span class="section-number-3"&gt;14.2&lt;/span&gt; how are snippets selected?&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-14-2"&gt;
-&lt;p&gt;
-Somewhat heuristic, see &lt;a href="https://github.com/tantivy-search/tantivy/blob/42756c7474317c2b1aa0610278b54c0bb0c70fb9/src/snippet/mod.rs#L144"&gt;&lt;code class="inline"&gt;search_fragment&lt;/code&gt;&lt;/a&gt;
-&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;
-The returned list is non-empty and contain less than 12 possibly overlapping fragments.
-&lt;/p&gt;
-&lt;p&gt;
-It is ok to emit non-overlapping fragments, for instance, one short and one long containing the same keyword, in order
-to leave optimization opportunity to the fragment selector upstream.
-&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-2"&gt;
-&lt;h2 id="org000001c"&gt;&lt;a class="headerlink" href="#org000001c"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;15&lt;/span&gt; Appendix: random Rust things&lt;/h2&gt;
-&lt;div class="outline-text-2" id="text-15"&gt;
-&lt;/div&gt;
-&lt;div class="outline-3"&gt;
-&lt;h3 id="org0000019"&gt;&lt;a class="headerlink" href="#org0000019"&gt;¶&lt;/a&gt;&lt;span class="section-number-3"&gt;15.1&lt;/span&gt; Unicode handling&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-15-1"&gt;
-&lt;p&gt;
-didn't have time to figure it out, so I just stripped all non-ascii
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-3"&gt;
-&lt;h3 id="org000001a"&gt;&lt;a class="headerlink" href="#org000001a"&gt;¶&lt;/a&gt;&lt;span class="section-number-3"&gt;15.2&lt;/span&gt; &lt;a href="https://github.com/serde-rs/serde"&gt;serde&lt;/a&gt; and &lt;code class="inline"&gt;#[derive(Serialize)]&lt;/code&gt;&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-15-2"&gt;
-&lt;p&gt;
-ran into &lt;a href="https://serde.rs/remote-derive.html"&gt;orphan rule&lt;/a&gt;
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;div class="outline-3"&gt;
-&lt;h3 id="org000001b"&gt;&lt;a class="headerlink" href="#org000001b"&gt;¶&lt;/a&gt;&lt;span class="section-number-3"&gt;15.3&lt;/span&gt; binary size:&lt;/h3&gt;
-&lt;div class="outline-text-3" id="text-15-3"&gt;
-&lt;pre class="example"&gt;/coding/tantivy-cli/target $ du -hd1
-2.2G	./x86_64-unknown-linux-musl
-2.2G	./debug
-1.5G	./release
-5.8G	.
-&lt;/pre&gt;
-&lt;p&gt;
-Not very cloud sync-friendly! However happily accepts symlink as &lt;code class="inline"&gt;target&lt;/code&gt; directory, so not too bad.
-&lt;/p&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-    &lt;/section&gt;
-
-    
-    &lt;section class="footer"&gt;
-        &lt;div class="post-tags"&gt;&lt;a class="post-tag" href="./tags.html#infra"&gt;#infra&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#scraping"&gt;#scraping&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#rust"&gt;#rust&lt;/a&gt; &lt;/div&gt;
-        &lt;!-- TODO post-date? --&gt;
-        &lt;div class="date"&gt;19 November 2019&lt;/div&gt;
-    &lt;/section&gt;
-    
-
-    
-
-    &lt;section class="comments"&gt;
-    &lt;script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js"&gt;
-&lt;/script&gt;
-
-&lt;section data-isso-id="isso_scrapyroo" id="isso-thread"&gt;&lt;/section&gt;
-    &lt;/section&gt;
-
-&lt;/article&gt;
-        &lt;/main&gt;
-
-        &lt;!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... --&gt;
-        
-
-        &lt;!-- TODO make semantic --&gt;
-        &lt;footer&gt;
-            &lt;span style="float:left"&gt;
-            &lt;a href="https://twitter.com/karlicoss"&gt;🐦 me @twitter&lt;/a&gt;
-            ·
-            &lt;a href="https://github.com/karlicoss"&gt;💻 me @github&lt;/a&gt;
-            &lt;/span&gt;
-
-            &lt;a href="http://creativecommons.org/licenses/by/4.0"&gt;CC BY 4.0&lt;/a&gt;
-            
-            
-        &lt;/footer&gt;
-    
-&lt;/body&gt;&lt;/html&gt;</content>
-    <link href="https://beepb00p.xyz/scrapyroo.html" rel="alternate"/>
-    <published>2019-11-19T00:00:00+00:00</published>
   </entry>
 </feed>
