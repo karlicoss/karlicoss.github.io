@@ -1581,7 +1581,31 @@ Here's a short example to give you an idea: "which subreddits I find the most in
 &lt;span class="org-keyword"&gt;from&lt;/span&gt; collections &lt;span class="org-keyword"&gt;import&lt;/span&gt; Counter
 &lt;span class="org-keyword"&gt;return&lt;/span&gt; Counter(s.subreddit &lt;span class="org-keyword"&gt;for&lt;/span&gt; s &lt;span class="org-keyword"&gt;in&lt;/span&gt; my.reddit.saved()).most_common(4)
 &lt;/pre&gt;
-&lt;/div&gt;&lt;/li&gt;
+&lt;/div&gt;
+&lt;table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups"&gt;
+&lt;colgroup&gt;
+&lt;col class="org-left"/&gt;
+&lt;col class="org-right"/&gt;
+&lt;/colgroup&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;orgmode&lt;/td&gt;
+&lt;td class="org-right"&gt;62&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;emacs&lt;/td&gt;
+&lt;td class="org-right"&gt;60&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;selfhosted&lt;/td&gt;
+&lt;td class="org-right"&gt;51&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;QuantifiedSelf&lt;/td&gt;
+&lt;td class="org-right"&gt;46&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div&gt;&lt;span class="before-aside"&gt;
 I consider my digital trace an important part of my identity. 
@@ -1790,10 +1814,10 @@ When I started solving some of these problems for myself, I've noticed a common 
 It's inherently error-prone and frustrating.
 &lt;/p&gt;
 &lt;p&gt;
-But once you have the data in a convenient representation, working with it is pleasant – you get to explore and build instead of fighting with yet another stupid REST API.
+But once you have the data in a convenient representation, working with it is pleasant – you get to &lt;b&gt;explore and build instead of fighting with yet another stupid REST API&lt;/b&gt;.
 &lt;/p&gt;
 &lt;p&gt;
-This python package knows how to find data, deserialize it and normalize it to the convenient representation.
+This package knows how to find data on your filesystem, deserialize it and normalize it to a convenient representation.
 You have the full power of the programming language to transform the data and do whatever comes to your mind.
 &lt;/p&gt;
 &lt;/div&gt;
@@ -1818,7 +1842,7 @@ That's where a Python package comes in.
 &lt;h2 id="modules"&gt;&lt;a class="headerlink" href="#modules"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;3&lt;/span&gt; What's inside?&lt;/h2&gt;
 &lt;div class="outline-text-2" id="text-modules"&gt;
 &lt;p&gt;
-Here's an (incomplete) list of the modules in the public package:
+Here's the (incomplete) list of the modules:
 &lt;/p&gt;
 &lt;table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups"&gt;
 &lt;colgroup&gt;
@@ -1840,23 +1864,15 @@ Here's an (incomplete) list of the modules in the public package:
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/books/kobo.py"&gt;my.books.kobo&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;Kobo e-ink reader: annotations and reading stats&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/cfg.py"&gt;my.cfg&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;A helper to allow configuring the modules dynamically.&lt;/td&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://uk.kobobooks.com/products/kobo-aura-one"&gt;Kobo&lt;/a&gt; e-ink reader: annotations and reading stats&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/coding/commits.py"&gt;my.coding.commits&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;Git commits data: crawls filesystem&lt;/td&gt;
+&lt;td class="org-left"&gt;Git commits data for repositories on your filesystem&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/coding/github.py"&gt;my.coding.github&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-left"&gt;Github events and their metadata: comments/issues/pull requests&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/core/cachew.py"&gt;my.core.cachew&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;# TODO this probably belongs to cachew? or cachew.experimental&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/emfit"&gt;my.emfit&lt;/a&gt;&lt;/td&gt;
@@ -1879,12 +1895,12 @@ Here's an (incomplete) list of the modules in the public package:
 &lt;td class="org-left"&gt;Foursquare/Swarm checkins&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/hypothesis.py"&gt;my.hypothesis&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;Hypothes.is highlights and annotations&lt;/td&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/google/takeout/html.py"&gt;my.google.takeout.html&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;Google Takeout exports: browsing history, search/youtube/google play activity&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/init.py"&gt;my.init&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;A hook to insert user's config directory into Python's search path.&lt;/td&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/hypothesis.py"&gt;my.hypothesis&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://hypothes.is"&gt;Hypothes.is&lt;/a&gt; highlights and annotations&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/instapaper.py"&gt;my.instapaper&lt;/a&gt;&lt;/td&gt;
@@ -1896,7 +1912,7 @@ Here's an (incomplete) list of the modules in the public package:
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/location/takeout.py"&gt;my.location.takeout&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;Google Takeout data&lt;/td&gt;
+&lt;td class="org-left"&gt;Location data from Google Takeout&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/materialistic.py"&gt;my.materialistic&lt;/a&gt;&lt;/td&gt;
@@ -1908,7 +1924,7 @@ Here's an (incomplete) list of the modules in the public package:
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/pdfs.py"&gt;my.pdfs&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;PDF annotations on your filesystem&lt;/td&gt;
+&lt;td class="org-left"&gt;PDF documents and annotations on your filesystem&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/photos"&gt;my.photos&lt;/a&gt;&lt;/td&gt;
@@ -1916,7 +1932,7 @@ Here's an (incomplete) list of the modules in the public package:
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/pinboard.py"&gt;my.pinboard&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;pinboard.in bookmarks&lt;/td&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://pinboard.in"&gt;Pinboard&lt;/a&gt; bookmarks&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/reading/polar.py"&gt;my.reading.polar&lt;/a&gt;&lt;/td&gt;
@@ -1924,7 +1940,7 @@ Here's an (incomplete) list of the modules in the public package:
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/reddit.py"&gt;my.reddit&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;Reddit data: saved items/comments/upvotes etc&lt;/td&gt;
+&lt;td class="org-left"&gt;Reddit data: saved items/comments/upvotes/etc.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/rescuetime.py"&gt;my.rescuetime&lt;/a&gt;&lt;/td&gt;
@@ -1952,7 +1968,7 @@ Here's an (incomplete) list of the modules in the public package:
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/twitter/archive.py"&gt;my.twitter.archive&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;Twitter data (uses official twitter archive export)&lt;/td&gt;
+&lt;td class="org-left"&gt;Twitter data (uses &lt;a href="https://help.twitter.com/en/managing-your-account/how-to-download-your-twitter-archive"&gt;official twitter archive export&lt;/a&gt;)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/twitter/twint.py"&gt;my.twitter.twint&lt;/a&gt;&lt;/td&gt;
@@ -2022,8 +2038,21 @@ I can overview it in any text editor, and incrementally search over &lt;b&gt;all
 &lt;h3 id="orger"&gt;&lt;a class="headerlink" href="#orger"&gt;¶&lt;/a&gt;orger&lt;/h3&gt;
 &lt;div class="outline-text-3" id="text-orger"&gt;
 &lt;p&gt;
-&lt;a href="https://github.com/karlicoss/orger"&gt;orger&lt;/a&gt; is a tool and set of modules for accessing data via org-mode.
-It allows searching and overviewing, and in addition, I'm using it for creating tasks straight from native app interfaces (e.g. Reddit/Telegram) and spaced repetition via &lt;a href="https://orgmode.org/worg/org-contrib/org-drill.html"&gt;org-drill&lt;/a&gt;.
+&lt;a href="https://github.com/karlicoss/orger"&gt;orger&lt;/a&gt; is a tool that helps you generate an org-mode representation of your data.
+&lt;/p&gt;
+&lt;p&gt;
+It lets you benefit from the existing tooling and infrastructure around org-mode, the most famous being Emacs.
+&lt;/p&gt;
+&lt;p&gt;
+I'm using it for:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;searching, overviewing and navigating the data&lt;/li&gt;
+&lt;li&gt;creating tasks straight from the apps (e.g. Reddit/Telegram)&lt;/li&gt;
+&lt;li&gt;spaced repetition via &lt;a href="https://orgmode.org/worg/org-contrib/org-drill.html"&gt;org-drill&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+Orger comes with some existing &lt;a href="https://github.com/orger/tree/master/modules"&gt;modules&lt;/a&gt;, but it should be easy to adapt your own data source if you need something else.
 &lt;/p&gt;
 &lt;p&gt;
 I write about it in detail &lt;a href="orger.html"&gt;here&lt;/a&gt; and &lt;a href="orger-todos.html"&gt;here&lt;/a&gt;.
@@ -2088,6 +2117,12 @@ Single import away from getting tracks you listened to:
 scrobbles[200: 205]
 &lt;/pre&gt;
 &lt;/div&gt;
+&lt;pre class="example"&gt;[Scrobble(raw={'album': 'Nevermind', 'artist': 'Nirvana', 'date': '1282488504', 'name': 'Drain You'}),
+ Scrobble(raw={'album': 'Dirt', 'artist': 'Alice in Chains', 'date': '1282489764', 'name': 'Would?'}),
+ Scrobble(raw={'album': 'Bob Dylan: The Collection', 'artist': 'Bob Dylan', 'date': '1282493517', 'name': 'Like a Rolling Stone'}),
+ Scrobble(raw={'album': 'Dark Passion Play', 'artist': 'Nightwish', 'date': '1282493819', 'name': 'Amaranth'}),
+ Scrobble(raw={'album': 'Rolled Gold +', 'artist': 'The Rolling Stones', 'date': '1282494161', 'name': "You Can't Always Get What You Want"})]
+&lt;/pre&gt;
 &lt;p&gt;
 Or, as a pandas frame to make it pretty:
 &lt;/p&gt;
@@ -2101,10 +2136,13 @@ Or, as a pandas frame to make it pretty:
 cdf[200: 205]
 &lt;/pre&gt;
 &lt;/div&gt;
-&lt;pre class="example"&gt;Traceback (most recent call last):
-  File "&amp;lt;stdin&amp;gt;", line 7, in &amp;lt;module&amp;gt;
-  File "&amp;lt;string&amp;gt;", line 5, in &amp;lt;module&amp;gt;
-NameError: name 'scrobbles' is not defined
+&lt;pre class="example"&gt;                                                                       track
+dt                                                                          
+2010-08-22 14:48:24+00:00                                Nirvana — Drain You
+2010-08-22 15:09:24+00:00                           Alice in Chains — Would?
+2010-08-22 16:11:57+00:00                   Bob Dylan — Like a Rolling Stone
+2010-08-22 16:16:59+00:00                               Nightwish — Amaranth
+2010-08-22 16:22:41+00:00  The Rolling Stones — You Can't Always Get What...
 &lt;/pre&gt;
 &lt;p&gt;
 We can use &lt;a href="https://github.com/martijnvermaat/calmap"&gt;calmap&lt;/a&gt; library to plot a github-style music listening activity heatmap:
@@ -2124,9 +2162,10 @@ plt.savefig(plot_file)
 plot_file
 &lt;/pre&gt;
 &lt;/div&gt;
-&lt;p&gt;
-&lt;a defined="" file="" href="Traceback (most recent call last): File " in="" is="" line="" name="" nameerror:="" not=""&gt;Traceback (most recent call last): File "&amp;lt;stdin&amp;gt;", line 7, in &amp;lt;module&amp;gt; File "&amp;lt;string&amp;gt;", line 5, in &amp;lt;module&amp;gt; NameError: name 'cdf' is not defined &lt;/a&gt;
+&lt;div class="figure"&gt;
+&lt;p&gt;&lt;img alt="lastfm_2018.png" src="lastfm_2018.png"/&gt;
 &lt;/p&gt;
+&lt;/div&gt;
 &lt;p&gt;
 This isn't necessarily very insightful data, but fun to look at now and then!
 &lt;/p&gt;
@@ -2142,7 +2181,7 @@ With few lines of Python I can quickly recommend them posts I engaged most with,
 &lt;div class="org-src-container"&gt;
 &lt;pre class="src src-python"&gt;&lt;span class="org-keyword"&gt;from&lt;/span&gt; my.hypothesis &lt;span class="org-keyword"&gt;import&lt;/span&gt; get_pages
 &lt;span class="org-keyword"&gt;from&lt;/span&gt; collections &lt;span class="org-keyword"&gt;import&lt;/span&gt; Counter
-&lt;span class="org-variable-name"&gt;cc&lt;/span&gt; = Counter({p.url: &lt;span class="org-builtin"&gt;len&lt;/span&gt;(p.highlights) &lt;span class="org-keyword"&gt;for&lt;/span&gt; p &lt;span class="org-keyword"&gt;in&lt;/span&gt; get_pages() &lt;span class="org-keyword"&gt;if&lt;/span&gt; &lt;span class="org-string"&gt;'slatestarcodex'&lt;/span&gt; &lt;span class="org-keyword"&gt;in&lt;/span&gt; p.url})
+&lt;span class="org-variable-name"&gt;cc&lt;/span&gt; = Counter({(p.title + &lt;span class="org-string"&gt;' '&lt;/span&gt; + p.url): &lt;span class="org-builtin"&gt;len&lt;/span&gt;(p.highlights) &lt;span class="org-keyword"&gt;for&lt;/span&gt; p &lt;span class="org-keyword"&gt;in&lt;/span&gt; get_pages() &lt;span class="org-keyword"&gt;if&lt;/span&gt; &lt;span class="org-string"&gt;'slatestarcodex'&lt;/span&gt; &lt;span class="org-keyword"&gt;in&lt;/span&gt; p.url})
 &lt;span class="org-keyword"&gt;return&lt;/span&gt; cc.most_common(10)
 &lt;/pre&gt;
 &lt;/div&gt;
@@ -2153,43 +2192,43 @@ With few lines of Python I can quickly recommend them posts I engaged most with,
 &lt;/colgroup&gt;
 &lt;tbody&gt;
 &lt;tr&gt;
-&lt;td class="org-left"&gt;&lt;a href="http://slatestarcodex.com/2013/10/20/the-anti-reactionary-faq/"&gt;http://slatestarcodex.com/2013/10/20/the-anti-reactionary-faq/&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;The Anti-Reactionary FAQ &lt;a href="http://slatestarcodex.com/2013/10/20/the-anti-reactionary-faq/"&gt;http://slatestarcodex.com/2013/10/20/the-anti-reactionary-faq/&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-right"&gt;32&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td class="org-left"&gt;&lt;a href="https://slatestarcodex.com/2013/03/03/reactionary-philosophy-in-an-enormous-planet-sized-nutshell/"&gt;https://slatestarcodex.com/2013/03/03/reactionary-philosophy-in-an-enormous-planet-sized-nutshell/&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;Reactionary Philosophy In An Enormous, Planet-Sized Nutshell &lt;a href="https://slatestarcodex.com/2013/03/03/reactionary-philosophy-in-an-enormous-planet-sized-nutshell/"&gt;https://slatestarcodex.com/2013/03/03/reactionary-philosophy-in-an-enormous-planet-sized-nutshell/&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-right"&gt;17&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td class="org-left"&gt;&lt;a href="http://slatestarcodex.com/2014/12/17/the-toxoplasma-of-rage/"&gt;http://slatestarcodex.com/2014/12/17/the-toxoplasma-of-rage/&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;The Toxoplasma Of Rage &lt;a href="http://slatestarcodex.com/2014/12/17/the-toxoplasma-of-rage/"&gt;http://slatestarcodex.com/2014/12/17/the-toxoplasma-of-rage/&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-right"&gt;16&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td class="org-left"&gt;&lt;a href="https://slatestarcodex.com/2014/03/17/what-universal-human-experiences-are-you-missing-without-realizing-it/"&gt;https://slatestarcodex.com/2014/03/17/what-universal-human-experiences-are-you-missing-without-realizing-it/&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;What Universal Human Experiences Are You Missing Without Realizing It? &lt;a href="https://slatestarcodex.com/2014/03/17/what-universal-human-experiences-are-you-missing-without-realizing-it/"&gt;https://slatestarcodex.com/2014/03/17/what-universal-human-experiences-are-you-missing-without-realizing-it/&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-right"&gt;16&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td class="org-left"&gt;&lt;a href="http://slatestarcodex.com/2014/07/30/meditations-on-moloch/"&gt;http://slatestarcodex.com/2014/07/30/meditations-on-moloch/&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;Meditations On Moloch &lt;a href="http://slatestarcodex.com/2014/07/30/meditations-on-moloch/"&gt;http://slatestarcodex.com/2014/07/30/meditations-on-moloch/&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-right"&gt;12&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td class="org-left"&gt;&lt;a href="http://slatestarcodex.com/2015/04/21/universal-love-said-the-cactus-person/"&gt;http://slatestarcodex.com/2015/04/21/universal-love-said-the-cactus-person/&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;Universal Love, Said The Cactus Person &lt;a href="http://slatestarcodex.com/2015/04/21/universal-love-said-the-cactus-person/"&gt;http://slatestarcodex.com/2015/04/21/universal-love-said-the-cactus-person/&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-right"&gt;11&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td class="org-left"&gt;&lt;a href="http://slatestarcodex.com/2015/01/01/untitled/"&gt;http://slatestarcodex.com/2015/01/01/untitled/&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;Untitled &lt;a href="http://slatestarcodex.com/2015/01/01/untitled/"&gt;http://slatestarcodex.com/2015/01/01/untitled/&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-right"&gt;11&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td class="org-left"&gt;&lt;a href="https://slatestarcodex.com/2017/02/09/considerations-on-cost-disease/"&gt;https://slatestarcodex.com/2017/02/09/considerations-on-cost-disease/&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;Considerations On Cost Disease &lt;a href="https://slatestarcodex.com/2017/02/09/considerations-on-cost-disease/"&gt;https://slatestarcodex.com/2017/02/09/considerations-on-cost-disease/&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-right"&gt;10&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td class="org-left"&gt;&lt;a href="http://slatestarcodex.com/2013/04/25/in-defense-of-psych-treatment-for-attempted-suicide/"&gt;http://slatestarcodex.com/2013/04/25/in-defense-of-psych-treatment-for-attempted-suicide/&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;In Defense of Psych Treatment for Attempted Suicide &lt;a href="http://slatestarcodex.com/2013/04/25/in-defense-of-psych-treatment-for-attempted-suicide/"&gt;http://slatestarcodex.com/2013/04/25/in-defense-of-psych-treatment-for-attempted-suicide/&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-right"&gt;9&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td class="org-left"&gt;&lt;a href="https://slatestarcodex.com/2014/09/30/i-can-tolerate-anything-except-the-outgroup/"&gt;https://slatestarcodex.com/2014/09/30/i-can-tolerate-anything-except-the-outgroup/&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;I Can Tolerate Anything Except The Outgroup &lt;a href="https://slatestarcodex.com/2014/09/30/i-can-tolerate-anything-except-the-outgroup/"&gt;https://slatestarcodex.com/2014/09/30/i-can-tolerate-anything-except-the-outgroup/&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-right"&gt;9&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
@@ -2353,10 +2392,10 @@ Overall, I wish &lt;a href="https://en.wikipedia.org/wiki/Foreign_function_inter
 Yes!
 &lt;/p&gt;
 &lt;ul class="org-ul"&gt;
-&lt;li&gt;you can plug in your own data&lt;/li&gt;
+&lt;li&gt;you can plug in &lt;b&gt;your own data&lt;/b&gt;&lt;/li&gt;
 &lt;li&gt;most modules are isolated, so you can only use the ones that you want to&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;
-everything is easily extensible
+everything is easily &lt;b&gt;extensible&lt;/b&gt;
 &lt;/p&gt;
 &lt;p&gt;
 Starting from simply adding new modules to any dynamic hackery you can possibly imagine within Python.
@@ -2384,10 +2423,10 @@ If you have any ideas on making the setup simpler, please let me know!
 &lt;h3 id="privacy"&gt;&lt;a class="headerlink" href="#privacy"&gt;¶&lt;/a&gt;What about privacy?&lt;/h3&gt;
 &lt;div class="outline-text-3" id="text-privacy"&gt;
 &lt;p&gt;
-The modules contain no data, only code to operate on the data.
+The modules contain &lt;b&gt;no data, only code&lt;/b&gt; to operate on the data.
 &lt;/p&gt;
 &lt;p&gt;
-Everything is &lt;a href="./tags.html#offline"&gt;local fist&lt;/a&gt;, the input data is on your filesystem.
+Everything is &lt;a href="./tags.html#offline"&gt;&lt;b&gt;local first&lt;/b&gt;&lt;/a&gt;, the input data is on your filesystem.
 If you're truly paranoid, you can even wrap it in a Docker container.
 &lt;/p&gt;
 &lt;p&gt;
@@ -6905,8 +6944,21 @@ I can overview it in any text editor, and incrementally search over &lt;b&gt;all
 &lt;h3 id="orger"&gt;&lt;a class="headerlink" href="#orger"&gt;¶&lt;/a&gt;orger&lt;/h3&gt;
 &lt;div class="outline-text-3" id="text-orger"&gt;
 &lt;p&gt;
-&lt;a href="https://github.com/karlicoss/orger"&gt;orger&lt;/a&gt; is a tool and set of modules for accessing data via org-mode.
-It allows searching and overviewing, and in addition, I'm using it for creating tasks straight from native app interfaces (e.g. Reddit/Telegram) and spaced repetition via &lt;a href="https://orgmode.org/worg/org-contrib/org-drill.html"&gt;org-drill&lt;/a&gt;.
+&lt;a href="https://github.com/karlicoss/orger"&gt;orger&lt;/a&gt; is a tool that helps you generate an org-mode representation of your data.
+&lt;/p&gt;
+&lt;p&gt;
+It lets you benefit from the existing tooling and infrastructure around org-mode, the most famous being Emacs.
+&lt;/p&gt;
+&lt;p&gt;
+I'm using it for:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;searching, overviewing and navigating the data&lt;/li&gt;
+&lt;li&gt;creating tasks straight from the apps (e.g. Reddit/Telegram)&lt;/li&gt;
+&lt;li&gt;spaced repetition via &lt;a href="https://orgmode.org/worg/org-contrib/org-drill.html"&gt;org-drill&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+Orger comes with some existing &lt;a href="https://github.com/orger/tree/master/modules"&gt;modules&lt;/a&gt;, but it should be easy to adapt your own data source if you need something else.
 &lt;/p&gt;
 &lt;p&gt;
 I write about it in detail &lt;a href="orger.html"&gt;here&lt;/a&gt; and &lt;a href="orger-todos.html"&gt;here&lt;/a&gt;.

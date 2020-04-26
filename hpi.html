@@ -123,7 +123,7 @@ Here's a short example to give you an idea: "which subreddits I find the most in
 <tbody>
 <tr>
 <td class="org-left">orgmode</td>
-<td class="org-right">66</td>
+<td class="org-right">62</td>
 </tr>
 <tr>
 <td class="org-left">emacs</td>
@@ -131,11 +131,11 @@ Here's a short example to give you an idea: "which subreddits I find the most in
 </tr>
 <tr>
 <td class="org-left">selfhosted</td>
-<td class="org-right">54</td>
+<td class="org-right">51</td>
 </tr>
 <tr>
 <td class="org-left">QuantifiedSelf</td>
-<td class="org-right">47</td>
+<td class="org-right">46</td>
 </tr>
 </tbody>
 </table></li>
@@ -347,10 +347,10 @@ When I started solving some of these problems for myself, I've noticed a common 
 It's inherently error-prone and frustrating.
 </p>
 <p>
-But once you have the data in a convenient representation, working with it is pleasant – you get to explore and build instead of fighting with yet another stupid REST API.
+But once you have the data in a convenient representation, working with it is pleasant – you get to <b>explore and build instead of fighting with yet another stupid REST API</b>.
 </p>
 <p>
-This python package knows how to find data, deserialize it and normalize it to the convenient representation.
+This package knows how to find data on your filesystem, deserialize it and normalize it to a convenient representation.
 You have the full power of the programming language to transform the data and do whatever comes to your mind.
 </p>
 </div>
@@ -375,7 +375,7 @@ That's where a Python package comes in.
 <h2 id="modules"><a class="headerlink" href="#modules">¶</a><span class="section-number-2">3</span> What's inside?</h2>
 <div class="outline-text-2" id="text-modules">
 <p>
-Here's an (incomplete) list of the modules in the public package:
+Here's the (incomplete) list of the modules:
 </p>
 <table border="2" cellpadding="6" cellspacing="0" frame="hsides" rules="groups">
 <colgroup>
@@ -397,15 +397,11 @@ Here's an (incomplete) list of the modules in the public package:
 </tr>
 <tr>
 <td class="org-left"><a href="https://github.com/karlicoss/my/tree/master/my/books/kobo.py">my.books.kobo</a></td>
-<td class="org-left">Kobo e-ink reader: annotations and reading stats</td>
-</tr>
-<tr>
-<td class="org-left"><a href="https://github.com/karlicoss/my/tree/master/my/calendar/holidays.py">my.calendar.holidays</a></td>
-<td class="org-left">Provides data on days off work (based on public holidays + manual inputs)</td>
+<td class="org-left"><a href="https://uk.kobobooks.com/products/kobo-aura-one">Kobo</a> e-ink reader: annotations and reading stats</td>
 </tr>
 <tr>
 <td class="org-left"><a href="https://github.com/karlicoss/my/tree/master/my/coding/commits.py">my.coding.commits</a></td>
-<td class="org-left">Git commits data: crawls filesystem</td>
+<td class="org-left">Git commits data for repositories on your filesystem</td>
 </tr>
 <tr>
 <td class="org-left"><a href="https://github.com/karlicoss/my/tree/master/my/coding/github.py">my.coding.github</a></td>
@@ -432,8 +428,12 @@ Here's an (incomplete) list of the modules in the public package:
 <td class="org-left">Foursquare/Swarm checkins</td>
 </tr>
 <tr>
+<td class="org-left"><a href="https://github.com/karlicoss/my/tree/master/my/google/takeout/html.py">my.google.takeout.html</a></td>
+<td class="org-left">Google Takeout exports: browsing history, search/youtube/google play activity</td>
+</tr>
+<tr>
 <td class="org-left"><a href="https://github.com/karlicoss/my/tree/master/my/hypothesis.py">my.hypothesis</a></td>
-<td class="org-left">Hypothes.is highlights and annotations</td>
+<td class="org-left"><a href="https://hypothes.is">Hypothes.is</a> highlights and annotations</td>
 </tr>
 <tr>
 <td class="org-left"><a href="https://github.com/karlicoss/my/tree/master/my/instapaper.py">my.instapaper</a></td>
@@ -445,7 +445,7 @@ Here's an (incomplete) list of the modules in the public package:
 </tr>
 <tr>
 <td class="org-left"><a href="https://github.com/karlicoss/my/tree/master/my/location/takeout.py">my.location.takeout</a></td>
-<td class="org-left">Google Takeout data</td>
+<td class="org-left">Location data from Google Takeout</td>
 </tr>
 <tr>
 <td class="org-left"><a href="https://github.com/karlicoss/my/tree/master/my/materialistic.py">my.materialistic</a></td>
@@ -457,7 +457,7 @@ Here's an (incomplete) list of the modules in the public package:
 </tr>
 <tr>
 <td class="org-left"><a href="https://github.com/karlicoss/my/tree/master/my/pdfs.py">my.pdfs</a></td>
-<td class="org-left">PDF annotations on your filesystem</td>
+<td class="org-left">PDF documents and annotations on your filesystem</td>
 </tr>
 <tr>
 <td class="org-left"><a href="https://github.com/karlicoss/my/tree/master/my/photos">my.photos</a></td>
@@ -465,7 +465,7 @@ Here's an (incomplete) list of the modules in the public package:
 </tr>
 <tr>
 <td class="org-left"><a href="https://github.com/karlicoss/my/tree/master/my/pinboard.py">my.pinboard</a></td>
-<td class="org-left">pinboard.in bookmarks</td>
+<td class="org-left"><a href="https://pinboard.in">Pinboard</a> bookmarks</td>
 </tr>
 <tr>
 <td class="org-left"><a href="https://github.com/karlicoss/my/tree/master/my/reading/polar.py">my.reading.polar</a></td>
@@ -473,7 +473,7 @@ Here's an (incomplete) list of the modules in the public package:
 </tr>
 <tr>
 <td class="org-left"><a href="https://github.com/karlicoss/my/tree/master/my/reddit.py">my.reddit</a></td>
-<td class="org-left">Reddit data: saved items/comments/upvotes etc</td>
+<td class="org-left">Reddit data: saved items/comments/upvotes/etc.</td>
 </tr>
 <tr>
 <td class="org-left"><a href="https://github.com/karlicoss/my/tree/master/my/rescuetime.py">my.rescuetime</a></td>
@@ -501,7 +501,7 @@ Here's an (incomplete) list of the modules in the public package:
 </tr>
 <tr>
 <td class="org-left"><a href="https://github.com/karlicoss/my/tree/master/my/twitter/archive.py">my.twitter.archive</a></td>
-<td class="org-left">Twitter data (uses official twitter archive export)</td>
+<td class="org-left">Twitter data (uses <a href="https://help.twitter.com/en/managing-your-account/how-to-download-your-twitter-archive">official twitter archive export</a>)</td>
 </tr>
 <tr>
 <td class="org-left"><a href="https://github.com/karlicoss/my/tree/master/my/twitter/twint.py">my.twitter.twint</a></td>
@@ -571,8 +571,21 @@ I can overview it in any text editor, and incrementally search over <b>all of it
 <h3 id="orger"><a class="headerlink" href="#orger">¶</a>orger</h3>
 <div class="outline-text-3" id="text-orger">
 <p>
-<a href="https://github.com/karlicoss/orger">orger</a> is a tool and set of modules for accessing data via org-mode.
-It allows searching and overviewing, and in addition, I'm using it for creating tasks straight from native app interfaces (e.g. Reddit/Telegram) and spaced repetition via <a href="https://orgmode.org/worg/org-contrib/org-drill.html">org-drill</a>.
+<a href="https://github.com/karlicoss/orger">orger</a> is a tool that helps you generate an org-mode representation of your data.
+</p>
+<p>
+It lets you benefit from the existing tooling and infrastructure around org-mode, the most famous being Emacs.
+</p>
+<p>
+I'm using it for:
+</p>
+<ul class="org-ul">
+<li>searching, overviewing and navigating the data</li>
+<li>creating tasks straight from the apps (e.g. Reddit/Telegram)</li>
+<li>spaced repetition via <a href="https://orgmode.org/worg/org-contrib/org-drill.html">org-drill</a></li>
+</ul>
+<p>
+Orger comes with some existing <a href="https://github.com/orger/tree/master/modules">modules</a>, but it should be easy to adapt your own data source if you need something else.
 </p>
 <p>
 I write about it in detail <a href="orger.html">here</a> and <a href="orger-todos.html">here</a>.
@@ -701,7 +714,7 @@ With few lines of Python I can quickly recommend them posts I engaged most with,
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-keyword">from</span> my.hypothesis <span class="org-keyword">import</span> get_pages
 <span class="org-keyword">from</span> collections <span class="org-keyword">import</span> Counter
-<span class="org-variable-name">cc</span> = Counter({p.url: <span class="org-builtin">len</span>(p.highlights) <span class="org-keyword">for</span> p <span class="org-keyword">in</span> get_pages() <span class="org-keyword">if</span> <span class="org-string">'slatestarcodex'</span> <span class="org-keyword">in</span> p.url})
+<span class="org-variable-name">cc</span> = Counter({(p.title + <span class="org-string">' '</span> + p.url): <span class="org-builtin">len</span>(p.highlights) <span class="org-keyword">for</span> p <span class="org-keyword">in</span> get_pages() <span class="org-keyword">if</span> <span class="org-string">'slatestarcodex'</span> <span class="org-keyword">in</span> p.url})
 <span class="org-keyword">return</span> cc.most_common(10)
 </pre>
 </div>
@@ -712,43 +725,43 @@ With few lines of Python I can quickly recommend them posts I engaged most with,
 </colgroup>
 <tbody>
 <tr>
-<td class="org-left"><a href="http://slatestarcodex.com/2013/10/20/the-anti-reactionary-faq/">http://slatestarcodex.com/2013/10/20/the-anti-reactionary-faq/</a></td>
+<td class="org-left">The Anti-Reactionary FAQ <a href="http://slatestarcodex.com/2013/10/20/the-anti-reactionary-faq/">http://slatestarcodex.com/2013/10/20/the-anti-reactionary-faq/</a></td>
 <td class="org-right">32</td>
 </tr>
 <tr>
-<td class="org-left"><a href="https://slatestarcodex.com/2013/03/03/reactionary-philosophy-in-an-enormous-planet-sized-nutshell/">https://slatestarcodex.com/2013/03/03/reactionary-philosophy-in-an-enormous-planet-sized-nutshell/</a></td>
+<td class="org-left">Reactionary Philosophy In An Enormous, Planet-Sized Nutshell <a href="https://slatestarcodex.com/2013/03/03/reactionary-philosophy-in-an-enormous-planet-sized-nutshell/">https://slatestarcodex.com/2013/03/03/reactionary-philosophy-in-an-enormous-planet-sized-nutshell/</a></td>
 <td class="org-right">17</td>
 </tr>
 <tr>
-<td class="org-left"><a href="http://slatestarcodex.com/2014/12/17/the-toxoplasma-of-rage/">http://slatestarcodex.com/2014/12/17/the-toxoplasma-of-rage/</a></td>
+<td class="org-left">The Toxoplasma Of Rage <a href="http://slatestarcodex.com/2014/12/17/the-toxoplasma-of-rage/">http://slatestarcodex.com/2014/12/17/the-toxoplasma-of-rage/</a></td>
 <td class="org-right">16</td>
 </tr>
 <tr>
-<td class="org-left"><a href="https://slatestarcodex.com/2014/03/17/what-universal-human-experiences-are-you-missing-without-realizing-it/">https://slatestarcodex.com/2014/03/17/what-universal-human-experiences-are-you-missing-without-realizing-it/</a></td>
+<td class="org-left">What Universal Human Experiences Are You Missing Without Realizing It? <a href="https://slatestarcodex.com/2014/03/17/what-universal-human-experiences-are-you-missing-without-realizing-it/">https://slatestarcodex.com/2014/03/17/what-universal-human-experiences-are-you-missing-without-realizing-it/</a></td>
 <td class="org-right">16</td>
 </tr>
 <tr>
-<td class="org-left"><a href="http://slatestarcodex.com/2014/07/30/meditations-on-moloch/">http://slatestarcodex.com/2014/07/30/meditations-on-moloch/</a></td>
+<td class="org-left">Meditations On Moloch <a href="http://slatestarcodex.com/2014/07/30/meditations-on-moloch/">http://slatestarcodex.com/2014/07/30/meditations-on-moloch/</a></td>
 <td class="org-right">12</td>
 </tr>
 <tr>
-<td class="org-left"><a href="http://slatestarcodex.com/2015/04/21/universal-love-said-the-cactus-person/">http://slatestarcodex.com/2015/04/21/universal-love-said-the-cactus-person/</a></td>
+<td class="org-left">Universal Love, Said The Cactus Person <a href="http://slatestarcodex.com/2015/04/21/universal-love-said-the-cactus-person/">http://slatestarcodex.com/2015/04/21/universal-love-said-the-cactus-person/</a></td>
 <td class="org-right">11</td>
 </tr>
 <tr>
-<td class="org-left"><a href="http://slatestarcodex.com/2015/01/01/untitled/">http://slatestarcodex.com/2015/01/01/untitled/</a></td>
+<td class="org-left">Untitled <a href="http://slatestarcodex.com/2015/01/01/untitled/">http://slatestarcodex.com/2015/01/01/untitled/</a></td>
 <td class="org-right">11</td>
 </tr>
 <tr>
-<td class="org-left"><a href="https://slatestarcodex.com/2017/02/09/considerations-on-cost-disease/">https://slatestarcodex.com/2017/02/09/considerations-on-cost-disease/</a></td>
+<td class="org-left">Considerations On Cost Disease <a href="https://slatestarcodex.com/2017/02/09/considerations-on-cost-disease/">https://slatestarcodex.com/2017/02/09/considerations-on-cost-disease/</a></td>
 <td class="org-right">10</td>
 </tr>
 <tr>
-<td class="org-left"><a href="http://slatestarcodex.com/2013/04/25/in-defense-of-psych-treatment-for-attempted-suicide/">http://slatestarcodex.com/2013/04/25/in-defense-of-psych-treatment-for-attempted-suicide/</a></td>
+<td class="org-left">In Defense of Psych Treatment for Attempted Suicide <a href="http://slatestarcodex.com/2013/04/25/in-defense-of-psych-treatment-for-attempted-suicide/">http://slatestarcodex.com/2013/04/25/in-defense-of-psych-treatment-for-attempted-suicide/</a></td>
 <td class="org-right">9</td>
 </tr>
 <tr>
-<td class="org-left"><a href="https://slatestarcodex.com/2014/09/30/i-can-tolerate-anything-except-the-outgroup/">https://slatestarcodex.com/2014/09/30/i-can-tolerate-anything-except-the-outgroup/</a></td>
+<td class="org-left">I Can Tolerate Anything Except The Outgroup <a href="https://slatestarcodex.com/2014/09/30/i-can-tolerate-anything-except-the-outgroup/">https://slatestarcodex.com/2014/09/30/i-can-tolerate-anything-except-the-outgroup/</a></td>
 <td class="org-right">9</td>
 </tr>
 </tbody>
@@ -912,10 +925,10 @@ Overall, I wish <a href="https://en.wikipedia.org/wiki/Foreign_function_interfac
 Yes!
 </p>
 <ul class="org-ul">
-<li>you can plug in your own data</li>
+<li>you can plug in <b>your own data</b></li>
 <li>most modules are isolated, so you can only use the ones that you want to</li>
 <li><p>
-everything is easily extensible
+everything is easily <b>extensible</b>
 </p>
 <p>
 Starting from simply adding new modules to any dynamic hackery you can possibly imagine within Python.
@@ -943,10 +956,10 @@ If you have any ideas on making the setup simpler, please let me know!
 <h3 id="privacy"><a class="headerlink" href="#privacy">¶</a>What about privacy?</h3>
 <div class="outline-text-3" id="text-privacy">
 <p>
-The modules contain no data, only code to operate on the data.
+The modules contain <b>no data, only code</b> to operate on the data.
 </p>
 <p>
-Everything is <a href="./tags.html#offline">local fist</a>, the input data is on your filesystem.
+Everything is <a href="./tags.html#offline"><b>local first</b></a>, the input data is on your filesystem.
 If you're truly paranoid, you can even wrap it in a Docker container.
 </p>
 <p>
