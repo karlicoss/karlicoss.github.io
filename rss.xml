@@ -391,7 +391,7 @@ Orger is a library that helps you generate an org-mode representation of your da
 I won't go into the Orger module implementation details – you can check out the code here: &lt;a href="https://github.com/karlicoss/orger/blob/master/modules/roamresearch.py"&gt;&lt;code class="inline"&gt;roamresearch.py&lt;/code&gt;&lt;/a&gt;.
 There are also &lt;a href="https://github.com/karlicoss/orger/blob/master/modules"&gt;more&lt;/a&gt; modules for other services like Twitter, Reddit, Instapaper, etc.
 &lt;/p&gt;
-&lt;div&gt;&lt;span class="before-aside"&gt;
+&lt;div style="margin-top: 16px; margin-bottom: 16px"&gt;&lt;span class="before-aside"&gt;
 We will use Orger to generate a &lt;b&gt;read-only&lt;/b&gt; mirror of the Roam &lt;a href="https://roamresearch.com/#/app/covid19/graph"&gt;database&lt;/a&gt;.
 The idea is that you run Orger script periodically to get a reasonably up-to-date representation of your Roam data.
 You'll still use Roam web app to modify your notes.
@@ -961,7 +961,7 @@ Toy example:
 ]
 &lt;/pre&gt;
 &lt;/div&gt;
-&lt;div&gt;&lt;span class="before-aside"&gt;
+&lt;div style="margin-top: 16px; margin-bottom: 16px"&gt;&lt;span class="before-aside"&gt;
 Using the config: 
 &lt;/span&gt;&lt;aside class="sidenote"&gt;see &lt;a href="https://lobste.rs/s/qyhvhc/your_configs_suck_try_real_programming#c_0btczk"&gt;this&lt;/a&gt; if you're wondering why I use &lt;code class="inline"&gt;exec&lt;/code&gt; , not &lt;code class="inline"&gt;import&lt;/code&gt;.&lt;/aside&gt;&lt;/div&gt;
 &lt;div class="org-src-container"&gt;
@@ -1607,7 +1607,7 @@ Here's a short example to give you an idea: "which subreddits I find the most in
 &lt;/tbody&gt;
 &lt;/table&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div&gt;&lt;span class="before-aside"&gt;
+&lt;div style="margin-top: 16px; margin-bottom: 16px"&gt;&lt;span class="before-aside"&gt;
 I consider my digital trace an important part of my identity. 
 The fact that the data is siloed, and accessing it is inconvenient and borderline frustrating feels very wrong.
 &lt;/span&gt;&lt;aside class="sidenote"&gt;&lt;a class="post-tag" href="./tags.html#extendedmind"&gt;#extendedmind&lt;/a&gt;&lt;/aside&gt;&lt;/div&gt;
@@ -2829,7 +2829,7 @@ While there are many reasons to make it simple, generic, reliable and flexible a
 The main principles of my design are modularity, separation of concerns and keeping things as simple as possible.
 This allows making it easy to hook onto any layer to allow for different ways of using the data.
 &lt;/p&gt;
-&lt;div&gt;&lt;span class="before-aside"&gt;
+&lt;div style="margin-top: 16px; margin-bottom: 16px"&gt;&lt;span class="before-aside"&gt;
 Most of my pipelines for data liberation consist of the following layers
 
 &lt;/span&gt;&lt;aside class="sidenote"&gt;please don't be terrified of the word 'layer', typically these are just single scripts&lt;/aside&gt;&lt;/div&gt;
@@ -2840,7 +2840,7 @@ Most of my pipelines for data liberation consist of the following layers
 &lt;p&gt;
 The purpose of the export layer is to reliably fetch and serialize raw data on your disk. It roughly corresponds to the concept of the &lt;a href="sad-infra.html#data_mirror"&gt;'data mirror app'&lt;/a&gt;. 
 &lt;/p&gt;
-&lt;div&gt;&lt;span class="before-aside"&gt;
+&lt;div style="margin-top: 16px; margin-bottom: 16px"&gt;&lt;span class="before-aside"&gt;
 Export scripts deal with the tedious business of authorization, pagination, being tolerant of network errors, etc.
 
 &lt;/span&gt;&lt;aside class="sidenote"&gt;&lt;span style="color:darkgreen;font-weight:bold"&gt;map&lt;/span&gt;: &lt;a href="myinfra.html#exports"&gt;exports&lt;/a&gt;&lt;/aside&gt;&lt;/div&gt;
@@ -2858,7 +2858,7 @@ However, long term you'll find yourself doing the same manipulations all over ag
 &lt;p&gt;
 For brevity, I'll refer to it as &lt;b&gt;DAL&lt;/b&gt; (Data Abstraction/Access Layer).
 &lt;/p&gt;
-&lt;div&gt;&lt;span class="before-aside"&gt;
+&lt;div style="margin-top: 16px; margin-bottom: 16px"&gt;&lt;span class="before-aside"&gt;
 The purpose of DAL is simply to deserialize whatever the export script dumped and provide minimalistic data bindings.
 It shouldn't worry about tokens, network errors, etc., once you have your data on the disk DAL should be able to handle it even when you're offline.
 
@@ -2881,7 +2881,7 @@ Example: &lt;a href="https://github.com/karlicoss/fbmessengerexport/blob/a8f65a2
 &lt;li&gt;&lt;p&gt;
 downstream data consumers
 &lt;/p&gt;
-&lt;div&gt;&lt;span class="before-aside"&gt;
+&lt;div style="margin-top: 16px; margin-bottom: 16px"&gt;&lt;span class="before-aside"&gt;
 You could also count it as the third layer, although the boundaries are not very well defined at this stage.
 
 &lt;/span&gt;&lt;aside class="sidenote"&gt;&lt;span style="color:darkgreen;font-weight:bold"&gt;map&lt;/span&gt;: &lt;a href="myinfra.html#mypkg"&gt;my.&lt;/a&gt;&lt;/aside&gt;&lt;/div&gt;
@@ -3187,7 +3187,7 @@ Implementation wise, it looks like this:
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;div&gt;&lt;span class="before-aside"&gt;
+&lt;div style="margin-top: 16px; margin-bottom: 16px"&gt;&lt;span class="before-aside"&gt;
 Incremental exports are &lt;b&gt;always&lt;/b&gt; harder to program. Indeed, &lt;a class="link-up" href="#full"&gt;full export&lt;/a&gt; is just an edge case of an incremental one.
 
 &lt;/span&gt;&lt;aside class="sidenote"&gt;Fun fact: most of your phone apps already implement incremental sync. It's a shame the logic can't be reused.&lt;/aside&gt;&lt;/div&gt;
@@ -3241,7 +3241,7 @@ Also, it's even flakier than using APIs, so you might want to avoid extra work i
 &lt;div class="outline-3"&gt;
 &lt;h3 id="synthetic"&gt;&lt;a class="headerlink" href="#synthetic"&gt;¶&lt;/a&gt;synthetic export&lt;/h3&gt;
 &lt;div class="outline-text-3" id="text-synthetic"&gt;
-&lt;div&gt;&lt;span class="before-aside"&gt;
+&lt;div style="margin-top: 16px; margin-bottom: 16px"&gt;&lt;span class="before-aside"&gt;
 This is a blend between full export and incremental export.   
 
 &lt;/span&gt;&lt;aside class="sidenote"&gt;If someone thinks of a better term for describing this concept, please let me know!&lt;/aside&gt;&lt;/div&gt;
@@ -7328,7 +7328,7 @@ I want to use that knowledge later, act and build on it. But there's an obstacle
 It would be cool to be capable of always remembering and instantly recalling information you've interacted with, metadata and your thoughts on it.
 Until we get augmented though, there are two options: the first is just to suck it up and live with it. You might have guessed this is not an option I'm comfortable with.
 &lt;/p&gt;
-&lt;div&gt;&lt;span class="before-aside"&gt;
+&lt;div style="margin-top: 16px; margin-bottom: 16px"&gt;&lt;span class="before-aside"&gt;
 The second option is compensating for your sloppy meaty memory and having information you've read at hand and a quick way of searching over it. 
 
 &lt;/span&gt;&lt;aside class="sidenote"&gt;see &lt;a class="post-tag" href="./tags.html#extendedmind"&gt;#extendedmind&lt;/a&gt;&lt;/aside&gt;&lt;/div&gt;
@@ -7341,7 +7341,7 @@ I'll give some I've personally been overcoming as examples:
 &lt;li&gt;convenience of access, e.g.:
 &lt;ul class="org-ul"&gt;
 &lt;li&gt;to access highlights and notes on my Kobo ebook I need to actually &lt;b&gt;reach my reader and tap through e-ink&lt;/b&gt; touch screen. Not much fun!&lt;/li&gt;
-&lt;li&gt;&lt;div&gt;&lt;span class="before-aside"&gt;if you want to search over annotations in your PDF collections… well good luck, I'm just not aware of such a tool. It's actually way worse: many PDF viewers &lt;b&gt;wouldn't even let you search in highlights&lt;/b&gt; within the file you're currently viewing. &lt;/span&gt;&lt;aside class="sidenote"&gt;see PDF readers &lt;a href="./annotating.html#pdfs"&gt;overview&lt;/a&gt;&lt;/aside&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;div style="margin-top: 16px; margin-bottom: 16px"&gt;&lt;span class="before-aside"&gt;if you want to search over annotations in your PDF collections… well good luck, I'm just not aware of such a tool. It's actually way worse: many PDF viewers &lt;b&gt;wouldn't even let you search in highlights&lt;/b&gt; within the file you're currently viewing. &lt;/span&gt;&lt;aside class="sidenote"&gt;see PDF readers &lt;a href="./annotating.html#pdfs"&gt;overview&lt;/a&gt;&lt;/aside&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;there is no easy way to quickly access all of your twitter favorites, people suggest using hacks like &lt;a href="https://webapps.stackexchange.com/a/131374/68104"&gt;autoscroll extension&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;li&gt;searching data, e.g.:
@@ -7358,7 +7358,7 @@ what happens if data disappears or service is down (temporary/permanently) or ba
 &lt;p&gt;
 You may think you live in a civilized country and that would never affect you. Well, &lt;a href="https://www.theverge.com/2018/5/23/17387146/instapaper-gdpr-europe-access-shut-down-privacy-changes"&gt;in 2018&lt;/a&gt;, Instapaper was unavailable in Europe for several months (!) due to missing the GDPR deadline.
 &lt;/p&gt;&lt;/li&gt;
-&lt;li&gt;&lt;div&gt;&lt;span class="before-aside"&gt;99% of services &lt;b&gt;don't have support for offline mode&lt;/b&gt;. This may be just a small inconvenience if you're on a train or something, but there is more to it.
+&lt;li&gt;&lt;div style="margin-top: 16px; margin-bottom: 16px"&gt;&lt;span class="before-aside"&gt;99% of services &lt;b&gt;don't have support for offline mode&lt;/b&gt;. This may be just a small inconvenience if you're on a train or something, but there is more to it.
 What if some sort of apocalypse happens and you lose all access to data? 
 That depends on your paranoia level of course, and apocalypse is bad enough as it is, but my take on it is that at least I'd have my data :) &lt;/span&gt;&lt;aside class="sidenote"&gt;see &lt;a class="post-tag" href="./tags.html#offline"&gt;#offline&lt;/a&gt;&lt;/aside&gt;&lt;/div&gt;&lt;/li&gt;
 &lt;li&gt;if you delete a book on Kobo, not only you can't access its annotations anymore, but they seem to get &lt;b&gt;wiped&lt;/b&gt; from the database.&lt;/li&gt;
@@ -7790,7 +7790,7 @@ Ideally, it wouldn't really matter where the data is and it could be a web API.
 &lt;p&gt;
 Realistically, as of today, the easiest way to quickly access your data and more importantly, play with it, is when it's &lt;b&gt;already on your filesystem&lt;/b&gt;.
 &lt;/p&gt;
-&lt;div&gt;&lt;span class="before-aside"&gt;
+&lt;div style="margin-top: 16px; margin-bottom: 16px"&gt;&lt;span class="before-aside"&gt;
 Whether it's plaintext, sqlite or some sort of binary data – doesn't matter, already having it locally saves you from the whole class of problems (which I'm about to pinpoint in the following section).
 
 &lt;/span&gt;&lt;aside class="sidenote"&gt;even better if it's already in your RAM and interpreter, but that's a bit too much to wish for at this point.&lt;/aside&gt;&lt;/div&gt;

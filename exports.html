@@ -192,7 +192,7 @@ While there are many reasons to make it simple, generic, reliable and flexible a
 The main principles of my design are modularity, separation of concerns and keeping things as simple as possible.
 This allows making it easy to hook onto any layer to allow for different ways of using the data.
 </p>
-<div><span class="before-aside">
+<div style="margin-top: 16px; margin-bottom: 16px"><span class="before-aside">
 Most of my pipelines for data liberation consist of the following layers
 
 </span><aside class="sidenote">please don't be terrified of the word 'layer', typically these are just single scripts</aside></div>
@@ -203,7 +203,7 @@ Most of my pipelines for data liberation consist of the following layers
 <p>
 The purpose of the export layer is to reliably fetch and serialize raw data on your disk. It roughly corresponds to the concept of the <a href="sad-infra.html#data_mirror">'data mirror app'</a>. 
 </p>
-<div><span class="before-aside">
+<div style="margin-top: 16px; margin-bottom: 16px"><span class="before-aside">
 Export scripts deal with the tedious business of authorization, pagination, being tolerant of network errors, etc.
 
 </span><aside class="sidenote"><span style="color:darkgreen;font-weight:bold">map</span>: <a href="myinfra.html#exports">exports</a></aside></div>
@@ -221,7 +221,7 @@ However, long term you'll find yourself doing the same manipulations all over ag
 <p>
 For brevity, I'll refer to it as <b>DAL</b> (Data Abstraction/Access Layer).
 </p>
-<div><span class="before-aside">
+<div style="margin-top: 16px; margin-bottom: 16px"><span class="before-aside">
 The purpose of DAL is simply to deserialize whatever the export script dumped and provide minimalistic data bindings.
 It shouldn't worry about tokens, network errors, etc., once you have your data on the disk DAL should be able to handle it even when you're offline.
 
@@ -244,7 +244,7 @@ Example: <a href="https://github.com/karlicoss/fbmessengerexport/blob/a8f65a259d
 <li><p>
 downstream data consumers
 </p>
-<div><span class="before-aside">
+<div style="margin-top: 16px; margin-bottom: 16px"><span class="before-aside">
 You could also count it as the third layer, although the boundaries are not very well defined at this stage.
 
 </span><aside class="sidenote"><span style="color:darkgreen;font-weight:bold">map</span>: <a href="myinfra.html#mypkg">my.</a></aside></div>
@@ -550,7 +550,7 @@ Implementation wise, it looks like this:
 </ul></li>
 </ul></li>
 </ul>
-<div><span class="before-aside">
+<div style="margin-top: 16px; margin-bottom: 16px"><span class="before-aside">
 Incremental exports are <b>always</b> harder to program. Indeed, <a class="link-up" href="#full">full export</a> is just an edge case of an incremental one.
 
 </span><aside class="sidenote">Fun fact: most of your phone apps already implement incremental sync. It's a shame the logic can't be reused.</aside></div>
@@ -604,7 +604,7 @@ Also, it's even flakier than using APIs, so you might want to avoid extra work i
 <div class="outline-3">
 <h3 id="synthetic"><a class="headerlink" href="#synthetic">¶</a>synthetic export</h3>
 <div class="outline-text-3" id="text-synthetic">
-<div><span class="before-aside">
+<div style="margin-top: 16px; margin-bottom: 16px"><span class="before-aside">
 This is a blend between full export and incremental export.   
 
 </span><aside class="sidenote">If someone thinks of a better term for describing this concept, please let me know!</aside></div>
