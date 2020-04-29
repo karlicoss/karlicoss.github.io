@@ -13,7 +13,7 @@
   <subtitle>feed</subtitle>
   <entry>
     <id>https://beepb00p.xyz/myinfra-roam.html</id>
-    <title>Demo: adding a data source to my personal infrastructure</title>
+    <title>Extending my personal infrastructure with a data source</title>
     <updated>2020-04-20T00:00:00+00:00</updated>
     <content type="html">&lt;!DOCTYPE html&gt;
 &lt;html lang="en" prefix="og: http://ogp.me/ns#"&gt;&lt;head&gt;
@@ -32,7 +32,7 @@
         
         &lt;!-- TODO concat with keywords tags; also need to make comma separated? --&gt;
 
-        &lt;title&gt;Demo: adding a data source to my personal infrastructure | beepb00p&lt;/title&gt;
+        &lt;title&gt;Extending my personal infrastructure with a data source | beepb00p&lt;/title&gt;
 
         &lt;link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css"/&gt;
         &lt;link href="./css/default.css?v=3" rel="stylesheet"/&gt;
@@ -48,7 +48,7 @@
         &lt;!-- or https://developers.facebook.com/tools/debug --&gt;
         &lt;meta content="website" property="og:type"/&gt;
         &lt;meta content="https://beepb00p.xyz/myinfra-roam.html" property="og:url"/&gt; &lt;!-- TODO base? --&gt;
-        &lt;meta content="Demo: adding a data source to my personal infrastructure | beepb00p" property="og:title"/&gt;
+        &lt;meta content="Extending my personal infrastructure with a data source | beepb00p" property="og:title"/&gt;
         &lt;meta content="Featuring Roam Research" property="og:description"/&gt;
         &lt;!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s --&gt;
         &lt;!-- ugh. Facebook really wants jpg? --&gt;
@@ -95,7 +95,7 @@
 &lt;article&gt;
     
     &lt;section class="post-title"&gt;
-    &lt;h1&gt;Demo: adding a data source to my personal infrastructure&lt;/h1&gt;
+    &lt;h1&gt;Extending my personal infrastructure with a data source&lt;/h1&gt;
     &lt;div class="summary"&gt;Featuring Roam Research
     &lt;/div&gt;&lt;/section&gt;
     &lt;!-- are sections appropriate for that? --&gt;

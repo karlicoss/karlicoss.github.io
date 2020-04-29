@@ -32,7 +32,7 @@
         <meta content="website" property="og:type"/>
         <meta content="https://beepb00p.xyz/promnesia.html" property="og:url"/> <!-- TODO base? -->
         <meta content="Promnesia | beepb00p" property="og:title"/>
-        <meta content="Your web copilot" property="og:description"/>
+        <meta content="A quest for fixing browser history" property="og:description"/>
         <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
         <!-- ugh. Facebook really wants jpg? -->
         <!-- also Facebook displays it with black background, but whatever, fuck it. -->
@@ -81,7 +81,7 @@
     
     <section class="post-title">
     <h1>Promnesia</h1>
-    <div class="summary">Your web copilot
+    <div class="summary">A quest for fixing browser history
     </div></section>
     <!-- are sections appropriate for that? -->
 
@@ -90,98 +90,129 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org0000004">1. What is wrong with browser history?</a>
+<li><a href="#org0000000">1. I want a browsing assistant</a></li>
+<li><a href="#org0000004">2. Browser history is broken</a>
 <ul>
-<li><a href="#org0000000">it's not just about web browser</a></li>
-<li><a href="#org0000001">it's scattered and siloed</a></li>
-<li><a href="#org0000002">not all of it is equal</a></li>
-<li><a href="#org0000003"><span class="todo TODO">TODO</span> the experience and interface sucks?</a></li>
+<li><a href="#org0000001">it's not just about web browsers</a></li>
+<li><a href="#org0000002">it's scattered and siloed</a></li>
+<li><a href="#org0000003">it's got different weight (TODO not sure about 'weight'?)</a></li>
 </ul>
 </li>
-<li><a href="#org0000013">2. Goals</a>
+<li><a href="#org0000005">3. URLs are broken</a></li>
+<li><a href="#org000000a">4. Existing solutions?</a>
 <ul>
-<li><a href="#org0000005">Goals: integrating  TODO that's <span class="underline">already present</span>   <span class="tag"><span class="promnesia">promnesia</span> <span class="motivation">motivation</span></span></a></li>
-<li><a href="#org0000006"><span class="todo TODO">TODO</span> <span class="priority">[D]</span> prioritizing reading   <span class="tag"><span class="promnesia">promnesia</span> <span class="motivation">motivation</span></span></a></li>
-<li><a href="#org0000007"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> some tools are better suited for specific people's neeeds and it's hard to make everyone happy without overcomplicating, investing massive amounts of time   <span class="tag"><span class="promnesia">promnesia</span></span></a></li>
-<li><a href="#org000000a">It isn't a new tool for annotation</a></li>
-<li><a href="#org000000b"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> Design goal: not invasive, you don't need to 'migrate' any data, works with existing sources   <span class="tag"><span class="promnesia">promnesia</span> <span class="blog">blog</span></span></a></li>
-<li><a href="#org000000c"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> If you're digging for some topic you find yourself increasingly running at the same people   <span class="tag"><span class="promnesia">promnesia</span> <span class="motivation">motivation</span></span></a></li>
-<li><a href="#org000000d"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> I wanted an extension like that for several years   <span class="tag"><span class="promnesia">promnesia</span></span></a></li>
-<li><a href="#org000000e"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> not sure how to decouple in the future?   <span class="tag"><span class="promnesia">promnesia</span> <span class="mypkg">mypkg</span> <span class="blog">blog</span></span></a></li>
-<li><a href="#org000000f"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> I'd say the biggest problem with something like this is that it's a silo. You're… | Hacker News   <span class="tag"><span class="promnesia">promnesia</span> <span class="motivation">motivation</span></span></a></li>
-<li><a href="#org0000011"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> Ideally I'd want some sort of AI assistant that would detect relevant bits and highlight them   <span class="tag"><span class="promnesia">promnesia</span> <span class="motivation">motivation</span></span></a></li>
-<li><a href="#org0000012"><span class="todo TODO">TODO</span> Information is scattered   <span class="tag"><span class="promnesia">promnesia</span></span></a></li>
+<li><a href="#org0000006">Prototypes and mockups</a></li>
+<li><a href="#org0000007">'Unlimited history' extensions</a></li>
+<li><a href="#org0000008">Google Activity/Takeout</a></li>
+<li><a href="#org0000009">Worldbrain Memex</a></li>
 </ul>
 </li>
-<li><a href="#org0000021">3. Motivation</a>
+<li><a href="#org0000017">5. Hello, Promnesia!</a>
 <ul>
-<li><a href="#org0000014"><span class="timestamp-wrapper"><span class="timestamp">[2019-05-24 22:17]</span></span> useful to have links just added to instapaper to know that you are planning to read them there   <span class="tag"><span class="promnesia">promnesia</span> <span class="motivation">motivation</span></span></a></li>
-<li><a href="#org0000015"><span class="todo TODO">TODO</span> It could be a tool similar to browser. Maybe you don't use it very often, but when you want it it's pretty good to have it, like browser history. Also it's a an actually working prototype unlike most of other xoncepts I've  seen   <span class="tag"><span class="promnesia">promnesia</span></span></a></li>
-<li><a href="#org0000016"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> benefit of using browser databases: easier to sync them around (or if you can't be bothered to do google takeout every now and then)   <span class="tag"><span class="promnesia">promnesia</span></span></a></li>
-<li><a href="#org0000017"><span class="todo STRT">STRT</span> <span class="priority">[C]</span> maybe I could target instapaper users first? If I do the matching it would be really cool   <span class="tag"><span class="promnesia">promnesia</span> <span class="motivation">motivation</span></span></a></li>
-<li><a href="#org0000018"><span class="todo STRT">STRT</span> twitter accounts exploration   <span class="tag"><span class="promnesia">promnesia</span> <span class="motivation">motivation</span></span></a></li>
-<li><a href="#org0000019"><span class="todo STRT">STRT</span> following people on twitter: why did I do that?   <span class="tag"><span class="promnesia">promnesia</span> <span class="motivation">motivation</span></span></a></li>
-<li><a href="#org000001a"><span class="todo STRT">STRT</span> exploring blogs   <span class="tag"><span class="promnesia">promnesia</span> <span class="motivations">motivations</span></span></a></li>
-<li><a href="#org000001b"><span class="priority">[A]</span> I wanted to answer few questions   <span class="tag"><span class="promnesia">promnesia</span> <span class="motivation">motivation</span> <span class="post">post</span></span></a></li>
+<li><a href="#org000000c"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> some tools are better suited for specific people's neeeds and it's hard to make everyone happy without overcomplicating, investing massive amounts of time   <span class="tag"><span class="promnesia">promnesia</span></span></a></li>
+<li><a href="#org000000d">Goals: integrating  TODO that's <span class="underline">already present</span>   <span class="tag"><span class="promnesia">promnesia</span> <span class="motivation">motivation</span></span></a></li>
+<li><a href="#org0000016">What it isn't</a></li>
 </ul>
 </li>
-<li><a href="#org000002b">4. Design?</a>
-<ul>
-<li><a href="#org0000022"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> few things became apparent: realtime updates are tedious to implement, however it's way easier to make stuff recompute everything from scratch. kcache was motivated by that   <span class="tag"><span class="blog">blog</span> <span class="promnesia">promnesia</span></span></a></li>
-<li><a href="#org0000023"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> There is no way to implement this without keeping the data locally (or to be more specific, in one place)   <span class="tag"><span class="promnesia">promnesia</span></span></a></li>
-<li><a href="#org0000024"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> parent and sibling relations   <span class="tag"><span class="cannon">cannon</span> <span class="promnesia">promnesia</span></span></a></li>
-<li><a href="#org000002a">urls/cannon</a></li>
-</ul>
-</li>
-<li><a href="#org0000030">5. development etc</a>
-<ul>
-<li><a href="#org000002c"><span class="priority">[B]</span> I tried to make sure it's as resilient as possible   <span class="tag"><span class="promnesia">promnesia</span> <span class="blog">blog</span></span></a></li>
-<li><a href="#org000002d"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> automated quite a lot of testing that perhaps might be useful for other developers. I'll write a separate post about it, perhaps   <span class="tag"><span class="promnesia">promnesia</span> <span class="blog">blog</span></span></a></li>
-<li><a href="#org000002e"><span class="todo TODO">TODO</span> <span class="priority">[D]</span> highlight css styling among features   <span class="tag"><span class="promnesia">promnesia</span></span></a></li>
-<li><a href="#org000002f"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-04-13 22:08]</span></span> not sure. maybe highlight a few things that have led to it?</a></li>
-</ul>
-</li>
-<li><a href="#org0000036">6. Motivation for cannon   <span class="tag"><span class="cannon">cannon</span></span></a>
-<ul>
-<li><a href="#org0000031"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> twitter and mobile twitter   <span class="tag"><span class="promnesia">promnesia</span> <span class="cannon">cannon</span></span></a></li>
-<li><a href="#org0000032"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-02 00:25]</span></span> The Curse of the Modern Office | LOW←TECH MAGAZINE   <span class="tag"><span class="cannon">cannon</span> <span class="motivation">motivation</span></span></a></li>
-<li><a href="#org0000033"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> no canonical on gist   <span class="tag"><span class="promnesia">promnesia</span> <span class="cannon">cannon</span> <span class="motivation">motivation</span></span></a></li>
-<li><a href="#org0000034"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> I want urls that represent information, regardless the way it's presented   <span class="tag"><span class="promnesia">promnesia</span></span></a></li>
-<li><a href="#org0000035"><span class="priority">[A]</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-01-11 19:07]</span></span> silo - IndieWeb   <span class="tag"><span class="gr">gr</span> <span class="cannon">cannon</span></span></a></li>
-</ul>
-</li>
-<li><a href="#org0000038">7. --</a>
-<ul>
-<li><a href="#org0000037"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> to express your interest, feel free to like/write comment on the issue, so I could prioritize   <span class="tag"><span class="promnesia">promnesia</span></span></a></li>
-</ul>
-</li>
+<li><a href="#org0000018">6. What can you use it for?</a></li>
+<li><a href="#fin">7. ---</a></li>
 </ul>
 </div>
 </div>
 <p>
-<a href="https://github.com/karlicoss/promneisa">Promnesia</a> is a browser extension (Chrome/Firefox/Firefox mobile) which serves as a web surfing copilot, enhancing your browsing history and web exploration experience.
+<a href="https://github.com/karlicoss/promneisa">Promnesia</a> is a browser extension (Chrome/Firefox/Firefox mobile) which serves as a web surfing copilot,
+enhancing your browsing history, improving the web exploration experience and integrating it with your knowledge base.
 </p>
 <p>
-This started with frustration. 
-TODO I wonder if I'd do anything at all if I wasn't frustrated by the way world is.
-For years, I've been sick that TODO
+The repository contains some demos and the setup guide, this post is more of a motivation and the story of what has led me to work on it.
 </p>
 <p>
-So, what's wrong with the existing browser history?
+I've been raised on science fiction, and growing up, I've been dreaming about the technology drastically changing our lives.
+Augmenting the brain with a math coprocessor, neural interfaces, having perfect reaction and memory – many of you are on the same page and know the drill.
+</p>
+<p>
+Years had passed, I became a software engineer and had realised, how far are we from all these fancy technologies I wanted.
+So my dreams? (TODO) have become more modest, and I've chosen a more realistic and plausible target: using my digital trace like browser history to compensate for my limited memory.
+</p>
+<p>
+I'm exploring lots of information on the Internet, and it feels wasteful to use my meat resources (TODO tag) to keep track of it.
+Web browsers tracks it automatically, without any manual and conscious effort.
+</p>
+<p>
+Surely we can benefit from the immense computing and memory capabilities of the computer?
+</p>
+<p>
+So I figured that I wanted:
 </p>
 <div class="outline-2">
-<h2 id="org0000004"><a class="headerlink" href="#org0000004">¶</a><span class="section-number-2">1</span> What is wrong with browser history?</h2>
+<h2 id="org0000000"><a class="headerlink" href="#org0000000">¶</a><span class="section-number-2">1</span> I want a browsing assistant</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-Browsing history is a very rich potentially source of useful information.
-Just think about it: it contains exact timestamps and exact links which <i>basically</i> address information.
-To some extensn URLs can express relationships (TODO to some extent) like persons/groups/TODO?? we have for free.
+A copilot. A web surfing companion. A <a href="http://alumni.media.mit.edu/~rhodes/Papers/remembrance.html">Remembrance Agent</a>.
+Call it whatever you like, I <i>wish</i> it was a concept with a widely accepted name.
 </p>
 <p>
-Seems like a rich/ripe TODO for TODO.
+Something that would:
+</p>
+<ul class="org-ul">
+<li><p>
+aid me with information <b>processing</b>
 </p>
 <p>
-You should be able to know TODO, associate TODO, be able to trace your jumps through the websites.
+Keep track of what I've read, on what device, and for how long.
+</p></li>
+<li><p>
+show me my <b>annotations and highlights</b>, within the original page
+</p>
+<p>
+I don't want to keep wondering whether I got my throughts stashed in some app. (TODO)
+</p></li>
+<li><p>
+help me to explore new information and <b>prioritize</b> it
+</p>
+<p>
+There is lots of awesome stuff on the Internet and the biggest problem I have is picking the most relevant things to dig in.
+</p>
+<p>
+I wish there was something that could in a single click show me, who of my friends, or of the people I follow, have read a certain link.
+What did they think? Have they posted about it, annotated or something else?
+</p></li>
+<li>link/connect together TODO</li>
+<li><p>
+unify my <b>scattered and siloed bookmarks</b>
+</p>
+<p>
+Browser bookmarks; Reddit/Hackernews saves; "Watch later" on Youtube, saved links in your instant messenger.
+</p>
+<p>
+These are the same damn thing, yet there is no way to oversee and process them through a single interface.
+</p></li>
+<li>bridge the gap between the browser and my private wiki</li>
+</ul>
+<p>
+I wanted a system like this <a href="https://twitter.com/karlicoss/status/767412935316611072">for</a> several <a href="https://twitter.com/karlicoss/status/896313846159298560">years</a>.
+</p>
+<p>
+At some point, after failed attempts at finding an existing solution (TODO link), I'd figured that it was going to be a yet another thing I had to implement myself.
+</p>
+<p>
+The journey to build this took longer than I expected, led me theought a rabbithole and lots of yak shaving,
+and made me realize: <b>browser history is very, very broken</b>.
+</p>
+</div>
+</div>
+<div class="outline-2">
+<h2 id="org0000004"><a class="headerlink" href="#org0000004">¶</a><span class="section-number-2">2</span> Browser history is broken</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Browsing history is a rich source of potentially useful information.
+Just think about it: it's lifelogging for free.
+It contains exact timestamps and links which <i>basically</i> address information.
+</p>
+<p>
+To some extent, URLs express relationships like persons/groups/TODO?? we have for free.
+Seems like a rich/ripe TODO for TODO, right?
+You should be able to know TODO, associate TODO, and be able to easily trace your jumps through the websites.
 </p>
 <p>
 Now think what experience do you have instead. What was the last time you used it in any nontrivial way, for something other than reopening an accidentally closed tab?
@@ -191,53 +222,99 @@ In addition:
 </p>
 </div>
 <div class="outline-3">
-<h3 id="org0000000"><a class="headerlink" href="#org0000000">¶</a>it's not just about web browser</h3>
+<h3 id="org0000001"><a class="headerlink" href="#org0000001">¶</a>it's not just about web browsers</h3>
 <div class="outline-text-3">
 <p>
-For example, if you're using a native phone app for Facebook or Reddit, you history isn't logged anywhere or stored in the database (TODO <samp class="inline">/data/data/</samp>)
+If you're using a native phone app (say, for Reddit or Twitter), you history either isn't logged anywhere or stored locally on your phone.
 </p>
 <div><span class="before-aside">
-Database is not accessible to normal users, unless your phone is rooted.
+On Android, it's likely to be in an Sqlite database in <code class="inline">/data/data/app.name</code>.
+This directory is not accessible to normal users, <b>unless your phone is rooted</b>.
+Just think about how ridiculous it is. It's <b>your own data</b>, yet your OS babysits you and prevents your from accessing it.
 
 </span><aside class="sidenote">rooting modern Android phones ranges from "<b>somewhat</b> painful" to "<b>very</b> painful"</aside></div>
 <p>
-Just think about how ridiculous it is. It's <b>your own data</b>, yet your phone OS babysits you and prevents your from accessing it.
-Yes, I know about sandboxing and TODO.
+As a specific example, <a href="https://github.com/ccrama/Slide">Reddit Slide</a> app keeps the view history in <samp class="inline">/data/data/me.ccrama.redditslide/SEEN</samp>.
+Even if you root your phone and can access the database, because the model TODO data is flawed?? in the first place,
+the app isn't persisting the data in the database, it's merely a cache TODO latest few weeks or something?
+So if you want your complete history, you have to backup this database regularly, keep the snapshots and <a href="exports.html#synthetic">somehow</a>
+reconstruct it.
+</p>
+<p>
+You may dismiss this as data nitpicking, but when <b>all</b> of your phone apps are doing this, you're missing out on quite a lot of information.
 </p>
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org0000001"><a class="headerlink" href="#org0000001">¶</a>it's scattered and siloed</h3>
+<h3 id="org0000002"><a class="headerlink" href="#org0000002">¶</a>it's scattered and siloed</h3>
 <div class="outline-text-3">
+<p>
+It kind of continues the previous point:
+</p>
 <ul class="org-ul">
-<li>for the most part, you can't access history in your phone apps (non-browser)</li>
-<li>TODO link to chrome/firefox history recycling policy</li>
+<li>for the most part, you can't access history in your phone apps</li>
 <li><p>
-if you're not logged into Google account/Mozilla sync
+lots of data which count be counted basically browser is scattered across the TODO
 </p>
 <p>
-There are ways of running Firefox, and allegedly even Chrome sync
+(TODO link to sad infra?)
+</p>
+<p>
+It sits behind the countless APIs and TODO
+</p>
+<p>
+It idles on your filesystem in markdown and org-mode files.
 </p></li>
-<li>Google Takout won't save you TODO link</li>
-<li>if you're using different browsers on different devices, good luck</li>
-<li>TODO browser interop
-Although these days</li>
-<li>TODO annotation data</li>
+</ul>
+<p>
+Even <i>regular</i> browser history is not easy to get hands on:
+</p>
+<ul class="org-ul">
+<li>Firefox <a href="https://support.mozilla.org/en-US/questions/1080942">used to</a> silently 'expire' your browser history</li>
+<li><p>
+Chrome deletes history older than <a href="https://superuser.com/a/364475/300795">90 days</a>
+</p>
+<p>
+The only way to access older history I'm aware of is <a href="https://myactivity.google.com">Google Activity</a> and Takeout.
+</p></li>
+<li><p>
+Google Takeout quietly recycles your history
+</p>
+<p>
+TODO link
+</p></li>
+<li><p>
+Migration is limited to the most popular browsers
+</p>
+<p>
+The retention limits the migration as well.
+E.g. if you migrate from Chrome to Firefox, the history older than 90 days is locked and siloed in your Google Account.
+</p></li>
+<li><p>
+You're gonna have hard time if you're not using Google/Mozilla sync
+</p>
+<p>
+Your history will be scattered across devices and lost on OS reinstalls.
+</p>
+<p>
+There are ways of selfhosting Firefox sync, and (<a href="https://superuser.com/questions/614744/how-to-set-up-a-own-chrome-sync-server">allegedly</a>) even Chrome sync,
+but, as you can imagine, it's quite tedious.
+</p></li>
 </ul>
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org0000002"><a class="headerlink" href="#org0000002">¶</a>not all of it is equal</h3>
+<h3 id="org0000003"><a class="headerlink" href="#org0000003">¶</a>it's got different weight (TODO not sure about 'weight'?)</h3>
 <div class="outline-text-3">
 <p>
-Not all pages in your history are the same.
+Not all links in your history are equal (on equal/the same grounds??).
 </p>
 <ul class="org-ul">
-<li>large proportion are just full of tracking TODO garbage</li>
 <li>some are clicked on by accident</li>
 <li>some you've just skimmed</li>
+<li>some are on your reading list</li>
 <li>some you've been reading for hours and they are full of your highlights and annotations</li>
-<li>some you are keeping in your personal wiki</li>
+<li>some you are keeping in your knowledge base/personal wiki</li>
 <li>some of them you've shared with other people on social media</li>
 </ul>
 <p>
@@ -245,15 +322,199 @@ The current browser history experience makes absolutely no difference between th
 </p>
 </div>
 </div>
-<div class="outline-3">
-<h3 id="org0000003"><a class="headerlink" href="#org0000003">¶</a><span class="todo TODO">TODO</span> the experience and interface sucks?</h3>
+</div>
+<div class="outline-2">
+<h2 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><span class="section-number-2">3</span> URLs are broken</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+This topic deserves a separate post (TODO someone suremy must have ranted about it), but I'll keep it a section size for now.
+</p>
+<p>
+URLs seem great because they mostly address content, and semi-curated. In reality though:
+</p>
+<ul class="org-ul">
+<li><p>
+Links rot
+</p>
+<p>
+Many URLs are <b>literally</b> broken.
+</p>
+<p>
+There is no way to migrate your browser history, e.g. point to archive.org entry or a new domain.
+</p>
+<p>
+TODO archive org
+</p>
+<p>
+<a href="https://web.archive.org/web/20090902224414/http://reason.com/news/show/119237.html">https://web.archive.org/web/20090902224414/http://reason.com/news/show/119237.html</a>
+</p></li>
+<li><p>
+obfuscated by shortening and redirects
+</p>
+<p>
+What happens to all the <code class="inline">t.co</code> links when Twitter as a service dies?
+</p></li>
+<li><p>
+obscured
+</p>
+<p>
+For example, there is no way to know what is behind <samp class="inline">https://www.instapaper.com/read/1265139707</samp>
+</p></li>
+</ul>
+<ul class="org-ul">
+<li><p>
+unstandartized
+</p>
+<p>
+For example, fragments (TODO link):
+</p>
+<ul class="org-ul">
+<li>on google groups they are meaningful and address specific discussions and messages: <code class="inline">https://groups.google.com/a/list.hypothes.is/forum/#!topic/dev/kcmS7H8ssis</code></li>
+<li>on most websites they refer to the content within a page: <code class="inline">https://github.com/lipoja/URLExtract/issues/13#issuecomment-467635302</code></li>
+<li>and on many they are utter garbage and only there for tracking</li>
+</ul>
+<p>
+TODO same point applies to query
+</p></li>
+<li>unnormalized
+
+<ul class="org-ul">
+<li>just think of all the <samp class="inline">www.</samp>, <samp class="inline">amp.</samp>, <samp class="inline">mobile.</samp>, <samp class="inline">m.</samp> garbage</li>
+<li><code class="inline">youtu.be/1TKSfAkWWN0</code>, <code class="inline">youtube.com/embed/1TKSfAkWWN0</code> and <code class="inline">https://www.youtube.com/watch?v=1TKSfAkWWN0&amp;list=WL&amp;index=11&amp;t=0s</code> refer to the exactly same content, yet your browser has no idea.</li>
+</ul></li>
+<li><code class="inline">&lt;link rel="canonical"&gt;</code>
+<ul class="org-ul">
+<li>often it's not not present</li>
+<li>when it does, often not used properly</li>
+<li>TODO can't know it without loading the page first?</li>
+</ul></li>
+</ul>
+<p>
+I want URLs to <b>address information</b> and <b>represent relations</b>. The current URL experience is far from ideal for this.
+</p>
 </div>
 </div>
 <div class="outline-2">
-<h2 id="org0000013"><a class="headerlink" href="#org0000013">¶</a><span class="section-number-2">2</span> Goals</h2>
-<div class="outline-text-2" id="text-2">
+<h2 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><span class="section-number-2">4</span> Existing solutions?</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Francly, I haven't seen many. Please let me know if I missed on anything.
+</p>
+</div>
+<div class="outline-3">
+<h3 id="org0000006"><a class="headerlink" href="#org0000006">¶</a>Prototypes and mockups</h3>
+<div class="outline-text-3">
+<ul class="org-ul">
+<li>TODO I think I've had more links?</li>
+<li><p>
+<a href="http://alumni.media.mit.edu/~rhodes/Papers/mnotes-iui00.html">"Margin Notes: Building a Contextually Aware Associative Memory"</a>
+</p>
+<p>
+<a href="http://alumni.media.mit.edu/~rhodes/RA/Mnotes/">http://alumni.media.mit.edu/~rhodes/RA/Mnotes/</a>
+</p>
+<p>
+A paper from the year 2000 (!), w
+</p>
+<blockquote>
+<p>
+Margin Notes is a remembrance agent that automatically rewrites web pages as they are loaded, adding hyperlinks to personal files.
+</p>
+</blockquote>
+<p>
+<a href="http://alumni.media.mit.edu/~rhodes/Papers/mnotes-iui00.html">http://alumni.media.mit.edu/~rhodes/Papers/mnotes-iui00.html</a>
+<a href="http://alumni.media.mit.edu/~rhodes/RA/Mnotes/">http://alumni.media.mit.edu/~rhodes/RA/Mnotes/</a>
+</p></li>
+<li><p>
+Historia by <a href="https://mek.fyi/#experiments">Mek</a>
+</p>
+<p>
+<a href="https://docs.google.com/document/d/1QlrVpAl59gmJD7Kl--q3uyfZo936iZIb45fim6EV53k">https://docs.google.com/document/d/1QlrVpAl59gmJD7Kl--q3uyfZo936iZIb45fim6EV53k</a>
+</p>
+<blockquote>
+<p>
+Goal: use a chrome extension to supplement your browsing experience by introducing a superior browsing history data structure:
+</p>
+<ul class="org-ul">
+<li>preserve provenance. maintain a detailed account of browsing history</li>
+<li>track interactions with dynamic content</li>
+</ul>
+</blockquote>
+<p>
+Sadly it only describes a concept.
+</p></li>
+</ul>
+</div>
+</div>
+<div class="outline-3">
+<h3 id="org0000007"><a class="headerlink" href="#org0000007">¶</a>'Unlimited history' extensions</h3>
+<div class="outline-text-3">
+<p>
+There is a family of Chrome extensions similar to <a href="https://chrome.google.com/webstore/detail/history-trends-unlimited/pnmchffiealhkdloeffcdnbgdnedheme">History Trends Unlimited</a>,
+which try to make up for Chrome 90 day retention by keeping the history in IndexDB.
+</p>
+<p>
+The only problem they solve is retention, and it ends up as a yet another silo.
+</p>
+<p>
+(but I guess 30K users at least shows there is a demand for such functionality)
+</p>
+</div>
+</div>
+<div class="outline-3">
+<h3 id="org0000008"><a class="headerlink" href="#org0000008">¶</a>Google Activity/Takeout</h3>
+<div class="outline-text-3">
+<p>
+I've mentioned it already, TODO
+</p>
+<p>
+It's a Google-specific silo, and the functionality provided by Google is only useful for deliberate searches.
+</p>
+<p>
+It doesn't have an API and can't be integrated in the browser.
+</p>
+</div>
+</div>
+<div class="outline-3">
+<h3 id="org0000009"><a class="headerlink" href="#org0000009">¶</a>Worldbrain Memex</h3>
+<div class="outline-text-3">
+<p>
+<a href="https://github.com/WorldBrain/Memex#memex-features">https://github.com/WorldBrain/Memex#memex-features</a>
+</p>
+<p>
+Memex is a cool browser extension TODO
+</p>
+<p>
+The problem is that Memex is that it's also a silo.
+</p>
+<p>
+It's probably <b>the nicest silo</b> I know of: open source, keeps your data locally, and in an open format.
+It's got data imports from other services. TODO
+</p>
+<p>
+But nevertheless, you're still restricted to  it still restricts you to using but it still requires.
+</p>
+<p>
+If for some reason you can't or don't want to use Memex for annotating and recording all of your history (e.g. on some of your devices) – you
+TODO.
+</p>
+<p>
+TODO also the the point that "it's not about the browser"
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2">
+<h2 id="org0000017"><a class="headerlink" href="#org0000017">¶</a><span class="section-number-2">5</span> Hello, Promnesia!</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+TODO github links?
+</p>
+<p>
+Goals
+</p>
 <ul class="org-ul">
 <li>there are lots of awesome services out there that</li>
+<li>don't make it another Silo, there are good tools out there</li>
 <li>connect different tools for annotation</li>
 <li>show the context in which the URL was visited
 
@@ -262,11 +523,33 @@ The current browser history experience makes absolutely no difference between th
 <li>was it saved on Hackernews</li>
 <li>was it mentioned in a chat with your friend?</li>
 </ul></li>
+<li><p>
+TODO something about cannon?
+</p>
+<p>
+E.g. normalize and map URLs to unify TODO
+</p></li>
 <li>how and why have I visited/bookmarked the page?</li>
 </ul>
 </div>
+<div class="outline-4">
+<h4 id="org000000b"><span class="timestamp-wrapper"><span class="timestamp">[2020-04-27 22:06]</span></span> Index <b>anything</b></h4>
+<div class="outline-text-4">
+<p>
+as long as you can extract URLs from something, you should be able to feed it in Promnesia
+</p>
+</div>
+</div>
 <div class="outline-3">
-<h3 id="org0000005"><a class="headerlink" href="#org0000005">¶</a>Goals: integrating  TODO that's <span class="underline">already present</span>   <span class="tag"><span class="promnesia">promnesia</span> <span class="motivation">motivation</span></span></h3>
+<h3 id="org000000c"><a class="headerlink" href="#org000000c">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> some tools are better suited for specific people's neeeds and it's hard to make everyone happy without overcomplicating, investing massive amounts of time   <span class="tag"><span class="promnesia">promnesia</span></span></h3>
+<div class="outline-text-3">
+<p>
+this is an attempt to connect the information from different independent sources
+</p>
+</div>
+</div>
+<div class="outline-3">
+<h3 id="org000000d"><a class="headerlink" href="#org000000d">¶</a>Goals: integrating  TODO that's <span class="underline">already present</span>   <span class="tag"><span class="promnesia">promnesia</span> <span class="motivation">motivation</span></span></h3>
 <div class="outline-text-3">
 <p>
 First, there is enough services out there. They all are somewhat good and have different pros and cons (TODO link to annotation post?)
@@ -275,30 +558,38 @@ First, there is enough services out there. They all are somewhat good and have d
 What we need is a uniform way to interact with it
 </p>
 </div>
-</div>
-<div class="outline-3">
-<h3 id="org0000006"><a class="headerlink" href="#org0000006">¶</a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> prioritizing reading   <span class="tag"><span class="promnesia">promnesia</span> <span class="motivation">motivation</span></span></h3>
-<div class="outline-text-3">
-<p>
-there is a lot of stuff on the internet, and mostly the problem is picking the good things. If I knew in one click how many of my peers read something and if I can discuss that with them it would be so much better
-</p>
+<div class="outline-4">
+<h4 id="org000000e"><span class="timestamp-wrapper"><span class="timestamp">[2020-04-28 23:00]</span></span> Local first</h4>
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org0000007"><a class="headerlink" href="#org0000007">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> some tools are better suited for specific people's neeeds and it's hard to make everyone happy without overcomplicating, investing massive amounts of time   <span class="tag"><span class="promnesia">promnesia</span></span></h3>
-<div class="outline-text-3">
-<p>
-this is an attempt to connect the information from different independent sources
-</p>
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org000000a"><a class="headerlink" href="#org000000a">¶</a>It isn't a new tool for annotation</h3>
+<h3 id="org0000016"><a class="headerlink" href="#org0000016">¶</a>What it isn't</h3>
 <div class="outline-text-3">
 </div>
 <div class="outline-4">
-<h4 id="org0000008"><span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-31 01:36]</span></span> Xxx   <span class="tag"><span class="promnesia">promnesia</span></span></h4>
+<h4 id="org000000f"><span class="todo TODO">TODO</span> <span class="priority">[A]</span> I was to make an emphasis: it's not a vaporware!   <span class="tag"><span class="promnesia">promnesia</span> <span class="blog">blog</span></span></h4>
 <div class="outline-text-4">
+<p>
+It's not even a prototype! It's a but raw, but it works for me, and there is no reason it won't work for you apart from some infrastructural overhead.
+I would like to raise a discussion on making this easier. I appreciate it may still be far from being possible to use by non-technical people, but at least my goal is so people who know/capable how to git clone and run from jobs could set this up
+</p>
+</div>
+</div>
+<div class="outline-4">
+<h4 id="org0000010"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> Design goal: not invasive, you don't need to 'migrate' any data, works with existing sources   <span class="tag"><span class="promnesia">promnesia</span> <span class="blog">blog</span></span></h4>
+<div class="outline-text-4">
+</div>
+<ul class="org-ul">
+<li><a id="org0000011"></a><span class="timestamp-wrapper"><span class="timestamp">[2020-04-27 21:14]</span></span> what did I mean here??<br/></li>
+</ul>
+</div>
+<div class="outline-4">
+<h4 id="org0000014">It isn't a new tool for annotation</h4>
+<div class="outline-text-4">
+</div>
+<ul class="org-ul">
+<li><a id="org0000012"></a><span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-10-31 01:36]</span></span> Xxx   <span class="tag"><span class="promnesia">promnesia</span></span><br/>
+<div class="outline-text-5">
 <p>
 I didn't want to invent a new tool for annotation.
 It's fragmented enough already and there are good tools out there already.
@@ -306,286 +597,111 @@ Cost of switching in time and cognitive effort is too high. There's always risk 
 </p>
 </div>
 <ul class="org-ul">
-<li><a id="org0000009"></a><span class="timestamp-wrapper"><span class="timestamp">[2019-12-27 23:06]</span></span> Aka what it's not?<br/></li>
+<li><a id="org0000013"></a><span class="timestamp-wrapper"><span class="timestamp">[2019-12-27 23:06]</span></span> Aka what it's not?<br/></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="outline-4">
+<h4 id="org0000015"><span class="timestamp-wrapper"><span class="timestamp">[2020-04-28 22:59]</span></span> It's not another silo</h4>
+</div>
+</div>
+</div>
+<div class="outline-2">
+<h2 id="org0000018"><a class="headerlink" href="#org0000018">¶</a><span class="section-number-2">6</span> What can you use it for?</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+TODO biggest topics/usecases?
+</p>
+<ul class="org-ul">
+<li><p>
+TODO Finding new information?
+</p>
+<p>
+For example, I run into an <a href="https://nautil.us/issue/66/clockwork/haunted-by-his-brother-he-revolutionized-physics-rp">article</a> on Twitter. I enjoyed it, and the website looks kind of familiar.
+</p>
+<p>
+When I jump on <a href="https://nautil.us">https://nautil.us</a>, the Promnesia sidebar shows me that I've visited and even annotated other articles on this site before!
+</p>
+<p>
+So it seems worthy an RSS subscription, which I do!
+</p></li>
+<li>Exploring people and communities
+
+<ul class="org-ul">
+<li><p>
+How often have I engaged with this blog in the past?
+</p>
+<p>
+Which posts have I already seen or read? Did I like them?
+Should I dive deeper?
+</p></li>
+<li>Same questions, but for twitter accounts, subreddits, youtube channels or anything similar</li>
+</ul></li>
+<li><p>
+Processing large amounts of information
+</p>
+<p>
+Somewhat similar to the
+</p>
+<ul class="org-ul">
+<li>TODO pinboard top?</li>
+<li>post compilations (TODO example)
+<a href="https://wiki.lesswrong.com/wiki/How_To_Actually_Change_Your_Mind">https://wiki.lesswrong.com/wiki/How_To_Actually_Change_Your_Mind</a></li>
+</ul></li>
+<li><p>
+Support annotations and highlights from <b>any</b> service (e.g. Instapaper/Pocket)
+</p>
+<p>
+I want to make my annotations avail TODO inline, without having
+</p>
+<p>
+TODO want to do what hypothes.is does but without necessarily using Hypothes.is
+</p></li>
+<li>Personal digital archeology and external memory
+
+<ul class="org-ul">
+<li>Why did I bookmark this youtube video? Who sent it to me?</li>
+<li>How did I get on this forgotten tab?</li>
+<li><p>
+I'm sometimes annoyed by @&lt;account&gt;'s tweets. Should I unfollow them?
+</p>
+<p>
+Why did I follow them in the first place? Are they worth following overall? Do I like their tweets often or bookmark their links?
+</p></li>
+</ul></li>
+<li>Integrating with your knowledge base</li>
+<li>Tap into other's brains
+
+<ul class="org-ul">
+<li>TODO demo?</li>
+</ul></li>
+<li><p>
+TODO unified browser history
+</p>
+<p>
+I'm listing it the last, because its benefits are apparent only when you TODO want one of the above
+</p>
+<p>
+As you get more and more detailed history, the system becomes more useful.
+</p></li>
 </ul>
 </div>
 </div>
-<div class="outline-3">
-<h3 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> Design goal: not invasive, you don't need to 'migrate' any data, works with existing sources   <span class="tag"><span class="promnesia">promnesia</span> <span class="blog">blog</span></span></h3>
-<div class="outline-text-3">
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org000000c"><a class="headerlink" href="#org000000c">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> If you're digging for some topic you find yourself increasingly running at the same people   <span class="tag"><span class="promnesia">promnesia</span> <span class="motivation">motivation</span></span></h3>
-<div class="outline-text-3">
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org000000d"><a class="headerlink" href="#org000000d">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> I wanted an extension like that for several years   <span class="tag"><span class="promnesia">promnesia</span></span></h3>
-<div class="outline-text-3">
-<p>
-yet nothing showed up
-when I finally got to implement it I had realised how much stuff needs to be done (TODO link to posts?)
-</p>
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org000000e"><a class="headerlink" href="#org000000e">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> not sure how to decouple in the future?   <span class="tag"><span class="promnesia">promnesia</span> <span class="mypkg">mypkg</span> <span class="blog">blog</span></span></h3>
-<div class="outline-text-3">
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org000000f"><a class="headerlink" href="#org000000f">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> I'd say the biggest problem with something like this is that it's a silo. You're… | Hacker News   <span class="tag"><span class="promnesia">promnesia</span> <span class="motivation">motivation</span></span></h3>
-<div class="outline-text-3">
-<p>
-<a href="https://news.ycombinator.com/item?id=21310988">https://news.ycombinator.com/item?id=21310988</a>
-</p>
-</div>
-<div class="outline-4">
-<h4 id="org0000010"><span class="timestamp-wrapper"><span class="timestamp">[2019-11-23 09:29]</span></span> xx</h4>
-<div class="outline-text-4">
-<p>
-I'd say the biggest problem with something like this is that it's a silo. You're suddenly 100% reliant on them providing the right tools and functions to access your data in the way you want/need. And if your needs/preferences change, then you're entirely reliant on whether the silo has foreseen the new use case.
-</p>
-<p>
-I already have an existing knowledge base (that not only consists of webpages, but also org files, videos, pdf's, etc.) that's accessible and synchronized across multiple devices - and while having a complete searchable history of all my browsing would be fantastic, there's no way to integrate it into my system (or any other system) with my own tools.
-</p>
-</div>
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org0000011"><a class="headerlink" href="#org0000011">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> Ideally I'd want some sort of AI assistant that would detect relevant bits and highlight them   <span class="tag"><span class="promnesia">promnesia</span> <span class="motivation">motivation</span></span></h3>
-<div class="outline-text-3">
-<p>
-for now we can at least do some sort of fuzzy highlighting?
-</p>
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org0000012"><a class="headerlink" href="#org0000012">¶</a><span class="todo TODO">TODO</span> Information is scattered   <span class="tag"><span class="promnesia">promnesia</span></span></h3>
-<div class="outline-text-3">
-<p>
-There's is do much
-Long term goal to automatically show relevance wrt to people you care about
-</p>
-</div>
-</div>
-</div>
 <div class="outline-2">
-<h2 id="org0000021"><a class="headerlink" href="#org0000021">¶</a><span class="section-number-2">3</span> Motivation</h2>
-<div class="outline-text-2" id="text-3">
+<h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">7</span> ---</h2>
+<div class="outline-text-2" id="text-fin">
 <p>
-have some motivation in git repo
-</p>
-</div>
-<div class="outline-3">
-<h3 id="org0000014"><a class="headerlink" href="#org0000014">¶</a><span class="timestamp-wrapper"><span class="timestamp">[2019-05-24 22:17]</span></span> useful to have links just added to instapaper to know that you are planning to read them there   <span class="tag"><span class="promnesia">promnesia</span> <span class="motivation">motivation</span></span></h3>
-</div>
-<div class="outline-3">
-<h3 id="org0000015"><a class="headerlink" href="#org0000015">¶</a><span class="todo TODO">TODO</span> It could be a tool similar to browser. Maybe you don't use it very often, but when you want it it's pretty good to have it, like browser history. Also it's a an actually working prototype unlike most of other xoncepts I've  seen   <span class="tag"><span class="promnesia">promnesia</span></span></h3>
-<div class="outline-text-3">
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org0000016"><a class="headerlink" href="#org0000016">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> benefit of using browser databases: easier to sync them around (or if you can't be bothered to do google takeout every now and then)   <span class="tag"><span class="promnesia">promnesia</span></span></h3>
-<div class="outline-text-3">
-<p>
-Two sided?
-The only downside is you won't have timestamps unless you write them out
-</p>
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org0000017"><a class="headerlink" href="#org0000017">¶</a><span class="todo STRT">STRT</span> <span class="priority">[C]</span> maybe I could target instapaper users first? If I do the matching it would be really cool   <span class="tag"><span class="promnesia">promnesia</span> <span class="motivation">motivation</span></span></h3>
-<div class="outline-text-3">
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org0000018"><a class="headerlink" href="#org0000018">¶</a><span class="todo STRT">STRT</span> twitter accounts exploration   <span class="tag"><span class="promnesia">promnesia</span> <span class="motivation">motivation</span></span></h3>
-<div class="outline-text-3">
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org0000019"><a class="headerlink" href="#org0000019">¶</a><span class="todo STRT">STRT</span> following people on twitter: why did I do that?   <span class="tag"><span class="promnesia">promnesia</span> <span class="motivation">motivation</span></span></h3>
-<div class="outline-text-3">
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org000001a"><a class="headerlink" href="#org000001a">¶</a><span class="todo STRT">STRT</span> exploring blogs   <span class="tag"><span class="promnesia">promnesia</span> <span class="motivations">motivations</span></span></h3>
-<div class="outline-text-3">
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org000001b"><a class="headerlink" href="#org000001b">¶</a><span class="priority">[A]</span> I wanted to answer few questions   <span class="tag"><span class="promnesia">promnesia</span> <span class="motivation">motivation</span> <span class="post">post</span></span></h3>
-<div class="outline-text-3">
-</div>
-<div class="outline-4">
-<h4 id="org000001c">have I visited that page, when and what did I think about it last time?</h4>
-<div class="outline-text-4">
-<p>
-annotations etc fit well into it
-</p>
-</div>
-</div>
-<div class="outline-4">
-<h4 id="org000001d">how did I end up at this page? Has someone recommended it to me? Or I got here from some other page</h4>
-</div>
-<div class="outline-4">
-<h4 id="org000001e">what links on that page I've seen (e.g. good for large compilations)</h4>
-</div>
-<div class="outline-4">
-<h4 id="org000001f">what other links on that domain I've seen?</h4>
-</div>
-<div class="outline-4">
-<h4 id="org0000020">unified history</h4>
-</div>
-</div>
-</div>
-<div class="outline-2">
-<h2 id="org000002b"><a class="headerlink" href="#org000002b">¶</a><span class="section-number-2">4</span> Design?</h2>
-<div class="outline-text-2" id="text-4">
-</div>
-<div class="outline-3">
-<h3 id="org0000022"><a class="headerlink" href="#org0000022">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> few things became apparent: realtime updates are tedious to implement, however it's way easier to make stuff recompute everything from scratch. kcache was motivated by that   <span class="tag"><span class="blog">blog</span> <span class="promnesia">promnesia</span></span></h3>
-<div class="outline-text-3">
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org0000023"><a class="headerlink" href="#org0000023">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> There is no way to implement this without keeping the data locally (or to be more specific, in one place)   <span class="tag"><span class="promnesia">promnesia</span></span></h3>
-<div class="outline-text-3">
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org0000024"><a class="headerlink" href="#org0000024">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> parent and sibling relations   <span class="tag"><span class="cannon">cannon</span> <span class="promnesia">promnesia</span></span></h3>
-<div class="outline-text-3">
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org000002a"><a class="headerlink" href="#org000002a">¶</a>urls/cannon</h3>
-<div class="outline-text-3">
-</div>
-<div class="outline-4">
-<h4 id="org0000025"><span class="todo TODO">TODO</span> most likely, deserve a separate post</h4>
-</div>
-<div class="outline-4">
-<h4 id="org0000026"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> Urls a good candidate because they sure at least somewhat curated   <span class="tag"><span class="promnesia">promnesia</span></span></h4>
-<div class="outline-text-4">
-</div>
-</div>
-<div class="outline-4">
-<h4 id="org0000027"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> attempt to implement uniform engine for annotation: not necessary for hypothesis to do so   <span class="tag"><span class="promnesia">promnesia</span> <span class="motivation">motivation</span></span></h4>
-<div class="outline-text-4">
-</div>
-</div>
-<div class="outline-4">
-<h4 id="org0000028"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> motivation for using your own normalisation   <span class="tag"><span class="promnesia">promnesia</span></span></h4>
-<div class="outline-text-4">
-<p>
-e.g. if the original page is gone I can still easily link my saved annotations to archived page
+Check out the <a href="https://github.com/karlicoss/promnesia">repository</a>, which contains more screenshots, demos and the setup manual.
 </p>
 <p>
-<a href="https://web.archive.org/web/20090902224414/http://reason.com/news/show/119237.html">https://web.archive.org/web/20090902224414/http://reason.com/news/show/119237.html</a>
-</p>
-</div>
-</div>
-<div class="outline-4">
-<h4 id="org0000029"><span class="todo TODO">TODO</span> hypothesis: wonder how it works on timestamped archive.org stuff?   <span class="tag"><span class="gr">gr</span> <span class="annotations">annotations</span></span></h4>
-<div class="outline-text-4">
-</div>
-</div>
-</div>
-</div>
-<div class="outline-2">
-<h2 id="org0000030"><a class="headerlink" href="#org0000030">¶</a><span class="section-number-2">5</span> development etc</h2>
-<div class="outline-text-2" id="text-5">
-</div>
-<div class="outline-3">
-<h3 id="org000002c"><a class="headerlink" href="#org000002c">¶</a><span class="priority">[B]</span> I tried to make sure it's as resilient as possible   <span class="tag"><span class="promnesia">promnesia</span> <span class="blog">blog</span></span></h3>
-<div class="outline-text-3">
-<p>
-in js, it's very easy to swallow errors. at best it just stops code halfway and renders system weird (exceptions would only be visible in extensions logs which no user would look at)
+If you can think of some cool features, or useful data sources, or any related thrughts, feel free to use <a href="https://github.com/karlicoss/promnesia/issues">github issues</a>
+or reach me by some other means.
 </p>
 <p>
-worst case you end up with inconsistent state (TODO reformulate) or break some invariants
+Even better if you want to help and contribute!
+I'd be happy to help you with any Python or browser extension specifics.
 </p>
-<p>
-I've wrapped everything in TODO defensify
-</p>
-<p>
-But that manifested in lots of spurious errors for various edge cases, so I had to deal with it. tests; fuzzing
-</p>
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org000002d"><a class="headerlink" href="#org000002d">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> automated quite a lot of testing that perhaps might be useful for other developers. I'll write a separate post about it, perhaps   <span class="tag"><span class="promnesia">promnesia</span> <span class="blog">blog</span></span></h3>
-<div class="outline-text-3">
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org000002e"><a class="headerlink" href="#org000002e">¶</a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> highlight css styling among features   <span class="tag"><span class="promnesia">promnesia</span></span></h3>
-<div class="outline-text-3">
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org000002f"><a class="headerlink" href="#org000002f">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-04-13 22:08]</span></span> not sure. maybe highlight a few things that have led to it?</h3>
-</div>
-</div>
-<div class="outline-2">
-<h2 id="org0000036"><a class="headerlink" href="#org0000036">¶</a><span class="section-number-2">6</span> Motivation for cannon   <span class="tag"><span class="cannon">cannon</span></span></h2>
-<div class="outline-text-2" id="text-6">
-</div>
-<div class="outline-3">
-<h3 id="org0000031"><a class="headerlink" href="#org0000031">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> twitter and mobile twitter   <span class="tag"><span class="promnesia">promnesia</span> <span class="cannon">cannon</span></span></h3>
-<div class="outline-text-3">
-<p>
-Generally mobile version of sites are good motivation.
-No one would argue that TODO link to tweets are exactly the same thing from the 'informational' perspective, yet there is no easy way to unify them
-TODO demonstrate &lt;canonical&gt; attribute
-</p>
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org0000032"><a class="headerlink" href="#org0000032">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-11-02 00:25]</span></span> The Curse of the Modern Office | LOW←TECH MAGAZINE   <span class="tag"><span class="cannon">cannon</span> <span class="motivation">motivation</span></span></h3>
-<div class="outline-text-3">
-<p>
-<a href="https://solar.lowtechmagazine.com/2016/11/the-curse-of-the-modern-office.html">https://solar.lowtechmagazine.com/2016/11/the-curse-of-the-modern-office.html</a>
-Comment:
-e.g. that link doesn't have 'canonical' even though it's a mirror
-</p>
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org0000033"><a class="headerlink" href="#org0000033">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> no canonical on gist   <span class="tag"><span class="promnesia">promnesia</span> <span class="cannon">cannon</span> <span class="motivation">motivation</span></span></h3>
-<div class="outline-text-3">
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org0000034"><a class="headerlink" href="#org0000034">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> I want urls that represent information, regardless the way it's presented   <span class="tag"><span class="promnesia">promnesia</span></span></h3>
-<div class="outline-text-3">
-<p>
-let alone all the tracking/etc crap
-</p>
-</div>
-</div>
-<div class="outline-3">
-<h3 id="org0000035"><a class="headerlink" href="#org0000035">¶</a><span class="priority">[A]</span> <span class="timestamp-wrapper"><span class="timestamp">[2020-01-11 19:07]</span></span> silo - IndieWeb   <span class="tag"><span class="gr">gr</span> <span class="cannon">cannon</span></span></h3>
-<div class="outline-text-3">
-<p>
-<a href="https://indieweb.org/silo">https://indieweb.org/silo</a>
-Selection:
-Linkwrapping
-</p>
-</div>
-</div>
-</div>
-<div class="outline-2">
-<h2 id="org0000038"><a class="headerlink" href="#org0000038">¶</a><span class="section-number-2">7</span> --</h2>
-<div class="outline-text-2" id="text-7">
-</div>
-<div class="outline-3">
-<h3 id="org0000037"><a class="headerlink" href="#org0000037">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> to express your interest, feel free to like/write comment on the issue, so I could prioritize   <span class="tag"><span class="promnesia">promnesia</span></span></h3>
-<div class="outline-text-3">
-</div>
 </div>
 </div>
 
