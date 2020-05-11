@@ -344,8 +344,8 @@ This step is possible with no boilerplate due to Python's dynamic nature.
 Yep, you will still have to manually deserialize config in the c++ code. But I think that's at least <b>not worse</b> than only using JSON and editing it manually.
 </p>
 <p>
-Obviously that has a performance hit (i.e. milliseconds taken to run the Python interpreter). Make your own judgment if it's acceptable for you.
-If the tool you're configuring is running for hours, you're probably going to be fine.
+Obviously that has a performance hit (i.e. milliseconds taken to run the Python interpreter). Make your own judgment whether it's acceptable for you.
+If the tool you're configuring is running for hours, you're probably going to be fine, or you can always generate the config in advance/cache.
 </p></li>
 <li><p>
 general-purpose programming languages are <b>harder to reason about</b>
@@ -360,6 +360,25 @@ even for people not familiar with the language at all.
 <p>
 However, I appreciate that my experience is different from other engineers (i.e. sysadmins) who would not trade off flexibility for the increase of configuration complexity.
 </p></li>
+<li><p>
+general-purpose languages are <b>hard to modify programmatically</b>
+</p>
+<p>
+To some extent it overlaps with the previous point.
+For example, <samp class="inline">git config</samp> commands manipulates the <samp class="inline">.git/config</samp> file.
+It's easy to modify an INI file, because it's basically a dictionary, so you only have to locate the key in the config file and change a single line.
+</p>
+<p>
+If the config is (say) a Python program, the model can be much more complicated than a dictionary, and it might be tricky to modify settings programmatically.
+Most likely, you'll have to resort to only appending new code to the config, which may not always be enough.
+</p>
+<p>
+To me, it's a very strong point against code as a config. As counter-points:
+</p>
+<ul class="org-ul">
+<li>not many programs have (or need) TUI/GUI for editing settings</li>
+<li>the settings that belong to the UI are usually very simple, and possible to adjust by appending only</li>
+</ul></li>
 </ul>
 <p>
 <a id="security"></a>The most serious issues are probably security and termination checking:
@@ -653,7 +672,7 @@ There were some polar opinions involved, so I'd like to clarify the most common 
 I admit that I have a programmer's mindset (as opposed to sysadmin's), and very likely underestimate the security risks.
 </p>
 <p>
-But again, <a class="link-up" href="#security">I admin</a> that executable configs are <b>not always</b> a good idea.
+But again, <a class="link-up" href="#security">I agree</a> that executable configs are <b>not always</b> a good idea.
 You can still have the best of both worlds by providing a DSL for generating a plain config and consuming the plain config.
 </p></li>
 <li><p>

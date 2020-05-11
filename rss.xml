@@ -1046,8 +1046,8 @@ This step is possible with no boilerplate due to Python's dynamic nature.
 Yep, you will still have to manually deserialize config in the c++ code. But I think that's at least &lt;b&gt;not worse&lt;/b&gt; than only using JSON and editing it manually.
 &lt;/p&gt;
 &lt;p&gt;
-Obviously that has a performance hit (i.e. milliseconds taken to run the Python interpreter). Make your own judgment if it's acceptable for you.
-If the tool you're configuring is running for hours, you're probably going to be fine.
+Obviously that has a performance hit (i.e. milliseconds taken to run the Python interpreter). Make your own judgment whether it's acceptable for you.
+If the tool you're configuring is running for hours, you're probably going to be fine, or you can always generate the config in advance/cache.
 &lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;
 general-purpose programming languages are &lt;b&gt;harder to reason about&lt;/b&gt;
@@ -1062,6 +1062,25 @@ even for people not familiar with the language at all.
 &lt;p&gt;
 However, I appreciate that my experience is different from other engineers (i.e. sysadmins) who would not trade off flexibility for the increase of configuration complexity.
 &lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+general-purpose languages are &lt;b&gt;hard to modify programmatically&lt;/b&gt;
+&lt;/p&gt;
+&lt;p&gt;
+To some extent it overlaps with the previous point.
+For example, &lt;samp class="inline"&gt;git config&lt;/samp&gt; commands manipulates the &lt;samp class="inline"&gt;.git/config&lt;/samp&gt; file.
+It's easy to modify an INI file, because it's basically a dictionary, so you only have to locate the key in the config file and change a single line.
+&lt;/p&gt;
+&lt;p&gt;
+If the config is (say) a Python program, the model can be much more complicated than a dictionary, and it might be tricky to modify settings programmatically.
+Most likely, you'll have to resort to only appending new code to the config, which may not always be enough.
+&lt;/p&gt;
+&lt;p&gt;
+To me, it's a very strong point against code as a config. As counter-points:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;not many programs have (or need) TUI/GUI for editing settings&lt;/li&gt;
+&lt;li&gt;the settings that belong to the UI are usually very simple, and possible to adjust by appending only&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;
 &lt;a id="security"&gt;&lt;/a&gt;The most serious issues are probably security and termination checking:
@@ -1355,7 +1374,7 @@ There were some polar opinions involved, so I'd like to clarify the most common 
 I admit that I have a programmer's mindset (as opposed to sysadmin's), and very likely underestimate the security risks.
 &lt;/p&gt;
 &lt;p&gt;
-But again, &lt;a class="link-up" href="#security"&gt;I admin&lt;/a&gt; that executable configs are &lt;b&gt;not always&lt;/b&gt; a good idea.
+But again, &lt;a class="link-up" href="#security"&gt;I agree&lt;/a&gt; that executable configs are &lt;b&gt;not always&lt;/b&gt; a good idea.
 You can still have the best of both worlds by providing a DSL for generating a plain config and consuming the plain config.
 &lt;/p&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;
@@ -1555,7 +1574,14 @@ in the rapid development phase, resort to having a flexible config
 &lt;b&gt;TLDR&lt;/b&gt;: I'm using &lt;a href="https://github.com/karlicoss/HPI"&gt;HPI&lt;/a&gt; (Human Programming Interface) package as a means of unifying, accessing and interacting with all of my personal data.
 &lt;/p&gt;
 &lt;p&gt;
-It's a Python library (named &lt;code class="inline"&gt;my&lt;/code&gt;), a collection of modules for:
+If you're in a hurry, feel free to jump straight to the &lt;a class="link-down" href="#usecases"&gt;demos&lt;/a&gt;.
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;see &lt;a href="https://github.com/karlicoss/HPI/tree/master/doc/SETUP.org"&gt;SETUP&lt;/a&gt; for the &lt;b&gt;installation/configuration guide&lt;/b&gt;&lt;/li&gt;
+&lt;li&gt;see &lt;a href="https://github.com/karlicoss/HPI/tree/master/doc/DEVELOPMENT.org"&gt;DEVELOPMENT&lt;/a&gt; for the &lt;b&gt;development/extension guide&lt;/b&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+HPI is a Python package (named &lt;code class="inline"&gt;my&lt;/code&gt;), a collection of modules for:
 &lt;/p&gt;
 &lt;ul class="org-ul"&gt;
 &lt;li&gt;social networks: posts, comments, favorites&lt;/li&gt;
@@ -1622,12 +1648,6 @@ and that's why I'm sharing this.
 &lt;p&gt;
 Imagine if all your life was reflected digitally and available at your fingertips.
 This library is my attempt to achieve this vision.
-&lt;/p&gt;
-&lt;p&gt;
-If you're in a hurry, feel free to jump straight to the &lt;a class="link-down" href="#usecases"&gt;demos&lt;/a&gt;.
-&lt;/p&gt;
-&lt;p&gt;
-For &lt;b&gt;installation/configuration/development guide&lt;/b&gt;, see &lt;a href="https://github.com/karlicoss/HPI/tree/master/doc/SETUP.org"&gt;SETUP.org&lt;/a&gt;.
 &lt;/p&gt;
 &lt;div id="table-of-contents"&gt;
 &lt;h2&gt;Table of Contents&lt;/h2&gt;
@@ -1868,6 +1888,10 @@ Here's the (incomplete) list of the modules:
 &lt;td class="org-left"&gt;&lt;a href="https://uk.kobobooks.com/products/kobo-aura-one"&gt;Kobo&lt;/a&gt; e-ink reader: annotations and reading stats&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/calendar/holidays.py"&gt;my.calendar.holidays&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;Public holidays (automatic) and days off work (manual inputs)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/coding/commits.py"&gt;my.coding.commits&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-left"&gt;Git commits data for repositories on your filesystem&lt;/td&gt;
 &lt;/tr&gt;
@@ -1973,7 +1997,7 @@ Here's the (incomplete) list of the modules:
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/twitter/twint.py"&gt;my.twitter.twint&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;Twitter data (tweets and favorites). Uses &lt;a href="https://github.com/twintproject/twint"&gt;Twint&lt;/a&gt; data export.&lt;/td&gt;
+&lt;td class="org-left"&gt;Twitter data (tweets and favorites).&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -2113,16 +2137,15 @@ he open sources it. I highly recommend watching his talk for inspiration.
 Single import away from getting tracks you listened to:
 &lt;/p&gt;
 &lt;div class="org-src-container"&gt;
-&lt;pre class="src src-python"&gt;&lt;span class="org-keyword"&gt;from&lt;/span&gt; my.lastfm &lt;span class="org-keyword"&gt;import&lt;/span&gt; get_scrobbles
-&lt;span class="org-variable-name"&gt;scrobbles&lt;/span&gt; = get_scrobbles()
-scrobbles[200: 205]
+&lt;pre class="src src-python"&gt;&lt;span class="org-keyword"&gt;from&lt;/span&gt; my.lastfm &lt;span class="org-keyword"&gt;import&lt;/span&gt; scrobbles
+&lt;span class="org-builtin"&gt;list&lt;/span&gt;(scrobbles())[200: 205]
 &lt;/pre&gt;
 &lt;/div&gt;
-&lt;pre class="example"&gt;[Scrobble(raw={'album': 'Nevermind', 'artist': 'Nirvana', 'date': '1282488504', 'name': 'Drain You'}),
- Scrobble(raw={'album': 'Dirt', 'artist': 'Alice in Chains', 'date': '1282489764', 'name': 'Would?'}),
- Scrobble(raw={'album': 'Bob Dylan: The Collection', 'artist': 'Bob Dylan', 'date': '1282493517', 'name': 'Like a Rolling Stone'}),
- Scrobble(raw={'album': 'Dark Passion Play', 'artist': 'Nightwish', 'date': '1282493819', 'name': 'Amaranth'}),
- Scrobble(raw={'album': 'Rolled Gold +', 'artist': 'The Rolling Stones', 'date': '1282494161', 'name': "You Can't Always Get What You Want"})]
+&lt;pre class="example"&gt;[Scrobble(raw={'album': 'Caracal (Deluxe)', 'artist': 'Disclosure', 'date': '1587547013', 'name': 'Nocturnal'}),
+ Scrobble(raw={'album': '4æm', 'artist': 'Grimes', 'date': '1587541857', 'name': '4æm'}),
+ Scrobble(raw={'album': 'Hanadriel', 'artist': 'Hana', 'date': '1587541512', 'name': 'Chimera 2.0'}),
+ Scrobble(raw={'album': '4æm', 'artist': 'Grimes', 'date': '1587541240', 'name': '4æm'}),
+ Scrobble(raw={'album': 'The Bones of What You Believe (Special Edition)', 'artist': 'CHVRCHES', 'date': '1587465032', 'name': 'Recover'})]
 &lt;/pre&gt;
 &lt;p&gt;
 Or, as a pandas frame to make it pretty:
@@ -2132,18 +2155,18 @@ Or, as a pandas frame to make it pretty:
 &lt;span class="org-variable-name"&gt;df&lt;/span&gt; = pd.DataFrame([{
     &lt;span class="org-string"&gt;'dt'&lt;/span&gt;: s.dt,
     &lt;span class="org-string"&gt;'track'&lt;/span&gt;: s.track,
-} &lt;span class="org-keyword"&gt;for&lt;/span&gt; s &lt;span class="org-keyword"&gt;in&lt;/span&gt; scrobbles])
+} &lt;span class="org-keyword"&gt;for&lt;/span&gt; s &lt;span class="org-keyword"&gt;in&lt;/span&gt; scrobbles()])
 &lt;span class="org-variable-name"&gt;cdf&lt;/span&gt; = df.set_index(&lt;span class="org-string"&gt;'dt'&lt;/span&gt;)
 cdf[200: 205]
 &lt;/pre&gt;
 &lt;/div&gt;
-&lt;pre class="example"&gt;                                                                       track
-dt                                                                          
-2010-08-22 14:48:24+00:00                                Nirvana — Drain You
-2010-08-22 15:09:24+00:00                           Alice in Chains — Would?
-2010-08-22 16:11:57+00:00                   Bob Dylan — Like a Rolling Stone
-2010-08-22 16:16:59+00:00                               Nightwish — Amaranth
-2010-08-22 16:22:41+00:00  The Rolling Stones — You Can't Always Get What...
+&lt;pre class="example"&gt;                                            track
+dt                                               
+2020-04-22 09:16:53+00:00  Disclosure — Nocturnal
+2020-04-22 07:50:57+00:00            Grimes — 4æm
+2020-04-22 07:45:12+00:00      Hana — Chimera 2.0
+2020-04-22 07:40:40+00:00            Grimes — 4æm
+2020-04-21 10:30:32+00:00      CHVRCHES — Recover
 &lt;/pre&gt;
 &lt;p&gt;
 We can use &lt;a href="https://github.com/martijnvermaat/calmap"&gt;calmap&lt;/a&gt; library to plot a github-style music listening activity heatmap:
@@ -2472,7 +2495,7 @@ What about these people who have perfect recall and wish they hadn't.
 &lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;
-Sure, maybe it sucks. At the moment though, I don't anything close to it and this only annoys me.
+Sure, maybe it sucks. At the moment though, my recall is far from perfect, and this only annoys me.
 I want to have a choice at least, and digital tools give me this choice.
 &lt;/p&gt;
 &lt;/div&gt;
@@ -2539,13 +2562,13 @@ Please take my ideas and code and build something cool from it!
 Similar projects:
 &lt;/p&gt;
 &lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;a href="https://hyfen.net/memex"&gt;Memex&lt;/a&gt; by Andrew Louis&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/novoid/Memacs"&gt;Memacs&lt;/a&gt; by Karl Voit&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://news.ycombinator.com/item?id=9615901"&gt;Me API - turn yourself into an open API (HN)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/markwk/qs_ledger"&gt;QS ledger&lt;/a&gt; from Mark Koester&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;a href="https://dogsheep.github.io"&gt;Dogsheep&lt;/a&gt;: a collection of tools for personal analytics using SQLite and Datasette&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/tehmantra/my"&gt;tehmantra/my&lt;/a&gt;: directly inspired by this package&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/bcongdon/bolero"&gt;bcongdon/bolero&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/bcongdon/bolero"&gt;bcongdon/bolero&lt;/a&gt;: exposes your personal data as a REST API&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://en.wikipedia.org/wiki/Solid_(web_decentralization_project)#Design"&gt;Solid project&lt;/a&gt;: personal data pod, which websites pull data from&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;
@@ -2554,6 +2577,7 @@ Other links:
 &lt;ul class="org-ul"&gt;
 &lt;li&gt;NetOpWibby: &lt;a href="https://news.ycombinator.com/item?id=21684949"&gt;A Personal API (HN)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="sad-infra.html"&gt;The sad state of personal data and infrastructure&lt;/a&gt;: here I am going into motivation and difficulties arising in the implementation&lt;/li&gt;
+&lt;li&gt;&lt;a href="myinfra-roam.html"&gt;Extending my personal infrastructure&lt;/a&gt;: a followup, where I'm demonstrating how to integrate a new data source (Roam Research)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;
 &lt;/div&gt;

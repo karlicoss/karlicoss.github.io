@@ -88,7 +88,14 @@
 <b>TLDR</b>: I'm using <a href="https://github.com/karlicoss/HPI">HPI</a> (Human Programming Interface) package as a means of unifying, accessing and interacting with all of my personal data.
 </p>
 <p>
-It's a Python library (named <code class="inline">my</code>), a collection of modules for:
+If you're in a hurry, feel free to jump straight to the <a class="link-down" href="#usecases">demos</a>.
+</p>
+<ul class="org-ul">
+<li>see <a href="https://github.com/karlicoss/HPI/tree/master/doc/SETUP.org">SETUP</a> for the <b>installation/configuration guide</b></li>
+<li>see <a href="https://github.com/karlicoss/HPI/tree/master/doc/DEVELOPMENT.org">DEVELOPMENT</a> for the <b>development/extension guide</b></li>
+</ul>
+<p>
+HPI is a Python package (named <code class="inline">my</code>), a collection of modules for:
 </p>
 <ul class="org-ul">
 <li>social networks: posts, comments, favorites</li>
@@ -155,12 +162,6 @@ and that's why I'm sharing this.
 <p>
 Imagine if all your life was reflected digitally and available at your fingertips.
 This library is my attempt to achieve this vision.
-</p>
-<p>
-If you're in a hurry, feel free to jump straight to the <a class="link-down" href="#usecases">demos</a>.
-</p>
-<p>
-For <b>installation/configuration/development guide</b>, see <a href="https://github.com/karlicoss/HPI/tree/master/doc/SETUP.org">SETUP.org</a>.
 </p>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
@@ -401,6 +402,10 @@ Here's the (incomplete) list of the modules:
 <td class="org-left"><a href="https://uk.kobobooks.com/products/kobo-aura-one">Kobo</a> e-ink reader: annotations and reading stats</td>
 </tr>
 <tr>
+<td class="org-left"><a href="https://github.com/karlicoss/my/tree/master/my/calendar/holidays.py">my.calendar.holidays</a></td>
+<td class="org-left">Public holidays (automatic) and days off work (manual inputs)</td>
+</tr>
+<tr>
 <td class="org-left"><a href="https://github.com/karlicoss/my/tree/master/my/coding/commits.py">my.coding.commits</a></td>
 <td class="org-left">Git commits data for repositories on your filesystem</td>
 </tr>
@@ -506,7 +511,7 @@ Here's the (incomplete) list of the modules:
 </tr>
 <tr>
 <td class="org-left"><a href="https://github.com/karlicoss/my/tree/master/my/twitter/twint.py">my.twitter.twint</a></td>
-<td class="org-left">Twitter data (tweets and favorites). Uses <a href="https://github.com/twintproject/twint">Twint</a> data export.</td>
+<td class="org-left">Twitter data (tweets and favorites).</td>
 </tr>
 </tbody>
 </table>
@@ -1005,7 +1010,7 @@ What about these people who have perfect recall and wish they hadn't.
 </p>
 </blockquote>
 <p>
-Sure, maybe it sucks. At the moment though, I don't anything close to it and this only annoys me.
+Sure, maybe it sucks. At the moment though, my recall is far from perfect, and this only annoys me.
 I want to have a choice at least, and digital tools give me this choice.
 </p>
 </div>
@@ -1072,13 +1077,13 @@ Please take my ideas and code and build something cool from it!
 Similar projects:
 </p>
 <ul class="org-ul">
+<li><a href="https://hyfen.net/memex">Memex</a> by Andrew Louis</li>
 <li><a href="https://github.com/novoid/Memacs">Memacs</a> by Karl Voit</li>
 <li><a href="https://news.ycombinator.com/item?id=9615901">Me API - turn yourself into an open API (HN)</a></li>
 <li><a href="https://github.com/markwk/qs_ledger">QS ledger</a> from Mark Koester</li>
-</ul>
-<ul class="org-ul">
+<li><a href="https://dogsheep.github.io">Dogsheep</a>: a collection of tools for personal analytics using SQLite and Datasette</li>
 <li><a href="https://github.com/tehmantra/my">tehmantra/my</a>: directly inspired by this package</li>
-<li><a href="https://github.com/bcongdon/bolero">bcongdon/bolero</a></li>
+<li><a href="https://github.com/bcongdon/bolero">bcongdon/bolero</a>: exposes your personal data as a REST API</li>
 <li><a href="https://en.wikipedia.org/wiki/Solid_(web_decentralization_project)#Design">Solid project</a>: personal data pod, which websites pull data from</li>
 </ul>
 <p>
@@ -1087,6 +1092,7 @@ Other links:
 <ul class="org-ul">
 <li>NetOpWibby: <a href="https://news.ycombinator.com/item?id=21684949">A Personal API (HN)</a></li>
 <li><a href="sad-infra.html">The sad state of personal data and infrastructure</a>: here I am going into motivation and difficulties arising in the implementation</li>
+<li><a href="myinfra-roam.html">Extending my personal infrastructure</a>: a followup, where I'm demonstrating how to integrate a new data source (Roam Research)</li>
 </ul>
 </div>
 </div>

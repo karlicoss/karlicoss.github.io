@@ -228,6 +228,10 @@ At some point, after failed attempts at finding an existing solution, I'd figure
 The journey of building this took longer than I expected, led me through a rabbit hole of <a href="./tags.html#dataliberation">data liberation</a>, lots of <a href="https://en.wiktionary.org/wiki/yak_shaving">yak shaving</a>,
 and made me realize: <b>browser history is very, very broken</b>.
 </p>
+<p>
+Note: the next two sections are (somewhat technical) rants. If you prefer a more positive/less boring agenda, feel free to skip them straight to <a class="link-down" href="#existing">"Existing solutions"</a>
+, and you can return back later if you feel like it.
+</p>
 </div>
 </div>
 <div class="outline-2">
@@ -551,28 +555,28 @@ I mentioned it already, but considering that many people use it, it worth a sepa
 <h3 id="worldbrain_memex"><a class="headerlink" href="#worldbrain_memex">¶</a>Worldbrain Memex</h3>
 <div class="outline-text-3" id="text-worldbrain_memex">
 <p>
-<a href="https://github.com/WorldBrain/Memex#memex-features">Worldbrain Memex</a> is a very cool browser extension.
-It's open source, keeps your history, supports tagging, highlights, annotation, and even full-text search.
+<a href="https://github.com/WorldBrain/Memex#memex-features">Worldbrain Memex</a> is a browser extension to annotate, search and organize what you've seen online,
+and soon a <a href="https://community.worldbrain.io/t/new-testing-memex-mobile-app-sync/233">mobile app</a>.
+</p>
+<p>
+It's an amazing product: open source, local first, supports tagging, highlights, annotations, and even full-text history search.
 By all means, try it!
 </p>
 <p>
-The only problem is that Memex is also a kind of a silo.
-I really hate using the word "silo" here, because in my mind it's an insult.
-If anything, Memex is probably <b>the nicest silo</b> I know of. It keeps data locally, it's got data imports from other services.
-</p>
-<p>
-But nevertheless, if you commit to using it, you have to move the data into Memex, and conform it to its model.
-</p>
-<p>
+It would be pretty close to my vision of the personal web assistant if not for a problem: it is also a kind of a silo.
+You can import the data from other services into Memex, but then you have to conform to its model of the data.
 If for some reason you can't use Memex for annotating and recording your history (e.g. on some of your devices) – you
-still have to use multiple silos.
+end up using multiple services, or having redundant (and potentially inconsistent) copies of your data scattered across the <span style="font-weight: bold; color:red; background: yellow">TODO: digital space?</span>
 </p>
 <p>
-In summary, a nice tool is great, but what I want is a different <b>model</b> of interacting with my <b>existing</b> data, which doesn't require moving the data in-between the silos.
+Having privacy focused and open source tools is a very important step towards a better future.
+However, I want a different <b>model</b> of interacting with my <b>existing</b> data, which doesn't require moving the data in-between the silos.
 (see <a class="link-up" href="#not_just_browser">"it's not just about the browser"</a>)
 </p>
 <p>
-And jumping ahead again, <a class="link-down" href="#promnesia">Promnesia</a> can be used with Memex data. In the future, I'll check out if we can benefit from each other's work.
+And jumping ahead again, <a class="link-down" href="#promnesia">Promnesia</a> can be integrated with Memex.
+Overall, it seems that our vision is pretty similar, and I expect that both projects can benefit <span style="font-weight: bold; color:red; background: yellow">TODO:  link to the 'future' paragraph</span> from each other's work
+(up to the point that Promnesia extension is merged into Worldbrain Memex extension, or can be running against its backend).
 </p>
 </div>
 </div>
@@ -622,9 +626,10 @@ As long as it's <i>something</i> you can extract URLs from, you should be able t
 </ul>
 <p>
 Here, I'm cheating a little bit, because some of these goals weren't clear from the beginning – I discovered them during the development.
+<span style="font-weight: bold; color:red; background: yellow">TODO:  eh, maybe remove this sentence, it's a cool personal insight, but not easy to communicate</span>
 </p>
 <p>
-There are also some meta-goals and principles I'm adhering to:
+There are also some <b>meta-goals</b> and principles I'm adhering to:
 </p>
 <ul class="org-ul">
 <li><p>
@@ -632,7 +637,7 @@ make it open source
 </p>
 <p>
 That goes without saying, everything I'm doing for this project is shared and open source.
-Frankly, I don't believe such project can be sustainable in any other way.
+Frankly, I'm not even sure such a project can be sustainable in any other way.
 </p></li>
 <li><p>
 local first
