@@ -112,7 +112,7 @@ Why do they always mention that? Is that important?</code></pre>
 <p>, which you can further action on. Perhaps you’ve figured it out already, so you can just discard it. Or you want to convert it into a TODO, give it a priority and refile somewhere more appropriate. What’s awesome is that at the time of capture it immediately becomes searchable and indexable as any plaintext would without any extra effort (unlike if you added it to browser bookmarks/pinboard).</p>
 <h1 id="ok-im-sold.-how-do-i-do-it">Ok, I’m sold. How do I do it?</h1>
 <p>So, you want to integrate your browser with your knowledge repository and capture things straight into your <code>capture.org</code> file. Sounds trivial, right?</p>
-<p>For a while I used <a href="https://github.com/sprig/org-capture-extension">org-capture extension</a>, that was relying on setting up a special mime type handler (e.g. <code>emacs://</code>) and an always running emacs daemon. Until one day I got very sad when few days of captured link and selected text were gone because one of these things stopped working for some reason. People seem to have issues setting up all this to work, and of course, you can’t have feedback from OS mime handler, so you can never know whether it has succeeded at all.</p>
+<p>For a while I used <a href="https://github.com/sprig/org-capture-extension">org-capture extension</a>, that was relying on setting up a special mime type handler (e.g. <code>emacs://</code>) and an always running emacs daemon. Until one day I got very sad when few days of captured link and selected text were gone because one of these things stopped working for some reason. People seem to have issues setting up all this to work, and of course, you can’t have feedback from OS mime handler, so you can never know whether it has succeeded at all.</p>
 <p>I realized I didn’t want to rely on emacs running all the time, on its templates or anything like that. I just want to reliably append stuff (formatted as org-mode) to the text file, that’s not too much to ask. An obvious solution is to get rid of the mime type handler and just write to the file system from Chrome extension directly. This is, of course something you can’t do in modern browsers. There is an <a href="https://developer.chrome.com/apps/app_storage#write">API</a> in Chrome for that, and you’ve got two options:</p>
 <ul>
 <li>write a file to a sandbox within a browser. Not an option for my purposes.</li>
@@ -125,7 +125,7 @@ Why do they always mention that? Is that important?</code></pre>
 <li><p>it’s reliable and you will get an error notification if you failed to capture</p></li>
 <li><p>it supports capturing selected text, adding comment and tags</p></li>
 <li><p>you can capture anywhere: it doesn’t care whether you have emacs installed at all, and doesn’t have to be org mode file</p></li>
-<li><p>unlike <a href="https://orgmode.org/manual/capture-protocol.html">org-protocol</a> which only supports url, title and ‘everything else’, the capture template syntax can be extended to include anything you want, e.g. <a href="https://github.com/karlicoss/grasp/blob/247dd5856d34d05f4c2239f34a5d2904d0961326/server/org_tools.py#L91">currently</a> it also supports <code>tags</code>, <code>comment</code> and <code>selection</code>.</p></li>
+<li><p>unlike <a href="https://orgmode.org/manual/capture-protocol.html">org-protocol</a> which only supports url, title and ‘everything else’, the capture template syntax can be extended to include anything you want, e.g. <a href="https://github.com/karlicoss/grasp/blob/247dd5856d34d05f4c2239f34a5d2904d0961326/server/org_tools.py#L91">currently</a> it also supports <code>tags</code>, <code>comment</code> and <code>selection</code>.</p></li>
 <li><p>it can run anywhere, e.g. you can run it the server on your VPS and access remotely if you are browsing on a computer you can’t sync your capture file onto.</p>
 <p>I might even try and see if it can be ported as <a href="https://addons.mozilla.org/en-GB/android/">Android Firefox addon</a>.</p></li>
 </ul>
@@ -139,7 +139,7 @@ Why do they always mention that? Is that important?</code></pre>
 <p>Used it mainly to strip off Flow annotations and convert code into something chrome would accept. However it’s also helpful for merging the extension manifest so you could build browser-specific versions.</p></li>
 <li><p>fun fact: <code>node_modules</code> takes almost 200Mb of disk space, and I tried my best to use as less dependencies as possible. Almost all are dev dependencies, so the extension itself is still tiny.</p></li>
 <li><p>Firefox and Chrome use more or less same browser APIs these days! The only thing I had to fix while porting to Firefox were notifications.</p></li>
-<li>publishing to Chrome store is more tedious than I imagined, e.g.
+<li><p>publishing to Chrome store is more tedious than I imagined, e.g.</p>
 <ul>
 <li>they want screenshots exactly 1280x800 or 640x400. Do people have some sort of scripts to cut their screenshots automatically for them or what?</li>
 <li>there are two interfaces (‘old’ and ‘new’), which are sometimes doing different things</li>
@@ -151,7 +151,7 @@ Why do they always mention that? Is that important?</code></pre>
 <p><del>I still find it very hard to believe. Has it always been like that? How do people cope with it?</del></p>
 <p>UPD: it’s <a href="https://support.mozilla.org/en-US/kb/manage-extension-shortcuts-firefox">possible</a> to configure them now!</p></li>
 <li><p>CI is a bit tedious</p>
-<a href="https://github.com/karlicoss/grasp/blob/master/.circleci/config.yml">My pretty minimal config</a>, is quite long. I’m quite used to to CIs, but I wonder how often are people discouraged by that, it’s got to be easier. Perhaps <a href="https://docs.gitlab.com/ee/topics/autodevops/">Auto DevOps</a> from gitlab solves it?</li>
+<p><a href="https://github.com/karlicoss/grasp/blob/master/.circleci/config.yml">My pretty minimal config</a>, is quite long. I’m quite used to to CIs, but I wonder how often are people discouraged by that, it’s got to be easier. Perhaps <a href="https://docs.gitlab.com/ee/topics/autodevops/">Auto DevOps</a> from gitlab solves it?</p></li>
 <li><p>communicating with <code>localhost</code> made everything so much simpler. I’ve already converted another <a href="https://github.com/karlicoss/were-you-here">thing</a> I am working on to use that instead of trying to utilize local storage/internal database and it works flawlessly!</p></li>
 </ul>
 <h1 id="feedback">Feedback</h1>

@@ -32,7 +32,7 @@
         <meta content="website" property="og:type"/>
         <meta content="https://beepb00p.xyz/promnesia.html" property="og:url"/> <!-- TODO base? -->
         <meta content="Promnesia | beepb00p" property="og:title"/>
-        <meta content="A quest for fixing browser history" property="og:description"/>
+        <meta content="A journey in fixing browser history" property="og:description"/>
         <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
         <!-- ugh. Facebook really wants jpg? -->
         <!-- also Facebook displays it with black background, but whatever, fuck it. -->
@@ -81,27 +81,21 @@
     
     <section class="post-title">
     <h1>Promnesia</h1>
-    <div class="summary">A quest for fixing browser history
+    <div class="summary">A journey in fixing browser history
     </div></section>
     <!-- are sections appropriate for that? -->
 
     <section class="content">
     <p>
-<b>Draft stage</b>: mostly ready in terms of structure, needs final polishing?
+<b>Draft stage</b>: 99% ready!
 And there is also more stuff I'd like to write, but it's already long enough…
 </p>
 <p>
-<span style="font-weight: bold; color:red; background: yellow">TODO: potentially split in two posts? The first part is the rant and the second is about Promnesia</span>
+Promnesia is a browser extension (Chrome/Firefox/Firefox mobile) that serves as a web surfing copilot
+by enhancing your browsing history, improving your web exploration experience, and integrating with your knowledge base.
 </p>
 <p>
-<span style="font-weight: bold; color:red; background: yellow">TODO: alternatively, move parts 3/4 to the end and restructure as "I've done this -- why is it hard/what's the big deal"?</span>
-</p>
-<p>
-<a href="https://github.com/karlicoss/promneisa">Promnesia</a> is a browser extension (Chrome/Firefox/Firefox mobile) that serves as a web surfing copilot,
-enhancing your browsing history, improving the web exploration experience, and integrating it with your knowledge base.
-</p>
-<p>
-The repository contains some demos and the setup guide, this post is more of the motivation and the story of what has led me to work on it.
+<a href="https://github.com/karlicoss/promneisa#readme">The repository</a> contains some demos and the setup guide, this post is more about the motivation and the story of what led me to work on it.
 </p>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
@@ -113,11 +107,11 @@ The repository contains some demos and the setup guide, this post is more of the
 <ul>
 <li><a href="#not_just_browser">it's not just about web browsers</a></li>
 <li><a href="#siloed">it's scattered and siloed</a></li>
-<li><a href="#importance">it's got varying importance</a></li>
+<li><a href="#significance">it's got varying significance</a></li>
 </ul>
 </li>
 <li><a href="#urls_broken">4. URLs are broken</a></li>
-<li><a href="#existing">5. Existing solutions?</a>
+<li><a href="#prior_art">5. Prior art</a>
 <ul>
 <li><a href="#prototypes">Prototypes and mockups</a></li>
 <li><a href="#history_extensions">'Unlimited history' extensions</a></li>
@@ -135,20 +129,17 @@ The repository contains some demos and the setup guide, this post is more of the
 <h2 id="singularity_when"><a class="headerlink" href="#singularity_when">¶</a><span class="section-number-2">1</span> I want my singularity!</h2>
 <div class="outline-text-2" id="text-singularity_when">
 <p>
-I was raised on science fiction, and growing up, I've been dreaming about the technology drastically changing our lives.
-Artificial intelligence, augmenting the brain with a math co-processor, head-up display, neural interfaces, having perfect reaction and memory – many of you are on the same page and know the drill.
+I was raised on science fiction and grew up dreaming about technology drastically changing our lives.
+Artificial intelligence, augmenting the brain with a math co-processor, head-up displays, neural interfaces, having perfect reaction and memory – many of you are on the same page and know the drill.
 </p>
 <p>
-Years had passed, I became a software engineer and had realized how far are we from all these fancy technologies I wanted.
+Years passed, I became a software engineer, and realized just how far we are from all these fancy technologies I wanted.
 So my aspirations have become more modest, and I've chosen a more realistic and plausible target:
-using my digital trace like browser history, webpage annotations and my <a href="./tags.html#exobrain">personal wiki</a> to make up for the limited memory.
+using my digital trace (such as browser history, webpage annotations and my <a href="./tags.html#exobrain">personal wiki</a>) to make up for my limited memory.
 </p>
 <p>
 I'm exploring lots of information on the Internet, and it feels wasteful to use my <a href="./tags.html#meatsack">meat resources</a> to keep track of it.
-</p>
-<p>
-<span style="font-weight: bold; color:red; background: yellow">TODO:  connect the sentences properly</span>
-Web browsers do it automatically, without any manual and conscious effort.
+Meanwhile, web browsers keep a record automatically, without any manual and conscious effort.
 Surely we can benefit from the immense computing power and memory capabilities of computers?
 </p>
 <p>
@@ -165,71 +156,73 @@ A <a href="https://en.wikipedia.org/wiki/Memex">Memex</a>.
 A <a href="http://alumni.media.mit.edu/~rhodes/Papers/remembrance.html">Remembrance Agent</a>?
 </p>
 <p>
-Call it whatever you like, I <i>wish</i> it was a concept with a widely accepted name. Something that will sit in my browser and:
+Call it whatever you like, I <i>wish</i> it were a concept with a widely accepted name. Something that will sit in my browser and:
 </p>
 <ul class="org-ul">
 <li><p>
 aid me with <b>information processing</b>
 </p>
 <p>
-Keep track of what I've read, when, on what device, and for how long.
+Keep track of what I've read, when, on which device, and for how long.
 </p></li>
 <li><p>
 show me my <b>annotations and highlights</b>, within the original page
 </p>
 <p>
-I don't want to keep wondering whether I got my notes and thoughts stashed in some app, I want the computer to let me know instead.
+I don't want to keep wondering whether I have my notes and thoughts stashed in some app, I want the computer to let me know instead.
 </p></li>
 <li><p>
 unify my <b>scattered and siloed bookmarks</b>
 </p>
 <p>
-Firefox bookmarks; Reddit/Hackernews saves; "Watch later" on Youtube, saved links in your instant messenger.
+Firefox bookmarks; Reddit/Hackernews saves; "Watch later" on Youtube, saved links in my instant messenger.
 </p>
 <p>
 These are the same damn thing, yet there is no way to oversee and process them through a single interface.
 </p>
 <p>
 <a href="https://jborichevskiy.com/posts/digital-tools/#queue-management-for-inbound-digital-content">"Queue management for inbound digital content"</a>:
-a post expanding more on this idea.
+a post expanding further on this idea.
 </p></li>
 <li><p>
 connect with my online presence: chats and social networks
 </p>
 <p>
-If I've tweeted about a page, surely this fact should be present in the browser history?
-In fact, it's <b>way</b> more important than a simple browser visit.
+If I tweeted about a page, surely this should be somehow recorded in the browsing history?
+</p>
+<p>
+In fact, the page that I bothered to tweet about is <b>much</b> more important than a page I merely visited in the browser.
 </p></li>
 <li><p>
-help me to explore new information and <b>prioritize</b> it
+help me explore new information and <b>prioritize</b> it
 </p>
 <p>
 There is so much awesome stuff on the Internet! The biggest problem I have is picking the next cool link to dig into.
 </p>
 <p>
-I wish there was something that would in one click show me, who of my friends, or of the people I follow, have read a certain link.
-What did they think? Have they posted about it, annotated, or something else? Do they follow the author?
+Imagine if in one click, I could see which of my friends, or the people I follow have read a certain link.
+What did they think? Have they posted about it, annotated, or something else? Do they follow the author, perhaps I should too?
 </p></li>
 <li><p>
 bridge the gap between the browser and my <a href="./tags.html#exobrain">personal wiki</a>
 </p>
 <p>
-Wherever you keep your personal wiki: in Evernote, Google Keep, Roam Research, or text files on your computers,
-typically it's isolated and disconnected from your web browser.
+Whatever product I choose for managing my notes: Google Keep, Evernote, Roam Research, or even org-mode files on my disk,
+they always end up <b>isolated and disconnected</b> from my web browsing.
 </p></li>
 </ul>
 <p>
-I wanted a system like this <a href="https://twitter.com/karlicoss/status/767412935316611072">for</a> several <a href="https://twitter.com/karlicoss/status/896313846159298560">years</a>.
+I searched for a system like this <a href="https://twitter.com/karlicoss/status/767412935316611072">for</a> several <a href="https://twitter.com/karlicoss/status/896313846159298560">years</a>.
 </p>
 <p>
-At some point, after failed attempts at finding an existing solution, I'd figured that it was going to be a yet another thing I had to implement myself.
+After enough failed attempts at finding an <a class="link-down" href="#prior_art">existing solution</a>, I figured it was going to be yet another thing I'd have to implement myself.
 </p>
 <p>
-The journey of building this took longer than I expected, led me through a rabbit hole of <a href="./tags.html#dataliberation">data liberation</a>, lots of <a href="https://en.wiktionary.org/wiki/yak_shaving">yak shaving</a>,
+The journey of building it took longer than I expected, led me through a rabbit hole of <a href="./tags.html#dataliberation">data liberation</a>, lots of <a href="https://en.wiktionary.org/wiki/yak_shaving">yak shaving</a>,
 and made me realize: <b>browser history is very, very broken</b>.
 </p>
 <p>
-Note: the next two sections are (somewhat technical) rants. If you prefer a more positive/less boring agenda, feel free to skip them straight to <a class="link-down" href="#existing">"Existing solutions"</a>
+Note: the next two sections are (somewhat technical) rants. If you prefer a more positive/less boring agenda, feel free to skip them straight to <a class="link-down" href="#prior_art">"Existing solutions"</a>
 , and you can return back later if you feel like it.
 </p>
 </div>
@@ -238,18 +231,20 @@ Note: the next two sections are (somewhat technical) rants. If you prefer a more
 <h2 id="history_broken"><a class="headerlink" href="#history_broken">¶</a><span class="section-number-2">3</span> Browser history is broken</h2>
 <div class="outline-text-2" id="text-history_broken">
 <p>
+To a large extent, URLs express <b>relationships and hierarchy</b> between the bits of information. For example:  <code class="inline">blog &lt;-&gt; post &lt;-&gt; comment</code>, <code class="inline">person &lt;-&gt; tweet</code>, <code class="inline">playlist &lt;-&gt; video</code>.
+</p>
+<p>
+With this information you should be easily able to find everything relevant to the current page and trace your jumps through past websites.
+Merely by looking at URLs, without "AI" or some dubious machine learning algorithm!
+Seems like a low hanging fruit to harvest, right?
+</p>
+<p>
 Web browser history is a rich source of potentially useful information.
 Just think about it: it's zero effort <a href="./tags.html#lifelogging">lifelogging</a>.
 It contains exact timestamps and links which <i>basically</i> address information.
 </p>
 <p>
-To a large extent, URLs express <b>relationships and hierarchy</b> between the bits of information. <span style="font-weight: bold; color:red; background: yellow">TODO: like person/group/post/comment/etc.. elaborate</span>, and again, with pretty much zero effort – it's the way web works.
-By using this information, you should be able to easily find the stuff, relevant to the current page and be able to easily trace your jumps through the websites. Merely by looking at URLs, without AI or
-some dubious machine leaning algorithm!
-Seems like a low hanging fruit to harvest, right?
-</p>
-<p>
-Now think what experience do you have instead. What was the last time you used it in any nontrivial way, for something other than reopening an accidentally closed tab?
+Now think about the experience you actually have. What was the last time you used the browser history in any nontrivial way, for something other than reopening an accidentally closed tab?
 </p>
 <p>
 Besides:
@@ -259,26 +254,28 @@ Besides:
 <h3 id="not_just_browser"><a class="headerlink" href="#not_just_browser">¶</a>it's not just about web browsers</h3>
 <div class="outline-text-3" id="text-not_just_browser">
 <div style="margin-top: 16px; margin-bottom: 16px"><span class="before-aside">
-If you're using a native phone app (say, for Reddit or Twitter), your history either isn't logged anywhere or stored locally on your phone.
+When you're using a native phone app (say, for Reddit or Twitter), your history either isn't logged anywhere or if it is, it's only stored locally on your phone.
 
 </span><aside class="sidenote">this is why I emphasize <b>browsing</b> history, not <b>browser</b> history</aside></div>
 <div style="margin-top: 16px; margin-bottom: 16px"><span class="before-aside">
 On Android, it's likely to be in an Sqlite database in <code class="inline">/data/data/app.name</code>.
 This directory is not accessible to normal users <b>unless your phone is rooted</b>.
-Just think about how ridiculous it is. It's <b>your own data</b>, yet your OS babysits you and prevents you from accessing it.
+Just think about how ridiculous this is. It's <b>your own data</b>, yet your OS babysits you, preventing access to it.
 
+And yes, I know sandboxing and security are important, but locking my data inside the app is hardly an acceptable tradeoff.
 </span><aside class="sidenote">rooting Android phones ranges from "<b>somewhat</b> painful" to "<b>very</b> painful"</aside></div>
 <p>
-As a specific example, <a href="https://github.com/ccrama/Slide">Reddit Slide</a> app keeps the view history in <code class="inline">/data/data/me.ccrama.redditslide/SEEN</code>.
-Even if you root your phone and can access the database, because the app isn't persisting the data in the database, it's merely keeping a few weeks cache.
-And I can't even blame the app for this! Because of the data model, no one expects regular users to access this database.
+As a specific example, the <a href="https://github.com/ccrama/Slide">Reddit Slide</a> app keeps your view history in <code class="inline">/data/data/me.ccrama.redditslide/SEEN</code>.
+Okay, say you root your phone and access the database. Turns out the the app isn't persisting the data forever, it's merely keeping a few weeks' cache.
+And I can hardly blame the developer for this: because of the data model, no one expects regular users to access this database.
 </p>
 <p>
 So if you want your complete history, you have to backup this database regularly, keep the snapshots and <a href="exports.html#synthetic">somehow</a>
 reconstruct it.
 </p>
 <p>
-You may dismiss this as data <span style="font-weight: bold; color:red; background: yellow">TODO: nitpicking? not sure what's a good word</span>, but when <b>all</b> of your phone apps are doing this, you're missing out on quite a lot of information.
+You may dismiss this as nitpicking and obsession over every last bit of my data.
+But when <b>all</b> of your phone apps are doing this you're missing out on quite a lot of useful information.
 </p>
 </div>
 </div>
@@ -286,24 +283,26 @@ You may dismiss this as data <span style="font-weight: bold; color:red; backgrou
 <h3 id="siloed"><a class="headerlink" href="#siloed">¶</a>it's scattered and siloed</h3>
 <div class="outline-text-3" id="text-siloed">
 <p>
-Continuing the previous point:
+Building on the previous point:
 </p>
 <ul class="org-ul">
 <li>for the most part, you can't access history in your phone apps</li>
-<li><p>
-lots of data which is <i>ought</i> to be counted as web history is scattered across silos
-</p>
-<div style="margin-top: 16px; margin-bottom: 16px"><span class="before-aside">
-It sits behind the APIs (best case), GDPR and manual exports (worst case)
-and hard to get hands on, <i>even</i> if you're an experienced software engineer.
+<li>lots of data which <i>ought</i> to be counted as web history is scattered across silos
 
-</span><aside class="sidenote"><a href="sad-infra.html">#sadinfra</a></aside></div>
+<ul class="org-ul">
+<li><div style="margin-top: 16px; margin-bottom: 16px"><span class="before-aside">in the cloud: behind APIs (best case), GDPR and manual exports (worst case)
+
+It is never easy to get hands on, <i>even</i> if you're an experienced software engineer.</span><aside class="sidenote"><a href="sad-infra.html">#sadinfra</a></aside></div></li>
+<li><p>
+on the filesystem, for example in markdown/org-mode files
+</p>
 <p>
-It idles on your filesystem in markdown and org-mode files.
+A slightly better scenario, but as far as the web browser is concerned, it doesn't make any difference.
 </p></li>
+</ul></li>
 </ul>
 <p>
-Even <i>regular</i> browser history is not easy to get::
+Even <i>regular</i> browser history is not easy to get:
 </p>
 <ul class="org-ul">
 <li>Firefox <a href="https://support.mozilla.org/en-US/questions/1080942">used to</a> silently 'expire' your browser history</li>
@@ -319,27 +318,24 @@ Migration is limited to the most popular browsers
 </p>
 <p>
 The retention limits the migration as well.
-E.g. if you migrate from Chrome to Firefox, the history older than 90 days is locked and siloed in your Google Account.
+E.g. if you migrate from Chrome to Firefox, history older than 90 days is locked and siloed in your Google Account.
 </p></li>
 <li><p>
-You're gonna have a hard time if you're not using Google/Mozilla sync
+You're going to have a hard time if you're not using Google/Mozilla sync
 </p>
 <p>
 Your history will be scattered across devices and lost on OS reinstalls.
 </p>
 <p>
 There are ways of self-hosting Firefox sync, and (<a href="https://superuser.com/questions/614744/how-to-set-up-a-own-chrome-sync-server">allegedly</a>) even Chrome sync,
-but, as you can imagine, it's quite tedious.
+but as you can imagine, is quite tedious.
 </p></li>
 </ul>
 </div>
 </div>
 <div class="outline-3">
-<h3 id="importance"><a class="headerlink" href="#importance">¶</a>it's got varying importance</h3>
-<div class="outline-text-3" id="text-importance">
-<p>
-<span style="font-weight: bold; color:red; background: yellow">TODO:  not sure about 'importance'?</span>
-</p>
+<h3 id="significance"><a class="headerlink" href="#significance">¶</a>it's got varying significance</h3>
+<div class="outline-text-3" id="text-significance">
 <p>
 Not all links in your history are equally important:
 </p>
@@ -347,12 +343,12 @@ Not all links in your history are equally important:
 <li>some are clicked on by accident</li>
 <li>some you've just skimmed</li>
 <li>some are on your reading list</li>
-<li>some you've been reading for hours and they are full of your highlights and annotations</li>
-<li>some you are keeping in your knowledge base/personal wiki</li>
-<li>some of them you've shared with other people on social media</li>
+<li>some you've been reading for hours and are full of your highlights and annotations</li>
+<li>some you reference in your knowledge base/personal wiki</li>
+<li>some of them you've shared with others on social media</li>
 </ul>
 <p>
-The current browser history experience makes absolutely no difference between these scenarios.
+The current browser history experience makes no distinction between these scenarios.
 </p>
 </div>
 </div>
@@ -361,10 +357,11 @@ The current browser history experience makes absolutely no difference between th
 <h2 id="urls_broken"><a class="headerlink" href="#urls_broken">¶</a><span class="section-number-2">4</span> URLs are broken</h2>
 <div class="outline-text-2" id="text-urls_broken">
 <p>
-This topic deserves a separate post <span style="font-weight: bold; color:red; background: yellow">TODO: someone surely must have ranted about it?</span>, but I'll keep it section-sized for now.
+This topic probably deserves a separate post, but I'll keep it section-sized for now.
 </p>
 <p>
-URLs seem great because they mostly address content, and semi-curated. In reality though:
+URLs might seem great because they mostly address content and are semi-descriptive: people <i>try</i> to keep URLs somewhat reasonable, tidy and working.
+But in the real world:
 </p>
 <ul class="org-ul">
 <li><p>
@@ -375,24 +372,24 @@ Many URLs are <a href="https://www.gwern.net/Archiving-URLs#link-rot"><b>literal
 We're lucky to have <a href="https://web.archive.org">archive.org</a>, so you can at least access dead pages.
 </p>
 <p>
-But there is no way to migrate your browser history, e.g. point to archive.org entry or a new domain.
-Similarly, if you had the page annotated, your annotations orphan, and usually, there is usually no easy way to re-point them.
+But there is no way to migrate your browser history, e.g. point old URLs to their respective archive.org entries or a new domain.
+Similarly if you had the page annotated, your annotations become orphans without an easy way to relink them.
 </p></li>
 <li><p>
-<b>obfuscated</b> by shortening and redirects
+links are <b>obfuscated</b> by shortening and redirects
 </p>
 <div style="margin-top: 16px; margin-bottom: 16px"><span class="before-aside">
 What happens to all the <code class="inline">t.co</code> links when Twitter as a service dies?
 
 </span><aside class="sidenote">see <a href="https://indieweb.org/silo#Linkwrapping">linkwrapping</a></aside></div></li>
 <li><p>
-<b>obscured</b>
+links are <b>obscured</b>
 </p>
 <p>
-For example, there is no easy way to know what is behind <code class="inline">https://www.instapaper.com/read/1265139707</code>, without querying the Instapaper API.
+There is no easy way to know what's behind <code class="inline">https://www.instapaper.com/read/1265139707</code> without querying the Instapaper API.
 </p>
 <p>
-Relations between data are often obscured by URLs. For example:
+Relations between data are often obscured as well. For example:
 </p>
 <ul class="org-ul">
 <li><code class="inline">https://news.ycombinator.com/item?id=22918980</code> is a submission link</li>
@@ -409,25 +406,25 @@ Compare this to Reddit links:
 <li><code class="inline">https://reddit.com/r/orgmode/comments/g6ejwe/is_there_an_orgmode_workbook_tutorial_that_is/fo9qnen</code> is a comment to that post</li>
 </ul>
 <p>
-The ids are obscure, but at least we can clearly see the <code class="inline">post &lt;-&gt; comment</code> relation just by looking at URL.
-Alas, the browsers are just ignoring this quite useful information.
+The ids are obscure, but at least we can clearly see the <code class="inline">post &lt;-&gt; comment</code> relation merely by looking at the URLs.
+Alas, browsers are just ignoring this useful information.
 </p></li>
 <li><p>
-<b>unstandardized</b>
+links are <b>unstandardized</b>
 </p>
 <p>
 For example, <a href="https://en.wikipedia.org/wiki/Query_string">queries</a>
 </p>
 <ul class="org-ul">
-<li>typically they don't represent anything persistent and are used for querying (duh)</li>
-<li>sometimes they are used to address information: <code class="inline">http://wiki.c2.com/?LispLanguage</code> or <code class="inline">https://www.scottaaronson.com/blog/?p=2694</code></li>
-<li>and in many cases, they are utter garbage used for <a href="https://en.wikipedia.org/wiki/Query_string#Tracking">tracking</a></li>
+<li>typically don't point to anything persistent and are used for querying (duh)</li>
+<li>but other times they are used to address information: <code class="inline">http://wiki.c2.com/?LispLanguage</code> or <code class="inline">https://www.scottaaronson.com/blog/?p=2694</code></li>
+<li>and in many cases are utter garbage used for <a href="https://en.wikipedia.org/wiki/Query_string#Tracking">tracking</a></li>
 </ul>
 <p>
-The worst part is that these usecases overlap. For example, take a look at <code class="inline">youtube.com/watch?v=wHrCkyoe72U&amp;feature=share&amp;time_continue=6</code>:
+The worst part is that these use cases overlap. For example, take a look at <code class="inline">youtube.com/watch?v=wHrCkyoe72U&amp;feature=share&amp;time_continue=6</code>:
 </p>
 <ul class="org-ul">
-<li><code class="inline">v=wHrCkyoe72U</code> is the most important part about this link</li>
+<li><code class="inline">v=wHrCkyoe72U</code> is the most important part of this link</li>
 <li><code class="inline">feature=share</code> is just garbage</li>
 <li><code class="inline">time_continue=6</code> could be treated as useful information</li>
 </ul>
@@ -438,18 +435,17 @@ A similar story applies to <a href="https://en.wikipedia.org/wiki/Fragment_ident
 <li>on Google groups, they are meaningful and address specific discussions and messages: <code class="inline">https://groups.google.com/a/list.hypothes.is/forum/#!topic/dev/kcmS7H8ssis</code></li>
 <li>on most websites, they refer to the content within a page: <code class="inline">https://github.com/lipoja/URLExtract/issues/13#issuecomment-467635302</code></li>
 </ul></li>
-</ul>
-<ul class="org-ul">
-<li><b>unnormalized</b>
+<li>links are <b>unnormalized</b>
 <ul class="org-ul">
 <li>just think of all the <samp class="inline">www.</samp>, <samp class="inline">amp.</samp>, <samp class="inline">mobile.</samp>, <samp class="inline">m.</samp> garbage</li>
 <li><code class="inline">youtu.be/1TKSfAkWWN0</code>, <code class="inline">youtube.com/embed/1TKSfAkWWN0</code> and <code class="inline">https://www.youtube.com/watch?v=1TKSfAkWWN0&amp;list=WL&amp;index=11</code> refer to the exact same content, yet your browser has no idea.</li>
-</ul></li>
-<li><code class="inline">&lt;link rel="canonical"&gt;</code>
+<li><code class="inline">&lt;link rel="canonical" ...&gt;</code> <a href="https://en.wikipedia.org/wiki/Canonical_link_element">element</a>
 <ul class="org-ul">
 <li>often it's not not present</li>
-<li>when it does, often not used properly</li>
-<li><span style="font-weight: bold; color:red; background: yellow">TODO:  can't know it without fetching the page first? -- elaborate on this?</span></li>
+<li>when present, often used improperly,</li>
+<li>you need to fetch the page first to get the canonical link</li>
+<li>only works one way; you can't easily retrieve all links that have <b>the same canonical page</b> as the current</li>
+</ul></li>
 </ul></li>
 </ul>
 <p>
@@ -458,13 +454,14 @@ I want URLs to <b>address information</b> and <b>represent relations</b>. The cu
 </div>
 </div>
 <div class="outline-2">
-<h2 id="existing"><a class="headerlink" href="#existing">¶</a><span class="section-number-2">5</span> Existing solutions?</h2>
-<div class="outline-text-2" id="text-existing">
+<h2 id="prior_art"><a class="headerlink" href="#prior_art">¶</a><span class="section-number-2">5</span> Prior art</h2>
+<div class="outline-text-2" id="text-prior_art">
 <p>
-<span style="font-weight: bold; color:red; background: yellow">TODO: past work? previous attempts? there is some good expression for it..</span>
+<span id="existing" style="visibility:hidden"></span>
 </p>
 <p>
-Sadly, I haven't seen many. <span style="color:darkorange"><strong>Please let me know if I missed anything!</strong></span>
+Sadly, I've seen very few similar projects.
+<span style="color:darkorange"><strong>Please let me know if I missed anything!</strong></span>
 </p>
 </div>
 <div class="outline-3">
@@ -479,7 +476,7 @@ A paper from 2000 (!):
 </p>
 <blockquote>
 <p>
-Margin Notes is a remembrance agent that automatically rewrites web pages as they are loaded, adding hyperlinks to personal files.
+Margin Notes is a system that automatically annotates every webpage you visit with links to other potentially useful documents.
 </p>
 </blockquote>
 <p>
@@ -505,10 +502,10 @@ Sadly it's only a concept.
 <a href="https://github.com/novoid/Memacs#readme">Memacs</a> by Karl Voit
 </p>
 <p>
-Memacs is a memex, which unifies your data as org-mode, allowing for querying in from within Emacs.
+Memacs is a memex software which unifies your data as org-mode, allowing you to query it from within Emacs.
 </p>
 <p>
-Unfortunately, that means you have to query information actively in your emacs, as opposed to a passive assistant that does it for you.
+Unfortunately, that means you have to query information actively in your emacs, as opposed to a passive assistant doing it for you.
 </p>
 <p>
 In addition, keeping everything in org-mode will be inefficient for long browsing histories with hundreds of thousands of entries.
@@ -520,8 +517,8 @@ In addition, keeping everything in org-mode will be inefficient for long browsin
 This is a working (but not open-source, at least yet) prototype of a Memex, unifying personal data and exposing an API for it.
 </p>
 <p>
-I only ran into it a few months ago! Because it's not public, I'm not sure to which extent it can address the browser history problem specifically.
-But jumping a bit ahead, I expect it to integrate well with <a class="link-down" href="#promnesia">Promnesia</a>, so we could benefit from each other's work.
+I only ran into it a few months ago! Because it's not public, I'm not sure to what extent it can address the browser history problems specifically.
+Jumping a bit ahead of myself, I expect it to integrate well with <a class="link-down" href="#promnesia">Promnesia</a>, so we could potentially benefit from each other's work.
 </p></li>
 </ul>
 </div>
@@ -530,12 +527,12 @@ But jumping a bit ahead, I expect it to integrate well with <a class="link-down"
 <h3 id="history_extensions"><a class="headerlink" href="#history_extensions">¶</a>'Unlimited history' extensions</h3>
 <div class="outline-text-3" id="text-history_extensions">
 <p>
-There is a family of Chrome extensions similar to <a href="https://chrome.google.com/webstore/detail/history-trends-unlimited/pnmchffiealhkdloeffcdnbgdnedheme">History Trends Unlimited</a>,
-which try to make up for Chrome 90-day retention by keeping the history in IndexDB.
-The only problem they solve is the said retention, and it ends up as a yet another silo.
+There is a family of Chrome extensions similar to <a href="https://chrome.google.com/webstore/detail/history-trends-unlimited/pnmchffiealhkdloeffcdnbgdnedheme">History Trends Unlimited</a>
+which try to make up for Chrome's 90-day retention by keeping the history in IndexDB.
+Unfortunately, retention is the only problem this solves, and then it it ends up as a yet another silo.
 </p>
 <p>
-But at least, thousands of users means there is a demand for such functionality.
+But, thousands of users indicates there is at least demand for such functionality.
 </p>
 </div>
 </div>
@@ -543,7 +540,7 @@ But at least, thousands of users means there is a demand for such functionality.
 <h3 id="google"><a class="headerlink" href="#google">¶</a>Google Activity/Takeout</h3>
 <div class="outline-text-3" id="text-google">
 <p>
-I mentioned it already, but considering that many people use it, it worth a separate mention. Its problems are:
+Though I covered it already, it's worth another mention as many people use it. I find it problematic because:
 </p>
 <ul class="org-ul">
 <li>it's a Google-specific silo, and the functionality provided by Google is only useful for deliberate searches</li>
@@ -566,11 +563,11 @@ By all means, try it!
 It would be pretty close to my vision of the personal web assistant if not for a problem: it is also a kind of a silo.
 You can import the data from other services into Memex, but then you have to conform to its model of the data.
 If for some reason you can't use Memex for annotating and recording your history (e.g. on some of your devices) – you
-end up using multiple services, or having redundant (and potentially inconsistent) copies of your data scattered across the <span style="font-weight: bold; color:red; background: yellow">TODO: digital space?</span>
+end up using multiple services, or having redundant (and potentially inconsistent) copies of your data scattered across your digital space.
 </p>
 <p>
 Having privacy focused and open source tools is a very important step towards a better future.
-However, I want a different <b>model</b> of interacting with my <b>existing</b> data, which doesn't require moving the data in-between the silos.
+However, I want a different <b>model</b> of interacting with my <b>existing</b> data, which doesn't require moving data in between the silos.
 (see <a class="link-up" href="#not_just_browser">"it's not just about the browser"</a>)
 </p>
 <p>
@@ -592,30 +589,25 @@ I've already <a class="link-up" href="#what_i_want">mentioned</a> what I wanted,
 </p>
 <ul class="org-ul">
 <li><p>
-<a class="link-up" href="#history_broken">make the history useful</a>: unify scattered and siloed history under a single interface
+<a class="link-up" href="#history_broken">make history useful</a>: unify scattered and siloed history under a single interface
 </p>
 <p>
-There should be absolutely no difference between the link you opened yesterday in your Instapaper phone app,
+There should be absolutely no difference between a link you opened yesterday in your Instapaper phone app,
 and a link you visited in Firefox ten years ago.
 </p></li>
+<li><a class="link-up" href="#urls_broken">make URLs useful</a>: make use of their hierarchy and relations between them</li>
+<li>assist me in exploring new information</li>
 <li><p>
-<a class="link-up" href="#urls_broken">make the URLs useful</a>: benefit from the hierarchy and relations between them
+make it possible to easily trace my history
 </p>
 <p>
-<span style="font-weight: bold; color:red; background: yellow">TODO:  link to cannon here? not sure if worth mentioning at this point</span>
-</p></li>
-<li>assist me at exploring new information</li>
-<li><p>
-make it possible to easily trace through the history
-</p>
-<p>
-Let me answer, when, how, and why have I visited/bookmarked the page?
+Let me answer when, how, and why did I visit/bookmark the page?
 </p></li>
 <li><p>
-integrate the metadata: annotations, highlights, notes, chat messages, tweets, etc.
+integrate metadata: annotations, highlights, notes, chat messages, tweets, etc.
 </p>
 <p>
-Release it from the walled gardens, and display it right within the page when applicable (e.g. highlights)
+Release it from walled gardens and display it right within the page when applicable (e.g. highlights)
 </p></li>
 <li><p>
 make it flexible
@@ -625,53 +617,50 @@ As long as it's <i>something</i> you can extract URLs from, you should be able t
 </p></li>
 </ul>
 <p>
-Here, I'm cheating a little bit, because some of these goals weren't clear from the beginning – I discovered them during the development.
-<span style="font-weight: bold; color:red; background: yellow">TODO:  eh, maybe remove this sentence, it's a cool personal insight, but not easy to communicate</span>
+A cool thing is that some of these goals weren't clear from the beginning – I discovered them during development,
+and I think there are many more I haven't discovered yet!
 </p>
 <p>
 There are also some <b>meta-goals</b> and principles I'm adhering to:
 </p>
 <ul class="org-ul">
 <li><p>
-make it open source
+make it <b>open source</b>
 </p>
 <p>
-That goes without saying, everything I'm doing for this project is shared and open source.
-Frankly, I'm not even sure such a project can be sustainable in any other way.
+This goes without saying: everything I'm doing for this project is shared and open source.
+Frankly, I'm not even sure such a project can be sustainable any other way.
 </p></li>
 <li><p>
-local first
+<b>local first</b>
 </p>
 <p>
-Your past is sensitive data and you should have control where do you keep it and how you're accessing it.
-In the simplest setup, promnesia talks to your browser through a <b>local</b> port.
+Your past is sensitive data and you should have control over where you keep it and how you're accessing it.
+In the simplest setup, promnesia communicates with your browser through a <b>local</b> port.
 </p>
 <p>
 In addition, you have all your data available <a class="post-tag" href="./tags.html#offline">#offline</a>.
 Modern browsers provide a pretty pathetic offline experience, but if you use a tool similar to <a href="https://github.com/pirate/ArchiveBox">ArchiveBox</a>, this can be useful to you.
-</p>
-<p>
-<span style="font-weight: bold; color:red; background: yellow">TODO:  say smth about performance etc</span>
 </p></li>
 <li><p>
-make it modular
+make it <b>modular</b>
 </p>
 <p>
-Make sure the components can be reused.
+Make sure components can be reused.
 </p>
 <p>
-For the last several months, I've been mostly removing/moving away the code from Promnesia,
-to make sure that the <a href="https://github.com/karlicoss/HPI">data processing and normalization code</a> used in Promnesia can be used for other purposes by other people.
+For the past several months, I've mostly been removing/moving away the code from Promnesia
+to make sure that the <a href="https://github.com/karlicoss/HPI">data processing and normalization code</a> in it can be used for other purposes by other people.
 </p>
 <p>
-I'm going to take this even further and perhaps try to see if parts of Promnesia can be useful for:
+I'm going to take this even further and perhaps try and see if parts of Promnesia might be useful for:
 </p>
 <ul class="org-ul">
 <li><a href="https://web.hypothes.is">Hypothes.is</a> project</li>
 <li><a href="https://github.com/WorldBrain/Memex#memex-features">Worldbrain Memex</a> project</li>
 </ul></li>
 <li><p>
-don't build another silo, use existing information
+<b>don't build another silo</b>, use existing information
 </p>
 <p>
 This kind of complements the previous point.
@@ -679,11 +668,11 @@ This kind of complements the previous point.
 <p>
 There are many decent services and tools already. They all have their own <a href="annotating.html#comparison">pros and cons</a>.
 Different people prefer different tools. Sometimes because they're locked in and don't have much choice,
-but sometimes because they genuinely have subtle preferences and opinions.
+but other times because they genuinely have subtle preferences and opinions.
 </p>
 <p>
 The cost of switching is too high, both in terms of the time and the cognitive effort.
-There's always a risk that you'd encounter this one small thing that would make the tool a no-go.
+There's always the risk of encountering <i>one small thing</i> that would make the tool a no-go.
 </p>
 <p>
 We should invest in finding better ways of <b>combining</b> existing tools, not rewriting all over again.
@@ -709,7 +698,7 @@ Example: I run into an <a href="https://nautil.us/issue/66/clockwork/haunted-by-
 When I jump on <a href="https://nautil.us">https://nautil.us</a>, the Promnesia sidebar shows me that I've visited and even annotated other articles on this site before!
 </p>
 <p>
-So it seems worthy of an RSS subscription, which I do!
+I am repeatedly stumbling upon this site, and it's got high quality content, so I subscribe to it through my RSS reader.
 </p></li>
 <li>Exploring people and communities
 
@@ -751,7 +740,7 @@ I.e. why did I follow them in the first place? Are they worth following overall?
 Integrating with your knowledge base
 </p>
 <p>
-Promnesia can handle your private wiki, whether it's plaintext, or a web service, which would help you to instantly find and jump to the relevant information.
+Promnesia can handle your private wiki whether it's plaintext, or a web service, which would help you instantly find and jump to the relevant information.
 </p></li>
 <li><p>
 Integrating with others' knowledge bases
@@ -760,16 +749,16 @@ Integrating with others' knowledge bases
 I find it intriguing to think about this as tapping into each other's brains!
 </p>
 <p>
-See: <a href="myinfra-roam.html#promnesia">demo</a> of integrating promnesia with a Roam Research database.
+See: <a href="myinfra-roam.html#promnesia">demo</a> integrating Promnesia with a Roam Research database.
 </p></li>
 <li><p>
 Unified browser history
 </p>
 <p>
-I'm listing it as the last because the benefits of this are only apparent when you start using your data, not when it sits on your disk.
+I'm listing it last because the benefits of this only become apparent when you start using your data, not while it just sits on your disk.
 </p>
 <p>
-As you get more and more detailed history, the system becomes more useful.
+As you collect more and more detailed history, the whole system becomes more and more useful.
 </p></li>
 </ul>
 </div>
@@ -778,19 +767,19 @@ As you get more and more detailed history, the system becomes more useful.
 <h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">8</span> ---</h2>
 <div class="outline-text-2" id="text-fin">
 <p>
-I've always expected my gadgets <span style="font-weight: bold; color:red; background: yellow">TODO:  not sure about word choice?</span> to extend my ability to think and process information.
+I've always expected my gadgets to extend my ability to think and process information.
 Promnesia is a step I've taken to bring that future closer.
 </p>
 <p>
-Wanna join me? Check out the <a href="https://github.com/karlicoss/promnesia">repository</a>, which contains more screenshots, demos, and the setup manual.
+Want to join me? Check out the <a href="https://github.com/karlicoss/promnesia">repository</a>, which contains more screenshots, demos, and the setup manual.
 </p>
 <p>
-If you can think of some cool features, or useful data sources, or any related thoughts, feel free to use <a href="https://github.com/karlicoss/promnesia/issues">github issues</a>
+If you think of cool features, useful data sources, or any related thoughts feel free to use <a href="https://github.com/karlicoss/promnesia/issues">github issues</a>
 or reach me by some other means.
 </p>
 <p>
 Even better if you want to help and contribute!
-I'd be happy to help you with any Python or browser extension specifics.
+I'm happy to help you with any Python quirks or web extension specifics.
 </p>
 <p>
 Related links:
@@ -798,8 +787,13 @@ Related links:
 <ul class="org-ul">
 <li>Cloudflare blog: <a href="https://blog.cloudflare.com/the-history-of-the-url">The History of the URL</a></li>
 <li>IndieWeb wiki on <a href="https://indieweb.org/silo">silos</a></li>
+<li><a href="https://utcc.utoronto.ca/~cks/space/blog/web/URLSAreTerriblePermanentIDs">"URLs are terrible permanent identifiers for things"</a></li>
 <li><a href="hpi.html">Human Programming Interface</a></li>
+<li><a href="sad-infra.html">The sad state of personal data and infrastructure</a></li>
 </ul>
+<p>
+<b>Credits:</b> thanks to <a href="https://jborichevskiy.com">Jonathan</a>, <a href="http://awesomesauce.name">Andrew</a> and <a href="https://petr-tik.github.io">Petr</a> for the valuable feedback.
+</p>
 </div>
 </div>
 

@@ -651,9 +651,8 @@ he open sources it. I highly recommend watching his talk for inspiration.
 Single import away from getting tracks you listened to:
 </p>
 <div class="org-src-container">
-<pre class="src src-python"><span class="org-keyword">from</span> my.lastfm <span class="org-keyword">import</span> get_scrobbles
-<span class="org-variable-name">scrobbles</span> = get_scrobbles()
-scrobbles[200: 205]
+<pre class="src src-python"><span class="org-keyword">from</span> my.lastfm <span class="org-keyword">import</span> scrobbles
+<span class="org-builtin">list</span>(scrobbles())[200: 205]
 </pre>
 </div>
 <pre class="example">[Scrobble(raw={'album': 'Nevermind', 'artist': 'Nirvana', 'date': '1282488504', 'name': 'Drain You'}),
@@ -670,7 +669,7 @@ Or, as a pandas frame to make it pretty:
 <span class="org-variable-name">df</span> = pd.DataFrame([{
     <span class="org-string">'dt'</span>: s.dt,
     <span class="org-string">'track'</span>: s.track,
-} <span class="org-keyword">for</span> s <span class="org-keyword">in</span> scrobbles])
+} <span class="org-keyword">for</span> s <span class="org-keyword">in</span> scrobbles()])
 <span class="org-variable-name">cdf</span> = df.set_index(<span class="org-string">'dt'</span>)
 cdf[200: 205]
 </pre>

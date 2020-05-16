@@ -1084,7 +1084,12 @@ To me, it's a very strong point against code as a config. As counter-points:
 &lt;/p&gt;
 &lt;ul class="org-ul"&gt;
 &lt;li&gt;not many programs have (or need) TUI/GUI for editing settings&lt;/li&gt;
-&lt;li&gt;the settings that belong to the UI are usually very simple, and possible to adjust by appending only&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+the settings that belong to the UI are usually very simple, and possible to adjust by appending only
+&lt;/p&gt;
+&lt;p&gt;
+For example, Emacs customization interface is &lt;a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/Saving-Customizations.html"&gt;backed by an Elisp config&lt;/a&gt;.
+&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;
@@ -1914,14 +1919,6 @@ Here's the (incomplete) list of the modules:
 &lt;td class="org-left"&gt;Facebook Messenger messages&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/feedbin.py"&gt;my.feedbin&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;Feedbin RSS reader&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/feedly.py"&gt;my.feedly&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;Feedly RSS reader&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/foursquare.py"&gt;my.foursquare&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-left"&gt;Foursquare/Swarm checkins&lt;/td&gt;
 &lt;/tr&gt;
@@ -1980,6 +1977,18 @@ Here's the (incomplete) list of the modules:
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/roamresearch.py"&gt;my.roamresearch&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://roamresearch.com"&gt;Roam&lt;/a&gt; data&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/rss/all.py"&gt;my.rss.all&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;Unified RSS data, merged from different services I used historically&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/rss/feedbin.py"&gt;my.rss.feedbin&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;Feedbin RSS reader&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/rss/feedly.py"&gt;my.rss.feedly&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;Feedly RSS reader&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/rtm.py"&gt;my.rtm&lt;/a&gt;&lt;/td&gt;
@@ -2147,11 +2156,11 @@ Single import away from getting tracks you listened to:
 &lt;span class="org-builtin"&gt;list&lt;/span&gt;(scrobbles())[200: 205]
 &lt;/pre&gt;
 &lt;/div&gt;
-&lt;pre class="example"&gt;[Scrobble(raw={'album': 'Caracal (Deluxe)', 'artist': 'Disclosure', 'date': '1587547013', 'name': 'Nocturnal'}),
- Scrobble(raw={'album': '4æm', 'artist': 'Grimes', 'date': '1587541857', 'name': '4æm'}),
- Scrobble(raw={'album': 'Hanadriel', 'artist': 'Hana', 'date': '1587541512', 'name': 'Chimera 2.0'}),
- Scrobble(raw={'album': '4æm', 'artist': 'Grimes', 'date': '1587541240', 'name': '4æm'}),
- Scrobble(raw={'album': 'The Bones of What You Believe (Special Edition)', 'artist': 'CHVRCHES', 'date': '1587465032', 'name': 'Recover'})]
+&lt;pre class="example"&gt;[Scrobble(raw={'album': 'Nevermind', 'artist': 'Nirvana', 'date': '1282488504', 'name': 'Drain You'}),
+ Scrobble(raw={'album': 'Dirt', 'artist': 'Alice in Chains', 'date': '1282489764', 'name': 'Would?'}),
+ Scrobble(raw={'album': 'Bob Dylan: The Collection', 'artist': 'Bob Dylan', 'date': '1282493517', 'name': 'Like a Rolling Stone'}),
+ Scrobble(raw={'album': 'Dark Passion Play', 'artist': 'Nightwish', 'date': '1282493819', 'name': 'Amaranth'}),
+ Scrobble(raw={'album': 'Rolled Gold +', 'artist': 'The Rolling Stones', 'date': '1282494161', 'name': "You Can't Always Get What You Want"})]
 &lt;/pre&gt;
 &lt;p&gt;
 Or, as a pandas frame to make it pretty:
@@ -2166,13 +2175,13 @@ Or, as a pandas frame to make it pretty:
 cdf[200: 205]
 &lt;/pre&gt;
 &lt;/div&gt;
-&lt;pre class="example"&gt;                                            track
-dt                                               
-2020-04-22 09:16:53+00:00  Disclosure — Nocturnal
-2020-04-22 07:50:57+00:00            Grimes — 4æm
-2020-04-22 07:45:12+00:00      Hana — Chimera 2.0
-2020-04-22 07:40:40+00:00            Grimes — 4æm
-2020-04-21 10:30:32+00:00      CHVRCHES — Recover
+&lt;pre class="example"&gt;                                                                       track
+dt                                                                          
+2010-08-22 14:48:24+00:00                                Nirvana — Drain You
+2010-08-22 15:09:24+00:00                           Alice in Chains — Would?
+2010-08-22 16:11:57+00:00                   Bob Dylan — Like a Rolling Stone
+2010-08-22 16:16:59+00:00                               Nightwish — Amaranth
+2010-08-22 16:22:41+00:00  The Rolling Stones — You Can't Always Get What...
 &lt;/pre&gt;
 &lt;p&gt;
 We can use &lt;a href="https://github.com/martijnvermaat/calmap"&gt;calmap&lt;/a&gt; library to plot a github-style music listening activity heatmap:
