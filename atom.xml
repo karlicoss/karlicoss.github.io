@@ -1932,7 +1932,7 @@ Here's the (incomplete) list of the modules:
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/instapaper.py"&gt;my.instapaper&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;Instapaper bookmarks, highlights and annotations&lt;/td&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://www.instapaper.com"&gt;Instapaper&lt;/a&gt; bookmarks, highlights and annotations&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/lastfm"&gt;my.lastfm&lt;/a&gt;&lt;/td&gt;
@@ -1964,7 +1964,7 @@ Here's the (incomplete) list of the modules:
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/reading/polar.py"&gt;my.reading.polar&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;&lt;a href="https://github.com/burtonator/polar-books"&gt;Polar&lt;/a&gt; articles and highlights&lt;/td&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://github.com/burtonator/polar-bookshelf"&gt;Polar&lt;/a&gt; articles and highlights&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/reddit.py"&gt;my.reddit&lt;/a&gt;&lt;/td&gt;
@@ -2092,7 +2092,7 @@ I'm using it for:
 &lt;li&gt;spaced repetition via &lt;a href="https://orgmode.org/worg/org-contrib/org-drill.html"&gt;org-drill&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;
-Orger comes with some existing &lt;a href="https://github.com/orger/tree/master/modules"&gt;modules&lt;/a&gt;, but it should be easy to adapt your own data source if you need something else.
+Orger comes with some existing &lt;a href="https://github.com/karlicoss/orger/tree/master/modules"&gt;modules&lt;/a&gt;, but it should be easy to adapt your own data source if you need something else.
 &lt;/p&gt;
 &lt;p&gt;
 I write about it in detail &lt;a href="orger.html"&gt;here&lt;/a&gt; and &lt;a href="orger-todos.html"&gt;here&lt;/a&gt;.
@@ -7010,7 +7010,7 @@ I'm using it for:
 &lt;li&gt;spaced repetition via &lt;a href="https://orgmode.org/worg/org-contrib/org-drill.html"&gt;org-drill&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;
-Orger comes with some existing &lt;a href="https://github.com/orger/tree/master/modules"&gt;modules&lt;/a&gt;, but it should be easy to adapt your own data source if you need something else.
+Orger comes with some existing &lt;a href="https://github.com/karlicoss/orger/tree/master/modules"&gt;modules&lt;/a&gt;, but it should be easy to adapt your own data source if you need something else.
 &lt;/p&gt;
 &lt;p&gt;
 I write about it in detail &lt;a href="orger.html"&gt;here&lt;/a&gt; and &lt;a href="orger-todos.html"&gt;here&lt;/a&gt;.

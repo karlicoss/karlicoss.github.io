@@ -95,7 +95,7 @@ Promnesia is a browser extension (Chrome/Firefox/Firefox mobile) that serves as 
 by enhancing your browsing history, improving your web exploration experience, and integrating with your knowledge base.
 </p>
 <p>
-<a href="https://github.com/karlicoss/promneisa#readme">The repository</a> contains some demos and the setup guide, this post is more about the motivation and the story of what led me to work on it.
+<a href="https://github.com/karlicoss/promnesia#readme">The repository</a> contains some demos and the setup guide, this post is more about the motivation and the story of what led me to work on it.
 </p>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
@@ -119,9 +119,15 @@ by enhancing your browsing history, improving your web exploration experience, a
 <li><a href="#worldbrain_memex">Worldbrain Memex</a></li>
 </ul>
 </li>
-<li><a href="#promnesia">6. Hello, Promnesia!</a></li>
+<li><a href="#promnesia">6. Hello, Promnesia!</a>
+<ul>
+<li><a href="#promnesia_goals">Goals</a></li>
+<li><a href="#promnesia_metagoals">Meta-goals</a></li>
+</ul>
+</li>
 <li><a href="#how_to_use">7. How can you use Promnesia?</a></li>
-<li><a href="#fin">8. ---</a></li>
+<li><a href="#future">8. Future of Promnesia</a></li>
+<li><a href="#fin">9. ---</a></li>
 </ul>
 </div>
 </div>
@@ -571,9 +577,9 @@ However, I want a different <b>model</b> of interacting with my <b>existing</b> 
 (see <a class="link-up" href="#not_just_browser">"it's not just about the browser"</a>)
 </p>
 <p>
-And jumping ahead again, <a class="link-down" href="#promnesia">Promnesia</a> can be integrated with Memex.
-Overall, it seems that our vision is pretty similar, and I expect that both projects can benefit <span style="font-weight: bold; color:red; background: yellow">TODO:  link to the 'future' paragraph</span> from each other's work
-(up to the point that Promnesia extension is merged into Worldbrain Memex extension, or can be running against its backend).
+And jumping ahead again, <a class="link-down" href="#promnesia">Promnesia</a> can be integrated with Memex data.
+Overall, it seems that our vision is pretty similar, and I <a class="link-down" href="#future">expect</a> that both projects can benefit from each other's work,
+up to the point that Promnesia extension is sharing the extension/backend with Worldbrain Memex.
 </p>
 </div>
 </div>
@@ -581,12 +587,17 @@ Overall, it seems that our vision is pretty similar, and I expect that both proj
 <div class="outline-2">
 <h2 id="promnesia"><a class="headerlink" href="#promnesia">¶</a><span class="section-number-2">6</span> Hello, Promnesia!</h2>
 <div class="outline-text-2" id="text-promnesia">
-<p>
-Ok enough rants! <a href="https://github.com/karlicoss/promneisa">Promnesia</a> is the tool I've developed to address some of the issues with the browsing history and URLs.
-</p>
+<div style="margin-top: 16px; margin-bottom: 16px"><span class="before-aside">
+Ok enough rants! <a href="https://github.com/karlicoss/promnesia">Promnesia</a> is the tool I've developed to address some of the issues with the browsing history and URLs.
+
+</span><aside class="sidenote"><span style="color:darkgreen;font-weight:bold">infrastructure map</span>: <a href="myinfra.html#promnesia">promnesia</a></aside></div>
 <p>
 I've already <a class="link-up" href="#what_i_want">mentioned</a> what I wanted, but I'll recap:
 </p>
+</div>
+<div class="outline-3">
+<h3 id="promnesia_goals"><a class="headerlink" href="#promnesia_goals">¶</a>Goals</h3>
+<div class="outline-text-3" id="text-promnesia_goals">
 <ul class="org-ul">
 <li><p>
 <a class="link-up" href="#history_broken">make history useful</a>: unify scattered and siloed history under a single interface
@@ -620,6 +631,11 @@ As long as it's <i>something</i> you can extract URLs from, you should be able t
 A cool thing is that some of these goals weren't clear from the beginning – I discovered them during development,
 and I think there are many more I haven't discovered yet!
 </p>
+</div>
+</div>
+<div class="outline-3">
+<h3 id="promnesia_metagoals"><a class="headerlink" href="#promnesia_metagoals">¶</a>Meta-goals</h3>
+<div class="outline-text-3" id="text-promnesia_metagoals">
 <p>
 There are also some <b>meta-goals</b> and principles I'm adhering to:
 </p>
@@ -653,12 +669,8 @@ For the past several months, I've mostly been removing/moving away the code from
 to make sure that the <a href="https://github.com/karlicoss/HPI">data processing and normalization code</a> in it can be used for other purposes by other people.
 </p>
 <p>
-I'm going to take this even further and perhaps try and see if parts of Promnesia might be useful for:
-</p>
-<ul class="org-ul">
-<li><a href="https://web.hypothes.is">Hypothes.is</a> project</li>
-<li><a href="https://github.com/WorldBrain/Memex#memex-features">Worldbrain Memex</a> project</li>
-</ul></li>
+I'm going to take this even further and explore the potential for interoperability and integration with other open source tools, I'll write about it a bit <a class="link-down" href="#future">later</a>.
+</p></li>
 <li><p>
 <b>don't build another silo</b>, use existing information
 </p>
@@ -678,6 +690,7 @@ There's always the risk of encountering <i>one small thing</i> that would make t
 We should invest in finding better ways of <b>combining</b> existing tools, not rewriting all over again.
 </p></li>
 </ul>
+</div>
 </div>
 </div>
 <div class="outline-2">
@@ -764,7 +777,81 @@ As you collect more and more detailed history, the whole system becomes more and
 </div>
 </div>
 <div class="outline-2">
-<h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">8</span> ---</h2>
+<h2 id="future"><a class="headerlink" href="#future">¶</a><span class="section-number-2">8</span> Future of Promnesia</h2>
+<div class="outline-text-2" id="text-future">
+<p>
+Promnesia was a lot of work, especially in terms of sharing it with other people and documenting.
+If fact, <b>most writing on my blog have been slowly building up to this post</b>.
+On my <a href="myinfra.html#promnesia">infrastructure map</a>, Promnesia is a leaf node!
+</p>
+<p>
+As much as I am proud of my work, and how rewarding it is when other people find it useful… I'm already thinking how to break Promnesia apart and perhaps even sunset it.
+I would be happy if:
+</p>
+<ul class="org-ul">
+<li>I can raise the demand and awareness for data liberation and interoperability</li>
+<li>other developers implement something similar (and better!)</li>
+</ul>
+<p>
+As I <a class="link-up" href="#promnesia_metagoals">previously</a> mentioned, one of the meta-goals is modularity, so parts of Promnesia can be plugged in other tools.
+There is still some unused potential for integrating with other open source projects, so I want to take this even further and to the extreme:
+</p>
+<ul class="org-ul">
+<li><p>
+URL indexers/data sources
+</p>
+<p>
+Promnesia modules are very slim when it comes to the URL extraction, many of them are just 30 lines of code.
+Most of the boring and tedious stuff (like data normalization) is encapsulated in <a href="https://github.com/karlicoss/HPI#readme">HPI</a> package, which can be used with other tools.
+</p>
+<p>
+It would be interesting to see if these data sources can be integrated with Worldbrain Memex.
+<a class="link-up" href="#worldbrain_memex">Before</a> I mentioned that at the moment Memex is a silo, but they also realize it!
+Very recently, WorldBrain announced <a href="https://github.com/WorldBrain/storex-hub">Storex Hub</a>, which seems like a potential means of integration.
+</p>
+<p>
+It's likely that Promnesia backend can be rebased on top of it.
+</p></li>
+<li><p>
+URL normalization algorithm
+</p>
+<p>
+At the moment, Promnesia uses a <a href="https://github.com/karlicoss/promnesia/blob/master/src/promnesia/cannon.py">hacky set of rules</a>, which does the right thing for the most websites I'm using.
+However, it's not sustainable for one person to maintain, and it feels worthy of extraction to a separate project/public database.
+I imagine it to be something similar to <samp class="inline">tzdata</samp>, just think how much frustration we all save by using the same library for timezone information.
+</p>
+<p>
+This would be something many projects could benefit from: Polar Bookshelf, <a href="https://web.hypothes.is">Hypothesis</a>, Worldbrain Memex, and I'm sure there are many more I don't even know of!
+</p></li>
+<li><p>
+Highlighting and anchoring annotations
+</p>
+<p>
+One the one hand, even a very primitive algorithm for matching annotations against the page works pretty well in 90% of cases.
+On the other hand, the remaining 10% is the bit which is pretty hard to get right, and not an easy task.
+</p>
+<p>
+It would be cool to reuse <a href="https://web.hypothes.is/blog/fuzzy-anchoring/#a-new-approach">fuzzy anchoring</a> by Hypothesis, compare it with whatever Worldbrain is using,
+and figure out how much of it is worth sharing. I'd rather help these projects maintain their code, than reinvent my own wheel.
+</p></li>
+<li><p>
+Other features
+</p>
+<p>
+Again, it feels that most of Promnesia's existing (and future!) features make sense to within Worldbrain Memex, or as plugins.
+</p></li>
+</ul>
+<p>
+I see the most likely future for Promnesia <b>as a part of Worldbrain Memex</b>, or a plugin on top of it.
+This is something I'll look at in the near future.
+</p>
+<p>
+In the meantime, Promnesia is completely usable on its own, and as long as I use it, I'll be supporting it!
+</p>
+</div>
+</div>
+<div class="outline-2">
+<h2 id="fin"><a class="headerlink" href="#fin">¶</a><span class="section-number-2">9</span> ---</h2>
 <div class="outline-text-2" id="text-fin">
 <p>
 I've always expected my gadgets to extend my ability to think and process information.
@@ -785,14 +872,15 @@ I'm happy to help you with any Python quirks or web extension specifics.
 Related links:
 </p>
 <ul class="org-ul">
-<li>Cloudflare blog: <a href="https://blog.cloudflare.com/the-history-of-the-url">The History of the URL</a></li>
 <li>IndieWeb wiki on <a href="https://indieweb.org/silo">silos</a></li>
+<li>Cloudflare blog: <a href="https://blog.cloudflare.com/the-history-of-the-url">The History of the URL</a></li>
 <li><a href="https://utcc.utoronto.ca/~cks/space/blog/web/URLSAreTerriblePermanentIDs">"URLs are terrible permanent identifiers for things"</a></li>
+<li><a href="https://news.ycombinator.com/item?id=23227186">HN: WorldBrain's Memex: Bookmarking for the power users of the web</a></li>
 <li><a href="hpi.html">Human Programming Interface</a></li>
 <li><a href="sad-infra.html">The sad state of personal data and infrastructure</a></li>
 </ul>
 <p>
-<b>Credits:</b> thanks to <a href="https://jborichevskiy.com">Jonathan</a>, <a href="http://awesomesauce.name">Andrew</a> and <a href="https://petr-tik.github.io">Petr</a> for the valuable feedback.
+<b>Credits:</b> thanks to <a href="https://jborichevskiy.com/about">Jonathan</a>, <a href="http://awesomesauce.name">Andrew</a> and <a href="https://petr-tik.github.io">Petr</a> for the valuable feedback.
 </p>
 </div>
 </div>
