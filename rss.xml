@@ -21,7 +21,7 @@
         &lt;link href="./robot-face.png" rel="icon"/&gt;
         &lt;link href="./robot-face.png" rel="apple-touch-icon"/&gt;
 
-        &lt;meta content="hakyll" name="generator"/&gt;
+        &lt;meta content="https://github.com/karlicoss/beepb00p" name="generator"/&gt;
         &lt;meta content="English" name="language"/&gt;
         
         &lt;meta content="infra hpi orger promnesia" name="keywords"/&gt;
@@ -659,9 +659,13 @@ Happy to hear your feedback or help you set up the tools I mention!
 
     
     &lt;section class="footer"&gt;
-        &lt;div class="post-tags"&gt;&lt;a class="post-tag" href="./tags.html#infra"&gt;#infra&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#hpi"&gt;#hpi&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#orger"&gt;#orger&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#promnesia"&gt;#promnesia&lt;/a&gt; &lt;/div&gt;
-        &lt;!-- TODO post-date? --&gt;
-        &lt;div class="date"&gt;20 April 2020&lt;/div&gt;
+        &lt;div class="post-tags"&gt;
+            &lt;a class="post-tag tag-active" href="./tags.html#infra"&gt;#infra&lt;/a&gt;
+            &lt;a class="post-tag tag-inactive" href="./tags.html"&gt;#hpi&lt;/a&gt;
+            &lt;a class="post-tag tag-inactive" href="./tags.html"&gt;#orger&lt;/a&gt;
+            &lt;a class="post-tag tag-inactive" href="./tags.html"&gt;#promnesia&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;time datetime="2020-04-20T00:00:00"&gt;20 April 2020&lt;/time&gt;
     &lt;/section&gt;
     
 
@@ -676,10 +680,7 @@ Happy to hear your feedback or help you set up the tools I mention!
 
 &lt;/article&gt;
         &lt;/main&gt;
-
-        &lt;!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... --&gt;
         
-
         &lt;!-- TODO make semantic --&gt;
         &lt;footer&gt;
             &lt;span style="float:left"&gt;
@@ -689,8 +690,6 @@ Happy to hear your feedback or help you set up the tools I mention!
             &lt;/span&gt;
 
             &lt;a href="http://creativecommons.org/licenses/by/4.0"&gt;CC BY 4.0&lt;/a&gt;
-            
-            
         &lt;/footer&gt;
     
 &lt;/body&gt;&lt;/html&gt;</description>
@@ -710,7 +709,7 @@ Happy to hear your feedback or help you set up the tools I mention!
         &lt;link href="./robot-face.png" rel="icon"/&gt;
         &lt;link href="./robot-face.png" rel="apple-touch-icon"/&gt;
 
-        &lt;meta content="hakyll" name="generator"/&gt;
+        &lt;meta content="https://github.com/karlicoss/beepb00p" name="generator"/&gt;
         &lt;meta content="English" name="language"/&gt;
         
         &lt;meta content="plt python" name="keywords"/&gt;
@@ -1438,9 +1437,11 @@ in the rapid development phase, resort to having a flexible config
 
     
     &lt;section class="footer"&gt;
-        &lt;div class="post-tags"&gt;&lt;a class="post-tag" href="./tags.html#plt"&gt;#plt&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#python"&gt;#python&lt;/a&gt; &lt;/div&gt;
-        &lt;!-- TODO post-date? --&gt;
-        &lt;div class="date"&gt;05 April 2020&lt;/div&gt;
+        &lt;div class="post-tags"&gt;
+            &lt;a class="post-tag tag-inactive" href="./tags.html"&gt;#plt&lt;/a&gt;
+            &lt;a class="post-tag tag-inactive" href="./tags.html"&gt;#python&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;time datetime="2020-04-05T00:00:00"&gt;05 April 2020&lt;/time&gt;
     &lt;/section&gt;
     
 
@@ -1448,11 +1449,8 @@ in the rapid development phase, resort to having a flexible config
     &lt;br/&gt;
     &lt;div&gt;Discussion:&lt;/div&gt;
     &lt;ul&gt;
-    
         &lt;li&gt;&lt;a href="https://news.ycombinator.com/item?id=22787332"&gt;hackernews&lt;/a&gt;&lt;/li&gt;
-    
         &lt;li&gt;&lt;a href="https://lobste.rs/s/qyhvhc/your_configs_suck_try_real_programming"&gt;lobsters&lt;/a&gt;&lt;/li&gt;
-    
     &lt;/ul&gt;
     
 
@@ -1465,10 +1463,7 @@ in the rapid development phase, resort to having a flexible config
 
 &lt;/article&gt;
         &lt;/main&gt;
-
-        &lt;!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... --&gt;
         
-
         &lt;!-- TODO make semantic --&gt;
         &lt;footer&gt;
             &lt;span style="float:left"&gt;
@@ -1478,8 +1473,6 @@ in the rapid development phase, resort to having a flexible config
             &lt;/span&gt;
 
             &lt;a href="http://creativecommons.org/licenses/by/4.0"&gt;CC BY 4.0&lt;/a&gt;
-            
-            
         &lt;/footer&gt;
     
 &lt;/body&gt;&lt;/html&gt;</description>
@@ -1499,7 +1492,7 @@ in the rapid development phase, resort to having a flexible config
         &lt;link href="./robot-face.png" rel="icon"/&gt;
         &lt;link href="./robot-face.png" rel="apple-touch-icon"/&gt;
 
-        &lt;meta content="hakyll" name="generator"/&gt;
+        &lt;meta content="https://github.com/karlicoss/beepb00p" name="generator"/&gt;
         &lt;meta content="English" name="language"/&gt;
         
         &lt;meta content="infra pkm quantifiedself hpi" name="keywords"/&gt;
@@ -2617,9 +2610,13 @@ In some near future I will write more about:
 
     
     &lt;section class="footer"&gt;
-        &lt;div class="post-tags"&gt;&lt;a class="post-tag" href="./tags.html#infra"&gt;#infra&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#pkm"&gt;#pkm&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#quantifiedself"&gt;#quantifiedself&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#hpi"&gt;#hpi&lt;/a&gt; &lt;/div&gt;
-        &lt;!-- TODO post-date? --&gt;
-        &lt;div class="date"&gt;15 March 2020&lt;/div&gt;
+        &lt;div class="post-tags"&gt;
+            &lt;a class="post-tag tag-active" href="./tags.html#infra"&gt;#infra&lt;/a&gt;
+            &lt;a class="post-tag tag-active" href="./tags.html#pkm"&gt;#pkm&lt;/a&gt;
+            &lt;a class="post-tag tag-active" href="./tags.html#quantifiedself"&gt;#quantifiedself&lt;/a&gt;
+            &lt;a class="post-tag tag-inactive" href="./tags.html"&gt;#hpi&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;time datetime="2020-03-15T00:00:00"&gt;15 March 2020&lt;/time&gt;
     &lt;/section&gt;
     
 
@@ -2627,11 +2624,8 @@ In some near future I will write more about:
     &lt;br/&gt;
     &lt;div&gt;Discussion:&lt;/div&gt;
     &lt;ul&gt;
-    
         &lt;li&gt;&lt;a href="https://www.reddit.com/r/coolgithubprojects/comments/fo28ok/human_programming_interface_your_digital_life_in"&gt;/r/coolgithubprojects&lt;/a&gt;&lt;/li&gt;
-    
         &lt;li&gt;&lt;a href="https://lobste.rs/s/vzkb7a/human_programming_interface_python"&gt;lobsters&lt;/a&gt;&lt;/li&gt;
-    
     &lt;/ul&gt;
     
 
@@ -2644,10 +2638,7 @@ In some near future I will write more about:
 
 &lt;/article&gt;
         &lt;/main&gt;
-
-        &lt;!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... --&gt;
         
-
         &lt;!-- TODO make semantic --&gt;
         &lt;footer&gt;
             &lt;span style="float:left"&gt;
@@ -2657,8 +2648,6 @@ In some near future I will write more about:
             &lt;/span&gt;
 
             &lt;a href="http://creativecommons.org/licenses/by/4.0"&gt;CC BY 4.0&lt;/a&gt;
-            
-            
         &lt;/footer&gt;
     
 &lt;/body&gt;&lt;/html&gt;</description>
@@ -2678,7 +2667,7 @@ In some near future I will write more about:
         &lt;link href="./robot-face.png" rel="icon"/&gt;
         &lt;link href="./robot-face.png" rel="apple-touch-icon"/&gt;
 
-        &lt;meta content="hakyll" name="generator"/&gt;
+        &lt;meta content="https://github.com/karlicoss/beepb00p" name="generator"/&gt;
         &lt;meta content="English" name="language"/&gt;
         
         &lt;meta content="infra dataliberation" name="keywords"/&gt;
@@ -3941,9 +3930,11 @@ Big thanks to &lt;a href="https://jborichevskiy.com"&gt;Jonathan&lt;/a&gt; for r
 
     
     &lt;section class="footer"&gt;
-        &lt;div class="post-tags"&gt;&lt;a class="post-tag" href="./tags.html#infra"&gt;#infra&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#dataliberation"&gt;#dataliberation&lt;/a&gt; &lt;/div&gt;
-        &lt;!-- TODO post-date? --&gt;
-        &lt;div class="date"&gt;13 February 2020&lt;/div&gt;
+        &lt;div class="post-tags"&gt;
+            &lt;a class="post-tag tag-active" href="./tags.html#infra"&gt;#infra&lt;/a&gt;
+            &lt;a class="post-tag tag-active" href="./tags.html#dataliberation"&gt;#dataliberation&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;time datetime="2020-02-13T00:00:00"&gt;13 February 2020&lt;/time&gt;
     &lt;/section&gt;
     
 
@@ -3958,10 +3949,7 @@ Big thanks to &lt;a href="https://jborichevskiy.com"&gt;Jonathan&lt;/a&gt; for r
 
 &lt;/article&gt;
         &lt;/main&gt;
-
-        &lt;!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... --&gt;
         
-
         &lt;!-- TODO make semantic --&gt;
         &lt;footer&gt;
             &lt;span style="float:left"&gt;
@@ -3971,8 +3959,6 @@ Big thanks to &lt;a href="https://jborichevskiy.com"&gt;Jonathan&lt;/a&gt; for r
             &lt;/span&gt;
 
             &lt;a href="http://creativecommons.org/licenses/by/4.0"&gt;CC BY 4.0&lt;/a&gt;
-            
-            
         &lt;/footer&gt;
     
 &lt;/body&gt;&lt;/html&gt;</description>
@@ -3992,10 +3978,10 @@ Big thanks to &lt;a href="https://jborichevskiy.com"&gt;Jonathan&lt;/a&gt; for r
         &lt;link href="./robot-face.png" rel="icon"/&gt;
         &lt;link href="./robot-face.png" rel="apple-touch-icon"/&gt;
 
-        &lt;meta content="hakyll" name="generator"/&gt;
+        &lt;meta content="https://github.com/karlicoss/beepb00p" name="generator"/&gt;
         &lt;meta content="English" name="language"/&gt;
         
-        &lt;meta content="infra dataliberation databases cachew" name="keywords"/&gt;
+        &lt;meta content="infra dataliberation cachew" name="keywords"/&gt;
         
         &lt;!-- TODO concat with keywords tags; also need to make comma separated? --&gt;
 
@@ -5277,9 +5263,12 @@ Happy to hear your thoughts and suggestions! Thank you for making it through thi
 
     
     &lt;section class="footer"&gt;
-        &lt;div class="post-tags"&gt;&lt;a class="post-tag" href="./tags.html#infra"&gt;#infra&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#dataliberation"&gt;#dataliberation&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#databases"&gt;#databases&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#cachew"&gt;#cachew&lt;/a&gt; &lt;/div&gt;
-        &lt;!-- TODO post-date? --&gt;
-        &lt;div class="date"&gt;26 January 2020&lt;/div&gt;
+        &lt;div class="post-tags"&gt;
+            &lt;a class="post-tag tag-active" href="./tags.html#infra"&gt;#infra&lt;/a&gt;
+            &lt;a class="post-tag tag-active" href="./tags.html#dataliberation"&gt;#dataliberation&lt;/a&gt;
+            &lt;a class="post-tag tag-inactive" href="./tags.html"&gt;#cachew&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;time datetime="2020-01-26T00:00:00"&gt;26 January 2020&lt;/time&gt;
     &lt;/section&gt;
     
 
@@ -5287,9 +5276,7 @@ Happy to hear your thoughts and suggestions! Thank you for making it through thi
     &lt;br/&gt;
     &lt;div&gt;Discussion:&lt;/div&gt;
     &lt;ul&gt;
-    
         &lt;li&gt;&lt;a href="https://lobste.rs/s/vzpjfj/against_unnecessary_databases"&gt;lobsters&lt;/a&gt;&lt;/li&gt;
-    
     &lt;/ul&gt;
     
 
@@ -5302,10 +5289,7 @@ Happy to hear your thoughts and suggestions! Thank you for making it through thi
 
 &lt;/article&gt;
         &lt;/main&gt;
-
-        &lt;!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... --&gt;
         
-
         &lt;!-- TODO make semantic --&gt;
         &lt;footer&gt;
             &lt;span style="float:left"&gt;
@@ -5315,8 +5299,6 @@ Happy to hear your thoughts and suggestions! Thank you for making it through thi
             &lt;/span&gt;
 
             &lt;a href="http://creativecommons.org/licenses/by/4.0"&gt;CC BY 4.0&lt;/a&gt;
-            
-            
         &lt;/footer&gt;
     
 &lt;/body&gt;&lt;/html&gt;</description>
@@ -5336,7 +5318,7 @@ Happy to hear your thoughts and suggestions! Thank you for making it through thi
         &lt;link href="./robot-face.png" rel="icon"/&gt;
         &lt;link href="./robot-face.png" rel="apple-touch-icon"/&gt;
 
-        &lt;meta content="hakyll" name="generator"/&gt;
+        &lt;meta content="https://github.com/karlicoss/beepb00p" name="generator"/&gt;
         &lt;meta content="English" name="language"/&gt;
         
         &lt;meta content="infra" name="keywords"/&gt;
@@ -5845,9 +5827,10 @@ Updates:
 
     
     &lt;section class="footer"&gt;
-        &lt;div class="post-tags"&gt;&lt;a class="post-tag" href="./tags.html#infra"&gt;#infra&lt;/a&gt; &lt;/div&gt;
-        &lt;!-- TODO post-date? --&gt;
-        &lt;div class="date"&gt;18 January 2020&lt;/div&gt;
+        &lt;div class="post-tags"&gt;
+            &lt;a class="post-tag tag-active" href="./tags.html#infra"&gt;#infra&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;time datetime="2020-01-18T00:00:00"&gt;18 January 2020&lt;/time&gt;
     &lt;/section&gt;
     
 
@@ -5862,10 +5845,7 @@ Updates:
 
 &lt;/article&gt;
         &lt;/main&gt;
-
-        &lt;!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... --&gt;
         
-
         &lt;!-- TODO make semantic --&gt;
         &lt;footer&gt;
             &lt;span style="float:left"&gt;
@@ -5875,8 +5855,6 @@ Updates:
             &lt;/span&gt;
 
             &lt;a href="http://creativecommons.org/licenses/by/4.0"&gt;CC BY 4.0&lt;/a&gt;
-            
-            
         &lt;/footer&gt;
     
 &lt;/body&gt;&lt;/html&gt;</description>
@@ -5896,7 +5874,7 @@ Updates:
         &lt;link href="./robot-face.png" rel="icon"/&gt;
         &lt;link href="./robot-face.png" rel="apple-touch-icon"/&gt;
 
-        &lt;meta content="hakyll" name="generator"/&gt;
+        &lt;meta content="https://github.com/karlicoss/beepb00p" name="generator"/&gt;
         &lt;meta content="English" name="language"/&gt;
         
         &lt;meta content="dataliberation pkm quantifiedself" name="keywords"/&gt;
@@ -7079,9 +7057,12 @@ In the &lt;a href="exports.html"&gt;next post&lt;/a&gt; I'm elaborating on desig
 
     
     &lt;section class="footer"&gt;
-        &lt;div class="post-tags"&gt;&lt;a class="post-tag" href="./tags.html#dataliberation"&gt;#dataliberation&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#pkm"&gt;#pkm&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#quantifiedself"&gt;#quantifiedself&lt;/a&gt; &lt;/div&gt;
-        &lt;!-- TODO post-date? --&gt;
-        &lt;div class="date"&gt;12 January 2020&lt;/div&gt;
+        &lt;div class="post-tags"&gt;
+            &lt;a class="post-tag tag-active" href="./tags.html#dataliberation"&gt;#dataliberation&lt;/a&gt;
+            &lt;a class="post-tag tag-active" href="./tags.html#pkm"&gt;#pkm&lt;/a&gt;
+            &lt;a class="post-tag tag-active" href="./tags.html#quantifiedself"&gt;#quantifiedself&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;time datetime="2020-01-12T00:00:00"&gt;12 January 2020&lt;/time&gt;
     &lt;/section&gt;
     
 
@@ -7089,9 +7070,7 @@ In the &lt;a href="exports.html"&gt;next post&lt;/a&gt; I'm elaborating on desig
     &lt;br/&gt;
     &lt;div&gt;Discussion:&lt;/div&gt;
     &lt;ul&gt;
-    
         &lt;li&gt;&lt;a href="https://www.reddit.com/r/DataHoarder/comments/eol6hw/how_i_collect_and_use_50_sources_of_my_personal"&gt;/r/DataHoarder&lt;/a&gt;&lt;/li&gt;
-    
     &lt;/ul&gt;
     
 
@@ -7104,10 +7083,7 @@ In the &lt;a href="exports.html"&gt;next post&lt;/a&gt; I'm elaborating on desig
 
 &lt;/article&gt;
         &lt;/main&gt;
-
-        &lt;!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... --&gt;
         
-
         &lt;!-- TODO make semantic --&gt;
         &lt;footer&gt;
             &lt;span style="float:left"&gt;
@@ -7117,8 +7093,6 @@ In the &lt;a href="exports.html"&gt;next post&lt;/a&gt; I'm elaborating on desig
             &lt;/span&gt;
 
             &lt;a href="http://creativecommons.org/licenses/by/4.0"&gt;CC BY 4.0&lt;/a&gt;
-            
-            
         &lt;/footer&gt;
     
 &lt;/body&gt;&lt;/html&gt;</description>
@@ -7138,10 +7112,10 @@ In the &lt;a href="exports.html"&gt;next post&lt;/a&gt; I'm elaborating on desig
         &lt;link href="./robot-face.png" rel="icon"/&gt;
         &lt;link href="./robot-face.png" rel="apple-touch-icon"/&gt;
 
-        &lt;meta content="hakyll" name="generator"/&gt;
+        &lt;meta content="https://github.com/karlicoss/beepb00p" name="generator"/&gt;
         &lt;meta content="English" name="language"/&gt;
         
-        &lt;meta content="infra pkm" name="keywords"/&gt;
+        &lt;meta content="infra pkm quantifiedself" name="keywords"/&gt;
         
         &lt;!-- TODO concat with keywords tags; also need to make comma separated? --&gt;
 
@@ -8365,9 +8339,12 @@ Let me know if you can think of any other data integrations you are missing and 
 
     
     &lt;section class="footer"&gt;
-        &lt;div class="post-tags"&gt;&lt;a class="post-tag" href="./tags.html#infra"&gt;#infra&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#pkm"&gt;#pkm&lt;/a&gt; &lt;/div&gt;
-        &lt;!-- TODO post-date? --&gt;
-        &lt;div class="date"&gt;15 December 2019&lt;/div&gt;
+        &lt;div class="post-tags"&gt;
+            &lt;a class="post-tag tag-active" href="./tags.html#infra"&gt;#infra&lt;/a&gt;
+            &lt;a class="post-tag tag-active" href="./tags.html#pkm"&gt;#pkm&lt;/a&gt;
+            &lt;a class="post-tag tag-active" href="./tags.html#quantifiedself"&gt;#quantifiedself&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;time datetime="2019-12-15T00:00:00"&gt;15 December 2019&lt;/time&gt;
     &lt;/section&gt;
     
 
@@ -8375,13 +8352,9 @@ Let me know if you can think of any other data integrations you are missing and 
     &lt;br/&gt;
     &lt;div&gt;Discussion:&lt;/div&gt;
     &lt;ul&gt;
-    
         &lt;li&gt;&lt;a href="https://news.ycombinator.com/item?id=21844105"&gt;&lt;b&gt;hackernews&lt;/b&gt;&lt;/a&gt;&lt;/li&gt;
-    
         &lt;li&gt;&lt;a href="https://lobste.rs/s/ztwbh4/sad_state_personal_data_infrastructure"&gt;lobste.rs&lt;/a&gt;&lt;/li&gt;
-    
         &lt;li&gt;&lt;a href="https://www.reddit.com/r/QuantifiedSelf/comments/ecf8o5/the_sad_state_of_personal_data_and_infrastructure"&gt;/r/QuantifiedSelf&lt;/a&gt;&lt;/li&gt;
-    
     &lt;/ul&gt;
     
 
@@ -8394,10 +8367,7 @@ Let me know if you can think of any other data integrations you are missing and 
 
 &lt;/article&gt;
         &lt;/main&gt;
-
-        &lt;!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... --&gt;
         
-
         &lt;!-- TODO make semantic --&gt;
         &lt;footer&gt;
             &lt;span style="float:left"&gt;
@@ -8407,8 +8377,6 @@ Let me know if you can think of any other data integrations you are missing and 
             &lt;/span&gt;
 
             &lt;a href="http://creativecommons.org/licenses/by/4.0"&gt;CC BY 4.0&lt;/a&gt;
-            
-            
         &lt;/footer&gt;
     
 &lt;/body&gt;&lt;/html&gt;</description>
@@ -8428,7 +8396,7 @@ Let me know if you can think of any other data integrations you are missing and 
         &lt;link href="./robot-face.png" rel="icon"/&gt;
         &lt;link href="./robot-face.png" rel="apple-touch-icon"/&gt;
 
-        &lt;meta content="hakyll" name="generator"/&gt;
+        &lt;meta content="https://github.com/karlicoss/beepb00p" name="generator"/&gt;
         &lt;meta content="English" name="language"/&gt;
         
         &lt;meta content="exercise quantifiedself ipython" name="keywords"/&gt;
@@ -9598,9 +9566,12 @@ strong multicollinearity or other numerical problems.
 
     
     &lt;section class="footer"&gt;
-        &lt;div class="post-tags"&gt;&lt;a class="post-tag" href="./tags.html#exercise"&gt;#exercise&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#quantifiedself"&gt;#quantifiedself&lt;/a&gt;  &lt;a class="post-tag" href="./tags.html#ipython"&gt;#ipython&lt;/a&gt; &lt;/div&gt;
-        &lt;!-- TODO post-date? --&gt;
-        &lt;div class="date"&gt;08 December 2019&lt;/div&gt;
+        &lt;div class="post-tags"&gt;
+            &lt;a class="post-tag tag-active" href="./tags.html#exercise"&gt;#exercise&lt;/a&gt;
+            &lt;a class="post-tag tag-active" href="./tags.html#quantifiedself"&gt;#quantifiedself&lt;/a&gt;
+            &lt;a class="post-tag tag-inactive" href="./tags.html"&gt;#ipython&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;time datetime="2019-12-08T00:00:00"&gt;08 December 2019&lt;/time&gt;
     &lt;/section&gt;
     
 
@@ -9615,10 +9586,7 @@ strong multicollinearity or other numerical problems.
 
 &lt;/article&gt;
         &lt;/main&gt;
-
-        &lt;!-- TODO hmm maybe display something in a footer, so it's clear it's end of content... --&gt;
         
-
         &lt;!-- TODO make semantic --&gt;
         &lt;footer&gt;
             &lt;span style="float:left"&gt;
@@ -9628,8 +9596,6 @@ strong multicollinearity or other numerical problems.
             &lt;/span&gt;
 
             &lt;a href="http://creativecommons.org/licenses/by/4.0"&gt;CC BY 4.0&lt;/a&gt;
-            
-            
         &lt;/footer&gt;
     
 &lt;/body&gt;&lt;/html&gt;</description>
