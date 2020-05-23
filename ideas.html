@@ -11,11 +11,11 @@
         <meta content="https://github.com/karlicoss/beepb00p" name="generator"/>
         <meta content="English" name="language"/>
         
-        <meta content="ideas" name="keywords"/>
+        <meta content="ideas think" name="keywords"/>
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
-        <title>Random things I wanna figure out eventually, but don't have time for | beepb00p</title>
+        <title>Things I want to figure out/see implemented eventually | beepb00p</title>
 
         <link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css"/>
         <link href="./css/default.css?v=3" rel="stylesheet"/>
@@ -31,7 +31,7 @@
         <!-- or https://developers.facebook.com/tools/debug -->
         <meta content="website" property="og:type"/>
         <meta content="https://beepb00p.xyz/ideas.html" property="og:url"/> <!-- TODO base? -->
-        <meta content="Random things I wanna figure out eventually, but don't have time for | beepb00p" property="og:title"/>
+        <meta content="Things I want to figure out/see implemented eventually | beepb00p" property="og:title"/>
         <meta content="" property="og:description"/>
         <!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s -->
         <!-- ugh. Facebook really wants jpg? -->
@@ -78,92 +78,98 @@
 <article>
     
     <section class="post-title">
-    <h1>Random things I wanna figure out eventually, but don't have time for</h1>
+    <h1>Things I want to figure out/see implemented eventually</h1>
     
     </section>
     <!-- are sections appropriate for that? -->
 
     <section class="content">
-    <div id="table-of-contents">
-<h2>Table of Contents</h2>
-<div id="text-table-of-contents">
-<ul>
-<li><a href="#distributed_Dropbox"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> distributed cloud sync (Dropbox/Syncthing)   <span class="tag"><span class="cloud">cloud</span></span></a></li>
-<li><a href="#we_want_threads"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> instant messengers are too linear   <span class="tag"><span class="im">im</span> <span class="communication">communication</span></span></a></li>
-<li><a href="#structured_vcs"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> structured VCS   <span class="tag"><span class="vcs">vcs</span></span></a></li>
-<li><a href="#ragdoll_human_vcs"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> human anatomy simulation   <span class="tag"><span class="humanbody">humanbody</span> <span class="simulation">simulation</span> <span class="exercise">exercise</span></span></a></li>
-<li><a href="#programming_physical_states"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> programming language in which correct programs are feasible physical states   <span class="tag"><span class="plt">plt</span> <span class="physics">physics</span></span></a></li>
-<li><a href="#phone_sensitive_data"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> phone app for keeping sensitive data   <span class="tag"><span class="privacy">privacy</span></span></a></li>
-<li><a href="#os_hotkeys"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> OS should have better macro/keybindings capabilities   <span class="tag"><span class="hotkeys">hotkeys</span> <span class="setup">setup</span> <span class="think">think</span></span></a></li>
-<li><a href="#type_theory_manifolds"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> can we extend type theory derivatives to partial derivatives and manifolds?   <span class="tag"><span class="typetheory">typetheory</span></span></a>
-<ul>
-<li><a href="#org0000000"><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-12-15 01:44]</span></span> what would be an analogue of 3-sphere for data types? what are the different topologies of data types?</a></li>
-</ul>
-</li>
-<li><a href="#org0000001"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> dependent type checker tool, similar to mypy   <span class="tag"><span class="typetheory">typetheory</span> <span class="mypy">mypy</span></span></a></li>
-<li><a href="#kobo2goodreads"><span class="todo STRT">STRT</span> <span class="priority">[D]</span> share highlights from Kobo to Goodreads   <span class="tag"><span class="kobo">kobo</span> <span class="pkm">pkm</span> <span class="reading">reading</span></span></a>
-<ul>
-<li><a href="#org0000002"><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-05-19 00:13]</span></span> reverse engineered 'started reading' and 'finished reading' events, so at least it's possible to mark them manually on goodreads now</a></li>
-</ul>
-</li>
-<li><a href="#continuous_piano"><span class="todo TODO">TODO</span> <span class="priority">[D]</span> continuous piano keyboard. When you press a 'key', the harmonics are highlighted as well as octaves   <span class="tag"><span class="music">music</span></span></a></li>
-<li><a href="#coffee_simulator"><span class="todo TODO">TODO</span> <span class="priority">[D]</span> coffee brew simulation   <span class="tag"><span class="coffee">coffee</span> <span class="simulation">simulation</span></span></a></li>
-<li><a href="#anatomy_overlay"><span class="todo TODO">TODO</span> <span class="priority">[D]</span> machine learning tool, showing muscles and bones on athlete in real time (e.g. as an overlay)   <span class="tag"><span class="humanbody">humanbody</span> <span class="ml">ml</span> <span class="ar">ar</span></span></a></li>
-<li><a href="#diet_impact"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> interactive simulator for impact of diet on environment   <span class="tag"><span class="environment">environment</span> <span class="food">food</span> <span class="simulation">simulation</span></span></a></li>
-<li><a href="#github_topics"><span class="todo TODO">TODO</span> <span class="priority">[D]</span> better 'set topic' interface for Github   <span class="tag"><span class="github">github</span></span></a></li>
-<li><a href="#half_baked">Half baked stuff   <span class="tag"><span class="think">think</span></span></a>
-<ul>
-<li><a href="#org0000003"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> what would be a 2d analogue for yield?   <span class="tag"><span class="programming">programming</span> <span class="python">python</span></span></a></li>
-<li><a href="#org0000005"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> sunk cost of living   <span class="tag"><span class="death">death</span></span></a></li>
-<li><a href="#org0000006"><span class="todo TODO">TODO</span> <span class="priority">[B]</span> connections of Hamiltonian equations and programming?   <span class="tag"><span class="symplectic">symplectic</span> <span class="physics">physics</span> <span class="programming">programming</span></span></a></li>
-<li><a href="#org0000007"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> can we deep learn Newton's equations?   <span class="tag"><span class="ml">ml</span> <span class="physics">physics</span></span></a></li>
-<li><a href="#org0000008"><span class="todo STRT">STRT</span> <span class="priority">[C]</span> sync issues with org-mode file?   <span class="tag"><span class="github">github</span></span></a></li>
-<li><a href="#org000000a"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> reverse debugging: set variables to specific values and then reverse program logic to get consistent execution?   <span class="tag"><span class="debug">debug</span></span></a></li>
-<li><a href="#org000000b"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> how to communicate experiences better?</a></li>
-<li><a href="#org000000c"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> tower defense quantum field   <span class="tag"><span class="qft">qft</span> <span class="game">game</span></span></a></li>
-<li><a href="#org000000d"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> harmonic equation looks kinda like universe expansion?   <span class="tag"><span class="cosmology">cosmology</span></span></a></li>
-<li><a href="#org000000e"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> awesome-concepts</a></li>
-<li><a href="#org0000011"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> how does uncertainty principle apply to quantum information? What's the amount of information we can simultaneously know?   <span class="tag"><span class="quantum">quantum</span></span></a></li>
-<li><a href="#org0000012"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> The Entertainer cover from Westworld got an <b>extremely</b> satisfying orchestra intro at around 0:26   <span class="tag"><span class="think">think</span> <span class="music">music</span> <span class="art">art</span></span></a></li>
-<li><a href="#org0000014"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-07-30 18:29]</span></span> Tiny Bombs in your Blood - The Complement System   <span class="tag"><span class="vis">vis</span> <span class="humanbody">humanbody</span></span></a></li>
-<li><a href="#org0000015"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> call/cc ; coroutine style thing but for defensive error handling/yielding? not sure how it'd look   <span class="tag"><span class="lisp">lisp</span> <span class="errors">errors</span> <span class=""></span></span></a></li>
-<li><a href="#org0000017"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> hierarchy: byte -&gt; character (e.g. unicode) -&gt; ???? -&gt; AST   <span class="tag"><span class="programming">programming</span> <span class="vcs">vcs</span></span></a></li>
-<li><a href="#org0000018"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> natural language with optimal sounds set (in the sense of Huffman coding)   <span class="tag"><span class="language">language</span></span></a></li>
-<li><a href="#org000001a"><span class="todo TODO">TODO</span> <span class="priority">[D]</span> negative types, complex types. Is there something related to terms the same way as terms related to types?   <span class="tag"><span class="typetheory">typetheory</span></span></a></li>
-<li><a href="#org000001b"><span class="todo TODO">TODO</span> <span class="priority">[D]</span> fiction story about someone who lost all the references and got garbage collected</a></li>
-<li><a href="#org000001c"><span class="todo TODO">TODO</span> <span class="priority">[D]</span> the set of computable numbers is represented by a computable number itself?</a></li>
-<li><a href="#org000001d"><span class="todo TODO">TODO</span> <span class="priority">[D]</span> predictive keyboard exploiting grammar   <span class="tag"><span class="android">android</span></span></a></li>
-<li><a href="#org000001f"><span class="todo TODO">TODO</span> <span class="priority">[D]</span> speed up of sense of time with age: some sort of time dilation because of thinking 'velocity'?   <span class="tag"><span class="physics">physics</span></span></a></li>
-<li><a href="#org0000020"><span class="todo TODO">TODO</span> <span class="priority">[D]</span> voice transfer HAL voice   <span class="tag"><span class="ml">ml</span></span></a></li>
-</ul>
-</li>
-<li><a href="#shower_thoughts">Questions and shower thoughts   <span class="tag"><span class="think">think</span></span></a>
-<ul>
-<li><a href="#org0000021"><span class="todo STRT">STRT</span> <span class="priority">[B]</span> What occupations are the computer programming of 1980s?   <span class="tag"><span class="future">future</span></span></a></li>
-<li><a href="#zombie"><span class="todo STRT">STRT</span> <span class="priority">[C]</span> how to spot a p-zombie   <span class="tag"><span class="solipsism">solipsism</span> <span class="ai">ai</span></span></a></li>
-<li><a href="#org0000022"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> wonder if with proper mypy stubs we can make datetime tz aware/unaware   <span class="tag"><span class="mypy">mypy</span></span></a></li>
-<li><a href="#org0000023"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> why most popular music has such regular structure?   <span class="tag"><span class="music">music</span></span></a></li>
-<li><a href="#mind_mixing"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> mind-melding and death   <span class="tag"><span class="mind">mind</span> <span class="death">death</span> <span class="bci">bci</span></span></a></li>
-<li><a href="#blind_prep"><span class="todo TODO">TODO</span> <span class="priority">[C]</span> what if I suddenly go blind one day?   <span class="tag"><span class="prepping">prepping</span></span></a></li>
-<li><a href="#org0000024"><span class="todo TODO">TODO</span> <span class="priority">[D]</span> why are avocados fatty? They are literally the only fatty fruit I can think of.   <span class="tag"><span class="food">food</span></span></a></li>
-<li><a href="#amino_acids"><span class="todo TODO">TODO</span> <span class="priority">[D]</span> do different amino acids matter for human body?   <span class="tag"><span class="nutrition">nutrition</span> <span class="diet">diet</span></span></a></li>
-<li><a href="#org0000025"><span class="todo TODO">TODO</span> <span class="priority">[D]</span> eating organ meat is more respectful for the slaughtered animals?   <span class="tag"><span class="food">food</span></span></a></li>
-<li><a href="#org0000026"><span class="todo START">START</span> <span class="priority">[D]</span> Wonder how easier is it to aim for tie in chess than for a win   <span class="tag"><span class="think">think</span></span></a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
-<p>
-These are mostly half baked and somewhat weird, so unclear if worthy of exercising. 
+    <p>
+These are mostly half baked, some are kinda weird, so even unclear if worthy of exercising.
 But if several people have similar idea, perhaps you are all onto something.
-If you never publish it, no one would ever know.
 </p>
 <p>
 Priorities roughly indicate how important is the topic to me.
 </p>
+<p>
+If you have thoughts on some of these, please don't hesitate to reach me!
+</p>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#distributed_Dropbox"><span class="todo TODO">TODO</span><span class="priority priority-B">[B]</span>distributed cloud sync (Dropbox/Syncthing)</a><span class="tag"><a class="cloud tag-inactive" href="./tags.html">cloud</a></span></li>
+<li><a href="#we_want_threads"><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>instant messengers are too linear</a><span class="tag"><a class="im tag-inactive" href="./tags.html">im</a><a class="communication tag-inactive" href="./tags.html">communication</a></span></li>
+<li><a href="#structured_vcs"><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>structured VCS</a><span class="tag"><a class="vcs tag-inactive" href="./tags.html">vcs</a></span></li>
+<li><a href="#ragdoll_human_vcs"><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>human anatomy simulation</a><span class="tag"><a class="humanbody tag-inactive" href="./tags.html">humanbody</a><a class="simulation tag-inactive" href="./tags.html">simulation</a><a class="exercise tag-active" href="./tags.html#exercise">exercise</a></span></li>
+<li><a href="#programming_physical_states"><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>programming language in which correct programs are feasible physical states</a><span class="tag"><a class="plt tag-active" href="./tags.html#plt">plt</a><a class="physics tag-active" href="./tags.html#physics">physics</a></span></li>
+<li><a href="#phone_sensitive_data"><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>phone app for keeping sensitive data</a><span class="tag"><a class="privacy tag-inactive" href="./tags.html">privacy</a></span></li>
+<li><a href="#os_hotkeys"><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>OS should have better macro/keybindings capabilities</a><span class="tag"><a class="hotkeys tag-inactive" href="./tags.html">hotkeys</a><a class="setup tag-inactive" href="./tags.html">setup</a></span></li>
+<li><a href="#type_theory_manifolds"><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>can we extend type theory derivatives to partial derivatives and manifolds?</a><span class="tag"><a class="plt tag-active" href="./tags.html#plt">plt</a></span>
+<ul>
+<li><a href="#data_type_3_sphere"><span class="todo TODO">TODO</span><span class="timestamp-wrapper"><span class="timestamp">[2018-12-15 01:44]</span></span> what would be an analogue of 3-sphere for data types? what are the different topologies of data types?</a></li>
+</ul>
+</li>
+<li><a href="#gradual_dep_types"><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>dependent type checker tool, similar to mypy</a><span class="tag"><a class="plt tag-active" href="./tags.html#plt">plt</a><a class="mypy tag-active" href="./tags.html#mypy">mypy</a></span></li>
+<li><a href="#jdoe"><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>how to generate/where to get reasonable showcase data for memex/quantified self tools?</a><span class="tag"><a class="jdoe tag-inactive" href="./tags.html">jdoe</a><a class="quantifiedself tag-active" href="./tags.html#quantifiedself">quantifiedself</a><a class="memex tag-inactive" href="./tags.html">memex</a></span>
+<ul>
+<li><a href="#data_anonymizer"><span class="todo TODO">TODO</span>some sort of anonymizer tool?</a></li>
+</ul>
+</li>
+<li><a href="#kobo2goodreads"><span class="todo STRT">STRT</span><span class="priority priority-D">[D]</span>share highlights from Kobo to Goodreads</a><span class="tag"><a class="kobo tag-inactive" href="./tags.html">kobo</a><a class="pkm tag-active" href="./tags.html#pkm">pkm</a><a class="reading tag-inactive" href="./tags.html">reading</a></span></li>
+<li><a href="#continuous_piano"><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>continuous piano keyboard. When you press a 'key', the harmonics are highlighted as well as octaves</a><span class="tag"><a class="music tag-inactive" href="./tags.html">music</a></span></li>
+<li><a href="#coffee_simulator"><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>coffee brew simulation</a><span class="tag"><a class="coffee tag-inactive" href="./tags.html">coffee</a><a class="simulation tag-inactive" href="./tags.html">simulation</a></span></li>
+<li><a href="#anatomy_overlay"><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>machine learning tool, showing muscles and bones on athlete in real time (e.g. as an overlay)</a><span class="tag"><a class="humanbody tag-inactive" href="./tags.html">humanbody</a><a class="ml tag-inactive" href="./tags.html">ml</a><a class="ar tag-inactive" href="./tags.html">ar</a></span></li>
+<li><a href="#diet_impact"><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>interactive simulator for impact of diet on the environment</a><span class="tag"><a class="environment tag-inactive" href="./tags.html">environment</a><a class="food tag-inactive" href="./tags.html">food</a><a class="simulation tag-inactive" href="./tags.html">simulation</a></span></li>
+<li><a href="#github_topics"><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>better 'set topic' interface for Github</a><span class="tag"><a class="github tag-inactive" href="./tags.html">github</a></span></li>
+<li><a href="#half_baked">Half baked stuff</a><span class="tag"><a class="think tag-inactive" href="./tags.html">think</a></span>
+<ul>
+<li><a href="#code_review_match"><span class="todo TODO">TODO</span><span class="priority priority-A">[A]</span>tinder for code reviews/testing projects</a><span class="tag"><a class="programming tag-active" href="./tags.html#programming">programming</a></span></li>
+<li><a href="#yield_2d"><span class="todo TODO">TODO</span><span class="priority priority-B">[B]</span>what would be a 2d analogue for yield?</a><span class="tag"><a class="programming tag-active" href="./tags.html#programming">programming</a><a class="python tag-active" href="./tags.html#python">python</a></span></li>
+<li><a href="#life_sunk_cost"><span class="todo TODO">TODO</span><span class="priority priority-B">[B]</span>sunk cost of life</a><span class="tag"><a class="death tag-inactive" href="./tags.html">death</a></span></li>
+<li><a href="#hamiltonian_programming"><span class="todo TODO">TODO</span><span class="priority priority-B">[B]</span>connections of Hamiltonian equations and programming?</a><span class="tag"><a class="symplectic tag-inactive" href="./tags.html">symplectic</a><a class="physics tag-active" href="./tags.html#physics">physics</a><a class="programming tag-active" href="./tags.html#programming">programming</a></span></li>
+<li><a href="#deep_learn_physics"><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>can we deep learn Newton's equations?</a><span class="tag"><a class="ml tag-inactive" href="./tags.html">ml</a><a class="physics tag-active" href="./tags.html#physics">physics</a></span></li>
+<li><a href="#github_sync"><span class="todo STRT">STRT</span><span class="priority priority-C">[C]</span>sync Github issues with a text file?</a><span class="tag"><a class="github tag-inactive" href="./tags.html">github</a></span></li>
+<li><a href="#reverse_debugging"><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>reverse debugging: set variables to specific values and then reverse program logic to get consistent execution?</a><span class="tag"><a class="debug tag-inactive" href="./tags.html">debug</a></span></li>
+<li><a href="#communicate_experiences"><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>how to communicate experiences better?</a></li>
+<li><a href="#quantum_td"><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>tower defense quantum field</a><span class="tag"><a class="qft tag-inactive" href="./tags.html">qft</a><a class="game tag-inactive" href="./tags.html">game</a></span></li>
+<li><a href="#harmonic_expansion"><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>harmonic equation looks kinda like universe expansion?</a><span class="tag"><a class="cosmology tag-inactive" href="./tags.html">cosmology</a></span></li>
+<li><a href="#awesome_concepts"><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>awesome-concepts</a></li>
+<li><a href="#uncertancy_quantum_information"><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>how does uncertainty principle apply to quantum information? What's the amount of information we can simultaneously know?</a><span class="tag"><a class="quantum tag-inactive" href="./tags.html">quantum</a></span></li>
+<li><a href="#the_entertainer"><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>The Entertainer cover from Westworld got an <b>extremely</b> satisfying orchestra intro at around 0:26</a><span class="tag"><a class="music tag-inactive" href="./tags.html">music</a><a class="art tag-inactive" href="./tags.html">art</a></span></li>
+<li><a href="#immunity_simulator"><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span><span class="timestamp-wrapper"><span class="timestamp">[2019-07-30 18:29]</span></span> Tiny Bombs in your Blood - The Complement System</a><span class="tag"><a class="vis tag-inactive" href="./tags.html">vis</a><a class="humanbody tag-inactive" href="./tags.html">humanbody</a></span></li>
+<li><a href="#call_cc_errors"><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>call/cc ; coroutine style thing but for defensive error handling/yielding? not sure how it'd look</a><span class="tag"><a class="lisp tag-inactive" href="./tags.html">lisp</a><a class="errors tag-inactive" href="./tags.html">errors</a></span></li>
+<li><a href="#program_structure"><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>hierarchy: byte -&gt; character (e.g. unicode) -&gt; ???? -&gt; AST</a><span class="tag"><a class="programming tag-active" href="./tags.html#programming">programming</a><a class="vcs tag-inactive" href="./tags.html">vcs</a></span></li>
+<li><a href="#optimal_language"><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>natural language with optimal sounds set (in the sense of Huffman coding)</a><span class="tag"><a class="language tag-inactive" href="./tags.html">language</a></span></li>
+<li><a href="#negative_complex_types"><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>negative types, complex types. Is there something related to terms the same way as terms related to types?</a><span class="tag"><a class="plt tag-active" href="./tags.html#plt">plt</a></span></li>
+<li><a href="#gc_story"><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>fiction story about someone who lost all the references and got garbage collected</a></li>
+<li><a href="#computable_set"><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>the set of computable numbers is represented by a computable number itself?</a></li>
+<li><a href="#phone_keyboard_grammar"><span class="done CNCL">CNCL</span><span class="priority priority-D">[D]</span>predictive keyboard exploiting grammar</a><span class="tag"><a class="android tag-inactive" href="./tags.html">android</a></span></li>
+<li><a href="#age_time_dilation"><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>speed up of sense of time with age: some sort of time dilation because of thinking 'velocity'?</a><span class="tag"><a class="physics tag-active" href="./tags.html#physics">physics</a></span></li>
+<li><a href="#voice_transfer_hal"><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>voice transfer HAL voice</a><span class="tag"><a class="ml tag-inactive" href="./tags.html">ml</a></span></li>
+</ul>
+</li>
+<li><a href="#shower_thoughts">Shower thoughts</a><span class="tag"><a class="think tag-inactive" href="./tags.html">think</a></span>
+<ul>
+<li><a href="#potential_occupations"><span class="todo STRT">STRT</span><span class="priority priority-B">[B]</span>what occupations are the computer programming of 1980s?</a><span class="tag"><a class="future tag-inactive" href="./tags.html">future</a></span></li>
+<li><a href="#zombie"><span class="todo STRT">STRT</span><span class="priority priority-C">[C]</span>how to spot a p-zombie</a><span class="tag"><a class="solipsism tag-inactive" href="./tags.html">solipsism</a><a class="ai tag-inactive" href="./tags.html">ai</a></span></li>
+<li><a href="#mypy_tz"><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>wonder if with proper mypy stubs we can make datetime tz aware/unaware</a><span class="tag"><a class="mypy tag-active" href="./tags.html#mypy">mypy</a></span></li>
+<li><a href="#pop_structure"><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>why most popular music has such regular structure?</a><span class="tag"><a class="music tag-inactive" href="./tags.html">music</a></span></li>
+<li><a href="#mind_mixing"><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>mind-melding and death</a><span class="tag"><a class="mind tag-inactive" href="./tags.html">mind</a><a class="death tag-inactive" href="./tags.html">death</a><a class="bci tag-inactive" href="./tags.html">bci</a></span></li>
+<li><a href="#information_enzymes"><span class="todo TODO">TODO</span><span class="priority priority-B">[B]</span>digital enzymes that act on the bits of information</a></li>
+<li><a href="#blind_prep"><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>what if I suddenly go blind one day?</a><span class="tag"><a class="health tag-inactive" href="./tags.html">health</a><a class="prepping tag-inactive" href="./tags.html">prepping</a></span></li>
+<li><a href="#avocado_fatty"><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>why are avocados fatty? They are literally the only fatty fruit I can think of.</a><span class="tag"><a class="food tag-inactive" href="./tags.html">food</a></span></li>
+<li><a href="#amino_acids"><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>do different amino acids matter for human body?</a><span class="tag"><a class="nutrition tag-inactive" href="./tags.html">nutrition</a><a class="diet tag-inactive" href="./tags.html">diet</a></span></li>
+<li><a href="#organ_meat_ethics"><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>eating organ meat is more respectful for the slaughtered animals?</a><span class="tag"><a class="food tag-inactive" href="./tags.html">food</a></span></li>
+<li><a href="#chess_tie"><span class="todo STRT">STRT</span><span class="priority priority-D">[D]</span>wonder how easier is it to aim for tie in chess than for a win</a><span class="tag"><a class="think tag-inactive" href="./tags.html">think</a></span></li>
+</ul>
+</li>
+<li><a href="#similar">Similar pages</a></li>
+</ul>
+</div>
+</div>
 <div class="outline-2">
-<h2 id="distributed_Dropbox"><a class="headerlink" href="#distributed_Dropbox">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> distributed cloud sync (Dropbox/Syncthing)   <span class="tag"><span class="cloud">cloud</span></span></h2>
+<h2 id="distributed_Dropbox"><a class="headerlink" href="#distributed_Dropbox">¶</a><span class="todo TODO">TODO</span><span class="priority priority-B">[B]</span>distributed cloud sync (Dropbox/Syncthing)<span class="tag"><a class="cloud tag-inactive" href="./tags.html">cloud</a></span></h2>
 <div class="outline-text-2" id="text-distributed_Dropbox">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2018-06-05 17:19]</span></div>
@@ -192,7 +198,7 @@ Not sure how much redundant it has to be and if that approach works in practice.
 </div>
 </div>
 <div class="outline-2">
-<h2 id="we_want_threads"><a class="headerlink" href="#we_want_threads">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> instant messengers are too linear   <span class="tag"><span class="im">im</span> <span class="communication">communication</span></span></h2>
+<h2 id="we_want_threads"><a class="headerlink" href="#we_want_threads">¶</a><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>instant messengers are too linear<span class="tag"><a class="im tag-inactive" href="./tags.html">im</a><a class="communication tag-inactive" href="./tags.html">communication</a></span></h2>
 <div class="outline-text-2" id="text-we_want_threads">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2018-08-26 19:13]</span></div>
@@ -230,10 +236,17 @@ You can't turn old conversations into threads, but if you notice an opportunity 
 <p>
 Interesting enough, meatspace conversations also have this curse of linear order let alone other aspects that make them hard! But that's a whole different problem.
 </p>
+<p>
+Links:
+</p>
+<ul class="org-ul">
+<li><span class="timestamp-wrapper"><span class="timestamp">[2020-04-30 00:18]</span></span> <a href="https://zulipchat.com/help/about-streams-and-topics">Zulip</a> looks promising</li>
+<li><span class="timestamp-wrapper"><span class="timestamp">[2020-05-14 17:34]</span></span> <a href="http://a9.io/glue-comic">Chatting with Glue: Cognitive Tools for Augmented Conversation</a>: comic exploration into nonlinear messaging UI</li>
+</ul>
 </div>
 </div>
 <div class="outline-2">
-<h2 id="structured_vcs"><a class="headerlink" href="#structured_vcs">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> structured VCS   <span class="tag"><span class="vcs">vcs</span></span></h2>
+<h2 id="structured_vcs"><a class="headerlink" href="#structured_vcs">¶</a><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>structured VCS<span class="tag"><a class="vcs tag-inactive" href="./tags.html">vcs</a></span></h2>
 <div class="outline-text-2" id="text-structured_vcs">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2018-04-02 16:48]</span></div>
@@ -246,7 +259,7 @@ Perhaps it has to be a diff filter rather than full scale VCS.
 </div>
 </div>
 <div class="outline-2">
-<h2 id="ragdoll_human_vcs"><a class="headerlink" href="#ragdoll_human_vcs">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> human anatomy simulation   <span class="tag"><span class="humanbody">humanbody</span> <span class="simulation">simulation</span> <span class="exercise">exercise</span></span></h2>
+<h2 id="ragdoll_human_vcs"><a class="headerlink" href="#ragdoll_human_vcs">¶</a><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>human anatomy simulation<span class="tag"><a class="humanbody tag-inactive" href="./tags.html">humanbody</a><a class="simulation tag-inactive" href="./tags.html">simulation</a><a class="exercise tag-active" href="./tags.html#exercise">exercise</a></span></h2>
 <div class="outline-text-2" id="text-ragdoll_human_vcs">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-08-24 21:07]</span></div>
@@ -286,7 +299,7 @@ Some links:
 </div>
 </div>
 <div class="outline-2">
-<h2 id="programming_physical_states"><a class="headerlink" href="#programming_physical_states">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> programming language in which correct programs are feasible physical states   <span class="tag"><span class="plt">plt</span> <span class="physics">physics</span></span></h2>
+<h2 id="programming_physical_states"><a class="headerlink" href="#programming_physical_states">¶</a><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>programming language in which correct programs are feasible physical states<span class="tag"><a class="plt tag-active" href="./tags.html#plt">plt</a><a class="physics tag-active" href="./tags.html#physics">physics</a></span></h2>
 <div class="outline-text-2" id="text-programming_physical_states">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-04-30 11:44]</span></div>
@@ -300,7 +313,7 @@ Also making sure the set of correct programs is <b>exactly</b> the set of feasib
 </div>
 </div>
 <div class="outline-2">
-<h2 id="phone_sensitive_data"><a class="headerlink" href="#phone_sensitive_data">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> phone app for keeping sensitive data   <span class="tag"><span class="privacy">privacy</span></span></h2>
+<h2 id="phone_sensitive_data"><a class="headerlink" href="#phone_sensitive_data">¶</a><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>phone app for keeping sensitive data<span class="tag"><a class="privacy tag-inactive" href="./tags.html">privacy</a></span></h2>
 <div class="outline-text-2" id="text-phone_sensitive_data">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2018-01-17 20:42]</span></div>
@@ -358,7 +371,7 @@ If you know of something better, please let me know!
 </div>
 </div>
 <div class="outline-2">
-<h2 id="os_hotkeys"><a class="headerlink" href="#os_hotkeys">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> OS should have better macro/keybindings capabilities   <span class="tag"><span class="hotkeys">hotkeys</span> <span class="setup">setup</span> <span class="think">think</span></span></h2>
+<h2 id="os_hotkeys"><a class="headerlink" href="#os_hotkeys">¶</a><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>OS should have better macro/keybindings capabilities<span class="tag"><a class="hotkeys tag-inactive" href="./tags.html">hotkeys</a><a class="setup tag-inactive" href="./tags.html">setup</a></span></h2>
 <div class="outline-text-2" id="text-os_hotkeys">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-07-06 18:56]</span></div>
@@ -377,7 +390,7 @@ define arbitrary bindings or macros.
 </div>
 </div>
 <div class="outline-2">
-<h2 id="type_theory_manifolds"><a class="headerlink" href="#type_theory_manifolds">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> can we extend type theory derivatives to partial derivatives and manifolds?   <span class="tag"><span class="typetheory">typetheory</span></span></h2>
+<h2 id="type_theory_manifolds"><a class="headerlink" href="#type_theory_manifolds">¶</a><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>can we extend type theory derivatives to partial derivatives and manifolds?<span class="tag"><a class="plt tag-active" href="./tags.html#plt">plt</a></span></h2>
 <div class="outline-text-2" id="text-type_theory_manifolds">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2018-11-24 13:46]</span></div>
@@ -388,8 +401,8 @@ Can we squeeze more from that?
 </p>
 </div>
 <div class="outline-3">
-<h3 id="org0000000"><a class="headerlink" href="#org0000000">¶</a><span class="todo TODO">TODO</span> <span class="timestamp-wrapper"><span class="timestamp">[2018-12-15 01:44]</span></span> what would be an analogue of 3-sphere for data types? what are the different topologies of data types?</h3>
-<div class="outline-text-3">
+<h3 id="data_type_3_sphere"><a class="headerlink" href="#data_type_3_sphere">¶</a><span class="todo TODO">TODO</span><span class="timestamp-wrapper"><span class="timestamp">[2018-12-15 01:44]</span></span> what would be an analogue of 3-sphere for data types? what are the different topologies of data types?</h3>
+<div class="outline-text-3" id="text-data_type_3_sphere">
 <p>
 Haven't thought about that seriously yet, so not sure how much sense it makes to ask such questions.
 </p>
@@ -397,8 +410,8 @@ Haven't thought about that seriously yet, so not sure how much sense it makes to
 </div>
 </div>
 <div class="outline-2">
-<h2 id="org0000001"><a class="headerlink" href="#org0000001">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> dependent type checker tool, similar to <a href="http://mypy-lang.org">mypy</a>   <span class="tag"><span class="typetheory">typetheory</span> <span class="mypy">mypy</span></span></h2>
-<div class="outline-text-2">
+<h2 id="gradual_dep_types"><a class="headerlink" href="#gradual_dep_types">¶</a><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>dependent type checker tool, similar to <a href="http://mypy-lang.org">mypy</a><span class="tag"><a class="plt tag-active" href="./tags.html#plt">plt</a><a class="mypy tag-active" href="./tags.html#mypy">mypy</a></span></h2>
+<div class="outline-text-2" id="text-gradual_dep_types">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-07-22 21:02]</span></div>
 </div>
@@ -430,7 +443,45 @@ Related:
 </div>
 </div>
 <div class="outline-2">
-<h2 id="kobo2goodreads"><a class="headerlink" href="#kobo2goodreads">¶</a><span class="todo STRT">STRT</span> <span class="priority">[D]</span> share highlights from Kobo to Goodreads   <span class="tag"><span class="kobo">kobo</span> <span class="pkm">pkm</span> <span class="reading">reading</span></span></h2>
+<h2 id="jdoe"><a class="headerlink" href="#jdoe">¶</a><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>how to generate/where to get reasonable showcase data for memex/quantified self tools?<span class="tag"><a class="jdoe tag-inactive" href="./tags.html">jdoe</a><a class="quantifiedself tag-active" href="./tags.html#quantifiedself">quantifiedself</a><a class="memex tag-inactive" href="./tags.html">memex</a></span></h2>
+<div class="outline-text-2" id="text-jdoe">
+<div class="properties">
+<div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2020-01-21 19:45]</span></div>
+</div>
+<p>
+"Coming up with a showcase data" is such a common and tedious problem for tools like this, both demonstration and testing purposes.
+</p>
+<p>
+One could generate some random data, but then it's not very relatable.
+Even if one is comfortable with demoing with some parts of their lifelog, still have to be really careful.
+</p>
+<p>
+I wish there was some open source, curated and consistent dataset with a "made up" person's life events/messages/tweets/location/HR data.
+</p>
+<p>
+It feels that all people who work on such tools could benefit from it.
+</p>
+<p>
+Idea for the project name: "J. Doe".
+</p>
+</div>
+<div class="outline-3">
+<h3 id="data_anonymizer"><a class="headerlink" href="#data_anonymizer">¶</a><span class="todo TODO">TODO</span>some sort of anonymizer tool?</h3>
+<div class="outline-text-3" id="text-data_anonymizer">
+<div class="properties">
+<div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2020-02-09 21:43]</span></div>
+</div>
+<p>
+So it takes your data, and then tries to automatically 'anonymize' it in a completely agnostic way.
+</p>
+<p>
+For example, all numbers/dates/strings are monotonically (i.e. preserving relative order) fuzzed and mapped onto different values.
+</p>
+</div>
+</div>
+</div>
+<div class="outline-2">
+<h2 id="kobo2goodreads"><a class="headerlink" href="#kobo2goodreads">¶</a><span class="todo STRT">STRT</span><span class="priority priority-D">[D]</span>share highlights from Kobo to Goodreads<span class="tag"><a class="kobo tag-inactive" href="./tags.html">kobo</a><a class="pkm tag-active" href="./tags.html#pkm">pkm</a><a class="reading tag-inactive" href="./tags.html">reading</a></span></h2>
 <div class="outline-text-2" id="text-kobo2goodreads">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-04-01 13:50]</span></div>
@@ -466,18 +517,16 @@ Fun: use some elaborate comparison/hashing to match kobo annotations and goodrea
 <p>
 Actually, this could even be useful for Kindle if you have a DRM free copy from elsewhere. Or for other ebook devices.
 </p>
-</div>
-<div class="outline-3">
-<h3 id="org0000002"><a class="headerlink" href="#org0000002">¶</a><span class="done DONE">DONE</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-05-19 00:13]</span></span> reverse engineered 'started reading' and 'finished reading' events, so at least it's possible to mark them manually on goodreads now</h3>
-<div class="outline-text-3">
+<ul class="org-ul">
+<li class="on"><code>[X]</code> <span class="timestamp-wrapper"><span class="timestamp">[2019-05-19 00:13]</span></span> reverse engineered 'started reading' and 'finished reading' events, so at least it's possible to mark them manually on goodreads now</li>
+</ul>
 <p>
 See <a href="https://github.com/karlicoss/kobuddy#as-a-standalone-app">kobuddy</a>.
 </p>
 </div>
 </div>
-</div>
 <div class="outline-2">
-<h2 id="continuous_piano"><a class="headerlink" href="#continuous_piano">¶</a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> continuous piano keyboard. When you press a 'key', the harmonics are highlighted as well as octaves   <span class="tag"><span class="music">music</span></span></h2>
+<h2 id="continuous_piano"><a class="headerlink" href="#continuous_piano">¶</a><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>continuous piano keyboard. When you press a 'key', the harmonics are highlighted as well as octaves<span class="tag"><a class="music tag-inactive" href="./tags.html">music</a></span></h2>
 <div class="outline-text-2" id="text-continuous_piano">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-01-30 17:40]</span></div>
@@ -489,7 +538,7 @@ See <a href="https://github.com/karlicoss/kobuddy#as-a-standalone-app">kobuddy</
 </div>
 </div>
 <div class="outline-2">
-<h2 id="coffee_simulator"><a class="headerlink" href="#coffee_simulator">¶</a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> coffee brew simulation   <span class="tag"><span class="coffee">coffee</span> <span class="simulation">simulation</span></span></h2>
+<h2 id="coffee_simulator"><a class="headerlink" href="#coffee_simulator">¶</a><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>coffee brew simulation<span class="tag"><a class="coffee tag-inactive" href="./tags.html">coffee</a><a class="simulation tag-inactive" href="./tags.html">simulation</a></span></h2>
 <div class="outline-text-2" id="text-coffee_simulator">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2018-04-27 16:15]</span></div>
@@ -526,7 +575,7 @@ I also can't really understand how is one capable of estimating coffee on the sc
 </div>
 </div>
 <div class="outline-2">
-<h2 id="anatomy_overlay"><a class="headerlink" href="#anatomy_overlay">¶</a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> machine learning tool, showing muscles and bones on athlete in real time (e.g. as an overlay)   <span class="tag"><span class="humanbody">humanbody</span> <span class="ml">ml</span> <span class="ar">ar</span></span></h2>
+<h2 id="anatomy_overlay"><a class="headerlink" href="#anatomy_overlay">¶</a><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>machine learning tool, showing muscles and bones on athlete in real time (e.g. as an overlay)<span class="tag"><a class="humanbody tag-inactive" href="./tags.html">humanbody</a><a class="ml tag-inactive" href="./tags.html">ml</a><a class="ar tag-inactive" href="./tags.html">ar</a></span></h2>
 <div class="outline-text-2" id="text-anatomy_overlay">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-07-13 12:57]</span></div>
@@ -534,7 +583,7 @@ I also can't really understand how is one capable of estimating coffee on the sc
 </div>
 </div>
 <div class="outline-2">
-<h2 id="diet_impact"><a class="headerlink" href="#diet_impact">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> interactive simulator for impact of diet on environment   <span class="tag"><span class="environment">environment</span> <span class="food">food</span> <span class="simulation">simulation</span></span></h2>
+<h2 id="diet_impact"><a class="headerlink" href="#diet_impact">¶</a><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>interactive simulator for impact of diet on the environment<span class="tag"><a class="environment tag-inactive" href="./tags.html">environment</a><a class="food tag-inactive" href="./tags.html">food</a><a class="simulation tag-inactive" href="./tags.html">simulation</a></span></h2>
 <div class="outline-text-2" id="text-diet_impact">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-11-04 14:49]</span></div>
@@ -567,7 +616,7 @@ That would make the whole discussion more quantitative and civilized.
 </div>
 </div>
 <div class="outline-2">
-<h2 id="github_topics"><a class="headerlink" href="#github_topics">¶</a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> better 'set topic' interface for Github   <span class="tag"><span class="github">github</span></span></h2>
+<h2 id="github_topics"><a class="headerlink" href="#github_topics">¶</a><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>better 'set topic' interface for Github<span class="tag"><a class="github tag-inactive" href="./tags.html">github</a></span></h2>
 <div class="outline-text-2" id="text-github_topics">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-10-12 16:25]</span></div>
@@ -586,7 +635,7 @@ Considering that topics don't need to be set often, it should be okay performanc
 </div>
 </div>
 <div class="outline-2">
-<h2 id="half_baked"><a class="headerlink" href="#half_baked">¶</a>Half baked stuff   <span class="tag"><span class="think">think</span></span></h2>
+<h2 id="half_baked"><a class="headerlink" href="#half_baked">¶</a>Half baked stuff<span class="tag"><a class="think tag-inactive" href="./tags.html">think</a></span></h2>
 <div class="outline-text-2" id="text-half_baked">
 <p>
 Completely speculative and unprocessed straight out of my brain.
@@ -594,8 +643,22 @@ Will get promoted above when I think a bit more about it.
 </p>
 </div>
 <div class="outline-3">
-<h3 id="org0000003"><a class="headerlink" href="#org0000003">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> what would be a 2d analogue for yield?   <span class="tag"><span class="programming">programming</span> <span class="python">python</span></span></h3>
-<div class="outline-text-3">
+<h3 id="code_review_match"><a class="headerlink" href="#code_review_match">¶</a><span class="todo TODO">TODO</span><span class="priority priority-A">[A]</span>tinder for code reviews/testing projects<span class="tag"><a class="programming tag-active" href="./tags.html#programming">programming</a></span></h3>
+<div class="outline-text-3" id="text-code_review_match">
+<div class="properties">
+<div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2020-05-02 23:26]</span></div>
+</div>
+<p>
+If you maintain a project on your own, it might be nice to have someone else to skim through your code and flag concerns.
+</p>
+<p>
+If someone else maintains a project on their own, you could mutually benefit and review each other's code.
+</p>
+</div>
+</div>
+<div class="outline-3">
+<h3 id="yield_2d"><a class="headerlink" href="#yield_2d">¶</a><span class="todo TODO">TODO</span><span class="priority priority-B">[B]</span>what would be a 2d analogue for yield?<span class="tag"><a class="programming tag-active" href="./tags.html#programming">programming</a><a class="python tag-active" href="./tags.html#python">python</a></span></h3>
+<div class="outline-text-3" id="text-yield_2d">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-11-15 00:54]</span></div>
 </div>
@@ -604,7 +667,7 @@ Reactive as Excel, powerful as Python.
 </p>
 </div>
 <div class="outline-4">
-<h4 id="org0000004"><span class="timestamp-wrapper"><span class="timestamp">[2019-11-16 10:19]</span></span> could itertools.tee all iterators unless they are marked as unsafe (i.e. with side effects)?</h4>
+<h4 id="org0000000"><span class="timestamp-wrapper"><span class="timestamp">[2019-11-16 10:19]</span></span> could itertools.tee all iterators unless they are marked as unsafe (i.e. with side effects)?</h4>
 <div class="outline-text-4">
 <p>
 Although tee is safe even in that case, just have to assume <code class="inline">__str__</code> is reasonable
@@ -613,8 +676,8 @@ Although tee is safe even in that case, just have to assume <code class="inline"
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org0000005"><a class="headerlink" href="#org0000005">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> sunk cost of living   <span class="tag"><span class="death">death</span></span></h3>
-<div class="outline-text-3">
+<h3 id="life_sunk_cost"><a class="headerlink" href="#life_sunk_cost">¶</a><span class="todo TODO">TODO</span><span class="priority priority-B">[B]</span>sunk cost of life<span class="tag"><a class="death tag-inactive" href="./tags.html">death</a></span></h3>
+<div class="outline-text-3" id="text-life_sunk_cost">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-08-25 10:24]</span></div>
 </div>
@@ -624,16 +687,16 @@ It sucks to die early because of all the effort you invested in your future self
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org0000006"><a class="headerlink" href="#org0000006">¶</a><span class="todo TODO">TODO</span> <span class="priority">[B]</span> connections of Hamiltonian equations and programming?   <span class="tag"><span class="symplectic">symplectic</span> <span class="physics">physics</span> <span class="programming">programming</span></span></h3>
-<div class="outline-text-3">
+<h3 id="hamiltonian_programming"><a class="headerlink" href="#hamiltonian_programming">¶</a><span class="todo TODO">TODO</span><span class="priority priority-B">[B]</span>connections of Hamiltonian equations and programming?<span class="tag"><a class="symplectic tag-inactive" href="./tags.html">symplectic</a><a class="physics tag-active" href="./tags.html#physics">physics</a><a class="programming tag-active" href="./tags.html#programming">programming</a></span></h3>
+<div class="outline-text-3" id="text-hamiltonian_programming">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2018-11-22 22:53]</span></div>
 </div>
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org0000007"><a class="headerlink" href="#org0000007">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> can we deep learn Newton's equations?   <span class="tag"><span class="ml">ml</span> <span class="physics">physics</span></span></h3>
-<div class="outline-text-3">
+<h3 id="deep_learn_physics"><a class="headerlink" href="#deep_learn_physics">¶</a><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>can we deep learn Newton's equations?<span class="tag"><a class="ml tag-inactive" href="./tags.html">ml</a><a class="physics tag-active" href="./tags.html#physics">physics</a></span></h3>
+<div class="outline-text-3" id="text-deep_learn_physics">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-04-01 17:32]</span></div>
 </div>
@@ -642,23 +705,29 @@ Not sure how to formulate the problem and how much sense it would make.
 </p>
 <ul class="org-ul">
 <li><a href="https://news.ycombinator.com/item?id=21363217">A neural net solves the three-body problem 100M times faster</a>, but it's unclear if this methods solves chaotic instances</li>
+<li><a href="https://arxiv.org/abs/1810.10525">Toward an AI Physicist for Unsupervised Learning</a> and a video: <a href="https://www.youtube.com/watch?v=9atnfAHBfSI">Steps toward building an AI physicist</a></li>
 </ul>
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org0000008"><a class="headerlink" href="#org0000008">¶</a><span class="todo STRT">STRT</span> <span class="priority">[C]</span> sync issues with org-mode file?   <span class="tag"><span class="github">github</span></span></h3>
-<div class="outline-text-3">
+<h3 id="github_sync"><a class="headerlink" href="#github_sync">¶</a><span class="todo STRT">STRT</span><span class="priority priority-C">[C]</span>sync Github issues with a text file?<span class="tag"><a class="github tag-inactive" href="./tags.html">github</a></span></h3>
+<div class="outline-text-3" id="text-github_sync">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-08-07 21:50]</span></div>
 </div>
-</div>
-<div class="outline-4">
-<h4 id="org0000009"><span class="timestamp-wrapper"><span class="timestamp">[2019-12-26 11:50]</span></span> <a href="https://github.com/arbox/org-sync">org-sync</a> looks promising (although a bit abandoned)</h4>
+<p>
+This would make it possible to search through issues without having to leave your IDE and work with them offline. As a collateral also automatic backups and preventing vendor lock-in.
+</p>
+<ul class="org-ul">
+<li><span class="timestamp-wrapper"><span class="timestamp">[2019-12-26 11:50]</span></span> <a href="https://github.com/arbox/org-sync">org-sync</a> looks promising (although a bit abandoned)</li>
+<li><span class="timestamp-wrapper"><span class="timestamp">[2020-05-23 11:02]</span></span> <a href="https://github.com/MichaelMure/git-bug">git-bug</a> – looks really neat
+Doesn't have plaintext integration at the moment, but I created an <a href="https://github.com/MichaelMure/git-bug/issues/392">issue</a>, might work at some point.</li>
+</ul>
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org000000a"><a class="headerlink" href="#org000000a">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> reverse debugging: set variables to specific values and then reverse program logic to get consistent execution?   <span class="tag"><span class="debug">debug</span></span></h3>
-<div class="outline-text-3">
+<h3 id="reverse_debugging"><a class="headerlink" href="#reverse_debugging">¶</a><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>reverse debugging: set variables to specific values and then reverse program logic to get consistent execution?<span class="tag"><a class="debug tag-inactive" href="./tags.html">debug</a></span></h3>
+<div class="outline-text-3" id="text-reverse_debugging">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-11-12 15:30]</span></div>
 </div>
@@ -671,8 +740,8 @@ Difference from static analysis/model checking is that it could be more heuristi
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org000000b"><a class="headerlink" href="#org000000b">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> how to communicate experiences better?</h3>
-<div class="outline-text-3">
+<h3 id="communicate_experiences"><a class="headerlink" href="#communicate_experiences">¶</a><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>how to communicate experiences better?</h3>
+<div class="outline-text-3" id="text-communicate_experiences">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-12-02 18:26]</span></div>
 </div>
@@ -683,24 +752,24 @@ If experience communication was even better (e.g. wind/temperature/thrill) it wo
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org000000c"><a class="headerlink" href="#org000000c">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> tower defense quantum field   <span class="tag"><span class="qft">qft</span> <span class="game">game</span></span></h3>
-<div class="outline-text-3">
+<h3 id="quantum_td"><a class="headerlink" href="#quantum_td">¶</a><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>tower defense quantum field<span class="tag"><a class="qft tag-inactive" href="./tags.html">qft</a><a class="game tag-inactive" href="./tags.html">game</a></span></h3>
+<div class="outline-text-3" id="text-quantum_td">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-01-28 20:47]</span></div>
 </div>
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org000000d"><a class="headerlink" href="#org000000d">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> harmonic equation looks kinda like universe expansion?   <span class="tag"><span class="cosmology">cosmology</span></span></h3>
-<div class="outline-text-3">
+<h3 id="harmonic_expansion"><a class="headerlink" href="#harmonic_expansion">¶</a><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>harmonic equation looks kinda like universe expansion?<span class="tag"><a class="cosmology tag-inactive" href="./tags.html">cosmology</a></span></h3>
+<div class="outline-text-3" id="text-harmonic_expansion">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2018-12-25 14:51]</span></div>
 </div>
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org000000e"><a class="headerlink" href="#org000000e">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> awesome-concepts</h3>
-<div class="outline-text-3">
+<h3 id="awesome_concepts"><a class="headerlink" href="#awesome_concepts">¶</a><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>awesome-concepts</h3>
+<div class="outline-text-3" id="text-awesome_concepts">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-02-10 20:32]</span></div>
 </div>
@@ -711,23 +780,23 @@ intuition
 </p>
 </div>
 <div class="outline-4">
-<h4 id="org000000f"><span class="timestamp-wrapper"><span class="timestamp">[2019-04-08 22:55]</span></span> <a href="https://github.com/d-cook/SomethingNew">d-cook/SomethingNew</a>: Collaboration for reinventing software in human terms</h4>
+<h4 id="org0000001"><span class="timestamp-wrapper"><span class="timestamp">[2019-04-08 22:55]</span></span> <a href="https://github.com/d-cook/SomethingNew">d-cook/SomethingNew</a>: Collaboration for reinventing software in human terms</h4>
 </div>
 <div class="outline-4">
-<h4 id="org0000010"><span class="timestamp-wrapper"><span class="timestamp">[2019-06-15 21:53]</span></span> <a href="https://github.com/hypotext/notation">hypotext/notation</a>: Collection of quotes on notation design &amp; how it affects thought</h4>
+<h4 id="org0000002"><span class="timestamp-wrapper"><span class="timestamp">[2019-06-15 21:53]</span></span> <a href="https://github.com/hypotext/notation">hypotext/notation</a>: Collection of quotes on notation design &amp; how it affects thought</h4>
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org0000011"><a class="headerlink" href="#org0000011">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> how does uncertainty principle apply to quantum information? What's the amount of information we can simultaneously know?   <span class="tag"><span class="quantum">quantum</span></span></h3>
-<div class="outline-text-3">
+<h3 id="uncertancy_quantum_information"><a class="headerlink" href="#uncertancy_quantum_information">¶</a><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>how does uncertainty principle apply to quantum information? What's the amount of information we can simultaneously know?<span class="tag"><a class="quantum tag-inactive" href="./tags.html">quantum</a></span></h3>
+<div class="outline-text-3" id="text-uncertancy_quantum_information">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-02-19 13:38]</span></div>
 </div>
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org0000012"><a class="headerlink" href="#org0000012">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <a href="https://youtu.be/VBi4m6-d904?t=17">The Entertainer cover from Westworld</a> got an <b>extremely</b> satisfying orchestra intro at around 0:26   <span class="tag"><span class="think">think</span> <span class="music">music</span> <span class="art">art</span></span></h3>
-<div class="outline-text-3">
+<h3 id="the_entertainer"><a class="headerlink" href="#the_entertainer">¶</a><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span><a href="https://youtu.be/VBi4m6-d904?t=17">The Entertainer cover from Westworld</a> got an <b>extremely</b> satisfying orchestra intro at around 0:26<span class="tag"><a class="music tag-inactive" href="./tags.html">music</a><a class="art tag-inactive" href="./tags.html">art</a></span></h3>
+<div class="outline-text-3" id="text-the_entertainer">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-08-26 09:05]</span></div>
 </div>
@@ -736,31 +805,31 @@ What would be similar effect for other forms of art, e.g. visual?
 </p>
 </div>
 <div class="outline-4">
-<h4 id="org0000013"><span class="timestamp-wrapper"><span class="timestamp">[2019-12-07 20:24]</span></span> For some reason thinking of Escher's <a href="https://i.imgur.com/GROZpnp.jpg">Metamorphose</a>, when abstract shapes transform into more realistic.</h4>
+<h4 id="org0000003"><span class="timestamp-wrapper"><span class="timestamp">[2019-12-07 20:24]</span></span> For some reason thinking of Escher's <a href="https://i.imgur.com/GROZpnp.jpg">Metamorphose</a>, when abstract shapes transform into more realistic.</h4>
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org0000014"><a class="headerlink" href="#org0000014">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> <span class="timestamp-wrapper"><span class="timestamp">[2019-07-30 18:29]</span></span> <a href="https://www.youtube.com/watch?v=BSypUV6QUNw">Tiny Bombs in your Blood - The Complement System</a>   <span class="tag"><span class="vis">vis</span> <span class="humanbody">humanbody</span></span></h3>
-<div class="outline-text-3">
+<h3 id="immunity_simulator"><a class="headerlink" href="#immunity_simulator">¶</a><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span><span class="timestamp-wrapper"><span class="timestamp">[2019-07-30 18:29]</span></span> <a href="https://www.youtube.com/watch?v=BSypUV6QUNw">Tiny Bombs in your Blood - The Complement System</a><span class="tag"><a class="vis tag-inactive" href="./tags.html">vis</a><a class="humanbody tag-inactive" href="./tags.html">humanbody</a></span></h3>
+<div class="outline-text-3" id="text-immunity_simulator">
 <p>
 Holy fuck! That's so complicated and beautiful at the same time! I wonder if some sort of simulation is possible?
 </p>
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org0000015"><a class="headerlink" href="#org0000015">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> call/cc ; coroutine style thing but for defensive error handling/yielding? not sure how it'd look   <span class="tag"><span class="lisp">lisp</span> <span class="errors">errors</span> <span class=""></span></span></h3>
-<div class="outline-text-3">
+<h3 id="call_cc_errors"><a class="headerlink" href="#call_cc_errors">¶</a><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>call/cc ; coroutine style thing but for defensive error handling/yielding? not sure how it'd look<span class="tag"><a class="lisp tag-inactive" href="./tags.html">lisp</a><a class="errors tag-inactive" href="./tags.html">errors</a></span></h3>
+<div class="outline-text-3" id="text-call_cc_errors">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-10-21 21:06]</span></div>
 </div>
 </div>
 <div class="outline-4">
-<h4 id="org0000016"><span class="timestamp-wrapper"><span class="timestamp">[2019-11-03 17:43]</span></span> heh, actually algebraic effects could do it?</h4>
+<h4 id="org0000004"><span class="timestamp-wrapper"><span class="timestamp">[2019-11-03 17:43]</span></span> heh, actually algebraic effects could do it?</h4>
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org0000017"><a class="headerlink" href="#org0000017">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> hierarchy: byte -&gt; character (e.g. unicode) -&gt; ???? -&gt; AST   <span class="tag"><span class="programming">programming</span> <span class="vcs">vcs</span></span></h3>
-<div class="outline-text-3">
+<h3 id="program_structure"><a class="headerlink" href="#program_structure">¶</a><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>hierarchy: byte -&gt; character (e.g. unicode) -&gt; ???? -&gt; AST<span class="tag"><a class="programming tag-active" href="./tags.html#programming">programming</a><a class="vcs tag-inactive" href="./tags.html">vcs</a></span></h3>
+<div class="outline-text-3" id="text-program_structure">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-10-01 20:01]</span></div>
 </div>
@@ -772,19 +841,19 @@ What's an intermediate unit? It's probably syntax dependent?
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org0000018"><a class="headerlink" href="#org0000018">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> natural language with optimal sounds set (in the sense of <a href="https://en.wikipedia.org/wiki/Huffman_coding">Huffman coding</a>)   <span class="tag"><span class="language">language</span></span></h3>
-<div class="outline-text-3">
+<h3 id="optimal_language"><a class="headerlink" href="#optimal_language">¶</a><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>natural language with optimal sounds set (in the sense of <a href="https://en.wikipedia.org/wiki/Huffman_coding">Huffman coding</a>)<span class="tag"><a class="language tag-inactive" href="./tags.html">language</a></span></h3>
+<div class="outline-text-3" id="text-optimal_language">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2016-11-16 19:00]</span></div>
 </div>
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org000001a"><a class="headerlink" href="#org000001a">¶</a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> negative types, complex types. Is there something related to terms the same way as terms related to types?   <span class="tag"><span class="typetheory">typetheory</span></span></h3>
-<div class="outline-text-3">
+<h3 id="negative_complex_types"><a class="headerlink" href="#negative_complex_types">¶</a><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>negative types, complex types. Is there something related to terms the same way as terms related to types?<span class="tag"><a class="plt tag-active" href="./tags.html#plt">plt</a></span></h3>
+<div class="outline-text-3" id="text-negative_complex_types">
 </div>
 <div class="outline-4">
-<h4 id="org0000019"><span class="timestamp-wrapper"><span class="timestamp">[2018-10-30 21:12]</span></span> think about isomorphisms? What is the essence of complex numbers that makes them so special?</h4>
+<h4 id="org0000005"><span class="timestamp-wrapper"><span class="timestamp">[2018-10-30 21:12]</span></span> think about isomorphisms? What is the essence of complex numbers that makes them so special?</h4>
 <div class="outline-text-4">
 <p>
 maybe start with integer and positive only complex numbers? eh, that wouldn't make too much sense though would it? it's like inner product. what's an inner product of types?
@@ -793,43 +862,43 @@ maybe start with integer and positive only complex numbers? eh, that wouldn't ma
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org000001b"><a class="headerlink" href="#org000001b">¶</a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> fiction story about someone who lost all the references and got garbage collected</h3>
-<div class="outline-text-3">
+<h3 id="gc_story"><a class="headerlink" href="#gc_story">¶</a><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>fiction story about someone who lost all the references and got garbage collected</h3>
+<div class="outline-text-3" id="text-gc_story">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-03-09 08:01]</span></div>
 </div>
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org000001c"><a class="headerlink" href="#org000001c">¶</a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> the set of computable numbers is represented by a computable number itself?</h3>
-<div class="outline-text-3">
+<h3 id="computable_set"><a class="headerlink" href="#computable_set">¶</a><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>the set of computable numbers is represented by a computable number itself?</h3>
+<div class="outline-text-3" id="text-computable_set">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-05-12 14:20]</span></div>
 </div>
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org000001d"><a class="headerlink" href="#org000001d">¶</a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> predictive keyboard exploiting grammar   <span class="tag"><span class="android">android</span></span></h3>
-<div class="outline-text-3">
+<h3 id="phone_keyboard_grammar"><a class="headerlink" href="#phone_keyboard_grammar">¶</a><span class="done CNCL">CNCL</span><span class="priority priority-D">[D]</span>predictive keyboard exploiting grammar<span class="tag"><a class="android tag-inactive" href="./tags.html">android</a></span></h3>
+<div class="outline-text-3" id="text-phone_keyboard_grammar">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2017-12-25 17:46]</span></div>
 </div>
 </div>
 <div class="outline-4">
-<h4 id="org000001e"><span class="timestamp-wrapper"><span class="timestamp">[2019-12-07 19:52]</span></span> I suppose that's kind of solved itself by neural network</h4>
+<h4 id="org0000006"><span class="timestamp-wrapper"><span class="timestamp">[2019-12-07 19:52]</span></span> I suppose that's kind of solved itself by neural network</h4>
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org000001f"><a class="headerlink" href="#org000001f">¶</a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> speed up of sense of time with age: some sort of <a href="https://en.wikipedia.org/wiki/Time_dilation">time dilation</a> because of thinking 'velocity'?   <span class="tag"><span class="physics">physics</span></span></h3>
-<div class="outline-text-3">
+<h3 id="age_time_dilation"><a class="headerlink" href="#age_time_dilation">¶</a><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>speed up of sense of time with age: some sort of <a href="https://en.wikipedia.org/wiki/Time_dilation">time dilation</a> because of thinking 'velocity'?<span class="tag"><a class="physics tag-active" href="./tags.html#physics">physics</a></span></h3>
+<div class="outline-text-3" id="text-age_time_dilation">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2018-10-15 21:08]</span></div>
 </div>
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org0000020"><a class="headerlink" href="#org0000020">¶</a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> voice transfer HAL voice   <span class="tag"><span class="ml">ml</span></span></h3>
-<div class="outline-text-3">
+<h3 id="voice_transfer_hal"><a class="headerlink" href="#voice_transfer_hal">¶</a><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>voice transfer HAL voice<span class="tag"><a class="ml tag-inactive" href="./tags.html">ml</a></span></h3>
+<div class="outline-text-3" id="text-voice_transfer_hal">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-08-26 00:11]</span></div>
 </div>
@@ -837,12 +906,12 @@ maybe start with integer and positive only complex numbers? eh, that wouldn't ma
 </div>
 </div>
 <div class="outline-2">
-<h2 id="shower_thoughts"><a class="headerlink" href="#shower_thoughts">¶</a>Questions and shower thoughts   <span class="tag"><span class="think">think</span></span></h2>
+<h2 id="shower_thoughts"><a class="headerlink" href="#shower_thoughts">¶</a>Shower thoughts<span class="tag"><a class="think tag-inactive" href="./tags.html">think</a></span></h2>
 <div class="outline-text-2" id="text-shower_thoughts">
 </div>
 <div class="outline-3">
-<h3 id="org0000021"><a class="headerlink" href="#org0000021">¶</a><span class="todo STRT">STRT</span> <span class="priority">[B]</span> What occupations are the computer programming of 1980s?   <span class="tag"><span class="future">future</span></span></h3>
-<div class="outline-text-3">
+<h3 id="potential_occupations"><a class="headerlink" href="#potential_occupations">¶</a><span class="todo STRT">STRT</span><span class="priority priority-B">[B]</span>what occupations are the computer programming of 1980s?<span class="tag"><a class="future tag-inactive" href="./tags.html">future</a></span></h3>
+<div class="outline-text-3" id="text-potential_occupations">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-01-26 01:21]</span></div>
 </div>
@@ -852,7 +921,7 @@ As in, what are some exciting fields where there is a lot of individual potentia
 </div>
 </div>
 <div class="outline-3">
-<h3 id="zombie"><a class="headerlink" href="#zombie">¶</a><span class="todo STRT">STRT</span> <span class="priority">[C]</span> how to spot a p-zombie   <span class="tag"><span class="solipsism">solipsism</span> <span class="ai">ai</span></span></h3>
+<h3 id="zombie"><a class="headerlink" href="#zombie">¶</a><span class="todo STRT">STRT</span><span class="priority priority-C">[C]</span>how to spot a p-zombie<span class="tag"><a class="solipsism tag-inactive" href="./tags.html">solipsism</a><a class="ai tag-inactive" href="./tags.html">ai</a></span></h3>
 <div class="outline-text-3" id="text-zombie">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-08-22 22:41]</span></div>
@@ -878,16 +947,19 @@ What if it's similar with other minds: you (I mean, I, duh) grow up, learn more,
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org0000022"><a class="headerlink" href="#org0000022">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> wonder if with proper mypy stubs we can make datetime tz aware/unaware   <span class="tag"><span class="mypy">mypy</span></span></h3>
-<div class="outline-text-3">
+<h3 id="mypy_tz"><a class="headerlink" href="#mypy_tz">¶</a><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>wonder if with proper mypy stubs we can make datetime tz aware/unaware<span class="tag"><a class="mypy tag-active" href="./tags.html#mypy">mypy</a></span></h3>
+<div class="outline-text-3" id="text-mypy_tz">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-08-02 21:33]</span></div>
 </div>
 </div>
+<div class="outline-4">
+<h4 id="org0000007"><span class="timestamp-wrapper"><span class="timestamp">[2020-05-22 21:39]</span></span> with <a href="https://mypy.readthedocs.io/en/stable/more_types.html#newtypes">NewType</a> should be possible.. just need std library integration</h4>
+</div>
 </div>
 <div class="outline-3">
-<h3 id="org0000023"><a class="headerlink" href="#org0000023">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> why most popular music has such regular structure?   <span class="tag"><span class="music">music</span></span></h3>
-<div class="outline-text-3">
+<h3 id="pop_structure"><a class="headerlink" href="#pop_structure">¶</a><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>why most popular music has such regular structure?<span class="tag"><a class="music tag-inactive" href="./tags.html">music</a></span></h3>
+<div class="outline-text-3" id="text-pop_structure">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-02-03 15:00]</span></div>
 </div>
@@ -898,7 +970,7 @@ What's about it that human brains like? Can someone write a very irregular but y
 </div>
 </div>
 <div class="outline-3">
-<h3 id="mind_mixing"><a class="headerlink" href="#mind_mixing">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> mind-melding and death   <span class="tag"><span class="mind">mind</span> <span class="death">death</span> <span class="bci">bci</span></span></h3>
+<h3 id="mind_mixing"><a class="headerlink" href="#mind_mixing">¶</a><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>mind-melding and death<span class="tag"><a class="mind tag-inactive" href="./tags.html">mind</a><a class="death tag-inactive" href="./tags.html">death</a><a class="bci tag-inactive" href="./tags.html">bci</a></span></h3>
 <div class="outline-text-3" id="text-mind_mixing">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-10-01 09:34]</span></div>
@@ -923,7 +995,15 @@ Isn't it kind of a massive sacrifice for the younger/healthier body?
 </div>
 </div>
 <div class="outline-3">
-<h3 id="blind_prep"><a class="headerlink" href="#blind_prep">¶</a><span class="todo TODO">TODO</span> <span class="priority">[C]</span> what if I suddenly go blind one day?   <span class="tag"><span class="prepping">prepping</span></span></h3>
+<h3 id="information_enzymes"><a class="headerlink" href="#information_enzymes">¶</a><span class="todo TODO">TODO</span><span class="priority priority-B">[B]</span>digital enzymes that act on the bits of information</h3>
+<div class="outline-text-3" id="text-information_enzymes">
+<div class="properties">
+<div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2020-05-08 17:31]</span></div>
+</div>
+</div>
+</div>
+<div class="outline-3">
+<h3 id="blind_prep"><a class="headerlink" href="#blind_prep">¶</a><span class="todo TODO">TODO</span><span class="priority priority-C">[C]</span>what if I suddenly go blind one day?<span class="tag"><a class="health tag-inactive" href="./tags.html">health</a><a class="prepping tag-inactive" href="./tags.html">prepping</a></span></h3>
 <div class="outline-text-3" id="text-blind_prep">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-09-01 16:32]</span></div>
@@ -932,17 +1012,20 @@ Isn't it kind of a massive sacrifice for the younger/healthier body?
 Can I prepare for it in terms of computer interfaces or something? Should I even prepare or my life is going to change so drastically that it isn't even worth it?
 </p>
 </div>
+<div class="outline-4">
+<h4 id="org0000008"><span class="timestamp-wrapper"><span class="timestamp">[2020-05-22 21:40]</span></span> <a href="https://news.ycombinator.com/item?id=22918980">Ask HN: I'm a software engineer going blind, how should I prepare?</a></h4>
+</div>
 </div>
 <div class="outline-3">
-<h3 id="org0000024"><a class="headerlink" href="#org0000024">¶</a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> why are avocados fatty? They are literally the only fatty fruit I can think of.   <span class="tag"><span class="food">food</span></span></h3>
-<div class="outline-text-3">
+<h3 id="avocado_fatty"><a class="headerlink" href="#avocado_fatty">¶</a><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>why are avocados fatty? They are literally the only fatty fruit I can think of.<span class="tag"><a class="food tag-inactive" href="./tags.html">food</a></span></h3>
+<div class="outline-text-3" id="text-avocado_fatty">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-01-11 15:26]</span></div>
 </div>
 </div>
 </div>
 <div class="outline-3">
-<h3 id="amino_acids"><a class="headerlink" href="#amino_acids">¶</a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> do different amino acids matter for human body?   <span class="tag"><span class="nutrition">nutrition</span> <span class="diet">diet</span></span></h3>
+<h3 id="amino_acids"><a class="headerlink" href="#amino_acids">¶</a><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>do different amino acids matter for human body?<span class="tag"><a class="nutrition tag-inactive" href="./tags.html">nutrition</a><a class="diet tag-inactive" href="./tags.html">diet</a></span></h3>
 <div class="outline-text-3" id="text-amino_acids">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2019-08-27 14:32]</span></div>
@@ -960,8 +1043,8 @@ Wonder if that matters if you follow a vegetarian/vegan diets?
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org0000025"><a class="headerlink" href="#org0000025">¶</a><span class="todo TODO">TODO</span> <span class="priority">[D]</span> eating organ meat is more respectful for the slaughtered animals?   <span class="tag"><span class="food">food</span></span></h3>
-<div class="outline-text-3">
+<h3 id="organ_meat_ethics"><a class="headerlink" href="#organ_meat_ethics">¶</a><span class="todo TODO">TODO</span><span class="priority priority-D">[D]</span>eating organ meat is more respectful for the slaughtered animals?<span class="tag"><a class="food tag-inactive" href="./tags.html">food</a></span></h3>
+<div class="outline-text-3" id="text-organ_meat_ethics">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2018-06-25 21:48]</span></div>
 </div>
@@ -975,12 +1058,22 @@ Apparently I wasn't the first to think about that:
 </div>
 </div>
 <div class="outline-3">
-<h3 id="org0000026"><a class="headerlink" href="#org0000026">¶</a><span class="todo START">START</span> <span class="priority">[D]</span> Wonder how easier is it to aim for tie in chess than for a win   <span class="tag"><span class="think">think</span></span></h3>
-<div class="outline-text-3">
+<h3 id="chess_tie"><a class="headerlink" href="#chess_tie">¶</a><span class="todo STRT">STRT</span><span class="priority priority-D">[D]</span>wonder how easier is it to aim for tie in chess than for a win<span class="tag"><a class="think tag-inactive" href="./tags.html">think</a></span></h3>
+<div class="outline-text-3" id="text-chess_tie">
 <div class="properties">
 <div class="property CREATED"><span class="property-name">CREATED:</span> <span class="property-value">[2018-12-14 23:17]</span></div>
 </div>
 </div>
+</div>
+</div>
+<div class="outline-2">
+<h2 id="similar"><a class="headerlink" href="#similar">¶</a>Similar pages</h2>
+<div class="outline-text-2" id="text-similar">
+<ul class="org-ul">
+<li><a href="https://jborichevskiy.com/ideas">"Ideas I want to see soon"</a> by Jonathan Borichevskiy</li>
+<li><a href="https://samsquire.github.io/ideas">"100 Ideas for Computing"</a> by Sam Squire</li>
+<li><a href="https://www.halfbakery.com/editorial/about.html">Halfbakery</a>, a communal database of original, fictitious inventions, edited by its users</li>
+</ul>
 </div>
 </div>
 

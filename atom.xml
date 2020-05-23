@@ -1443,8 +1443,8 @@ in the rapid development phase, resort to having a flexible config
     
     &lt;section class="footer"&gt;
         &lt;div class="post-tags"&gt;
-            &lt;a class="post-tag tag-inactive" href="./tags.html"&gt;#plt&lt;/a&gt;
-            &lt;a class="post-tag tag-inactive" href="./tags.html"&gt;#python&lt;/a&gt;
+            &lt;a class="post-tag tag-active" href="./tags.html#plt"&gt;#plt&lt;/a&gt;
+            &lt;a class="post-tag tag-active" href="./tags.html#python"&gt;#python&lt;/a&gt;
         &lt;/div&gt;
         &lt;time datetime="2020-04-05T00:00:00"&gt;05 April 2020&lt;/time&gt;
     &lt;/section&gt;
@@ -6007,7 +6007,7 @@ If you're terrified by the long list, you can jump straight into &lt;a class="li
 &lt;li&gt;&lt;a href="#gmail"&gt;Gmail&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#goodreads"&gt;Goodreads&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#takeout"&gt;Google takeout&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#hackernews"&gt;&lt;span class="todo TODO"&gt;TODO&lt;/span&gt; Hackernews&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#hackernews"&gt;&lt;span class="todo TODO"&gt;TODO&lt;/span&gt;Hackernews&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#hsbc"&gt;HSBC bank&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#hypothesis"&gt;Hypothesis&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#instapaper"&gt;Instapaper&lt;/a&gt;&lt;/li&gt;
@@ -6036,7 +6036,7 @@ If you're terrified by the long list, you can jump straight into &lt;a class="li
 &lt;li&gt;&lt;a href="#twitter"&gt;Twitter&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#vk"&gt;VK.com&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#weight"&gt;Weight&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="#whatsapp"&gt;&lt;span class="todo TODO"&gt;TODO&lt;/span&gt; Whatsapp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#whatsapp"&gt;&lt;span class="todo TODO"&gt;TODO&lt;/span&gt;Whatsapp&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#23andme"&gt;23andme&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
@@ -6394,7 +6394,7 @@ Why:
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="outline-3"&gt;
-&lt;h3 id="hackernews"&gt;&lt;a class="headerlink" href="#hackernews"&gt;¶&lt;/a&gt;&lt;span class="todo TODO"&gt;TODO&lt;/span&gt; Hackernews&lt;/h3&gt;
+&lt;h3 id="hackernews"&gt;&lt;a class="headerlink" href="#hackernews"&gt;¶&lt;/a&gt;&lt;span class="todo TODO"&gt;TODO&lt;/span&gt;Hackernews&lt;/h3&gt;
 &lt;div class="outline-text-3" id="text-hackernews"&gt;
 &lt;p&gt;
 How: haven't got to it yet. It's going to require:
@@ -6916,7 +6916,7 @@ Why:
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="outline-3"&gt;
-&lt;h3 id="whatsapp"&gt;&lt;a class="headerlink" href="#whatsapp"&gt;¶&lt;/a&gt;&lt;span class="todo TODO"&gt;TODO&lt;/span&gt; Whatsapp&lt;/h3&gt;
+&lt;h3 id="whatsapp"&gt;&lt;a class="headerlink" href="#whatsapp"&gt;¶&lt;/a&gt;&lt;span class="todo TODO"&gt;TODO&lt;/span&gt;Whatsapp&lt;/h3&gt;
 &lt;div class="outline-text-3" id="text-whatsapp"&gt;
 &lt;p&gt;
 Barely using it so haven't bothered yet.   

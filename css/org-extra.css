@@ -6,32 +6,6 @@ blockquote {
     border-left: 3px solid #ccc;
 }
 
-/*
-TODO hmm. not sure how to fit tags in TOC nicely..
-.tag {
-    all: unset;
-}
-
-$monospace: Lucida Console, monospace;
-.tag {
-    font-family: $monospace;
-    font-size: 0.7em;
-    font-weight: normal;
-}
-
-.tag span {
-    padding: 0.3em 0.3em;
-    float: right;
-    margin-right: .5em;
-    border: 1px solid #bbb;
-    border-radius: 3px;
-    background-clip: padding-box;
-    color: #333;
-    background-color: #eee;
-    line-height: 1;
-}
-*/
-
 /* xxx */
 
 /* mm. a bit ugly that 3 and 4 are hardcoded. just to tabulate subtasts */
@@ -84,7 +58,7 @@ $monospace: Lucida Console, monospace;
     text-transform: lowercase;
 }
 
-/* hide 'Table of Contents', couldn't control it via org... */
+/* hide 'Table of Contents' words, couldn't control it via org... */
 #table-of-contents h2 {
     display: none;
 }
@@ -93,9 +67,9 @@ $monospace: Lucida Console, monospace;
     display: none;
 }
 
-.todo {
+.todo,.done {
     display: inline-block;
-    width: 5ch; /* to fit in START. perhaps need 6 for CANCEL as well? */
+    width: 4ch;
 }
 
 
@@ -145,3 +119,109 @@ pre.src:before {
     right: 30px;
 }
 /* end */
+
+
+
+/* tweak todo keywords  */
+
+.todo,.done {
+    font-weight: bold;
+}
+
+.TODO {
+    color: orangered;
+
+}
+
+.STRT,.START,.WIP {
+    color: magenta;
+}
+
+.CNCL {
+    color: black;
+}
+
+/* end */
+
+
+/* tweak tags  */
+.tag {
+    background-color: initial; /* undo default grey */
+}
+
+/* not sure about this one... */
+.tag a::before {
+    content: "#";
+}
+
+/*  */
+
+
+/* tweak TOC */
+
+/* highlight tags on hovering */
+#table-of-contents li:hover > .tag a {
+    background-color: #dddddd;
+}
+
+/* underline link on hovering  */
+#table-of-contents li:hover > a {
+    text-decoration: underline;
+    color: darkgreen; /* eh, not sure about it */
+}
+
+#table-of-contents li {
+    /* need inline-block for proper responsivenes... othervise list elements overlap on mobile */
+    /* that makes list markers go... but whatever  */
+    display: inline-block;
+    /* width so elements are not piling up on the same line in wide layout */
+    width: 100%;
+}
+
+/*  */
+
+
+/* todo use single .state selector? */
+.todo, .done {
+    margin-right: 1ch;
+}
+
+.priority {
+    /* not sure how it works, but in prevents underlining the priority in heading link */
+    /* I just borrowed it from default .todo style  */
+    display: inline-block;
+
+    margin-right: 1ch;
+    font-weight: bold;
+}
+
+/* borrowed from Doom config */
+.priority-A {
+    color: #ff6c6b;
+}
+.priority-B {
+    color: #da8548;
+}
+.priority-C {
+    color: #ecbe7b
+}
+.priority-D {
+    color: #51afef;
+}
+
+.tag {
+    /* default is 80, bit too small esp in TOC? */
+    font-size: 100%;
+}
+
+/* todo not very reliable... perhaps add a css specifically for tags? */
+.tag a {
+    margin-left: 1ch;
+}
+
+.tag a:hover {
+    /* todo hmm bold looks nice, but active are already bold.. */
+    /* font-weight: bold; */
+
+    text-decoration: underline;
+}
