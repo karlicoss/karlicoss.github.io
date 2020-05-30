@@ -1950,6 +1950,10 @@ Here's the (incomplete) list of the modules:
 &lt;td class="org-left"&gt;&lt;a href="https://pinboard.in"&gt;Pinboard&lt;/a&gt; bookmarks&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/pocket.py"&gt;my.pocket&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://getpocket.com"&gt;Pocket&lt;/a&gt; bookmarks and highlights&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/reading/polar.py"&gt;my.reading.polar&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/burtonator/polar-bookshelf"&gt;Polar&lt;/a&gt; articles and highlights&lt;/td&gt;
 &lt;/tr&gt;

@@ -11,7 +11,7 @@
         <meta content="https://github.com/karlicoss/beepb00p" name="generator"/>
         <meta content="English" name="language"/>
         
-        <meta content="promnesia" name="keywords"/>
+        <meta content="promnesia pkm" name="keywords"/>
         
         <!-- TODO concat with keywords tags; also need to make comma separated? -->
 
@@ -87,15 +87,14 @@
 
     <section class="content">
     <p>
-<b>Draft stage</b>: 99% ready!
-And there is also more stuff I'd like to write, but it's already long enough…
-</p>
-<p>
 Promnesia is a browser extension (Chrome/Firefox/Firefox mobile) that serves as a web surfing copilot
 by enhancing your browsing history, improving your web exploration experience, and integrating with your knowledge base.
 </p>
 <p>
-<a href="https://github.com/karlicoss/promnesia#readme">The repository</a> contains some demos and the setup guide, this post is more about the motivation and the story of what led me to work on it.
+<a href="https://github.com/karlicoss/promnesia#readme">The repository</a> contains more information about the project and the setup guide, this post is more about the motivation and the story of what led me to work on it.
+</p>
+<p>
+But you can check the <a href="https://github.com/karlicoss/promnesia#demos">demos</a> first, if you prefer!
 </p>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
@@ -114,7 +113,9 @@ by enhancing your browsing history, improving your web exploration experience, a
 <li><a href="#prior_art">5. Prior art</a>
 <ul>
 <li><a href="#prototypes">Prototypes and mockups</a></li>
+<li><a href="#memacs">Memacs</a></li>
 <li><a href="#history_extensions">'Unlimited history' extensions</a></li>
+<li><a href="#vivaldi">Vivaldi Browser</a></li>
 <li><a href="#google">Google Activity/Takeout</a></li>
 <li><a href="#worldbrain_memex">Worldbrain Memex</a></li>
 </ul>
@@ -123,6 +124,7 @@ by enhancing your browsing history, improving your web exploration experience, a
 <ul>
 <li><a href="#promnesia_goals">Goals</a></li>
 <li><a href="#promnesia_metagoals">Meta-goals</a></li>
+<li><a href="#how_does_it_work">How does it work?</a></li>
 </ul>
 </li>
 <li><a href="#how_to_use">7. How can you use Promnesia?</a></li>
@@ -505,18 +507,6 @@ Goal: use a chrome extension to supplement your browsing experience by introduci
 Sadly it's only a concept.
 </p></li>
 <li><p>
-<a href="https://github.com/novoid/Memacs#readme">Memacs</a> by Karl Voit
-</p>
-<p>
-Memacs is a memex software which unifies your data as org-mode, allowing you to query it from within Emacs.
-</p>
-<p>
-Unfortunately, that means you have to query information actively in your emacs, as opposed to a passive assistant doing it for you.
-</p>
-<p>
-In addition, keeping everything in org-mode will be inefficient for long browsing histories with hundreds of thousands of entries.
-</p></li>
-<li><p>
 <a href="https://hyfen.net/memex">Memex</a> by Andrew Louis
 </p>
 <p>
@@ -530,6 +520,20 @@ Jumping a bit ahead of myself, I expect it to integrate well with <a class="link
 </div>
 </div>
 <div class="outline-3">
+<h3 id="memacs"><a class="headerlink" href="#memacs">¶</a>Memacs</h3>
+<div class="outline-text-3" id="text-memacs">
+<p>
+<a href="https://github.com/novoid/Memacs#readme">Memacs</a> by Karl Voit is a memex software which unifies your data as org-mode, allowing you to query it from within Emacs.
+</p>
+<p>
+Unfortunately, that means you have to query information actively in your emacs, as opposed to a passive assistant doing it for you.
+</p>
+<p>
+Having your full detailed history as plaintext is kind of noisy without extra interfaces, and inefficient for long browsing histories with hundreds of thousands of entries.
+</p>
+</div>
+</div>
+<div class="outline-3">
 <h3 id="history_extensions"><a class="headerlink" href="#history_extensions">¶</a>'Unlimited history' extensions</h3>
 <div class="outline-text-3" id="text-history_extensions">
 <p>
@@ -539,6 +543,15 @@ Unfortunately, retention is the only problem this solves, and then it it ends up
 </p>
 <p>
 But, thousands of users indicates there is at least demand for such functionality.
+</p>
+</div>
+</div>
+<div class="outline-3">
+<h3 id="vivaldi"><a class="headerlink" href="#vivaldi">¶</a>Vivaldi Browser</h3>
+<div class="outline-text-3" id="text-vivaldi">
+<p>
+Vivaldi has some <a href="https://help.vivaldi.com/article/history">fresh ideas</a>, in particular, statistics for browser history and calendar view.
+You can also enable infinite retention for the history in the settings.
 </p>
 </div>
 </div>
@@ -692,6 +705,110 @@ We should invest in finding better ways of <b>combining</b> existing tools, not 
 </ul>
 </div>
 </div>
+<div class="outline-3">
+<h3 id="how_does_it_work"><a class="headerlink" href="#how_does_it_work">¶</a>How does it work?</h3>
+<div class="outline-text-3" id="text-how_does_it_work">
+<p>
+Promnesia consists of three parts:
+</p>
+<ul class="org-ul">
+<li><p>
+browser extension
+</p>
+<ul class="org-ul">
+<li>neatly displays the history and other information in a sidebar</li>
+<li>handles highlights</li>
+<li>provides search interface</li>
+</ul>
+<p>
+However, browser addons can't read access your filesystem, so to load the data we need a helper component:
+</p></li>
+<li><p>
+server/backend: <samp class="inline">promnesia server</samp> command
+</p>
+<p>
+It's called 'server', but really it's just a regular program with the only purpose to serve the data to the browser.
+It runs locally and you don't have to expose it to the outside.
+</p></li>
+<li><p>
+indexer: <samp class="inline">promensia index</samp> command
+</p>
+<p>
+Indexer goes through the sources (specified in the config), processes raw data and extracts URLs along with other useful information.
+</p>
+<p>
+Another important thing it's doing is <b>normalising</b> URLs to establish equivalence and stip off garbage.
+I write about the motivation for it in <a href="https://beepb00p.xyz/promnesia.html#urls_broken">"URLs are broken"</a>.
+</p></li>
+</ul>
+<p>
+You might also want to skim through the <a href="https://github.com/karlicoss/promnesia#glossary">glossary</a> if you want to understand deeper what information Promnesia is extracting.
+</p>
+</div>
+<div class="outline-4">
+<h4 id="org0000000">Data sources</h4>
+<div class="outline-text-4">
+<p>
+Promnesia ships with some builtin sources. It supports:
+</p>
+<ul class="org-ul">
+<li><p>
+data exports from online services: Reddit/Twitter/Hackernews/Telegram/Messenger/Hypothesis/Pocket/Instapaper, etc.
+</p>
+<p>
+It heavily benefits from <a href="https://github.com/karlicoss/HPI">HPI</a> package to access the data.
+</p></li>
+<li>Google Takeout/Activity backups</li>
+<li>Markdown/org-mode/HTML or any other plaintext on your disk</li>
+<li>in general, anything that can be parsed in some way</li>
+<li>you can also add <a href="https://github.com/karlicoss/promnesia/blob/master/doc/SOURCES.org#extending">your own custom sources</a>, Promnesia is extensible</li>
+</ul>
+<p>
+See <a href="https://github.com/karlicoss/promnesia/blob/master/doc/SOURCES.org">SOURCES</a> for more information.
+</p>
+</div>
+</div>
+<div class="outline-4">
+<h4 id="org0000001">Data flow</h4>
+<div class="outline-text-4">
+<p>
+Here's a diagram, which would hopefully help to understand how data flows through Promnesia.
+</p>
+<p>
+See HPI <a href="https://github.com/karlicoss/HPI/blob/master/doc/SETUP.org#data-flow">section on data flow</a> for more information on HPI modules and data flow.
+</p>
+<p>
+Also check out my <a href="https://beepb00p.xyz/myinfra.html#promnesia">infrastructure map</a>, which is more detailed!
+</p>
+<pre class="example">┌─────────────────────────────────┐ ┌────────────────────────────┐ ┌─────────────────┐
+│ 💾       HPI sources            │ │  💾    plaintext files      │ │  other sources  │
+│ (twitter, reddit, pocket, etc.) │ │ (org-mode, markdown, etc.) │ │ (user-defined)  │
+└─────────────────────────────────┘ └────────────────────────────┘ └─────────────────┘
+                                ⇘⇘              ⇓⇓               ⇙⇙
+                                 ⇘⇘             ⇓⇓              ⇙⇙
+                                 ┌──────────────────────────────┐
+                                 │ 🔄    promnesia indexer      │
+                                 |        (runs regularly)      │
+                                 └──────────────────────────────┘
+                                                ⇓⇓
+                                 ┌──────────────────────────────┐
+                                 │ 💾    visits database        │
+                                 │       (promnesia.sqlite)     │
+                                 └──────────────────────────────┘
+                                                ⇓⇓
+                                 ┌──────────────────────────────┐
+                                 │ 🔗    promnesia server       │
+                                 |       (always running)       |
+                                 └──────────────────────────────┘
+                                                ⇣⇣
+                                 ┌─────────────────────────────────┐
+                                 │ 🌐      web browser             ├───────────────────────────┐
+                                 |     (promnesia extension)       ⇐  💾 local browser history |
+                                 └─────────────────────────────────┴───────────────────────────┘
+</pre>
+</div>
+</div>
+</div>
 </div>
 <div class="outline-2">
 <h2 id="how_to_use"><a class="headerlink" href="#how_to_use">¶</a><span class="section-number-2">7</span> How can you use Promnesia?</h2>
@@ -790,7 +907,7 @@ I would be happy if:
 </p>
 <ul class="org-ul">
 <li>I can raise the demand and awareness for data liberation and interoperability</li>
-<li>other developers implement something similar (and better!)</li>
+<li>I can inspire other people to implement something similar (and better!)</li>
 </ul>
 <p>
 As I <a class="link-up" href="#promnesia_metagoals">previously</a> mentioned, one of the meta-goals is modularity, so parts of Promnesia can be plugged in other tools.
@@ -842,8 +959,8 @@ Again, it feels that most of Promnesia's existing (and future!) features make se
 </p></li>
 </ul>
 <p>
-I see the most likely future for Promnesia <b>as a part of Worldbrain Memex</b>, or a plugin on top of it.
-This is something I'll look at in the near future.
+As you can see there is some significant overlap with Worldbrain Memex, and they already have a mature and impressive product. So I can see Promnesia as a plugin on top of it, or even as a part of it!
+This collaboration is something I'll look at in the near future.
 </p>
 <p>
 In the meantime, Promnesia is completely usable on its own, and as long as I use it, I'll be supporting it!
@@ -880,7 +997,7 @@ Related links:
 <li><a href="sad-infra.html">The sad state of personal data and infrastructure</a></li>
 </ul>
 <p>
-<b>Credits:</b> thanks to <a href="https://jborichevskiy.com/about">Jonathan</a>, <a href="http://awesomesauce.name">Andrew</a> and <a href="https://petr-tik.github.io">Petr</a> for the valuable feedback.
+<b>Credits:</b> thanks to <a href="https://jborichevskiy.com/about">Jonathan</a>, <a href="http://awesomesauce.name">Andrew</a> and <a href="https://petr-tik.github.io">Petr</a> for the valuable on the post. Thanks to <a href="https://twitter.com/_bepolymathe_">Emmanuel</a> for trying out the project and valuable suggestions on making it easier to set up!
 </p>
 </div>
 </div>
@@ -891,8 +1008,9 @@ Related links:
     <section class="footer">
         <div class="post-tags">
             <a class="post-tag tag-inactive" href="./tags.html">#promnesia</a>
+            <a class="post-tag tag-active" href="./tags.html#pkm">#pkm</a>
         </div>
-        <time datetime="2019-10-26T00:00:00">26 October 2019</time>
+        <time datetime="2020-05-30T00:00:00">30 May 2020</time>
     </section>
     
 
