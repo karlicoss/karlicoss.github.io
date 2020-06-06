@@ -7,7 +7,1078 @@
     <atom:link href="https://beepb00p.xyz/rss.xml" rel="self"/>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
-    <lastBuildDate>Mon, 20 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 30 May 2020 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Promnesia</title>
+      <link>https://beepb00p.xyz/promnesia.html</link>
+      <description>&lt;!DOCTYPE html&gt;
+&lt;html lang="en" prefix="og: http://ogp.me/ns#"&gt;&lt;head&gt;
+        &lt;meta charset="utf-8"/&gt;
+        &lt;meta content="width=device-width, initial-scale=1" name="viewport"/&gt;
+
+        &lt;!-- Icon made by Twitter --&gt;
+        &lt;!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html --&gt;
+        &lt;link href="./robot-face.png" rel="icon"/&gt;
+        &lt;link href="./robot-face.png" rel="apple-touch-icon"/&gt;
+
+        &lt;meta content="https://github.com/karlicoss/beepb00p" name="generator"/&gt;
+        &lt;meta content="English" name="language"/&gt;
+        
+        &lt;meta content="promnesia pkm" name="keywords"/&gt;
+        
+        &lt;!-- TODO concat with keywords tags; also need to make comma separated? --&gt;
+
+        &lt;title&gt;Promnesia | beepb00p&lt;/title&gt;
+
+        &lt;link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css"/&gt;
+        &lt;link href="./css/default.css?v=3" rel="stylesheet"/&gt;
+        &lt;!-- TODO make conditional?? --&gt;
+        &lt;link href="./css/posts-list.css" rel="stylesheet"/&gt; 
+        &lt;link href="./css/links.css?v=4" rel="stylesheet"/&gt;
+
+        
+
+        &lt;link href="https://beepb00p.xyz/promnesia.html" rel="canonical"/&gt;
+
+        &lt;!-- can test it with https://telegram.me/webpagebot --&gt;
+        &lt;!-- or https://developers.facebook.com/tools/debug --&gt;
+        &lt;meta content="website" property="og:type"/&gt;
+        &lt;meta content="https://beepb00p.xyz/promnesia.html" property="og:url"/&gt; &lt;!-- TODO base? --&gt;
+        &lt;meta content="Promnesia | beepb00p" property="og:title"/&gt;
+        &lt;meta content="A journey in fixing browser history" property="og:description"/&gt;
+        &lt;!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s --&gt;
+        &lt;!-- ugh. Facebook really wants jpg? --&gt;
+        &lt;!-- also Facebook displays it with black background, but whatever, fuck it. --&gt;
+        &lt;meta content="https://beepb00p.xyz/robot-face.jpg" property="og:image"/&gt;
+
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;!-- TODO make semantic --&gt;
+        &lt;header&gt;
+            &lt;nav&gt;
+                &lt;span class="nav-left"&gt;
+                    &lt;a class="fat" href="./"&gt;Home&lt;/a&gt;
+                    &lt;!-- TODO eh, not sure if this symbol is good for that... --&gt;
+                    ·
+                    &lt;a class="fat" href="./ideas.html"&gt;Ideas&lt;/a&gt;
+                    ·
+                    &lt;a class="fat" href="./exobrain"&gt;Exobrain&lt;/a&gt;
+                    ·
+                    &lt;a class="fat" href="./tags.html"&gt;Tags&lt;/a&gt;
+                &lt;/span&gt;
+                &lt;span class="nav-right"&gt;
+                    &lt;a class="fat" href="./feed.html"&gt;Feed&lt;/a&gt;
+                    ·
+                    &lt;a class="fat" href="./site.html"&gt;Site&lt;/a&gt;
+                    ·
+                    &lt;a class="fat" href="./me.html"&gt;Me&lt;/a&gt;
+                    &lt;div style="display:inline-block;font-size: 0.7rem;"&gt;
+                        &lt;a href="https://twitter.com/karlicoss" style="display:block;"&gt;@twitter&lt;/a&gt;
+                        &lt;a href="https://github.com/karlicoss" style="display:block;"&gt;@github&lt;/a&gt;
+                    &lt;/div&gt;
+                &lt;/span&gt;
+            &lt;/nav&gt;
+        &lt;/header&gt;
+
+        &lt;main&gt;
+            
+
+&lt;!-- &lt;link rel="stylesheet" href="/css/org.css" /&gt; --&gt;
+
+&lt;link href="./css/htmlize.css" rel="stylesheet"/&gt;
+&lt;link href="./css/org-default.css" rel="stylesheet"/&gt;
+
+&lt;link href="./css/org-extra.css?v=3" rel="stylesheet"/&gt;
+
+
+
+&lt;article&gt;
+    
+    &lt;section class="post-title"&gt;
+    &lt;h1&gt;
+        Promnesia
+        &lt;a href="./blog-graph.html#promnesia" style="font-size: 1rem;vertical-align: super;" title="See this post within the blog graph, and how it's connected to other posts"&gt;[see within blog graph]&lt;/a&gt;
+    &lt;/h1&gt;
+    &lt;div class="summary"&gt;A journey in fixing browser history
+    &lt;/div&gt;&lt;/section&gt;
+    &lt;!-- are sections appropriate for that? --&gt;
+
+    &lt;section class="content"&gt;
+    &lt;p&gt;
+Promnesia is a browser extension (Chrome/Firefox/Firefox mobile) that serves as a web surfing copilot
+by enhancing your browsing history, improving your web exploration experience, and integrating with your knowledge base.
+&lt;/p&gt;
+&lt;p&gt;
+&lt;a href="https://github.com/karlicoss/promnesia#readme"&gt;The repository&lt;/a&gt; contains more information about the project and the setup guide, this post is more about the motivation and the story of what led me to work on it.
+&lt;/p&gt;
+&lt;p&gt;
+Also, you can quickly skim through the &lt;a href="https://github.com/karlicoss/promnesia#demos"&gt;demos&lt;/a&gt; first before reading, if you prefer!
+&lt;/p&gt;
+&lt;div id="table-of-contents"&gt;
+&lt;h2&gt;Table of Contents&lt;/h2&gt;
+&lt;div id="text-table-of-contents"&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#singularity_when"&gt;1. I want my singularity!&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#what_i_want"&gt;2. Ok, maybe a web assistant at least?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#history_broken"&gt;3. Browser history is broken&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#not_just_browser"&gt;it's not just about web browsers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#siloed"&gt;it's scattered and siloed&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#significance"&gt;it's got varying significance&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#urls_broken"&gt;4. URLs are broken&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#prior_art"&gt;5. Prior art&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#prototypes"&gt;Prototypes and mockups&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#google"&gt;Google Activity/Takeout&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#history_extensions"&gt;'Unlimited history' extensions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#histre"&gt;Histre&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#vivaldi"&gt;Vivaldi Browser&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#memacs"&gt;Memacs&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#memex_louis"&gt;Memex by Andrew Louis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#worldbrain_memex"&gt;Worldbrain Memex&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#promnesia"&gt;6. Hello, Promnesia!&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="#promnesia_goals"&gt;Goals&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#promnesia_metagoals"&gt;Meta-goals&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#how_does_it_work"&gt;How does it work?&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#how_to_use"&gt;7. How can you use Promnesia?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#future"&gt;8. Future of Promnesia&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#fin"&gt;9. ---&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-2"&gt;
+&lt;h2 id="singularity_when"&gt;&lt;a class="headerlink" href="#singularity_when"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;1&lt;/span&gt; I want my singularity!&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-singularity_when"&gt;
+&lt;p&gt;
+I was raised on science fiction and grew up dreaming about technology drastically changing our lives.
+Artificial intelligence, augmenting the brain with a math co-processor, head-up displays, neural interfaces, having perfect reaction and memory – many of you are on the same page and know the drill.
+&lt;/p&gt;
+&lt;p&gt;
+Years passed, I became a software engineer, and realized just how far we are from all these fancy technologies I wanted.
+So my aspirations have become more modest, and I've chosen a more realistic and plausible target:
+using my digital trace (such as browser history, webpage annotations and my &lt;a href="./tags.html#exobrain"&gt;personal wiki&lt;/a&gt;) to make up for my limited memory.
+&lt;/p&gt;
+&lt;p&gt;
+I'm exploring lots of information on the Internet, and it feels wasteful to use my &lt;a href="./tags.html#meatsack"&gt;meat resources&lt;/a&gt; to keep track of it.
+Meanwhile, web browsers keep a record automatically, without any manual and conscious effort.
+Surely we can benefit from the immense computing power and memory capabilities of computers?
+&lt;/p&gt;
+&lt;p&gt;
+So I figured that I wanted:
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-2"&gt;
+&lt;h2 id="what_i_want"&gt;&lt;a class="headerlink" href="#what_i_want"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;2&lt;/span&gt; Ok, maybe a web assistant at least?&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-what_i_want"&gt;
+&lt;p&gt;
+A web surfing companion. A copilot.
+A &lt;a href="https://en.wikipedia.org/wiki/Memex"&gt;Memex&lt;/a&gt;.
+A &lt;a href="http://alumni.media.mit.edu/~rhodes/Papers/remembrance.html"&gt;Remembrance Agent&lt;/a&gt;?
+&lt;/p&gt;
+&lt;p&gt;
+Call it whatever you like, I &lt;i&gt;wish&lt;/i&gt; it were a concept with a widely accepted name. Something that will sit in my browser and:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;p&gt;
+aid me with &lt;b&gt;information processing&lt;/b&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Keep track of what I've read, when, on which device, and for how long.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+show me my &lt;b&gt;annotations and highlights&lt;/b&gt;, within the original page
+&lt;/p&gt;
+&lt;p&gt;
+I don't want to keep wondering whether I have my notes and thoughts stashed in some app, I want the computer to let me know instead.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+unify my &lt;b&gt;scattered and siloed bookmarks&lt;/b&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Firefox bookmarks; Reddit/Hackernews saves; "Watch later" on Youtube, saved links in my instant messenger.
+&lt;/p&gt;
+&lt;p&gt;
+These are the same damn thing, yet there is no way to oversee and process them through a single interface.
+&lt;/p&gt;
+&lt;p&gt;
+&lt;a href="https://jborichevskiy.com/posts/digital-tools/#queue-management-for-inbound-digital-content"&gt;"Queue management for inbound digital content"&lt;/a&gt;:
+a post expanding further on this idea.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+connect with my online presence: chats and social networks
+&lt;/p&gt;
+&lt;p&gt;
+If I tweeted about a page, surely this should be somehow recorded in the browsing history?
+&lt;/p&gt;
+&lt;p&gt;
+In fact, the page that I bothered to tweet about is &lt;b&gt;much&lt;/b&gt; more important than a page I merely visited in the browser.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+help me explore new information and &lt;b&gt;prioritize&lt;/b&gt; it
+&lt;/p&gt;
+&lt;p&gt;
+There is so much awesome stuff on the Internet! The biggest problem I have is picking the next cool link to dig into.
+&lt;/p&gt;
+&lt;p&gt;
+Imagine if in one click, I could see which of my friends, or the people I follow have read a certain link.
+What did they think? Have they posted about it, annotated, or something else? Do they follow the author, perhaps I should too?
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+bridge the gap between the browser and my &lt;a href="./tags.html#exobrain"&gt;personal wiki&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Whatever product I choose for managing my notes: Google Keep, Evernote, Roam Research, or even org-mode files on my disk,
+they always end up &lt;b&gt;isolated and disconnected&lt;/b&gt; from my web browsing.
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+I searched for a system like this &lt;a href="https://twitter.com/karlicoss/status/767412935316611072"&gt;for&lt;/a&gt; several &lt;a href="https://twitter.com/karlicoss/status/896313846159298560"&gt;years&lt;/a&gt;.
+&lt;/p&gt;
+&lt;p&gt;
+After enough failed attempts at finding an &lt;a class="link-down" href="#prior_art"&gt;existing solution&lt;/a&gt;, I figured it was going to be yet another thing I'd have to implement myself.
+&lt;/p&gt;
+&lt;p&gt;
+The journey of building it took longer than I expected, led me through a rabbit hole of &lt;a href="./tags.html#dataliberation"&gt;data liberation&lt;/a&gt;, lots of &lt;a href="https://en.wiktionary.org/wiki/yak_shaving"&gt;yak shaving&lt;/a&gt;,
+and made me realize: &lt;b&gt;browser history is very, very broken&lt;/b&gt;.
+&lt;/p&gt;
+&lt;p&gt;
+Note: the next two sections are (somewhat technical) rants. If you prefer a more positive/less boring agenda, feel free to skip them straight to &lt;a class="link-down" href="#prior_art"&gt;"Existing solutions"&lt;/a&gt;
+, and you can return back later if you feel like it.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-2"&gt;
+&lt;h2 id="history_broken"&gt;&lt;a class="headerlink" href="#history_broken"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;3&lt;/span&gt; Browser history is broken&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-history_broken"&gt;
+&lt;p&gt;
+To a large extent, URLs express &lt;b&gt;relationships and hierarchy&lt;/b&gt; between the bits of information. For example:  &lt;code class="inline"&gt;blog &amp;lt;-&amp;gt; post &amp;lt;-&amp;gt; comment&lt;/code&gt;, &lt;code class="inline"&gt;person &amp;lt;-&amp;gt; tweet&lt;/code&gt;, &lt;code class="inline"&gt;playlist &amp;lt;-&amp;gt; video&lt;/code&gt;.
+&lt;/p&gt;
+&lt;p&gt;
+With this information you should be easily able to find everything relevant to the current page and trace your jumps through past websites.
+Merely by looking at URLs, without "AI" or some dubious machine learning algorithm!
+Seems like a low hanging fruit to harvest, right?
+&lt;/p&gt;
+&lt;p&gt;
+Web browser history is a rich source of potentially useful information.
+Just think about it: it's zero effort &lt;a href="./tags.html#lifelogging"&gt;lifelogging&lt;/a&gt;.
+It contains exact timestamps and links which &lt;i&gt;basically&lt;/i&gt; address information.
+&lt;/p&gt;
+&lt;p&gt;
+Now think about the experience you actually have. What was the last time you used the browser history in any nontrivial way, for something other than reopening an accidentally closed tab?
+&lt;/p&gt;
+&lt;p&gt;
+Besides:
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="outline-3"&gt;
+&lt;h3 id="not_just_browser"&gt;&lt;a class="headerlink" href="#not_just_browser"&gt;¶&lt;/a&gt;it's not just about web browsers&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-not_just_browser"&gt;
+&lt;div style="margin-top: 16px; margin-bottom: 16px"&gt;&lt;span class="before-aside"&gt;
+When you're using a native phone app (say, for Reddit or Twitter), your history either isn't logged anywhere or if it is, it's only stored locally on your phone.
+
+&lt;/span&gt;&lt;aside class="sidenote"&gt;this is why I emphasize &lt;b&gt;browsing&lt;/b&gt; history, not &lt;b&gt;browser&lt;/b&gt; history&lt;/aside&gt;&lt;/div&gt;
+&lt;div style="margin-top: 16px; margin-bottom: 16px"&gt;&lt;span class="before-aside"&gt;
+On Android, it's likely to be in an Sqlite database in &lt;code class="inline"&gt;/data/data/app.name&lt;/code&gt;.
+This directory is not accessible to normal users &lt;b&gt;unless your phone is rooted&lt;/b&gt;.
+Just think about how ridiculous this is. It's &lt;b&gt;your own data&lt;/b&gt;, yet your OS babysits you, preventing access to it.
+
+And yes, I know sandboxing and security are important, but locking my data inside the app is hardly an acceptable tradeoff.
+&lt;/span&gt;&lt;aside class="sidenote"&gt;rooting Android phones ranges from "&lt;b&gt;somewhat&lt;/b&gt; painful" to "&lt;b&gt;very&lt;/b&gt; painful"&lt;/aside&gt;&lt;/div&gt;
+&lt;p&gt;
+As a specific example, the &lt;a href="https://github.com/ccrama/Slide"&gt;Reddit Slide&lt;/a&gt; app keeps your view history in &lt;code class="inline"&gt;/data/data/me.ccrama.redditslide/SEEN&lt;/code&gt;.
+Okay, say you root your phone and access the database. Turns out the the app isn't persisting the data forever, it's merely keeping a few weeks' cache.
+And I can hardly blame the developer for this: because of the data model, no one expects regular users to access this database.
+&lt;/p&gt;
+&lt;p&gt;
+So if you want your complete history, you have to backup this database regularly, keep the snapshots and &lt;a href="exports.html#synthetic"&gt;somehow&lt;/a&gt;
+reconstruct it.
+&lt;/p&gt;
+&lt;p&gt;
+You may dismiss this as nitpicking and obsession over every last bit of my data.
+But when &lt;b&gt;all&lt;/b&gt; of your phone apps are doing this you're missing out on quite a lot of useful information.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-3"&gt;
+&lt;h3 id="siloed"&gt;&lt;a class="headerlink" href="#siloed"&gt;¶&lt;/a&gt;it's scattered and siloed&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-siloed"&gt;
+&lt;p&gt;
+Building on the previous point:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;for the most part, you can't access history in your phone apps&lt;/li&gt;
+&lt;li&gt;lots of data which &lt;i&gt;ought&lt;/i&gt; to be counted as web history is scattered across silos
+
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;div style="margin-top: 16px; margin-bottom: 16px"&gt;&lt;span class="before-aside"&gt;in the cloud: behind APIs (best case), GDPR and manual exports (worst case)
+
+It is never easy to get hands on, &lt;i&gt;even&lt;/i&gt; if you're an experienced software engineer.&lt;/span&gt;&lt;aside class="sidenote"&gt;&lt;a href="sad-infra.html"&gt;#sadinfra&lt;/a&gt;&lt;/aside&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+on the filesystem, for example in markdown/org-mode files
+&lt;/p&gt;
+&lt;p&gt;
+A slightly better scenario, but as far as the web browser is concerned, it doesn't make any difference.
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+Even &lt;i&gt;regular&lt;/i&gt; browser history is not easy to get:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;Firefox &lt;a href="https://support.mozilla.org/en-US/questions/1080942"&gt;used to&lt;/a&gt; silently 'expire' your browser history&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+Chrome deletes history older than &lt;a href="https://superuser.com/a/364475/300795"&gt;90 days&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+The only way to access older history I'm aware of is &lt;a href="https://myactivity.google.com"&gt;Google Activity&lt;/a&gt; and Takeout.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Google Takeout &lt;a href="./takeout-data-gone.html"&gt;quietly recycles your history&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+Migration is limited to the most popular browsers
+&lt;/p&gt;
+&lt;p&gt;
+The retention limits the migration as well.
+E.g. if you migrate from Chrome to Firefox, history older than 90 days is locked and siloed in your Google Account.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+You're going to have a hard time if you're not using Google/Mozilla sync
+&lt;/p&gt;
+&lt;p&gt;
+Your history will be scattered across devices and lost on OS reinstalls.
+&lt;/p&gt;
+&lt;p&gt;
+There are ways of self-hosting Firefox sync, and (&lt;a href="https://superuser.com/questions/614744/how-to-set-up-a-own-chrome-sync-server"&gt;allegedly&lt;/a&gt;) even Chrome sync,
+but as you can imagine, is quite tedious.
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-3"&gt;
+&lt;h3 id="significance"&gt;&lt;a class="headerlink" href="#significance"&gt;¶&lt;/a&gt;it's got varying significance&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-significance"&gt;
+&lt;p&gt;
+Not all links in your history are equally important:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;some are clicked on by accident&lt;/li&gt;
+&lt;li&gt;some you've just skimmed&lt;/li&gt;
+&lt;li&gt;some are on your reading list&lt;/li&gt;
+&lt;li&gt;some you've been reading for hours and are full of your highlights and annotations&lt;/li&gt;
+&lt;li&gt;some you reference in your knowledge base/personal wiki&lt;/li&gt;
+&lt;li&gt;some of them you've shared with others on social media&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+The current browser history experience makes no distinction between these scenarios.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-2"&gt;
+&lt;h2 id="urls_broken"&gt;&lt;a class="headerlink" href="#urls_broken"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;4&lt;/span&gt; URLs are broken&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-urls_broken"&gt;
+&lt;p&gt;
+This topic probably deserves a separate post, but I'll keep it section-sized for now.
+&lt;/p&gt;
+&lt;p&gt;
+URLs might seem great because they mostly address content and are semi-descriptive: people &lt;i&gt;try&lt;/i&gt; to keep URLs somewhat reasonable, tidy and working.
+But in the real world:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;p&gt;
+links &lt;b&gt;rot&lt;/b&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Many URLs are &lt;a href="https://www.gwern.net/Archiving-URLs#link-rot"&gt;&lt;b&gt;literally&lt;/b&gt; broken&lt;/a&gt;.
+We're lucky to have &lt;a href="https://web.archive.org"&gt;archive.org&lt;/a&gt;, so you can at least access dead pages.
+&lt;/p&gt;
+&lt;p&gt;
+But there is no way to migrate your browser history, e.g. point old URLs to their respective archive.org entries or a new domain.
+Similarly if you had the page annotated, your annotations become orphans without an easy way to relink them.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+links are &lt;b&gt;obfuscated&lt;/b&gt; by shortening and redirects
+&lt;/p&gt;
+&lt;div style="margin-top: 16px; margin-bottom: 16px"&gt;&lt;span class="before-aside"&gt;
+What happens to all the &lt;code class="inline"&gt;t.co&lt;/code&gt; links when Twitter as a service dies?
+
+&lt;/span&gt;&lt;aside class="sidenote"&gt;see &lt;a href="https://indieweb.org/silo#Linkwrapping"&gt;linkwrapping&lt;/a&gt;&lt;/aside&gt;&lt;/div&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+links are &lt;b&gt;obscured&lt;/b&gt;
+&lt;/p&gt;
+&lt;p&gt;
+There is no easy way to know what's behind &lt;code class="inline"&gt;https://www.instapaper.com/read/1265139707&lt;/code&gt; without querying the Instapaper API.
+&lt;/p&gt;
+&lt;p&gt;
+Relations between data are often obscured as well. For example:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;code class="inline"&gt;https://news.ycombinator.com/item?id=22918980&lt;/code&gt; is a submission link&lt;/li&gt;
+&lt;li&gt;&lt;code class="inline"&gt;https://news.ycombinator.com/item?id=22919718&lt;/code&gt; is a comment to that submission&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+These links are clearly related, but there is no way to tell it just from &lt;samp class="inline"&gt;id&lt;/samp&gt;.
+&lt;/p&gt;
+&lt;p&gt;
+Compare this to Reddit links:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;code class="inline"&gt;https://reddit.com/r/orgmode/comments/g6ejwe/is_there_an_orgmode_workbook_tutorial_that_is&lt;/code&gt; is a post link&lt;/li&gt;
+&lt;li&gt;&lt;code class="inline"&gt;https://reddit.com/r/orgmode/comments/g6ejwe/is_there_an_orgmode_workbook_tutorial_that_is/fo9qnen&lt;/code&gt; is a comment to that post&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+The ids are obscure, but at least we can clearly see the &lt;code class="inline"&gt;post &amp;lt;-&amp;gt; comment&lt;/code&gt; relation merely by looking at the URLs.
+Alas, browsers are just ignoring this useful information.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+links are &lt;b&gt;unstandardized&lt;/b&gt;
+&lt;/p&gt;
+&lt;p&gt;
+For example, &lt;a href="https://en.wikipedia.org/wiki/Query_string"&gt;queries&lt;/a&gt;
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;typically don't point to anything persistent and are used for querying (duh)&lt;/li&gt;
+&lt;li&gt;but other times they are used to address information: &lt;code class="inline"&gt;http://wiki.c2.com/?LispLanguage&lt;/code&gt; or &lt;code class="inline"&gt;https://www.scottaaronson.com/blog/?p=2694&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;and in many cases are utter garbage used for &lt;a href="https://en.wikipedia.org/wiki/Query_string#Tracking"&gt;tracking&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+The worst part is that these use cases overlap. For example, take a look at &lt;code class="inline"&gt;youtube.com/watch?v=wHrCkyoe72U&amp;amp;feature=share&amp;amp;time_continue=6&lt;/code&gt;:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;code class="inline"&gt;v=wHrCkyoe72U&lt;/code&gt; is the most important part of this link&lt;/li&gt;
+&lt;li&gt;&lt;code class="inline"&gt;feature=share&lt;/code&gt; is just garbage&lt;/li&gt;
+&lt;li&gt;&lt;code class="inline"&gt;time_continue=6&lt;/code&gt; could be treated as useful information&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+A similar story applies to &lt;a href="https://en.wikipedia.org/wiki/Fragment_identifier"&gt;fragments&lt;/a&gt;:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;on Google groups, they are meaningful and address specific discussions and messages: &lt;code class="inline"&gt;https://groups.google.com/a/list.hypothes.is/forum/#!topic/dev/kcmS7H8ssis&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;on most websites, they refer to the content within a page: &lt;code class="inline"&gt;https://github.com/lipoja/URLExtract/issues/13#issuecomment-467635302&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;links are &lt;b&gt;unnormalized&lt;/b&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;just think of all the &lt;samp class="inline"&gt;www.&lt;/samp&gt;, &lt;samp class="inline"&gt;amp.&lt;/samp&gt;, &lt;samp class="inline"&gt;mobile.&lt;/samp&gt;, &lt;samp class="inline"&gt;m.&lt;/samp&gt; garbage&lt;/li&gt;
+&lt;li&gt;&lt;code class="inline"&gt;youtu.be/1TKSfAkWWN0&lt;/code&gt;, &lt;code class="inline"&gt;youtube.com/embed/1TKSfAkWWN0&lt;/code&gt; and &lt;code class="inline"&gt;https://www.youtube.com/watch?v=1TKSfAkWWN0&amp;amp;list=WL&amp;amp;index=11&lt;/code&gt; refer to the exact same content, yet your browser has no idea.&lt;/li&gt;
+&lt;li&gt;&lt;code class="inline"&gt;&amp;lt;link rel="canonical" ...&amp;gt;&lt;/code&gt; &lt;a href="https://en.wikipedia.org/wiki/Canonical_link_element"&gt;element&lt;/a&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;often it's not not present&lt;/li&gt;
+&lt;li&gt;when present, often used improperly,&lt;/li&gt;
+&lt;li&gt;you need to fetch the page first to get the canonical link&lt;/li&gt;
+&lt;li&gt;only works one way; you can't easily retrieve all links that have &lt;b&gt;the same canonical page&lt;/b&gt; as the current&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+I want URLs to &lt;b&gt;address information&lt;/b&gt; and &lt;b&gt;represent relations&lt;/b&gt;. The current URL experience is far from ideal for this.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-2"&gt;
+&lt;h2 id="prior_art"&gt;&lt;a class="headerlink" href="#prior_art"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;5&lt;/span&gt; Prior art&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-prior_art"&gt;
+&lt;p&gt;
+&lt;span id="existing" style="visibility:hidden"&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Sadly, I've seen very few similar projects.
+&lt;span style="color:darkorange"&gt;&lt;strong&gt;Please let me know if I missed anything!&lt;/strong&gt;&lt;/span&gt;
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="outline-3"&gt;
+&lt;h3 id="prototypes"&gt;&lt;a class="headerlink" href="#prototypes"&gt;¶&lt;/a&gt;Prototypes and mockups&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-prototypes"&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;p&gt;
+&lt;a href="http://alumni.media.mit.edu/~rhodes/Papers/mnotes-iui00.html"&gt;"Margin Notes: Building a Contextually Aware Associative Memory"&lt;/a&gt;
+&lt;/p&gt;
+&lt;p&gt;
+A paper from 2000 (!):
+&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;
+Margin Notes is a system that automatically annotates every webpage you visit with links to other potentially useful documents.
+&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;
+&lt;a href="http://alumni.media.mit.edu/~rhodes/RA/Mnotes"&gt;This page&lt;/a&gt; has more information and
+this seems like more of a recommendation system, and I haven't found any source code to check it out.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+&lt;a href="https://docs.google.com/document/d/1QlrVpAl59gmJD7Kl--q3uyfZo936iZIb45fim6EV53k"&gt;Historia&lt;/a&gt; by &lt;a href="https://mek.fyi/#experiments"&gt;Mek&lt;/a&gt;
+&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;
+Goal: use a chrome extension to supplement your browsing experience by introducing a superior browsing history data structure:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;preserve provenance. maintain a detailed account of browsing history&lt;/li&gt;
+&lt;li&gt;track interactions with dynamic content&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;
+Sadly it's only a concept.
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-3"&gt;
+&lt;h3 id="google"&gt;&lt;a class="headerlink" href="#google"&gt;¶&lt;/a&gt;Google Activity/Takeout&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-google"&gt;
+&lt;p&gt;
+Though I covered it already, it's worth another mention as many people use it. I find it problematic because:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;it's a Google-specific silo, and the functionality provided by Google is only useful for deliberate searches&lt;/li&gt;
+&lt;li&gt;it doesn't have an API, and can't be integrated in the browser&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-3"&gt;
+&lt;h3 id="history_extensions"&gt;&lt;a class="headerlink" href="#history_extensions"&gt;¶&lt;/a&gt;'Unlimited history' extensions&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-history_extensions"&gt;
+&lt;p&gt;
+There is a family of Chrome extensions similar to &lt;a href="https://chrome.google.com/webstore/detail/history-trends-unlimited/pnmchffiealhkdloeffcdnbgdnedheme"&gt;History Trends Unlimited&lt;/a&gt;
+which try to make up for Chrome's 90-day retention by keeping the history in IndexDB.
+Unfortunately, retention is the only problem this solves, and then it it ends up as a yet another silo.
+&lt;/p&gt;
+&lt;p&gt;
+But, thousands of users indicates there is at least demand for such functionality.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-3"&gt;
+&lt;h3 id="histre"&gt;&lt;a class="headerlink" href="#histre"&gt;¶&lt;/a&gt;&lt;a href="https://histre.com"&gt;Histre&lt;/a&gt;&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-histre"&gt;
+&lt;p&gt;
+Histre is an open source browser extension that presents history as a tree to allow for easier exploration.
+I really like the idea, and it's a shame this is not the default representaion in our browsers.
+&lt;/p&gt;
+&lt;p&gt;
+The downside of Histre is that it doesn't integrate with your existing knowledge about the page from other services, so it's a silo in its own regard.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-3"&gt;
+&lt;h3 id="vivaldi"&gt;&lt;a class="headerlink" href="#vivaldi"&gt;¶&lt;/a&gt;Vivaldi Browser&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-vivaldi"&gt;
+&lt;p&gt;
+Vivaldi has some &lt;a href="https://help.vivaldi.com/article/history"&gt;fresh ideas&lt;/a&gt;, in particular, statistics for browser history and calendar view.
+You can also enable infinite retention for the history in the settings.
+&lt;/p&gt;
+&lt;p&gt;
+However you only have access to your history within Vivaldi, and all your other data is left out.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-3"&gt;
+&lt;h3 id="memacs"&gt;&lt;a class="headerlink" href="#memacs"&gt;¶&lt;/a&gt;Memacs&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-memacs"&gt;
+&lt;p&gt;
+&lt;a href="https://github.com/novoid/Memacs#readme"&gt;Memacs&lt;/a&gt; by Karl Voit is a memex software which unifies your data as org-mode, allowing you to query it from within Emacs.
+&lt;/p&gt;
+&lt;p&gt;
+It's excellent as a personal timeline/information search system. However, that means you have to query information &lt;b&gt;actively&lt;/b&gt; in your Emacs, as opposed to a &lt;b&gt;passive&lt;/b&gt; assistant doing it for you.
+&lt;/p&gt;
+&lt;p&gt;
+Having your full detailed history as plaintext is kind of noisy without extra interfaces, and inefficient for long browsing histories with hundreds of thousands of entries.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-3"&gt;
+&lt;h3 id="memex_louis"&gt;&lt;a class="headerlink" href="#memex_louis"&gt;¶&lt;/a&gt;&lt;a href="https://hyfen.net/memex"&gt;Memex&lt;/a&gt; by Andrew Louis&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-memex_louis"&gt;
+&lt;p&gt;
+This is a working (but not open-source, at least yet) prototype of a Memex, unifying personal data and exposing an API for it.
+&lt;/p&gt;
+&lt;p&gt;
+I only ran into it a few months ago! Because it's not public, I'm not sure to what extent it can address the browser history problems specifically.
+Jumping a bit ahead of myself, I expect it to integrate well with &lt;a class="link-down" href="#promnesia"&gt;Promnesia&lt;/a&gt;, so we could potentially benefit from each other's work.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-3"&gt;
+&lt;h3 id="worldbrain_memex"&gt;&lt;a class="headerlink" href="#worldbrain_memex"&gt;¶&lt;/a&gt;Worldbrain Memex&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-worldbrain_memex"&gt;
+&lt;p&gt;
+&lt;a href="https://github.com/WorldBrain/Memex#memex-features"&gt;Worldbrain Memex&lt;/a&gt; is a browser extension to annotate, search and organize what you've seen online,
+and soon a &lt;a href="https://community.worldbrain.io/t/new-testing-memex-mobile-app-sync/233"&gt;mobile app&lt;/a&gt;.
+&lt;/p&gt;
+&lt;p&gt;
+It's an amazing product: open source, local first, supports tagging, highlights, annotations, and even full-text history search.
+By all means, try it!
+&lt;/p&gt;
+&lt;p&gt;
+It would be pretty close to my vision of the personal web assistant if not for a problem: it is also a kind of a silo.
+You can import the data from other services into Memex, but then you have to conform to its model of the data.
+If for some reason you can't use Memex for annotating and recording your history (e.g. on some of your devices) – you
+end up using multiple services, or having redundant (and potentially inconsistent) copies of your data scattered across your digital space.
+&lt;/p&gt;
+&lt;p&gt;
+Having privacy focused and open source tools is a very important step towards a better future.
+However, I want a different &lt;b&gt;model&lt;/b&gt; of interacting with my &lt;b&gt;existing&lt;/b&gt; data, which doesn't require moving data in between the silos.
+(see &lt;a class="link-up" href="#not_just_browser"&gt;"it's not just about the browser"&lt;/a&gt;)
+&lt;/p&gt;
+&lt;p&gt;
+And jumping ahead again, &lt;a class="link-down" href="#promnesia"&gt;Promnesia&lt;/a&gt; can be integrated with Memex data.
+Overall, it seems that our vision is pretty similar, and I &lt;a class="link-down" href="#future"&gt;expect&lt;/a&gt; that both projects can benefit from each other's work,
+up to the point that Promnesia extension is sharing the extension/backend with Worldbrain Memex.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-2"&gt;
+&lt;h2 id="promnesia"&gt;&lt;a class="headerlink" href="#promnesia"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;6&lt;/span&gt; Hello, Promnesia!&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-promnesia"&gt;
+&lt;div style="margin-top: 16px; margin-bottom: 16px"&gt;&lt;span class="before-aside"&gt;
+Ok enough rants! &lt;a href="https://github.com/karlicoss/promnesia"&gt;Promnesia&lt;/a&gt; is the tool I've developed to address some of the issues with the browsing history and URLs.
+
+&lt;/span&gt;&lt;aside class="sidenote"&gt;&lt;span style="color:darkgreen;font-weight:bold"&gt;infrastructure map&lt;/span&gt;: &lt;a href="myinfra.html#promnesia"&gt;promnesia&lt;/a&gt;&lt;/aside&gt;&lt;/div&gt;
+&lt;p&gt;
+I've already &lt;a class="link-up" href="#what_i_want"&gt;mentioned&lt;/a&gt; what I wanted, but I'll recap:
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="outline-3"&gt;
+&lt;h3 id="promnesia_goals"&gt;&lt;a class="headerlink" href="#promnesia_goals"&gt;¶&lt;/a&gt;Goals&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-promnesia_goals"&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;p&gt;
+&lt;a class="link-up" href="#history_broken"&gt;make history useful&lt;/a&gt;: unify scattered and siloed history under a single interface
+&lt;/p&gt;
+&lt;p&gt;
+There should be absolutely no difference between a link you opened yesterday in your Instapaper phone app,
+and a link you visited in Firefox ten years ago.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link-up" href="#urls_broken"&gt;make URLs useful&lt;/a&gt;: make use of their hierarchy and relations between them&lt;/li&gt;
+&lt;li&gt;assist me in exploring new information&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+make it possible to easily trace my history
+&lt;/p&gt;
+&lt;p&gt;
+Let me answer when, how, and why did I visit/bookmark the page?
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+integrate metadata: annotations, highlights, notes, chat messages, tweets, etc.
+&lt;/p&gt;
+&lt;p&gt;
+Release it from walled gardens and display it right within the page when applicable (e.g. highlights)
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+make it flexible
+&lt;/p&gt;
+&lt;p&gt;
+As long as it's &lt;i&gt;something&lt;/i&gt; you can extract URLs from, you should be able to feed it in Promnesia.
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+A cool thing is that some of these goals weren't clear from the beginning – I discovered them during development,
+and I think there are many more I haven't discovered yet!
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-3"&gt;
+&lt;h3 id="promnesia_metagoals"&gt;&lt;a class="headerlink" href="#promnesia_metagoals"&gt;¶&lt;/a&gt;Meta-goals&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-promnesia_metagoals"&gt;
+&lt;p&gt;
+There are also some &lt;b&gt;meta-goals&lt;/b&gt; and principles I'm adhering to:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;p&gt;
+make it &lt;b&gt;open source&lt;/b&gt;
+&lt;/p&gt;
+&lt;p&gt;
+This goes without saying: everything I'm doing for this project is shared and open source.
+Frankly, I'm not even sure such a project can be sustainable any other way.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+&lt;b&gt;local first&lt;/b&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Your past is sensitive data and you should have control over where you keep it and how you're accessing it.
+In the simplest setup, promnesia communicates with your browser through a &lt;b&gt;local&lt;/b&gt; port.
+&lt;/p&gt;
+&lt;p&gt;
+In addition, you have all your data available &lt;a class="post-tag" href="./tags.html#offline"&gt;#offline&lt;/a&gt;.
+Modern browsers provide a pretty pathetic offline experience, but if you use a tool similar to &lt;a href="https://github.com/pirate/ArchiveBox"&gt;ArchiveBox&lt;/a&gt;, this can be useful to you.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+make it &lt;b&gt;modular&lt;/b&gt;
+&lt;/p&gt;
+&lt;p&gt;
+Make sure components can be reused.
+&lt;/p&gt;
+&lt;p&gt;
+For the past several months, I've mostly been removing/moving away the code from Promnesia
+to make sure that the &lt;a href="https://github.com/karlicoss/HPI"&gt;data processing and normalization code&lt;/a&gt; in it can be used for other purposes by other people.
+&lt;/p&gt;
+&lt;p&gt;
+I'm going to take this even further and explore the potential for interoperability and integration with other open source tools, I'll write about it a bit &lt;a class="link-down" href="#future"&gt;later&lt;/a&gt;.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+&lt;b&gt;don't build another silo&lt;/b&gt;, use existing information
+&lt;/p&gt;
+&lt;p&gt;
+This kind of complements the previous point.
+&lt;/p&gt;
+&lt;p&gt;
+There are many decent services and tools already. They all have their own &lt;a href="annotating.html#comparison"&gt;pros and cons&lt;/a&gt;.
+Different people prefer different tools. Sometimes because they're locked in and don't have much choice,
+but other times because they genuinely have subtle preferences and opinions.
+&lt;/p&gt;
+&lt;p&gt;
+The cost of switching is too high, both in terms of the time and the cognitive effort.
+There's always the risk of encountering &lt;i&gt;one small thing&lt;/i&gt; that would make the tool a no-go.
+&lt;/p&gt;
+&lt;p&gt;
+We should invest in finding better ways of &lt;b&gt;combining&lt;/b&gt; existing tools, not rewriting all over again.
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-3"&gt;
+&lt;h3 id="how_does_it_work"&gt;&lt;a class="headerlink" href="#how_does_it_work"&gt;¶&lt;/a&gt;How does it work?&lt;/h3&gt;
+&lt;div class="outline-text-3" id="text-how_does_it_work"&gt;
+&lt;p&gt;
+Promnesia consists of three parts:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;p&gt;
+browser extension
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;neatly displays the history and other information in a sidebar&lt;/li&gt;
+&lt;li&gt;handles highlights&lt;/li&gt;
+&lt;li&gt;provides search interface&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+However, browser addons can't read access your filesystem, so to load the data we need a helper component:
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+server/backend: &lt;samp class="inline"&gt;promnesia server&lt;/samp&gt; command
+&lt;/p&gt;
+&lt;p&gt;
+It's called 'server', but really it's just a regular program with the only purpose to serve the data to the browser.
+It runs locally and you don't have to expose it to the outside.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+indexer: &lt;samp class="inline"&gt;promensia index&lt;/samp&gt; command
+&lt;/p&gt;
+&lt;p&gt;
+Indexer goes through the sources (specified in the config), processes raw data and extracts URLs along with other useful information.
+&lt;/p&gt;
+&lt;p&gt;
+Another important thing it's doing is &lt;b&gt;normalising&lt;/b&gt; URLs to establish equivalence and stip off garbage.
+I write about the motivation for it in &lt;a href="https://beepb00p.xyz/promnesia.html#urls_broken"&gt;"URLs are broken"&lt;/a&gt;.
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+You might also want to skim through the &lt;a href="https://github.com/karlicoss/promnesia#glossary"&gt;glossary&lt;/a&gt; if you want to understand deeper what information Promnesia is extracting.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="outline-4"&gt;
+&lt;h4 id="org0000000"&gt;Data sources&lt;/h4&gt;
+&lt;div class="outline-text-4"&gt;
+&lt;p&gt;
+Promnesia ships with some builtin sources. It supports:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;p&gt;
+data exports from online services: Reddit/Twitter/Hackernews/Telegram/Messenger/Hypothesis/Pocket/Instapaper, etc.
+&lt;/p&gt;
+&lt;p&gt;
+It heavily benefits from &lt;a href="https://github.com/karlicoss/HPI"&gt;HPI&lt;/a&gt; package to access the data.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Google Takeout/Activity backups&lt;/li&gt;
+&lt;li&gt;Markdown/org-mode/HTML or any other plaintext on your disk&lt;/li&gt;
+&lt;li&gt;in general, anything that can be parsed in some way&lt;/li&gt;
+&lt;li&gt;you can also add &lt;a href="https://github.com/karlicoss/promnesia/blob/master/doc/SOURCES.org#extending"&gt;your own custom sources&lt;/a&gt;, Promnesia is extensible&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+See &lt;a href="https://github.com/karlicoss/promnesia/blob/master/doc/SOURCES.org"&gt;SOURCES&lt;/a&gt; for more information.
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-4"&gt;
+&lt;h4 id="org0000001"&gt;Data flow&lt;/h4&gt;
+&lt;div class="outline-text-4"&gt;
+&lt;p&gt;
+Here's a diagram, which would hopefully help to understand how data flows through Promnesia.
+&lt;/p&gt;
+&lt;p&gt;
+See HPI &lt;a href="https://github.com/karlicoss/HPI/blob/master/doc/SETUP.org#data-flow"&gt;section on data flow&lt;/a&gt; for more information on HPI modules and data flow.
+&lt;/p&gt;
+&lt;p&gt;
+Also check out my &lt;a href="https://beepb00p.xyz/myinfra.html#promnesia"&gt;infrastructure map&lt;/a&gt;, which is more detailed!
+&lt;/p&gt;
+&lt;pre class="example"&gt;┌─────────────────────────────────┐ ┌────────────────────────────┐ ┌─────────────────┐
+│ 💾       HPI sources            │ │  💾    plaintext files      │ │  other sources  │
+│ (twitter, reddit, pocket, etc.) │ │ (org-mode, markdown, etc.) │ │ (user-defined)  │
+└─────────────────────────────────┘ └────────────────────────────┘ └─────────────────┘
+                                ⇘⇘              ⇓⇓               ⇙⇙
+                                 ⇘⇘             ⇓⇓              ⇙⇙
+                                 ┌──────────────────────────────┐
+                                 │ 🔄    promnesia indexer      │
+                                 |        (runs regularly)      │
+                                 └──────────────────────────────┘
+                                                ⇓⇓
+                                 ┌──────────────────────────────┐
+                                 │ 💾    visits database        │
+                                 │       (promnesia.sqlite)     │
+                                 └──────────────────────────────┘
+                                                ⇓⇓
+                                 ┌──────────────────────────────┐
+                                 │ 🔗    promnesia server       │
+                                 |       (always running)       |
+                                 └──────────────────────────────┘
+                                                ⇣⇣
+                                 ┌─────────────────────────────────┐
+                                 │ 🌐      web browser             ├───────────────────────────┐
+                                 |     (promnesia extension)       ⇐  💾 local browser history |
+                                 └─────────────────────────────────┴───────────────────────────┘
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-2"&gt;
+&lt;h2 id="how_to_use"&gt;&lt;a class="headerlink" href="#how_to_use"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;7&lt;/span&gt; How can you use Promnesia?&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-how_to_use"&gt;
+&lt;p&gt;
+Here I'll describe some specific scenarios for which I find Promnesia extremely useful.
+&lt;a href="https://github.com/karlicoss/promnesia#readme"&gt;README&lt;/a&gt; also has screenshots and short screencasts which elaborate on the features.
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;p&gt;
+Finding new information
+&lt;/p&gt;
+&lt;p&gt;
+Example: I run into an &lt;a href="https://nautil.us/issue/66/clockwork/haunted-by-his-brother-he-revolutionized-physics-rp"&gt;article&lt;/a&gt; on Twitter. I enjoyed it, and the website looks kind of familiar.
+&lt;/p&gt;
+&lt;p&gt;
+When I jump on &lt;a href="https://nautil.us"&gt;https://nautil.us&lt;/a&gt;, the Promnesia sidebar shows me that I've visited and even annotated other articles on this site before!
+&lt;/p&gt;
+&lt;p&gt;
+I am repeatedly stumbling upon this site, and it's got high quality content, so I subscribe to it through my RSS reader.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Exploring people and communities
+
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;p&gt;
+How often have I engaged with a certain blog in the past?
+&lt;/p&gt;
+&lt;p&gt;
+Which posts have I already seen or read? Did I like them?
+Should I dive deeper?
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Same questions, but for twitter accounts, subreddits, youtube channels or anything similar&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+Processing large amounts of information
+&lt;/p&gt;
+&lt;p&gt;
+For example:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;a href="https://pinboard.in/popular"&gt;Pinboard popular&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.lesswrong.com/wiki/How_To_Actually_Change_Your_Mind"&gt;link compilations&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://posobin.com/hn_classics"&gt;Hackernews 'classics'&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Display annotations and highlights from &lt;b&gt;any&lt;/b&gt; service (e.g. Instapaper/Pocket), within the webpage&lt;/li&gt;
+&lt;li&gt;Personal digital archaeology and external memory
+
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;Why did I bookmark this youtube video? Who sent it to me?&lt;/li&gt;
+&lt;li&gt;How did I get on this forgotten tab?&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+I'm sometimes annoyed by &lt;code class="inline"&gt;@&amp;lt;account&amp;gt;&lt;/code&gt; tweets. Should I unfollow them?
+&lt;/p&gt;
+&lt;p&gt;
+I.e. why did I follow them in the first place? Are they worth following overall? Do I like their tweets often or bookmark their links?
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+Integrating with your knowledge base
+&lt;/p&gt;
+&lt;p&gt;
+Promnesia can handle your private wiki whether it's plaintext, or a web service, which would help you instantly find and jump to the relevant information.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+Integrating with others' knowledge bases
+&lt;/p&gt;
+&lt;p&gt;
+I find it intriguing to think about this as tapping into each other's brains!
+&lt;/p&gt;
+&lt;p&gt;
+See: &lt;a href="myinfra-roam.html#promnesia"&gt;demo&lt;/a&gt; integrating Promnesia with a Roam Research database.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+Unified browser history
+&lt;/p&gt;
+&lt;p&gt;
+I'm listing it last because the benefits of this only become apparent when you start using your data, not while it just sits on your disk.
+&lt;/p&gt;
+&lt;p&gt;
+As you collect more and more detailed history, the whole system becomes more and more useful.
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-2"&gt;
+&lt;h2 id="future"&gt;&lt;a class="headerlink" href="#future"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;8&lt;/span&gt; Future of Promnesia&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-future"&gt;
+&lt;p&gt;
+Promnesia was a lot of work, especially in terms of sharing it with other people and documenting.
+If fact, &lt;b&gt;most writing on my blog have been slowly building up to this post&lt;/b&gt;.
+On my &lt;a href="myinfra.html#promnesia"&gt;infrastructure map&lt;/a&gt;, Promnesia is a leaf node!
+&lt;/p&gt;
+&lt;p&gt;
+As much as I am proud of my work, and how rewarding it is when other people find it useful… I'm already thinking how to break Promnesia apart and perhaps even sunset it.
+I would be happy if:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;I can raise the demand and awareness for data liberation and interoperability&lt;/li&gt;
+&lt;li&gt;I can inspire other people to implement something similar (and better!)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+As I &lt;a class="link-up" href="#promnesia_metagoals"&gt;previously&lt;/a&gt; mentioned, one of the meta-goals is modularity, so parts of Promnesia can be plugged in other tools.
+There is still some unused potential for integrating with other open source projects, so I want to take this even further and to the extreme:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;&lt;p&gt;
+URL indexers/data sources
+&lt;/p&gt;
+&lt;p&gt;
+Promnesia modules are very slim when it comes to the URL extraction, many of them are just 30 lines of code.
+Most of the boring and tedious stuff (like data normalization) is encapsulated in &lt;a href="https://github.com/karlicoss/HPI#readme"&gt;HPI&lt;/a&gt; package, which can be used with other tools.
+&lt;/p&gt;
+&lt;p&gt;
+It would be interesting to see if these data sources can be integrated with Worldbrain Memex.
+&lt;a class="link-up" href="#worldbrain_memex"&gt;Before&lt;/a&gt; I mentioned that at the moment Memex is a silo, but they also realize it!
+Very recently, WorldBrain announced &lt;a href="https://github.com/WorldBrain/storex-hub"&gt;Storex Hub&lt;/a&gt;, which seems like a potential means of integration.
+&lt;/p&gt;
+&lt;p&gt;
+It's likely that Promnesia backend can be rebased on top of it.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+URL normalization algorithm
+&lt;/p&gt;
+&lt;p&gt;
+At the moment, Promnesia uses a &lt;a href="https://github.com/karlicoss/promnesia/blob/master/src/promnesia/cannon.py"&gt;hacky set of rules&lt;/a&gt;, which does the right thing for the most websites I'm using.
+However, it's not sustainable for one person to maintain, and it feels worthy of extraction to a separate project/public database.
+I imagine it to be something similar to &lt;samp class="inline"&gt;tzdata&lt;/samp&gt;, just think how much frustration we all save by using the same library for timezone information.
+&lt;/p&gt;
+&lt;p&gt;
+This would be something many projects could benefit from: Polar Bookshelf, &lt;a href="https://web.hypothes.is"&gt;Hypothesis&lt;/a&gt;, Worldbrain Memex, and I'm sure there are many more I don't even know of!
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+Highlighting and anchoring annotations
+&lt;/p&gt;
+&lt;p&gt;
+One the one hand, even a very primitive algorithm for matching annotations against the page works pretty well in 90% of cases.
+On the other hand, the remaining 10% is the bit which is pretty hard to get right, and not an easy task.
+&lt;/p&gt;
+&lt;p&gt;
+It would be cool to reuse &lt;a href="https://web.hypothes.is/blog/fuzzy-anchoring/#a-new-approach"&gt;fuzzy anchoring&lt;/a&gt; by Hypothesis, compare it with whatever Worldbrain is using,
+and figure out how much of it is worth sharing. I'd rather help these projects maintain their code, than reinvent my own wheel.
+&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;
+Other features
+&lt;/p&gt;
+&lt;p&gt;
+Again, it feels that most of Promnesia's existing (and future!) features make sense to within Worldbrain Memex, or as plugins.
+&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+As you can see there is some significant overlap with Worldbrain Memex, and they already have a mature and impressive product. So I can see Promnesia as a plugin on top of it, or even as a part of it!
+This collaboration is something I'll look at in the near future.
+&lt;/p&gt;
+&lt;p&gt;
+In the meantime, Promnesia is completely usable on its own, and as long as I use it, I'll be supporting it!
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="outline-2"&gt;
+&lt;h2 id="fin"&gt;&lt;a class="headerlink" href="#fin"&gt;¶&lt;/a&gt;&lt;span class="section-number-2"&gt;9&lt;/span&gt; ---&lt;/h2&gt;
+&lt;div class="outline-text-2" id="text-fin"&gt;
+&lt;p&gt;
+I've always expected my gadgets to extend my ability to think and process information.
+Promnesia is a step I've taken to bring that future closer.
+&lt;/p&gt;
+&lt;p&gt;
+Want to join me? Check out the &lt;a href="https://github.com/karlicoss/promnesia"&gt;repository&lt;/a&gt;, which contains more screenshots, demos, and the setup manual.
+&lt;/p&gt;
+&lt;p&gt;
+If you think of cool features, useful data sources, or any related thoughts feel free to use &lt;a href="https://github.com/karlicoss/promnesia/issues"&gt;github issues&lt;/a&gt;
+or reach me by some other means.
+&lt;/p&gt;
+&lt;p&gt;
+Even better if you want to help and contribute!
+I'm happy to help you with any Python quirks or web extension specifics.
+&lt;/p&gt;
+&lt;p&gt;
+Related links:
+&lt;/p&gt;
+&lt;ul class="org-ul"&gt;
+&lt;li&gt;IndieWeb wiki on &lt;a href="https://indieweb.org/silo"&gt;silos&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Cloudflare blog: &lt;a href="https://blog.cloudflare.com/the-history-of-the-url"&gt;The History of the URL&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://utcc.utoronto.ca/~cks/space/blog/web/URLSAreTerriblePermanentIDs"&gt;"URLs are terrible permanent identifiers for things"&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://news.ycombinator.com/item?id=23227186"&gt;HN: WorldBrain's Memex: Bookmarking for the power users of the web&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="hpi.html"&gt;Human Programming Interface&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="sad-infra.html"&gt;The sad state of personal data and infrastructure&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;
+&lt;b&gt;Credits:&lt;/b&gt; thanks to &lt;a href="https://jborichevskiy.com/about"&gt;Jonathan&lt;/a&gt;, &lt;a href="http://awesomesauce.name"&gt;Andrew&lt;/a&gt; and &lt;a href="https://petr-tik.github.io"&gt;Petr&lt;/a&gt; for the valuable feedback on the post.
+Thanks to &lt;a href="https://twitter.com/_bepolymathe_"&gt;Emmanuel&lt;/a&gt; for trying out the project and suggestions on making it easier to set up!
+&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;/section&gt;
+
+    
+    &lt;section class="footer"&gt;
+        &lt;div class="post-tags"&gt;
+            &lt;a class="post-tag tag-inactive" href="./tags.html"&gt;#promnesia&lt;/a&gt;
+            &lt;a class="post-tag tag-active" href="./tags.html#pkm"&gt;#pkm&lt;/a&gt;
+        &lt;/div&gt;
+        &lt;time datetime="2020-05-30T00:00:00"&gt;30 May 2020&lt;/time&gt;
+    &lt;/section&gt;
+    
+
+    
+
+    &lt;section class="comments"&gt;
+    &lt;script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js"&gt;
+&lt;/script&gt;
+
+&lt;section data-isso-id="isso_promnesia" id="isso-thread"&gt;&lt;/section&gt;
+    &lt;/section&gt;
+
+&lt;/article&gt;
+        &lt;/main&gt;
+        
+        &lt;!-- TODO make semantic --&gt;
+        &lt;footer&gt;
+            &lt;span style="float:left"&gt;
+            &lt;a href="https://twitter.com/karlicoss"&gt;🐦 me @twitter&lt;/a&gt;
+            ·
+            &lt;a href="https://github.com/karlicoss"&gt;💻 me @github&lt;/a&gt;
+            &lt;/span&gt;
+
+            &lt;a href="http://creativecommons.org/licenses/by/4.0"&gt;CC BY 4.0&lt;/a&gt;
+        &lt;/footer&gt;
+    
+&lt;/body&gt;&lt;/html&gt;</description>
+      <guid isPermaLink="true">https://beepb00p.xyz/promnesia.html</guid>
+      <pubDate>Sat, 30 May 2020 00:00:00 +0000</pubDate>
+    </item>
     <item>
       <title>Extending my personal infrastructure with a data source</title>
       <link>https://beepb00p.xyz/myinfra-roam.html</link>
@@ -72,6 +1143,10 @@
                     &lt;a class="fat" href="./site.html"&gt;Site&lt;/a&gt;
                     ·
                     &lt;a class="fat" href="./me.html"&gt;Me&lt;/a&gt;
+                    &lt;div style="display:inline-block;font-size: 0.7rem;"&gt;
+                        &lt;a href="https://twitter.com/karlicoss" style="display:block;"&gt;@twitter&lt;/a&gt;
+                        &lt;a href="https://github.com/karlicoss" style="display:block;"&gt;@github&lt;/a&gt;
+                    &lt;/div&gt;
                 &lt;/span&gt;
             &lt;/nav&gt;
         &lt;/header&gt;
@@ -91,7 +1166,10 @@
 &lt;article&gt;
     
     &lt;section class="post-title"&gt;
-    &lt;h1&gt;Extending my personal infrastructure with a data source&lt;/h1&gt;
+    &lt;h1&gt;
+        Extending my personal infrastructure with a data source
+        &lt;a href="./blog-graph.html#myinfra_roam" style="font-size: 1rem;vertical-align: super;" title="See this post within the blog graph, and how it's connected to other posts"&gt;[see within blog graph]&lt;/a&gt;
+    &lt;/h1&gt;
     &lt;div class="summary"&gt;Featuring Roam Research
     &lt;/div&gt;&lt;/section&gt;
     &lt;!-- are sections appropriate for that? --&gt;
@@ -760,6 +1838,10 @@ Happy to hear your feedback or help you set up the tools I mention!
                     &lt;a class="fat" href="./site.html"&gt;Site&lt;/a&gt;
                     ·
                     &lt;a class="fat" href="./me.html"&gt;Me&lt;/a&gt;
+                    &lt;div style="display:inline-block;font-size: 0.7rem;"&gt;
+                        &lt;a href="https://twitter.com/karlicoss" style="display:block;"&gt;@twitter&lt;/a&gt;
+                        &lt;a href="https://github.com/karlicoss" style="display:block;"&gt;@github&lt;/a&gt;
+                    &lt;/div&gt;
                 &lt;/span&gt;
             &lt;/nav&gt;
         &lt;/header&gt;
@@ -779,7 +1861,10 @@ Happy to hear your feedback or help you set up the tools I mention!
 &lt;article&gt;
     
     &lt;section class="post-title"&gt;
-    &lt;h1&gt;Your configs suck? Try a real programming language.&lt;/h1&gt;
+    &lt;h1&gt;
+        Your configs suck? Try a real programming language.
+        &lt;a href="./blog-graph.html#python_configs" style="font-size: 1rem;vertical-align: super;" title="See this post within the blog graph, and how it's connected to other posts"&gt;[see within blog graph]&lt;/a&gt;
+    &lt;/h1&gt;
     &lt;div class="summary"&gt;Or yet another rant about YAML
     &lt;/div&gt;&lt;/section&gt;
     &lt;!-- are sections appropriate for that? --&gt;
@@ -1543,6 +2628,10 @@ in the rapid development phase, resort to having a flexible config
                     &lt;a class="fat" href="./site.html"&gt;Site&lt;/a&gt;
                     ·
                     &lt;a class="fat" href="./me.html"&gt;Me&lt;/a&gt;
+                    &lt;div style="display:inline-block;font-size: 0.7rem;"&gt;
+                        &lt;a href="https://twitter.com/karlicoss" style="display:block;"&gt;@twitter&lt;/a&gt;
+                        &lt;a href="https://github.com/karlicoss" style="display:block;"&gt;@github&lt;/a&gt;
+                    &lt;/div&gt;
                 &lt;/span&gt;
             &lt;/nav&gt;
         &lt;/header&gt;
@@ -1562,7 +2651,10 @@ in the rapid development phase, resort to having a flexible config
 &lt;article&gt;
     
     &lt;section class="post-title"&gt;
-    &lt;h1&gt;Human Programming Interface&lt;/h1&gt;
+    &lt;h1&gt;
+        Human Programming Interface
+        &lt;a href="./blog-graph.html#mypkg" style="font-size: 1rem;vertical-align: super;" title="See this post within the blog graph, and how it's connected to other posts"&gt;[see within blog graph]&lt;/a&gt;
+    &lt;/h1&gt;
     &lt;div class="summary"&gt;My life in a Python package
     &lt;/div&gt;&lt;/section&gt;
     &lt;!-- are sections appropriate for that? --&gt;
@@ -1882,20 +2974,12 @@ Here's the (incomplete) list of the modules:
 &lt;td class="org-left"&gt;Weight data (manually logged)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/books/kobo.py"&gt;my.books.kobo&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;&lt;a href="https://uk.kobobooks.com/products/kobo-aura-one"&gt;Kobo&lt;/a&gt; e-ink reader: annotations and reading stats&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/calendar/holidays.py"&gt;my.calendar.holidays&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-left"&gt;Public holidays (automatic) and days off work (manual inputs)&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/coding/commits.py"&gt;my.coding.commits&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-left"&gt;Git commits data for repositories on your filesystem&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/coding/github.py"&gt;my.coding.github&lt;/a&gt;&lt;/td&gt;
-&lt;td class="org-left"&gt;Github events and their metadata: comments/issues/pull requests&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/emfit"&gt;my.emfit&lt;/a&gt;&lt;/td&gt;
@@ -1910,6 +2994,22 @@ Here's the (incomplete) list of the modules:
 &lt;td class="org-left"&gt;Foursquare/Swarm checkins&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/github/all.py"&gt;my.github.all&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;Unified Github data (merged from GDPR export and periodic API updates)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/github/common.py"&gt;my.github.common&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;Github events and their metadata: comments/issues/pull requests&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/github/gdpr.py"&gt;my.github.gdpr&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;Github data (uses &lt;a href="https://github.com/settings/admin"&gt;official GDPR export&lt;/a&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/github/ghexport.py"&gt;my.github.ghexport&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;Github data: events, comments, etc. (API data)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/google/takeout/html.py"&gt;my.google.takeout.html&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-left"&gt;Google Takeout exports: browsing history, search/youtube/google play activity&lt;/td&gt;
 &lt;/tr&gt;
@@ -1920,6 +3020,10 @@ Here's the (incomplete) list of the modules:
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/instapaper.py"&gt;my.instapaper&lt;/a&gt;&lt;/td&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://www.instapaper.com"&gt;Instapaper&lt;/a&gt; bookmarks, highlights and annotations&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/kobo.py"&gt;my.kobo&lt;/a&gt;&lt;/td&gt;
+&lt;td class="org-left"&gt;&lt;a href="https://uk.kobobooks.com/products/kobo-aura-one"&gt;Kobo&lt;/a&gt; e-ink reader: annotations and reading stats&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
 &lt;td class="org-left"&gt;&lt;a href="https://github.com/karlicoss/my/tree/master/my/lastfm"&gt;my.lastfm&lt;/a&gt;&lt;/td&gt;
@@ -2722,6 +3826,10 @@ In some near future I will write more about:
                     &lt;a class="fat" href="./site.html"&gt;Site&lt;/a&gt;
                     ·
                     &lt;a class="fat" href="./me.html"&gt;Me&lt;/a&gt;
+                    &lt;div style="display:inline-block;font-size: 0.7rem;"&gt;
+                        &lt;a href="https://twitter.com/karlicoss" style="display:block;"&gt;@twitter&lt;/a&gt;
+                        &lt;a href="https://github.com/karlicoss" style="display:block;"&gt;@github&lt;/a&gt;
+                    &lt;/div&gt;
                 &lt;/span&gt;
             &lt;/nav&gt;
         &lt;/header&gt;
@@ -2741,7 +3849,10 @@ In some near future I will write more about:
 &lt;article&gt;
     
     &lt;section class="post-title"&gt;
-    &lt;h1&gt;Building data liberation infrastructure&lt;/h1&gt;
+    &lt;h1&gt;
+        Building data liberation infrastructure
+        &lt;a href="./blog-graph.html#exports" style="font-size: 1rem;vertical-align: super;" title="See this post within the blog graph, and how it's connected to other posts"&gt;[see within blog graph]&lt;/a&gt;
+    &lt;/h1&gt;
     &lt;div class="summary"&gt;How to export, access and own your personal data with minimal effort
     &lt;/div&gt;&lt;/section&gt;
     &lt;!-- are sections appropriate for that? --&gt;
@@ -4033,6 +5144,10 @@ Big thanks to &lt;a href="https://jborichevskiy.com"&gt;Jonathan&lt;/a&gt; for r
                     &lt;a class="fat" href="./site.html"&gt;Site&lt;/a&gt;
                     ·
                     &lt;a class="fat" href="./me.html"&gt;Me&lt;/a&gt;
+                    &lt;div style="display:inline-block;font-size: 0.7rem;"&gt;
+                        &lt;a href="https://twitter.com/karlicoss" style="display:block;"&gt;@twitter&lt;/a&gt;
+                        &lt;a href="https://github.com/karlicoss" style="display:block;"&gt;@github&lt;/a&gt;
+                    &lt;/div&gt;
                 &lt;/span&gt;
             &lt;/nav&gt;
         &lt;/header&gt;
@@ -4052,7 +5167,10 @@ Big thanks to &lt;a href="https://jborichevskiy.com"&gt;Jonathan&lt;/a&gt; for r
 &lt;article&gt;
     
     &lt;section class="post-title"&gt;
-    &lt;h1&gt;Against unnecessary databases&lt;/h1&gt;
+    &lt;h1&gt;
+        Against unnecessary databases
+        &lt;a href="./blog-graph.html#against_db" style="font-size: 1rem;vertical-align: super;" title="See this post within the blog graph, and how it's connected to other posts"&gt;[see within blog graph]&lt;/a&gt;
+    &lt;/h1&gt;
     &lt;div class="summary"&gt;Parse, don't normalize
     &lt;/div&gt;&lt;/section&gt;
     &lt;!-- are sections appropriate for that? --&gt;
@@ -5373,6 +6491,10 @@ Happy to hear your thoughts and suggestions! Thank you for making it through thi
                     &lt;a class="fat" href="./site.html"&gt;Site&lt;/a&gt;
                     ·
                     &lt;a class="fat" href="./me.html"&gt;Me&lt;/a&gt;
+                    &lt;div style="display:inline-block;font-size: 0.7rem;"&gt;
+                        &lt;a href="https://twitter.com/karlicoss" style="display:block;"&gt;@twitter&lt;/a&gt;
+                        &lt;a href="https://github.com/karlicoss" style="display:block;"&gt;@github&lt;/a&gt;
+                    &lt;/div&gt;
                 &lt;/span&gt;
             &lt;/nav&gt;
         &lt;/header&gt;
@@ -5392,7 +6514,10 @@ Happy to hear your thoughts and suggestions! Thank you for making it through thi
 &lt;article&gt;
     
     &lt;section class="post-title"&gt;
-    &lt;h1&gt;In search of a better job scheduler&lt;/h1&gt;
+    &lt;h1&gt;
+        In search of a better job scheduler
+        &lt;a href="./blog-graph.html#scheduler" style="font-size: 1rem;vertical-align: super;" title="See this post within the blog graph, and how it's connected to other posts"&gt;[see within blog graph]&lt;/a&gt;
+    &lt;/h1&gt;
     &lt;div class="summary"&gt;What if cron and systemd had a baby? Wouldn't it be beautiful?
     &lt;/div&gt;&lt;/section&gt;
     &lt;!-- are sections appropriate for that? --&gt;
@@ -5929,6 +7054,10 @@ Updates:
                     &lt;a class="fat" href="./site.html"&gt;Site&lt;/a&gt;
                     ·
                     &lt;a class="fat" href="./me.html"&gt;Me&lt;/a&gt;
+                    &lt;div style="display:inline-block;font-size: 0.7rem;"&gt;
+                        &lt;a href="https://twitter.com/karlicoss" style="display:block;"&gt;@twitter&lt;/a&gt;
+                        &lt;a href="https://github.com/karlicoss" style="display:block;"&gt;@github&lt;/a&gt;
+                    &lt;/div&gt;
                 &lt;/span&gt;
             &lt;/nav&gt;
         &lt;/header&gt;
@@ -5948,7 +7077,10 @@ Updates:
 &lt;article&gt;
     
     &lt;section class="post-title"&gt;
-    &lt;h1&gt;What data on myself I collect and why?&lt;/h1&gt;
+    &lt;h1&gt;
+        What data on myself I collect and why?
+        &lt;a href="./blog-graph.html#my_data" style="font-size: 1rem;vertical-align: super;" title="See this post within the blog graph, and how it's connected to other posts"&gt;[see within blog graph]&lt;/a&gt;
+    &lt;/h1&gt;
     &lt;div class="summary"&gt;How I am using 50+ sources of my personal data
     &lt;/div&gt;&lt;/section&gt;
     &lt;!-- are sections appropriate for that? --&gt;
@@ -7167,6 +8299,10 @@ In the &lt;a href="exports.html"&gt;next post&lt;/a&gt; I'm elaborating on desig
                     &lt;a class="fat" href="./site.html"&gt;Site&lt;/a&gt;
                     ·
                     &lt;a class="fat" href="./me.html"&gt;Me&lt;/a&gt;
+                    &lt;div style="display:inline-block;font-size: 0.7rem;"&gt;
+                        &lt;a href="https://twitter.com/karlicoss" style="display:block;"&gt;@twitter&lt;/a&gt;
+                        &lt;a href="https://github.com/karlicoss" style="display:block;"&gt;@github&lt;/a&gt;
+                    &lt;/div&gt;
                 &lt;/span&gt;
             &lt;/nav&gt;
         &lt;/header&gt;
@@ -7186,7 +8322,10 @@ In the &lt;a href="exports.html"&gt;next post&lt;/a&gt; I'm elaborating on desig
 &lt;article&gt;
     
     &lt;section class="post-title"&gt;
-    &lt;h1&gt;The sad state of personal data and infrastructure&lt;/h1&gt;
+    &lt;h1&gt;
+        The sad state of personal data and infrastructure
+        &lt;a href="./blog-graph.html#sad_infra" style="font-size: 1rem;vertical-align: super;" title="See this post within the blog graph, and how it's connected to other posts"&gt;[see within blog graph]&lt;/a&gt;
+    &lt;/h1&gt;
     &lt;div class="summary"&gt;Why can't we have nice digital things?
     &lt;/div&gt;&lt;/section&gt;
     &lt;!-- are sections appropriate for that? --&gt;
@@ -8298,8 +9437,9 @@ I'm simply using &lt;a href="https://borgbackup.readthedocs.io/en/stable"&gt;bor
 &lt;div class="outline-text-2" id="text-links"&gt;
 &lt;ul class="org-ul"&gt;
 &lt;li&gt;jborichevskiy: &lt;a href="https://news.ycombinator.com/item?id=21659876"&gt;Digital Tools I Wish Existed (HN)&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://commandcenter.blogspot.com/2017/10/the-upspin-manifesto-on-ownership-and.html"&gt;The Upspin manifesto&lt;/a&gt;: On the ownership and sharing of data&lt;/li&gt;
 &lt;li&gt;IndieWeb wiki on &lt;a href="https://indieweb.org/silo"&gt;silos&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Ink &amp;amp; Switch: &lt;a href="https://www.inkandswitch.com/local-first.html"&gt;Local-first software: You own your data, in spite of the cloud&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://commandcenter.blogspot.com/2017/10/the-upspin-manifesto-on-ownership-and.html"&gt;The Upspin manifesto&lt;/a&gt;: On the ownership and sharing of data&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://news.ycombinator.com/item?id=21921323"&gt;The old Internet died and we watched and did nothing (HN)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;NetOpWibby: &lt;a href="https://news.ycombinator.com/item?id=21684949"&gt;A Personal API (HN)&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -8386,1225 +9526,6 @@ Let me know if you can think of any other data integrations you are missing and 
 &lt;/body&gt;&lt;/html&gt;</description>
       <guid isPermaLink="true">https://beepb00p.xyz/sad-infra.html</guid>
       <pubDate>Sun, 15 Dec 2019 00:00:00 +0000</pubDate>
-    </item>
-    <item>
-      <title>Analyzing accuracy of power reported by stationary bike</title>
-      <link>https://beepb00p.xyz/exercise-bike-model.html</link>
-      <description>&lt;!DOCTYPE html&gt;
-&lt;html lang="en" prefix="og: http://ogp.me/ns#"&gt;&lt;head&gt;
-        &lt;meta charset="utf-8"/&gt;
-        &lt;meta content="width=device-width, initial-scale=1" name="viewport"/&gt;
-
-        &lt;!-- Icon made by Twitter --&gt;
-        &lt;!-- https://twemoji.twitter.com/content/twemoji-twitter/en.html --&gt;
-        &lt;link href="./robot-face.png" rel="icon"/&gt;
-        &lt;link href="./robot-face.png" rel="apple-touch-icon"/&gt;
-
-        &lt;meta content="https://github.com/karlicoss/beepb00p" name="generator"/&gt;
-        &lt;meta content="English" name="language"/&gt;
-        
-        &lt;meta content="exercise quantifiedself ipython" name="keywords"/&gt;
-        
-        &lt;!-- TODO concat with keywords tags; also need to make comma separated? --&gt;
-
-        &lt;title&gt;Analyzing accuracy of power reported by stationary bike | beepb00p&lt;/title&gt;
-
-        &lt;link href="https://fonts.googleapis.com/css?family=Source+Serif+Pro" rel="stylesheet" type="text/css"/&gt;
-        &lt;link href="./css/default.css?v=3" rel="stylesheet"/&gt;
-        &lt;!-- TODO make conditional?? --&gt;
-        &lt;link href="./css/posts-list.css" rel="stylesheet"/&gt; 
-        &lt;link href="./css/links.css?v=4" rel="stylesheet"/&gt;
-
-        
-        &lt;script type="text/javascript"&gt;
- window.MathJax = {
-     tex2jax: {
-         // note that hakyll source has got double dollar signs due to special meaning in templates
-         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-         processEscapes: true
-     }
- };
-&lt;/script&gt;
-&lt;script async="" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"&gt;&lt;/script&gt;
-        
-
-        &lt;link href="https://beepb00p.xyz/exercise-bike-model.html" rel="canonical"/&gt;
-
-        &lt;!-- can test it with https://telegram.me/webpagebot --&gt;
-        &lt;!-- or https://developers.facebook.com/tools/debug --&gt;
-        &lt;meta content="website" property="og:type"/&gt;
-        &lt;meta content="https://beepb00p.xyz/exercise-bike-model.html" property="og:url"/&gt; &lt;!-- TODO base? --&gt;
-        &lt;meta content="Analyzing accuracy of power reported by stationary bike | beepb00p" property="og:title"/&gt;
-        &lt;meta content="How I found my exercise machine to violate laws of physics" property="og:description"/&gt;
-        &lt;!-- ugh. why is image necessary??? otherwise other parts aren't working or I get lots of 404s --&gt;
-        &lt;!-- ugh. Facebook really wants jpg? --&gt;
-        &lt;!-- also Facebook displays it with black background, but whatever, fuck it. --&gt;
-        &lt;meta content="https://beepb00p.xyz/robot-face.jpg" property="og:image"/&gt;
-
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;!-- TODO make semantic --&gt;
-        &lt;header&gt;
-            &lt;nav&gt;
-                &lt;span class="nav-left"&gt;
-                    &lt;a class="fat" href="./"&gt;Home&lt;/a&gt;
-                    &lt;!-- TODO eh, not sure if this symbol is good for that... --&gt;
-                    ·
-                    &lt;a class="fat" href="./ideas.html"&gt;Ideas&lt;/a&gt;
-                    ·
-                    &lt;a class="fat" href="./exobrain"&gt;Exobrain&lt;/a&gt;
-                    ·
-                    &lt;a class="fat" href="./tags.html"&gt;Tags&lt;/a&gt;
-                &lt;/span&gt;
-                &lt;span class="nav-right"&gt;
-                    &lt;a class="fat" href="./feed.html"&gt;Feed&lt;/a&gt;
-                    ·
-                    &lt;a class="fat" href="./site.html"&gt;Site&lt;/a&gt;
-                    ·
-                    &lt;a class="fat" href="./me.html"&gt;Me&lt;/a&gt;
-                &lt;/span&gt;
-            &lt;/nav&gt;
-        &lt;/header&gt;
-
-        &lt;main&gt;
-            
-&lt;link href="./css/ipynb.css" rel="stylesheet"/&gt;
-&lt;link href="./css/ipynb-syntax.css" rel="stylesheet"/&gt;
-
-
-
-
-&lt;article&gt;
-    
-    &lt;section class="post-title"&gt;
-    &lt;h1&gt;Analyzing accuracy of power reported by stationary bike&lt;/h1&gt;
-    &lt;div class="summary"&gt;How I found my exercise machine to violate laws of physics
-    &lt;/div&gt;&lt;/section&gt;
-    &lt;!-- are sections appropriate for that? --&gt;
-
-    &lt;section class="content"&gt;
-        
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;I was curious how effort exerted during the exercise impacts heart rate and whether that correlates strongly with subjective fatigue and exhaustion.&lt;/p&gt;
-&lt;p&gt;It seemed that easiest way to experiment would be stationary bike. Running only has single variable, speed. One could of course change incline, but that would be harder to predict.&lt;/p&gt;
-&lt;p&gt;For elliptical machine or rowing machine it would be even more complicated!&lt;/p&gt;
-&lt;p&gt;With stationary bike, there are two variables that potentially impact power you need to exert:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;RPM (revolutions per minute), or angular velocity, that should have linear effect on power (no air resistance as it's stationary!)&lt;/li&gt;
-&lt;li&gt;resistance, which isn't exactly specified, but one would expect it to be proportional to the force you have to apply (i.e. &lt;a href="https://en.wikipedia.org/wiki/Torque"&gt;torque&lt;/a&gt;)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Or, simply put, $P = \tau \omega$ (&lt;a href="https://en.wikipedia.org/wiki/Power_%28physics%29#Mechanical_power"&gt;wiki&lt;/a&gt; )&lt;/p&gt;
-&lt;p&gt;The &lt;a href="https://www.technogym.com/gb/indoor-cycling-live-bike.html"&gt;indoor exercise bike&lt;/a&gt; displays the pace (i.e. revolutions per minute), so all you have to do is maintain it.
-In addition it's displaying current resistance level (you can set it by adjusting a mechanical knob) and reports power in watts.&lt;/p&gt;
-&lt;p&gt;During exercise, I'm using a chest HR tracker, so simplest thing to do would be take whatever power the machine reports and try to find correlation with moving total/average of HR.&lt;/p&gt;
-&lt;p&gt;However, being paranoid and lacking any documentation for the machine, I decided no to trust its numbers blindly and check them instead. Technogym's website doesn't help in clarifying how power is computed. They have some sensible information &lt;a href="https://www.technogym.com/gb/newsroom/power-meter-what-is-how-it-works"&gt;like&lt;/a&gt;:&lt;/p&gt;
-&lt;blockquote&gt;&lt;p&gt;The power meter must be accurate.&lt;/p&gt;
-&lt;p&gt;The power measurement must be precise and repeatable. A 3-5 watt error is not significant, but if a system is not reliable there may be deviations of many tens of watts, i.e. equal to or greater than the amount of power that is gained from one year's training.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Let's see how accurate is their power meter!&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-
-
-    
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Initial-measurements-(2019-11-09)"&gt;Initial measurements (2019-11-09)&lt;a class="anchor-link" href="#Initial-measurements-(2019-11-09)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Throughout different exercise sessions, I've taken bunch of measurements of RPM, resistance and power:&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-
-
-   
-   &lt;details class="cell-collapsed"&gt;
-   &lt;summary&gt;Measurements &lt;span class="cell-collapsed-expand"&gt;(click to expand)&lt;/span&gt;&lt;/summary&gt;
-       
-&lt;div class="cell border-box-sizing code_cell rendered celltag_collapsed"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [1]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# TODO could only collapse inputs?&lt;/span&gt;
-&lt;span class="n"&gt;datas&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s2"&gt;"""&lt;/span&gt;
-&lt;span class="s2"&gt;58 10 129&lt;/span&gt;
-&lt;span class="s2"&gt;56 10 127&lt;/span&gt;
-&lt;span class="s2"&gt;56 10 127&lt;/span&gt;
-&lt;span class="s2"&gt;56 8  94&lt;/span&gt;
-&lt;span class="s2"&gt;57 8  98&lt;/span&gt;
-&lt;span class="s2"&gt;56 8  94&lt;/span&gt;
-&lt;span class="s2"&gt;58 10 133&lt;/span&gt;
-&lt;span class="s2"&gt;56 10 126&lt;/span&gt;
-&lt;span class="s2"&gt;56 8  93&lt;/span&gt;
-&lt;span class="s2"&gt;55 8  91&lt;/span&gt;
-&lt;span class="s2"&gt;56 8  94&lt;/span&gt;
-&lt;span class="s2"&gt;56 10 128&lt;/span&gt;
-&lt;span class="s2"&gt;55 10 124&lt;/span&gt;
-&lt;span class="s2"&gt;54 10 119&lt;/span&gt;
-&lt;span class="s2"&gt;53 8  87&lt;/span&gt;
-&lt;span class="s2"&gt;55 8  93&lt;/span&gt;
-&lt;span class="s2"&gt;55 8  90&lt;/span&gt;
-&lt;span class="s2"&gt;95 8  240&lt;/span&gt;
-
-&lt;span class="s2"&gt;70 10 198&lt;/span&gt;
-&lt;span class="s2"&gt;55 8  85&lt;/span&gt;
-&lt;span class="s2"&gt;95 8  226&lt;/span&gt;
-&lt;span class="s2"&gt;95 8  229&lt;/span&gt;
-&lt;span class="s2"&gt;95 8  228&lt;/span&gt;
-&lt;span class="s2"&gt;95 8  227&lt;/span&gt;
-
-&lt;span class="s2"&gt;97 8  236&lt;/span&gt;
-&lt;span class="s2"&gt;95 8  227&lt;/span&gt;
-&lt;span class="s2"&gt;95 8  227&lt;/span&gt;
-&lt;span class="s2"&gt;95 8  230&lt;/span&gt;
-&lt;span class="s2"&gt;60 10 156&lt;/span&gt;
-&lt;span class="s2"&gt;61 10 154&lt;/span&gt;
-&lt;span class="s2"&gt;62 10 162&lt;/span&gt;
-&lt;span class="s2"&gt;61 10 156&lt;/span&gt;
-&lt;span class="s2"&gt;55 10 125&lt;/span&gt;
-&lt;span class="s2"&gt;56 10 128&lt;/span&gt;
-&lt;span class="s2"&gt;57 8  89&lt;/span&gt;
-&lt;span class="s2"&gt;56 8  87&lt;/span&gt;
-&lt;span class="s2"&gt;57 8  90&lt;/span&gt;
-&lt;span class="s2"&gt;57 8  91&lt;/span&gt;
-&lt;span class="s2"&gt;60 8  101&lt;/span&gt;
-&lt;span class="s2"&gt;56 10 129&lt;/span&gt;
-&lt;span class="s2"&gt;57 10 131&lt;/span&gt;
-&lt;span class="s2"&gt;"""&lt;/span&gt;
-
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;pandas&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;pd&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;make_df&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;datas&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;DataFrame&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-        &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;int&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;split&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;datas&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;splitlines&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;strip&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
-        &lt;span class="n"&gt;columns&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'rpm'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'resistance'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'watts'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
-    &lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;index&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;apply&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;{row['rpm']}&lt;/span&gt;&lt;span class="s2"&gt;_&lt;/span&gt;&lt;span class="si"&gt;{row['resistance']}&lt;/span&gt;&lt;span class="s2"&gt;_&lt;/span&gt;&lt;span class="si"&gt;{row['watts']}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;axis&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'columns'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;
-
-&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;make_df&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;datas&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;old_df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;copy&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="c1"&gt;# btw, if anyone knows a more elegant way of converting such a table in dataframe, I'd be happy to know!&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-   &lt;/details&gt;
-
-
-
-
-
-    
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [2]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;display&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sample&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;random_state&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="output_wrapper"&gt;
-&lt;div class="output"&gt;
-
-
-&lt;div class="output_area"&gt;
-
-    &lt;div class="prompt"&gt;&lt;/div&gt;
-
-
-
-&lt;div class="output_html rendered_html output_subarea"&gt;
-&lt;div&gt;
-&lt;style scoped=""&gt;
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-&lt;/style&gt;
-&lt;table border="1" class="dataframe"&gt;
-  &lt;thead&gt;
-    &lt;tr style="text-align: right;"&gt;
-      &lt;th&gt;&lt;/th&gt;
-      &lt;th&gt;rpm&lt;/th&gt;
-      &lt;th&gt;resistance&lt;/th&gt;
-      &lt;th&gt;watts&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;th&gt;95_8_227&lt;/th&gt;
-      &lt;td&gt;95&lt;/td&gt;
-      &lt;td&gt;8&lt;/td&gt;
-      &lt;td&gt;227&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;56_8_87&lt;/th&gt;
-      &lt;td&gt;56&lt;/td&gt;
-      &lt;td&gt;8&lt;/td&gt;
-      &lt;td&gt;87&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;61_10_154&lt;/th&gt;
-      &lt;td&gt;61&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;154&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;57_8_98&lt;/th&gt;
-      &lt;td&gt;57&lt;/td&gt;
-      &lt;td&gt;8&lt;/td&gt;
-      &lt;td&gt;98&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;56_8_94&lt;/th&gt;
-      &lt;td&gt;56&lt;/td&gt;
-      &lt;td&gt;8&lt;/td&gt;
-      &lt;td&gt;94&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;61_10_156&lt;/th&gt;
-      &lt;td&gt;61&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;156&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;95_8_230&lt;/th&gt;
-      &lt;td&gt;95&lt;/td&gt;
-      &lt;td&gt;8&lt;/td&gt;
-      &lt;td&gt;230&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;56_10_128&lt;/th&gt;
-      &lt;td&gt;56&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;128&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;57_8_90&lt;/th&gt;
-      &lt;td&gt;57&lt;/td&gt;
-      &lt;td&gt;8&lt;/td&gt;
-      &lt;td&gt;90&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;th&gt;62_10_162&lt;/th&gt;
-      &lt;td&gt;62&lt;/td&gt;
-      &lt;td&gt;10&lt;/td&gt;
-      &lt;td&gt;162&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
-
-
-
-
-    
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;It's reasonable to assume that power depends linearly both on RPM and resistance, so we conjecture &lt;code&gt;watts = rpm x resistance&lt;/code&gt;. Let's see if it holds against what the exercise bike reports:&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-
-
-   
-   &lt;details class="cell-collapsed"&gt;
-   &lt;summary&gt;hack to make seaborn plots deterministic &lt;span class="cell-collapsed-expand"&gt;(click to expand)&lt;/span&gt;&lt;/summary&gt;
-       
-&lt;div class="cell border-box-sizing code_cell rendered celltag_collapsed"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [3]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;seaborn&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;sns&lt;/span&gt;
-&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;sns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;algorithms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bootstrap&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="vm"&gt;__module__&lt;/span&gt; &lt;span class="o"&gt;==&lt;/span&gt; &lt;span class="s1"&gt;'seaborn.algorithms'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-    &lt;span class="c1"&gt;# prevents nondeterminism in plots https://github.com/mwaskom/seaborn/issues/1924&lt;/span&gt;
-    &lt;span class="c1"&gt;# we only want to do it once&lt;/span&gt;
-    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;bootstrap_hacked&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;bootstrap_orig&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;algorithms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bootstrap&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-        &lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'seed'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;
-        &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;bootstrap_orig&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    
-    &lt;span class="n"&gt;sns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;algorithms&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;bootstrap&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;bootstrap_hacked&lt;/span&gt;
-    
-&lt;span class="c1"&gt;# apparently because of a dependency    &lt;/span&gt;
-&lt;span class="c1"&gt;# https://github.com/statsmodels/statsmodels/blob/fdd61859568c4863de9b084cb9f84512be55ab33/setup.cfg#L17&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;warnings&lt;/span&gt;
-&lt;span class="n"&gt;warnings&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;filterwarnings&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'ignore'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;'Method .ptp is deprecated and will be removed.*'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="ne"&gt;FutureWarning&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;module&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'numpy.*'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-   &lt;/details&gt;
-
-
-
-
-
-    
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [4]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="o"&gt;%&lt;/span&gt;&lt;span class="k"&gt;matplotlib&lt;/span&gt; inline
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;matplotlib&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;matplotlib&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;pyplot&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;plt&lt;/span&gt;
-&lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;style&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;use&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'seaborn'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;seaborn&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;sns&lt;/span&gt;
-&lt;span class="n"&gt;sns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;font_scale&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mf"&gt;1.25&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="c1"&gt;# TODO not sure?&lt;/span&gt;
-
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;plot_df&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;dff&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;copy&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-    &lt;span class="n"&gt;dff&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'rpm x resistance'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'rpm'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'resistance'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="s1"&gt;'color'&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;dff&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
-        &lt;span class="n"&gt;dff&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'color'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s1"&gt;'blue'&lt;/span&gt;
-
-    &lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ax&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;subplots&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;figsize&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-    &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xlim&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dff&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'rpm x resistance'&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mf"&gt;1.1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-    &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ylim&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;max&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dff&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'watts'&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="mf"&gt;1.1&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-
-    &lt;span class="n"&gt;g&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;regplot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;
-        &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;dff&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'rpm x resistance'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;y&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s1"&gt;'watts'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-        &lt;span class="n"&gt;scatter_kws&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="s1"&gt;'facecolors'&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;dff&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'color'&lt;/span&gt;&lt;span class="p"&gt;]},&lt;/span&gt;
-        &lt;span class="n"&gt;truncate&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-    &lt;span class="p"&gt;)&lt;/span&gt;
-
-    &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;xlabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Power, theoretical, angular velocity multiplied by resistance'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ylabel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Power, watts as reported by the machine'&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-    &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-
-&lt;span class="n"&gt;plot_df&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="output_wrapper"&gt;
-&lt;div class="output"&gt;
-
-
-&lt;div class="output_area"&gt;
-
-    &lt;div class="prompt"&gt;&lt;/div&gt;
-
-
-
-
-&lt;div class="output_png output_subarea"&gt;
-&lt;img src="exercise-bike-model_files/exercise-bike-model_6_0.png"/&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
-
-
-
-
-    
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Wow, that doesn't look so well, I'd expect the regression line to intersect (0, 0). Let's double check this:&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-
-
-    
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [5]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;statsmodels.api&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;sm&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;print_stats&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="n"&gt;dff&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;copy&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-    &lt;span class="n"&gt;dff&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'rpm x resistance'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'rpm'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'resistance'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
-    &lt;span class="n"&gt;X&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;dff&lt;/span&gt;&lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="s1"&gt;'rpm x resistance'&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
-    &lt;span class="n"&gt;X&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;add_constant&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;res&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;OLS&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;dff&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'watts'&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt; &lt;span class="n"&gt;X&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-    &lt;span class="n"&gt;summary&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;summary&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;
-    &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;re&lt;/span&gt; &lt;span class="c1"&gt;# filter out nondeterministic stuff from the report&lt;/span&gt;
-    &lt;span class="n"&gt;summary&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;re&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sub&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Date:.*\d&lt;/span&gt;&lt;span class="si"&gt;{4}&lt;/span&gt;&lt;span class="s1"&gt;.*&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;''&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;summary&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-    &lt;span class="n"&gt;summary&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;re&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;sub&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'Time:.*\d&lt;/span&gt;&lt;span class="si"&gt;{2}&lt;/span&gt;&lt;span class="s1"&gt;:\d&lt;/span&gt;&lt;span class="si"&gt;{2}&lt;/span&gt;&lt;span class="s1"&gt;:\d&lt;/span&gt;&lt;span class="si"&gt;{2}&lt;/span&gt;&lt;span class="s1"&gt;.*&lt;/span&gt;&lt;span class="se"&gt;\n&lt;/span&gt;&lt;span class="s1"&gt;'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;''&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;summary&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;summary&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;print_stats&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="output_wrapper"&gt;
-&lt;div class="output"&gt;
-
-
-&lt;div class="output_area"&gt;
-
-    &lt;div class="prompt"&gt;&lt;/div&gt;
-
-
-&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:                  watts   R-squared:                       0.982
-Model:                            OLS   Adj. R-squared:                  0.981
-Method:                 Least Squares   F-statistic:                     2109.
-No. Observations:                  41   AIC:                             281.4
-Df Residuals:                      39   BIC:                             284.8
-Df Model:                           1                                         
-Covariance Type:            nonrobust                                         
-====================================================================================
-                       coef    std err          t      P&amp;gt;|t|      [0.025      0.975]
-------------------------------------------------------------------------------------
-const             -110.6016      5.605    -19.732      0.000    -121.939     -99.264
-rpm x resistance     0.4406      0.010     45.929      0.000       0.421       0.460
-==============================================================================
-Omnibus:                        1.196   Durbin-Watson:                   1.017
-Prob(Omnibus):                  0.550   Jarque-Bera (JB):                1.049
-Skew:                          -0.190   Prob(JB):                        0.592
-Kurtosis:                       2.315   Cond. No.                     2.87e+03
-==============================================================================
-
-Warnings:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The condition number is large, 2.87e+03. This might indicate that there are
-strong multicollinearity or other numerical problems.
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
-
-
-
-
-    
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Free parameter is about &lt;code&gt;-100&lt;/code&gt; watts, which is quite a lot considering my high intensity intervals are &lt;code&gt;250&lt;/code&gt; watts (so it means &lt;strong&gt;about 40% error&lt;/strong&gt;!). 
-I don't think it can be explained by friction either: if anything, friction would shift the plot up and make the free coefficient positive.&lt;/p&gt;
-&lt;p&gt;At this point, I'm not sure what it means. I guess I'll try to make more measurements at really low resistances and speeds to make the model more complete, but I would be too surprised if either watts or resistance reported by the machine are just made up.&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-
-
-    
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="More-data-(2019-11-14)"&gt;More data (2019-11-14)&lt;a class="anchor-link" href="#More-data-(2019-11-14)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;I collected more data corresponding to different resistances/velocities. It's actually quite hard to consistently spin under low resistance setting, so I think I might need one more round of data collection to complete the picture!&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-
-
-   
-   &lt;details class="cell-collapsed"&gt;
-   &lt;summary&gt;More measurements &lt;span class="cell-collapsed-expand"&gt;(click to expand)&lt;/span&gt;&lt;/summary&gt;
-       
-&lt;div class="cell border-box-sizing code_cell rendered celltag_collapsed"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [6]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;new_df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;make_df&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"""&lt;/span&gt;
-&lt;span class="s2"&gt;96  4  66&lt;/span&gt;
-&lt;span class="s2"&gt;99  4  69&lt;/span&gt;
-&lt;span class="s2"&gt;101 6  146&lt;/span&gt;
-&lt;span class="s2"&gt;103 6  149&lt;/span&gt;
-&lt;span class="s2"&gt;110 6  166&lt;/span&gt;
-&lt;span class="s2"&gt;111 6  170&lt;/span&gt;
-&lt;span class="s2"&gt;50  13 186&lt;/span&gt;
-&lt;span class="s2"&gt;36  13 107&lt;/span&gt;
-&lt;span class="s2"&gt;36  13 105&lt;/span&gt;
-&lt;span class="s2"&gt;31  10 41&lt;/span&gt;
-&lt;span class="s2"&gt;30  10 44&lt;/span&gt;
-&lt;span class="s2"&gt;28  10 39&lt;/span&gt;
-&lt;span class="s2"&gt;117 8  323&lt;/span&gt;
-&lt;span class="s2"&gt;116 8  320&lt;/span&gt;
-&lt;span class="s2"&gt;116 8  322&lt;/span&gt;
-&lt;span class="s2"&gt;48  6  40&lt;/span&gt;
-&lt;span class="s2"&gt;49  6  37&lt;/span&gt;
-&lt;span class="s2"&gt;60  2  24&lt;/span&gt;
-&lt;span class="s2"&gt;59  2  23&lt;/span&gt;
-&lt;span class="s2"&gt;86  2  40&lt;/span&gt;
-&lt;span class="s2"&gt;106 2  48&lt;/span&gt;
-&lt;span class="s2"&gt;62  5  44&lt;/span&gt;
-&lt;span class="s2"&gt;61  5  44&lt;/span&gt;
-&lt;span class="s2"&gt;81  5  70&lt;/span&gt;
-&lt;span class="s2"&gt;81  5  70&lt;/span&gt;
-&lt;span class="s2"&gt;93  5  90&lt;/span&gt;
-&lt;span class="s2"&gt;97  5  97&lt;/span&gt;
-&lt;span class="s2"&gt;35  12 87&lt;/span&gt;
-&lt;span class="s2"&gt;33  12 81&lt;/span&gt;
-&lt;span class="s2"&gt;25  12 51&lt;/span&gt;
-&lt;span class="s2"&gt;26  12 55&lt;/span&gt;
-&lt;span class="s2"&gt;27  1  50&lt;/span&gt;
-&lt;span class="s2"&gt;39  8  46&lt;/span&gt;
-&lt;span class="s2"&gt;39  8  44&lt;/span&gt;
-&lt;span class="s2"&gt;30  8  29&lt;/span&gt;
-&lt;span class="s2"&gt;30  8  31&lt;/span&gt;
-&lt;span class="s2"&gt;32  8  31&lt;/span&gt;
-&lt;span class="s2"&gt;32  8  31&lt;/span&gt;
-&lt;span class="s2"&gt;29  8  29&lt;/span&gt;
-&lt;span class="s2"&gt;"""&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-   &lt;/details&gt;
-
-
-
-
-
-    
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [7]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;concat&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;old_df&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;new_df&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
-&lt;span class="n"&gt;plot_df&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;print_stats&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="output_wrapper"&gt;
-&lt;div class="output"&gt;
-
-
-&lt;div class="output_area"&gt;
-
-    &lt;div class="prompt"&gt;&lt;/div&gt;
-
-
-
-
-&lt;div class="output_png output_subarea"&gt;
-&lt;img src="exercise-bike-model_files/exercise-bike-model_12_0.png"/&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;div class="output_area"&gt;
-
-    &lt;div class="prompt"&gt;&lt;/div&gt;
-
-
-&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:                  watts   R-squared:                       0.924
-Model:                            OLS   Adj. R-squared:                  0.923
-Method:                 Least Squares   F-statistic:                     952.2
-No. Observations:                  80   AIC:                             709.6
-Df Residuals:                      78   BIC:                             714.3
-Df Model:                           1                                         
-Covariance Type:            nonrobust                                         
-====================================================================================
-                       coef    std err          t      P&amp;gt;|t|      [0.025      0.975]
-------------------------------------------------------------------------------------
-const              -60.3329      6.129     -9.843      0.000     -72.535     -48.130
-rpm x resistance     0.3614      0.012     30.857      0.000       0.338       0.385
-==============================================================================
-Omnibus:                       57.648   Durbin-Watson:                   1.094
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):              238.330
-Skew:                           2.326   Prob(JB):                     1.77e-52
-Kurtosis:                      10.062   Cond. No.                     1.42e+03
-==============================================================================
-
-Warnings:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The condition number is large, 1.42e+03. This might indicate that there are
-strong multicollinearity or other numerical problems.
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
-
-
-
-
-    
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Ok, it clearly started diverging from the nice linear dependency, especially at lower values of theoretical power. It's time to try to break it down and see what is to blame: e.g., resistance or speed component, or perhaps some individual measurements.&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-
-
-    
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Analyzing-data-and-looking-at-outliers-(2019-11-24)"&gt;Analyzing data and looking at outliers (2019-11-24)&lt;a class="anchor-link" href="#Analyzing-data-and-looking-at-outliers-(2019-11-24)"&gt;¶&lt;/a&gt;&lt;/h2&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-
-
-    
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [8]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;statsmodels.api&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;sm&lt;/span&gt;
-&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;plot_influence&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
-    &lt;span class="c1"&gt;# TODO FIXME use it in prev section&lt;/span&gt;
-    &lt;span class="n"&gt;res&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;sm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;formula&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ols&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"watts ~ rpm * resistance - resistance - rpm"&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;data&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fit&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-    &lt;span class="n"&gt;fig&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ax&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;subplots&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;figsize&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
-    &lt;span class="n"&gt;sm&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;graphics&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;influence_plot&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;res&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;ax&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;criterion&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;"cooks"&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-    &lt;span class="n"&gt;plt&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
-&lt;span class="n"&gt;plot_influence&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="c1"&gt;# sm.graphics.plot_partregress_grid(res, fig=fig)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="output_wrapper"&gt;
-&lt;div class="output"&gt;
-
-
-&lt;div class="output_area"&gt;
-
-    &lt;div class="prompt"&gt;&lt;/div&gt;
-
-
-
-
-&lt;div class="output_png output_subarea"&gt;
-&lt;img src="exercise-bike-model_files/exercise-bike-model_15_0.png"/&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
-
-
-
-
-    
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;TODO hmm, 0.10 is not &lt;em&gt;that&lt;/em&gt; high leverage right?
-Although depends on residual too, and here the residual is very high, so it would have high influence..
-&lt;a href="https://www.statsmodels.org/dev/examples/notebooks/generated/regression_plots.html"&gt;https://www.statsmodels.org/dev/examples/notebooks/generated/regression_plots.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;'27_1_50' seems like a typo. Let's drop it and ignore.&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-
-
-    
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [9]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;fdf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;df&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;drop&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;
-    &lt;span class="s1"&gt;'27_1_50'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;span class="p"&gt;])&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
-
-
-
-
-    
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Ok, that's somewhat better at least in terms of outliers. Let's see if that helps:&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-
-
-    
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [10]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;plot_df&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fdf&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;print_stats&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;fdf&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="output_wrapper"&gt;
-&lt;div class="output"&gt;
-
-
-&lt;div class="output_area"&gt;
-
-    &lt;div class="prompt"&gt;&lt;/div&gt;
-
-
-
-
-&lt;div class="output_png output_subarea"&gt;
-&lt;img src="exercise-bike-model_files/exercise-bike-model_19_0.png"/&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;div class="output_area"&gt;
-
-    &lt;div class="prompt"&gt;&lt;/div&gt;
-
-
-&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:                  watts   R-squared:                       0.950
-Model:                            OLS   Adj. R-squared:                  0.949
-Method:                 Least Squares   F-statistic:                     1467.
-No. Observations:                  79   AIC:                             667.9
-Df Residuals:                      77   BIC:                             672.7
-Df Model:                           1                                         
-Covariance Type:            nonrobust                                         
-====================================================================================
-                       coef    std err          t      P&amp;gt;|t|      [0.025      0.975]
-------------------------------------------------------------------------------------
-const              -69.9960      5.203    -13.454      0.000     -80.356     -59.636
-rpm x resistance     0.3784      0.010     38.307      0.000       0.359       0.398
-==============================================================================
-Omnibus:                       27.329   Durbin-Watson:                   0.562
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):               40.545
-Skew:                           1.500   Prob(JB):                     1.57e-09
-Kurtosis:                       4.823   Cond. No.                     1.49e+03
-==============================================================================
-
-Warnings:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The condition number is large, 1.49e+03. This might indicate that there are
-strong multicollinearity or other numerical problems.
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
-
-
-
-
-    
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;So, on one hand that did make fit look more linear. On the other hand we've had to filter out all the low-resistance observations to achieve that.&lt;/p&gt;
-&lt;p&gt;I guess I'll collect more observations to be absolutely sure.&lt;/p&gt;
-&lt;p&gt;TODO add TOC or something?&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-
-
-    
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h2 id="Even-more-data-(2019-11-25)"&gt;Even more data (2019-11-25)&lt;a class="anchor-link" href="#Even-more-data-(2019-11-25)"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;I've collected a bit more data, especially at lower velocities and resistance:&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-
-
-   
-   &lt;details class="cell-collapsed"&gt;
-   &lt;summary&gt;More measurements &lt;span class="cell-collapsed-expand"&gt;(click to expand)&lt;/span&gt;&lt;/summary&gt;
-       
-&lt;div class="cell border-box-sizing code_cell rendered celltag_collapsed"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [11]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;new_df_2&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;make_df&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;"""&lt;/span&gt;
-&lt;span class="s2"&gt;113 2  50&lt;/span&gt;
-&lt;span class="s2"&gt;73  2  32&lt;/span&gt;
-&lt;span class="s2"&gt;71  2  30&lt;/span&gt;
-&lt;span class="s2"&gt;70  2  29&lt;/span&gt;
-&lt;span class="s2"&gt;107 3  64&lt;/span&gt;
-&lt;span class="s2"&gt;108 3  65&lt;/span&gt;
-&lt;span class="s2"&gt;114 4  103&lt;/span&gt;
-&lt;span class="s2"&gt;48  4  25&lt;/span&gt;
-&lt;span class="s2"&gt;40  4  20&lt;/span&gt;
-&lt;span class="s2"&gt;31  13 81&lt;/span&gt;
-&lt;span class="s2"&gt;36  16 163&lt;/span&gt;
-&lt;span class="s2"&gt;40  5  24&lt;/span&gt;
-&lt;span class="s2"&gt;35  6  23&lt;/span&gt;
-&lt;span class="s2"&gt;31  7  23&lt;/span&gt;
-&lt;span class="s2"&gt;31  9  40&lt;/span&gt;
-&lt;span class="s2"&gt;40  9  64&lt;/span&gt;
-&lt;span class="s2"&gt;115 6  175&lt;/span&gt;
-&lt;span class="s2"&gt;109 6  163&lt;/span&gt;
-&lt;span class="s2"&gt;31  12 72&lt;/span&gt;
-&lt;span class="s2"&gt;30  13 76&lt;/span&gt;
-&lt;span class="s2"&gt;54  4  33&lt;/span&gt;
-&lt;span class="s2"&gt;38  4  19&lt;/span&gt;
-&lt;span class="s2"&gt;75  4  55&lt;/span&gt;
-&lt;span class="s2"&gt;36  8  40&lt;/span&gt;
-&lt;span class="s2"&gt;39  8  46&lt;/span&gt;
-&lt;span class="s2"&gt;32  8  34&lt;/span&gt;
-&lt;span class="s2"&gt;70  3  39&lt;/span&gt;
-&lt;span class="s2"&gt;49  3  22&lt;/span&gt;
-&lt;span class="s2"&gt;37  3  14&lt;/span&gt;
-&lt;span class="s2"&gt;"""&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-
-&lt;span class="n"&gt;ndf&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;pd&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;concat&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="n"&gt;fdf&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;new_df_2&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-   &lt;/details&gt;
-
-
-
-
-
-    
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Let's check for outliers first:&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-
-
-    
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [12]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;plot_influence&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ndf&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="output_wrapper"&gt;
-&lt;div class="output"&gt;
-
-
-&lt;div class="output_area"&gt;
-
-    &lt;div class="prompt"&gt;&lt;/div&gt;
-
-
-
-
-&lt;div class="output_png output_subarea"&gt;
-&lt;img src="exercise-bike-model_files/exercise-bike-model_24_0.png"/&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
-
-
-
-
-    
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Residuals of 3 are borderline, but don't immediately mean outliers.&lt;/p&gt;
-&lt;p&gt;Let's plot and analyze! Just out of curiosity, in addition we'll color values corresponding to different resistances (the darker, the more resistance):&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-
-
-
-    
-&lt;div class="cell border-box-sizing code_cell rendered"&gt;
-&lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In [13]:&lt;/div&gt;
-&lt;div class="inner_cell"&gt;
-    &lt;div class="input_area"&gt;
-&lt;div class="highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;ress&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;list&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;sorted&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;set&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ndf&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'resistance'&lt;/span&gt;&lt;span class="p"&gt;])))&lt;/span&gt;
-&lt;span class="n"&gt;colors&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;dict&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;zip&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ress&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;sns&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;light_palette&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;'navy'&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;n_colors&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ress&lt;/span&gt;&lt;span class="p"&gt;))))&lt;/span&gt;
-&lt;span class="n"&gt;ndf&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'color'&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;colors&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;ndf&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s1"&gt;'resistance'&lt;/span&gt;&lt;span class="p"&gt;]]&lt;/span&gt;
-&lt;span class="c1"&gt;# if you know of an easier way to use column value as a color in seaborn, please let me know!&lt;/span&gt;
-&lt;span class="n"&gt;plot_df&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ndf&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;print_stats&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ndf&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-    &lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div class="output_wrapper"&gt;
-&lt;div class="output"&gt;
-
-
-&lt;div class="output_area"&gt;
-
-    &lt;div class="prompt"&gt;&lt;/div&gt;
-
-
-
-
-&lt;div class="output_png output_subarea"&gt;
-&lt;img src="exercise-bike-model_files/exercise-bike-model_26_0.png"/&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
-&lt;div class="output_area"&gt;
-
-    &lt;div class="prompt"&gt;&lt;/div&gt;
-
-
-&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
-&lt;pre&gt;                            OLS Regression Results                            
-==============================================================================
-Dep. Variable:                  watts   R-squared:                       0.943
-Model:                            OLS   Adj. R-squared:                  0.942
-Method:                 Least Squares   F-statistic:                     1754.
-No. Observations:                 108   AIC:                             922.1
-Df Residuals:                     106   BIC:                             927.5
-Df Model:                           1                                         
-Covariance Type:            nonrobust                                         
-====================================================================================
-                       coef    std err          t      P&amp;gt;|t|      [0.025      0.975]
-------------------------------------------------------------------------------------
-const              -52.5400      4.002    -13.130      0.000     -60.474     -44.606
-rpm x resistance     0.3483      0.008     41.880      0.000       0.332       0.365
-==============================================================================
-Omnibus:                       20.686   Durbin-Watson:                   0.646
-Prob(Omnibus):                  0.000   Jarque-Bera (JB):               25.653
-Skew:                           1.159   Prob(JB):                     2.69e-06
-Kurtosis:                       3.574   Cond. No.                     1.17e+03
-==============================================================================
-
-Warnings:
-[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
-[2] The condition number is large, 1.17e+03. This might indicate that there are
-strong multicollinearity or other numerical problems.
-&lt;/pre&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;/div&gt;
-
-
-
-
-
-    
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;So, there is a clear trend of points clumping towards 0, which means that the model ceases to be linear.&lt;/p&gt;
-&lt;p&gt;If we try to fit the line to the points in a more reasonable exercise range (e.g. at least 50 RPM and resistance of 6, which would mean Power &amp;gt;= 300), that would skew the regression line even more to the right and move the coefficient even further away from zero.&lt;/p&gt;
-&lt;p&gt;So overall it means that either:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;the assumption of linear dependency on resistance and velocity is wrong, but then it's completely unclear how the power is estimated&lt;/li&gt;
-&lt;li&gt;I wasn't accurate during measurements on lower intensities, but I think it's pretty unlikely as I did multiple measurement sessions and even if you ignore the higher variance, mean is still way above the regression line &lt;/li&gt;
-&lt;li&gt;the velocity/resistance reported by the machine are wrong or misleading. It's possible that the number machine assigns to 'resistance' doesn't really mean anything.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="Conclusion"&gt;Conclusion&lt;a class="anchor-link" href="#Conclusion"&gt;¶&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;¯\&lt;em&gt;(ツ)&lt;/em&gt;/¯&lt;/p&gt;
-&lt;p&gt;I guess be careful about trusting the equipment and do your own experiments.&lt;/p&gt;
-&lt;p&gt;As you can see, my initial project of finding some correlation with my HR turned out in a completely different direction.&lt;/p&gt;
-&lt;h3 id="Next-steps"&gt;Next steps&lt;a class="anchor-link" href="#Next-steps"&gt;¶&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Would be interesting to at least compare watts (theoretical and reported by the machine) versus calories estimated by Endomondo (which takes heart rate into account).&lt;/p&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
-
-
-
- 
-
-
-    &lt;/section&gt;
-
-    
-    &lt;section class="footer"&gt;
-        &lt;div class="post-tags"&gt;
-            &lt;a class="post-tag tag-active" href="./tags.html#exercise"&gt;#exercise&lt;/a&gt;
-            &lt;a class="post-tag tag-active" href="./tags.html#quantifiedself"&gt;#quantifiedself&lt;/a&gt;
-            &lt;a class="post-tag tag-inactive" href="./tags.html"&gt;#ipython&lt;/a&gt;
-        &lt;/div&gt;
-        &lt;time datetime="2019-12-08T00:00:00"&gt;08 December 2019&lt;/time&gt;
-    &lt;/section&gt;
-    
-
-    
-
-    &lt;section class="comments"&gt;
-    &lt;script data-isso="https://beepb00p.xyz/comments/" data-isso-reply-to-self="true" src="https://beepb00p.xyz/comments/js/embed.min.js"&gt;
-&lt;/script&gt;
-
-&lt;section data-isso-id="isso_exercise_bike_model" id="isso-thread"&gt;&lt;/section&gt;
-    &lt;/section&gt;
-
-&lt;/article&gt;
-        &lt;/main&gt;
-        
-        &lt;!-- TODO make semantic --&gt;
-        &lt;footer&gt;
-            &lt;span style="float:left"&gt;
-            &lt;a href="https://twitter.com/karlicoss"&gt;🐦 me @twitter&lt;/a&gt;
-            ·
-            &lt;a href="https://github.com/karlicoss"&gt;💻 me @github&lt;/a&gt;
-            &lt;/span&gt;
-
-            &lt;a href="http://creativecommons.org/licenses/by/4.0"&gt;CC BY 4.0&lt;/a&gt;
-        &lt;/footer&gt;
-    
-&lt;/body&gt;&lt;/html&gt;</description>
-      <guid isPermaLink="true">https://beepb00p.xyz/exercise-bike-model.html</guid>
-      <pubDate>Sun, 08 Dec 2019 00:00:00 +0000</pubDate>
     </item>
   </channel>
 </rss>

@@ -81,8 +81,6 @@
 
 <article>
     
-    <div>THIS IS A DRAFT! It will appear on the main page once finished!</div>
-    
     <section class="post-title">
     <h1>
         Promnesia
@@ -120,10 +118,12 @@ Also, you can quickly skim through the <a href="https://github.com/karlicoss/pro
 <li><a href="#prior_art">5. Prior art</a>
 <ul>
 <li><a href="#prototypes">Prototypes and mockups</a></li>
-<li><a href="#memacs">Memacs</a></li>
-<li><a href="#history_extensions">'Unlimited history' extensions</a></li>
-<li><a href="#vivaldi">Vivaldi Browser</a></li>
 <li><a href="#google">Google Activity/Takeout</a></li>
+<li><a href="#history_extensions">'Unlimited history' extensions</a></li>
+<li><a href="#histre">Histre</a></li>
+<li><a href="#vivaldi">Vivaldi Browser</a></li>
+<li><a href="#memacs">Memacs</a></li>
+<li><a href="#memex_louis">Memex by Andrew Louis</a></li>
 <li><a href="#worldbrain_memex">Worldbrain Memex</a></li>
 </ul>
 </li>
@@ -513,31 +513,19 @@ Goal: use a chrome extension to supplement your browsing experience by introduci
 <p>
 Sadly it's only a concept.
 </p></li>
-<li><p>
-<a href="https://hyfen.net/memex">Memex</a> by Andrew Louis
-</p>
-<p>
-This is a working (but not open-source, at least yet) prototype of a Memex, unifying personal data and exposing an API for it.
-</p>
-<p>
-I only ran into it a few months ago! Because it's not public, I'm not sure to what extent it can address the browser history problems specifically.
-Jumping a bit ahead of myself, I expect it to integrate well with <a class="link-down" href="#promnesia">Promnesia</a>, so we could potentially benefit from each other's work.
-</p></li>
 </ul>
 </div>
 </div>
 <div class="outline-3">
-<h3 id="memacs"><a class="headerlink" href="#memacs">¶</a>Memacs</h3>
-<div class="outline-text-3" id="text-memacs">
+<h3 id="google"><a class="headerlink" href="#google">¶</a>Google Activity/Takeout</h3>
+<div class="outline-text-3" id="text-google">
 <p>
-<a href="https://github.com/novoid/Memacs#readme">Memacs</a> by Karl Voit is a memex software which unifies your data as org-mode, allowing you to query it from within Emacs.
+Though I covered it already, it's worth another mention as many people use it. I find it problematic because:
 </p>
-<p>
-Unfortunately, that means you have to query information actively in your emacs, as opposed to a passive assistant doing it for you.
-</p>
-<p>
-Having your full detailed history as plaintext is kind of noisy without extra interfaces, and inefficient for long browsing histories with hundreds of thousands of entries.
-</p>
+<ul class="org-ul">
+<li>it's a Google-specific silo, and the functionality provided by Google is only useful for deliberate searches</li>
+<li>it doesn't have an API, and can't be integrated in the browser</li>
+</ul>
 </div>
 </div>
 <div class="outline-3">
@@ -554,24 +542,53 @@ But, thousands of users indicates there is at least demand for such functionalit
 </div>
 </div>
 <div class="outline-3">
+<h3 id="histre"><a class="headerlink" href="#histre">¶</a><a href="https://histre.com">Histre</a></h3>
+<div class="outline-text-3" id="text-histre">
+<p>
+Histre is an open source browser extension that presents history as a tree to allow for easier exploration.
+I really like the idea, and it's a shame this is not the default representaion in our browsers.
+</p>
+<p>
+The downside of Histre is that it doesn't integrate with your existing knowledge about the page from other services, so it's a silo in its own regard.
+</p>
+</div>
+</div>
+<div class="outline-3">
 <h3 id="vivaldi"><a class="headerlink" href="#vivaldi">¶</a>Vivaldi Browser</h3>
 <div class="outline-text-3" id="text-vivaldi">
 <p>
 Vivaldi has some <a href="https://help.vivaldi.com/article/history">fresh ideas</a>, in particular, statistics for browser history and calendar view.
 You can also enable infinite retention for the history in the settings.
 </p>
+<p>
+However you only have access to your history within Vivaldi, and all your other data is left out.
+</p>
 </div>
 </div>
 <div class="outline-3">
-<h3 id="google"><a class="headerlink" href="#google">¶</a>Google Activity/Takeout</h3>
-<div class="outline-text-3" id="text-google">
+<h3 id="memacs"><a class="headerlink" href="#memacs">¶</a>Memacs</h3>
+<div class="outline-text-3" id="text-memacs">
 <p>
-Though I covered it already, it's worth another mention as many people use it. I find it problematic because:
+<a href="https://github.com/novoid/Memacs#readme">Memacs</a> by Karl Voit is a memex software which unifies your data as org-mode, allowing you to query it from within Emacs.
 </p>
-<ul class="org-ul">
-<li>it's a Google-specific silo, and the functionality provided by Google is only useful for deliberate searches</li>
-<li>it doesn't have an API, and can't be integrated in the browser</li>
-</ul>
+<p>
+It's excellent as a personal timeline/information search system. However, that means you have to query information <b>actively</b> in your Emacs, as opposed to a <b>passive</b> assistant doing it for you.
+</p>
+<p>
+Having your full detailed history as plaintext is kind of noisy without extra interfaces, and inefficient for long browsing histories with hundreds of thousands of entries.
+</p>
+</div>
+</div>
+<div class="outline-3">
+<h3 id="memex_louis"><a class="headerlink" href="#memex_louis">¶</a><a href="https://hyfen.net/memex">Memex</a> by Andrew Louis</h3>
+<div class="outline-text-3" id="text-memex_louis">
+<p>
+This is a working (but not open-source, at least yet) prototype of a Memex, unifying personal data and exposing an API for it.
+</p>
+<p>
+I only ran into it a few months ago! Because it's not public, I'm not sure to what extent it can address the browser history problems specifically.
+Jumping a bit ahead of myself, I expect it to integrate well with <a class="link-down" href="#promnesia">Promnesia</a>, so we could potentially benefit from each other's work.
+</p>
 </div>
 </div>
 <div class="outline-3">
